@@ -3,16 +3,26 @@ PKGBUILDer.  Easy AUR helper-like script.
 
 PURPOSE
 -------
-This tool is a basic AUR helper.  Version 2 in Py3K.
+This tool is a basic AUR helper written in Py3K.
 
 INSTALLATION
 ------------
-Copy it to /usr/bin or ~/bin.  You shall use it in a special directory.
+Copy pkgbuilder.py to /usr/bin or ~/bin.  You need to install
+pyalpm from [extra] and python3-aur from the AUR.
 
 NOTES
 -----
 This is Version 2 of PKGBUILDer.  The original Perl version is included,
 but it shall not be used.
+
+Version 2 works in two ways:
+
+ *  regular: search outputs category/package, building in current
+    working directory;
+ *  pacman wrapper-friendly: search outputs 'aur' instead of categories,
+    building in /tmp/pkgbuilder-UID
+
+Notice: this script is not finished yet.  Please be careful.
 
 COPYRIGHT
 ---------
