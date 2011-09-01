@@ -1,23 +1,21 @@
 #!/usr/bin/python3
-# PKGBUILDer Version 2.1
+# PKGBUILDer Version 2.1.0-prerelease
 # A python3 AUR helper (sort of.) Wrapper friendly (pacman-like output.)
-# Part of KRU
 # Copyright Kwpolska 2011. Licensed under GPLv3.
 # USAGE: ./build.py pkg1 [pkg2] [pkg3] (and more)
-
-from pyparsing import *     # python-pyparsing from [community] U: B.p_d
-import pyalpm               # pyalpm in [extra]                 U: B
-import pycman               # pyalpm in [extra]                 U: B
-import AUR                  # python3-aur in [xyne-any] or AUR  U: B, U
-import argparse             # standard library                  U: __main__
-import sys                  # s.l.                              U: f_*
-import os                   # s.l.                              U: os.chdir
-import re                   # s.l.                              U: B.dc
-#import shlex                # s.l.                              U: 
-import urllib.request       # s.l.                              U: B.dl
-import urllib.error         # s.l.                              U: B.a_b
-import tarfile              # s.l.                              U: B.e
-import subprocess           # s.l.                              U: B.a_b
+"""PKGBUILDer.  An AUR helper (sort of.)"""
+from pyparsing import OneOrMore, Word   # python-pyparsing from [community]
+import pyalpm                           # pyalpm in [extra]
+import pycman                           # pyalpm in [extra]
+import AUR                              # python3-aur in [xyne-any] or AUR
+import argparse
+import sys
+import os
+import re
+import urllib.request
+import urllib.error
+import tarfile
+import subprocess
 
 ### n/a                top-level base utils ###
 
@@ -76,6 +74,7 @@ class PBError(Exception):
     """Exceptions raised by the PKGBUILDer."""
 
     def __init__(self, msg, error=None):
+        """Initialization is mandatory."""
         self.msg = msg
         self.error = error
 
@@ -113,7 +112,7 @@ class Utils:
         """
         Outputs info about package.
 
-        Format: category/name version (num votes, out of date) [installed]
+        Format: category/name version (num votes) [installed] [out of date]
         Out of date is displayed only when needed and in red.
 
         Former data:
@@ -124,20 +123,19 @@ class Utils:
         pkg = db.get_pkg(package['Name'])
 
         category = ''
-        outofdate = ''
         installed = ''
-        if package['OutOfDate'] == 1:
-            outofdate = ', '+RED+'out of date'+ALL_OFF
         if pkg != None:
             installed = ' [installed]'
+        if package['OutOfDate'] == 1:
+            installed = installed + ' '+RED+'[out of date]'+ALL_OFF
         if useCategories == True:
             category = categories[package['CategoryID']]
         else:
             category = 'aur'
 
-        print("{0}/{1} {2} ({4} votes{5}){6}\n    {3}".format(category,
+        print("{0}/{1} {2} ({4} votes){5}\n    {3}".format(category,
               package['Name'], package['Version'], package['Description'],
-              package['NumVotes'], outofdate, installed))
+              package['NumVotes'], installed))
 
         pyalpm.release()
 
@@ -191,8 +189,8 @@ class Build:
                 os.chdir('../')
                 fancy_warning("Building more AUR packages is required.")
                 for package2 in build_result:
-                    build(package2, True)
-                build(package, True)
+                    self.auto_build(package2, True)
+                self.auto_build(package, True)
         except Exception as inst:
             fancy_error(str(inst))
 
@@ -237,20 +235,25 @@ class Build:
         and makedepends or [].
         """
         # This code is bad.  If you want to, fix it.
-        fixedp = """
-0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!\
-#$%&*+,-./:;<=>?@[]^_`{|}~'"
-"""
+        fixedp = """0123456789abcdefghijklmnopqrstuvwxyz\
+ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"'"""
         pattern1 = "depends=(" + OneOrMore(Word(fixedp)) + ")"
         pattern2 = "makedepends=(" + OneOrMore(Word(fixedp)) + ")"
-        bashdepends = []
-        bashmdepends = []
-        for i in pattern1.scanString(pkgbuild):
-            bashdepends = i[0]
-        for i in pattern2.scanString(pkgbuild):
-            bashmdepends = i[0]
-        depends = [ s.rstrip()[1:-1] for s in bashdepends[1:-1] ]
-        makedepends = [ s.rstrip()[1:-1] for s in bashmdepends[1:-1] ]
+
+        try:
+            bashdepends = next(pattern1.scanString(pkgbuild))
+        except StopIteration:
+            bashdepends = []
+            depends = []
+        try:
+            bmdepends = next(pattern2.scanString(pkgbuild))
+        except StopIteration:
+            bmdepends = []
+            makedepends = []
+        if bashdepends != []:
+            depends = [ s.rstrip()[1:-1] for s in bashdepends[0][1:-1] ]
+        if bmdepends != []:
+            makedepends = [ s.rstrip()[1:-1] for s in bmdepends[0][1:-1] ]
         return depends + makedepends
 
     def depcheck(self, bothdepends):
@@ -259,41 +262,42 @@ class Build:
 
         Returns: a dict:
             key  :  package name
-            value:  1, 2 or 3 (in system, repos, AUR)
+            value:  0, 1 or 2 (in system, repos, AUR)
         Possible exceptions: PBError
         Suggested way of handling:
         types = ['system', 'repos', 'aur']
         for pkg, pkgtype in depcheck([...]).items():
             print("{0}: found in {1}".format(pkg, types[pkgtype])
-            if pkgtype == 3: #AUR
+            if pkgtype == 2: #AUR
                 #build pkg here
         """
         if bothdepends == []:
             # THANK YOU, MAINTAINER, FOR HAVING NO DEPS AND DESTROYING ME!
             return {}
         else:
-            parsed_deps = {}
+            parseddeps = {}
             pycman.config.init_with_config('/etc/pacman.conf')
             db = pyalpm.get_localdb()
             for dep in bothdepends:
                 if re.search('[<=>]', dep):
-                        vP = '>=<|><=|=><|=<>|<>=|<=>|>=|=>|><|<>|=<|\
+                    vpat = '>=<|><=|=><|=<>|<>=|<=>|>=|=>|><|<>|=<|\
 <=|>|=|<'
-                        ver_base = re.split(vP, dep)
-                        dep = ver_base[0]
-                        ver = ver_base[1]
+                    ver_base = re.split(vpat, dep)
+                    dep = ver_base[0]
+                    #ver = ver_base[1]
                 pkg = db.get_pkg(dep)
-                repos = dict((db.name,db) for db in pyalpm.get_syncdbs())
+                repos = dict((db.name, db) for db in pyalpm.get_syncdbs())
                 if pkg != None:
-                    parsed_deps[dep] = 1
+                    parseddeps[dep] = 0
                 elif pycman.action_sync.find_sync_package(dep, repos):
-                    parsed_deps[dep] = 2
-                elif info(dep):
-                    parsed_deps[dep] = 3
+                    parseddeps[dep] = 1
+                elif self.utils.info(dep):
+                    parseddeps[dep] = 2
                 else:
                     raise PBError("depcheck: cannot find {0} \
 anywhere".format(dep))
-                pyalpm.release()
+            pyalpm.release()
+            return parseddeps
 
     def build_runner(self, package):
         """
@@ -322,14 +326,16 @@ anywhere".format(dep))
             os.chdir('./'+pkgname+'/')
 
             fancy_msg('Checking dependencies...')
-            # TODO: fix prepare_deps()
-            bothdepends = self.prepare_deps(open('./PKGBUILD', 'r'))
+            bothdepends = self.prepare_deps(open('./PKGBUILD', 'r').read())
             deps = self.depcheck(bothdepends)
             pkgtypes = ['system', 'repos', 'the AUR']
             aurbuild = []
+            if deps == {}:
+                fancy_msg2('none found')
+
             for pkg, pkgtype in deps.items():
                 fancy_msg2("{0}: found in {1}".format(pkg, pkgtypes[pkgtype]))
-                if pkgtype == 3:
+                if pkgtype == 2:
                     aurbuild.append(pkg)
             if aurbuild != []:
                 return aurbuild
@@ -401,7 +407,7 @@ syntax compatiblity")
     if args.info == True:
         for package in args.pkgs:
             pkg = u.info(package)
-            category = pkg[0]['CategoryID']
+            category = pkg['CategoryID']
             print("""Name           : {0}
 Version        : {1}
 URL            : {2}
@@ -409,14 +415,14 @@ Licenses       : {3}
 Category       : {4}
 Votes          : {5}
 Out of Date    : {6}
-Description    : {7}""".format(pkg[0]['Name'], pkg[0]['Version'],
-                               pkg[0]['URL'], pkg[0]['License'],
-                               categories[category], pkg[0]['NumVotes'],
-                               pkg[0]['OutOfDate'],
+Description    : {7}""".format(pkg['Name'], pkg['Version'],
+                               pkg['URL'], pkg['License'],
+                               categories[category], pkg['NumVotes'],
+                               pkg['OutOfDate'],
 
-                               pkg[0]['Description']))
-            #pkg[0]['Maintainer'], pkg[0]['FirstSubmitted'].strftime(
-            #'%Y-%m-%dT%H:%m:%SZ'), pkg[0]['LastModified'].strftime(
+                               pkg['Description']))
+            #pkg['Maintainer'], pkg['FirstSubmitted'].strftime(
+            #'%Y-%m-%dT%H:%m:%SZ'), pkg['LastModified'].strftime(
             #'%Y-%m-%dT%H:%m:%SZ'),
             #Xyne, hardcoding stuff is evil.        (rpc upd 8/20/11)
 
@@ -427,9 +433,9 @@ Description    : {7}""".format(pkg[0]['Name'], pkg[0]['Version'],
         pkgsearch = u.search(' '.join(args.pkgs)) #pacman-like behavior.
         for package in pkgsearch:
             if args.pac != True:
-                printPackage(package, True)
+                u.print_package(package, True)
             else:
-                printPackage(package, False)
+                u.print_package(package, False)
         exit(0)
 
     if args.pac == True:
@@ -449,4 +455,4 @@ Description    : {7}""".format(pkg[0]['Name'], pkg[0]['Version'],
 # RPC: <http://aur.archlinux.org/rpc.php> (search info msearch multiinfo)
 # If something new will appear there, tell me through GH Issues or mail.
 # They would be implemented later.
-# Some other features might show up, too.  (hint hint: line #400)
+# Some other features might show up, too.  (hint hint: line #396)
