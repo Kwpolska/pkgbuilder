@@ -247,7 +247,6 @@ class Build:
         bashmdepends = []
         for i in pattern1.scanString(pkgbuild):
             bashdepends = i[0]
-        depends = [ s[1:-1] for s in bashdepends[1:-1] ]
         for i in pattern2.scanString(pkgbuild):
             bashmdepends = i[0]
         depends = [ s.rstrip()[1:-1] for s in bashdepends[1:-1] ]
