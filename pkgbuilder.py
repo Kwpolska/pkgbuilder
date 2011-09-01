@@ -455,4 +455,4 @@ Description    : {7}""".format(pkg['Name'], pkg['Version'],
 # RPC: <http://aur.archlinux.org/rpc.php> (search info msearch multiinfo)
 # If something new will appear there, tell me through GH Issues or mail.
 # They would be implemented later.
-# Some other features might show up, too.  (hint hint: line #396)
+# Some other features might show up, too.  (hint hint: line #395)
