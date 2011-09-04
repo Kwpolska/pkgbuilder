@@ -17,6 +17,10 @@ import urllib.error
 import tarfile
 import subprocess
 
+# This is a prerelease version.  Some features planned aren't implemented
+# yet.  Planned features include AUR package upgrade (based on paconky.py)
+# and unit tests.
+
 ### n/a                top-level base utils ###
 
 # Fancy-schmancy messages stolen from makepkg.
@@ -78,6 +82,13 @@ class PBError(Exception):
         self.msg = msg
         self.error = error
 
+#### AUR             AUR RPC calls           ###
+#class AUR:
+#    """AUR RPC calls.  Currently doesn't work."""
+# TODO: this.  I plan a re-implementation of python3-aur basics.
+# Benefits: no crappy stuff of py3k-aur, no need to get it first
+# planned methods: request -OR- info, search, msearch, multiinfo
+# --Kwpolska 9/3/11
 ### Utils           common global utilities ###
 class Utils:
     """Common global utilities.  Provides useful data."""
@@ -194,7 +205,7 @@ class Build:
         except Exception as inst:
             fancy_error(str(inst))
 
-    def download(self, urlpath, filename, prot = 'https'):
+    def download(self, urlpath, filename, prot = 'http'):
         """
         Downloads an AUR tarball (https) to the current directory.
 
@@ -318,7 +329,8 @@ anywhere".format(dep))
 
             fancy_msg('Downloading the tarball...')
             downloadbytes = self.download(pkginfo['URLPath'], filename)
-            fancy_msg2('{0} bytes downloaded'.format(downloadbytes))
+            kbytes = int(downloadbytes) / 1000 #`K' means thousand.
+            fancy_msg2('{0}K bytes downloaded'.format(kbytes))
 
             fancy_msg('Extracting...')
             extractfiles = self.extract(filename)
