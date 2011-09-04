@@ -207,7 +207,7 @@ class Build:
 
     def download(self, urlpath, filename, prot = 'http'):
         """
-        Downloads an AUR tarball (https) to the current directory.
+        Downloads an AUR tarball (http) to the current directory.
 
         Returns: bytes downloaded.
         Possible exceptions: PBError, IOError,
