@@ -7,19 +7,21 @@
 from pyparsing import OneOrMore, Word   # python-pyparsing from [community]
 import pyalpm                           # pyalpm in [extra]
 import pycman                           # pyalpm in [extra]
-import AUR                              # python3-aur in [xyne-any] or AUR
 import argparse
 import sys
 import os
+import json
 import re
 import urllib.request
 import urllib.error
 import tarfile
 import subprocess
+import datetime
 
 # This is a prerelease version.  Some features planned aren't implemented
 # yet.  Planned features include AUR package upgrade (based on paconky.py)
-# and unit tests.
+# and unit tests.  Full release will occur after passing 500 lines and
+# implementing these features.
 
 ### n/a                top-level base utils ###
 
@@ -30,48 +32,42 @@ BLUE = BOLD+"\x1b[1;34m"
 GREEN = BOLD+"\x1b[1;32m"
 RED = BOLD+"\x1b[1;31m"
 YELLOW = BOLD+"\x1b[1;33m"
+
 def fancy_msg(text):
-    """
-    makepkg's msg().  Use for main messages.
-    """
+    """makepkg's msg().  Use for main messages."""
     sys.stderr.write(GREEN+'==>'+ALL_OFF+BOLD+' '+text+ALL_OFF+"\n")
+    pblog('(auto fancy_msg    ) '+text)
 
 def fancy_msg2(text):
-    """
-    makepkg's msg2().  Use for sub-messages.
-    """
+    """makepkg's msg2().  Use for sub-messages."""
     sys.stderr.write(BLUE+'  ->'+ALL_OFF+BOLD+' '+text+ALL_OFF+"\n")
+    pblog('(auto fancy_msg2   ) '+text)
 
 def fancy_warning(text):
-    """
-    makepkg's warning().  Use when you have problems.
-    """
+    """makepkg's warning().  Use when you have problems."""
     sys.stderr.write(YELLOW+'==> WARNING:'+ALL_OFF+BOLD+' '+text+ALL_OFF+
                      "\n")
+    pblog('(auto fancy_warning) '+text)
+
 def fancy_error(text):
-    """
-    makepkg's error().  Use for errors.  Exitting is suggested.
-    """
+    """makepkg's error().  Use for errors.  Exitting is suggested."""
     sys.stderr.write(RED+'==> ERROR:'+ALL_OFF+BOLD+' '+text+ALL_OFF+"\n")
-# That's it.
-categories = ['ERR0R', 'ERR1R', 'daemons', 'devel', 'editors', 'emulators',
+    pblog('(auto fancy_error  ) '+text)
+
+CATEGORIES = ['ERR0R', 'ERR1R', 'daemons', 'devel', 'editors', 'emulators',
               'games', 'gnome', 'i18n', 'kde', 'kernels', 'lib', 'modules',
               'multimedia', 'network', 'office', 'science', 'system',
               'x11', 'xfce']
 # If you can see ERR0R or ERR1R in the output, something bad has happened.
 
-# Do you want to see `deleted X rows from Y'?  No?  That's why I set this up.
+# Useless since python3-aur was replaced, but we'd make use of it.
 def pblog(msg, tofile = False, tostderr = False):
-    """
-    A log function.  Workaround.
-    """
+    """A log function.  Executed when requested and by fancy_*."""
     if tofile == True:
         open('pkgbuilder.log', 'a').write(msg)
 
     if tostderr == True:
         sys.stderr.write(msg)
-
-AUR.log = pblog
 
 ### PBError         errors raised here      ###
 class PBError(Exception):
@@ -83,31 +79,50 @@ class PBError(Exception):
         self.error = error
 
 #### AUR             AUR RPC calls           ###
-#class AUR:
-#    """AUR RPC calls.  Currently doesn't work."""
-# TODO: this.  I plan a re-implementation of python3-aur basics.
-# Benefits: no crappy stuff of py3k-aur, no need to get it first
-# planned methods: request -OR- info, search, msearch, multiinfo
-# --Kwpolska 9/3/11
+class AUR:
+    """A class for calling the AUR API.  Basics only."""
+
+    def __init__(self):
+        """Stores the RPC URL."""
+        self.rpc = '{0}://aur.archlinux.org/rpc.php?type={1}&arg={2}'
+
+    def request(self, rtype, arg, prot = 'http'):
+        """Makes a request.
+Syntax: request(TYPE, ARGUMENT[, PROTOCOL])
+where   TYPE is the request type from aur.archlinux.org/rpc.php,
+        ARGUMENT is the request argument, e.g. search query,
+        PROTOCOL is the protocol used, http or https."""
+        rhandle = urllib.request.urlopen(self.rpc.format(prot, rtype, arg))
+        jsondata = rhandle.read()
+        return json.loads(jsondata.decode())
+
+    def jsonreq(self, rtype, arg, prot = 'http'):
+        """Makes a request, but returns plain JSON data."""
+        rhandle = urllib.request.urlopen(self.rpc.format(prot, rtype, arg))
+        return rhandle.read().decode()
+
 ### Utils           common global utilities ###
 class Utils:
     """Common global utilities.  Provides useful data."""
+
+    def __init__(self):
+        """The AUR class is mandatory."""
+        self.aur = AUR()
     def info(self, pkgname):
         """
         Returns info about a package.
 
-        Returns: aur_pkgs[0], dict, not null OR False.
+        Returns: aur_pkgs['results'], dict, not null OR False.
 
         Former data:
-        2.0 Returns: aur_pkgs, list, not null.
+        2.0 Returns: aur_pkgs, list->dict, not null.
         2.0 Behavior: exception and quit when not found.
         """
-        aur = AUR.AUR(threads=10)
-        aur_pkgs = aur.info(pkgname)
-        if aur_pkgs == []:
+        aur_pkgs = self.aur.request('info', pkgname)
+        if aur_pkgs['results'] == 'No results found':
             return False
         else:
-            return aur_pkgs[0]
+            return aur_pkgs['results']
 
     def search(self, pkgname):
         """
@@ -115,11 +130,13 @@ class Utils:
 
         Returns: aur_pkgs, list, null.
         """
-        aur = AUR.AUR(threads=10)
-        aur_pkgs = aur.search(pkgname)
-        return aur_pkgs
+        aur_pkgs = self.aur.request('search', pkgname)
+        if aur_pkgs['results'] == 'No results found':
+            return []
+        else:
+            return aur_pkgs['results']
 
-    def print_package(self, package, useCategories = True):
+    def print_package(self, pkg, use_categories = True):
         """
         Outputs info about package.
 
@@ -131,22 +148,22 @@ class Utils:
         """
         pycman.config.init_with_config('/etc/pacman.conf')
         db = pyalpm.get_localdb()
-        pkg = db.get_pkg(package['Name'])
+        lpkg = db.get_pkg(pkg['Name'])
 
         category = ''
         installed = ''
-        if pkg != None:
+        if lpkg != None:
             installed = ' [installed]'
-        if package['OutOfDate'] == 1:
+        if pkg['OutOfDate'] == 1:
             installed = installed + ' '+RED+'[out of date]'+ALL_OFF
-        if useCategories == True:
-            category = categories[package['CategoryID']]
+        if use_categories == True:
+            category = CATEGORIES[int(pkg['CategoryID'])]
         else:
             category = 'aur'
 
         print("{0}/{1} {2} ({4} votes){5}\n    {3}".format(category,
-              package['Name'], package['Version'], package['Description'],
-              package['NumVotes'], installed))
+              pkg['Name'], pkg['Version'], pkg['Description'],
+              pkg['NumVotes'], installed))
 
         pyalpm.release()
 
@@ -182,14 +199,17 @@ class Build:
                     pycman.config.init_with_config('/etc/pacman.conf')
                     db = pyalpm.get_localdb()
                     pkg = db.get_pkg(package)
+                    aurversion = self.utils.info(package)['Version']
                     if pkg is None:
                         fancy_error("validation: NOT installed")
                         pyalpm.release()
                     else:
-                        if self.utils.info(package)['Version'] != pkg.version:
-                            fancy_error("validation: outdated "+pkg.version)
+                        if aurversion != pkg.version:
+                            fancy_error("validation: outdated "+
+                            pkg.version)
                         else:
-                            fancy_msg2("validation: installed "+pkg.version)
+                            fancy_msg2("validation: installed "+
+                            pkg.version)
                         pyalpm.release()
             elif build_result == 1:
                 os.chdir('../')
@@ -213,7 +233,8 @@ class Build:
         Possible exceptions: PBError, IOError,
             urllib.error.URLError, urllib.error.HTTPError
         """
-        rhandle = urllib.request.urlopen(prot+'://aur.archlinux.org'+urlpath)
+        rhandle = urllib.request.urlopen(prot+
+        '://aur.archlinux.org'+urlpath)
         headers = rhandle.info()
         fhandle = open(filename, 'wb')
         fhandle.write(rhandle.read())
@@ -295,7 +316,6 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"'"""
 <=|>|=|<'
                     ver_base = re.split(vpat, dep)
                     dep = ver_base[0]
-                    #ver = ver_base[1]
                 pkg = db.get_pkg(dep)
                 repos = dict((db.name, db) for db in pyalpm.get_syncdbs())
                 if pkg != None:
@@ -371,8 +391,9 @@ anywhere".format(dep))
         except KeyboardInterrupt as inst:
             fancy_error('KeyboardInterrupt (^C) caught.')
             exit(0)
-
+pblog('Initialized.')
 if __name__ == '__main__':
+    pblog('Running argparse.')
     parser = argparse.ArgumentParser(description="A python3 AUR helper \
 (sort of.)  Wrapper-friendly (pacman-like output.)", epilog="You can use \
 pacman syntax if you want to.")
@@ -401,70 +422,83 @@ syntax compatiblity")
                         nargs='*', help="packages to build")
     args = parser.parse_args()
 
-    u = Utils()
-    b = Build()
+    try:
+        utils = Utils()
+        build = Build()
+        pblog('Arguments parsed.')
 
-    if args.upgrade == True:
-        fancy_error("Sorry, but this feature is not implemented yet...")
+        if args.upgrade == True:
+            fancy_error("Sorry, but this feature is not implemented yet.")
 
-    if args.color == False:
-        #That's awesome in variables AND this version.
-        ALL_OFF = ''
-        BOLD = ''
-        BLUE = ''
-        GREEN = ''
-        RED = ''
-        YELLOW = ''
+        if args.color == False:
+            # That's awesome in variables AND this version.
+            ALL_OFF = ''
+            BOLD = ''
+            BLUE = ''
+            GREEN = ''
+            RED = ''
+            YELLOW = ''
 
-    if args.info == True:
-        for package in args.pkgs:
-            pkg = u.info(package)
-            category = pkg['CategoryID']
-            print("""Name           : {0}
-Version        : {1}
-URL            : {2}
-Licenses       : {3}
-Category       : {4}
+        if args.info == True:
+            for package in args.pkgs:
+                pkg = utils.info(package)
+                print("""Category       : {0}
+Name           : {1}
+Version        : {2}
+URL            : {3}
+Licenses       : {4}
 Votes          : {5}
 Out of Date    : {6}
-Description    : {7}""".format(pkg['Name'], pkg['Version'],
-                               pkg['URL'], pkg['License'],
-                               categories[category], pkg['NumVotes'],
-                               pkg['OutOfDate'],
+Maintainer     : {7}
+Last Updated   : {8}
+First Submitted: {9}
+Description    : {10}
+""".format(CATEGORIES[int(pkg['CategoryID'])], pkg['Name'], pkg['Version'],
+           pkg['URL'], pkg['License'], pkg['NumVotes'],
+           RED+'yes'+ALL_OFF if pkg['OutOfDate'] == '1' else 'no',
+           pkg['Maintainer'], datetime.datetime.utcfromtimestamp(float(
+           pkg['LastModified'])).strftime('%Y-%m-%dT%H:%m:%SZ'),
+           datetime.datetime.utcfromtimestamp(float(pkg['FirstSubmitted']
+           )).strftime('%Y-%m-%dT%H:%m:%SZ'), pkg['Description']))
+                # I tried to be simillar to pacman.
+            exit(0)
 
-                               pkg['Description']))
-            #pkg['Maintainer'], pkg['FirstSubmitted'].strftime(
-            #'%Y-%m-%dT%H:%m:%SZ'), pkg['LastModified'].strftime(
-            #'%Y-%m-%dT%H:%m:%SZ'),
-            #Xyne, hardcoding stuff is evil.        (rpc upd 8/20/11)
+        if args.search == True:
+            searchstring = '+'.join(args.pkgs)
+            if len(searchstring) < 3:
+                fancy_error('search string too short, API limitation')
+                exit(1)
+            pkgsearch = utils.search(searchstring) # pacman behavior
+            for package in pkgsearch:
+                if args.pac != True:
+                    utils.print_package(package, True)
+                else:
+                    utils.print_package(package, False)
+            exit(0)
 
-            #I tried to be simillar to pacman, so you can make a wrapper.
+        if args.pac == True:
+            uid = os.geteuid()
+            path = '/tmp/pkgbuilder-{0}'.format(str(uid))
+            if os.path.exists(path) == False:
+                os.mkdir(path)
+            os.chdir(path)
+
+    except KeyboardInterrupt as inst:
+        fancy_error('KeyboardInterrupt (^C) caught.')
         exit(0)
 
-    if args.search == True:
-        pkgsearch = u.search(' '.join(args.pkgs)) #pacman-like behavior.
-        for package in pkgsearch:
-            if args.pac != True:
-                u.print_package(package, True)
-            else:
-                u.print_package(package, False)
-        exit(0)
+    # If we didn't exit, we shall build the packages.
+    pblog('Ran through all the addon features, building...')
 
-    if args.pac == True:
-        uid = os.geteuid()
-        path = '/tmp/pkgbuilder-{0}'.format(str(uid))
-        if os.path.exists(path) == False:
-            os.mkdir(path)
-        os.chdir(path)
-
-    #If we didn't exit, we shall build the packages.
     for package in args.pkgs:
-        b.auto_build(package, args.valid)
-        #This one is amazing, too.  See lines #225-#227.
-# Over 450 lines!  Compare this to build.pl's 56 (including ~8 useless...)
+        pblog('Building '+package)
+        build.auto_build(package, args.valid)
+
+    pblog('Quitting.')
+# Over 500 lines!  Compare this to build.pl's 56 (including ~8 useless...)
 # New features will be included when they will be added to the AUR RPC
 # and python3-aur.       (note to Xyne: hardcoding stuff is evil.)
 # RPC: <http://aur.archlinux.org/rpc.php> (search info msearch multiinfo)
 # If something new will appear there, tell me through GH Issues or mail.
 # They would be implemented later.
-# Some other features might show up, too.  (hint hint: line #395)
+# Some other features might show up, too.  (hint hint: line #430)
