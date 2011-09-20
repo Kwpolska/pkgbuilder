@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Appendix B. PKGBUILDer error messages list &mdash; PKGBUILDer v2.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '2.1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PKGBUILDer v2.1.0 documentation" href="index.html" />
+    <link rel="prev" title="Appendix A. README" href="README.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="README.html" title="Appendix A. README"
+             accesskey="P">previous</a></li>
+        <li><a href="index.html">PKGBUILDer v2.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="appendix-b-pkgbuilder-error-messages-list">
+<h1>Appendix B. PKGBUILDer error messages list<a class="headerlink" href="#appendix-b-pkgbuilder-error-messages-list" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Info:</th><td class="field-body">This is an appendix to the PKGBUILDer documentation.</td>
+</tr>
+<tr class="field"><th class="field-name">Author:</th><td class="field-body">Kwpolska &lt;<a class="reference external" href="mailto:kwpolska&#37;&#52;&#48;kwpolska&#46;tk">kwpolska<span>&#64;</span>kwpolska<span>&#46;</span>tk</a>&gt;</td>
+</tr>
+<tr class="field"><th class="field-name">Date:</th><td class="field-body">2011-09-20</td>
+</tr>
+<tr class="field"><th class="field-name">Version:</th><td class="field-body">2.1.0</td>
+</tr>
+</tbody>
+</table>
+<p>In order to help debugging, error messages are numbered.
+Each error message number has four digits:  the first one is the
+category and the other three are error identifiers.</p>
+<div class="section" id="categories">
+<h2>Categories<a class="headerlink" href="#categories" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">AUR class</p>
+</li>
+<li><p class="first">Utils class</p>
+</li>
+<li><dl class="first docutils">
+<dt>Build class</dt>
+<dd><ol class="first last arabic simple">
+<li>download, extract</li>
+<li>depcheck, predepcheck</li>
+<li>makepkg</li>
+<li>auto_build, validation</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><p class="first">Update class</p>
+</li>
+<li><p class="first">non-module errors</p>
+</li>
+</ol>
+<div class="section" id="usage-instructions">
+<h3>Usage instructions<a class="headerlink" href="#usage-instructions" title="Permalink to this headline">¶</a></h3>
+<p>In order to get the category identifier, you need to:</p>
+<blockquote>
+<div><ul class="simple">
+<li>multiply the desired list element by 1000</li>
+<li>multiply the desired subelement by 100</li>
+<li>add the results together</li>
+</ul>
+</div></blockquote>
+<p>In order to get the first possible number of this (sub)category, add 1 to
+the result of the above calculations.</p>
+</div>
+</div>
+<div class="section" id="errors">
+<h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="23%" />
+<col width="64%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">ERR#</th>
+<th class="head">Component</th>
+<th class="head">Message</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td><a class="footnote-reference" href="#id10" id="id1">[3101]</a></td>
+<td>download</td>
+<td>0 bytes downloaded</td>
+</tr>
+<tr><td><a class="footnote-reference" href="#id11" id="id2">[3151]</a></td>
+<td>extract</td>
+<td>0 files extracted</td>
+</tr>
+<tr><td><a class="footnote-reference" href="#id12" id="id3">[3201]</a></td>
+<td>depcheck</td>
+<td>cannot find the requested dependency</td>
+</tr>
+<tr><td><a class="footnote-reference" href="#id13" id="id4">[3202]</a></td>
+<td>depcheck</td>
+<td>UnicodeDecodeError while reading file</td>
+</tr>
+<tr><td><a class="footnote-reference" href="#id14" id="id5">[3301]</a></td>
+<td>makepkg</td>
+<td>returned 1</td>
+</tr>
+<tr><td><a class="footnote-reference" href="#id15" id="id6">[3401]</a></td>
+<td>auto_build</td>
+<td>AUR dependency required</td>
+</tr>
+<tr><td><a class="footnote-reference" href="#id16" id="id7">[3451]</a></td>
+<td>validation</td>
+<td>not installed</td>
+</tr>
+<tr><td><a class="footnote-reference" href="#id17" id="id8">[3452]</a></td>
+<td>validation</td>
+<td>outdated</td>
+</tr>
+<tr><td><a class="footnote-reference" href="#id18" id="id9">[5002]</a></td>
+<td>search</td>
+<td>search string too short</td>
+</tr>
+</tbody>
+</table>
+<p>Explainations:</p>
+<table class="docutils footnote" frame="void" id="id10" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[3101]</a></td><td>occurs, when PKGBUILDer downloaded 0 bytes.  It usually
+means that something bad happened during the download.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id11" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[3151]</a></td><td>occurs, when PKGBUILDer extracted 0 files from the
+downloaded tarball.  It means that the tarball is broken.  Please
+tell the maintainer about this problem.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id12" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3201]</a></td><td>occurs, when the $depends or $makedepends array of the
+PKGBUILD requests a package, that does not exist in the system,
+repositories, nor the AUR.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id13" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[3202]</a></td><td>occurs, when Python cannot decode UTF-8 the PKGBUILD.  If
+the PKGBUILD cannot be read, dependency checks cannot be performed.
+Possible reasons include incorrectly encoded characters in the
+Maintainer/Submitter field.  Please inform the package maintainer
+through the comments.  Include the output of <cite>iconv PKGBUILD</cite>. Example
+output: <cite># Maintainer: Juan Piconv: illegal input sequence at position
+20</cite> The PKGBUILDer&#8217;s error message is also valid and will help the
+maintainer.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id14" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id5">[3301]</a></td><td>occurs, when makepkg exits with the return code 1.  It means
+that something bad happened.  Refer to makepkg&#8217;s output for more info.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id15" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[3401]</a></td><td>occurs, when the $depends or $makedepends array of the
+PKGBUILD request a package, which exists in the AUR.  It is plain
+informational. Right after displaying this message, the script will
+automatically build the required packages.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id16" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id7">[3451]</a></td><td>occurs, when PKGBUILDer finds out that the package is not
+installed on your system.  It means that the package that was bulit
+before this message was issued wasn&#8217;t installed properly (eg. root
+password wasn&#8217;t provided at the right time, &#8216;n&#8217; was hit when pacman was
+asking for proceeding).</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id17" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id8">[3452]</a></td><td>occurs, when PKGBUILDer finds out that the package is
+installed, but outdated.  It means that the package that was bulit before
+this message was issued wasn&#8217;t installed properly (eg. root password
+wasn&#8217;t provided at the right time, &#8216;n&#8217; was hit when pacman was asking for
+proceeding).</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id18" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id9">[5002]</a></td><td>occurs, when your search string is shorter than 3 letters.
+The AUR API ignores these requests.  However, the script searches for
+an exact match.  If one is found, it is being shown.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Appendix B. PKGBUILDer error messages list</a><ul>
+<li><a class="reference internal" href="#categories">Categories</a><ul>
+<li><a class="reference internal" href="#usage-instructions">Usage instructions</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#errors">Errors</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="README.html"
+                        title="previous chapter">Appendix A. README</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="README.html" title="Appendix A. README"
+             >previous</a></li>
+        <li><a href="index.html">PKGBUILDer v2.1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Kwpolska.
+      Last updated on 2011-09-19T20:09:09Z.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+include INSTALL.py
+include LICENSE
+include README.rst
+include TODO.rst
+recursive-include docs *
+recursive-include scripts *
