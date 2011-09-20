@@ -1,0 +1,4 @@
+#!/usr/bin/python3.2
+"""Run PKGBUILDer."""
+import pkgbuilder
+pkgbuilder.main_routine()

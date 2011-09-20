@@ -1,3 +1,38 @@
+=====================
+README for PKGBUILDer
+=====================
+:Info: This is the README file for PKGBUILDer.
+:Author: Kwpolska <kwpolska@kwpolska.tk>
+:Date: 2011-09-20
+:Version: 2.1.0
+
+PKGBUILDer.  A Python AUR helper/library.
+=========================================
+
+PURPOSE
+-------
+Building and installing AUR packages.
+
+INSTALLATION
+------------
+Copy pkgbuilder.py to /usr/bin or ~/bin.  You need to install
+pyalpm from [extra] and python3-aur from the AUR.
+
+NOTES
+-----
+This is Version 2 of PKGBUILDer.  The original Perl version is included,
+but it shall not be used.
+
+Version 2.1 is a big leap forward.  It introduces many new features.
+It is now stable.  It is now available as an AUR and PyPI package.
+
+The -S (DS.pacman) parameter adds pacman wrapper compatibility.
+
+For more info, refer to the pkgbuilder(8) man page or HTML docs in
+docs/html.
+
+COPYRIGHT
+---------
 Copyright (C) 2011, Kwpolska
 All rights reserved.
 
