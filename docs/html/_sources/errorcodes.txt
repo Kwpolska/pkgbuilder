@@ -3,8 +3,8 @@ Appendix B. PKGBUILDer error messages list
 ==========================================
 :Info: This is an appendix to the PKGBUILDer documentation.
 :Author: Kwpolska <kwpolska@kwpolska.tk>
-:Date: 2011-09-20
-:Version: 2.1.0
+:Date: 2011-09-22
+:Version: 2.1.1
 
 In order to help debugging, error messages are numbered.
 Each error message number has four digits:  the first one is the
