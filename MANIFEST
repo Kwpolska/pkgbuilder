@@ -3,7 +3,6 @@ INSTALL.py
 LICENSE
 README
 README.rst
-TODO.rst
 pkgbuilder.py
 setup.py
 docs/Makefile

@@ -7,9 +7,9 @@ a Python AUR helper/library
 -----------------------------------
 
 :Author: Kwpolska <kwpolska@kwpolska.tk>
-:Date: 2011-09-20
 :Copyright: This document has been placed in the public domain.
-:Version: 2.1.0
+:Date: 2011-09-22
+:Version: 2.1.1
 :Manual section: 8
 :Manual group: PKGBUILDer manual
 
@@ -43,8 +43,8 @@ OPERATIONS
         | Votes          : AUR votes
         | Out of Date    : yes or no
         | Maintainer     : package owner
-        | Last Updated   : ISO date (1970-01-01T00:00:00Z)
-        | First Submitted: ISO date
+        | Last Updated   : date (pacman's format)
+        | First Submitted: date (pacman's format)
         | Description    : the package description
 
 **-s, --search**

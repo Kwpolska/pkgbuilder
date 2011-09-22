@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# PKGBUILDer Version 2.1.0
+# PKGBUILDer Version 2.1.1
 # A Python AUR helper/library.
 # Copyright Kwpolska 2011. Licensed under GPLv3.
 # USAGE: ./build.py pkg1 [pkg2] [pkg3] (and more)
@@ -18,7 +18,7 @@ import tarfile
 import subprocess
 import datetime
 
-VERSION = '2.1.0'
+VERSION = '2.1.1'
 
 ### PBDS            PB global data storage  ###
 class PBDS:
@@ -40,9 +40,9 @@ class PBDS:
         self.validate = True
         self.categories = ['E', 'E', 'daemons', 'devel', 'editors',
                            'emulators', 'games', 'gnome', 'i18n', 'kde',
-                           'kernels', 'lib', 'modules', 'multimedia',
-                           'network', 'office', 'science', 'system', 'x11',
-                           'xfce']
+                           'lib', 'modules', 'multimedia', 'network',
+                           'office', 'science', 'system', 'x11',
+                           'xfce', 'kernels']
     def colorson(self):
         """colors on"""
         self.colors = {
@@ -206,7 +206,10 @@ class Utils:
         category = ''
         installed = ''
         if lpkg != None:
-            installed = ' [installed]'
+            if pyalpm.vercmp(pkg['Version'], lpkg.version) != 0:
+                installed = ' [installed: '+lpkg.version+']'
+            else:
+                installed = ' [installed]'
         if pkg['OutOfDate'] == 1:
             installed = (installed + ' '+DS.colors['red']+'[out of date]'+
                          DS.colors['all_off'])
@@ -587,12 +590,6 @@ pacman syntax if you want to.")
         build = Build()
         pblog('Arguments parsed.')
 
-        if args.upgrade == True:
-            # We finally made it!
-            upgrade = Upgrade()
-            upgrade.auto_upgrade()
-            del(upgrade)
-
         if args.color == False:
             # That's awesome in variables AND 2.x series.
             # ...and it was moved to PBDS.
@@ -619,10 +616,10 @@ Description    : {10}
            ipkg['Version'], ipkg['URL'], ipkg['License'], ipkg['NumVotes'],
            DS.colors['red']+'yes'+DS.colors['all_off'] if (ipkg['OutOfDate']
            == '1') else 'no', ipkg['Maintainer'],
-           datetime.datetime.utcfromtimestamp(float(
-           ipkg['LastModified'])).strftime('%Y-%m-%dT%H:%m:%SZ'),
-           datetime.datetime.utcfromtimestamp(float(
-           ipkg['FirstSubmitted'])).strftime('%Y-%m-%dT%H:%m:%SZ'),
+           datetime.datetime.fromtimestamp(float(
+           ipkg['LastModified'])).strftime('%a %d %b %Y %H:%m:%S %p %Z'),
+           datetime.datetime.fromtimestamp(float(
+           ipkg['FirstSubmitted'])).strftime('%a %d %b %Y %H:%m:%S %p %Z'),
            ipkg['Description']))
                 exit(0)
 
@@ -661,6 +658,13 @@ limitation')
         fancy_error(str(inst))
     except KeyboardInterrupt:
         fancy_error('ERR0001: KeyboardInterrupt (^C) caught.')
+        exit(0)
+
+    if args.upgrade == True:
+        # We finally made it!
+        upgrade = Upgrade()
+        upgrade.auto_upgrade()
+        del(upgrade)
         exit(0)
 
     # If we didn't exit, we shall build the packages.
