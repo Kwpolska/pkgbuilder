@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# PKGBUILDer Version 2.1.1
+# PKGBUILDer Version 2.1.1.1
 # A Python AUR helper/library.
 # Copyright Kwpolska 2011. Licensed under GPLv3.
 # USAGE: ./build.py pkg1 [pkg2] [pkg3] (and more)
@@ -18,7 +18,7 @@ import tarfile
 import subprocess
 import datetime
 
-VERSION = '2.1.1'
+VERSION = '2.1.1.1'
 
 ### PBDS            PB global data storage  ###
 class PBDS:
@@ -344,9 +344,9 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"'"""
             bmdepends = []
             makedepends = []
         if bashdepends != []:
-            depends = [ s.rstrip()[1:-1] for s in bashdepends[0][1:-1] ]
+            depends = [ s.rstrip() for s in bashdepends[0][1:-1] ]
         if bmdepends != []:
-            makedepends = [ s.rstrip()[1:-1] for s in bmdepends[0][1:-1] ]
+            makedepends = [ s.rstrip() for s in bmdepends[0][1:-1] ]
         return depends + makedepends
 
     def depcheck(self, bothdepends):
@@ -381,7 +381,7 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"'"""
                 repos = dict((db.name, db) for db in pyalpm.get_syncdbs())
                 if pkg != None:
                     parseddeps[dep] = 0
-                elif pycman.action_sync.find_sync_package(dep, repos):
+                elif pycman.action_sync.find_sync_package(dep, repos)[0]:
                     parseddeps[dep] = 1
                 elif self.utils.info(dep):
                     parseddeps[dep] = 2
@@ -415,7 +415,7 @@ anywhere".format(dep))
 
             fancy_msg('Downloading the tarball...')
             downloadbytes = self.download(pkginfo['URLPath'], filename)
-            kbytes = int(downloadbytes) / 1000 #`K' means thousand.
+            kbytes = int(downloadbytes) / 1000
             fancy_msg2('{0} kB downloaded'.format(kbytes))
 
             fancy_msg('Extracting...')

@@ -1,5 +1,5 @@
 # Makefile for Sphinx documentation
-#
+# modded by Kw
 
 # You can set these variables from the command line.
 SPHINXOPTS    =
@@ -40,6 +40,10 @@ html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) ./html
 	@echo
 	@echo "Build finished. The HTML pages are in ./html."
+
+zip:
+	cd html/
+	zip -r /tmp/docs.zip ./*
 
 dirhtml:
 	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
