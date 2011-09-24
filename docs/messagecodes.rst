@@ -1,13 +1,13 @@
-==========================================
-Appendix B. PKGBUILDer error messages list
-==========================================
+===========================================
+Appendix B. PKGBUILDer message numbers list
+===========================================
 :Info: This is an appendix to the PKGBUILDer documentation.
 :Author: Kwpolska <kwpolska@kwpolska.tk>
-:Date: 2011-09-23
-:Version: 2.1.1.1
+:Date: 2011-09-24
+:Version: 2.1.1.2
 
-In order to help debugging, error messages are numbered.
-Each error message number has four digits:  the first one is the
+In order to help debugging, messages are numbered.
+Each message number has four digits:  the first one is the
 category and the other three are error identifiers.
 
 Categories
@@ -21,7 +21,7 @@ Categories
     3. makepkg
     4. auto_build, validation
 4. Update class
-5. non-module errors
+5. non-module problems
 
 Usage instructions
 ------------------
@@ -35,9 +35,30 @@ In order to get the category identifier, you need to:
 In order to get the first possible number of this (sub)category, add 1 to
 the result of the above calculations.
 
+Informations
+============
+
+======== =============== =========================================
+INF#     Component       Message
+======== =============== =========================================
+[3450]_  validation      installed
+======== =============== =========================================
+
+.. [3450] occurs, when PKGBUILDer finds out that the package that
+   was meant to be bulit is correctly installed.
+
+Warnings
+========
+
+======== =============== =========================================
+INF#     Component       Message
+======== =============== =========================================
+0        none            Nothing there yet.
+======== =============== =========================================
+
+
 Errors
 ======
-
 
 ======== =============== =========================================
 ERR#     Component       Message
