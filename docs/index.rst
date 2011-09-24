@@ -13,7 +13,7 @@ Contents:
 
    pkgbuilder
    README
-   errorcodes
+   messagecodes
 
 .. Indices and tables
 .. ==================
