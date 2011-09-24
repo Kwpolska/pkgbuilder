@@ -43,6 +43,7 @@ class PBDS:
                            'lib', 'modules', 'multimedia', 'network',
                            'office', 'science', 'system', 'x11',
                            'xfce', 'kernels']
+
     def colorson(self):
         """colors on"""
         self.colors = {
@@ -269,7 +270,7 @@ class Build:
                             fancy_error2("[ERR3452] validation: outdated "+
                             pkg.version)
                         else:
-                            fancy_msg2("          validation: installed "+
+                            fancy_msg2("[INF3450] validation: installed "+
                             pkg.version)
                         pyalpm.release()
             elif build_result == 1:
@@ -347,7 +348,9 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"'"""
             depends = [ s.rstrip() for s in bashdepends[0][1:-1] ]
         if bmdepends != []:
             makedepends = [ s.rstrip() for s in bmdepends[0][1:-1] ]
-        return depends + makedepends
+
+        bothdepends = depends + makedepends
+        return [ s.replace('"', '').replace("'", '') for s in bothdepends ]
 
     def depcheck(self, bothdepends):
         """
@@ -461,9 +464,6 @@ in the Maintainer field.)  Error message: '+str(inst))
             fancy_error(str(inst))
         except IOError as inst:
             fancy_error(str(inst))
-        except KeyboardInterrupt:
-            fancy_error('ERR5001: KeyboardInterrupt (^C) caught.')
-            exit(0)
 
 ### Upgrade     upgrade AUR packages        ###
 class Upgrade:
@@ -656,9 +656,6 @@ limitation')
 
     except PBError as inst:
         fancy_error(str(inst))
-    except KeyboardInterrupt:
-        fancy_error('ERR0001: KeyboardInterrupt (^C) caught.')
-        exit(0)
 
     if args.upgrade == True:
         # We finally made it!
