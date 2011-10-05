@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# PKGBUILDer Version 2.1.1.1
+# PKGBUILDer Version 2.1.1.3
 # A Python AUR helper/library.
 # Copyright Kwpolska 2011. Licensed under GPLv3.
 # USAGE: ./build.py pkg1 [pkg2] [pkg3] (and more)
@@ -18,7 +18,7 @@ import tarfile
 import subprocess
 import datetime
 
-VERSION = '2.1.1.1'
+VERSION = '2.1.1.3'
 
 ### PBDS            PB global data storage  ###
 class PBDS:
@@ -253,7 +253,7 @@ class Build:
         """
         build_result = self.build_runner(package)
         try:
-            if build_result == 0:
+            if build_result[0] == 0:
                 fancy_msg("The build function reported a proper build.")
                 os.chdir('../')
                 if validate == True:
@@ -273,12 +273,12 @@ class Build:
                             fancy_msg2("[INF3450] validation: installed "+
                             pkg.version)
                         pyalpm.release()
-            elif build_result == 1:
+            elif build_result[0] == 1:
                 os.chdir('../')
                 raise PBError("[ERR3301] makepkg returned 1.")
                 # I think that only makepkg can do that.  Others would
                 # raise an exception.
-            else:
+            elif build_result[0] == 2:
                 os.chdir('../')
                 fancy_warning("[ERR3401] Building more AUR packages is \
 required.")
@@ -358,7 +358,7 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"'"""
 
         Returns: a dict:
             key  :  package name
-            value:  0, 1 or 2 (in system, repos, AUR)
+            value:  -1, 0, 1 or 2 (nowhere, in system, repos, AUR)
         Possible exceptions: PBError
         Suggested way of handling:
         types = ['system', 'repos', 'aur']
@@ -366,6 +366,9 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"'"""
             print("{0}: found in {1}".format(pkg, types[pkgtype])
             if pkgtype == 2: #AUR
                 #build pkg here
+
+        Former data:
+        2.0 Returns: no -1
         """
         if bothdepends == []:
             # THANK YOU, MAINTAINER, FOR HAVING NO DEPS AND DESTROYING ME!
@@ -373,22 +376,27 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"'"""
         else:
             parseddeps = {}
             pycman.config.init_with_config('/etc/pacman.conf')
-            localdb = pyalpm.get_localdb()
+            localpkgs = pyalpm.get_localdb().pkgcache
+            syncpkgs = []
+            for j in [ i.pkgcache for i in pyalpm.get_syncdbs() ]:
+                syncpkgs.append(j)
             for dep in bothdepends:
                 if re.search('[<=>]', dep):
                     vpat = '>=<|><=|=><|=<>|<>=|<=>|>=|=>|><|<>|=<|\
 <=|>|=|<'
                     ver_base = re.split(vpat, dep)
                     dep = ver_base[0]
-                pkg = localdb.get_pkg(dep)
-                repos = dict((db.name, db) for db in pyalpm.get_syncdbs())
-                if pkg != None:
+                #pkg = localdb.get_pkg(dep)
+                #repos = dict((db.name, db) for db in pyalpm.get_syncdbs())
+                if pyalpm.find_satisfier(localpkgs, dep): #pkg != None:
                     parseddeps[dep] = 0
-                elif pycman.action_sync.find_sync_package(dep, repos)[0]:
+                elif pyalpm.find_satisfier(syncpkgs, dep):
+                    #pycman.action_sync.find_sync_package(dep, repos)[0]:
                     parseddeps[dep] = 1
                 elif self.utils.info(dep):
                     parseddeps[dep] = 2
                 else:
+                    parseddeps[dep] = -1
                     raise PBError("[ERR3201] depcheck: cannot find {0} \
 anywhere".format(dep))
             pyalpm.release()
@@ -429,7 +437,7 @@ anywhere".format(dep))
             fancy_msg('Checking dependencies...')
             try:
                 bothdepends = self.prepare_deps(open('./PKGBUILD',
-                                                'r').read())
+                              'rb').read().decode('utf8', 'ignore'))
                 deps = self.depcheck(bothdepends)
                 pkgtypes = ['system', 'repos', 'the AUR']
                 aurbuild = []
@@ -437,12 +445,16 @@ anywhere".format(dep))
                     fancy_msg2('none found')
 
                 for pkg, pkgtype in deps.items():
-                    fancy_msg2("{0}: found in {1}".format(pkg,
-                               pkgtypes[pkgtype]))
+                    if pkgtype == -1:
+                        raise PBError("[ERR3201] depcheck: cannot find \
+{0} anywhere".format(dep))
                     if pkgtype == 2:
                         aurbuild.append(pkg)
+
+                    fancy_msg2("{0}: found in {1}".format(pkg,
+                               pkgtypes[pkgtype]))
                 if aurbuild != []:
-                    return aurbuild
+                    return [2, aurbuild]
             except UnicodeDecodeError as inst:
                 fancy_error2('[ERR3202] depcheck: UnicodeDecodeError. \
  The PKGBUILD cannot be read.  There are invalid UTF-8 characters (eg. \
@@ -451,19 +463,23 @@ in the Maintainer field.)  Error message: '+str(inst))
             asroot = ''
             if os.geteuid() == 0:
                 asroot = ' --asroot'
-            return subprocess.call('/usr/bin/makepkg -si'+asroot,
-            shell=True)
+            return [subprocess.call('/usr/bin/makepkg -si'+asroot,
+            shell=True), 'makepkg']
             # In version 2.0, this comment couldn't believe that
             # the main function takes only one line.  But, right now,
             # it doesn't think so.  Others look like it, too.
         except PBError as inst:
             fancy_error(str(inst))
+            return [3]
         except urllib.error.URLError as inst:
             fancy_error(str(inst))
+            return [3]
         except urllib.error.HTTPError as inst:
             fancy_error(str(inst))
+            return [3]
         except IOError as inst:
             fancy_error(str(inst))
+            return [3]
 
 ### Upgrade     upgrade AUR packages        ###
 class Upgrade:
@@ -603,7 +619,7 @@ pacman syntax if you want to.")
 
                 print("""Category       : {0}
 Name           : {1}
-Version        : {2}
+Version 2.1.1.3
 URL            : {3}
 Licenses       : {4}
 Votes          : {5}
