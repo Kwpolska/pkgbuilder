@@ -4,7 +4,38 @@ aurcat = "16"
 task :default => [:help]
 
 task :help do
-    puts "Usage: rake [update/docs/docshtml/docszip]"
+    puts "Usage: rake command"
+    puts "Command is one of:"
+    puts "  update    Updates the package."
+    puts "  docs      Creates the docs."
+    puts ""
+    puts "  prepare   Prepares the package for being updated."
+    puts "  pypi      Creates and uploads the package to pypi."
+    puts "  aur       Uploads an AUR tarball."
+    puts "  docshtml  Creates the docs in HTML."
+    puts "  docszip   Zips the docs made by docshtml."
+
+end
+
+task :prepare, :ver do |t, args|
+    if args[:ver].to_s.chomp == ''
+        puts "Version number?"
+        version = STDIN.gets.chomp
+    else
+        version = args[:ver].chomp
+    end
+
+    date = Time.now.strftime('%Y-%m-%d')
+
+    sh "sed \"s/version=.*/version='#{version}',/\" setup.py -i"
+    sh "sed \"s/release = .*/release = '#{version}'/\" docs/conf.py -i"
+    sh "sed \"s/:Version: .*/:Version: #{version}/\" docs/*.rst -i"
+    sh "sed \"s/BUILDer .* do/BUILDer #{version} do/\" docs/index.rst -i"
+    sh "sed \"s/VERSION = .*/VERSION = '#{version}'/\" pkgbuilder.py -i"
+    sh "sed \"s/Version .*/Version #{version}/\" pkgbuilder.py -i"
+    sh "sed \"s/pkgver=.*/pkgver=#{version}/\" PKGBUILD -i"
+
+    sh "sed \"s/:Date: .*/:Date: #{date}/\" docs/*.rst -i"
 end
 
 task :docshtml do
@@ -16,8 +47,37 @@ task :docszip do
 end
 
 task :docs do
+    sh "rm docs/pkgbuilder.8.gz"
+    sh "rst2man docs/pkgbuilder.rst > docs/pkgbuilder.8"
+    sh "gzip docs/pkgbuilder.8"
+
     Rake::Task[:docshtml].invoke
     Rake::Task[:docszip].invoke
+end
+
+task :pypi do
+    sh './setup.py sdist upload'
+end
+
+task :aur, :ver do |t, args|
+    if args[:ver].to_s.chomp == ''
+        puts "Version number?"
+        version = STDIN.gets.chomp
+    else
+        version = args[:ver].chomp
+    end
+
+    pbdir = "/tmp/#{project}-pkgbuild-#{version}"
+    sh "mkdir -p #{pbdir}"
+    sh "cp PKGBUILD #{pbdir}"
+    md5out = `cd #{pbdir} && makepkg -cg`
+    md5sums = md5out.split('\n').reverse[0].chomp!
+    sh "sed \"s/md5sums=.*/#{md5sums}/\" PKGBUILD -i"
+    sh "cp PKGBUILD #{pbdir}"
+    sh "cd #{pbdir} && makepkg -f --source"
+    sh "aurupload Kwpolska - system #{pbdir}/*.src.tar.gz"
+
+
 end
 
 task :update, :ver do |t, args|
@@ -27,26 +87,12 @@ task :update, :ver do |t, args|
     else
         version = args[:ver].chomp
     end
-    date = Time.now.strftime('%Y-%m-%d')
+    #date = Time.now.strftime('%Y-%m-%d')
 
-    sh "sed \"s/version=.*/version='#{version}',/\" setup.py -i"
-    sh "sed \"s/release = .*/release = '#{version}'/\" docs/conf.py -i"
-    sh "sed \"s/:Version: .*/:Version: #{version}/\" docs/*.rst -i"
-    sh "sed \"s/:Date: .*/:Date: #{date}/\" docs/*.rst -i"
-    sh "rm docs/pkgbuilder.8.gz"
-    sh "rst2man docs/pkgbuilder.rst > docs/pkgbuilder.8"
-    sh "gzip docs/pkgbuilder.8"
+    Rake::Task[:prepare].invoke(version)
 
-    Rake::Task[:docs].invoke
+    Rake::Task[:docs].invoke(version)
 
-    sh './setup.py sdist upload'
-    md5sum = `md5sum "dist/#{project}-#{version}.tar.gz"`
-    md5sum.chomp!
-    md5sum.sub!("  dist/#{project}-#{version}.tar.gz", "")
-    sh "sed \"s/md5sums=.*/md5sums=('#{md5sum}')/\" PKGBUILD -i"
-
-    sh "tar -czvf /tmp/#{project}-#{version}-1.src.tar.gz PKGBUILD"
-    sh "aurploader /tmp/#{project}-#{version}-1.src.tar.gz"
-
+    Rake::Task[:pypi].invoke(version)
     puts "Done.  Please upload the docs tarball to PyPI."
 end
