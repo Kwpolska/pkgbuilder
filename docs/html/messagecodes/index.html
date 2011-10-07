@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Appendix B. PKGBUILDer message numbers list &mdash; PKGBUILDer v2.1.1.3 documentation</title>
+    <title>Appendix B. PKGBUILDer message numbers list &mdash; PKGBUILDer v2.1.1.4 documentation</title>
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2.1.1.3',
+        VERSION:     '2.1.1.4',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '',
         HAS_SOURCE:  true
@@ -22,7 +22,7 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="PKGBUILDer v2.1.1.3 documentation" href="../" />
+    <link rel="top" title="PKGBUILDer v2.1.1.4 documentation" href="../" />
     <link rel="prev" title="README for PKGBUILDer" href="../README/" /> 
   </head>
   <body>
@@ -32,7 +32,7 @@
         <li class="right" style="margin-right: 10px">
           <a href="../README/" title="README for PKGBUILDer"
              accesskey="P">previous</a></li>
-        <li><a href="../">PKGBUILDer v2.1.1.3 documentation</a> &raquo;</li> 
+        <li><a href="../">PKGBUILDer v2.1.1.4 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -51,9 +51,9 @@
 </tr>
 <tr class="field"><th class="field-name">Author:</th><td class="field-body">Kwpolska &lt;<a class="reference external" href="mailto:kwpolska&#37;&#52;&#48;kwpolska&#46;tk">kwpolska<span>&#64;</span>kwpolska<span>&#46;</span>tk</a>&gt;</td>
 </tr>
-<tr class="field"><th class="field-name">Date:</th><td class="field-body">2011-10-04</td>
+<tr class="field"><th class="field-name">Date:</th><td class="field-body">2011-10-07</td>
 </tr>
-<tr class="field"><th class="field-name">Version:</th><td class="field-body">2.1.1.3</td>
+<tr class="field"><th class="field-name">Version:</th><td class="field-body">2.1.1.4</td>
 </tr>
 </tbody>
 </table>
@@ -89,7 +89,7 @@ category and the other three are error identifiers.</p>
 <blockquote>
 <div><ul class="simple">
 <li>multiply the desired list element by 1000</li>
-<li>multiply the desired subelement by 100</li>
+<li>multiply the desired subelement (if any) by 100</li>
 <li>add the results together</li>
 </ul>
 </div></blockquote>
@@ -163,72 +163,83 @@ was meant to be bulit is correctly installed.</td></tr>
 </tr>
 </thead>
 <tbody valign="top">
-<tr><td><a class="footnote-reference" href="#id12" id="id3">[3101]</a></td>
+<tr><td><a class="footnote-reference" href="#id13" id="id3">[3001]</a></td>
+<td>build_runner</td>
+<td>package not found</td>
+</tr>
+<tr><td><a class="footnote-reference" href="#id14" id="id4">[3101]</a></td>
 <td>download</td>
 <td>0 bytes downloaded</td>
 </tr>
-<tr><td><a class="footnote-reference" href="#id13" id="id4">[3151]</a></td>
+<tr><td><a class="footnote-reference" href="#id15" id="id5">[3151]</a></td>
 <td>extract</td>
 <td>0 files extracted</td>
 </tr>
-<tr><td><a class="footnote-reference" href="#id14" id="id5">[3201]</a></td>
+<tr><td><a class="footnote-reference" href="#id16" id="id6">[3201]</a></td>
 <td>depcheck</td>
 <td>cannot find the requested dependency</td>
 </tr>
-<tr><td><a class="footnote-reference" href="#id15" id="id6">[3202]</a></td>
+<tr><td><a class="footnote-reference" href="#id17" id="id7">[3202]</a></td>
 <td>depcheck</td>
 <td>UnicodeDecodeError while reading file</td>
 </tr>
-<tr><td><a class="footnote-reference" href="#id16" id="id7">[3301]</a></td>
+<tr><td><a class="footnote-reference" href="#id18" id="id8">[3301]</a></td>
 <td>makepkg</td>
 <td>returned 1</td>
 </tr>
-<tr><td><a class="footnote-reference" href="#id17" id="id8">[3401]</a></td>
+<tr><td><a class="footnote-reference" href="#id19" id="id9">[3401]</a></td>
 <td>auto_build</td>
 <td>AUR dependency required</td>
 </tr>
-<tr><td><a class="footnote-reference" href="#id18" id="id9">[3451]</a></td>
+<tr><td><a class="footnote-reference" href="#id20" id="id10">[3451]</a></td>
 <td>validation</td>
 <td>not installed</td>
 </tr>
-<tr><td><a class="footnote-reference" href="#id19" id="id10">[3452]</a></td>
+<tr><td><a class="footnote-reference" href="#id21" id="id11">[3452]</a></td>
 <td>validation</td>
 <td>outdated</td>
 </tr>
-<tr><td><a class="footnote-reference" href="#id20" id="id11">[5002]</a></td>
+<tr><td><a class="footnote-reference" href="#id22" id="id12">[5002]</a></td>
 <td>search</td>
 <td>search string too short</td>
 </tr>
 </tbody>
 </table>
 <p>Explainations:</p>
-<table class="docutils footnote" frame="void" id="id12" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[3101]</a></td><td>occurs, when PKGBUILDer downloaded 0 bytes.  It usually
-means that something bad happened during the download.</td></tr>
-</tbody>
-</table>
 <table class="docutils footnote" frame="void" id="id13" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id4">[3151]</a></td><td>occurs, when PKGBUILDer extracted 0 files from the
-downloaded tarball.  It means that the tarball is broken.  Please
-tell the maintainer about this problem.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id3">[3001]</a></td><td>occurs, when PKGBUILDer cannot find the requested package.
+The name is probably mispelled or the package was deleted.</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="id14" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id5">[3201]</a></td><td>occurs, when the $depends or $makedepends array of the
-PKGBUILD requests a package, that does not exist in the system,
-repositories, nor the AUR.</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id4">[3101]</a></td><td>occurs, when PKGBUILDer downloaded 0 bytes.  It usually
+means that something bad happened during the download.</td></tr>
 </tbody>
 </table>
 <table class="docutils footnote" frame="void" id="id15" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id6">[3202]</a></td><td>occurs, when Python cannot decode UTF-8 the PKGBUILD.  If
+<tr><td class="label"><a class="fn-backref" href="#id5">[3151]</a></td><td>occurs, when PKGBUILDer extracted 0 files from the
+downloaded tarball.  It means that the tarball is broken.  Please
+tell the maintainer about this problem.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id16" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id6">[3201]</a></td><td>occurs, when the $depends or $makedepends array of the
+PKGBUILD requests a package, that does not exist in the system,
+repositories, nor the AUR.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id17" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id7">[3202]</a></td><td>occurs, when Python cannot decode UTF-8 the PKGBUILD.  If
 the PKGBUILD cannot be read, dependency checks cannot be performed.
 Possible reasons include incorrectly encoded characters in the
 Maintainer/Submitter field.  Please inform the package maintainer
@@ -238,46 +249,46 @@ output: <cite># Maintainer: Juan Piconv: illegal input sequence at position
 maintainer.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id16" rules="none">
+<table class="docutils footnote" frame="void" id="id18" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id7">[3301]</a></td><td>occurs, when makepkg exits with the return code 1.  It means
+<tr><td class="label"><a class="fn-backref" href="#id8">[3301]</a></td><td>occurs, when makepkg exits with the return code 1.  It means
 that something bad happened.  Refer to makepkg&#8217;s output for more info.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id17" rules="none">
+<table class="docutils footnote" frame="void" id="id19" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id8">[3401]</a></td><td>occurs, when the $depends or $makedepends array of the
+<tr><td class="label"><a class="fn-backref" href="#id9">[3401]</a></td><td>occurs, when the $depends or $makedepends array of the
 PKGBUILD request a package, which exists in the AUR.  It is plain
 informational. Right after displaying this message, the script will
 automatically build the required packages.</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id18" rules="none">
+<table class="docutils footnote" frame="void" id="id20" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id9">[3451]</a></td><td>occurs, when PKGBUILDer finds out that the package is not
+<tr><td class="label"><a class="fn-backref" href="#id10">[3451]</a></td><td>occurs, when PKGBUILDer finds out that the package is not
 installed on your system.  It means that the package that was bulit
 before this message was issued wasn&#8217;t installed properly (eg. root
 password wasn&#8217;t provided at the right time, &#8216;n&#8217; was hit when pacman was
 asking for proceeding).</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id19" rules="none">
+<table class="docutils footnote" frame="void" id="id21" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id10">[3452]</a></td><td>occurs, when PKGBUILDer finds out that the package is
+<tr><td class="label"><a class="fn-backref" href="#id11">[3452]</a></td><td>occurs, when PKGBUILDer finds out that the package is
 installed, but outdated.  It means that the package that was bulit before
 this message was issued wasn&#8217;t installed properly (eg. root password
 wasn&#8217;t provided at the right time, &#8216;n&#8217; was hit when pacman was asking for
 proceeding).</td></tr>
 </tbody>
 </table>
-<table class="docutils footnote" frame="void" id="id20" rules="none">
+<table class="docutils footnote" frame="void" id="id22" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id11">[5002]</a></td><td>occurs, when your search string is shorter than 3 letters.
+<tr><td class="label"><a class="fn-backref" href="#id12">[5002]</a></td><td>occurs, when your search string is shorter than 3 letters.
 The AUR API ignores these requests.  However, the script searches for
 an exact match.  If one is found, it is being shown.</td></tr>
 </tbody>
@@ -331,12 +342,12 @@ an exact match.  If one is found, it is being shown.</td></tr>
         <li class="right" style="margin-right: 10px">
           <a href="../README/" title="README for PKGBUILDer"
              >previous</a></li>
-        <li><a href="../">PKGBUILDer v2.1.1.3 documentation</a> &raquo;</li> 
+        <li><a href="../">PKGBUILDer v2.1.1.4 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2011, Kwpolska.
-      Last updated on 2011-10-04T20:10:23Z.
+      Last updated on 2011-10-07T19:10:44Z.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>

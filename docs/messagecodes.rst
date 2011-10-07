@@ -3,8 +3,8 @@ Appendix B. PKGBUILDer message numbers list
 ===========================================
 :Info: This is an appendix to the PKGBUILDer documentation.
 :Author: Kwpolska <kwpolska@kwpolska.tk>
-:Date: 2011-10-04
-:Version: 2.1.1.3
+:Date: 2011-10-07
+:Version: 2.1.1.4
 
 In order to help debugging, messages are numbered.
 Each message number has four digits:  the first one is the
@@ -29,7 +29,7 @@ Usage instructions
 In order to get the category identifier, you need to:
 
  * multiply the desired list element by 1000
- * multiply the desired subelement by 100
+ * multiply the desired subelement (if any) by 100
  * add the results together
 
 In order to get the first possible number of this (sub)category, add 1 to
@@ -63,6 +63,7 @@ Errors
 ======== =============== =========================================
 ERR#     Component       Message
 ======== =============== =========================================
+[3001]_  build_runner    package not found
 [3101]_  download        0 bytes downloaded
 [3151]_  extract         0 files extracted
 [3201]_  depcheck        cannot find the requested dependency
@@ -75,6 +76,9 @@ ERR#     Component       Message
 ======== =============== =========================================
 
 Explainations:
+
+.. [3001] occurs, when PKGBUILDer cannot find the requested package.
+   The name is probably mispelled or the package was deleted.
 
 .. [3101] occurs, when PKGBUILDer downloaded 0 bytes.  It usually
    means that something bad happened during the download.

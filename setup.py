@@ -2,7 +2,7 @@
 from distutils.core import setup
 
 setup(name='pkgbuilder',
-      version='2.1.1.3',
+      version='2.1.1.4',
       description='An AUR helper (and library) in python3',
       author='Kwpolska',
       author_email='kwpolska@kwpolska.tk',
@@ -26,6 +26,7 @@ setup(name='pkgbuilder',
       py_modules=['pkgbuilder'],
       scripts=['scripts/pkgbuilder'],
       data_files=[
-                  ('share/man/man8', ['docs/pkgbuilder.8.gz'])
+                  ('share/man/man8', ['docs/pkgbuilder.8.gz']),
+                  ('share', ['locale'])
                  ]
      )
