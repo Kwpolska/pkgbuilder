@@ -1,0 +1,325 @@
+# PKGBUILDer pot file.
+# Copyright (C) 2011 Kwpolska.
+# Kwpolska <kwpolska@kwpolska.tk>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 2.1.1.4\n"
+"POT-Creation-Date: 2011-10-06 18:38+CEST\n"
+"PO-Revision-Date: 2011-10-07 19:30+0100\n"
+"Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+
+#: INSTALL.py:27
+msgid ""
+"Hello!\n"
+"\n"
+"PKGBUILDer is now available as an AUR package.  It is the suggested\n"
+"way of installing PKGBUILDer.  This script will download the AUR\n"
+"package and install it.  If you will have problems, please download\n"
+"and compile the package manually.\n"
+"\n"
+msgstr ""
+"Hello!\n"
+"\n"
+"PKGBUILDer is now available as an AUR package.  It is the suggested\n"
+"way of installing PKGBUILDer.  This script will download the AUR\n"
+"package and install it.  If you will have problems, please download\n"
+"and compile the package manually.\n"
+"\n"
+
+#: INSTALL.py:36
+msgid "Hit Enter/Return to continue. "
+msgstr "Hit Enter/Return to continue. "
+
+#: INSTALL.py:61
+msgid ""
+"\n"
+"\n"
+"Something went wrong.  Please read makepkg's output and try again.\n"
+"You can also try to debug the work of this script yourself.\n"
+"All the files this script was working on are placed in\n"
+"    {0}\n"
+"(the number is random).\n"
+"\n"
+"If I am wrong, though, congratulations!\n"
+msgstr ""
+"\n"
+"\n"
+"Something went wrong.  Please read makepkg's output and try again.\n"
+"You can also try to debug the work of this script yourself.\n"
+"All the files this script was working on are placed in\n"
+"    {0}\n"
+"(the number is random).\n"
+"\n"
+"If I am wrong, though, congratulations!\n"
+
+#: INSTALL.py:72
+msgid ""
+"\n"
+"\n"
+"Read the above output.  If the script had any problems, run it\n"
+"again.  You can also try to debug the work of this script yourself.\n"
+"All the files this script was working on are placed in\n"
+"    {0}\n"
+"(the number is random).\n"
+"\n"
+"If everything went fine, though, congratulations!  You can now use\n"
+"PKGBUILDer.  For standalone usage, type `pkgbuilder` into the prompt\n"
+"(zsh users: hash -r, other shells may need another command).  For\n"
+"python module usage, type `import pkgbuilder` into the python prompt.\n"
+msgstr ""
+"\n"
+"\n"
+"Read the above output.  If the script had any problems, run it\n"
+"again.  You can also try to debug the work of this script yourself.\n"
+"All the files this script was working on are placed in\n"
+"    {0}\n"
+"(the number is random).\n"
+"\n"
+"If everything went fine, though, congratulations!  You can now use\n"
+"PKGBUILDer.  For standalone usage, type `pkgbuilder` into the prompt\n"
+"(zsh users: hash -r, other shells may need another command).  For\n"
+"python module usage, type `import pkgbuilder` into the python prompt.\n"
+
+#: INSTALL.py:87
+msgid ""
+"It looks like you want to quit.  Okay then, goodbye.\n"
+"All the files this script was working on are placed in\n"
+"    {0}\n"
+"(the number is random).\n"
+"\n"
+"If that's what you want to do, go for it.  If it isn't, run this\n"
+"script again."
+msgstr ""
+"It looks like you want to quit.  Okay then, goodbye.\n"
+"All the files this script was working on are placed in\n"
+"    {0}\n"
+"(the number is random).\n"
+"\n"
+"If that's what you want to do, go for it.  If it isn't, run this\n"
+"script again."
+
+#: pkgbuilder.py:102
+msgid "WARNING:"
+msgstr "WARNING:"
+
+#: pkgbuilder.py:109
+msgid "ERROR:"
+msgstr "ERROR:"
+
+#: pkgbuilder.py:217
+msgid " [installed: {0}]"
+msgstr " [installed: {0}]"
+
+#: pkgbuilder.py:219
+msgid " [installed]"
+msgstr " [installed]"
+
+#: pkgbuilder.py:221
+msgid "[out of date]"
+msgstr "[out of date]"
+
+#: pkgbuilder.py:228
+#: pkgbuilder.py:231
+msgid "votes"
+msgstr "votes"
+
+#: pkgbuilder.py:265
+msgid "The build function reported a proper build."
+msgstr "The build function reported a proper build."
+
+#: pkgbuilder.py:274
+msgid "[ERR3451] validation: NOT installed"
+msgstr "[ERR3451] validation: NOT installed"
+
+#: pkgbuilder.py:279
+msgid "[ERR3452] validation: outdated {0}"
+msgstr "[ERR3452] validation: outdated {0}"
+
+#: pkgbuilder.py:282
+msgid "[INF3450] validation: installed {0}"
+msgstr "[INF3450] validation: installed {0}"
+
+#: pkgbuilder.py:287
+msgid "[ERR3301] makepkg returned 1."
+msgstr "[ERR3301] makepkg returned 1."
+
+#: pkgbuilder.py:292
+msgid "[ERR3401] Building more AUR packages is required."
+msgstr "[ERR3401] Building more AUR packages is required."
+
+#: pkgbuilder.py:316
+msgid "[ERR3101] download: 0 bytes downloaded"
+msgstr "[ERR3101] download: 0 bytes downloaded"
+
+#: pkgbuilder.py:331
+msgid "[ERR3151] extract: no files extracted"
+msgstr "[ERR3151] extract: no files extracted"
+
+#: pkgbuilder.py:409
+#: pkgbuilder.py:460
+msgid "[ERR3201] depcheck: cannot find {0} anywhere"
+msgstr "[ERR3201] depcheck: cannot find {0} anywhere"
+
+#: pkgbuilder.py:426
+msgid "[ERR3001] Package {0} not found."
+msgstr "[ERR3001] Package {0} not found."
+
+#: pkgbuilder.py:429
+msgid "Building {0}..."
+msgstr "Building {0}..."
+
+#: pkgbuilder.py:437
+msgid "Downloading the tarball..."
+msgstr "Downloading the tarball..."
+
+#: pkgbuilder.py:440
+msgid "{0} kB downloaded"
+msgstr "{0} kB downloaded"
+
+#: pkgbuilder.py:442
+msgid "Extracting..."
+msgstr "Extracting..."
+
+#: pkgbuilder.py:443
+msgid "{0} files extracted"
+msgstr "{0} files extracted"
+
+#: pkgbuilder.py:447
+msgid "Checking dependencies..."
+msgstr "Checking dependencies..."
+
+#: pkgbuilder.py:452
+msgid "found in repos"
+msgstr "found in repos"
+
+#: pkgbuilder.py:452
+msgid "found in system"
+msgstr "found in system"
+
+#: pkgbuilder.py:453
+msgid "found in the AUR"
+msgstr "found in the AUR"
+
+#: pkgbuilder.py:456
+msgid "none found"
+msgstr "none found"
+
+#: pkgbuilder.py:470
+msgid "[ERR3202] depcheck: UnicodeDecodeError.  The PKGBUILD cannot be read.  There are invalid UTF-8 characters (eg. in the Maintainer field.)  Error message: {0}"
+msgstr "[ERR3202] depcheck: UnicodeDecodeError.  The PKGBUILD cannot be read.  There are invalid UTF-8 characters (eg. in the Maintainer field.)  Error message: {0}"
+
+#: pkgbuilder.py:553
+msgid "Gathering data about packages..."
+msgstr "Gathering data about packages..."
+
+#: pkgbuilder.py:559
+msgid "{0} upgradeable packages found:"
+msgstr "{0} upgradeable packages found:"
+
+#: pkgbuilder.py:561
+msgid "there is nothing to do"
+msgstr "there is nothing to do"
+
+#: pkgbuilder.py:565
+msgid "Proceed with installation? [Y/n] "
+msgstr "Proceed with installation? [Y/n] "
+
+#: pkgbuilder.py:582
+msgid "A python3 AUR helper (sort of.)  Wrapper-friendly (pacman-like output.)"
+msgstr "A python3 AUR helper (sort of.)  Wrapper-friendly (pacman-like output.)"
+
+#: pkgbuilder.py:583
+msgid "You can use pacman syntax if you want to."
+msgstr "You can use pacman syntax if you want to."
+
+#: pkgbuilder.py:589
+msgid "packages to build"
+msgstr "packages to build"
+
+#: pkgbuilder.py:594
+msgid "don't use                         colors in output"
+msgstr "don't use                         colors in output"
+
+#: pkgbuilder.py:597
+msgid "pacman syntax compatiblity"
+msgstr "pacman syntax compatiblity"
+
+#: pkgbuilder.py:599
+msgid "don't check                         if packages were installed after build"
+msgstr "don't check                         if packages were installed after build"
+
+#: pkgbuilder.py:602
+msgid "pacman                         syntax compatiblity"
+msgstr "pacman                         syntax compatiblity"
+
+#: pkgbuilder.py:606
+msgid "view package information"
+msgstr "view package information"
+
+#: pkgbuilder.py:608
+msgid "search the                         AUR for matching strings"
+msgstr "search the                         AUR for matching strings"
+
+#: pkgbuilder.py:612
+msgid "upgrade installed AUR packages"
+msgstr "upgrade installed AUR packages"
+
+#: pkgbuilder.py:631
+msgid "Package {0} not found."
+msgstr "Package {0} not found."
+
+#: pkgbuilder.py:635
+msgid ""
+"Category       : {0}\n"
+"Name           : {1}\n"
+"URL            : {3}\n"
+"Licenses       : {4}\n"
+"Votes          : {5}\n"
+"Out of Date    : {6}\n"
+"Maintainer     : {7}\n"
+"Last Updated   : {8}\n"
+"First Submitted: {9}\n"
+"Description    : {10}\n"
+msgstr ""
+"Category       : {0}\n"
+"Name           : {1}\n"
+"URL            : {3}\n"
+"Licenses       : {4}\n"
+"Votes          : {5}\n"
+"Out of Date    : {6}\n"
+"Maintainer     : {7}\n"
+"Last Updated   : {8}\n"
+"First Submitted: {9}\n"
+"Description    : {10}\n"
+
+#: pkgbuilder.py:647
+msgid "yes"
+msgstr "yes"
+
+#: pkgbuilder.py:648
+msgid "no"
+msgstr "no"
+
+#: pkgbuilder.py:661
+msgid "[ERR5002] search string too short, API limitation"
+msgstr "[ERR5002] search string too short, API limitation"
+
+#: pkgbuilder.py:663
+msgid "Searching for exact match..."
+msgstr "Searching for exact match..."
+
+#: pkgbuilder.py:666
+msgid "not found"
+msgstr "not found"
+
+#: pkgbuilder.py:669
+msgid "found"
+msgstr "found"
+
