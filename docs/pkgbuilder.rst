@@ -8,8 +8,8 @@ a Python AUR helper/library
 
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: This document has been placed in the public domain.
-:Date: 2011-10-07
-:Version: 2.1.1.4
+:Date: 2011-10-08
+:Version: 2.1.1.5
 :Manual section: 8
 :Manual group: PKGBUILDer manual
 
