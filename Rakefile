@@ -30,12 +30,14 @@ task :prepare, :ver do |t, args|
     sh "sed \"s/version=.*/version='#{version}',/\" setup.py -i"
     sh "sed \"s/release = .*/release = '#{version}'/\" docs/conf.py -i"
     sh "sed \"s/:Version: .*/:Version: #{version}/\" docs/*.rst -i"
+    sh "sed \"s/:Version: .*/:Version: #{version}/\" README.rst -i"
     sh "sed \"s/BUILDer .* do/BUILDer #{version} do/\" docs/index.rst -i"
     sh "sed \"s/VERSION = .*/VERSION = '#{version}'/\" pkgbuilder.py -i"
     sh "sed \"s/Version .*/Version #{version}/\" pkgbuilder.py -i"
     sh "sed \"s/pkgver=.*/pkgver=#{version}/\" PKGBUILD -i"
 
     sh "sed \"s/:Date: .*/:Date: #{date}/\" docs/*.rst -i"
+    sh "sed \"s/:Date: .*/:Date: #{date}/\" README.rst -i"
 end
 
 task :docshtml do

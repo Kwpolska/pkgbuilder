@@ -9,7 +9,7 @@ a Python AUR helper/library
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: This document has been placed in the public domain.
 :Date: 2011-10-08
-:Version: 2.1.1.5
+:Version: 2.1.1.7
 :Manual section: 8
 :Manual group: PKGBUILDer manual
 
@@ -33,19 +33,7 @@ OPERATIONS
 ==========
 
 **-i, --info**
-    Displays info about *targets*.  The format is as follows:
-
-        | Category       : AUR category
-        | Name           : package name
-        | Version        : current version
-        | URL            : package URL
-        | Licenses       : package licenses
-        | Votes          : AUR votes
-        | Out of Date    : yes or no
-        | Maintainer     : package owner
-        | Last Updated   : date (pacman's format)
-        | First Submitted: date (pacman's format)
-        | Description    : the package description
+    Displays info about **targets** in a fashion similar to pacman.
 
 **-s, --search**
     Searches the AUR for packages with **targets** as the query.
