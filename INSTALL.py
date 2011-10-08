@@ -17,12 +17,9 @@ import random
 import gettext
 
 try:
-    T = gettext.translation('pkgbuilder', 'locale') # for installer
-    def _(message):
-        """gettext"""
-        out = T.lgettext(message)
-        return out.decode()
-
+    T = gettext.translation('pkgbuilder', 'locale', fallback='en')
+    _ = T.gettext
+    PATH = ''
 
     print(_("""Hello!
 
@@ -84,7 +81,14 @@ python module usage, type `import pkgbuilder` into the python prompt.
 """).format(PATH))
 
 except KeyboardInterrupt:
-    print(_("""It looks like you want to quit.  Okay then, goodbye.
+    if PATH == '':
+        print(_("""It looks like you want to quit.  Okay then, goodbye.
+No work has been started yet.
+
+If that's what you want to do, go for it.  If it isn't, run this
+script again."""))
+    else:
+        print(_("""It looks like you want to quit.  Okay then, goodbye.
 All the files this script was working on are placed in
     {0}
 (the number is random).

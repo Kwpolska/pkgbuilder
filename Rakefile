@@ -94,5 +94,8 @@ task :update, :ver do |t, args|
     Rake::Task[:docs].invoke(version)
 
     Rake::Task[:pypi].invoke(version)
+
+    Rake::Task[:aur].invoke(version)
+
     puts "Done.  Please upload the docs tarball to PyPI."
 end
