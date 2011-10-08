@@ -2,13 +2,13 @@
 from distutils.core import setup
 
 setup(name='pkgbuilder',
-      version='2.1.1.5',
+      version='2.1.1.7',
       description='An AUR helper (and library) in python3',
       author='Kwpolska',
       author_email='kwpolska@kwpolska.tk',
       url='https://github.com/Kwpolska/pkgbuilder',
-      download_url='https://github.com/Kwpolska/pkgbuilder/tarball/master',
       license='3-clause BSD',
+      long_description='A nice AUR helper (and library) written in Python3.',
       platforms='Arch Linux',
       classifiers=['Development Status :: 5 - Production/Stable',
                    'Environment :: Console',
@@ -24,9 +24,13 @@ setup(name='pkgbuilder',
                    'Topic :: Utilities'
                   ],
       py_modules=['pkgbuilder'],
+      requires=['pyparsing', 'pyalpm'],
       scripts=['scripts/pkgbuilder'],
       data_files=[
                   ('share/man/man8', ['docs/pkgbuilder.8.gz']),
-                  ('share', ['locale'])
+                  ('share/locale/en/LC_MESSAGES', ['locale/en/LC_MESSAGES/\
+pkgbuilder.mo']),
+                  ('share/locale/pl/LC_MESSAGES', ['locale/pl/LC_MESSAGES/\
+pkgbuilder.mo'])
                  ]
      )
