@@ -5,8 +5,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 2.1.1.4\n"
-"POT-Creation-Date: 2011-10-06 18:38+CEST\n"
-"PO-Revision-Date: 2011-10-07 19:30+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-10-08 10:25+0100\n"
+"PO-Revision-Date: 2011-10-08 10:25+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -14,268 +15,181 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: pygettext.py 1.5\n"
+"X-Poedit-KeywordsList: _\n"
+"X-Poedit-Basepath: /home/kwpolska/git/pkgbuilder\n"
+"X-Poedit-SearchPath-0: /home/kwpolska/git/pkgbuilder\n"
 
-#: INSTALL.py:27
-msgid ""
-"Hello!\n"
-"\n"
-"PKGBUILDer is now available as an AUR package.  It is the suggested\n"
-"way of installing PKGBUILDer.  This script will download the AUR\n"
-"package and install it.  If you will have problems, please download\n"
-"and compile the package manually.\n"
-"\n"
-msgstr ""
-"Hello!\n"
-"\n"
-"PKGBUILDer is now available as an AUR package.  It is the suggested\n"
-"way of installing PKGBUILDer.  This script will download the AUR\n"
-"package and install it.  If you will have problems, please download\n"
-"and compile the package manually.\n"
-"\n"
-
-#: INSTALL.py:36
-msgid "Hit Enter/Return to continue. "
-msgstr "Hit Enter/Return to continue. "
-
-#: INSTALL.py:61
-msgid ""
-"\n"
-"\n"
-"Something went wrong.  Please read makepkg's output and try again.\n"
-"You can also try to debug the work of this script yourself.\n"
-"All the files this script was working on are placed in\n"
-"    {0}\n"
-"(the number is random).\n"
-"\n"
-"If I am wrong, though, congratulations!\n"
-msgstr ""
-"\n"
-"\n"
-"Something went wrong.  Please read makepkg's output and try again.\n"
-"You can also try to debug the work of this script yourself.\n"
-"All the files this script was working on are placed in\n"
-"    {0}\n"
-"(the number is random).\n"
-"\n"
-"If I am wrong, though, congratulations!\n"
-
-#: INSTALL.py:72
-msgid ""
-"\n"
-"\n"
-"Read the above output.  If the script had any problems, run it\n"
-"again.  You can also try to debug the work of this script yourself.\n"
-"All the files this script was working on are placed in\n"
-"    {0}\n"
-"(the number is random).\n"
-"\n"
-"If everything went fine, though, congratulations!  You can now use\n"
-"PKGBUILDer.  For standalone usage, type `pkgbuilder` into the prompt\n"
-"(zsh users: hash -r, other shells may need another command).  For\n"
-"python module usage, type `import pkgbuilder` into the python prompt.\n"
-msgstr ""
-"\n"
-"\n"
-"Read the above output.  If the script had any problems, run it\n"
-"again.  You can also try to debug the work of this script yourself.\n"
-"All the files this script was working on are placed in\n"
-"    {0}\n"
-"(the number is random).\n"
-"\n"
-"If everything went fine, though, congratulations!  You can now use\n"
-"PKGBUILDer.  For standalone usage, type `pkgbuilder` into the prompt\n"
-"(zsh users: hash -r, other shells may need another command).  For\n"
-"python module usage, type `import pkgbuilder` into the python prompt.\n"
-
-#: INSTALL.py:87
-msgid ""
-"It looks like you want to quit.  Okay then, goodbye.\n"
-"All the files this script was working on are placed in\n"
-"    {0}\n"
-"(the number is random).\n"
-"\n"
-"If that's what you want to do, go for it.  If it isn't, run this\n"
-"script again."
-msgstr ""
-"It looks like you want to quit.  Okay then, goodbye.\n"
-"All the files this script was working on are placed in\n"
-"    {0}\n"
-"(the number is random).\n"
-"\n"
-"If that's what you want to do, go for it.  If it isn't, run this\n"
-"script again."
-
-#: pkgbuilder.py:102
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:98
 msgid "WARNING:"
 msgstr "WARNING:"
 
-#: pkgbuilder.py:109
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:105
 msgid "ERROR:"
 msgstr "ERROR:"
 
-#: pkgbuilder.py:217
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:213
 msgid " [installed: {0}]"
 msgstr " [installed: {0}]"
 
-#: pkgbuilder.py:219
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:215
 msgid " [installed]"
 msgstr " [installed]"
 
-#: pkgbuilder.py:221
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:218
 msgid "[out of date]"
 msgstr "[out of date]"
 
-#: pkgbuilder.py:228
-#: pkgbuilder.py:231
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:224
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:227
 msgid "votes"
 msgstr "votes"
 
-#: pkgbuilder.py:265
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:261
 msgid "The build function reported a proper build."
 msgstr "The build function reported a proper build."
 
-#: pkgbuilder.py:274
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:270
 msgid "[ERR3451] validation: NOT installed"
 msgstr "[ERR3451] validation: NOT installed"
 
-#: pkgbuilder.py:279
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:275
 msgid "[ERR3452] validation: outdated {0}"
 msgstr "[ERR3452] validation: outdated {0}"
 
-#: pkgbuilder.py:282
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:278
 msgid "[INF3450] validation: installed {0}"
 msgstr "[INF3450] validation: installed {0}"
 
-#: pkgbuilder.py:287
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:283
 msgid "[ERR3301] makepkg returned 1."
 msgstr "[ERR3301] makepkg returned 1."
 
-#: pkgbuilder.py:292
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:288
 msgid "[ERR3401] Building more AUR packages is required."
 msgstr "[ERR3401] Building more AUR packages is required."
 
-#: pkgbuilder.py:316
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:312
 msgid "[ERR3101] download: 0 bytes downloaded"
 msgstr "[ERR3101] download: 0 bytes downloaded"
 
-#: pkgbuilder.py:331
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:327
 msgid "[ERR3151] extract: no files extracted"
 msgstr "[ERR3151] extract: no files extracted"
 
-#: pkgbuilder.py:409
-#: pkgbuilder.py:460
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:405
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:456
 msgid "[ERR3201] depcheck: cannot find {0} anywhere"
 msgstr "[ERR3201] depcheck: cannot find {0} anywhere"
 
-#: pkgbuilder.py:426
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:422
 msgid "[ERR3001] Package {0} not found."
 msgstr "[ERR3001] Package {0} not found."
 
-#: pkgbuilder.py:429
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:425
 msgid "Building {0}..."
 msgstr "Building {0}..."
 
-#: pkgbuilder.py:437
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:433
 msgid "Downloading the tarball..."
 msgstr "Downloading the tarball..."
 
-#: pkgbuilder.py:440
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:436
 msgid "{0} kB downloaded"
 msgstr "{0} kB downloaded"
 
-#: pkgbuilder.py:442
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:438
 msgid "Extracting..."
 msgstr "Extracting..."
 
-#: pkgbuilder.py:443
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:439
 msgid "{0} files extracted"
 msgstr "{0} files extracted"
 
-#: pkgbuilder.py:447
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:443
 msgid "Checking dependencies..."
 msgstr "Checking dependencies..."
 
-#: pkgbuilder.py:452
-msgid "found in repos"
-msgstr "found in repos"
-
-#: pkgbuilder.py:452
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:448
 msgid "found in system"
 msgstr "found in system"
 
-#: pkgbuilder.py:453
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:448
+msgid "found in repos"
+msgstr "found in repos"
+
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:449
 msgid "found in the AUR"
 msgstr "found in the AUR"
 
-#: pkgbuilder.py:456
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:452
 msgid "none found"
 msgstr "none found"
 
-#: pkgbuilder.py:470
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:466
 msgid "[ERR3202] depcheck: UnicodeDecodeError.  The PKGBUILD cannot be read.  There are invalid UTF-8 characters (eg. in the Maintainer field.)  Error message: {0}"
 msgstr "[ERR3202] depcheck: UnicodeDecodeError.  The PKGBUILD cannot be read.  There are invalid UTF-8 characters (eg. in the Maintainer field.)  Error message: {0}"
 
-#: pkgbuilder.py:553
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:549
 msgid "Gathering data about packages..."
 msgstr "Gathering data about packages..."
 
-#: pkgbuilder.py:559
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:555
 msgid "{0} upgradeable packages found:"
 msgstr "{0} upgradeable packages found:"
 
-#: pkgbuilder.py:561
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:557
 msgid "there is nothing to do"
 msgstr "there is nothing to do"
 
-#: pkgbuilder.py:565
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:561
 msgid "Proceed with installation? [Y/n] "
 msgstr "Proceed with installation? [Y/n] "
 
-#: pkgbuilder.py:582
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:578
 msgid "A python3 AUR helper (sort of.)  Wrapper-friendly (pacman-like output.)"
 msgstr "A python3 AUR helper (sort of.)  Wrapper-friendly (pacman-like output.)"
 
-#: pkgbuilder.py:583
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:579
 msgid "You can use pacman syntax if you want to."
 msgstr "You can use pacman syntax if you want to."
 
-#: pkgbuilder.py:589
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:585
 msgid "packages to build"
 msgstr "packages to build"
 
-#: pkgbuilder.py:594
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:590
 msgid "don't use                         colors in output"
 msgstr "don't use                         colors in output"
 
-#: pkgbuilder.py:597
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:593
 msgid "pacman syntax compatiblity"
 msgstr "pacman syntax compatiblity"
 
-#: pkgbuilder.py:599
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:595
 msgid "don't check                         if packages were installed after build"
 msgstr "don't check                         if packages were installed after build"
 
-#: pkgbuilder.py:602
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:598
 msgid "pacman                         syntax compatiblity"
 msgstr "pacman                         syntax compatiblity"
 
-#: pkgbuilder.py:606
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:602
 msgid "view package information"
 msgstr "view package information"
 
-#: pkgbuilder.py:608
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:604
 msgid "search the                         AUR for matching strings"
 msgstr "search the                         AUR for matching strings"
 
-#: pkgbuilder.py:612
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:608
 msgid "upgrade installed AUR packages"
 msgstr "upgrade installed AUR packages"
 
-#: pkgbuilder.py:631
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:627
 msgid "Package {0} not found."
 msgstr "Package {0} not found."
 
-#: pkgbuilder.py:635
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:631
 msgid ""
 "Category       : {0}\n"
 "Name           : {1}\n"
@@ -299,27 +213,131 @@ msgstr ""
 "First Submitted: {9}\n"
 "Description    : {10}\n"
 
-#: pkgbuilder.py:647
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:643
 msgid "yes"
 msgstr "yes"
 
-#: pkgbuilder.py:648
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:644
 msgid "no"
 msgstr "no"
 
-#: pkgbuilder.py:661
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:657
 msgid "[ERR5002] search string too short, API limitation"
 msgstr "[ERR5002] search string too short, API limitation"
 
-#: pkgbuilder.py:663
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:659
 msgid "Searching for exact match..."
 msgstr "Searching for exact match..."
 
-#: pkgbuilder.py:666
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:662
 msgid "not found"
 msgstr "not found"
 
-#: pkgbuilder.py:669
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:665
 msgid "found"
 msgstr "found"
+
+#: /home/kwpolska/git/pkgbuilder/INSTALL.py:24
+msgid ""
+"Hello!\n"
+"\n"
+"PKGBUILDer is now available as an AUR package.  It is the suggested\n"
+"way of installing PKGBUILDer.  This script will download the AUR\n"
+"package and install it.  If you will have problems, please download\n"
+"and compile the package manually.\n"
+"\n"
+msgstr ""
+"Hello!\n"
+"\n"
+"PKGBUILDer is now available as an AUR package.  It is the suggested\n"
+"way of installing PKGBUILDer.  This script will download the AUR\n"
+"package and install it.  If you will have problems, please download\n"
+"and compile the package manually.\n"
+"\n"
+
+#: /home/kwpolska/git/pkgbuilder/INSTALL.py:33
+msgid "Hit Enter/Return to continue. "
+msgstr "Hit Enter/Return to continue. "
+
+#: /home/kwpolska/git/pkgbuilder/INSTALL.py:58
+msgid ""
+"\n"
+"\n"
+"Something went wrong.  Please read makepkg's output and try again.\n"
+"You can also try to debug the work of this script yourself.\n"
+"All the files this script was working on are placed in\n"
+"    {0}\n"
+"(the number is random).\n"
+"\n"
+"If I am wrong, though, congratulations!\n"
+msgstr ""
+"\n"
+"\n"
+"Something went wrong.  Please read makepkg's output and try again.\n"
+"You can also try to debug the work of this script yourself.\n"
+"All the files this script was working on are placed in\n"
+"    {0}\n"
+"(the number is random).\n"
+"\n"
+"If I am wrong, though, congratulations!\n"
+
+#: /home/kwpolska/git/pkgbuilder/INSTALL.py:69
+msgid ""
+"\n"
+"\n"
+"Read the above output.  If the script had any problems, run it\n"
+"again.  You can also try to debug the work of this script yourself.\n"
+"All the files this script was working on are placed in\n"
+"    {0}\n"
+"(the number is random).\n"
+"\n"
+"If everything went fine, though, congratulations!  You can now use\n"
+"PKGBUILDer.  For standalone usage, type `pkgbuilder` into the prompt\n"
+"(zsh users: hash -r, other shells may need another command).  For\n"
+"python module usage, type `import pkgbuilder` into the python prompt.\n"
+msgstr ""
+"\n"
+"\n"
+"Read the above output.  If the script had any problems, run it\n"
+"again.  You can also try to debug the work of this script yourself.\n"
+"All the files this script was working on are placed in\n"
+"    {0}\n"
+"(the number is random).\n"
+"\n"
+"If everything went fine, though, congratulations!  You can now use\n"
+"PKGBUILDer.  For standalone usage, type `pkgbuilder` into the prompt\n"
+"(zsh users: hash -r, other shells may need another command).  For\n"
+"python module usage, type `import pkgbuilder` into the python prompt.\n"
+
+#: /home/kwpolska/git/pkgbuilder/INSTALL.py:85
+msgid ""
+"It looks like you want to quit.  Okay then, goodbye.\n"
+"No work has been started yet.\n"
+"\n"
+"If that's what you want to do, go for it.  If it isn't, run this\n"
+"script again."
+msgstr ""
+"It looks like you want to quit.  Okay then, goodbye.\n"
+"No work has been started yet.\n"
+"\n"
+"If that's what you want to do, go for it.  If it isn't, run this\n"
+"script again."
+
+#: /home/kwpolska/git/pkgbuilder/INSTALL.py:91
+msgid ""
+"It looks like you want to quit.  Okay then, goodbye.\n"
+"All the files this script was working on are placed in\n"
+"    {0}\n"
+"(the number is random).\n"
+"\n"
+"If that's what you want to do, go for it.  If it isn't, run this\n"
+"script again."
+msgstr ""
+"It looks like you want to quit.  Okay then, goodbye.\n"
+"All the files this script was working on are placed in\n"
+"    {0}\n"
+"(the number is random).\n"
+"\n"
+"If that's what you want to do, go for it.  If it isn't, run this\n"
+"script again."
 

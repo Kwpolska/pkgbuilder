@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# PKGBUILDer Version 2.1.1.4
+# PKGBUILDer Version 2.1.1.5
 # A Python AUR helper/library.
 # Copyright Kwpolska 2011. Licensed under GPLv3.
 # USAGE: ./build.py pkg1 [pkg2] [pkg3] (and more)
@@ -19,13 +19,9 @@ import subprocess
 import datetime
 import gettext
 
-VERSION = '2.1.1.4'
-T = gettext.translation('pkgbuilder', '/usr/share/locale')
-def _(message):
-    """gettext"""
-    out = T.lgettext(message)
-    return out.decode()
-
+VERSION = '2.1.1.5'
+T = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='en')
+_ = T.gettext
 
 ### PBDS            PB global data storage  ###
 class PBDS:
