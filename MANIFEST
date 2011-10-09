@@ -5,6 +5,7 @@ README
 README.rst
 pkgbuilder.py
 setup.py
+docs/LICENSE.rst
 docs/README.rst
 docs/conf.py
 docs/docs-pkgbuilder.zip
@@ -12,6 +13,7 @@ docs/index.rst
 docs/messagecodes.rst
 docs/pkgbuilder.8.gz
 docs/pkgbuilder.rst
+docs/_build/doctrees/LICENSE.doctree
 docs/_build/doctrees/README.doctree
 docs/_build/doctrees/environment.pickle
 docs/_build/doctrees/index.doctree
@@ -21,7 +23,9 @@ docs/html/.buildinfo
 docs/html/index.html
 docs/html/objects.inv
 docs/html/searchindex.js
+docs/html/LICENSE/index.html
 docs/html/README/index.html
+docs/html/_sources/LICENSE.txt
 docs/html/_sources/README.txt
 docs/html/_sources/index.txt
 docs/html/_sources/messagecodes.txt
