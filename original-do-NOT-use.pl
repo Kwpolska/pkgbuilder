@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 # PKGBUILDer
 # Part of KRU
-# Copyright Kwpolska 2010. Licensed on GPLv3.
+# Copyright Kwpolska 2010. See LICENSE for details.
 # USAGE: ./build pkg1 [pkg2] [pkg3] (and more)
 
 use warnings;
