@@ -7,9 +7,9 @@ a Python AUR helper/library
 -----------------------------------
 
 :Author: Kwpolska <kwpolska@kwpolska.tk>
-:Copyright: This document has been placed in the public domain.
-:Date: 2011-10-08
-:Version: 2.1.1.7
+:Copyright: See Appendix B.
+:Date: 2011-10-09
+:Version: 2.1.1.8
 :Manual section: 8
 :Manual group: PKGBUILDer manual
 
