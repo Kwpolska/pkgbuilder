@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# PKGBUILDer Version 2.1.1.8
+# PKGBUILDer v2.1.1.8
 # A Python AUR helper/library.
 # USAGE: ./build.py pkg1 [pkg2] [pkg3] (and more)
 # Copyright (C) 2011, Kwpolska
@@ -50,7 +50,7 @@ import datetime
 import gettext
 import functools
 
-VERSION = '2.1.1.8'
+VERSION = '2.1.1.9'
 T = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
 _ = T.gettext
 
@@ -155,7 +155,8 @@ class PBError(Exception):
 
     def __str__(self):
         """You want to see error messages, don't you?"""
-        return self.msg
+        return repr(self.msg)
+
 
 ### AUR             AUR RPC calls           ###
 class AUR:
@@ -418,7 +419,7 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
             syncpkgs = []
             for j in [ i.pkgcache for i in pyalpm.get_syncdbs() ]:
                 syncpkgs.append(j)
-            syncpgs = functools.reduce(lambda x,y:x+y,syncpkgs)
+            syncpkgs = functools.reduce(lambda x,y:x+y,syncpkgs)
             #can someone help me fix the above line? TODO.
             for dep in bothdepends:
                 if re.search('[<=>]', dep):
@@ -615,7 +616,7 @@ def main_routine():
 use pacman syntax if you want to.'))
 
     parser.add_argument('-v', '--version', action='version',
-                        version='PKGBUILDer '+VERSION)
+                        version='PKGBUILDer v'+VERSION)
     parser.add_argument('pkgs', metavar='PACKAGE', action='store',
                         nargs='*', help=_('packages to build'))
 
@@ -669,7 +670,7 @@ use pacman syntax if you want to.'))
                 ### for `out of date'.
                 print(_("""Category       : {cat}
 Name           : {nme}
-Version 2.1.1.8
+Version 2.1.1.9
 URL            : {url}
 Licenses       : {lic}
 Votes          : {cmv}
