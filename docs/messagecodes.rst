@@ -4,7 +4,7 @@ Appendix A. PKGBUILDer message numbers list
 :Info: This is an appendix to the PKGBUILDer documentation.
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Date: 2011-10-14
-:Version: 2.1.2.0
+:Version: 2.1.2.1
 
 In order to help debugging, messages are numbered.
 Each message number has four digits:  the first one is the

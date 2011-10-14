@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# PKGBUILDer v2.1.2.0
+# PKGBUILDer v2.1.2.1
 # A Python AUR helper/library.
 # USAGE: ./build.py pkg1 [pkg2] [pkg3] (and more)
 # Copyright (C) 2011, Kwpolska
@@ -50,7 +50,7 @@ import datetime
 import gettext
 import functools
 
-VERSION = '2.1.2.0'
+VERSION = '2.1.2.1'
 T = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
 _ = T.gettext
 
@@ -531,8 +531,8 @@ class Upgrade:
         """Class init."""
         self.aur = AUR()
         self.build = Build()
-        H = pycman.config.init_with_config('/etc/pacman.conf')
-        self.localdb = H.get_localdb()
+        self.H = pycman.config.init_with_config('/etc/pacman.conf')
+        self.localdb = self.H.get_localdb()
 
     def gather_foreign_pkgs(self):
         """Gathers a list of all foreign packages."""
@@ -540,7 +540,7 @@ class Upgrade:
         # Based on paconky.py.
         installed = set(p for p in self.localdb.pkgcache)
 
-        syncdbs = pyalpm.get_syncdbs()
+        syncdbs = self.H.get_syncdbs()
         for sdb in syncdbs:
             for pkg in list(installed):
                 if sdb.get_pkg(pkg.name):
@@ -662,7 +662,7 @@ use pacman syntax if you want to.'))
                 ### for `out of date'.
                 print(_("""Category       : {cat}
 Name           : {nme}
-Version 2.1.2.0
+Version 2.1.2.1
 URL            : {url}
 Licenses       : {lic}
 Votes          : {cmv}
