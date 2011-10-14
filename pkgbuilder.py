@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# PKGBUILDer v2.1.1.8
+# PKGBUILDer v2.1.2.0
 # A Python AUR helper/library.
 # USAGE: ./build.py pkg1 [pkg2] [pkg3] (and more)
 # Copyright (C) 2011, Kwpolska
@@ -50,7 +50,7 @@ import datetime
 import gettext
 import functools
 
-VERSION = '2.1.1.9'
+VERSION = '2.1.2.0'
 T = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
 _ = T.gettext
 
@@ -155,7 +155,7 @@ class PBError(Exception):
 
     def __str__(self):
         """You want to see error messages, don't you?"""
-        return repr(self.msg)
+        return self.msg
 
 
 ### AUR             AUR RPC calls           ###
@@ -235,8 +235,8 @@ class Utils:
         Former data:
         2.0 Name: showInfo
         """
-        pycman.config.init_with_config('/etc/pacman.conf')
-        localdb = pyalpm.get_localdb()
+        H = pycman.config.init_with_config('/etc/pacman.conf')
+        localdb = H.get_localdb()
         lpkg = localdb.get_pkg(pkg['Name'])
 
         category = ''
@@ -263,7 +263,7 @@ class Utils:
         print(base.format(category, pkg['Name'], pkg['Version'],
                           pkg['Description'], pkg['NumVotes'], installed))
 
-        pyalpm.release()
+        #pyalpm.release()
 
 ### Build       build functions and helpers ###
 class Build:
@@ -295,14 +295,14 @@ class Build:
                 os.chdir('../')
                 if validate == True:
                     # check if installed
-                    pycman.config.init_with_config('/etc/pacman.conf')
-                    localdb = pyalpm.get_localdb()
+                    H = pycman.config.init_with_config('/etc/pacman.conf')
+                    localdb = H.get_localdb()
                     pkg = localdb.get_pkg(package)
                     aurversion = self.utils.info(package)['Version']
                     if pkg is None:
                         fancy_error2(_('[ERR3451] validation: NOT \
 installed'))
-                        pyalpm.release()
+                        #pyalpm.release()
                     else:
                         if pyalpm.vercmp(aurversion, pkg.version) > 0:
                             fancy_error2(_('[ERR3452] validation: \
@@ -310,7 +310,7 @@ outdated {0}').format(pkg.version))
                         else:
                             fancy_msg2(_('[INF3450] validation: \
 installed {0}').format(pkg.version))
-                        pyalpm.release()
+                        #pyalpm.release()
             elif build_result[0] >= 0 and build_result[0] <= 15:
                 os.chdir('../')
                 raise PBError(_('[ERR3301] makepkg returned 1.'))
@@ -414,10 +414,10 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
             return {}
         else:
             parseddeps = {}
-            pycman.config.init_with_config('/etc/pacman.conf')
-            localpkgs = pyalpm.get_localdb().pkgcache
+            H = pycman.config.init_with_config('/etc/pacman.conf')
+            localpkgs = H.get_localdb().pkgcache
             syncpkgs = []
-            for j in [ i.pkgcache for i in pyalpm.get_syncdbs() ]:
+            for j in [ i.pkgcache for i in H.get_syncdbs() ]:
                 syncpkgs.append(j)
             syncpkgs = functools.reduce(lambda x,y:x+y,syncpkgs)
             #can someone help me fix the above line? TODO.
@@ -440,7 +440,7 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
                     parseddeps[dep] = -1
                     raise PBError(_('[ERR3201] depcheck: cannot find {0} \
 anywhere').format(dep))
-            pyalpm.release()
+            #pyalpm.release()
             return parseddeps
 
     def build_runner(self, package, performdepcheck = True):
@@ -531,14 +531,8 @@ class Upgrade:
         """Class init."""
         self.aur = AUR()
         self.build = Build()
-        pycman.config.init_with_config('/etc/pacman.conf')
-        self.localdb = pyalpm.get_localdb()
-
-    def __del__(self):
-        try:
-            pyalpm.release()
-        except pyalpm.error:
-            pass
+        H = pycman.config.init_with_config('/etc/pacman.conf')
+        self.localdb = H.get_localdb()
 
     def gather_foreign_pkgs(self):
         """Gathers a list of all foreign packages."""
@@ -600,8 +594,6 @@ class Upgrade:
         yesno = yesno + ' ' # cheating...
         if yesno[0] == 'n' or yesno[0] == 'N':
             return 0
-        else:
-            pyalpm.release()
         for package in upgradeable:
             pblog('Building {0}'.format(package))
             self.build.auto_build(package, DS.validate, DS.depcheck)
@@ -670,7 +662,7 @@ use pacman syntax if you want to.'))
                 ### for `out of date'.
                 print(_("""Category       : {cat}
 Name           : {nme}
-Version 2.1.1.9
+Version 2.1.2.0
 URL            : {url}
 Licenses       : {lic}
 Votes          : {cmv}
