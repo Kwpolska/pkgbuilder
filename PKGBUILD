@@ -1,15 +1,15 @@
 # Maintainer: Kwpolska <kwpolska@kwpolska.tk>
 pkgname=pkgbuilder
-pkgver=2.1.2.0
+pkgver=2.1.2.1
 pkgrel=1
 pkgdesc="A basic Python AUR helper/library."
 arch=('any')
 url="https://github.com/Kwpolska/pkgbuilder"
 license=('BSD')
-depends=('python' 'pyalpm' 'python-pyparsing')
+depends=('python' 'pyalpm>=0.5.1-1' 'python-pyparsing' 'pacman>=4.0.0-1')
 options=(!emptydirs)
 source=("http://pypi.python.org/packages/source/p/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('b5661cf42d5726ca5bf79ff89e492cc6')
+md5sums=('0f790496c4905aba5999b867eb23c820')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"

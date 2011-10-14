@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-PKGBUILDer 2.1.2.0 documentation
+PKGBUILDer 2.1.2.1 documentation
 ================================
 
 Contents:
