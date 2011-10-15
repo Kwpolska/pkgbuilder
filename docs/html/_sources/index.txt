@@ -3,22 +3,23 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-PKGBUILDer 2.1.2.1 documentation
+PKGBUILDer 2.1.2.2 documentation
 ================================
 
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :numbered:
 
    pkgbuilder
+   classes
    README
    messagecodes
    LICENSE
 
-.. Indices and tables
-.. ==================
-..
-.. * :ref:`genindex`
-.. * :ref:`modindex`
-.. * :ref:`search`
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

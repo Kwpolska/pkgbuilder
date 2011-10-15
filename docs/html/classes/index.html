@@ -1,0 +1,811 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2. title &mdash; PKGBUILDer v2.1.2.2 documentation</title>
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '2.1.2.2',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="PKGBUILDer v2.1.2.2 documentation" href="../" />
+    <link rel="next" title="3. README for PKGBUILDer" href="../README/" />
+    <link rel="prev" title="1. PKGBUILDer" href="../pkgbuilder/" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../py-modindex/" title="Python Module Index"
+             >modules</a></li>
+        <li class="right" >
+          <a href="../README/" title="3. README for PKGBUILDer"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../pkgbuilder/" title="1. PKGBUILDer"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../">PKGBUILDer v2.1.2.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="title">
+<h1>2. title<a class="headerlink" href="#title" title="Permalink to this headline">¶</a></h1>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Author:</th><td class="field-body">Kwpolska</td>
+</tr>
+<tr class="field"><th class="field-name">Copyright:</th><td class="field-body">See Appendix B.</td>
+</tr>
+<tr class="field"><th class="field-name">Date:</th><td class="field-body">2011-10-15</td>
+</tr>
+<tr class="field"><th class="field-name">Version:</th><td class="field-body">2.1.2.2</td>
+</tr>
+</tbody>
+</table>
+<span class="target" id="module-PKGBUILDer"><span id="index-0"></span></span><p>some introductory text</p>
+<div class="section" id="pbds">
+<h2>2.1. PBDS<a class="headerlink" href="#pbds" title="Permalink to this headline">¶</a></h2>
+<p class="versionadded" id="index-1">
+<span class="versionmodified">New in version 2.1.0.0.</span></p>
+<dl class="class">
+<dt id="PKGBUILDer.PBDS">
+<em class="property">class </em><tt class="descclassname">PKGBUILDer.</tt><tt class="descname">PBDS</tt><a class="headerlink" href="#PKGBUILDer.PBDS" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body">none.</td>
+</tr>
+</tbody>
+</table>
+<p>This is the class used for storing data.  Currently, it stores this
+information:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="57%" />
+<col width="28%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">variable</th>
+<th class="head">contents/usage</th>
+<th class="head">default</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>colors</td>
+<td>colors currently used in the script</td>
+<td><a class="reference internal" href="#colors">[colors]</a></td>
+</tr>
+<tr><td>pacman</td>
+<td>using wrapper-friendly behavior[beh]?</td>
+<td>False</td>
+</tr>
+<tr><td>validate</td>
+<td>validating package installation?</td>
+<td>True</td>
+</tr>
+<tr><td>depcheck</td>
+<td>checking if deps are installed?</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="beh" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[beh]</td><td><em>wrapper-friendly behavior</em> (-S): building in /tmp;
+<tt class="xref py py-meth docutils literal"><span class="pre">Utils.print_package()</span></tt> says aur/name</td></tr>
+</tbody>
+</table>
+<table class="docutils citation" frame="void" id="colors" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[colors]</a></td><td>Code below.</td></tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span class="bp">self</span><span class="o">.</span><span class="n">colors</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s">&#39;all_off&#39;</span><span class="p">:</span>    <span class="s">&#39;</span><span class="se">\x1b</span><span class="s">[1;0m&#39;</span><span class="p">,</span>
+                <span class="s">&#39;bold&#39;</span><span class="p">:</span>       <span class="s">&#39;</span><span class="se">\x1b</span><span class="s">[1;1m&#39;</span><span class="p">,</span>
+                <span class="s">&#39;blue&#39;</span><span class="p">:</span>       <span class="s">&#39;</span><span class="se">\x1b</span><span class="s">[1;1m</span><span class="se">\x1b</span><span class="s">[1;34m&#39;</span><span class="p">,</span>
+                <span class="s">&#39;green&#39;</span><span class="p">:</span>      <span class="s">&#39;</span><span class="se">\x1b</span><span class="s">[1;1m</span><span class="se">\x1b</span><span class="s">[1;32m&#39;</span><span class="p">,</span>
+                <span class="s">&#39;red&#39;</span><span class="p">:</span>        <span class="s">&#39;</span><span class="se">\x1b</span><span class="s">[1;1m</span><span class="se">\x1b</span><span class="s">[1;31m&#39;</span><span class="p">,</span>
+                <span class="s">&#39;yellow&#39;</span><span class="p">:</span>     <span class="s">&#39;</span><span class="se">\x1b</span><span class="s">[1;1m</span><span class="se">\x1b</span><span class="s">[1;33m&#39;</span>
+              <span class="p">}</span>
+</pre></div>
+</div>
+<p>It also has two methods:</p>
+<dl class="method">
+<dt id="PKGBUILDer.colorson">
+<tt class="descclassname">PKGBUILDer.</tt><tt class="descname">colorson</tt><big>(</big><big>)</big><a class="headerlink" href="#PKGBUILDer.colorson" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Input:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Output:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">nothing.</td>
+</tr>
+<tr class="field"><th class="field-name">Exceptions:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Message codes:</th><td class="field-body">none.</td>
+</tr>
+</tbody>
+</table>
+<p>Turns colors on.</p>
+<dl class="method">
+<dt>
+<tt class="descname">colorsoff().</tt></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Input:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Output:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">nothing.</td>
+</tr>
+<tr class="field"><th class="field-name">Exceptions:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Message codes:</th><td class="field-body">none.</td>
+</tr>
+</tbody>
+</table>
+<p>Turns colors off.</p>
+</div>
+<div class="section" id="aur">
+<h2>2.2. AUR<a class="headerlink" href="#aur" title="Permalink to this headline">¶</a></h2>
+<p class="versionadded" id="index-2">
+<span class="versionmodified">New in version 2.1.0.0.</span></p>
+<dl class="class">
+<dt id="PKGBUILDer.AUR">
+<em class="property">class </em><tt class="descclassname">PKGBUILDer.</tt><tt class="descname">AUR</tt><a class="headerlink" href="#PKGBUILDer.AUR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body">none.</td>
+</tr>
+</tbody>
+</table>
+<p>This is the class used for calling the AUR API.  It defines four methods:</p>
+<dl class="method">
+<dt id="PKGBUILDer.request">
+<tt class="descclassname">PKGBUILDer.</tt><tt class="descname">request</tt><big>(</big><em>rtype</em>, <em>arg</em><span class="optional">[</span>, <em>prot</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#PKGBUILDer.request" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" id="index-3" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body">request type, argument (package name), protocol.</td>
+</tr>
+<tr class="field"><th class="field-name">Input:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Output:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">data from the API.</td>
+</tr>
+<tr class="field"><th class="field-name">Exceptions:</th><td class="field-body">urllib.error.URLError, urllib.error.HTTPError.</td>
+</tr>
+<tr class="field"><th class="field-name">Message codes:</th><td class="field-body">none.</td>
+</tr>
+</tbody>
+</table>
+<p>Makes a request and returns data.  Valid types of requests are listed on
+the <a class="reference external" href="http://aur.archlinux.org/rpc.php">AUR API&#8217;s page</a>.  Currently tested and working ones are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="73%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head" rowspan="2">name</th>
+<th class="head" rowspan="2">purpose</th>
+</tr>
+<tr></tr>
+</thead>
+<tbody valign="top">
+<tr><td>info</td>
+<td>get info about <cite>arg</cite></td>
+</tr>
+<tr><td>search</td>
+<td>search for <cite>arg</cite> in the AUR</td>
+</tr>
+<tr><td>maintsearch</td>
+<td>show packages maintained by <cite>arg</cite></td>
+</tr>
+</tbody>
+</table>
+<p>multiinfo is implemented in another function, <a class="reference internal" href="#PKGBUILDer.multiinfo" title="PKGBUILDer.multiinfo"><tt class="xref py py-meth docutils literal"><span class="pre">multiinfo()</span></tt></a>.</p>
+<dl class="method">
+<dt id="PKGBUILDer.multiinfo">
+<tt class="descclassname">PKGBUILDer.</tt><tt class="descname">multiinfo</tt><big>(</big><em>args</em><span class="optional">[</span>, <em>prot</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#PKGBUILDer.multiinfo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" id="index-4" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body">a list of packages, protocol.</td>
+</tr>
+<tr class="field"><th class="field-name">Input:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Output:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">data from the API.</td>
+</tr>
+<tr class="field"><th class="field-name">Exceptions:</th><td class="field-body">urllib.error.URLError, urllib.error.HTTPError.</td>
+</tr>
+<tr class="field"><th class="field-name">Message codes:</th><td class="field-body">none.</td>
+</tr>
+</tbody>
+</table>
+<p>Makes a multiinfo request.  A multiinfo request can retrieve information
+for multiple packages.</p>
+<dl class="method">
+<dt id="PKGBUILDer.jsonreq">
+<tt class="descclassname">PKGBUILDer.</tt><tt class="descname">jsonreq</tt><big>(</big><em>rtype</em>, <em>arg</em><span class="optional">[</span>, <em>prot</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#PKGBUILDer.jsonreq" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body">request type, argument (package name), protocol.</td>
+</tr>
+<tr class="field"><th class="field-name">Input:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Output:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">JSON data from the API.</td>
+</tr>
+<tr class="field"><th class="field-name">Exceptions:</th><td class="field-body">urllib.error.URLError, urllib.error.HTTPError.</td>
+</tr>
+<tr class="field"><th class="field-name">Message codes:</th><td class="field-body">none.</td>
+</tr>
+</tbody>
+</table>
+<p>Makes a <a class="reference internal" href="#PKGBUILDer.request" title="PKGBUILDer.request"><tt class="xref py py-meth docutils literal"><span class="pre">request()</span></tt></a>, but returns plain JSON data.  Valid values of
+<cite>rtype</cite> are listed in <a class="reference internal" href="#PKGBUILDer.request" title="PKGBUILDer.request"><tt class="xref py py-meth docutils literal"><span class="pre">request()</span></tt></a>&#8216;s documentation.</p>
+<dl class="method">
+<dt id="PKGBUILDer.jsonmultiinfo">
+<tt class="descclassname">PKGBUILDer.</tt><tt class="descname">jsonmultiinfo</tt><big>(</big><em>args</em><span class="optional">[</span>, <em>prot</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#PKGBUILDer.jsonmultiinfo" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body">a list of packages, protocol.</td>
+</tr>
+<tr class="field"><th class="field-name">Input:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Output:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">JSON data from the API.</td>
+</tr>
+<tr class="field"><th class="field-name">Exceptions:</th><td class="field-body">urllib.error.URLError, urllib.error.HTTPError.</td>
+</tr>
+<tr class="field"><th class="field-name">Message codes:</th><td class="field-body">none.</td>
+</tr>
+</tbody>
+</table>
+<p>Makes a <a class="reference internal" href="#PKGBUILDer.multiinfo" title="PKGBUILDer.multiinfo"><tt class="xref py py-meth docutils literal"><span class="pre">multiinfo()</span></tt></a> request, but returns plain JSON data.</p>
+</div>
+<div class="section" id="utils">
+<h2>2.3. Utils<a class="headerlink" href="#utils" title="Permalink to this headline">¶</a></h2>
+<p class="versionadded" id="index-5">
+<span class="versionmodified">New in version 2.1.0.0.</span></p>
+<dl class="class">
+<dt id="PKGBUILDer.Utils">
+<em class="property">class </em><tt class="descclassname">PKGBUILDer.</tt><tt class="descname">Utils</tt><a class="headerlink" href="#PKGBUILDer.Utils" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body">none.</td>
+</tr>
+</tbody>
+</table>
+<p>This is the class with many random utilities.  It defines three methods:</p>
+<dl class="method">
+<dt id="PKGBUILDer.info">
+<tt class="descclassname">PKGBUILDer.</tt><tt class="descname">info</tt><big>(</big><em>pkgname</em><big>)</big><a class="headerlink" href="#PKGBUILDer.info" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" id="index-6" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body"><p class="first">package name.</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Input:</th><td class="field-body"><p class="first">none.</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Output:</th><td class="field-body"><p class="first">none.</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a dict OR None.</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Exceptions:</th><td class="field-body"><p class="first">none.</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Message codes:</th><td class="field-body"><p class="first">none.</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Former data:</th><td class="field-body"><p class="first">2.1.2.1 Returns: a dict OR False.</p>
+<p>2.0 Returns: aur_pkgs, list-&gt;dict, not null.</p>
+<p class="last">2.0 Behavior: exception and quit when not found.&#8221;</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Returns information about a package.  Almost equivalent to
+<tt class="xref py py-meth docutils literal"><span class="pre">AUR.request('info',</span> <span class="pre">pkgname)()</span></tt>, but returns <strong>`None`</strong> if the package
+doesn&#8217;t exist.</p>
+<dl class="method">
+<dt id="PKGBUILDer.search">
+<tt class="descclassname">PKGBUILDer.</tt><tt class="descname">search</tt><big>(</big><em>pkgname</em><big>)</big><a class="headerlink" href="#PKGBUILDer.search" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" id="index-7" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body">package name.</td>
+</tr>
+<tr class="field"><th class="field-name">Input:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Output:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">a list.</td>
+</tr>
+<tr class="field"><th class="field-name">Exceptions:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Message codes:</th><td class="field-body">none.</td>
+</tr>
+</tbody>
+</table>
+<p>Searches for AUR packages and returns them as a list.  Almost equivalent
+to <tt class="xref py py-meth docutils literal"><span class="pre">AUR.request('search',</span> <span class="pre">pkgname)()</span></tt>, but returns <strong>`[]`</strong> if no
+packages were found.</p>
+<dl class="method">
+<dt id="PKGBUILDer.print_package">
+<tt class="descclassname">PKGBUILDer.</tt><tt class="descname">print_package</tt><big>(</big><em>pkg[, use_categories][, prefix]</em><big>)</big><a class="headerlink" href="#PKGBUILDer.print_package" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" id="index-8" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body">package name, use categories, line prefix.</td>
+</tr>
+<tr class="field"><th class="field-name">Input:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Output:</th><td class="field-body">::
+prefix category/name version (num votes) [installed: version] [out of date]
+prefix     description</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">nothing.</td>
+</tr>
+<tr class="field"><th class="field-name">Exceptions:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Message codes:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Former data:</th><td class="field-body">2.0 Name: showInfo.</td>
+</tr>
+</tbody>
+</table>
+<p>Prints data about <cite>pkg</cite>.  Format specified above, in the Output field.</p>
+</div>
+<div class="section" id="build">
+<h2>2.4. Build<a class="headerlink" href="#build" title="Permalink to this headline">¶</a></h2>
+<p class="versionadded" id="index-9">
+<span class="versionmodified">New in version 2.1.0.0.</span></p>
+<dl class="class">
+<dt id="PKGBUILDer.Build">
+<em class="property">class </em><tt class="descclassname">PKGBUILDer.</tt><tt class="descname">Build</tt><a class="headerlink" href="#PKGBUILDer.Build" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body">none.</td>
+</tr>
+</tbody>
+</table>
+<p>This is the class for building packages.  It defines two base methods and
+four additional ones.</p>
+<dl class="method">
+<dt id="PKGBUILDer.auto_build">
+<tt class="descclassname">PKGBUILDer.</tt><tt class="descname">auto_build</tt><big>(</big><em>pkgname[, validate][, depcheck]</em><big>)</big><a class="headerlink" href="#PKGBUILDer.auto_build" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" id="index-10" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body">package name, validate installation, perform dependency checks.</td>
+</tr>
+<tr class="field"><th class="field-name">Input:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Output:</th><td class="field-body">text.</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">nothing.</td>
+</tr>
+<tr class="field"><th class="field-name">Exceptions:</th><td class="field-body">PBError.</td>
+</tr>
+<tr class="field"><th class="field-name">Message codes:</th><td class="field-body">ERR3301, ERR34?? (ERR3401, ERR3450, ERR3451, ERR3452), INF3450.</td>
+</tr>
+<tr class="field"><th class="field-name">Former data:</th><td class="field-body">2.0 Name: build.</td>
+</tr>
+</tbody>
+</table>
+<p>This is a function that handles building packages automatically.  This is
+the recommended way of building packages through PKGBUILDer.</p>
+<dl class="method">
+<dt id="PKGBUILDer.build_runner">
+<tt class="descclassname">PKGBUILDer.</tt><tt class="descname">build_runner</tt><big>(</big><em>pkgname</em><span class="optional">[</span>, <em>depcheck</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#PKGBUILDer.build_runner" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" id="index-11" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body"><p class="first">package, perform dependency checks.</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Input:</th><td class="field-body"><p class="first">none.</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Output:</th><td class="field-body"><p class="first">text.</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><div class="first highlight-python"><pre>[makepkg's retcode OR 3 if fails OR 16 if needs an AUR dep,
+[AUR deps or error source]]</pre>
+</div>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Exceptions:</th><td class="field-body"><p class="first">PBError.</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Message codes:</th><td class="field-body"><p class="first">ERR3001, ERR3201, ERR3202.</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Former data:</th><td class="field-body"><p class="first">2.0 Behavior: all functions inside</p>
+<p class="last">2.0 Name: buildSub</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>This is the function running building.  It is not supposed to be used
+standalone, because it is embedded by <a class="reference internal" href="#PKGBUILDer.auto_build" title="PKGBUILDer.auto_build"><tt class="xref py py-meth docutils literal"><span class="pre">auto_build()</span></tt></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The return codes of this function work bad.  Using <a class="reference internal" href="#PKGBUILDer.auto_build" title="PKGBUILDer.auto_build"><tt class="xref py py-meth docutils literal"><span class="pre">auto_build()</span></tt></a>
+eliminates this problem.</p>
+</div>
+<dl class="method">
+<dt id="PKGBUILDer.download">
+<tt class="descclassname">PKGBUILDer.</tt><tt class="descname">download</tt><big>(</big><em>urlpath</em>, <em>filename</em><span class="optional">[</span>, <em>prot</em><span class="optional">]</span><big>)</big><a class="headerlink" href="#PKGBUILDer.download" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body">URL, filename for saving, protocol.</td>
+</tr>
+<tr class="field"><th class="field-name">Input:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Output:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">bytes downloaded.</td>
+</tr>
+<tr class="field"><th class="field-name">Exceptions:</th><td class="field-body">PBError, IOError,
+urllib.error.URLError, urllib.error.HTTPError</td>
+</tr>
+<tr class="field"><th class="field-name">Message codes:</th><td class="field-body">ERR3101.</td>
+</tr>
+</tbody>
+</table>
+<p>Downloads an AUR tarball.  Data normally provided by <a class="reference internal" href="#PKGBUILDer.build_runner" title="PKGBUILDer.build_runner"><tt class="xref py py-meth docutils literal"><span class="pre">build_runner()</span></tt></a>.</p>
+<dl class="method">
+<dt id="PKGBUILDer.extract">
+<tt class="descclassname">PKGBUILDer.</tt><tt class="descname">extract</tt><big>(</big><em>filename</em><big>)</big><a class="headerlink" href="#PKGBUILDer.extract" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body">filename.</td>
+</tr>
+<tr class="field"><th class="field-name">Input:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Output:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">file count.</td>
+</tr>
+<tr class="field"><th class="field-name">Exceptions:</th><td class="field-body">PBError, IOError.</td>
+</tr>
+<tr class="field"><th class="field-name">Message codes:</th><td class="field-body">ERR3151.</td>
+</tr>
+</tbody>
+</table>
+<p>Extracts an AUR tarball.  Data normally provided by <a class="reference internal" href="#PKGBUILDer.build_runner" title="PKGBUILDer.build_runner"><tt class="xref py py-meth docutils literal"><span class="pre">build_runner()</span></tt></a>.</p>
+<dl class="method">
+<dt id="PKGBUILDer.prepare_deps">
+<tt class="descclassname">PKGBUILDer.</tt><tt class="descname">prepare_deps</tt><big>(</big><em>pkgbuild</em><big>)</big><a class="headerlink" href="#PKGBUILDer.prepare_deps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" id="index-12" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body">PKGBUILD contents</td>
+</tr>
+<tr class="field"><th class="field-name">Input:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Output:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">a list with entries from PKGBUILD&#8217;s depends and makedepends
+(can be empty.)</td>
+</tr>
+<tr class="field"><th class="field-name">Exceptions:</th><td class="field-body">IOError.</td>
+</tr>
+<tr class="field"><th class="field-name">Message codes:</th><td class="field-body">none.</td>
+</tr>
+</tbody>
+</table>
+<p>Gets (make)depends from a PKGBUILD and returns them.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><cite>pkgbuild</cite> is a string, not a file handle.</p>
+</div>
+<dl class="method">
+<dt id="PKGBUILDer.depcheck">
+<tt class="descclassname">PKGBUILDer.</tt><tt class="descname">depcheck</tt><big>(</big><em>depends</em><big>)</big><a class="headerlink" href="#PKGBUILDer.depcheck" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" id="index-13" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body">a python dependency list.</td>
+</tr>
+<tr class="field"><th class="field-name">Input:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Output:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">a dict, key is the package name, and value is: -1 = nowhere, 0 = system,
+1 = repos, 2 = AUR.</td>
+</tr>
+<tr class="field"><th class="field-name">Exceptions:</th><td class="field-body">PBError.</td>
+</tr>
+<tr class="field"><th class="field-name">Message codes:</th><td class="field-body">ERR3201.</td>
+</tr>
+<tr class="field"><th class="field-name" colspan="2">Suggested way of handling:</th></tr>
+<tr class="field"><td>&nbsp;</td><td class="field-body">::
+&gt;&gt;&gt; types = [&#8216;system&#8217;, &#8216;repos&#8217;, &#8216;aur&#8217;]
+&gt;&gt;&gt; for pkg, pkgtype in depcheck([...]).items():
+...    print(&#8216;{0}: found in {1}&#8217;.format(pkg, types[pkgtype])
+...    if pkgtype == 2: #AUR
+...        #build pkg here</td>
+</tr>
+<tr class="field"><th class="field-name">Former data:</th><td class="field-body">2.0 Returns: no -1</td>
+</tr>
+</tbody>
+</table>
+<p>Performs a dependency check.  Data normally provided by
+<a class="reference internal" href="#PKGBUILDer.prepare_deps" title="PKGBUILDer.prepare_deps"><tt class="xref py py-meth docutils literal"><span class="pre">prepare_deps()</span></tt></a>.</p>
+</div>
+<div class="section" id="upgrade">
+<h2>2.5. Upgrade<a class="headerlink" href="#upgrade" title="Permalink to this headline">¶</a></h2>
+<p class="versionadded" id="index-14">
+<span class="versionmodified">New in version 2.1.0.0.</span></p>
+<dl class="class">
+<dt id="PKGBUILDer.Upgrade">
+<em class="property">class </em><tt class="descclassname">PKGBUILDer.</tt><tt class="descname">Upgrade</tt><a class="headerlink" href="#PKGBUILDer.Upgrade" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body">none.</td>
+</tr>
+</tbody>
+</table>
+<p>This is the class for upgrading the installed packages.  It defines one base
+method and two additional ones.</p>
+<dl class="method">
+<dt id="PKGBUILDer.auto_upgrade">
+<tt class="descclassname">PKGBUILDer.</tt><tt class="descname">auto_upgrade</tt><big>(</big><big>)</big><a class="headerlink" href="#PKGBUILDer.auto_upgrade" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" id="index-15" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Input:</th><td class="field-body">user interaction.</td>
+</tr>
+<tr class="field"><th class="field-name">Output:</th><td class="field-body">text.</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">0 or nothing.</td>
+</tr>
+<tr class="field"><th class="field-name">Exceptions:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Message codes:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Notice:</th><td class="field-body">things break here A LOT.</td>
+</tr>
+</tbody>
+</table>
+<p>Upgrades packages.  Simillar to <tt class="xref py py-meth docutils literal"><span class="pre">Build.auto_build()</span></tt>.</p>
+<dl class="method">
+<dt id="PKGBUILDer.gather_foreign_packages">
+<tt class="descclassname">PKGBUILDer.</tt><tt class="descname">gather_foreign_packages</tt><big>(</big><big>)</big><a class="headerlink" href="#PKGBUILDer.gather_foreign_packages" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" id="index-16" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Input:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Output:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body">foreign packages.</td>
+</tr>
+<tr class="field"><th class="field-name">Exceptions:</th><td class="field-body">none.</td>
+</tr>
+<tr class="field"><th class="field-name">Message codes:</th><td class="field-body">none.</td>
+</tr>
+</tbody>
+</table>
+<p>Gathers a list of all foreign packages.</p>
+<dl class="method">
+<dt id="PKGBUILDer.list_upgradeable">
+<tt class="descclassname">PKGBUILDer.</tt><tt class="descname">list_upgradeable</tt><big>(</big><em>pkglist</em><big>)</big><a class="headerlink" href="#PKGBUILDer.list_upgradeable" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field"><th class="field-name">Arguments:</th><td class="field-body"><p class="first">a package list.</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Input:</th><td class="field-body"><p class="first">a list of packages to be compared.</p>
+<p>suggestion: self.gather_foreign_pkgs().keys()</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Output:</th><td class="field-body"><p class="first">none.</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">upgradeable packages.</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Exceptions:</th><td class="field-body"><p class="first">none.</p>
+</td>
+</tr>
+<tr class="field"><th class="field-name">Message codes:</th><td class="field-body"><p class="first last">none.</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Compares package versions and returns upgradeable ones.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. title</a><ul>
+<li><a class="reference internal" href="#pbds">2.1. PBDS</a></li>
+<li><a class="reference internal" href="#aur">2.2. AUR</a></li>
+<li><a class="reference internal" href="#utils">2.3. Utils</a></li>
+<li><a class="reference internal" href="#build">2.4. Build</a></li>
+<li><a class="reference internal" href="#upgrade">2.5. Upgrade</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../pkgbuilder/"
+                        title="previous chapter">1. PKGBUILDer</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../README/"
+                        title="next chapter">3. README for PKGBUILDer</a></p>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search/" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../py-modindex/" title="Python Module Index"
+             >modules</a></li>
+        <li class="right" >
+          <a href="../README/" title="3. README for PKGBUILDer"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../pkgbuilder/" title="1. PKGBUILDer"
+             >previous</a> |</li>
+        <li><a href="../">PKGBUILDer v2.1.2.2 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2011, Kwpolska.
+      Last updated on 2011-10-15T20:10:02Z.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
+    </div>
+  </body>
+</html>

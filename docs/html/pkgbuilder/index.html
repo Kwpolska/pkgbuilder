@@ -7,13 +7,13 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>PKGBUILDer &mdash; PKGBUILDer v2.1.2.1 documentation</title>
+    <title>1. PKGBUILDer &mdash; PKGBUILDer v2.1.2.2 documentation</title>
     <link rel="stylesheet" href="../_static/default.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../',
-        VERSION:     '2.1.2.1',
+        VERSION:     '2.1.2.2',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '',
         HAS_SOURCE:  true
@@ -22,21 +22,24 @@
     <script type="text/javascript" src="../_static/jquery.js"></script>
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
-    <link rel="top" title="PKGBUILDer v2.1.2.1 documentation" href="../" />
-    <link rel="next" title="README for PKGBUILDer" href="../README/" />
-    <link rel="prev" title="PKGBUILDer 2.1.2.1 documentation" href="../" /> 
+    <link rel="top" title="PKGBUILDer v2.1.2.2 documentation" href="../" />
+    <link rel="next" title="2. title" href="../classes/" />
+    <link rel="prev" title="PKGBUILDer 2.1.2.2 documentation" href="../" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../README/" title="README for PKGBUILDer"
-             accesskey="N">next</a></li>
+          <a href="../py-modindex/" title="Python Module Index"
+             >modules</a></li>
         <li class="right" >
-          <a href="../" title="PKGBUILDer 2.1.2.1 documentation"
+          <a href="../classes/" title="2. title"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../" title="PKGBUILDer 2.1.2.2 documentation"
              accesskey="P">previous</a> |</li>
-        <li><a href="../">PKGBUILDer v2.1.2.1 documentation</a> &raquo;</li> 
+        <li><a href="../">PKGBUILDer v2.1.2.2 documentation</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -46,9 +49,7 @@
           <div class="body">
             
   <div class="section" id="pkgbuilder">
-<h1>PKGBUILDer<a class="headerlink" href="#pkgbuilder" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="a-python-aur-helper-library">
-<h2>a Python AUR helper/library<a class="headerlink" href="#a-python-aur-helper-library" title="Permalink to this headline">¶</a></h2>
+<h1>1. PKGBUILDer<a class="headerlink" href="#pkgbuilder" title="Permalink to this headline">¶</a></h1>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -57,9 +58,9 @@
 </tr>
 <tr class="field"><th class="field-name">Copyright:</th><td class="field-body">See Appendix B.</td>
 </tr>
-<tr class="field"><th class="field-name">Date:</th><td class="field-body">2011-10-14</td>
+<tr class="field"><th class="field-name">Date:</th><td class="field-body">2011-10-15</td>
 </tr>
-<tr class="field"><th class="field-name">Version:</th><td class="field-body">2.1.2.1</td>
+<tr class="field"><th class="field-name">Version:</th><td class="field-body">2.1.2.2</td>
 </tr>
 <tr class="field"><th class="field-name">Manual section:</th><td class="field-body">8</td>
 </tr>
@@ -68,11 +69,11 @@
 </tbody>
 </table>
 <div class="section" id="synopsis">
-<h3>SYNOPSIS<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h3>
+<h2>1.1. SYNOPSIS<a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
 <p><em>pkgbuilder</em> &lt;operation&gt; [options] [targets]</p>
 </div>
 <div class="section" id="description">
-<h3>DESCRIPTION<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h3>
+<h2>1.2. DESCRIPTION<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>PKGBUILDer is an AUR helper, i.e. an application which builds AUR
 packages.  It can be used in conjunction with pacman (with a special
 script).  It uses various techniques to automatize the process as
@@ -81,7 +82,7 @@ much as possible.</p>
 other scripts.</p>
 </div>
 <div class="section" id="operations">
-<h3>OPERATIONS<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h3>
+<h2>1.3. OPERATIONS<a class="headerlink" href="#operations" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt><strong>-i, &#8211;info</strong></dt>
 <dd>Displays info about <strong>targets</strong> in a fashion similar to pacman.</dd>
@@ -97,7 +98,7 @@ makes the script build its packages in /tmp instead of the current
 working directory (CWD).</p>
 </div>
 <div class="section" id="options">
-<h3>OPTIONS<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h3>
+<h2>1.4. OPTIONS<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt><strong>-C, &#8211;nocolor</strong></dt>
 <dd>Forces the script to ignore the ANSI color codes.</dd>
@@ -111,7 +112,7 @@ the category in search.</dd>
 </dl>
 </div>
 <div class="section" id="examples">
-<h3>EXAMPLES<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h3>
+<h2>1.5. EXAMPLES<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <dl class="docutils">
 <dt>pkgbuilder dropbox</dt>
 <dd>Installs the package &#8220;dropbox&#8221; from the AUR.  It is being built in
@@ -123,17 +124,16 @@ the CWD.</dd>
 </dl>
 </div>
 <div class="section" id="see-also">
-<h3>SEE ALSO<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h3>
+<h2>1.6. SEE ALSO<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h2>
 <p><strong>pacman(8)</strong>, <strong>makepkg(8)</strong></p>
 <p>You can visit the git repo at &lt;<a class="reference external" href="https://github.com/Kwpolska/pkgbuilder">https://github.com/Kwpolska/pkgbuilder</a>&gt;
 for more info.</p>
 </div>
 <div class="section" id="bugs">
-<h3>BUGS<a class="headerlink" href="#bugs" title="Permalink to this headline">¶</a></h3>
+<h2>1.7. BUGS<a class="headerlink" href="#bugs" title="Permalink to this headline">¶</a></h2>
 <p>Bugs shall be reported at the GitHub page
 (&lt;<a class="reference external" href="https://github.com/Kwpolska/pkgbuilder/issues">https://github.com/Kwpolska/pkgbuilder/issues</a>&gt;).  You can also
 send mail to &lt;<a class="reference external" href="mailto:kwpolska&#37;&#52;&#48;kwpolska&#46;tk">kwpolska<span>&#64;</span>kwpolska<span>&#46;</span>tk</a>&gt;.</p>
-</div>
 </div>
 </div>
 
@@ -145,27 +145,24 @@ send mail to &lt;<a class="reference external" href="mailto:kwpolska&#37;&#52;&#
         <div class="sphinxsidebarwrapper">
   <h3><a href="../">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">PKGBUILDer</a><ul>
-<li><a class="reference internal" href="#a-python-aur-helper-library">a Python AUR helper/library</a><ul>
-<li><a class="reference internal" href="#synopsis">SYNOPSIS</a></li>
-<li><a class="reference internal" href="#description">DESCRIPTION</a></li>
-<li><a class="reference internal" href="#operations">OPERATIONS</a></li>
-<li><a class="reference internal" href="#options">OPTIONS</a></li>
-<li><a class="reference internal" href="#examples">EXAMPLES</a></li>
-<li><a class="reference internal" href="#see-also">SEE ALSO</a></li>
-<li><a class="reference internal" href="#bugs">BUGS</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#">1. PKGBUILDer</a><ul>
+<li><a class="reference internal" href="#synopsis">1.1. SYNOPSIS</a></li>
+<li><a class="reference internal" href="#description">1.2. DESCRIPTION</a></li>
+<li><a class="reference internal" href="#operations">1.3. OPERATIONS</a></li>
+<li><a class="reference internal" href="#options">1.4. OPTIONS</a></li>
+<li><a class="reference internal" href="#examples">1.5. EXAMPLES</a></li>
+<li><a class="reference internal" href="#see-also">1.6. SEE ALSO</a></li>
+<li><a class="reference internal" href="#bugs">1.7. BUGS</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
   <p class="topless"><a href="../"
-                        title="previous chapter">PKGBUILDer 2.1.2.1 documentation</a></p>
+                        title="previous chapter">PKGBUILDer 2.1.2.2 documentation</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="../README/"
-                        title="next chapter">README for PKGBUILDer</a></p>
+  <p class="topless"><a href="../classes/"
+                        title="next chapter">2. title</a></p>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
     <form class="search" action="../search/" method="get">
@@ -187,17 +184,20 @@ send mail to &lt;<a class="reference external" href="mailto:kwpolska&#37;&#52;&#
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../README/" title="README for PKGBUILDer"
-             >next</a></li>
+          <a href="../py-modindex/" title="Python Module Index"
+             >modules</a></li>
         <li class="right" >
-          <a href="../" title="PKGBUILDer 2.1.2.1 documentation"
+          <a href="../classes/" title="2. title"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../" title="PKGBUILDer 2.1.2.2 documentation"
              >previous</a> |</li>
-        <li><a href="../">PKGBUILDer v2.1.2.1 documentation</a> &raquo;</li> 
+        <li><a href="../">PKGBUILDer v2.1.2.2 documentation</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
         &copy; Copyright 2011, Kwpolska.
-      Last updated on 2011-10-14T20:10:37Z.
+      Last updated on 2011-10-15T20:10:02Z.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.7.
     </div>
   </body>
