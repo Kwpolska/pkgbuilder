@@ -1,0 +1,69 @@
+===========
+Utils class
+===========
+
+.. module:: PKGBUILDer
+   :synopsis: a Python AUR helper/library
+.. versionadded:: 2.1.0.0
+
+:Author: Kwpolska
+:Copyright: See Appendix B.
+:Date: 2011-10-14
+:Version: 2.1.2.1
+
+.. class:: Utils
+
+:Arguments: none.
+
+This is the class with many random utilities.  It defines three methods:
+
+
+.. method:: info(pkgname)
+
+:Arguments: package name.
+:Input: none.
+:Output: none.
+:Returns: a dict OR None.
+:Exceptions: none.
+:Message codes: none.
+:Former data:
+    2.1.2.1 Returns: a dict OR False.
+
+    2.0 Returns: aur_pkgs, list->dict, not null.
+
+    2.0 Behavior: exception and quit when not found."
+
+Returns information about a package.  Almost equivalent to
+:meth:`AUR.request('info', pkgname)`, but returns **`None`** if the package
+doesn't exist.
+
+.. method:: search(pkgname)
+
+:Arguments: package name.
+:Input: none.
+:Output: none.
+:Returns: a list.
+:Exceptions: none.
+:Message codes: none.
+
+Searches for AUR packages and returns them as a list.  Almost equivalent
+to :meth:`AUR.request('search', pkgname)`, but returns **`[]`** if no
+packages were found.
+
+.. method:: print_package(pkg[, use_categories][, prefix])
+
+:Arguments: package name, use categories, line prefix.
+:Input: none.
+:Output:
+    ::
+
+    category/name version (num votes) [installed: version] [out of date]
+        description
+
+:Returns: nothing.
+:Exceptions: none.
+:Message codes: none.
+:Former data:
+    2.0 Name: showInfo.
+
+Prints data about package.  Format specified above, in the Output field.

@@ -2,14 +2,10 @@
 PKGBUILDer
 ==========
 
------------------------------------
-a Python AUR helper/library
------------------------------------
-
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: See Appendix B.
-:Date: 2011-10-14
-:Version: 2.1.2.1
+:Date: 2011-10-15
+:Version: 2.1.2.2
 :Manual section: 8
 :Manual group: PKGBUILDer manual
 

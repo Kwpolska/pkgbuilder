@@ -2,6 +2,7 @@ include INSTALL.py
 include LICENSE
 include README.rst
 include TODO.rst
+include PACMAN-UPGRADE
 recursive-include docs *
 recursive-include scripts *
 recursive-include locale *.mo
