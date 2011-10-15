@@ -1,0 +1,12 @@
+There are two versions of PB available now: the current version
+from the 2.1.2.x series and the legacy version, 2.1.1.10.  The
+current version is compatible with pacman 4.0 and pyalpm 0.5.
+The legacy version works with older pacmans, namely 3.6.
+
+The current version is here:
+    http://aur.archlinux.org/packages.php?ID=52542
+    http://pypi.python.org/pypi/pkgbuilder
+
+The legacy one is here:
+    http://github.kwpolska.tk/pkgbuilder-2.1.1.10_UNOFFICIAL_LEGACY-1-any.pkg.tar.xz
+    http://github.kwpolska.tk/pkgbuilder-2.1.1.10_UNOFFICIAL_LEGACY-1.src.tar.gz
