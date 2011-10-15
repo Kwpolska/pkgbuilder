@@ -1,0 +1,70 @@
+.. todo
+===========
+Build class
+===========
+
+.. module:: PKGBUILDer
+   :synopsis: a Python AUR helper/library
+.. versionadded:: 2.1.0.0
+
+:Author: Kwpolska
+:Copyright: See Appendix B.
+:Date: 2011-10-14
+:Version: 2.1.2.1
+
+.. class:: Build
+
+:Arguments: none.
+
+This is the class for building packages.  It defines two base methods and
+four additional functions.
+
+.. method:: auto_build(pkgname[, validate][, depcheck])
+
+:Arguments: package name, validate installation, perform dependency checks.
+:Input: none.
+:Output: text.
+:Returns: nothing.
+:Exceptions: PBError.
+:Message codes:
+    ERR3301, ERR34?? (ERR3401, ERR3450, ERR3451, ERR3452), INF3450.
+:Former data:
+    2.0 Name: build.
+
+This is a function that handles building packages automatically.  This is
+the recommended way of building packages through PKGBUILDer.
+
+.. method:: build_runner(pkgname[, depcheck])
+
+:Arguments: package, perform dependency checks.
+:Input: none.
+:Output: text.
+:Returns: ::
+
+    [makepkg's retcode OR 3 if fails OR 16 if needs an AUR dep,
+        [AUR deps or error source]
+    ]
+
+:Exceptions: PBError.
+:Message codes: ERR3001, ERR3201, ERR3202.
+:Former data:
+    2.0 Behavior: all functions inside
+
+    2.0 Name: buildSub
+
+This is the function running building.  It is not supposed to be used
+standalone, because it is embedded by :meth:`auto_build()`.
+
+.. note::
+
+    The return codes of this function work bad.  Using :meth:`auto_build()`
+    eliminates this problem.
+
+----
+.. automethod:: pkgbuilder.Build.download
+
+.. automethod:: pkgbuilder.Build.extract
+
+.. automethod:: pkgbuilder.Build.prepare_deps
+
+.. automethod:: pkgbuilder.Build.depcheck

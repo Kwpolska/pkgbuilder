@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# PKGBUILDer v2.1.2.1
+# PKGBUILDer v2.1.2.2
 # A Python AUR helper/library.
 # USAGE: ./build.py pkg1 [pkg2] [pkg3] (and more)
 # Copyright (C) 2011, Kwpolska
@@ -50,18 +50,23 @@ import datetime
 import gettext
 import functools
 
-VERSION = '2.1.2.1'
+VERSION = '2.1.2.2'
 T = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
 _ = T.gettext
 
 ### PBDS            PB global data storage  ###
 class PBDS:
-    """PKGBUILDer Data Storage"""
+    """PKGBUILDer Data Storage."""
     def __init__(self):
-        """PBDS init"""
-        # Fancy-schmancy messages stolen from makepkg.
+        """PBDS init.
 
-        self.all_off = '\x1b[1;0m'
+:Arguments: none.
+:Input: none.
+:Output: none.
+:Returns: a PBDS object.
+:Exceptions: none.
+:Message codes: none."""
+        # For fancy-schmancy messages stolen from makepkg.
         self.colors = {
                         'all_off':    '\x1b[1;0m',
                         'bold':       '\x1b[1;1m',
@@ -80,7 +85,14 @@ class PBDS:
                            'xfce', 'kernels']
 
     def colorson(self):
-        """colors on"""
+        """Colors on.
+
+:Arguments: none.
+:Input: none.
+:Output: none.
+:Returns: nothing.
+:Exceptions: none.
+:Message codes: none."""
         self.colors = {
                         'all_off':    '\x1b[1;0m',
                         'bold':       '\x1b[1;1m',
@@ -92,7 +104,14 @@ class PBDS:
 
 
     def colorsoff(self):
-        """colors off"""
+        """Colors off.
+
+:Arguments: none.
+:Input: none.
+:Output: none.
+:Returns: nothing.
+:Exceptions: none.
+:Message codes: none."""
         self.colors = {
                         'all_off':    '',
                         'bold':       '',
@@ -104,7 +123,14 @@ class PBDS:
 
 # Useless since python3-aur was replaced, but we'd make use of it.
 def pblog(msg, tofile = False, tostderr = False):
-    """A log function.  Executed when requested and by fancy_*."""
+    """A log function.  Executed when requested and by fancy_*.
+
+:Arguments: a message, write logs to file, write logs to stderr.
+:Input: none.
+:Output: none.
+:Returns: nothing.
+:Exceptions: none.
+:Message codes: none."""
     if tofile == True:
         open('pkgbuilder.log', 'a').write(msg)
 
@@ -113,34 +139,70 @@ def pblog(msg, tofile = False, tostderr = False):
 
 DS = PBDS()
 
+# Fancy-schmancy messages stolen from makepkg.
 def fancy_msg(text):
-    """makepkg's msg().  Use for main messages."""
+    """makepkg's msg().  Use for main messages.
+
+:Arguments: a message.
+:Input: none.
+:Output: text.
+:Returns: nothing.
+:Exceptions: none.
+:Message codes: none."""
     sys.stderr.write(DS.colors['green']+'==>'+DS.colors['all_off']+
                      DS.colors['bold']+' '+text+DS.colors['all_off']+'\n')
     pblog('(auto fancy_msg    ) '+text)
 
 def fancy_msg2(text):
-    """makepkg's msg2().  Use for sub-messages."""
+    """makepkg's msg2().  Use for sub-messages.
+
+:Arguments: a message.
+:Input: none.
+:Output: text.
+:Returns: nothing.
+:Exceptions: none.
+:Message codes: none."""
     sys.stderr.write(DS.colors['blue']+'  ->'+DS.colors['all_off']+
                      DS.colors['bold']+' '+text+DS.colors['all_off']+'\n')
     pblog('(auto fancy_msg2   ) '+text)
 
 def fancy_warning(text):
-    """makepkg's warning().  Use when you have problems."""
+    """makepkg's warning().  Use when you have problems.
+
+:Arguments: a message.
+:Input: none.
+:Output: text.
+:Returns: nothing.
+:Exceptions: none.
+:Message codes: none."""
     sys.stderr.write(DS.colors['yellow']+'==> '+_('WARNING:')+
                      DS.colors['all_off']+DS.colors['bold']+' '+text+
                      DS.colors['all_off']+'\n')
     pblog('(auto fancy_warning) '+text)
 
 def fancy_error(text):
-    """makepkg's error().  Use for errors.  Exitting is suggested."""
+    """makepkg's error().  Use for errors.  Exitting is suggested.
+
+:Arguments: a message.
+:Input: none.
+:Output: text.
+:Returns: nothing.
+:Exceptions: none.
+:Message codes: none."""
     sys.stderr.write(DS.colors['red']+'==> '+_('ERROR:')+
                      DS.colors['all_off']+DS.colors['bold']+
                      ' '+text+DS.colors['all_off']+'\n')
     pblog('(auto fancy_error  ) '+text)
 
 def fancy_error2(text):
-    """like fancy_error, but looks like a sub-message (fancy_msg2)."""
+    """like fancy_error, but looks like a sub-message (fancy_msg2).
+
+:Arguments: a message.
+:Input: none.
+:Output: text.
+:Returns: nothing.
+:Exceptions: none.
+:Message codes: none."""
     sys.stderr.write(DS.colors['red']+'  ->'+DS.colors['all_off']+
                      DS.colors['bold']+' '+text+DS.colors['all_off']+'\n')
     pblog('(auto fancy_error2 ) '+text)
@@ -150,7 +212,14 @@ class PBError(Exception):
     """Exceptions raised by the PKGBUILDer."""
 
     def __init__(self, msg):
-        """Initialization is mandatory."""
+        """PBError init.
+
+:Arguments: a message.
+:Input: none.
+:Output: none.
+:Returns: nothing.
+:Exceptions: none.
+:Message codes: none."""
         self.msg = msg
 
     def __str__(self):
@@ -163,31 +232,63 @@ class AUR:
     """A class for calling the AUR API.  Basics only."""
 
     def __init__(self):
-        """Stores the RPC URLs."""
+        """AUR init.
+
+:Arguments: none.
+:Input: none.
+:Output: none.
+:Returns: an AUR object.
+:Exceptions: none.
+:Message codes: none."""
         self.rpc = '{0}://aur.archlinux.org/rpc.php?type={1}&arg={2}'
         self.mrpc = '{0}://aur.archlinux.org/rpc.php?type=multiinfo{1}'
 
     def jsonreq(self, rtype, arg, prot = 'http'):
-        """Makes a request, but returns plain JSON data."""
+        """Makes a request and returns plain JSON data.
+
+:Arguments: request type, argument (package name), protocol.
+:Input: none.
+:Output: none.
+:Returns: JSON data from the API.
+:Exceptions: urllib.error.URLError, urllib.error.HTTPError.
+:Message codes: none."""
         rhandle = urllib.request.urlopen(self.rpc.format(prot, rtype, arg))
         return rhandle.read().decode()
 
-    def jsonmultiinfo(self, pyargs, prot = 'http'):
-        """Makes a multiinfo request, but returns plain JSON data."""
-        urlargs = '&arg[]='+'&arg[]='.join(pyargs)
+    def jsonmultiinfo(self, args, prot = 'http'):
+        """Makes a multiinfo request and returns plain JSON data.
+
+:Arguments: a list of packages, protocol.
+:Input: none.
+:Output: none.
+:Returns: JSON data from the API.
+:Exceptions: urllib.error.URLError, urllib.error.HTTPError.
+:Message codes: none."""
+        urlargs = '&arg[]='+'&arg[]='.join(args)
         rhandle = urllib.request.urlopen(self.mrpc.format(prot, urlargs))
         return rhandle.read().decode()
 
     def request(self, rtype, arg, prot = 'http'):
         """Makes a request.
-Syntax: request(TYPE, ARGUMENT[, PROTOCOL])
-where   TYPE is the request type from aur.archlinux.org/rpc.php,
-        ARGUMENT is the request argument, e.g. search query,
-        PROTOCOL is the protocol used, http or https."""
+
+:Arguments: request type, argument (package name), protocol.
+:Input: none.
+:Output: none.
+:Returns: data from the API.
+:Exceptions: urllib.error.URLError, urllib.error.HTTPError.
+:Message codes: none."""
         return json.loads(self.jsonreq(rtype, arg, prot))
 
-    def multiinfo(self, pyargs, prot = 'http'):
-        """Makes a multiinfo request.  Simillar to AUR.request()."""
+    def multiinfo(self, args, prot = 'http'):
+        """Makes a multiinfo request.
+
+:Arguments: a list of packages, protocol.
+:Input: none.
+:Output: none.
+:Returns: data from the API.
+:Exceptions: urllib.error.URLError, urllib.error.HTTPError.
+:Message codes: none."""
+
         return json.loads(self.jsonmultiinfo(pyargs, prot))
 
 ### Utils           common global utilities ###
@@ -195,30 +296,43 @@ class Utils:
     """Common global utilities.  Provides useful data."""
 
     def __init__(self):
-        """The AUR class is mandatory."""
+        """Utils init.
+
+:Arguments: none.
+:Input: none.
+:Output: none.
+:Returns: a Utils object."""
         self.aur = AUR()
     def info(self, pkgname):
-        """
-        Returns info about a package.
+        """Returns info about a package.
 
-        Returns: aur_pkgs['results'], dict, not null OR False.
+:Arguments: package name.
+:Input: none.
+:Output: none.
+:Returns: a dict OR None.
+:Exceptions: none.
+:Message codes: none.
+:Former data:
+    2.1.2.1 Returns: a dict OR False.
 
-        Former data:
-        2.0 Returns: aur_pkgs, list->dict, not null.
-        2.0 Behavior: exception and quit when not found.
-        """
+    2.0 Returns: aur_pkgs, list->dict, not null.
+
+    2.0 Behavior: exception and quit when not found."""
         aur_pkgs = self.aur.request('info', pkgname)
         if aur_pkgs['results'] == 'No results found':
-            return False
+            return None
         else:
             return aur_pkgs['results']
 
     def search(self, pkgname):
-        """
-        Searches for AUR packages.
+        """Searches for AUR packages.
 
-        Returns: aur_pkgs, list, null.
-        """
+:Arguments: package name.
+:Input: none.
+:Output: none.
+:Returns: a list.
+:Exceptions: none.
+:Message codes: none."""
         aur_pkgs = self.aur.request('search', pkgname)
         if aur_pkgs['results'] == 'No results found':
             return []
@@ -226,15 +340,21 @@ class Utils:
             return aur_pkgs['results']
 
     def print_package(self, pkg, use_categories = True, prefix=''):
-        """
-        Outputs info about package.
+        """Outputs info about package.
 
-        Format: category/name version (num votes) [installed] [out of date]
-        Out of date is displayed only when needed and in red.
+:Arguments: package name, use categories, line prefix.
+:Input: none.
+:Output:
+    ::
 
-        Former data:
-        2.0 Name: showInfo
-        """
+    category/name version (num votes) [installed: version] [out of date]
+        description
+
+:Returns: nothing.
+:Exceptions: none.
+:Message codes: none.
+:Former data:
+    2.0 Name: showInfo."""
         H = pycman.config.init_with_config('/etc/pacman.conf')
         localdb = H.get_localdb()
         lpkg = localdb.get_pkg(pkg['Name'])
@@ -263,31 +383,36 @@ class Utils:
         print(base.format(category, pkg['Name'], pkg['Version'],
                           pkg['Description'], pkg['NumVotes'], installed))
 
-        #pyalpm.release()
-
 ### Build       build functions and helpers ###
 class Build:
-    """
-    Functions for building packages.  Main functions are auto_build
-    and build_runner.
-    """
+    """Functions for building packages."""
 
     def __init__(self):
-        """
-        Class init.
-        """
+        """Build init.
+
+:Arguments: none.
+:Input: none.
+:Output: none.
+:Returns: a Build object.
+:Exceptions: none.
+:Message codes: none."""
         self.utils = Utils()
         self.aururl = '{0}://aur.archlinux.org{1}'
 
-    def auto_build(self, package, validate = True, performdepcheck = True):
-        """
-        NOT the actual build function.
-        This function makes validation and building AUR deps possible.
-        If you can, use it.
+    def auto_build(self, pkgname, validate = True, performdepcheck = True):
+        """NOT the actual build function.
+This function makes validation and building AUR deps possible.
+If you can, use it.
 
-        Former data:
-        2.0 Name: build
-        """
+:Arguments: package name, validate installation, perform dependency checks.
+:Input: none.
+:Output: text.
+:Returns: nothing.
+:Exceptions: PBError.
+:Message codes:
+    ERR3301, ERR34?? (ERR3401, ERR3450, ERR3451, ERR3452), INF3450.
+:Former data:
+    2.0 Name: build."""
         build_result = self.build_runner(package, performdepcheck)
         try:
             if build_result[0] == 0:
@@ -302,7 +427,6 @@ class Build:
                     if pkg is None:
                         fancy_error2(_('[ERR3451] validation: NOT \
 installed'))
-                        #pyalpm.release()
                     else:
                         if pyalpm.vercmp(aurversion, pkg.version) > 0:
                             fancy_error2(_('[ERR3452] validation: \
@@ -310,7 +434,6 @@ outdated {0}').format(pkg.version))
                         else:
                             fancy_msg2(_('[INF3450] validation: \
 installed {0}').format(pkg.version))
-                        #pyalpm.release()
             elif build_result[0] >= 0 and build_result[0] <= 15:
                 os.chdir('../')
                 raise PBError(_('[ERR3301] makepkg returned 1.'))
@@ -327,13 +450,16 @@ required.'))
             fancy_error(str(inst))
 
     def download(self, urlpath, filename, prot = 'http'):
-        """
-        Downloads an AUR tarball (http) to the current directory.
+        """Downloads an AUR tarball (http) to the current directory.
 
-        Returns: bytes downloaded.
-        Possible exceptions: PBError, IOError,
-            urllib.error.URLError, urllib.error.HTTPError
-        """
+:Arguments: URL, filename for saving, protocol.
+:Input: none.
+:Output: none.
+:Returns: bytes downloaded.
+:Exceptions:
+    PBError, IOError,
+    urllib.error.URLError, urllib.error.HTTPError
+:Message codes: ERR3101."""
         rhandle = urllib.request.urlopen(self.aururl.format(prot, urlpath))
         headers = rhandle.info()
         fhandle = open(filename, 'wb')
@@ -345,12 +471,14 @@ required.'))
             raise PBError(_('[ERR3101] download: 0 bytes downloaded'))
 
     def extract(self, filename):
-        """
-        Extracts an AUR tarball.
+        """        Extracts an AUR tarball.
 
-        Returns: file count.
-        Possible exceptions: PBError, IOError
-        """
+:Arguments: filename.
+:Input: none.
+:Output: none.
+:Returns: file count.
+:Exceptions: PBError, IOError.
+:Message codes: ERR3151."""
         thandle = tarfile.open(filename, 'r:gz')
         thandle.extractall()
         names = thandle.getnames()
@@ -360,12 +488,16 @@ required.'))
             raise PBError(_('[ERR3151] extract: no files extracted'))
 
     def prepare_deps(self, pkgbuild):
-        """
-        Gets (make)depends from a PKGBUILD and returns them.
+        """Gets (make)depends from a PKGBUILD and returns them.
 
-        Returns: a list, entries from PKGBUILD's depends
-        and makedepends or [].
-        """
+:Arguments: PKGBUILD contents
+:Input: none.
+:Output: none.
+:Returns:
+    a list with entries from PKGBUILD's depends and makedepends
+    (can be empty.)
+:Exceptions: IOError.
+:Message codes: none."""
         # This code is bad.  If you want to, fix it.
         fixedp = '0123456789abcdefghijklmnopqrstuvwxyz\
 ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
@@ -390,25 +522,28 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
         bothdepends = depends + makedepends
         return [s.replace('"', '').replace('\'', '') for s in bothdepends]
 
-    def depcheck(self, bothdepends):
-        """
-        Performs a dependency check.
+    def depcheck(self, depends):
+        """Performs a dependency check.
 
-        Returns: a dict:
-            key  :  package name
-            value:  -1, 0, 1 or 2 (nowhere, in system, repos, AUR)
-                 or an empty dict
-        Possible exceptions: PBError
-        Suggested way of handling:
-        types = ['system', 'repos', 'aur']
-        for pkg, pkgtype in depcheck([...]).items():
-            print('{0}: found in {1}'.format(pkg, types[pkgtype])
-            if pkgtype == 2: #AUR
-                #build pkg here
+:Arguments: a python dependency list.
+:Input: none.
+:Output: none.
+:Returns:
+    a dict, key is the package name, and value is: -1 = nowhere, 0 = system,
+    1 = repos, 2 = AUR.
+:Exceptions: PBError.
+:Message codes: ERR3201.
+:Suggested way of handling:
+    ::
 
-        Former data:
-        2.0 Returns: no -1
-        """
+    types = ['system', 'repos', 'aur']
+    for pkg, pkgtype in depcheck([...]).items():
+        print('{0}: found in {1}'.format(pkg, types[pkgtype])
+        if pkgtype == 2: #AUR
+            #build pkg here
+
+:Former data:
+    2.0 Returns: no -1"""
         if bothdepends == []:
             # THANK YOU, MAINTAINER, FOR HAVING NO DEPS AND DESTROYING ME!
             return {}
@@ -434,27 +569,37 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
                 elif pyalpm.find_satisfier(syncpkgs, dep):
                     #pycman.action_sync.find_sync_package(dep, repos)[0]:
                     parseddeps[dep] = 1
-                elif self.utils.info(dep):
+                elif self.utils.info(dep) != None:
                     parseddeps[dep] = 2
                 else:
                     parseddeps[dep] = -1
                     raise PBError(_('[ERR3201] depcheck: cannot find {0} \
 anywhere').format(dep))
-            #pyalpm.release()
             return parseddeps
 
     def build_runner(self, package, performdepcheck = True):
-        """
-        A build function, which actually links to others.  Do not use it
-        unless you re-implement auto_build.
-        Former data:
-        2.0 Behavior: all functions inside
-        2.0 Name: buildSub
-        """
+        """A build function, which actually links to others.  Do not use it
+unless you re-implement auto_build.
+
+:Arguments: package, perform dependency checks.
+:Input: none.
+:Output: text.
+:Returns: ::
+
+    [makepkg's retcode or 3 if fails or 16 if needs an AUR dep,
+        [AUR deps or 'makepkg'] or nothing
+    ]
+
+:Exceptions: PBError.
+:Message codes: ERR3001, ERR3201, ERR3202.
+:Former data:
+    2.0 Behavior: all functions inside
+
+    2.0 Name: buildSub"""
         try:
             # exists
             pkginfo = self.utils.info(package)
-            if pkginfo == False:
+            if pkginfo == None:
                 raise PBError(_('[ERR3001] Package {0} not found.').format(
                               package))
             pkgname = pkginfo['Name']
@@ -513,29 +658,36 @@ eg. in the Maintainer field.)  Error message: {0}').format(str(inst)))
             # it doesn't think so.  Others look like it, too.
         except PBError as inst:
             fancy_error(str(inst))
-            return [3]
+            return [3, ['pb']]
         except urllib.error.URLError as inst:
             fancy_error(str(inst))
-            return [3]
+            return [3, ['urllib']]
         except urllib.error.HTTPError as inst:
             fancy_error(str(inst))
-            return [3]
+            return [3, ['urllib']]
         except IOError as inst:
             fancy_error(str(inst))
-            return [3]
+            return [3, ['io']]
 
 ### Upgrade     upgrade AUR packages        ###
 class Upgrade:
     """Tools for performing an upgrade."""
     def __init__(self):
-        """Class init."""
+        """Upgrade init."""
         self.aur = AUR()
         self.build = Build()
         self.H = pycman.config.init_with_config('/etc/pacman.conf')
         self.localdb = self.H.get_localdb()
 
     def gather_foreign_pkgs(self):
-        """Gathers a list of all foreign packages."""
+        """Gathers a list of all foreign packages.
+
+:Arguments: none.
+:Input: none.
+:Output: none.
+:Returns: foreign packages.
+:Exceptions: none.
+:Message codes: none."""
 
         # Based on paconky.py.
         installed = set(p for p in self.localdb.pkgcache)
@@ -551,12 +703,17 @@ class Upgrade:
         return foreign
 
     def list_upgradeable(self, pkglist):
-        """
-        Compares package versions.
-        Input: a list of packages to be compared.
-               suggestion: self.gather_foreign_pkgs().keys()
-        Returns: a list of packages with newer versions in the AUR.
-        """
+        """Compares package versions and returns upgradeable ones.
+
+:Arguments: a package list.
+:Input:
+    a list of packages to be compared.
+
+    suggestion: self.gather_foreign_pkgs().keys()
+:Output: none.
+:Returns: upgradeable packages.
+:Exceptions: none.
+:Message codes: none."""
 
         aurlist = self.aur.multiinfo(pkglist)['results'] # It's THAT easy.
         # Oh, and by the way: it is much, MUCH faster than others.
@@ -571,10 +728,15 @@ class Upgrade:
         return upgradeable
 
     def auto_upgrade(self):
-        """
-        Upgrades packages.  Simillar to Build.auto_build().
-        Notice: things break here A LOT.  Perform twice if you can.
-        """
+        """Upgrades packages.  Simillar to Build.auto_build().
+
+:Arguments: none.
+:Input: user interaction.
+:Output: text.
+:Returns: 0 or nothing.
+:Exceptions: none.
+:Message codes: none.
+:Notice: things break here A LOT."""
         pblog('Ran auto_upgrade.')
         fancy_msg(_('Gathering data about packages...'))
 
@@ -601,7 +763,15 @@ class Upgrade:
 pblog('Initialized.')
 
 def main_routine():
-    """Main routine.  Usage: main_routine(sys.argv)"""
+    """Main routine.
+
+:Arguments: none.
+:Input: none.
+:Output: text.
+:Returns: nothing.
+:Exceptions: PBError.
+:Message codes: ERR5002.
+"""
     pblog('Running argparse.')
     parser = argparse.ArgumentParser(description=_('A python3 AUR helper \
 (sort of.)  Wrapper-friendly (pacman-like output.)'), epilog=_('You can \
@@ -655,14 +825,14 @@ use pacman syntax if you want to.'))
         if args.info == True:
             for ipackage in args.pkgs:
                 ipkg = utils.info(ipackage)
-                if ipkg == False:
+                if ipkg == None:
                     raise PBError(_('Package {0} not found.').format(
                           ipackage))
                 ### TRANSLATORS: space it properly.  `yes/no' below are
                 ### for `out of date'.
                 print(_("""Category       : {cat}
 Name           : {nme}
-Version 2.1.2.1
+Version        : {ver}
 URL            : {url}
 Licenses       : {lic}
 Votes          : {cmv}
@@ -698,8 +868,8 @@ Submitted'])).strftime('%a %d %b %Y %H:%m:%S %p %Z'),
 limitation'))
                 fancy_msg(_('Searching for exact match...'))
                 pkgsearch = [utils.info(searchstring)] # workaround
-                if pkgsearch == [False]:
-                    fancy_msg2(_('not found'))
+                if pkgsearch == [None]:
+                    fancy_error2(_('not found'))
                     exit(0)
                 else:
                     fancy_msg2(_('found'))
@@ -738,7 +908,7 @@ limitation'))
 
     pblog('Quitting.')
 
-# Over 650 lines!  Compare this to build.pl's 56 (including ~8 useless...)
+# Over 900 lines!  Compare this to build.pl's 56 (including ~8 useless...)
 # New features will be included when they will be added to the AUR RPC.
 # RPC: <http://aur.archlinux.org/rpc.php> (search info msearch multiinfo)
 # If something new will appear there, tell me through GH Issues or mail.

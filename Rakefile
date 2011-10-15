@@ -34,7 +34,6 @@ task :prepare, :ver do |t, args|
     sh "sed \"s/BUILDer .* do/BUILDer #{version} do/\" docs/index.rst -i"
     sh "sed \"s/# PKG.*/# PKGBUILDer v#{version}/\" pkgbuilder.py -i"
     sh "sed \"s/VERSION = .*/VERSION = '#{version}'/\" pkgbuilder.py -i"
-    sh "sed \"s/Version .*/Version #{version}/\" pkgbuilder.py -i"
     sh "sed \"s/pkgver=.*/pkgver=#{version}/\" PKGBUILD -i"
 
     sh "sed \"s/:Date: .*/:Date: #{date}/\" docs/*.rst -i"
