@@ -1,17 +1,17 @@
-*****
-title
-*****
+*********************
+Classes in PKGBUILDer
+*********************
 
 :Author: Kwpolska
 :Copyright: See Appendix B.
-:Date: 2011-10-15
-:Version: 2.1.2.2
+:Date: 2011-10-18
+:Version: 2.1.2.3
 
 .. index:: classes
 .. module:: PKGBUILDer
    :synopsis: a Python AUR helper/library
 
-some introductory text
+PKGBUILDer uses some classes.  Here they are:
 
 PBDS
 ====
