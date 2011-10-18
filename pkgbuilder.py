@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# PKGBUILDer v2.1.2.2
+# PKGBUILDer v2.1.2.3
 # A Python AUR helper/library.
 # USAGE: ./build.py pkg1 [pkg2] [pkg3] (and more)
 # Copyright (C) 2011, Kwpolska
@@ -50,7 +50,7 @@ import datetime
 import gettext
 import functools
 
-VERSION = '2.1.2.2'
+VERSION = '2.1.2.3'
 T = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
 _ = T.gettext
 
@@ -289,7 +289,7 @@ class AUR:
 :Exceptions: urllib.error.URLError, urllib.error.HTTPError.
 :Message codes: none."""
 
-        return json.loads(self.jsonmultiinfo(pyargs, prot))
+        return json.loads(self.jsonmultiinfo(args, prot))
 
 ### Utils           common global utilities ###
 class Utils:
