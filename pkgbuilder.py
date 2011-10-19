@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# PKGBUILDer v2.1.2.3
+# PKGBUILDer v2.1.2.4
 # A Python AUR helper/library.
 # USAGE: ./build.py pkg1 [pkg2] [pkg3] (and more)
 # Copyright (C) 2011, Kwpolska
@@ -33,6 +33,8 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+# Names convention: pkg = a package object, pkgname = a package name.
+
 """PKGBUILDer.  An AUR helper (sort of.)"""
 from pyparsing import OneOrMore, Word   # python-pyparsing from [community]
 import pyalpm                           # pyalpm in [extra]
@@ -50,7 +52,7 @@ import datetime
 import gettext
 import functools
 
-VERSION = '2.1.2.3'
+VERSION = '2.1.2.4'
 T = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
 _ = T.gettext
 
@@ -413,7 +415,7 @@ If you can, use it.
     ERR3301, ERR34?? (ERR3401, ERR3450, ERR3451, ERR3452), INF3450.
 :Former data:
     2.0 Name: build."""
-        build_result = self.build_runner(package, performdepcheck)
+        build_result = self.build_runner(pkgname, performdepcheck)
         try:
             if build_result[0] == 0:
                 fancy_msg(_('The build function reported a proper build.'))
@@ -422,8 +424,8 @@ If you can, use it.
                     # check if installed
                     H = pycman.config.init_with_config('/etc/pacman.conf')
                     localdb = H.get_localdb()
-                    pkg = localdb.get_pkg(package)
-                    aurversion = self.utils.info(package)['Version']
+                    pkg = localdb.get_pkg(pkgname)
+                    aurversion = self.utils.info(pkgname)['Version']
                     if pkg is None:
                         fancy_error2(_('[ERR3451] validation: NOT \
 installed'))
@@ -443,9 +445,9 @@ installed {0}').format(pkg.version))
                 os.chdir('../')
                 fancy_warning(_('[ERR3401] Building more AUR packages is \
 required.'))
-                for package2 in build_result:
-                    self.auto_build(package2, True)
-                self.auto_build(package, True)
+                for pkgname2 in build_result:
+                    self.auto_build(pkgname2, True)
+                self.auto_build(pkgname, True)
         except PBError as inst:
             fancy_error(str(inst))
 
@@ -544,7 +546,7 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
 
 :Former data:
     2.0 Returns: no -1"""
-        if bothdepends == []:
+        if depends == []:
             # THANK YOU, MAINTAINER, FOR HAVING NO DEPS AND DESTROYING ME!
             return {}
         else:
@@ -556,7 +558,7 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
                 syncpkgs.append(j)
             syncpkgs = functools.reduce(lambda x,y:x+y,syncpkgs)
             #can someone help me fix the above line? TODO.
-            for dep in bothdepends:
+            for dep in depends:
                 if re.search('[<=>]', dep):
                     vpat = '>=<|><=|=><|=<>|<>=|<=>|>=|=>|><|<>|=<|\
 <=|>|=|<'
@@ -577,11 +579,11 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
 anywhere').format(dep))
             return parseddeps
 
-    def build_runner(self, package, performdepcheck = True):
+    def build_runner(self, pkgname, performdepcheck = True):
         """A build function, which actually links to others.  Do not use it
 unless you re-implement auto_build.
 
-:Arguments: package, perform dependency checks.
+:Arguments: pkgname, perform dependency checks.
 :Input: none.
 :Output: text.
 :Returns: ::
@@ -598,13 +600,13 @@ unless you re-implement auto_build.
     2.0 Name: buildSub"""
         try:
             # exists
-            pkginfo = self.utils.info(package)
-            if pkginfo == None:
+            pkg = self.utils.info(pkgname)
+            if pkg == None:
                 raise PBError(_('[ERR3001] Package {0} not found.').format(
-                              package))
-            pkgname = pkginfo['Name']
+                              pkgname))
+            pkgname = pkg['Name']
             fancy_msg(_('Building {0}...').format(pkgname))
-            self.utils.print_package(pkginfo,
+            self.utils.print_package(pkg,
                                      prefix=DS.colors['blue']+'  ->'+
                                      DS.colors['all_off']+
                                      DS.colors['bold'])
@@ -612,7 +614,7 @@ unless you re-implement auto_build.
             # Okay, this package exists, great then.  Thanks, user.
 
             fancy_msg(_('Downloading the tarball...'))
-            downloadbytes = self.download(pkginfo['URLPath'], filename)
+            downloadbytes = self.download(pkg['URLPath'], filename)
             kbytes = int(downloadbytes) / 1000
             fancy_msg2(_('{0} kB downloaded').format(kbytes))
 
@@ -623,9 +625,9 @@ unless you re-implement auto_build.
             if performdepcheck == True:
                 fancy_msg(_('Checking dependencies...'))
                 try:
-                    bothdepends = self.prepare_deps(open('./PKGBUILD',
-                                  'rb').read().decode('utf8', 'ignore'))
-                    deps = self.depcheck(bothdepends)
+                    depends = self.prepare_deps(open('./PKGBUILD',
+                              'rb').read().decode('utf8', 'ignore'))
+                    deps = self.depcheck(depends)
                     pkgtypes = [_('found in system'), _('found in repos'),
                                 _('found in the AUR')                     ]
                     aurbuild = []
@@ -756,9 +758,9 @@ class Upgrade:
         yesno = yesno + ' ' # cheating...
         if yesno[0] == 'n' or yesno[0] == 'N':
             return 0
-        for package in upgradeable:
-            pblog('Building {0}'.format(package))
-            self.build.auto_build(package, DS.validate, DS.depcheck)
+        for pkgname in upgradeable:
+            pblog('Building {0}'.format(pkgname))
+            self.build.auto_build(pkgname, DS.validate, DS.depcheck)
 
 pblog('Initialized.')
 
@@ -823,11 +825,11 @@ use pacman syntax if you want to.'))
             DS.colorsoff()
 
         if args.info == True:
-            for ipackage in args.pkgs:
-                ipkg = utils.info(ipackage)
-                if ipkg == None:
+            for pkgname in args.pkgs:
+                pkg = utils.info(pkgname)
+                if pkg == None:
                     raise PBError(_('Package {0} not found.').format(
-                          ipackage))
+                          pkgname))
                 ### TRANSLATORS: space it properly.  `yes/no' below are
                 ### for `out of date'.
                 print(_("""Category       : {cat}
@@ -842,20 +844,20 @@ Last Updated   : {upd}
 First Submitted: {fsb}
 Description    : {dsc}
 """).format(
-                cat = DS.categories[int(ipkg['CategoryID'])],
-                nme = ipkg['Name'],
-                url = ipkg['URL'],
-                ver = ipkg['Version'],
-                lic = ipkg['License'],
-                cmv = ipkg['NumVotes'],
+                cat = DS.categories[int(pkg['CategoryID'])],
+                nme = pkg['Name'],
+                url = pkg['URL'],
+                ver = pkg['Version'],
+                lic = pkg['License'],
+                cmv = pkg['NumVotes'],
                 ood = DS.colors['red']+_('yes')+DS.colors['all_off'] if (
-                      ipkg['OutOfDate'] == '1') else _('no'),
-                mnt = ipkg['Maintainer'],
-                upd = datetime.datetime.fromtimestamp(float(ipkg['Last\
+                      pkg['OutOfDate'] == '1') else _('no'),
+                mnt = pkg['Maintainer'],
+                upd = datetime.datetime.fromtimestamp(float(pkg['Last\
 Modified'])).strftime('%a %d %b %Y %H:%m:%S %p %Z'),
-                fsb = datetime.datetime.fromtimestamp(float(ipkg['First\
+                fsb = datetime.datetime.fromtimestamp(float(pkg['First\
 Submitted'])).strftime('%a %d %b %Y %H:%m:%S %p %Z'),
-                dsc = ipkg['Description']))
+                dsc = pkg['Description']))
 
                 exit(0)
 
@@ -867,19 +869,24 @@ Submitted'])).strftime('%a %d %b %Y %H:%m:%S %p %Z'),
                 fancy_error(_('[ERR5002] search string too short, API \
 limitation'))
                 fancy_msg(_('Searching for exact match...'))
-                pkgsearch = [utils.info(searchstring)] # workaround
-                if pkgsearch == [None]:
+                search = [utils.info(searchstring)] # workaround
+                if search == [None]:
                     fancy_error2(_('not found'))
                     exit(0)
                 else:
-                    fancy_msg2(_('found'))
+                    utils.print_package(search[0], prefix=(
+                                      DS.colors['blue']+'  ->'+
+                                      DS.colors['all_off']+
+                                      DS.colors['bold']))
+                    print(DS.colors['all_off'], end='')
+                    exit(0)
             else:
-                pkgsearch = utils.search(searchstring) # pacman behavior
-            for spackage in pkgsearch:
+                search = utils.search(searchstring)
+            for pkg in search:
                 if args.pac != True:
-                    utils.print_package(spackage, True)
+                    utils.print_package(pkg, True)
                 else:
-                    utils.print_package(spackage, False)
+                    utils.print_package(pkg, False)
             exit(0)
 
         if args.pac == True:
@@ -892,6 +899,7 @@ limitation'))
 
     except PBError as inst:
         fancy_error(str(inst))
+        exit(0)
 
     if args.upgrade == True:
         # We finally made it!
@@ -902,9 +910,9 @@ limitation'))
 
     # If we didn't exit, we shall build the packages.
     pblog('Ran through all the addon features, building...')
-    for bpackage in args.pkgs:
-        pblog('Building {0}'.format(bpackage))
-        build.auto_build(bpackage, DS.validate, DS.depcheck)
+    for pkgname in args.pkgs:
+        pblog('Building {0}'.format(pkgname))
+        build.auto_build(pkgname, DS.validate, DS.depcheck)
 
     pblog('Quitting.')
 
@@ -914,3 +922,4 @@ limitation'))
 # If something new will appear there, tell me through GH Issues or mail.
 # They would be implemented later.
 # Some other features might show up, too.
+# NOTICE: If we manage to pass 1000, it is gonna be split up.

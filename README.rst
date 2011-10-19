@@ -3,8 +3,8 @@ README for PKGBUILDer
 =====================
 :Info: This is the README file for PKGBUILDer.
 :Author: Kwpolska <kwpolska@kwpolska.tk>
-:Date: 2011-10-18
-:Version: 2.1.2.3
+:Date: 2011-10-19
+:Version: 2.1.2.4
 
 PKGBUILDer.  A Python AUR helper/library.
 =========================================
