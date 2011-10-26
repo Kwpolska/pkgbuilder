@@ -14,6 +14,7 @@ task :help do
     puts "  aur       Uploads an AUR tarball."
     puts "  docshtml  Creates the docs in HTML."
     puts "  docszip   Zips the docs made by docshtml."
+    puts "  git       Pushes the changes to GitHub."
 
 end
 
@@ -29,7 +30,7 @@ task :prepare, :ver do |t, args|
 
     sh "sed \"s/version=.*/version='#{version}',/\" setup.py -i"
     sh "sed \"s/release = .*/release = '#{version}'/\" docs/conf.py -i"
-    sh "sed \"s/version = .*/version = '#{version}'/\" docs/conf.py -i"
+    #sh "sed \"s/version = .*/version = '#{version}'/\" docs/conf.py -i"
     sh "sed \"s/:Version: .*/:Version: #{version}/\" docs/*.rst -i"
     sh "sed \"s/:Version: .*/:Version: #{version}/\" README.rst -i"
     sh "sed \"s/BUILDer .* do/BUILDer #{version} do/\" docs/index.rst -i"
