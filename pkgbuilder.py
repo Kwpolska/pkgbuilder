@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-# PKGBUILDer v2.1.2.4
+# PKGBUILDer v2.1.2.5
 # A Python AUR helper/library.
-# USAGE: ./build.py pkg1 [pkg2] [pkg3] (and more)
 # Copyright (C) 2011, Kwpolska
 # All rights reserved.
 #
@@ -52,7 +51,7 @@ import datetime
 import gettext
 import functools
 
-VERSION = '2.1.2.4'
+VERSION = '2.1.2.5'
 T = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
 _ = T.gettext
 
@@ -80,11 +79,13 @@ class PBDS:
         self.pacman = False
         self.validate = True
         self.depcheck = True
+        self.mkpginst = True
         self.categories = ['E', 'E', 'daemons', 'devel', 'editors',
                            'emulators', 'games', 'gnome', 'i18n', 'kde',
                            'lib', 'modules', 'multimedia', 'network',
                            'office', 'science', 'system', 'x11',
                            'xfce', 'kernels']
+        self.inttext = _('[ERR5001] Aborted by user! Exiting...')
 
     def colorson(self):
         """Colors on.
@@ -400,8 +401,9 @@ class Build:
 :Message codes: none."""
         self.utils = Utils()
         self.aururl = '{0}://aur.archlinux.org{1}'
-
-    def auto_build(self, pkgname, validate = True, performdepcheck = True):
+#TODO help
+    def auto_build(self, pkgname, validate = True, performdepcheck = True,
+                   makepkginstall = True):
         """NOT the actual build function.
 This function makes validation and building AUR deps possible.
 If you can, use it.
@@ -415,7 +417,8 @@ If you can, use it.
     ERR3301, ERR34?? (ERR3401, ERR3450, ERR3451, ERR3452), INF3450.
 :Former data:
     2.0 Name: build."""
-        build_result = self.build_runner(pkgname, performdepcheck)
+        build_result = self.build_runner(pkgname, performdepcheck,
+                                         makepkginstall)
         try:
             if build_result[0] == 0:
                 fancy_msg(_('The build function reported a proper build.'))
@@ -446,8 +449,10 @@ installed {0}').format(pkg.version))
                 fancy_warning(_('[ERR3401] Building more AUR packages is \
 required.'))
                 for pkgname2 in build_result:
-                    self.auto_build(pkgname2, True)
-                self.auto_build(pkgname, True)
+                    self.auto_build(pkgname2, validate, performdepcheck,
+                                    makepkginstall)
+                self.auto_build(pkgname, validate, performdepcheck,
+                                makepkginstall)
         except PBError as inst:
             fancy_error(str(inst))
 
@@ -578,8 +583,9 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
                     raise PBError(_('[ERR3201] depcheck: cannot find {0} \
 anywhere').format(dep))
             return parseddeps
-
-    def build_runner(self, pkgname, performdepcheck = True):
+#TODO help
+    def build_runner(self, pkgname, performdepcheck = True,
+                     makepkginstall = True):
         """A build function, which actually links to others.  Do not use it
 unless you re-implement auto_build.
 
@@ -650,10 +656,15 @@ find {0} anywhere').format(dep))
 ror.  The PKGBUILD cannot be read.  There are invalid UTF-8 characters (\
 eg. in the Maintainer field.)  Error message: {0}').format(str(inst)))
 
-            asroot = ''
+            mpparams = ''
+
+            if makepkginstall == False:
+                mpparams = mpparams+'i'
+
             if os.geteuid() == 0:
-                asroot = ' --asroot'
-            return [subprocess.call('/usr/bin/makepkg -si'+asroot,
+                mpparams = mpparams+' --asroot'
+
+            return [subprocess.call('/usr/bin/makepkg -s'+mpparams,
             shell=True), 'makepkg']
             # In version 2.0, this comment couldn't believe that
             # the main function takes only one line.  But, right now,
@@ -760,7 +771,8 @@ class Upgrade:
             return 0
         for pkgname in upgradeable:
             pblog('Building {0}'.format(pkgname))
-            self.build.auto_build(pkgname, DS.validate, DS.depcheck)
+            self.build.auto_build(pkgname, DS.validate, DS.depcheck,
+                                  DS.mkpginst)
 
 pblog('Initialized.')
 
@@ -792,11 +804,16 @@ use pacman syntax if you want to.'))
     argopt.add_argument('-D', '--nodepcheck', action='store_false',
                         default=True, dest='depcheck', help=_('don\'t \
                         check dependencies (may break makepkg)'))
-    argopt.add_argument('-S', '--sync', action='store_true', default=False,
-                        dest='pac', help=_('pacman syntax compatiblity'))
+    argopt.add_argument('-w', '--buildonly', action='store_false',
+                        default=True, dest='mkpginst', help=_('don\'t \
+                        install packages after building'))
+#TODO
     argopt.add_argument('-V', '--novalidation', action='store_false',
                         default=True, dest='valid', help=_('don\'t check \
                         if packages were installed after build'))
+
+    argopt.add_argument('-S', '--sync', action='store_true', default=False,
+                        dest='pac', help=_('pacman syntax compatiblity'))
     argopt.add_argument('-y', '--refresh', action='store_true',
                         default=False, dest='pacupd', help=_('pacman \
                         syntax compatiblity'))
@@ -814,6 +831,7 @@ use pacman syntax if you want to.'))
     DS.validate = args.valid
     DS.depcheck = args.depcheck
     DS.pacman = args.pac
+    DS.mkpginst = args.mkpginst
     try:
         utils = Utils()
         build = Build()
@@ -912,7 +930,7 @@ limitation'))
     pblog('Ran through all the addon features, building...')
     for pkgname in args.pkgs:
         pblog('Building {0}'.format(pkgname))
-        build.auto_build(pkgname, DS.validate, DS.depcheck)
+        build.auto_build(pkgname, DS.validate, DS.depcheck, DS.mkpginst)
 
     pblog('Quitting.')
 
