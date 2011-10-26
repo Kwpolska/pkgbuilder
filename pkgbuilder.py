@@ -643,7 +643,7 @@ unless you re-implement auto_build.
                     for pkg, pkgtype in deps.items():
                         if pkgtype == -1:
                             raise PBError(_('[ERR3201] depcheck: cannot \
-find {0} anywhere').format(dep))
+find {0} anywhere').format(pkg))
                         if pkgtype == 2:
                             aurbuild.append(pkg)
 
