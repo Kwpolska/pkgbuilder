@@ -1,12 +1,29 @@
-.. PKGBUILDer documentation master file, created by
-   sphinx-quickstart on Sun Sep 18 14:35:50 2011.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+PKGBUILDer.  A Python AUR helper/library.
+=========================================
 
-PKGBUILDer 2.1.2.4 documentation
-================================
 
-Contents:
+.. note::
+    This documentation is compatible with version *|version|* of
+    PKGBUILDer.
+    The current version on your system can be checked by running
+    `pkgbuilder -v`.
+
+PKGBUILDer is an AUR helper, i.e. an application which builds AUR
+packages.  It can be used in conjunction with pacman (with a special
+script).  It uses various techniques to automatize the process as
+much as possible.
+
+Since version 2.1.0, PKGBUILDer provides modules that can be used in
+other scripts.
+
+For standalone use, see the :ref:`PKGBUILDer man page <pkgbuilder>`.
+Reading the appendices (:ref:`README` and
+:ref:`Message codes <messagecodes>`) is also a good idea.
+
+For python module usage, see the :ref:`Classes list <classes>`.
+
+Table of Contents
+-----------------
 
 .. toctree::
    :numbered:
@@ -18,7 +35,7 @@ Contents:
    LICENSE
 
 Indices and tables
-==================
+------------------
 
 * :ref:`genindex`
 * :ref:`modindex`
