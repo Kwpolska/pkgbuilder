@@ -29,6 +29,7 @@ task :prepare, :ver do |t, args|
 
     sh "sed \"s/version=.*/version='#{version}',/\" setup.py -i"
     sh "sed \"s/release = .*/release = '#{version}'/\" docs/conf.py -i"
+    sh "sed \"s/version = .*/version = '#{version}'/\" docs/conf.py -i"
     sh "sed \"s/:Version: .*/:Version: #{version}/\" docs/*.rst -i"
     sh "sed \"s/:Version: .*/:Version: #{version}/\" README.rst -i"
     sh "sed \"s/BUILDer .* do/BUILDer #{version} do/\" docs/index.rst -i"
@@ -53,8 +54,8 @@ task :docs do
     sh "rst2man docs/pkgbuilder.rst > docs/pkgbuilder.8"
     sh "gzip docs/pkgbuilder.8"
 
-    Rake::Task[:docshtml].invoke
-    Rake::Task[:docszip].invoke
+    #Rake::Task[:docshtml].invoke
+    #Rake::Task[:docszip].invoke
 end
 
 task :pypi do
@@ -82,6 +83,27 @@ task :aur, :ver do |t, args|
 
 end
 
+task :git, :ver, :msg do |t, args|
+    if args[:ver].to_s.chomp == ''
+        puts "Version number?"
+        version = STDIN.gets.chomp
+    else
+        version = args[:ver].chomp
+    end
+
+    if args[:msg].to_s.chomp == ''
+        puts "Commit message (sans the version)?"
+        commitmsg = STDIN.gets.chomp
+    else
+        commitmsg = args[:msg].chomp
+    end
+
+    sh "git add *"
+    sh "git commit -asm 'v#{version}: #{commitmsg}'"
+    sh "git tag -a 'v#{version}' -m 'Version #{version}'"
+    sh "git push --tags"
+end
+
 task :update, :ver do |t, args|
     if args[:ver].to_s.chomp == ''
         puts "Version number?"
@@ -99,5 +121,7 @@ task :update, :ver do |t, args|
 
     Rake::Task[:aur].invoke(version)
 
-    puts "Done.  Please upload the docs tarball to PyPI."
+    Rake::Task[:git].invoke(version, '')
+
+    puts "Done everything.  Bye."
 end
