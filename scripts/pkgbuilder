@@ -4,5 +4,5 @@ import pkgbuilder
 try:
     pkgbuilder.main_routine()
 except KeyboardInterrupt:
-    pkgbuilder.fancy_error('[ERR5001] KeyboardInterrupt (^C) caught.')
+    pkgbuilder.fancy_error(pkgbuilder.DS.inttext)
     exit(0)

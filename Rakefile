@@ -29,6 +29,7 @@ task :prepare, :ver do |t, args|
 
     sh "sed \"s/version=.*/version='#{version}',/\" setup.py -i"
     sh "sed \"s/release = .*/release = '#{version}'/\" docs/conf.py -i"
+    sh "sed \"s/version = .*/version = '#{version}'/\" docs/conf.py -i"
     sh "sed \"s/:Version: .*/:Version: #{version}/\" docs/*.rst -i"
     sh "sed \"s/:Version: .*/:Version: #{version}/\" README.rst -i"
     sh "sed \"s/BUILDer .* do/BUILDer #{version} do/\" docs/index.rst -i"
@@ -53,8 +54,8 @@ task :docs do
     sh "rst2man docs/pkgbuilder.rst > docs/pkgbuilder.8"
     sh "gzip docs/pkgbuilder.8"
 
-    Rake::Task[:docshtml].invoke
-    Rake::Task[:docszip].invoke
+    #Rake::Task[:docshtml].invoke
+    #Rake::Task[:docszip].invoke
 end
 
 task :pypi do
@@ -99,5 +100,5 @@ task :update, :ver do |t, args|
 
     Rake::Task[:aur].invoke(version)
 
-    puts "Done.  Please upload the docs tarball to PyPI."
+    puts "Done."
 end

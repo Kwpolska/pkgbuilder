@@ -3,7 +3,7 @@ PKGBUILDer.  A Python AUR helper/library.
 
 
 .. note::
-    This documentation is compatible with version *|version|* of
+    This documentation is compatible with version |release| of
     PKGBUILDer.
     The current version on your system can be checked by running
     `pkgbuilder -v`.
@@ -16,11 +16,11 @@ much as possible.
 Since version 2.1.0, PKGBUILDer provides modules that can be used in
 other scripts.
 
-For standalone use, see the :ref:`PKGBUILDer man page <pkgbuilder>`.
-Reading the appendices (:ref:`README` and
-:ref:`Message codes <messagecodes>`) is also a good idea.
+For standalone use, see the :doc:`PKGBUILDer man page <pkgbuilder>`.
+Reading the appendices (:doc:`README` and
+:doc:`Message codes <messagecodes>`) is also a good idea.
 
-For python module usage, see the :ref:`Classes list <classes>`.
+For python module usage, see the :doc:`Classes list <classes>`.
 
 Table of Contents
 -----------------
