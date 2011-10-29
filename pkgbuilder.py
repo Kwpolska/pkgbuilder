@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# PKGBUILDer v2.1.2.6
+# PKGBUILDer v2.1.2.7
 # A Python AUR helper/library.
 # Copyright (C) 2011, Kwpolska
 # All rights reserved.
@@ -51,7 +51,7 @@ import datetime
 import gettext
 import functools
 
-VERSION = '2.1.2.6'
+VERSION = '2.1.2.7'
 T = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
 _ = T.gettext
 
@@ -448,13 +448,14 @@ installed {0}').format(pkg.version))
                 os.chdir('../')
                 fancy_warning(_('[ERR3401] Building more AUR packages is \
 required.'))
-                for pkgname2 in build_result:
+                for pkgname2 in build_result[1]:
                     self.auto_build(pkgname2, validate, performdepcheck,
                                     makepkginstall)
                 self.auto_build(pkgname, validate, performdepcheck,
                                 makepkginstall)
         except PBError as inst:
             fancy_error(str(inst))
+            exit(1)
 
     def download(self, urlpath, filename, prot = 'http'):
         """Downloads an AUR tarball (http) to the current directory.
@@ -776,7 +777,7 @@ class Upgrade:
 
 pblog('Initialized.')
 
-def main_routine():
+def main():
     """Main routine.
 
 :Arguments: none.
@@ -805,9 +806,8 @@ use pacman syntax if you want to.'))
                         default=True, dest='depcheck', help=_('don\'t \
                         check dependencies (may break makepkg)'))
     argopt.add_argument('-w', '--buildonly', action='store_false',
-                        default=True, dest='mkpginst', help=_('don\'t \
-                        install packages after building'))
-#TODO
+                        default=True, dest='mkpginst', help=_('build \
+                        packages but do not install/upgrade anything'))
     argopt.add_argument('-V', '--novalidation', action='store_false',
                         default=True, dest='valid', help=_('don\'t check \
                         if packages were installed after build'))
@@ -933,6 +933,9 @@ limitation'))
         build.auto_build(pkgname, DS.validate, DS.depcheck, DS.mkpginst)
 
     pblog('Quitting.')
+
+if __name__ == '__main__':
+    main()
 
 # Over 900 lines!  Compare this to build.pl's 56 (including ~8 useless...)
 # New features will be included when they will be added to the AUR RPC.

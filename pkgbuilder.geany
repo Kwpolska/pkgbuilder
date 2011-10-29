@@ -1,0 +1,26 @@
+
+[indentation]
+indent_width=4
+indent_type=0
+indent_hard_tab_width=8
+detect_indent=false
+detect_indent_width=false
+indent_mode=2
+
+[project]
+name=pkgbuilder
+base_path=/home/kwpolska/git/pkgbuilder/
+description=
+file_patterns=*.py;
+
+[long line marker]
+long_line_behaviour=1
+long_line_column=75
+
+[files]
+current_page=0
+FILE_NAME_0=33;Python;0;16;0;1;0;/home/kwpolska/git/pkgbuilder/pkgbuilder.py;0;4
+FILE_NAME_1=86;None;0;16;0;1;1;/home/kwpolska/git/pkgbuilder/Rakefile;0;4
+
+[VTE]
+last_dir=/home/kwpolska/git/pkgbuilder

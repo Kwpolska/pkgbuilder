@@ -1,7 +1,8 @@
+#!/usr/bin/rake update
 project = "pkgbuilder"
 aurcat = "16"
 
-task :default => [:help]
+task :default => [:update]
 
 task :help do
     puts "Usage: rake command"
@@ -35,6 +36,7 @@ task :prepare, :ver do |t, args|
     sh "sed \"s/:Version: .*/:Version: #{version}/\" README.rst -i"
     sh "sed \"s/BUILDer .* do/BUILDer #{version} do/\" docs/index.rst -i"
     sh "sed \"s/# PKG.*/# PKGBUILDer v#{version}/\" pkgbuilder.py -i"
+    sh "sed \"s/File ver.*/File version: #{version}/\" scripts/pkgbuilder -i"
     sh "sed \"s/VERSION = .*/VERSION = '#{version}'/\" pkgbuilder.py -i"
     sh "sed \"s/pkgver=.*/pkgver=#{version}/\" PKGBUILD -i"
 
