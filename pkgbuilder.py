@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# PKGBUILDer v2.1.2.7
+# PKGBUILDer v2.1.2.8
 # A Python AUR helper/library.
 # Copyright (C) 2011, Kwpolska
 # All rights reserved.
@@ -51,7 +51,7 @@ import datetime
 import gettext
 import functools
 
-VERSION = '2.1.2.7'
+VERSION = '2.1.2.8'
 T = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
 _ = T.gettext
 
@@ -324,6 +324,21 @@ class Utils:
         aur_pkgs = self.aur.request('info', pkgname)
         if aur_pkgs['results'] == 'No results found':
             return None
+        else:
+            return aur_pkgs['results']
+
+    def msearch(self, username):
+        """Returns all packages of the user.
+
+:Arguments: username.
+:Input: none.
+:Output: none.
+:Returns: a list.
+:Exceptions: none.
+:Message codes: none."""
+        aur_pkgs = self.aur.request('msearch', pkgname)
+        if aur_pkgs['results'] == 'No results found':
+            return []
         else:
             return aur_pkgs['results']
 

@@ -18,9 +18,9 @@ long_line_behaviour=1
 long_line_column=75
 
 [files]
-current_page=0
+current_page=1
 FILE_NAME_0=33;Python;0;16;0;1;0;/home/kwpolska/git/pkgbuilder/pkgbuilder.py;0;4
-FILE_NAME_1=86;None;0;16;0;1;1;/home/kwpolska/git/pkgbuilder/Rakefile;0;4
+FILE_NAME_1=2907;None;0;16;0;1;1;/home/kwpolska/git/pkgbuilder/Rakefile;0;4
 
 [VTE]
 last_dir=/home/kwpolska/git/pkgbuilder

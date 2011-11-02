@@ -4,8 +4,8 @@ PKGBUILDer
 
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: See Appendix B.
-:Date: 2011-10-29
-:Version: 2.1.2.7
+:Date: 2011-11-02
+:Version: 2.1.2.8
 :Manual section: 8
 :Manual group: PKGBUILDer manual
 

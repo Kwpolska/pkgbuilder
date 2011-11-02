@@ -4,8 +4,8 @@ Classes in PKGBUILDer
 
 :Author: Kwpolska
 :Copyright: See Appendix B.
-:Date: 2011-10-29
-:Version: 2.1.2.7
+:Date: 2011-11-02
+:Version: 2.1.2.8
 
 .. index:: classes
 .. module:: PKGBUILDer
@@ -186,6 +186,20 @@ This is the class with many random utilities.  It defines three methods:
 Returns information about a package.  Almost equivalent to
 :meth:`AUR.request('info', pkgname)`, but returns **`None`** if the package
 doesn't exist.
+
+.. method:: msearch(username)
+.. index:: info
+
+:Arguments: username.
+:Input: none.
+:Output: none.
+:Returns: a list.
+:Exceptions: none.
+:Message codes: none.
+
+Returns all packages of the user.  Almost equivalent to
+:meth:`AUR.request('msearch', username)`, but returns **`[]`** if no
+packages were found.
 
 .. method:: search(pkgname)
 .. index:: search
