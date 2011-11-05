@@ -101,9 +101,9 @@ task :git, :ver, :msg do |t, args|
         commitmsg = args[:msg].chomp
     end
 
+    sh "rm -rfv __pycache__/ build/"
     sh "git add *"
     sh "git commit -asm 'v#{version}: #{commitmsg}'"
-    sh "rm -rfv __pycache__/ build/"
     sh "git tag -a 'v#{version}' -m 'Version #{version}'"
     sh "git push --tags"
 end

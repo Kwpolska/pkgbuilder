@@ -4,8 +4,8 @@ Classes in PKGBUILDer
 
 :Author: Kwpolska
 :Copyright: See Appendix B.
-:Date: 2011-11-02
-:Version: 2.1.2.8
+:Date: 2011-11-05
+:Version: 2.1.2.9
 
 .. index:: classes
 .. module:: PKGBUILDer
@@ -386,9 +386,11 @@ Upgrades packages.  Simillar to :meth:`Build.auto_build()`.
 :Arguments: none.
 :Input: none.
 :Output: none.
-:Returns: foreign packages.
+:Returns: foreign packages (format: [['pkgname', 'pkgver']]
 :Exceptions: none.
 :Message codes: none.
+:Former data:
+    2.1.2.8 return format: ['pkgname']
 
 Gathers a list of all foreign packages.
 

@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# PKGBUILDer v2.1.2.8
+# PKGBUILDer v2.1.2.9
 # A Python AUR helper/library.
 # Copyright (C) 2011, Kwpolska
 # All rights reserved.
@@ -51,7 +51,7 @@ import datetime
 import gettext
 import functools
 
-VERSION = '2.1.2.8'
+VERSION = '2.1.2.9'
 T = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
 _ = T.gettext
 
@@ -291,7 +291,6 @@ class AUR:
 :Returns: data from the API.
 :Exceptions: urllib.error.URLError, urllib.error.HTTPError.
 :Message codes: none."""
-
         return json.loads(self.jsonmultiinfo(args, prot))
 
 ### Utils           common global utilities ###
@@ -594,6 +593,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
                     parseddeps[dep] = 1
                 elif self.utils.info(dep) != None:
                     parseddeps[dep] = 2
+                elif dep == '':
+                    dep = '' #workaround, but this is supposed to do nothing
                 else:
                     parseddeps[dep] = -1
                     raise PBError(_('[ERR3201] depcheck: cannot find {0} \
@@ -714,9 +715,11 @@ class Upgrade:
 :Arguments: none.
 :Input: none.
 :Output: none.
-:Returns: foreign packages.
+:Returns: foreign packages (format: [['pkgname', 'pkgver']]
 :Exceptions: none.
-:Message codes: none."""
+:Message codes: none.
+:Former data:
+    2.1.2.8 return format: ['pkgname']"""
 
         # Based on paconky.py.
         installed = set(p for p in self.localdb.pkgcache)
@@ -753,7 +756,7 @@ class Upgrade:
         for i in aurlist:
             pkg = self.localdb.get_pkg(i['Name'])
             if pyalpm.vercmp(i['Version'], pkg.version) > 0:
-                upgradeable.append(i['Name'])
+                upgradeable.append([i['Name'], i['Version']])
         return upgradeable
 
     def auto_upgrade(self):
@@ -767,19 +770,35 @@ class Upgrade:
 :Message codes: none.
 :Notice: things break here A LOT."""
         pblog('Ran auto_upgrade.')
-        fancy_msg(_('Gathering data about packages...'))
+        if DS.pacman == True:
+            print(':: '+_('Gathering data about packages...'))
+        else:
+            fancy_msg(_('Gathering data about packages...'))
 
         foreign = self.gather_foreign_pkgs()
         upgradeable = self.list_upgradeable(foreign.keys())
-        upglen = len(upgradeable)
+        upstring = '  '.join('-'.join(words) for words in upgradeable)
+        uplen = len(upgradeable)
 
-        fancy_msg(_('{0} upgradeable packages found:').format(upglen))
-        if upglen == 0:
-            fancy_msg2(_('there is nothing to do'))
-            return 0
-        fancy_msg2('  '.join(upgradeable))
-        query = (DS.colors['green']+'==>'+DS.colors['all_off']+
-                DS.colors['bold']+' '+_('Proceed with installation? \
+        #fancy_msg(_('{0} upgradeable packages found:').format(upglen))
+        if DS.pacman == True:
+            print(_(':: Starting full AUR upgrade...'))
+            if uplen == 0:
+                print(_(' there is nothing to do'))
+                return 0
+
+            print('\n'+_('Targets ({0}): ').format(uplen)+upstring+'\n')
+            query = _('Proceed with installation? [Y/n] ')
+
+        else:
+            fancy_msg(_('{0} upgradeable packages found:').format(uplen))
+            if uplen == 0:
+                fancy_msg2(_('there is nothing to do'))
+                return 0
+
+            fancy_msg2(upstring)
+            query = (DS.colors['green']+'==>'+DS.colors['all_off']+
+                     DS.colors['bold']+' '+_('Proceed with installation? \
 [Y/n] ')+DS.colors['all_off'])
         yesno = input(query)
         yesno = yesno + ' ' # cheating...
