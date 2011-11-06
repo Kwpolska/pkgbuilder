@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.1.1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-29 19:14+0100\n"
-"PO-Revision-Date: 2011-11-05 20:48+0100\n"
+"POT-Creation-Date: 2011-11-06 18:34+0100\n"
+"PO-Revision-Date: 2011-11-06 18:34+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: \n"
 "Language: \n"
@@ -19,189 +19,203 @@ msgstr ""
 "X-Poedit-Basepath: /home/kwpolska/git/pkgbuilder\n"
 "X-Poedit-SearchPath-0: /home/kwpolska/git/pkgbuilder\n"
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:88
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:82
 msgid "[ERR5001] Aborted by user! Exiting..."
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:181
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:163
 msgid "WARNING:"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:195
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:173
 msgid "ERROR:"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:369
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:316
 msgid " [installed: {0}]"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:371
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:318
 msgid " [installed]"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:374
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:321
 msgid "[out of date]"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:380
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:383
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:327
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:330
 msgid "votes"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:424
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:363
 msgid "The build function reported a proper build."
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:433
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:372
 msgid "[ERR3451] validation: NOT installed"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:437
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:376
 msgid "[ERR3452] validation: outdated {0}"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:440
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:379
 msgid "[INF3450] validation: installed {0}"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:444
-msgid "[ERR3301] makepkg returned 1."
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:383
+msgid "[ERR3301] build returned 1."
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:449
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:388
 msgid "[ERR3401] Building more AUR packages is required."
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:479
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:416
 msgid "[ERR3101] download: 0 bytes downloaded"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:496
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:431
 msgid "[ERR3151] extract: no files extracted"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:584
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:646
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:516
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:577
 msgid "[ERR3201] depcheck: cannot find {0} anywhere"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:612
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:542
 msgid "[ERR3001] Package {0} not found."
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:615
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:545
 msgid "Building {0}..."
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:623
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:554
 msgid "Downloading the tarball..."
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:626
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:557
 msgid "{0} kB downloaded"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:628
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:559
 msgid "Extracting..."
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:629
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:560
 msgid "{0} files extracted"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:633
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:564
 msgid "Checking dependencies..."
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:638
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:569
 msgid "found in system"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:638
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:569
 msgid "found in repos"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:639
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:570
 msgid "found in the AUR"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:642
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:573
 msgid "none found"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:656
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:587
 msgid "[ERR3202] depcheck: UnicodeDecodeError.  The PKGBUILD cannot be read.  There are invalid UTF-8 characters (eg. in the Maintainer field.)  Error message: {0}"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:755
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:679
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:681
 msgid "Gathering data about packages..."
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:761
-msgid "{0} upgradeable packages found:"
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:690
+msgid ":: Starting full AUR upgrade..."
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:763
-msgid "there is nothing to do"
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:692
+msgid " there is nothing to do"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:767
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:695
+msgid "Targets ({0}): "
+msgstr ""
+
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:697
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:707
 msgid "Proceed with installation? [Y/n] "
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:791
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:700
+msgid "{0} upgradeable packages found:"
+msgstr ""
+
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:702
+msgid "there is nothing to do"
+msgstr ""
+
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:726
 msgid "A python3 AUR helper (sort of.)  Wrapper-friendly (pacman-like output.)"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:792
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:727
 msgid "You can use pacman syntax if you want to."
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:798
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:733
 msgid "packages to build"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:803
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:738
 msgid "don't use                         colors in output"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:806
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:741
 msgid "don't                         check dependencies (may break makepkg)"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:809
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:744
 msgid "build                         packages but do not install/upgrade anything"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:812
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:747
 msgid "don't check                         if packages were installed after build"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:816
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:751
 msgid "pacman syntax compatiblity"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:818
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:753
 msgid "pacman                         syntax compatiblity"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:822
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:757
 msgid "view package information"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:824
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:759
 msgid "search the                         AUR for matching strings"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:828
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:763
 msgid "upgrade installed AUR packages"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:849
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:784
 msgid "Package {0} not found."
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:853
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:788
 msgid ""
 "Category       : {cat}\n"
 "Name           : {nme}\n"
@@ -216,23 +230,23 @@ msgid ""
 "Description    : {dsc}\n"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:871
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:806
 msgid "yes"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:872
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:807
 msgid "no"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:887
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:822
 msgid "[ERR5002] search string too short, API limitation"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:889
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:824
 msgid "Searching for exact match..."
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:892
+#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:827
 msgid "not found"
 msgstr ""
 
