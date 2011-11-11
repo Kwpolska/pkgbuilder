@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# PKGBUILDer v2.1.2.11
+# PKGBUILDer v2.1.2.12
 # A Python AUR helper/library.
 # Copyright (C) 2011, Kwpolska
 # All rights reserved.
@@ -52,7 +52,7 @@ import gettext
 import functools
 import logging
 
-VERSION = '2.1.2.11'
+VERSION = '2.1.2.12'
 
 ### PBDS            PB global data storage  ###
 class PBDS:
@@ -276,7 +276,7 @@ class Utils:
 
 :Arguments: username.
 :Returns: a list."""
-        aur_pkgs = self.aur.request('msearch', pkgname)
+        aur_pkgs = self.aur.request('msearch', username)
         if aur_pkgs['results'] == 'No results found':
             return []
         else:
