@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# PKGBUILDer v2.1.2.10
+# PKGBUILDer v2.1.2.11
 # A Python AUR helper/library.
 # Copyright (C) 2011, Kwpolska
 # All rights reserved.
@@ -52,7 +52,7 @@ import gettext
 import functools
 import logging
 
-VERSION = '2.1.2.10'
+VERSION = '2.1.2.11'
 
 ### PBDS            PB global data storage  ###
 class PBDS:
@@ -81,7 +81,7 @@ class PBDS:
                            'xfce', 'kernels']
         self.inttext = _('[ERR5001] Aborted by user! Exiting...')
         confhome = os.getenv('XDG_CONFIG_HOME')
-        if confhome == '':
+        if confhome == None:
             confhome = os.path.expanduser('~/.config')
 
         self.confdir = confhome+'/kwpolska/pkgbuilder'
