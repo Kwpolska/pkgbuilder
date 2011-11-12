@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# PKGBUILDer v2.1.2.12
+# PKGBUILDer v2.1.2.13
 # A Python AUR helper/library.
 # Copyright (C) 2011, Kwpolska
 # All rights reserved.
@@ -52,7 +52,7 @@ import gettext
 import functools
 import logging
 
-VERSION = '2.1.2.12'
+VERSION = '2.1.2.13'
 
 ### PBDS            PB global data storage  ###
 class PBDS:
@@ -193,10 +193,12 @@ class PBError(Exception):
 
 :Arguments: a message."""
         self.msg = msg
-        L.exception(text)
+        L.exception(self.msg)
 
     def __str__(self):
-        """You want to see error messages, don't you?"""
+        """You want to see error messages, don't you?
+
+:Returns: the error message."""
         return self.msg
 
 ### AUR             AUR RPC calls           ###
