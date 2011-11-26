@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# PKGBUILDer v2.1.2.13
+# PKGBUILDer v2.1.2.14
 # A Python AUR helper/library.
 # Copyright (C) 2011, Kwpolska
 # All rights reserved.
@@ -52,7 +52,7 @@ import gettext
 import functools
 import logging
 
-VERSION = '2.1.2.13'
+VERSION = '2.1.2.14'
 
 ### PBDS            PB global data storage  ###
 class PBDS:
@@ -193,7 +193,7 @@ class PBError(Exception):
 
 :Arguments: a message."""
         self.msg = msg
-        L.exception(self.msg)
+        L.error('PBError: '+self)
 
     def __str__(self):
         """You want to see error messages, don't you?
@@ -209,8 +209,8 @@ class AUR:
         """AUR init.
 
 :Returns: an AUR object."""
-        self.rpc = '{0}://aur.archlinux.org/rpc.php?type={1}&arg={2}'
-        self.mrpc = '{0}://aur.archlinux.org/rpc.php?type=multiinfo{1}'
+        self.rpc = '{0}://aur.archlinux.org/rpc.pachandle.?type={1}&arg={2}'
+        self.mrpc = '{0}://aur.archlinux.org/rpc.pachandle.?type=multiinfo{1}'
 
     def jsonreq(self, rtype, arg, prot = 'http'):
         """Makes a request and returns plain JSON data.
@@ -307,8 +307,8 @@ class Utils:
 
 :Former data:
     2.0 Name: showInfo."""
-        H = pycman.config.init_with_config('/etc/pacman.conf')
-        localdb = H.get_localdb()
+        pachandle = pycman.config.init_with_config('/etc/pacman.conf')
+        localdb = pachandle.get_localdb()
         lpkg = localdb.get_pkg(pkg['Name'])
 
         category = ''
@@ -366,8 +366,9 @@ If you can, use it.
                 os.chdir('../')
                 if validate == True:
                     # check if installed
-                    H = pycman.config.init_with_config('/etc/pacman.conf')
-                    localdb = H.get_localdb()
+                    pachandle = pycman.config.init_with_config(
+                                '/etc/pacman.conf')
+                    localdb = pachandle.get_localdb()
                     pkg = localdb.get_pkg(pkgname)
                     aurversion = self.utils.info(pkgname)['Version']
                     if pkg is None:
@@ -489,12 +490,12 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
             return {}
         else:
             parseddeps = {}
-            H = pycman.config.init_with_config('/etc/pacman.conf')
-            localpkgs = H.get_localdb().pkgcache
+            pachandle = pycman.config.init_with_config('/etc/pacman.conf')
+            localpkgs = pachandle.get_localdb().pkgcache
             syncpkgs = []
-            for j in [ i.pkgcache for i in H.get_syncdbs() ]:
+            for j in [ i.pkgcache for i in pachandle.get_syncdbs() ]:
                 syncpkgs.append(j)
-            syncpkgs = functools.reduce(lambda x,y:x+y,syncpkgs)
+            syncpkgs = functools.reduce(lambda x, y:x+y, syncpkgs)
             #can someone help me fix the above line? TODO.
             for dep in depends:
                 if re.search('[<=>]', dep):
@@ -577,7 +578,7 @@ unless you re-implement auto_build.
                     for pkg, pkgtype in deps.items():
                         if pkgtype == -1:
                             raise PBError(_('[ERR3201] depcheck: cannot \
-find {0} anywhere').format(dep))
+find {0} anywhere').format(pkg))
                         if pkgtype == 2:
                             aurbuild.append(pkg)
 
@@ -623,8 +624,8 @@ class Upgrade:
         """Upgrade init."""
         self.aur = AUR()
         self.build = Build()
-        self.H = pycman.config.init_with_config('/etc/pacman.conf')
-        self.localdb = self.H.get_localdb()
+        self.pachandle = pycman.config.init_with_config('/etc/pacman.conf')
+        self.localdb = self.pachandle.get_localdb()
 
     def gather_foreign_pkgs(self):
         """Gathers a list of all foreign packages.
@@ -636,7 +637,7 @@ class Upgrade:
         # Based on paconky.py.
         installed = set(p for p in self.localdb.pkgcache)
 
-        syncdbs = self.H.get_syncdbs()
+        syncdbs = self.pachandle.get_syncdbs()
         for sdb in syncdbs:
             for pkg in list(installed):
                 if sdb.get_pkg(pkg.name):
@@ -876,10 +877,3 @@ if __name__ == '__main__':
     main()
 
 logging.shutdown()
-
-# Over 900 lines!  Compare this to build.pl's 56 (including ~8 useless...)
-# New features will be included when they will be added to the AUR RPC.
-# RPC: <http://aur.archlinux.org/rpc.php> (search info msearch multiinfo)
-# If something new will appear there, tell me through GH Issues or mail.
-# They would be implemented later.
-# Some other features might show up, too.

@@ -3,8 +3,8 @@ Appendix B. License for PKGBUILDer
 ==================================
 :Info: This is an appendix to the PKGBUILDer documentation.
 :Author: Kwpolska <kwpolska@kwpolska.tk>
-:Date: 2011-11-12
-:Version: 2.1.2.13
+:Date: 2011-11-26
+:Version: 2.1.2.14
 
 Copyright (C) 2011, Kwpolska
 All rights reserved.

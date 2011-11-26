@@ -83,7 +83,7 @@ and compile the package manually.
         ASROOT = ' --asroot'
     MPKG = subprocess.call('/usr/bin/makepkg -si'+ASROOT, shell=True)
 
-    if MPKG == 1:
+    if MPKG != 0:
         print(_("""
 
 Something went wrong.  Please read makepkg's output and try again.

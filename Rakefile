@@ -95,7 +95,7 @@ task :git, :ver, :msg do |t, args|
     end
 
     if args[:msg].to_s.chomp == ''
-        puts "Commit message (sans the version)?                |"
+        puts "Commit message (sans the version)?       |"
         commitmsg = STDIN.gets.chomp
     else
         commitmsg = args[:msg].chomp
