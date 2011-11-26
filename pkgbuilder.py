@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# PKGBUILDer v2.1.2.14
+# PKGBUILDer v2.1.2.15
 # A Python AUR helper/library.
 # Copyright (C) 2011, Kwpolska
 # All rights reserved.
@@ -52,7 +52,7 @@ import gettext
 import functools
 import logging
 
-VERSION = '2.1.2.14'
+VERSION = '2.1.2.15'
 
 ### PBDS            PB global data storage  ###
 class PBDS:
@@ -209,8 +209,8 @@ class AUR:
         """AUR init.
 
 :Returns: an AUR object."""
-        self.rpc = '{0}://aur.archlinux.org/rpc.pachandle.?type={1}&arg={2}'
-        self.mrpc = '{0}://aur.archlinux.org/rpc.pachandle.?type=multiinfo{1}'
+        self.rpc = '{0}://aur.archlinux.org/rpc.php?type={1}&arg={2}'
+        self.mrpc = '{0}://aur.archlinux.org/rpc.php?type=multiinfo{1}'
 
     def jsonreq(self, rtype, arg, prot = 'http'):
         """Makes a request and returns plain JSON data.
