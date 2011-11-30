@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# PKGBUILDer v2.1.2.15
+# PKGBUILDer v2.1.2.16
 # A Python AUR helper/library.
 # Copyright (C) 2011, Kwpolska
 # All rights reserved.
@@ -52,7 +52,7 @@ import gettext
 import functools
 import logging
 
-VERSION = '2.1.2.15'
+VERSION = '2.1.2.16'
 
 ### PBDS            PB global data storage  ###
 class PBDS:
@@ -193,7 +193,7 @@ class PBError(Exception):
 
 :Arguments: a message."""
         self.msg = msg
-        L.error('PBError: '+self)
+        L.error('PBError: '+self.msg)
 
     def __str__(self):
         """You want to see error messages, don't you?
@@ -279,10 +279,7 @@ class Utils:
 :Arguments: username.
 :Returns: a list."""
         aur_pkgs = self.aur.request('msearch', username)
-        if aur_pkgs['results'] == 'No results found':
-            return []
-        else:
-            return aur_pkgs['results']
+        return aur_pkgs['results']
 
     def search(self, pkgname):
         """Searches for AUR packages.
@@ -290,10 +287,7 @@ class Utils:
 :Arguments: package name.
 :Returns: a list."""
         aur_pkgs = self.aur.request('search', pkgname)
-        if aur_pkgs['results'] == 'No results found':
-            return []
-        else:
-            return aur_pkgs['results']
+        return aur_pkgs['results']
 
     def print_package(self, pkg, use_categories = True, prefix=''):
         """Outputs info about package.
