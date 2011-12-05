@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# PKGBUILDer v2.1.2.16
+# PKGBUILDer v2.1.2.18
 # A Python AUR helper/library.
 # Copyright (C) 2011, Kwpolska
 # All rights reserved.
@@ -52,7 +52,7 @@ import gettext
 import functools
 import logging
 
-VERSION = '2.1.2.16'
+VERSION = '2.1.2.18'
 
 ### PBDS            PB global data storage  ###
 class PBDS:
@@ -144,7 +144,7 @@ def fancy_msg(text):
 :Output: text."""
     sys.stderr.write(DS.colors['green']+'==>'+DS.colors['all_off']+
                      DS.colors['bold']+' '+text+DS.colors['all_off']+'\n')
-    L.info('(auto fancy_msg    ) '+text)
+    L.info('(auto fancy_msg     ) '+text)
 
 def fancy_msg2(text):
     """makepkg's msg2().  Use for sub-messages.
@@ -153,7 +153,7 @@ def fancy_msg2(text):
 :Output: text."""
     sys.stderr.write(DS.colors['blue']+'  ->'+DS.colors['all_off']+
                      DS.colors['bold']+' '+text+DS.colors['all_off']+'\n')
-    L.info('(auto fancy_msg2   ) '+text)
+    L.info('(auto fancy_msg2    ) '+text)
 
 def fancy_warning(text):
     """makepkg's warning().  Use when you have problems.
@@ -163,7 +163,19 @@ def fancy_warning(text):
     sys.stderr.write(DS.colors['yellow']+'==> '+_('WARNING:')+
                      DS.colors['all_off']+DS.colors['bold']+' '+text+
                      DS.colors['all_off']+'\n')
-    L.warning('(auto fancy_warning) '+text)
+    L.warning('(auto fancy_warning ) '+text)
+
+def fancy_warning2(text):
+    """Like fancy_warning, but looks like a sub-message (fancy_msg2).
+
+:Arguments: a message.
+:Output: text."""
+    sys.stderr.write(DS.colors['yellow']+'==> '+_('WARNING:')+
+                     DS.colors['all_off']+DS.colors['bold']+' '+text+
+                     DS.colors['all_off']+'\n')
+    L.warning('(auto fancy_warning2) '+text)
+
+
 
 def fancy_error(text):
     """makepkg's error().  Use for errors.  Exitting is suggested.
@@ -173,16 +185,16 @@ def fancy_error(text):
     sys.stderr.write(DS.colors['red']+'==> '+_('ERROR:')+
                      DS.colors['all_off']+DS.colors['bold']+
                      ' '+text+DS.colors['all_off']+'\n')
-    L.error('(auto fancy_error  ) '+text)
+    L.error('(auto fancy_error   ) '+text)
 
 def fancy_error2(text):
-    """like fancy_error, but looks like a sub-message (fancy_msg2).
+    """Like fancy_error, but looks like a sub-message (fancy_msg2).
 
 :Arguments: a message.
 :Output: text."""
     sys.stderr.write(DS.colors['red']+'  ->'+DS.colors['all_off']+
                      DS.colors['bold']+' '+text+DS.colors['all_off']+'\n')
-    L.error('(auto fancy_error2 ) '+text)
+    L.error('(auto fancy_error2  ) '+text)
 
 ### PBError         errors raised here      ###
 class PBError(Exception):
@@ -464,26 +476,34 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
 
 :Arguments: a python dependency list.
 :Returns:
-    a dict, key is the package name, and value is: -1 = nowhere, 0 = system,
-    1 = repos, 2 = AUR.
+    a tuple containing a dict, whose key is the package name, and value is:
+    -2 skipped, -1 = nowhere, 0 = system, 1 = repos, 2 = AUR;
+    and a dict, whose key is the package name, and value is an explaination
+    of skipping this package.
+
 :Exceptions: PBError.
 :Message codes: ERR3201.
 :Suggested way of handling:
     ::
 
-    types = ['system', 'repos', 'aur']
-    for pkg, pkgtype in depcheck([...]).items():
-        print('{0}: found in {1}'.format(pkg, types[pkgtype])
+    types = ['system', 'repos', 'AUR']
+    depcheckresults = depcheck([...]):
+    for pkg, pkgtype in depcheckresults[0].items():
+        if pkgtype == -2:
+            print('{0} skipped due to {1}'.format(pkg, depcheckresults[1][pkg]))
+        else: #TODO MOVE TO LOCAL
+            print('{0}: found in {1}'.format(pkg, types[pkgtype])
         if pkgtype == 2: #AUR
             #build pkg here
 
 :Former data:
+    2.1.2.16 Returns: no -2, no explainations
     2.0 Returns: no -1"""
         if depends == []:
-            # THANK YOU, MAINTAINER, FOR HAVING NO DEPS AND DESTROYING ME!
             return {}
         else:
             parseddeps = {}
+            explainations = {}
             pachandle = pycman.config.init_with_config('/etc/pacman.conf')
             localpkgs = pachandle.get_localdb().pkgcache
             syncpkgs = []
@@ -509,10 +529,18 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
                 elif dep == '':
                     dep = '' #workaround, but this is supposed to do nothing
                 else:
-                    parseddeps[dep] = -1
-                    raise PBError(_('[ERR3201] depcheck: cannot find {0} \
-anywhere').format(dep))
-            return parseddeps
+                    if dep.startswith('$_'):
+                        parseddeps[dep] = -2
+                        explainations[dep] = 'using local variables'
+                    else:
+                        parseddeps[dep] = -1
+                        raise PBError(_('[ERR3201] depcheck: cannot find \
+{0} anywhere').format(dep))
+
+                    if parseddeps[dep] == -2:
+                        L.warning('depcheck: dependency {0} skipped due \
+to {1}'.format(dep, explainations[dep]))
+            return (parseddeps, explainations)
     def build_runner(self, pkgname, performdepcheck = True,
                      makepkginstall = True):
         """A build function, which actually links to others.  Do not use it
@@ -562,22 +590,26 @@ unless you re-implement auto_build.
                 try:
                     depends = self.prepare_deps(open('./PKGBUILD',
                               'rb').read().decode('utf8', 'ignore'))
-                    deps = self.depcheck(depends)
+                    depcheckres = self.depcheck(depends)
                     pkgtypes = [_('found in system'), _('found in repos'),
                                 _('found in the AUR')                     ]
                     aurbuild = []
-                    if deps == {}:
+                    if depcheckres == {}:
                         fancy_msg2(_('none found'))
 
-                    for pkg, pkgtype in deps.items():
+                    for pkg, pkgtype in depcheckres[0].items():
+                        if pkgtype == -2:
+                            fancy_warning2('{0}: skipped due to \
+{1}'.format(pkg, depcheckres[1][pkg]))
                         if pkgtype == -1:
                             raise PBError(_('[ERR3201] depcheck: cannot \
 find {0} anywhere').format(pkg))
                         if pkgtype == 2:
                             aurbuild.append(pkg)
 
-                        fancy_msg2('{0}: {1}'.format(pkg,
-                                                     pkgtypes[pkgtype]))
+                        if pkgtype != -2:
+                            fancy_msg2('{0}: {1}'.format(pkg,
+                                       pkgtypes[pkgtype]))
                     if aurbuild != []:
                         return [16, aurbuild]
                 except UnicodeDecodeError as inst:

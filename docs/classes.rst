@@ -4,8 +4,8 @@ Classes in PKGBUILDer
 
 :Author: Kwpolska
 :Copyright: See Appendix B.
-:Date: 2011-11-30
-:Version: 2.1.2.16
+:Date: 2011-12-05
+:Version: 2.1.2.18
 
 .. index:: classes
 .. module:: PKGBUILDer
@@ -332,22 +332,29 @@ Gets (make)depends from a PKGBUILD and returns them.
 .. index:: depcheck, dependency
 
 :Arguments: a python dependency list.
-:Input: none.
-:Output: none.
 :Returns:
-    a dict, key is the package name, and value is: -1 = nowhere, 0 = system,
-    1 = repos, 2 = AUR.
+    a tuple containing a dict, whose key is the package name, and value is:
+    -2 skipped, -1 = nowhere, 0 = system, 1 = repos, 2 = AUR;
+    and a dict, whose key is the package name, and value is an explaination
+    of skipping this package.
+
 :Exceptions: PBError.
 :Message codes: ERR3201.
 :Suggested way of handling:
     ::
-    >>> types = ['system', 'repos', 'aur']
-    >>> for pkg, pkgtype in depcheck([...]).items():
-    ...    print('{0}: found in {1}'.format(pkg, types[pkgtype])
-    ...    if pkgtype == 2: #AUR
-    ...        #build pkg here
+
+    types = ['system', 'repos', 'AUR']
+    depcheckresults = depcheck([...]):
+    for pkg, pkgtype in depcheckresults[0].items():
+        if pkgtype == -2:
+            print('{0} skipped due to {1}'.format(pkg, depcheckresults[1][pkg]))
+        else: #TODO MOVE TO LOCAL
+            print('{0}: found in {1}'.format(pkg, types[pkgtype])
+        if pkgtype == 2: #AUR
+            #build pkg here
 
 :Former data:
+    2.1.2.16 Returns: no -2, no explainations
     2.0 Returns: no -1
 
 Performs a dependency check.  Data normally provided by
