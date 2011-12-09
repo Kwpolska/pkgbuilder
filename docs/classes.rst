@@ -4,8 +4,8 @@ Classes in PKGBUILDer
 
 :Author: Kwpolska
 :Copyright: See Appendix B.
-:Date: 2011-12-05
-:Version: 2.1.2.18
+:Date: 2011-12-09
+:Version: 2.1.2.19
 
 .. index:: classes
 .. module:: PKGBUILDer

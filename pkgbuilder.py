@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# PKGBUILDer v2.1.2.18
+# PKGBUILDer v2.1.2.19
 # A Python AUR helper/library.
 # Copyright (C) 2011, Kwpolska
 # All rights reserved.
@@ -52,7 +52,7 @@ import gettext
 import functools
 import logging
 
-VERSION = '2.1.2.18'
+VERSION = '2.1.2.19'
 
 ### PBDS            PB global data storage  ###
 class PBDS:
@@ -500,7 +500,7 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
     2.1.2.16 Returns: no -2, no explainations
     2.0 Returns: no -1"""
         if depends == []:
-            return {}
+            return ({}, {})
         else:
             parseddeps = {}
             explainations = {}
