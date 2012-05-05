@@ -54,7 +54,7 @@ end
 
 task :docs do
     sh "rm docs/pkgbuilder.8.gz"
-    sh "rst2man docs/pkgbuilder.rst > docs/pkgbuilder.8"
+    sh "rst2man2 docs/pkgbuilder.rst > docs/pkgbuilder.8"
     sh "gzip docs/pkgbuilder.8"
 
     #Rake::Task[:docshtml].invoke

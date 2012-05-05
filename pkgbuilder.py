@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# PKGBUILDer v2.1.2.19
+# PKGBUILDer v2.1.2.20
 # A Python AUR helper/library.
 # Copyright (C) 2011, Kwpolska
 # All rights reserved.
@@ -52,7 +52,7 @@ import gettext
 import functools
 import logging
 
-VERSION = '2.1.2.19'
+VERSION = '2.1.2.20'
 
 ### PBDS            PB global data storage  ###
 class PBDS:
