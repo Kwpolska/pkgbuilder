@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# PKGBUILDer v2.1.2.26
+# PKGBUILDer v2.1.2.27
 # A Python AUR helper/library.
 # Copyright (C) 2011, Kwpolska
 # All rights reserved.
@@ -51,7 +51,7 @@ import datetime
 import gettext
 import functools
 
-VERSION = '2.1.2.26'
+VERSION = '2.1.2.27'
 T = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
 _ = T.gettext
 
