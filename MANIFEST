@@ -14,4 +14,6 @@ docs/messagecodes.rst
 docs/pkgbuilder.8.gz
 docs/pkgbuilder.rst
 docs/html/index.html
+locale/en/LC_MESSAGES/pkgbuilder.mo
+locale/pl/LC_MESSAGES/pkgbuilder.mo
 scripts/pkgbuilder
