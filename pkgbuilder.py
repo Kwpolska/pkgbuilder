@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# PKGBUILDer v2.1.2.5
+# PKGBUILDer v2.1.2.26
 # A Python AUR helper/library.
 # Copyright (C) 2011, Kwpolska
 # All rights reserved.
@@ -51,7 +51,7 @@ import datetime
 import gettext
 import functools
 
-VERSION = '2.1.2.5'
+VERSION = '2.1.2.26'
 T = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
 _ = T.gettext
 
@@ -658,7 +658,7 @@ eg. in the Maintainer field.)  Error message: {0}').format(str(inst)))
 
             mpparams = ''
 
-            if makepkginstall == False:
+            if makepkginstall != False:
                 mpparams = mpparams+'i'
 
             if os.geteuid() == 0:
