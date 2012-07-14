@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.2.29
+# PKGBUILDer v2.1.2.30
 # A Python AUR helper/library.
 # Copyright (C) 2011-2012, Kwpolska.
 # All rights reserved.
@@ -52,7 +52,7 @@ import datetime
 import gettext
 import functools
 
-VERSION = '2.1.2.29'
+VERSION = '2.1.2.30'
 T = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
 _ = T.gettext
 
@@ -81,10 +81,10 @@ class PBDS:
         self.validate = True
         self.depcheck = True
         self.mkpginst = True
-        self.categories = ['E', 'E', 'daemons', 'devel', 'editors',
-                           'emulators', 'games', 'gnome', 'i18n', 'kde',
-                           'lib', 'modules', 'multimedia', 'network',
-                           'office', 'science', 'system', 'x11',
+        self.categories = ['ERROR', 'ERROR', 'daemons', 'devel',
+                           'editors', 'emulators', 'games', 'gnome',
+                           'i18n', 'kde', 'lib', 'modules', 'multimedia',
+                           'network', 'office', 'science', 'system', 'x11',
                            'xfce', 'kernels']
         self.inttext = _('[ERR5001] Aborted by user! Exiting…')
 
@@ -449,7 +449,7 @@ installed {0}').format(pkg.version))
                 os.chdir('../')
                 fancy_warning(_('[ERR3401] Building more AUR packages is \
 required.'))
-                for pkgname2 in build_result:
+                for pkgname2 in build_result[1]:
                     self.auto_build(pkgname2, validate, performdepcheck,
                                     makepkginstall)
                 self.auto_build(pkgname, validate, performdepcheck,
