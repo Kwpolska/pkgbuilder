@@ -14,70 +14,70 @@ msgstr ""
 "Language-Team: \n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pkgbuilder.py:88
+#: pkgbuilder.py:89
 msgid "[ERR5001] Aborted by user! Exiting…"
 msgstr ""
 
-#: pkgbuilder.py:181
+#: pkgbuilder.py:182
 msgid "WARNING:"
 msgstr ""
 
-#: pkgbuilder.py:195
+#: pkgbuilder.py:196
 msgid "ERROR:"
 msgstr ""
 
-#: pkgbuilder.py:369
+#: pkgbuilder.py:370
 msgid " [installed: {0}]"
 msgstr ""
 
-#: pkgbuilder.py:371
+#: pkgbuilder.py:372
 msgid " [installed]"
 msgstr ""
 
-#: pkgbuilder.py:374
+#: pkgbuilder.py:375
 msgid "[out of date]"
 msgstr ""
 
-#: pkgbuilder.py:380 pkgbuilder.py:383
+#: pkgbuilder.py:381 pkgbuilder.py:384
 msgid "votes"
 msgstr ""
 
-#: pkgbuilder.py:424
+#: pkgbuilder.py:425
 msgid "The build function reported a proper build."
 msgstr ""
 
-#: pkgbuilder.py:433
+#: pkgbuilder.py:434
 msgid "[ERR3451] validation: NOT installed"
 msgstr ""
 
-#: pkgbuilder.py:437
+#: pkgbuilder.py:438
 msgid "[ERR3452] validation: outdated {0}"
 msgstr ""
 
-#: pkgbuilder.py:440
+#: pkgbuilder.py:441
 msgid "[INF3450] validation: installed {0}"
 msgstr ""
 
-#: pkgbuilder.py:444
+#: pkgbuilder.py:445
 msgid "[ERR3301] makepkg returned 1."
 msgstr ""
 
-#: pkgbuilder.py:449
+#: pkgbuilder.py:450
 msgid "[ERR3401] Building more AUR packages is required."
 msgstr ""
 
-#: pkgbuilder.py:478
+#: pkgbuilder.py:479
 msgid "[ERR3101] download: 0 bytes downloaded"
 msgstr ""
 
-#: pkgbuilder.py:495
+#: pkgbuilder.py:496
 msgid "[ERR3151] extract: no files extracted"
 msgstr ""
 
-#: pkgbuilder.py:583 pkgbuilder.py:645
+#: pkgbuilder.py:584 pkgbuilder.py:645
 msgid "[ERR3201] depcheck: cannot find {0} anywhere"
 msgstr ""
 
@@ -137,7 +137,7 @@ msgid "Gathering data about packages…"
 msgstr ""
 
 #: pkgbuilder.py:763
-msgid "Targets ({0}):"
+msgid "Targets ({0}): "
 msgstr ""
 
 #: pkgbuilder.py:765
@@ -148,64 +148,64 @@ msgstr ""
 msgid "there is nothing to do"
 msgstr ""
 
-#: pkgbuilder.py:778
+#: pkgbuilder.py:776 pkgbuilder.py:780
 msgid "Proceed with installation? [Y/n] "
 msgstr ""
 
-#: pkgbuilder.py:802
-msgid "A python3 AUR helper.  Wrapper-friendly (pacman-like output.)"
+#: pkgbuilder.py:805
+msgid "A python3 AUR helper (sort of.)  Wrapper-friendly (pacman-like output.)"
 msgstr ""
 
-#: pkgbuilder.py:803
+#: pkgbuilder.py:806
 msgid "You can use pacman syntax if you want to."
 msgstr ""
 
-#: pkgbuilder.py:809
+#: pkgbuilder.py:812
 msgid "packages to build"
 msgstr ""
 
-#: pkgbuilder.py:814
+#: pkgbuilder.py:817
 msgid "don't use                         colors in output"
 msgstr ""
 
-#: pkgbuilder.py:817
+#: pkgbuilder.py:820
 msgid "don't                         check dependencies (may break makepkg)"
 msgstr ""
 
-#: pkgbuilder.py:820
+#: pkgbuilder.py:823
 msgid "don't                         install packages after building"
 msgstr ""
 
-#: pkgbuilder.py:824
+#: pkgbuilder.py:826
 msgid ""
 "don't check                         if packages were installed after build"
 msgstr ""
 
-#: pkgbuilder.py:828
+#: pkgbuilder.py:830
 msgid "pacman syntax compatiblity"
 msgstr ""
 
-#: pkgbuilder.py:830
+#: pkgbuilder.py:832
 msgid "pacman                         syntax compatiblity"
 msgstr ""
 
-#: pkgbuilder.py:834
+#: pkgbuilder.py:836
 msgid "view package information"
 msgstr ""
 
-#: pkgbuilder.py:836
+#: pkgbuilder.py:838
 msgid "search the                         AUR for matching strings"
 msgstr ""
 
-#: pkgbuilder.py:840
+#: pkgbuilder.py:842
 msgid "upgrade installed AUR packages"
 msgstr ""
 
-#: pkgbuilder.py:861
+#: pkgbuilder.py:863
 msgid "Package {0} not found."
 msgstr ""
 
-#: pkgbuilder.py:865
+#: pkgbuilder.py:867
 msgid ""
 "Category       : {cat}\n"
 "Name           : {nme}\n"
@@ -220,86 +220,22 @@ msgid ""
 "Description    : {dsc}\n"
 msgstr ""
 
-#: pkgbuilder.py:883
+#: pkgbuilder.py:885
 msgid "yes"
 msgstr ""
 
-#: pkgbuilder.py:884
+#: pkgbuilder.py:886
 msgid "no"
 msgstr ""
 
-#: pkgbuilder.py:899
+#: pkgbuilder.py:901
 msgid "[ERR5002] search string too short, API limitation"
 msgstr ""
 
-#: pkgbuilder.py:901
+#: pkgbuilder.py:903
 msgid "Searching for exact match…"
 msgstr ""
 
-#: pkgbuilder.py:904
+#: pkgbuilder.py:906
 msgid "not found"
-msgstr ""
-
-#: INSTALL.py:53
-msgid ""
-"Hello!\n"
-"\n"
-"PKGBUILDer is now available as an AUR package.  It is the suggested\n"
-"way of installing PKGBUILDer.  This script will download the AUR\n"
-"package and install it.  If you will have problems, please download\n"
-"and compile the package manually.\n"
-"\n"
-msgstr ""
-
-#: INSTALL.py:62
-msgid "Hit Enter/Return to continue. "
-msgstr ""
-
-#: INSTALL.py:87
-msgid ""
-"\n"
-"\n"
-"Something went wrong.  Please read makepkg's output and try again.\n"
-"You can also try to debug the work of this script yourself.\n"
-"All the files this script was working on are placed in\n"
-"    {0}\n"
-"(the number is random).\n"
-"\n"
-"If I am wrong, though, congratulations!\n"
-msgstr ""
-
-#: INSTALL.py:98
-msgid ""
-"\n"
-"\n"
-"Read the above output.  If the script had any problems, run it\n"
-"again.  You can also try to debug the work of this script yourself.\n"
-"All the files this script was working on are placed in\n"
-"    {0}\n"
-"(the number is random).\n"
-"\n"
-"If everything went fine, though, congratulations!  You can now use\n"
-"PKGBUILDer.  For standalone usage, type `pkgbuilder` into the prompt\n"
-"(zsh users: hash -r, other shells may need another command).  For\n"
-"python module usage, type `import pkgbuilder` into the python prompt.\n"
-msgstr ""
-
-#: INSTALL.py:114
-msgid ""
-"It looks like you want to quit.  Okay then, goodbye.\n"
-"No work has been started yet.\n"
-"\n"
-"If that's what you want to do, go for it.  If it isn't, run this\n"
-"script again."
-msgstr ""
-
-#: INSTALL.py:120
-msgid ""
-"It looks like you want to quit.  Okay then, goodbye.\n"
-"All the files this script was working on are placed in\n"
-"    {0}\n"
-"(the number is random).\n"
-"\n"
-"If that's what you want to do, go for it.  If it isn't, run this\n"
-"script again."
 msgstr ""

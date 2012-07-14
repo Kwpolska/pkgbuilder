@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-# PKGBUILDer v2.1.2.28
+# -*- encoding: utf-8 -*-
+# PKGBUILDer v2.1.2.29
 # A Python AUR helper/library.
 # Copyright (C) 2011-2012, Kwpolska.
 # All rights reserved.
@@ -51,7 +52,7 @@ import datetime
 import gettext
 import functools
 
-VERSION = '2.1.2.28'
+VERSION = '2.1.2.29'
 T = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
 _ = T.gettext
 
@@ -759,7 +760,7 @@ class Upgrade:
         upgradeable = self.list_upgradeable(foreign.keys())
         upglen = len(upgradeable)
         if DS.pacman:
-            print(_('Targets ({0}):').format(upglen), end='')
+            print(_('Targets ({0}): ').format(upglen), end='')
         else:
             fancy_msg(_('{0} upgradeable packages found:').format(upglen))
 

@@ -13,7 +13,7 @@ msgstr ""
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: pkgbuilder.py:88
@@ -136,8 +136,8 @@ msgid "Gathering data about packages…"
 msgstr "Gathering data about packages…"
 
 #: pkgbuilder.py:763
-msgid "Targets ({0}):"
-msgstr "Targets ({0}):"
+msgid "Targets ({0}): "
+msgstr "Targets ({0}): "
 
 #: pkgbuilder.py:765
 msgid "{0} upgradeable packages found:"
