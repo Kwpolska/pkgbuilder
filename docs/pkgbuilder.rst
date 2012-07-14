@@ -4,8 +4,8 @@ PKGBUILDer
 
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: See Appendix B.
-:Date: 2011-10-26
-:Version: 2.1.2.5
+:Date: 2012-07-14
+:Version: 2.1.2.26
 :Manual section: 8
 :Manual group: PKGBUILDer manual
 
@@ -24,6 +24,9 @@ much as possible.
 
 Since version 2.1.0, PKGBUILDer provides modules that can be used in
 other scripts.
+
+Development of the PKGBUILDer is stalled.  However, patches are welcome
+all the time at GitHub.
 
 OPERATIONS
 ==========
