@@ -40,6 +40,8 @@ task :prepare, :ver do |t, args|
 
     sh "sed \"s/:Date: .*/:Date: #{date}/\" docs/*.rst -i"
     sh "sed \"s/:Date: .*/:Date: #{date}/\" README.rst -i"
+    sh "cp README.rst ../README"
+    sh "cp README.rst ../README.rst"
 end
 
 task :docshtml do

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-# PKGBUILDer v2.1.2.27
+# PKGBUILDer v2.1.2.28
 # A Python AUR helper/library.
-# Copyright (C) 2011, Kwpolska
+# Copyright (C) 2011-2012, Kwpolska.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -34,7 +34,7 @@
 
 # Names convention: pkg = a package object, pkgname = a package name.
 
-"""PKGBUILDer.  An AUR helper (sort of.)"""
+"""PKGBUILDer.  An AUR helper."""
 from pyparsing import OneOrMore, Word   # python-pyparsing from [community]
 import pyalpm                           # pyalpm in [extra]
 import pycman                           # pyalpm in [extra]
@@ -51,7 +51,7 @@ import datetime
 import gettext
 import functools
 
-VERSION = '2.1.2.27'
+VERSION = '2.1.2.28'
 T = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
 _ = T.gettext
 
@@ -85,7 +85,7 @@ class PBDS:
                            'lib', 'modules', 'multimedia', 'network',
                            'office', 'science', 'system', 'x11',
                            'xfce', 'kernels']
-        self.inttext = _('[ERR5001] Aborted by user! Exiting...')
+        self.inttext = _('[ERR5001] Aborted by user! Exiting…')
 
     def colorson(self):
         """Colors on.
@@ -401,7 +401,7 @@ class Build:
 :Message codes: none."""
         self.utils = Utils()
         self.aururl = '{0}://aur.archlinux.org{1}'
-#TODO help
+
     def auto_build(self, pkgname, validate = True, performdepcheck = True,
                    makepkginstall = True):
         """NOT the actual build function.
@@ -544,7 +544,7 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
     ::
 
     types = ['system', 'repos', 'aur']
-    for pkg, pkgtype in depcheck([...]).items():
+    for pkg, pkgtype in depcheck([…]).items():
         print('{0}: found in {1}'.format(pkg, types[pkgtype])
         if pkgtype == 2: #AUR
             #build pkg here
@@ -583,7 +583,6 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
                     raise PBError(_('[ERR3201] depcheck: cannot find {0} \
 anywhere').format(dep))
             return parseddeps
-#TODO help
     def build_runner(self, pkgname, performdepcheck = True,
                      makepkginstall = True):
         """A build function, which actually links to others.  Do not use it
@@ -611,7 +610,7 @@ unless you re-implement auto_build.
                 raise PBError(_('[ERR3001] Package {0} not found.').format(
                               pkgname))
             pkgname = pkg['Name']
-            fancy_msg(_('Building {0}...').format(pkgname))
+            fancy_msg(_('Building {0}…').format(pkgname))
             self.utils.print_package(pkg,
                                      prefix=DS.colors['blue']+'  ->'+
                                      DS.colors['all_off']+
@@ -619,17 +618,17 @@ unless you re-implement auto_build.
             filename = pkgname+'.tar.gz'
             # Okay, this package exists, great then.  Thanks, user.
 
-            fancy_msg(_('Downloading the tarball...'))
+            fancy_msg(_('Downloading the tarball…'))
             downloadbytes = self.download(pkg['URLPath'], filename)
             kbytes = int(downloadbytes) / 1000
             fancy_msg2(_('{0} kB downloaded').format(kbytes))
 
-            fancy_msg(_('Extracting...'))
+            fancy_msg(_('Extracting…'))
             fancy_msg2(_('{0} files extracted').format(self.extract(
                                                        filename)))
             os.chdir('./'+pkgname+'/')
             if performdepcheck == True:
-                fancy_msg(_('Checking dependencies...'))
+                fancy_msg(_('Checking dependencies…'))
                 try:
                     depends = self.prepare_deps(open('./PKGBUILD',
                               'rb').read().decode('utf8', 'ignore'))
@@ -751,22 +750,37 @@ class Upgrade:
 :Message codes: none.
 :Notice: things break here A LOT."""
         pblog('Ran auto_upgrade.')
-        fancy_msg(_('Gathering data about packages...'))
+        if DS.pacman:
+            print(':: '+_('Gathering data about packages…'))
+        else:
+            fancy_msg(_('Gathering data about packages…'))
 
         foreign = self.gather_foreign_pkgs()
         upgradeable = self.list_upgradeable(foreign.keys())
         upglen = len(upgradeable)
+        if DS.pacman:
+            print(_('Targets ({0}):').format(upglen), end='')
+        else:
+            fancy_msg(_('{0} upgradeable packages found:').format(upglen))
 
-        fancy_msg(_('{0} upgradeable packages found:').format(upglen))
         if upglen == 0:
-            fancy_msg2(_('there is nothing to do'))
+            if DS.pacman:
+                print(_('there is nothing to do'))
+            else:
+                fancy_msg2(_('there is nothing to do'))
+
             return 0
-        fancy_msg2('  '.join(upgradeable))
-        query = (DS.colors['green']+'==>'+DS.colors['all_off']+
+        if DS.pacman:
+            print('  '.join(upgradeable))
+            query = _('Proceed with installation? [Y/n] ')
+        else:
+            fancy_msg2('  '.join(upgradeable))
+            query = (DS.colors['green']+'==>'+DS.colors['all_off']+
                 DS.colors['bold']+' '+_('Proceed with installation? \
 [Y/n] ')+DS.colors['all_off'])
+
         yesno = input(query)
-        yesno = yesno + ' ' # cheating...
+        yesno = yesno + ' ' # cheating…
         if yesno[0] == 'n' or yesno[0] == 'N':
             return 0
         for pkgname in upgradeable:
@@ -807,7 +821,6 @@ use pacman syntax if you want to.'))
     argopt.add_argument('-w', '--buildonly', action='store_false',
                         default=True, dest='mkpginst', help=_('don\'t \
                         install packages after building'))
-#TODO
     argopt.add_argument('-V', '--novalidation', action='store_false',
                         default=True, dest='valid', help=_('don\'t check \
                         if packages were installed after build'))
@@ -839,7 +852,7 @@ use pacman syntax if you want to.'))
 
         if args.color == False:
             # That's awesome in variables AND 2.x series.
-            # ...and it was moved to PBDS.
+            # …and it was moved to PBDS.
             DS.colorsoff()
 
         if args.info == True:
@@ -886,7 +899,7 @@ Submitted'])).strftime('%a %d %b %Y %H:%m:%S %p %Z'),
                 # having this limitation, though.
                 fancy_error(_('[ERR5002] search string too short, API \
 limitation'))
-                fancy_msg(_('Searching for exact match...'))
+                fancy_msg(_('Searching for exact match…'))
                 search = [utils.info(searchstring)] # workaround
                 if search == [None]:
                     fancy_error2(_('not found'))
@@ -927,14 +940,14 @@ limitation'))
         exit(0)
 
     # If we didn't exit, we shall build the packages.
-    pblog('Ran through all the addon features, building...')
+    pblog('Ran through all the addon features, building…')
     for pkgname in args.pkgs:
         pblog('Building {0}'.format(pkgname))
         build.auto_build(pkgname, DS.validate, DS.depcheck, DS.mkpginst)
 
     pblog('Quitting.')
 
-# Over 900 lines!  Compare this to build.pl's 56 (including ~8 useless...)
+# Over 900 lines!  Compare this to build.pl's 56 (including ~8 useless…)
 # New features will be included when they will be added to the AUR RPC.
 # RPC: <http://aur.archlinux.org/rpc.php> (search info msearch multiinfo)
 # If something new will appear there, tell me through GH Issues or mail.

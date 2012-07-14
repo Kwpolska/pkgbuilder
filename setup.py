@@ -2,7 +2,7 @@
 from distutils.core import setup
 
 setup(name='pkgbuilder',
-      version='2.1.2.27',
+      version='2.1.2.28',
       description='An AUR helper (and library) in python3',
       author='Kwpolska',
       author_email='kwpolska@kwpolska.tk',
