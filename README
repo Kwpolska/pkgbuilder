@@ -21,7 +21,7 @@ pyalpm from [extra] and python3-aur from the AUR.
 NOTES
 -----
 This is Version 2 of PKGBUILDer.  The original Perl version is included,
-but it shall not be used.
+but it should not be used.
 
 Version 2.1 is a big leap forward.  It introduces many new features.
 It is now stable.  It is now available as an AUR and PyPI package.
@@ -30,6 +30,9 @@ The -S (DS.pacman) parameter adds pacman wrapper compatibility.
 
 For more info, refer to the pkgbuilder(8) man page or HTML docs in
 docs/html.
+
+Development of the PKGBUILDer is stalled.  However, patches are welcome
+all the time at GitHub.
 
 COPYRIGHT
 ---------
