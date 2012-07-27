@@ -3,8 +3,8 @@ Appendix A. PKGBUILDer message numbers list
 ===========================================
 :Info: This is an appendix to the PKGBUILDer documentation.
 :Author: Kwpolska <kwpolska@kwpolska.tk>
-:Date: 2012-07-14
-:Version: 2.1.2.27
+:Date: 2012-07-27
+:Version: 2.1.2.31
 
 In order to help debugging, messages are numbered.
 Each message number has four digits:  the first one is the
@@ -21,7 +21,7 @@ Categories
     3. makepkg
     4. auto_build, validation
 4. Update class
-5. non-module problems
+5. __main__ functionality (when run as an AUR helper)
 
 Usage instructions
 ------------------
@@ -51,7 +51,7 @@ Warnings
 ========
 
 ======== =============== =========================================
-INF#     Component       Message
+WRN#     Component       Message
 ======== =============== =========================================
 0        none            Nothing there yet.
 ======== =============== =========================================
@@ -63,8 +63,10 @@ Errors
 ======== =============== =========================================
 ERR#     Component       Message
 ======== =============== =========================================
+[1001]_  AUR             HTTP Error %s
 [3001]_  build_runner    package not found
 [3101]_  download        0 bytes downloaded
+[3102]_  download        HTTP Error %s
 [3151]_  extract         0 files extracted
 [3201]_  depcheck        cannot find the requested dependency
 [3202]_  depcheck        UnicodeDecodeError while reading file
@@ -72,16 +74,23 @@ ERR#     Component       Message
 [3401]_  auto_build      AUR dependency required
 [3451]_  validation      not installed
 [3452]_  validation      outdated
+[5001]_  `__main__`      Aborted by user! Exiting…
 [5002]_  search          search string too short
 ======== =============== =========================================
 
 Explainations:
+
+.. [1001] occurs, when PKGBUILDer got a response other than 200 from
+   the AUR RPC.  %s is replaced with the error code.
 
 .. [3001] occurs, when PKGBUILDer cannot find the requested package.
    The name is probably mispelled or the package was deleted.
 
 .. [3101] occurs, when PKGBUILDer downloaded 0 bytes.  It usually
    means that something bad happened during the download.
+
+.. [3102] occurs, when PKGBUILDer got a response other than 200 during
+   a file download.  %s is replaced with the error code.
 
 .. [3151] occurs, when PKGBUILDer extracted 0 files from the
    downloaded tarball.  It means that the tarball is broken.  Please
@@ -91,17 +100,17 @@ Explainations:
    PKGBUILD requests a package, that does not exist in the system,
    repositories, nor the AUR.
 
-.. [3202] occurs, when Python cannot decode UTF-8 the PKGBUILD.  If
+.. [3202] occurs, when Python cannot decode UTF-8 in the PKGBUILD.  If
    the PKGBUILD cannot be read, dependency checks cannot be performed.
    Possible reasons include incorrectly encoded characters in the
    Maintainer/Submitter field.  Please inform the package maintainer
    through the comments.  Include the output of `iconv PKGBUILD`. Example
    output: `# Maintainer: Juan Piconv: illegal input sequence at position
-   20` The PKGBUILDer's error message is also valid and will help the
+   20` PKGBUILDer’s error message is also valid and will help the
    maintainer.
 
 .. [3301] occurs, when makepkg exits with the return code 1.  It means
-   that something bad happened.  Refer to makepkg's output for more info.
+   that something bad happened.  Refer to makepkg’s output for more info.
 
 .. [3401] occurs, when the $depends or $makedepends array of the
    PKGBUILD request a package, which exists in the AUR.  It is plain
@@ -110,15 +119,17 @@ Explainations:
 
 .. [3451] occurs, when PKGBUILDer finds out that the package is not
    installed on your system.  It means that the package that was bulit
-   before this message was issued wasn't installed properly (eg. root
-   password wasn't provided at the right time, 'n' was hit when pacman was
+   before this message was issued wasn’t installed properly (eg. root
+   password wasn’t provided at the right time, “n” was hit when pacman was
    asking for proceeding).
 
 .. [3452] occurs, when PKGBUILDer finds out that the package is
    installed, but outdated.  It means that the package that was bulit before
-   this message was issued wasn't installed properly (eg. root password
-   wasn't provided at the right time, 'n' was hit when pacman was asking for
+   this message was issued wasn’t installed properly (eg. root password
+   wasn’t provided at the right time, “n” was hit when pacman was asking for
    proceeding).
+
+.. [5001] occurs, when the user presses ^C (SIGINT).
 
 .. [5002] occurs, when your search string is shorter than 3 letters.
    The AUR API ignores these requests.  However, the script searches for

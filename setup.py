@@ -2,7 +2,7 @@
 from distutils.core import setup
 
 setup(name='pkgbuilder',
-      version='2.1.2.27',
+      version='2.1.2.31',
       description='An AUR helper (and library) in python3',
       author='Kwpolska',
       author_email='kwpolska@kwpolska.tk',
@@ -24,7 +24,7 @@ setup(name='pkgbuilder',
                    'Topic :: Utilities'
                   ],
       py_modules=['pkgbuilder'],
-      requires=['pyparsing', 'pyalpm'],
+      requires=['pyparsing', 'pyalpm', 'requests'],
       scripts=['scripts/pkgbuilder'],
       data_files=[
                   ('share/man/man8', ['docs/pkgbuilder.8.gz']),
