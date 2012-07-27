@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-# PKGBUILDer
+# -*- encoding: utf-8 -*-
+# PKGBUILDer installer
 # Copyright (C) 2011, Kwpolska
 # All rights reserved.
 #
@@ -34,7 +35,7 @@
 # There are no install instructions.  If you want to install
 # the script, run this script with python.
 
-"""PKGBUILDer AUR installer.  Use it if you don’t have any AUR helpers installed."""
+"""PKGBUILDer AUR installer.  Use it if you don't have any AUR helpers installed."""
 
 import subprocess
 import os
@@ -67,23 +68,65 @@ and compile the package manually.
         os.mkdir(PATH)
     os.chdir(PATH)
 
+    # Dependency check.
 
-    PKGDATA = json.loads(urllib.request.urlopen('http://aur.archlinux.org\
-/rpc.php?type=info&arg=pkgbuilder').read().decode())
-    RHANDLE = urllib.request.urlopen('http://aur.archlinux.org'+
-    PKGDATA['results']['URLPath'])
-    open('pkgbuilder.tar.gz', 'wb').write(RHANDLE.read())
-    THANDLE = tarfile.open('pkgbuilder.tar.gz', 'r:gz')
-    THANDLE.extractall()
-    os.chdir('./pkgbuilder/')
+    print(_("""Performing a dependency check..."""))
 
-    ASROOT = ''
-    if os.geteuid() == 0:
-        ASROOT = ' --asroot'
-    MPKG = subprocess.call('/usr/bin/makepkg -si'+ASROOT, shell=True)
+    deps = {'pyparsing': None, 'pyalpm': None, 'certifi': None, 'requests': None}
 
-    if MPKG == 1:
-        print(_("""
+    print("""pyparsing | community | """, end='')
+    try:
+        import pyparsing
+        deps['pyparsing'] = True
+        print(_('found'))
+    except ImportError:
+        deps['pyparsing'] = False
+        print(_('not found'))
+
+    print("""pyalpm    | extra     | """, end='')
+    try:
+        import pyalpm
+        deps['pyalpm'] = True
+        print(_('found'))
+    except ImportError:
+        deps['pyalpm'] = False
+        print(_('not found'))
+
+    print("""certifi   | AUR       | """, end='')
+    try:
+        import certifi
+        deps['certifi'] = True
+        print(_('found'))
+    except ImportError:
+        deps['certifi'] = False
+        print(_('not found'))
+
+    print("""requests  | AUR       | """, end='')
+    try:
+        import requests
+        deps['requests'] = True
+        print(_('found'))
+    except ImportError:
+        deps['requests'] = False
+        print(_('not found'))
+
+    def install(pkgname):
+        PKGDATA = json.loads(urllib.request.urlopen('http://aur.archlinux\
+.org/rpc.php?type=info&arg='+pkgname).read().decode())
+        RHANDLE = urllib.request.urlopen('http://aur.archlinux.org'+
+        PKGDATA['results']['URLPath'])
+        open(pkgname+'.tar.gz', 'wb').write(RHANDLE.read())
+        THANDLE = tarfile.open(pkgname+'.tar.gz', 'r:gz')
+        THANDLE.extractall()
+        os.chdir('./'+pkgname+'/')
+
+        ASROOT = ''
+        if os.geteuid() == 0:
+            ASROOT = ' --asroot'
+        MPKG = subprocess.call('/usr/bin/makepkg -si'+ASROOT, shell=True)
+
+        if MPKG == 1:
+            print(_("""
 
 Something went wrong.  Please read makepkg's output and try again.
 You can also try to debug the work of this script yourself.
@@ -93,6 +136,16 @@ All the files this script was working on are placed in
 
 If I am wrong, though, congratulations!
 """).format(PATH))
+
+    if deps['certifi'] == False or deps['requests'] == False:
+        print(_("""Installing missing AUR dependencies..."""))
+        if deps['certifi'] == False:
+            install('python-certifi')
+
+        if deps['requests'] == False:
+            install('python-requests')
+
+    install('pkgbuilder')
 
     print(_("""
 

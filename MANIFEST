@@ -5,6 +5,7 @@ README
 README.rst
 pkgbuilder.py
 setup.py
+docs/CHANGELOG.rst
 docs/LICENSE.rst
 docs/README.rst
 docs/classes.rst
