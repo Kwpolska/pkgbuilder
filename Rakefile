@@ -15,7 +15,7 @@ task :help do
     puts "  docshtml  Creates the docs in HTML."
     puts "  docszip   Zips the docs made by docshtml."
     puts "  git       Pushes the changes to GitHub."
-
+    puts "  locale    Prepares for translation."
 end
 
 task :prepare, :ver do |t, args|
@@ -103,6 +103,10 @@ task :git, :ver, :msg do |t, args|
     sh "git commit -asm 'v#{version}: #{commitmsg}'"
     sh "git tag -a 'v#{version}' -m 'Version #{version}'"
     sh "git push --tags"
+end
+
+task :locale do
+    sh "xgettext -c pkgbuilder.py INSTALL.py"
 end
 
 task :update, :ver do |t, args|

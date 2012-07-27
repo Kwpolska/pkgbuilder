@@ -1,203 +1,225 @@
 # PKGBUILDer pot file.
-# Copyright (C) 2011 Kwpolska.
-# Kwpolska <kwpolska@kwpolska.tk>, 2011.
+# Copyright (C) 2011-2012, Kwpolska.
+# This file is distributed under the same license as the PKGBUILDer package.
+# Kwpolska <kwpolska@kwpolska.tk>, 2011-2012.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.1.4\n"
+"Project-Id-Version: 2.1.2.31\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-10-22 10:16+0100\n"
 "PO-Revision-Date: 2011-10-22 10:17+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
-"Language-Team: \n"
-"Language: \n"
+"Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: pygettext.py 1.5\n"
-"X-Poedit-KeywordsList: _\n"
-"X-Poedit-Basepath: /home/kwpolska/git/pkgbuilder\n"
-"X-Poedit-SearchPath-0: /home/kwpolska/git/pkgbuilder\n"
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:88
-msgid "[ERR5001] Aborted by user! Exiting..."
+#: pkgbuilder.py:90
+msgid "[ERR5001] Aborted by user! Exiting…"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:181
+#: pkgbuilder.py:183
 msgid "WARNING:"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:195
+#: pkgbuilder.py:197
 msgid "ERROR:"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:369
+#: pkgbuilder.py:262 pkgbuilder.py:278
+msgid "[ERR1001] AUR: HTTP Error {0}"
+msgstr ""
+
+#: pkgbuilder.py:376
 msgid " [installed: {0}]"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:371
+#: pkgbuilder.py:378
 msgid " [installed]"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:374
+#: pkgbuilder.py:381
 msgid "[out of date]"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:380
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:383
+#: pkgbuilder.py:387 pkgbuilder.py:390
 msgid "votes"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:422
+#: pkgbuilder.py:431
 msgid "The build function reported a proper build."
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:431
+#: pkgbuilder.py:440
 msgid "[ERR3451] validation: NOT installed"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:435
+#: pkgbuilder.py:444
 msgid "[ERR3452] validation: outdated {0}"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:438
+#: pkgbuilder.py:447
 msgid "[INF3450] validation: installed {0}"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:442
+#: pkgbuilder.py:451
 msgid "[ERR3301] makepkg returned 1."
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:447
+#: pkgbuilder.py:456
 msgid "[ERR3401] Building more AUR packages is required."
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:474
+#: pkgbuilder.py:481
+msgid "[ERR3102] download: HTTP Error {0}"
+msgstr ""
+
+#: pkgbuilder.py:483
 msgid "[ERR3101] download: 0 bytes downloaded"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:491
+#: pkgbuilder.py:503
 msgid "[ERR3151] extract: no files extracted"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:579
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:640
+#: pkgbuilder.py:591 pkgbuilder.py:653
 msgid "[ERR3201] depcheck: cannot find {0} anywhere"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:606
+#: pkgbuilder.py:619
 msgid "[ERR3001] Package {0} not found."
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:609
-msgid "Building {0}..."
+#: pkgbuilder.py:622
+msgid "Building {0}…"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:617
-msgid "Downloading the tarball..."
+#. Okay, this package exists, great then.  Thanks, user.
+#: pkgbuilder.py:630
+msgid "Downloading the tarball…"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:620
+#: pkgbuilder.py:633
 msgid "{0} kB downloaded"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:622
-msgid "Extracting..."
+#: pkgbuilder.py:635
+msgid "Extracting…"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:623
+#: pkgbuilder.py:636
 msgid "{0} files extracted"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:627
-msgid "Checking dependencies..."
+#: pkgbuilder.py:640
+msgid "Checking dependencies…"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:632
+#: pkgbuilder.py:645
 msgid "found in system"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:632
+#: pkgbuilder.py:645
 msgid "found in repos"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:633
+#: pkgbuilder.py:646
 msgid "found in the AUR"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:636
+#: pkgbuilder.py:649
 msgid "none found"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:650
-msgid "[ERR3202] depcheck: UnicodeDecodeError.  The PKGBUILD cannot be read.  There are invalid UTF-8 characters (eg. in the Maintainer field.)  Error message: {0}"
+#: pkgbuilder.py:663
+msgid ""
+"[ERR3202] depcheck: UnicodeDecodeError.  The PKGBUILD cannot be read.  There "
+"are invalid UTF-8 characters (eg. in the Maintainer field.)  Error message: "
+"{0}"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:744
-msgid "Gathering data about packages..."
+#: pkgbuilder.py:769 pkgbuilder.py:771
+msgid "Gathering data about packages…"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:750
+#: pkgbuilder.py:777
+msgid "Targets ({0}): "
+msgstr ""
+
+#: pkgbuilder.py:779
 msgid "{0} upgradeable packages found:"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:752
+#: pkgbuilder.py:783 pkgbuilder.py:785
 msgid "there is nothing to do"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:756
+#: pkgbuilder.py:790 pkgbuilder.py:794
 msgid "Proceed with installation? [Y/n] "
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:779
-msgid "A python3 AUR helper (sort of.)  Wrapper-friendly (pacman-like output.)"
+#: pkgbuilder.py:819
+msgid "An AUR helper/library.  Wrapper-friendly (pacman-like output.)"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:780
+#: pkgbuilder.py:820
 msgid "You can use pacman syntax if you want to."
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:786
+#: pkgbuilder.py:826
 msgid "packages to build"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:791
+#: pkgbuilder.py:831
 msgid "don't use                         colors in output"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:794
+#: pkgbuilder.py:834
 msgid "don't                         check dependencies (may break makepkg)"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:797
+#: pkgbuilder.py:837
+msgid "don't                         install packages after building"
+msgstr ""
+
+#: pkgbuilder.py:840
+msgid ""
+"don't check                         if packages were installed after build"
+msgstr ""
+
+#: pkgbuilder.py:843
 msgid "pacman syntax compatiblity"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:799
-msgid "don't check                         if packages were installed after build"
-msgstr ""
-
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:802
+#: pkgbuilder.py:845
 msgid "pacman                         syntax compatiblity"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:806
+#: pkgbuilder.py:848
 msgid "view package information"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:808
+#: pkgbuilder.py:850
 msgid "search the                         AUR for matching strings"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:812
+#: pkgbuilder.py:854
 msgid "upgrade installed AUR packages"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:832
+#: pkgbuilder.py:857
+msgid "chooses protocol (default: http)"
+msgstr ""
+
+#: pkgbuilder.py:879
 msgid "Package {0} not found."
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:836
+#. ## TRANSLATORS: space it properly.  `yes/no' below are
+#. ## for `out of date'.
+#: pkgbuilder.py:883
 msgid ""
 "Category       : {cat}\n"
 "Name           : {nme}\n"
@@ -212,27 +234,29 @@ msgid ""
 "Description    : {dsc}\n"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:854
+#: pkgbuilder.py:901
 msgid "yes"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:855
+#: pkgbuilder.py:902
 msgid "no"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:870
+#. this would be too many entries.  The API is really
+#. having this limitation, though.
+#: pkgbuilder.py:917
 msgid "[ERR5002] search string too short, API limitation"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:872
-msgid "Searching for exact match..."
+#: pkgbuilder.py:919
+msgid "Searching for exact match…"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/pkgbuilder.py:875
+#: pkgbuilder.py:922 INSTALL.py:84 INSTALL.py:93 INSTALL.py:102 INSTALL.py:111
 msgid "not found"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/INSTALL.py:24
+#: INSTALL.py:53
 msgid ""
 "Hello!\n"
 "\n"
@@ -243,11 +267,20 @@ msgid ""
 "\n"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/INSTALL.py:33
+#: INSTALL.py:62
 msgid "Hit Enter/Return to continue. "
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/INSTALL.py:58
+#. Dependency check.
+#: INSTALL.py:73
+msgid "Performing a dependency check..."
+msgstr ""
+
+#: INSTALL.py:81 INSTALL.py:90 INSTALL.py:99 INSTALL.py:108
+msgid "found"
+msgstr ""
+
+#: INSTALL.py:129
 msgid ""
 "\n"
 "\n"
@@ -260,7 +293,11 @@ msgid ""
 "If I am wrong, though, congratulations!\n"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/INSTALL.py:69
+#: INSTALL.py:141
+msgid "Installing missing AUR dependencies..."
+msgstr ""
+
+#: INSTALL.py:150
 msgid ""
 "\n"
 "\n"
@@ -276,7 +313,7 @@ msgid ""
 "python module usage, type `import pkgbuilder` into the python prompt.\n"
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/INSTALL.py:85
+#: INSTALL.py:166
 msgid ""
 "It looks like you want to quit.  Okay then, goodbye.\n"
 "No work has been started yet.\n"
@@ -285,7 +322,7 @@ msgid ""
 "script again."
 msgstr ""
 
-#: /home/kwpolska/git/pkgbuilder/INSTALL.py:91
+#: INSTALL.py:172
 msgid ""
 "It looks like you want to quit.  Okay then, goodbye.\n"
 "All the files this script was working on are placed in\n"
@@ -295,4 +332,3 @@ msgid ""
 "If that's what you want to do, go for it.  If it isn't, run this\n"
 "script again."
 msgstr ""
-
