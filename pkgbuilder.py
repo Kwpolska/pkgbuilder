@@ -82,7 +82,7 @@ class PBDS:
         self.depcheck = True
         self.mkpginst = True
         self.protocol = 'http'
-        self.categories = ['E', 'E', 'daemons', 'devel', 'editors',
+        self.categories = ['ERROR', 'none', 'daemons', 'devel', 'editors',
                            'emulators', 'games', 'gnome', 'i18n', 'kde',
                            'lib', 'modules', 'multimedia', 'network',
                            'office', 'science', 'system', 'x11',
@@ -878,8 +878,8 @@ use pacman syntax if you want to.'))
                 if pkg == None:
                     raise PBError(_('Package {0} not found.').format(
                           pkgname))
-                ### TRANSLATORS: space it properly.  `yes/no' below are
-                ### for `out of date'.
+                # TRANSLATORS: space it properly.  `yes/no' below are
+                # for `out of date'.
                 print(_("""Category       : {cat}
 Name           : {nme}
 Version        : {ver}
