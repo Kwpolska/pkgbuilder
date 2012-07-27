@@ -1,7 +1,8 @@
 #!/usr/bin/python3
-# PKGBUILDer v2.1.2.27
+# -*- encoding: utf-8 -*-
+# PKGBUILDer v2.1.2.30
 # A Python AUR helper/library.
-# Copyright (C) 2011, Kwpolska
+# Copyright (C) 2011-2012, Kwpolska.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -52,7 +53,7 @@ import datetime
 import gettext
 import functools
 
-VERSION = '2.1.2.27'
+VERSION = '2.1.2.30'
 T = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
 _ = T.gettext
 
@@ -449,7 +450,7 @@ installed {0}').format(pkg.version))
                 os.chdir('../')
                 fancy_warning(_('[ERR3401] Building more AUR packages is \
 required.'))
-                for pkgname2 in build_result:
+                for pkgname2 in build_result[1]:
                     self.auto_build(pkgname2, validate, performdepcheck,
                                     makepkginstall)
                 self.auto_build(pkgname, validate, performdepcheck,
