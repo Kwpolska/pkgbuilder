@@ -36,15 +36,16 @@
 
 """PKGBUILDer.  An AUR helper (sort of.)"""
 from pyparsing import OneOrMore, Word   # python-pyparsing from [community]
-import pyalpm                           # pyalpm in [extra]
-import pycman                           # pyalpm in [extra]
+import pyalpm                           # pyalpm from [extra]
+import pycman                           # pyalpm from [extra]
+import requests                         # python-requests from AUR
 import argparse
 import sys
 import os
 import json
 import re
-import urllib.request
-import urllib.error
+#import urllib.request
+#import urllib.error
 import tarfile
 import subprocess
 import datetime
@@ -76,10 +77,12 @@ class PBDS:
                         'red':        '\x1b[1;1m\x1b[1;31m',
                         'yellow':     '\x1b[1;1m\x1b[1;33m'
                       }
+
         self.pacman = False
         self.validate = True
         self.depcheck = True
         self.mkpginst = True
+        self.protocol = 'http'
         self.categories = ['E', 'E', 'daemons', 'devel', 'editors',
                            'emulators', 'games', 'gnome', 'i18n', 'kde',
                            'lib', 'modules', 'multimedia', 'network',
@@ -253,10 +256,9 @@ class AUR:
 :Input: none.
 :Output: none.
 :Returns: JSON data from the API.
-:Exceptions: urllib.error.URLError, urllib.error.HTTPError.
+:Exceptions: requests.exceptions.*.
 :Message codes: none."""
-        rhandle = urllib.request.urlopen(self.rpc.format(prot, rtype, arg))
-        return rhandle.read().decode()
+        return requests.get(self.rpc.format(prot, rtype, arg)).text
 
     def jsonmultiinfo(self, args, prot = 'http'):
         """Makes a multiinfo request and returns plain JSON data.
@@ -265,11 +267,10 @@ class AUR:
 :Input: none.
 :Output: none.
 :Returns: JSON data from the API.
-:Exceptions: urllib.error.URLError, urllib.error.HTTPError.
+:Exceptions: requests.exceptions.*.
 :Message codes: none."""
         urlargs = '&arg[]='+'&arg[]='.join(args)
-        rhandle = urllib.request.urlopen(self.mrpc.format(prot, urlargs))
-        return rhandle.read().decode()
+        return requests.get(self.mrpc.format(prot, urlargs)).text
 
     def request(self, rtype, arg, prot = 'http'):
         """Makes a request.
@@ -278,7 +279,7 @@ class AUR:
 :Input: none.
 :Output: none.
 :Returns: data from the API.
-:Exceptions: urllib.error.URLError, urllib.error.HTTPError.
+:Exceptions: requests.exceptions.*.
 :Message codes: none."""
         return json.loads(self.jsonreq(rtype, arg, prot))
 
@@ -289,7 +290,7 @@ class AUR:
 :Input: none.
 :Output: none.
 :Returns: data from the API.
-:Exceptions: urllib.error.URLError, urllib.error.HTTPError.
+:Exceptions: requests.exceptions.*.
 :Message codes: none."""
 
         return json.loads(self.jsonmultiinfo(args, prot))
@@ -321,7 +322,7 @@ class Utils:
     2.0 Returns: aur_pkgs, list->dict, not null.
 
     2.0 Behavior: exception and quit when not found."""
-        aur_pkgs = self.aur.request('info', pkgname)
+        aur_pkgs = self.aur.request('info', pkgname, DS.protocol)
         if aur_pkgs['results'] == 'No results found':
             return None
         else:
@@ -336,7 +337,7 @@ class Utils:
 :Returns: a list.
 :Exceptions: none.
 :Message codes: none."""
-        aur_pkgs = self.aur.request('search', pkgname)
+        aur_pkgs = self.aur.request('search', pkgname, DS.protocol)
         if aur_pkgs['results'] == 'No results found':
             return []
         else:
@@ -401,7 +402,7 @@ class Build:
 :Message codes: none."""
         self.utils = Utils()
         self.aururl = '{0}://aur.archlinux.org{1}'
-#TODO help
+
     def auto_build(self, pkgname, validate = True, performdepcheck = True,
                    makepkginstall = True):
         """NOT the actual build function.
@@ -465,15 +466,14 @@ required.'))
 :Returns: bytes downloaded.
 :Exceptions:
     PBError, IOError,
-    urllib.error.URLError, urllib.error.HTTPError
+    requests.exceptions.*
 :Message codes: ERR3101."""
-        rhandle = urllib.request.urlopen(self.aururl.format(prot, urlpath))
-        headers = rhandle.info()
-        fhandle = open(filename, 'wb')
-        fhandle.write(rhandle.read())
-        fhandle.close()
-        if headers['Content-Length'] != 0:
-            return headers['Content-Length']
+        r = requests.get(self.aururl.format(prot, urlpath))
+        open(filename, 'wb').write(r.content)
+        if r.status != 200:
+            raise PBError(_('[ERR3102] download: HTTP Error {0}').format(r.status)
+        if r.headers['content-cength'] != 0:
+            return r.headers['content-length']
         else:
             raise PBError(_('[ERR3101] download: 0 bytes downloaded'))
 
@@ -583,7 +583,7 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
                     raise PBError(_('[ERR3201] depcheck: cannot find {0} \
 anywhere').format(dep))
             return parseddeps
-#TODO help
+
     def build_runner(self, pkgname, performdepcheck = True,
                      makepkginstall = True):
         """A build function, which actually links to others.  Do not use it
@@ -672,12 +672,18 @@ eg. in the Maintainer field.)  Error message: {0}').format(str(inst)))
         except PBError as inst:
             fancy_error(str(inst))
             return [3, ['pb']]
-        except urllib.error.URLError as inst:
+        except requests.exceptions.ConnectionError as inst:
             fancy_error(str(inst))
-            return [3, ['urllib']]
-        except urllib.error.HTTPError as inst:
+            return [3, ['requests.exceptions.ConnectionError']]
+        except requests.exceptions.HTTPError as inst:
             fancy_error(str(inst))
-            return [3, ['urllib']]
+            return [3, ['requests.exceptions.HTTPError']]
+        except requests.exceptions.Timeout as inst:
+            fancy_error(str(inst))
+            return [3, ['requests.exceptions.Timeout']]
+        except requests.exceptions.TooManyRedirects as inst:
+            fancy_error(str(inst))
+            return [3, ['requests.exceptions.TooManyRedirects']]
         except IOError as inst:
             fancy_error(str(inst))
             return [3, ['io']]
@@ -728,10 +734,10 @@ class Upgrade:
 :Exceptions: none.
 :Message codes: none."""
 
-        aurlist = self.aur.multiinfo(pkglist)['results'] # It's THAT easy.
-        # Oh, and by the way: it is much, MUCH faster than others.
-        # It makes ONE multiinfo request rather than $installed_packages
-        # info requests.
+        aurlist = self.aur.multiinfo(pkglist, DS.protocol)['results']
+        # It's THAT easy.  Oh, and by the way: it is much, MUCH faster
+        # than others.  It makes ONE multiinfo request rather than
+        # len(installed_packages) info requests.
         upgradeable = []
 
         for i in aurlist:
@@ -807,17 +813,14 @@ use pacman syntax if you want to.'))
     argopt.add_argument('-w', '--buildonly', action='store_false',
                         default=True, dest='mkpginst', help=_('don\'t \
                         install packages after building'))
-#TODO
     argopt.add_argument('-V', '--novalidation', action='store_false',
                         default=True, dest='valid', help=_('don\'t check \
                         if packages were installed after build'))
-
     argopt.add_argument('-S', '--sync', action='store_true', default=False,
                         dest='pac', help=_('pacman syntax compatiblity'))
     argopt.add_argument('-y', '--refresh', action='store_true',
                         default=False, dest='pacupd', help=_('pacman \
                         syntax compatiblity'))
-
     argopr.add_argument('-i', '--info', action='store_true', default=False,
                         dest='info', help=_('view package information'))
     argopr.add_argument('-s', '--search', action='store_true',
@@ -826,12 +829,16 @@ use pacman syntax if you want to.'))
     argopr.add_argument('-u', '--sysupgrade', action='store_true',
                         default=False, dest='upgrade',
                         help=_('upgrade installed AUR packages'))
+    argopr.add_argument('-p', '--protocol', action='store',
+                        default='http', dest='protocol',
+                        help=_('chooses protocol (default: http)'))
 
     args = parser.parse_args()
     DS.validate = args.valid
     DS.depcheck = args.depcheck
     DS.pacman = args.pac
     DS.mkpginst = args.mkpginst
+    DS.protocol = args.protocol
     try:
         utils = Utils()
         build = Build()
@@ -939,5 +946,5 @@ limitation'))
 # RPC: <http://aur.archlinux.org/rpc.php> (search info msearch multiinfo)
 # If something new will appear there, tell me through GH Issues or mail.
 # They would be implemented later.
-# Some other features might show up, too.
-# NOTICE: If we manage to pass 1000, it is gonna be split up.
+# Some other features might show up, too.  Although I do not think that
+# big changes will happen.
