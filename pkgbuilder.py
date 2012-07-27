@@ -34,7 +34,7 @@
 
 # Names convention: pkg = a package object, pkgname = a package name.
 
-"""PKGBUILDer.  An AUR helper (sort of.)"""
+"""PKGBUILDer.  An AUR helper."""
 from pyparsing import OneOrMore, Word   # python-pyparsing from [community]
 import pyalpm                           # pyalpm from [extra]
 import pycman                           # pyalpm from [extra]
@@ -88,7 +88,7 @@ class PBDS:
                            'lib', 'modules', 'multimedia', 'network',
                            'office', 'science', 'system', 'x11',
                            'xfce', 'kernels']
-        self.inttext = _('[ERR5001] Aborted by user! Exiting...')
+        self.inttext = _('[ERR5001] Aborted by user! Exiting…')
 
     def colorson(self):
         """Colors on.
@@ -544,7 +544,7 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
     ::
 
     types = ['system', 'repos', 'aur']
-    for pkg, pkgtype in depcheck([...]).items():
+    for pkg, pkgtype in depcheck([…]).items():
         print('{0}: found in {1}'.format(pkg, types[pkgtype])
         if pkgtype == 2: #AUR
             #build pkg here
@@ -611,7 +611,7 @@ unless you re-implement auto_build.
                 raise PBError(_('[ERR3001] Package {0} not found.').format(
                               pkgname))
             pkgname = pkg['Name']
-            fancy_msg(_('Building {0}...').format(pkgname))
+            fancy_msg(_('Building {0}…').format(pkgname))
             self.utils.print_package(pkg,
                                      prefix=DS.colors['blue']+'  ->'+
                                      DS.colors['all_off']+
@@ -619,17 +619,17 @@ unless you re-implement auto_build.
             filename = pkgname+'.tar.gz'
             # Okay, this package exists, great then.  Thanks, user.
 
-            fancy_msg(_('Downloading the tarball...'))
+            fancy_msg(_('Downloading the tarball…'))
             downloadbytes = self.download(pkg['URLPath'], filename)
             kbytes = int(downloadbytes) / 1000
             fancy_msg2(_('{0} kB downloaded').format(kbytes))
 
-            fancy_msg(_('Extracting...'))
+            fancy_msg(_('Extracting…'))
             fancy_msg2(_('{0} files extracted').format(self.extract(
                                                        filename)))
             os.chdir('./'+pkgname+'/')
             if performdepcheck == True:
-                fancy_msg(_('Checking dependencies...'))
+                fancy_msg(_('Checking dependencies…'))
                 try:
                     depends = self.prepare_deps(open('./PKGBUILD',
                               'rb').read().decode('utf8', 'ignore'))
@@ -757,7 +757,7 @@ class Upgrade:
 :Message codes: none.
 :Notice: things break here A LOT."""
         pblog('Ran auto_upgrade.')
-        fancy_msg(_('Gathering data about packages...'))
+        fancy_msg(_('Gathering data about packages…'))
 
         foreign = self.gather_foreign_pkgs()
         upgradeable = self.list_upgradeable(foreign.keys())
@@ -772,7 +772,7 @@ class Upgrade:
                 DS.colors['bold']+' '+_('Proceed with installation? \
 [Y/n] ')+DS.colors['all_off'])
         yesno = input(query)
-        yesno = yesno + ' ' # cheating...
+        yesno = yesno + ' ' # cheating…
         if yesno[0] == 'n' or yesno[0] == 'N':
             return 0
         for pkgname in upgradeable:
@@ -793,8 +793,8 @@ def main_routine():
 :Message codes: ERR5002.
 """
     pblog('Running argparse.')
-    parser = argparse.ArgumentParser(description=_('A python3 AUR helper \
-(sort of.)  Wrapper-friendly (pacman-like output.)'), epilog=_('You can \
+    parser = argparse.ArgumentParser(description=_('An AUR helper.  \
+Wrapper-friendly (pacman-like output.)'), epilog=_('You can \
 use pacman syntax if you want to.'))
 
     parser.add_argument('-v', '--version', action='version',
@@ -846,7 +846,7 @@ use pacman syntax if you want to.'))
 
         if args.color == False:
             # That's awesome in variables AND 2.x series.
-            # ...and it was moved to PBDS.
+            # …and it was moved to PBDS.
             DS.colorsoff()
 
         if args.info == True:
@@ -893,7 +893,7 @@ Submitted'])).strftime('%a %d %b %Y %H:%m:%S %p %Z'),
                 # having this limitation, though.
                 fancy_error(_('[ERR5002] search string too short, API \
 limitation'))
-                fancy_msg(_('Searching for exact match...'))
+                fancy_msg(_('Searching for exact match…'))
                 search = [utils.info(searchstring)] # workaround
                 if search == [None]:
                     fancy_error2(_('not found'))
@@ -934,14 +934,14 @@ limitation'))
         exit(0)
 
     # If we didn't exit, we shall build the packages.
-    pblog('Ran through all the addon features, building...')
+    pblog('Ran through all the addon features, building…')
     for pkgname in args.pkgs:
         pblog('Building {0}'.format(pkgname))
         build.auto_build(pkgname, DS.validate, DS.depcheck, DS.mkpginst)
 
     pblog('Quitting.')
 
-# Over 900 lines!  Compare this to build.pl's 56 (including ~8 useless...)
+# Over 900 lines!  Compare this to build.pl's 56 (including ~8 useless…)
 # New features will be included when they will be added to the AUR RPC.
 # RPC: <http://aur.archlinux.org/rpc.php> (search info msearch multiinfo)
 # If something new will appear there, tell me through GH Issues or mail.
