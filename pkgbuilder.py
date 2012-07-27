@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.2.30
-# A Python AUR helper/library.
+# PKGBUILDer v2.1.2.31
+# An AUR helper/library.
 # Copyright (C) 2011-2012, Kwpolska.
 # All rights reserved.
 #
@@ -35,7 +35,7 @@
 
 # Names convention: pkg = a package object, pkgname = a package name.
 
-"""PKGBUILDer.  An AUR helper."""
+"""PKGBUILDer.  An AUR helper/library."""
 from pyparsing import OneOrMore, Word   # python-pyparsing from [community]
 import pyalpm                           # pyalpm from [extra]
 import pycman                           # pyalpm from [extra]
@@ -45,15 +45,13 @@ import sys
 import os
 import json
 import re
-#import urllib.request
-#import urllib.error
 import tarfile
 import subprocess
 import datetime
 import gettext
 import functools
 
-VERSION = '2.1.2.30'
+VERSION = '2.1.2.31'
 T = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
 _ = T.gettext
 
@@ -257,9 +255,13 @@ class AUR:
 :Input: none.
 :Output: none.
 :Returns: JSON data from the API.
-:Exceptions: requests.exceptions.*.
+:Exceptions: requests.exceptions.*, PBError.
 :Message codes: none."""
-        return requests.get(self.rpc.format(prot, rtype, arg)).text
+        r = requests.get(self.rpc.format(prot, rtype, arg))
+        if r.status_code != 200:
+            raise PBError(_('[ERR1001] AUR: HTTP Error {0}').format(r.status_code))
+
+        return r.text
 
     def jsonmultiinfo(self, args, prot = 'http'):
         """Makes a multiinfo request and returns plain JSON data.
@@ -268,10 +270,14 @@ class AUR:
 :Input: none.
 :Output: none.
 :Returns: JSON data from the API.
-:Exceptions: requests.exceptions.*.
+:Exceptions: requests.exceptions.*, PBError.
 :Message codes: none."""
         urlargs = '&arg[]='+'&arg[]='.join(args)
-        return requests.get(self.mrpc.format(prot, urlargs)).text
+        r = requests.get(self.mrpc.format(prot, urlargs))
+        if r.status_code != 200:
+            raise PBError(_('[ERR1001] AUR: HTTP Error {0}').format(r.status_code))
+
+        return r.text
 
     def request(self, rtype, arg, prot = 'http'):
         """Makes a request.
@@ -363,7 +369,6 @@ class Utils:
         H = pycman.config.init_with_config('/etc/pacman.conf')
         localdb = H.get_localdb()
         lpkg = localdb.get_pkg(pkg['Name'])
-
         category = ''
         installed = ''
         if lpkg != None:
@@ -371,7 +376,7 @@ class Utils:
                 installed = _(' [installed: {0}]').format(lpkg.version)
             else:
                 installed = _(' [installed]')
-        if pkg['OutOfDate'] == 1:
+        if pkg['OutOfDate'] == '1':
             installed = (installed + ' '+DS.colors['red']+_(
             '[out of date]')+DS.colors['all_off'])
         if use_categories == True:
@@ -470,16 +475,18 @@ required.'))
     requests.exceptions.*
 :Message codes: ERR3101."""
         r = requests.get(self.aururl.format(prot, urlpath))
-        open(filename, 'wb').write(r.content)
-        if r.status != 200:
-            raise PBError(_('[ERR3102] download: HTTP Error {0}').format(r.status)
-        if r.headers['content-cength'] != 0:
-            return r.headers['content-length']
-        else:
+
+        # Error handling.
+        if r.status_code != 200:
+            raise PBError(_('[ERR3102] download: HTTP Error {0}').format(r.status_code))
+        elif r.headers['content-length'] == '0':
             raise PBError(_('[ERR3101] download: 0 bytes downloaded'))
 
+        open(filename, 'wb').write(r.content)
+        return r.headers['content-length']
+
     def extract(self, filename):
-        """        Extracts an AUR tarball.
+        """Extracts an AUR tarball.
 
 :Arguments: filename.
 :Input: none.
@@ -758,20 +765,35 @@ class Upgrade:
 :Message codes: none.
 :Notice: things break here A LOT."""
         pblog('Ran auto_upgrade.')
-        fancy_msg(_('Gathering data about packages…'))
+        if DS.pacman:
+            print(':: '+_('Gathering data about packages…'))
+        else:
+            fancy_msg(_('Gathering data about packages…'))
 
         foreign = self.gather_foreign_pkgs()
         upgradeable = self.list_upgradeable(foreign.keys())
         upglen = len(upgradeable)
+        if DS.pacman:
+            print(_('Targets ({0}): ').format(upglen), end='')
+        else:
+            fancy_msg(_('{0} upgradeable packages found:').format(upglen))
 
-        fancy_msg(_('{0} upgradeable packages found:').format(upglen))
         if upglen == 0:
-            fancy_msg2(_('there is nothing to do'))
+            if DS.pacman:
+                print(_('there is nothing to do'))
+            else:
+                fancy_msg2(_('there is nothing to do'))
+
             return 0
-        fancy_msg2('  '.join(upgradeable))
-        query = (DS.colors['green']+'==>'+DS.colors['all_off']+
+        if DS.pacman:
+            print('  '.join(upgradeable))
+            query = _('Proceed with installation? [Y/n] ')
+        else:
+            fancy_msg2('  '.join(upgradeable))
+            query = (DS.colors['green']+'==>'+DS.colors['all_off']+
                 DS.colors['bold']+' '+_('Proceed with installation? \
 [Y/n] ')+DS.colors['all_off'])
+
         yesno = input(query)
         yesno = yesno + ' ' # cheating…
         if yesno[0] == 'n' or yesno[0] == 'N':
@@ -794,7 +816,7 @@ def main_routine():
 :Message codes: ERR5002.
 """
     pblog('Running argparse.')
-    parser = argparse.ArgumentParser(description=_('An AUR helper.  \
+    parser = argparse.ArgumentParser(description=_('An AUR helper/library.  \
 Wrapper-friendly (pacman-like output.)'), epilog=_('You can \
 use pacman syntax if you want to.'))
 
@@ -866,8 +888,8 @@ Licenses       : {lic}
 Votes          : {cmv}
 Out of Date    : {ood}
 Maintainer     : {mnt}
-Last Updated   : {upd}
 First Submitted: {fsb}
+Last Updated   : {upd}
 Description    : {dsc}
 """).format(
                 cat = DS.categories[int(pkg['CategoryID'])],
