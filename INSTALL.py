@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# pkgbuilder installer
+# PKGBUILDer
 # Copyright (C) 2011, Kwpolska
 # All rights reserved.
 #
@@ -34,8 +34,7 @@
 # There are no install instructions.  If you want to install
 # the script, run this script with python.
 
-"""pkgbuilder AUR installer
-experimental and useless"""
+"""PKGBUILDer AUR installer.  Use it if you don’t have any AUR helpers installed."""
 
 import subprocess
 import os
