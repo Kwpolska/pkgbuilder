@@ -390,8 +390,11 @@ class Utils:
             base = prefix+' {0}/{1} {2} ({4} '+_('votes')+'){5}\n\
 '+prefix+'     {3}'
 
-        print(base.format(category, pkg['Name'], pkg['Version'],
+        entry = (base.format(category, pkg['Name'], pkg['Version'],
                           pkg['Description'], pkg['NumVotes'], installed))
+        print(entry)
+        return entry # workaround for test suite
+
 
 ### Build       build functions and helpers ###
 class Build:
@@ -773,10 +776,12 @@ class Upgrade:
         foreign = self.gather_foreign_pkgs()
         upgradeable = self.list_upgradeable(foreign.keys())
         upglen = len(upgradeable)
-        if DS.pacman:
-            print(_('Targets ({0}): ').format(upglen), end='')
-        else:
-            fancy_msg(_('{0} upgradeable packages found:').format(upglen))
+        if upglen > 0:
+            if DS.pacman:
+                print(_('Targets ({0}): ').format(upglen), end='')
+            else:
+                fancy_msg(_('{0} upgradeable packages found:').format(
+                                                                upglen))
 
         if upglen == 0:
             if DS.pacman:
