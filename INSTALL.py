@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
 # PKGBUILDer installer
-# Copyright (C) 2011, Kwpolska
+# Copyright (C) 2011-2012, Kwpolska.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -45,30 +45,8 @@ import tarfile
 import random
 import gettext
 
-try:
-    T = gettext.translation('pkgbuilder', 'locale', fallback='en')
-    _ = T.gettext
-    PATH = ''
-
-    print(_("""Hello!
-
-PKGBUILDer is now available as an AUR package.  It is the suggested
-way of installing PKGBUILDer.  This script will download the AUR
-package and install it.  If you will have problems, please download
-and compile the package manually.
-
-"""))
-
-    WHOCARES = input(_('Hit Enter/Return to continue. '))
-    print('')
-
-    UID = os.geteuid()
-    PATH = '/tmp/pkgbuilderinstall-{0}'.format(random.randint(1, 100))
-    if os.path.exists(PATH) == False:
-        os.mkdir(PATH)
-    os.chdir(PATH)
-
-    # Dependency check.
+def depcheck():
+    """Dependency check."""
 
     print(_("""Performing a dependency check..."""))
 
@@ -110,23 +88,26 @@ and compile the package manually.
         deps['requests'] = False
         print(_('not found'))
 
-    def install(pkgname):
-        PKGDATA = json.loads(urllib.request.urlopen('http://aur.archlinux\
+    return deps
+
+def install(pkgname):
+    """Cheap installation function."""
+    PKGDATA = json.loads(urllib.request.urlopen('http://aur.archlinux\
 .org/rpc.php?type=info&arg='+pkgname).read().decode())
-        RHANDLE = urllib.request.urlopen('http://aur.archlinux.org'+
-        PKGDATA['results']['URLPath'])
-        open(pkgname+'.tar.gz', 'wb').write(RHANDLE.read())
-        THANDLE = tarfile.open(pkgname+'.tar.gz', 'r:gz')
-        THANDLE.extractall()
-        os.chdir('./'+pkgname+'/')
+    RHANDLE = urllib.request.urlopen('http://aur.archlinux.org'+
+    PKGDATA['results']['URLPath'])
+    open(pkgname+'.tar.gz', 'wb').write(RHANDLE.read())
+    THANDLE = tarfile.open(pkgname+'.tar.gz', 'r:gz')
+    THANDLE.extractall()
+    os.chdir('./'+pkgname+'/')
 
-        ASROOT = ''
-        if os.geteuid() == 0:
-            ASROOT = ' --asroot'
-        MPKG = subprocess.call('/usr/bin/makepkg -si'+ASROOT, shell=True)
+    ASROOT = ''
+    if os.geteuid() == 0:
+        ASROOT = ' --asroot'
+    MPKG = subprocess.call('/usr/bin/makepkg -si'+ASROOT, shell=True)
 
-        if MPKG == 1:
-            print(_("""
+    if MPKG == 1:
+        print(_("""
 
 Something went wrong.  Please read makepkg's output and try again.
 You can also try to debug the work of this script yourself.
@@ -137,17 +118,44 @@ All the files this script was working on are placed in
 If I am wrong, though, congratulations!
 """).format(PATH))
 
-    if deps['certifi'] == False or deps['requests'] == False:
-        print(_("""Installing missing AUR dependencies..."""))
-        if deps['certifi'] == False:
-            install('python-certifi')
+if __name__ == '__main__':
+    try:
 
-        if deps['requests'] == False:
-            install('python-requests')
+        T = gettext.translation('pkgbuilder', 'locale', fallback='en')
+        _ = T.gettext
+        PATH = ''
 
-    install('pkgbuilder')
+        print(_("""Hello!
 
-    print(_("""
+PKGBUILDer is now available as an AUR package.  It is the suggested
+way of installing PKGBUILDer.  This script will download the AUR
+package and install it.  If you will have problems, please download
+and compile the package manually.
+
+"""))
+
+        WHOCARES = input(_('Hit Enter/Return to continue. '))
+        print('')
+
+        UID = os.geteuid()
+        PATH = '/tmp/pkgbuilderinstall-{0}'.format(random.randint(1, 100))
+        if os.path.exists(PATH) == False:
+            os.mkdir(PATH)
+        os.chdir(PATH)
+
+        deps = depcheck()
+
+        if deps['certifi'] == False or deps['requests'] == False:
+            print(_("""Installing missing AUR dependencies..."""))
+            if deps['certifi'] == False:
+                install('python-certifi')
+
+            if deps['requests'] == False:
+                install('python-requests')
+
+        install('pkgbuilder')
+
+        print(_("""
 
 Read the above output.  If the script had any problems, run it
 again.  You can also try to debug the work of this script yourself.
@@ -161,15 +169,15 @@ PKGBUILDer.  For standalone usage, type `pkgbuilder` into the prompt
 python module usage, type `import pkgbuilder` into the python prompt.
 """).format(PATH))
 
-except KeyboardInterrupt:
-    if PATH == '':
-        print(_("""It looks like you want to quit.  Okay then, goodbye.
+    except KeyboardInterrupt:
+        if PATH == '':
+            print(_("""It looks like you want to quit.  Okay then, goodbye.
 No work has been started yet.
 
 If that's what you want to do, go for it.  If it isn't, run this
 script again."""))
-    else:
-        print(_("""It looks like you want to quit.  Okay then, goodbye.
+        else:
+            print(_("""It looks like you want to quit.  Okay then, goodbye.
 All the files this script was working on are placed in
     {0}
 (the number is random).
