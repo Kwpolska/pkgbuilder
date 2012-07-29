@@ -31,9 +31,6 @@ The -S (DS.pacman) parameter adds pacman wrapper compatibility.
 For more info, refer to the pkgbuilder(8) man page or HTML docs in
 docs/html.
 
-Development of the PKGBUILDer is stalled.  However, patches are welcome
-all the time at GitHub.
-
 COPYRIGHT
 ---------
 Copyright (C) 2011-2012, Kwpolska.

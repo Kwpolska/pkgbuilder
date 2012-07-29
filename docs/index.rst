@@ -16,9 +16,6 @@ much as possible.
 Since version 2.1.0, PKGBUILDer provides modules that can be used in
 other scripts.
 
-Development of the PKGBUILDer is stalled.  However, patches are welcome
-all the time at GitHub.
-
 For standalone use, see the :doc:`PKGBUILDer man page <pkgbuilder>`.
 Reading the appendices (:doc:`README` and
 :doc:`Message codes <messagecodes>`) is also a good idea.
