@@ -4,7 +4,7 @@ Appendix C. Changelog
 :Info: This is a partial changelog for PKGBUILDer.
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Date: #{date}
-:Version: 2.1.2.32
+:Version: 2.1.2.33
 
 Versioning scheme
 =================

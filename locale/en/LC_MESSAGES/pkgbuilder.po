@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: $version\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-07-30 11:31+0200\n"
+"POT-Creation-Date: 2012-07-30 12:34+0200\n"
 "PO-Revision-Date: 2012-07-27 13:44+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
@@ -65,75 +65,75 @@ msgid "[INF3450] validation: installed {0}"
 msgstr "[INF3450] validation: installed {0}"
 
 #: pkgbuilder.py:504
-msgid "[ERR3301] makepkg returned 1."
-msgstr "[ERR3301] makepkg returned 1."
+msgid "[ERR3402] Something went wrong.  EC={0} EM={1}"
+msgstr "[ERR3402] Something went wrong.  EC={0} EM={1}"
 
-#: pkgbuilder.py:509
-msgid "[ERR3401] Building more AUR packages is required."
-msgstr "[ERR3401] Building more AUR packages is required."
+#: pkgbuilder.py:508
+msgid "[WRN3401] Building more AUR packages is required."
+msgstr "[WRN3401] Building more AUR packages is required."
 
-#: pkgbuilder.py:533
+#: pkgbuilder.py:532
 msgid "[ERR3102] download: HTTP Error {0}"
 msgstr "[ERR3102] download: HTTP Error {0}"
 
-#: pkgbuilder.py:536
+#: pkgbuilder.py:535
 msgid "[ERR3101] download: 0 bytes downloaded"
 msgstr "[ERR3101] download: 0 bytes downloaded"
 
-#: pkgbuilder.py:559
+#: pkgbuilder.py:558
 msgid "[ERR3151] extract: no files extracted"
 msgstr "[ERR3151] extract: no files extracted"
 
-#: pkgbuilder.py:642 pkgbuilder.py:706
+#: pkgbuilder.py:641 pkgbuilder.py:705
 msgid "[ERR3201] depcheck: cannot find {0} anywhere"
 msgstr "[ERR3201] depcheck: cannot find {0} anywhere"
 
-#: pkgbuilder.py:670
+#: pkgbuilder.py:669
 msgid "[ERR3001] Package {0} not found."
 msgstr "[ERR3001] Package {0} not found."
 
-#: pkgbuilder.py:673
+#: pkgbuilder.py:672
 msgid "Building {0}…"
 msgstr "Building {0}…"
 
 #. Okay, this package exists, great then.  Thanks, user.
-#: pkgbuilder.py:681
+#: pkgbuilder.py:680
 msgid "Downloading the tarball…"
 msgstr "Downloading the tarball…"
 
-#: pkgbuilder.py:684
+#: pkgbuilder.py:683
 msgid "{0} kB downloaded"
 msgstr "{0} kB downloaded"
 
-#: pkgbuilder.py:686
+#: pkgbuilder.py:685
 msgid "Extracting…"
 msgstr "Extracting…"
 
-#: pkgbuilder.py:687
+#: pkgbuilder.py:686
 msgid "{0} files extracted"
 msgstr "{0} files extracted"
 
-#: pkgbuilder.py:691
+#: pkgbuilder.py:690
 msgid "Checking dependencies…"
 msgstr "Checking dependencies…"
 
-#: pkgbuilder.py:698
+#: pkgbuilder.py:697
 msgid "found in system"
 msgstr "found in system"
 
-#: pkgbuilder.py:698
+#: pkgbuilder.py:697
 msgid "found in repos"
 msgstr "found in repos"
 
-#: pkgbuilder.py:699
+#: pkgbuilder.py:698
 msgid "found in the AUR"
 msgstr "found in the AUR"
 
-#: pkgbuilder.py:702
+#: pkgbuilder.py:701
 msgid "none found"
 msgstr "none found"
 
-#: pkgbuilder.py:716
+#: pkgbuilder.py:715
 msgid ""
 "[ERR3202] depcheck: UnicodeDecodeError.  The PKGBUILD cannot be read.  There "
 "are invalid UTF-8 characters (eg. in the Maintainer field.)  Error message: "
@@ -143,91 +143,91 @@ msgstr ""
 "are invalid UTF-8 characters (eg. in the Maintainer field.)  Error message: "
 "{0}"
 
-#: pkgbuilder.py:822 pkgbuilder.py:824
+#: pkgbuilder.py:818 pkgbuilder.py:820
 msgid "Gathering data about packages…"
 msgstr "Gathering data about packages…"
 
-#: pkgbuilder.py:831
+#: pkgbuilder.py:827
 msgid "Targets ({0}): "
 msgstr "Targets ({0}): "
 
-#: pkgbuilder.py:833
+#: pkgbuilder.py:829
 msgid "{0} upgradeable packages found:"
 msgstr "{0} upgradeable packages found:"
 
-#: pkgbuilder.py:838
+#: pkgbuilder.py:834
 msgid " there is nothing to do"
 msgstr " there is nothing to do"
 
-#: pkgbuilder.py:840
+#: pkgbuilder.py:836
 msgid "there is nothing to do"
 msgstr "there is nothing to do"
 
-#: pkgbuilder.py:845 pkgbuilder.py:849
+#: pkgbuilder.py:841 pkgbuilder.py:845
 msgid "Proceed with installation? [Y/n] "
 msgstr "Proceed with installation? [Y/n] "
 
-#: pkgbuilder.py:875
+#: pkgbuilder.py:871
 msgid "An AUR helper/library.  Wrapper-friendly (pacman-like output.)"
 msgstr "An AUR helper/library.  Wrapper-friendly (pacman-like output.)"
 
-#: pkgbuilder.py:876
+#: pkgbuilder.py:872
 msgid "You can use pacman syntax if you want to."
 msgstr "You can use pacman syntax if you want to."
 
-#: pkgbuilder.py:882
+#: pkgbuilder.py:878
 msgid "packages to build"
 msgstr "packages to build"
 
-#: pkgbuilder.py:887
+#: pkgbuilder.py:883
 msgid "don't use                         colors in output"
 msgstr "don't use                         colors in output"
 
-#: pkgbuilder.py:890
+#: pkgbuilder.py:886
 msgid "don't                         check dependencies (may break makepkg)"
 msgstr "don't                         check dependencies (may break makepkg)"
 
-#: pkgbuilder.py:893
+#: pkgbuilder.py:889
 msgid "don't                         install packages after building"
 msgstr "don't                         install packages after building"
 
-#: pkgbuilder.py:896
+#: pkgbuilder.py:892
 msgid ""
 "don't check                         if packages were installed after build"
 msgstr ""
 "don't check                         if packages were installed after build"
 
-#: pkgbuilder.py:899
+#: pkgbuilder.py:895
 msgid "pacman syntax compatiblity"
 msgstr "pacman syntax compatiblity"
 
-#: pkgbuilder.py:901
+#: pkgbuilder.py:897
 msgid "pacman                         syntax compatiblity"
 msgstr "pacman                         syntax compatiblity"
 
-#: pkgbuilder.py:904
+#: pkgbuilder.py:900
 msgid "view package information"
 msgstr "view package information"
 
-#: pkgbuilder.py:906
+#: pkgbuilder.py:902
 msgid "search the                         AUR for matching strings"
 msgstr "search the                         AUR for matching strings"
 
-#: pkgbuilder.py:910
+#: pkgbuilder.py:906
 msgid "upgrade installed AUR packages"
 msgstr "upgrade installed AUR packages"
 
-#: pkgbuilder.py:913
+#: pkgbuilder.py:909
 msgid "chooses protocol (default: http)"
 msgstr "chooses protocol (default: http)"
 
-#: pkgbuilder.py:935
+#: pkgbuilder.py:931
 msgid "Package {0} not found."
 msgstr "Package {0} not found."
 
 #. TRANSLATORS: space it properly.  `yes/no' below are
 #. for `out of date'.
-#: pkgbuilder.py:939
+#: pkgbuilder.py:935
 msgid ""
 "Category       : {cat}\n"
 "Name           : {nme}\n"
@@ -253,25 +253,25 @@ msgstr ""
 "Last Updated   : {upd}\n"
 "Description    : {dsc}\n"
 
-#: pkgbuilder.py:956
+#: pkgbuilder.py:952
 msgid "yes"
 msgstr "yes"
 
-#: pkgbuilder.py:957
+#: pkgbuilder.py:953
 msgid "no"
 msgstr "no"
 
 #. this would be too many entries.  The API is really
 #. having this limitation, though.
-#: pkgbuilder.py:972
+#: pkgbuilder.py:968
 msgid "[ERR5002] search string too short, API limitation"
 msgstr "[ERR5002] search string too short, API limitation"
 
-#: pkgbuilder.py:974
+#: pkgbuilder.py:970
 msgid "Searching for exact match…"
 msgstr "Searching for exact match…"
 
-#: pkgbuilder.py:977 INSTALL.py:62 INSTALL.py:71 INSTALL.py:80 INSTALL.py:89
+#: pkgbuilder.py:973 INSTALL.py:62 INSTALL.py:71 INSTALL.py:80 INSTALL.py:89
 msgid "not found"
 msgstr "not found"
 
@@ -390,3 +390,6 @@ msgstr ""
 "\n"
 "If that's what you want to do, go for it.  If it isn't, run this\n"
 "script again."
+
+#~ msgid "[ERR3301] makepkg returned 1."
+#~ msgstr "[ERR3301] makepkg returned 1."

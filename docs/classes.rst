@@ -5,7 +5,7 @@ Classes in PKGBUILDer
 :Author: Kwpolska
 :Copyright: See Appendix B.
 :Date: #{date}
-:Version: 2.1.2.32
+:Version: 2.1.2.33
 
 .. index:: classes
 .. module:: PKGBUILDer
@@ -260,7 +260,7 @@ four additional ones.
 :Returns: nothing.
 :Exceptions: PBError.
 :Message codes:
-    ERR3301, ERR34?? (ERR3401, ERR3450, ERR3451, ERR3452), INF3450.
+    WRN3401, ERR3402, INF3450, ERR3451, ERR3452.
 :Former data:
     2.0 Name: build.
 

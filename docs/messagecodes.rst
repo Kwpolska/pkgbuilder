@@ -4,7 +4,7 @@ Appendix A. PKGBUILDer message numbers list
 :Info: This is an appendix to the PKGBUILDer documentation.
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Date: #{date}
-:Version: 2.1.2.32
+:Version: 2.1.2.33
 
 In order to help debugging, messages are numbered.
 Each message number has four digits:  the first one is the
@@ -18,7 +18,7 @@ Categories
 3. Build class
     1. download, extract
     2. depcheck, predepcheck
-    3. makepkg
+    3. makepkg (defunct)
     4. auto_build, validation
 4. Update class
 5. __main__ functionality (when run as an AUR helper)
@@ -45,7 +45,7 @@ INF#     Component       Message
 ======== =============== =========================================
 
 .. [3450] occurs, when PKGBUILDer finds out that the package that
-   was meant to be bulit is correctly installed.
+   was meant to be bulit is correctly installed.i
 
 Warnings
 ========
@@ -53,9 +53,13 @@ Warnings
 ======== =============== =========================================
 WRN#     Component       Message
 ======== =============== =========================================
-0        none            Nothing there yet.
+[3401]_  auto_build      AUR dependency required
 ======== =============== =========================================
 
+.. [3401] occurs, when the $depends or $makedepends array of the
+   PKGBUILD request a package, which exists in the AUR.  It is plain
+   informational. Right after displaying this message, the script will
+   automatically build the required packages.
 
 Errors
 ======
@@ -70,8 +74,7 @@ ERR#     Component       Message
 [3151]_  extract         0 files extracted
 [3201]_  depcheck        cannot find the requested dependency
 [3202]_  depcheck        UnicodeDecodeError while reading file
-[3301]_  makepkg         returned 1
-[3401]_  auto_build      AUR dependency required
+[3402]_  auto_build      Something went wrong.
 [3451]_  validation      not installed
 [3452]_  validation      outdated
 [5001]_  `__main__`      Aborted by user! Exiting…
@@ -109,13 +112,8 @@ Explainations:
    20` PKGBUILDer’s error message is also valid and will help the
    maintainer.
 
-.. [3301] occurs, when makepkg exits with the return code 1.  It means
-   that something bad happened.  Refer to makepkg’s output for more info.
-
-.. [3401] occurs, when the $depends or $makedepends array of the
-   PKGBUILD request a package, which exists in the AUR.  It is plain
-   informational. Right after displaying this message, the script will
-   automatically build the required packages.
+.. [3402] (formerly 3301) occurs, when something bad happens while building.
+   Refer to the output for more info.
 
 .. [3451] occurs, when PKGBUILDer finds out that the package is not
    installed on your system.  It means that the package that was bulit

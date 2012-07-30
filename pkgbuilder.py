@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.2.32
+# PKGBUILDer v2.1.2.33
 # An AUR helper/library.
 # Copyright (C) 2011-2012, Kwpolska.
 # All rights reserved.
@@ -52,7 +52,7 @@ import gettext
 import functools
 import logging
 
-VERSION = '2.1.2.32'
+VERSION = '2.1.2.33'
 T = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
 _ = T.gettext
 
@@ -474,7 +474,7 @@ If you can, use it.
 :Returns: nothing.
 :Exceptions: PBError.
 :Message codes:
-    ERR3301, ERR34?? (ERR3401, ERR3450, ERR3451, ERR3452), INF3450.
+    WRN3401, ERR3402, INF3450, ERR3451, ERR3452.
 :Former data:
     2.0 Name: build."""
         build_result = self.build_runner(pkgname, performdepcheck,
@@ -501,12 +501,11 @@ outdated {0}').format(pkg.version))
 installed {0}').format(pkg.version))
             elif build_result[0] >= 0 and build_result[0] <= 15:
                 os.chdir('../')
-                raise PBError(_('[ERR3301] makepkg returned 1.'))
-                # I think that only makepkg can do that.  Others would
-                # raise an exception.
+                raise PBError(_('[ERR3402] Something went wrong.  \
+EC={0} EM={1}').format(build_result[0], build_result[1]))
             elif build_result[0] == 16:
                 os.chdir('../')
-                fancy_warning(_('[ERR3401] Building more AUR packages is \
+                fancy_warning(_('[WRN3401] Building more AUR packages is \
 required.'))
                 for pkgname2 in build_result[1]:
                     self.auto_build(pkgname2, validate, performdepcheck,
@@ -570,7 +569,7 @@ required.'))
 :Exceptions: IOError.
 :Message codes: none."""
         fixedp = '0123456789abcdefghijklmnopqrstuvwxyz\
-ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&* + ,-./:;<=>?@[]^_`{|}~"\''
+ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
         pattern1 = 'depends=(' + OneOrMore(Word(fixedp)) + ')'
         pattern2 = 'makedepends=(' + OneOrMore(Word(fixedp)) + ')'
 
@@ -635,7 +634,7 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&* + ,-./:;<=>?@[]^_`{|}~"\''
                     parseddeps[dep] = 0
                 elif pyalpm.find_satisfier(syncpkgs, dep):
                     parseddeps[dep] = 1
-                elif self.utils.info(dep) is not None:
+                elif self.utils.info(dep) != None:
                     parseddeps[dep] = 2
                 else:
                     parseddeps[dep] = -1
@@ -727,9 +726,6 @@ eg. in the Maintainer field.)  Error message: {0}').format(str(inst)))
 
             return [subprocess.call('/usr/bin/makepkg -s' + mpparams,
                     shell=True), 'makepkg']
-            # In version 2.0, this comment couldn't believe that
-            # the main function takes only one line.  But, right now,
-            # it doesn't think so.  Others look like it, too.
         except PBError as inst:
             fancy_error(str(inst))
             return [3, ['pb']]
