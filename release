@@ -57,7 +57,7 @@ rm ./messages.pot.tmp
 for i in ./locale/*; do
     language=$(basename $i)
 
-    podir="./locale/$language/LC_MESSAGES/"
+    podir="./locale/$language/LC_MESSAGES"
     popath="./locale/$language/LC_MESSAGES/pkgbuilder.po"
     sed 's/\"Project-Id-Version: .*/\"Project-Id-Version: $version\\n\"/' $popath -i
     msgmerge $popath messages.pot -o $popath
@@ -71,7 +71,7 @@ for i in ./locale/*; do
             $EDITOR $popath
         fi
     fi
-    sh "msgfmt $popath -o $podir/pkgbuilder.mo"
+    msgfmt -o $podir/pkgbuilder.mo $popath
 done
 
 ./setup.py sdist upload
@@ -80,7 +80,10 @@ opwd=$(pwd)
 pbdir="/tmp/$project-pkgbuild-$version"
 mkdir -p $pbdir
 cp PKGBUILD $pbdir
-md5out=$(cd $pbdir && makepkg -cg)
+cd $pbdir
+makepkg -cg > $pbdir/md5sums
+md5out=$(cat $pbdir/md5sums)
+cd $opwd
 sed "s/md5sums=.*/$md5out/" PKGBUILD -i
 cp PKGBUILD $pbdir
 cd $pbdir
@@ -92,8 +95,9 @@ echo 'Commit message (sans the version?)'
 echo -n '> '
 read commitmsg
 
-exit
+rm -rf pkgbuilder.egg-info
+
 git add *
-git commit -asm "v$version: #{commitmsg}"
+git commit -asm "v$version: $commitmsg"
 git tag -a "v$version" -m "Version $version"
 git push --tags

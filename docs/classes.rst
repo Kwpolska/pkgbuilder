@@ -4,8 +4,8 @@ Classes in PKGBUILDer
 
 :Author: Kwpolska
 :Copyright: See Appendix B.
-:Date: 2012-07-27
-:Version: 2.1.2.31
+:Date: #{date}
+:Version: 2.1.2.32
 
 .. index:: classes
 .. module:: PKGBUILDer
@@ -19,8 +19,6 @@ PBDS
 .. index:: PBDS; DS; Data Storage
 .. versionadded:: 2.1.0.0
 .. class:: PBDS
-
-:Arguments: none.
 
 This is the class used for storing data.  Currently, it stores this
 information:
@@ -36,7 +34,18 @@ information:
 +-----------+---------------------------------------+-------------------+
 | depcheck  | checking if deps are installed?       | True              |
 +-----------+---------------------------------------+-------------------+
-
+| mkpkginst | if makepkg should install packages    | True              |
++-----------+---------------------------------------+-------------------+
+| protocol  | protocol used to connect to the AUR   | http              |
++-----------+---------------------------------------+-------------------+
+| categories| AUR categories list                   | [categories]_     |
++-----------+---------------------------------------+-------------------+
+| inttext   | text shown while interrupting (^C)    | [inttext]_        |
++-----------+---------------------------------------+-------------------+
+| confdir   | configuration directory               | [confdir]_        |
++-----------+---------------------------------------+-------------------+
+| log       | logger object (eg. PBDS.log.info)     | logger object     |
++-----------+---------------------------------------+-------------------+
 
 .. [beh] *wrapper-friendly behavior* (-S): building in /tmp;
     :meth:`Utils.print_package` says aur/name
@@ -46,14 +55,27 @@ information:
 ::
 
     self.colors = {
-                    'all_off':    '\x1b[1;0m',
-                    'bold':       '\x1b[1;1m',
-                    'blue':       '\x1b[1;1m\x1b[1;34m',
-                    'green':      '\x1b[1;1m\x1b[1;32m',
-                    'red':        '\x1b[1;1m\x1b[1;31m',
-                    'yellow':     '\x1b[1;1m\x1b[1;33m'
-                  }
+        'all_off':    '\x1b[1;0m',
+        'bold':       '\x1b[1;1m',
+        'blue':       '\x1b[1;1m\x1b[1;34m',
+        'green':      '\x1b[1;1m\x1b[1;32m',
+        'red':        '\x1b[1;1m\x1b[1;31m',
+        'yellow':     '\x1b[1;1m\x1b[1;33m'
+    }
 
+.. [categories] The categories come from `aurweb <https://aur.archlinux.org>`_, and are as follows:
+
+::
+
+    self.categories = ['ERROR', 'none', 'daemons', 'devel', 'editors',
+                       'emulators', 'games', 'gnome', 'i18n', 'kde',
+                       'lib', 'modules', 'multimedia', 'network',
+                       'office', 'science', 'system', 'x11',
+                       'xfce', 'kernels']
+
+.. [inttext] Used by /scripts/pkgbuilder, internationalized, looks like this: ``[ERR5001] Aborted by user! Exiting…``
+
+.. [confdir] Config directory.  Usually ``~/.config/kwpolska/pkgbuilder``
 
 It also has two methods:
 
@@ -87,10 +109,7 @@ AUR
 .. versionadded:: 2.1.0.0
 .. class:: AUR
 
-:Arguments: none.
-
 This is the class used for calling the AUR API.  It defines four methods:
-
 
 .. method:: request(rtype, arg[, prot])
 .. index:: request
@@ -98,9 +117,9 @@ This is the class used for calling the AUR API.  It defines four methods:
 :Arguments: request type, argument (package name), protocol.
 :Input: none.
 :Output: none.
-:Returns: data from the API.
-:Exceptions: urllib.error.URLError, urllib.error.HTTPError.
-:Message codes: none.
+:Returns: Data from the API.
+:Exceptions: requests.exceptions.*, PBError.
+:Message codes: ERR1001.
 
 Makes a request and returns data.  Valid types of requests are listed on
 the `AUR API's page`_.  Currently tested and working ones are:
@@ -125,9 +144,9 @@ multiinfo is implemented in another function, :meth:`multiinfo()`.
 :Arguments: a list of packages, protocol.
 :Input: none.
 :Output: none.
-:Returns: data from the API.
-:Exceptions: urllib.error.URLError, urllib.error.HTTPError.
-:Message codes: none.
+:Returns: Data from the API.
+:Exceptions: requests.exceptions.*, PBError.
+:Message codes: ERR1001.
 
 Makes a multiinfo request.  A multiinfo request can retrieve information
 for multiple packages.
@@ -138,8 +157,9 @@ for multiple packages.
 :Input: none.
 :Output: none.
 :Returns: JSON data from the API.
-:Exceptions: urllib.error.URLError, urllib.error.HTTPError.
-:Message codes: none.
+:Exceptions: requests.exceptions.*, PBError.
+:Message codes: ERR1001.
+
 
 Makes a :meth:`request()`, but returns plain JSON data.  Valid values of
 `rtype` are listed in :meth:`request()`'s documentation.
@@ -150,8 +170,8 @@ Makes a :meth:`request()`, but returns plain JSON data.  Valid values of
 :Input: none.
 :Output: none.
 :Returns: JSON data from the API.
-:Exceptions: urllib.error.URLError, urllib.error.HTTPError.
-:Message codes: none.
+:Exceptions: requests.exceptions.*, PBError.
+:Message codes: ERR1001.
 
 Makes a :meth:`multiinfo()` request, but returns plain JSON data.
 
@@ -162,8 +182,6 @@ Utils
 .. versionadded:: 2.1.0.0
 .. class:: Utils
 
-:Arguments: none.
-
 This is the class with many random utilities.  It defines three methods:
 
 
@@ -173,7 +191,7 @@ This is the class with many random utilities.  It defines three methods:
 :Arguments: package name.
 :Input: none.
 :Output: none.
-:Returns: a dict OR None.
+:Returns: a dict with package data OR None.
 :Exceptions: none.
 :Message codes: none.
 :Former data:
@@ -193,7 +211,7 @@ doesn't exist.
 :Arguments: package name.
 :Input: none.
 :Output: none.
-:Returns: a list.
+:Returns: a list of packages.
 :Exceptions: none.
 :Message codes: none.
 
@@ -201,32 +219,34 @@ Searches for AUR packages and returns them as a list.  Almost equivalent
 to :meth:`AUR.request('search', pkgname)`, but returns **`[]`** if no
 packages were found.
 
-.. method:: print_package(pkg[, use_categories][, prefix])
+.. method:: print_package(pkg[, use_categories][, prefix][, cachemode])
 .. index:: print
 
-:Arguments: package name, use categories, line prefix.
+:Arguments: package name, use categories, cache mode, line prefix.
 :Input: none.
-:Output:
+:Output: (with cache mode off, otherwise nothing)
     ::
     prefix category/name version (num votes) [installed: version] [out of date]
     prefix     description
 
-:Returns: nothing.
+:Returns: (with cache mode on, otherwise nothing)
+    ::
+    prefix category/name version (num votes) [installed: version] [out of date]
+    prefix     description
+
 :Exceptions: none.
 :Message codes: none.
 :Former data:
     2.0 Name: showInfo.
 
-Prints data about `pkg`.  Format specified above, in the Output field.
+Prints data about `pkg` (returns in cache mode).  Format specified above, in the Output and Return fields.
 
 Build
-======
+=====
 
 .. index:: Build; makepkg
 .. versionadded:: 2.1.0.0
 .. class:: Build
-
-:Arguments: none.
 
 This is the class for building packages.  It defines two base methods and
 four additional ones.
@@ -250,13 +270,14 @@ the recommended way of building packages through PKGBUILDer.
 .. method:: build_runner(pkgname[, depcheck])
 .. index:: makepkg; build; validate
 
-:Arguments: package, perform dependency checks.
+:Arguments: pkgname, perform dependency checks.
 :Input: none.
 :Output: text.
 :Returns: ::
 
-    [makepkg's retcode OR 3 if fails OR 16 if needs an AUR dep,
-    [AUR deps or error source]]
+    [makepkg's retcode or 3 if fails or 16 if needs an AUR dep,
+        [AUR deps or 'makepkg'] or nothing
+    ]
 
 :Exceptions: PBError.
 :Message codes: ERR3001, ERR3201, ERR3202.
@@ -280,9 +301,8 @@ standalone, because it is embedded by :meth:`auto_build()`.
 :Output: none.
 :Returns: bytes downloaded.
 :Exceptions:
-    PBError, IOError,
-    urllib.error.URLError, urllib.error.HTTPError
-:Message codes: ERR3101.
+    PBError, IOError, requests.exceptions.*
+:Message codes: ERR3101, ERR3102.
 
 Downloads an AUR tarball.  Data normally provided by :meth:`build_runner()`.
 
@@ -327,11 +347,12 @@ Gets (make)depends from a PKGBUILD and returns them.
 :Message codes: ERR3201.
 :Suggested way of handling:
     ::
-    >>> types = ['system', 'repos', 'aur']
-    >>> for pkg, pkgtype in depcheck([...]).items():
-    ...    print('{0}: found in {1}'.format(pkg, types[pkgtype])
-    ...    if pkgtype == 2: #AUR
-    ...        #build pkg here
+
+    types = ['system', 'repos', 'aur']
+    for pkg, pkgtype in depcheck([…]).items():
+        print('{0}: found in {1}'.format(pkg, types[pkgtype])
+        if pkgtype == 2: #AUR
+            #build pkg here
 
 :Former data:
     2.0 Returns: no -1
@@ -339,16 +360,12 @@ Gets (make)depends from a PKGBUILD and returns them.
 Performs a dependency check.  Data normally provided by
 :meth:`prepare_deps()`.
 
-.. TODO
-
 Upgrade
 =======
 
 .. index:: Upgrade; Update; Syu
 .. versionadded:: 2.1.0.0
 .. class:: Upgrade
-
-:Arguments: none.
 
 This is the class for upgrading the installed packages.  It defines one base
 method and two additional ones.
@@ -362,12 +379,11 @@ method and two additional ones.
 :Returns: 0 or nothing.
 :Exceptions: none.
 :Message codes: none.
-:Notice: things break here A LOT.
 
 Upgrades packages.  Simillar to :meth:`Build.auto_build()`.
 
 .. method:: gather_foreign_packages()
-.. index:: foreign
+.. index:: foreign packages
 
 :Arguments: none.
 :Input: none.
