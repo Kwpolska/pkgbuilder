@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.2.31
+# PKGBUILDer v2.1.2.32
 # An AUR helper/library.
 # Copyright (C) 2011-2012, Kwpolska.
 # All rights reserved.
@@ -52,9 +52,10 @@ import gettext
 import functools
 import logging
 
-VERSION = '2.1.2.31'
+VERSION = '2.1.2.32'
 T = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
 _ = T.gettext
+
 
 ### PBDS            PB global data storage  ###
 class PBDS:
@@ -70,13 +71,13 @@ class PBDS:
 :Message codes: none."""
         # For fancy-schmancy messages stolen from makepkg.
         self.colors = {
-                        'all_off':    '\x1b[1;0m',
-                        'bold':       '\x1b[1;1m',
-                        'blue':       '\x1b[1;1m\x1b[1;34m',
-                        'green':      '\x1b[1;1m\x1b[1;32m',
-                        'red':        '\x1b[1;1m\x1b[1;31m',
-                        'yellow':     '\x1b[1;1m\x1b[1;33m'
-                      }
+            'all_off':    '\x1b[1;0m',
+            'bold':       '\x1b[1;1m',
+            'blue':       '\x1b[1;1m\x1b[1;34m',
+            'green':      '\x1b[1;1m\x1b[1;32m',
+            'red':        '\x1b[1;1m\x1b[1;31m',
+            'yellow':     '\x1b[1;1m\x1b[1;33m'
+        }
 
         self.pacman = False
         self.validate = True
@@ -92,10 +93,10 @@ class PBDS:
 
         # Creating the configuration/log stuff…
         confhome = os.getenv('XDG_CONFIG_HOME')
-        if confhome == None:
+        if confhome is None:
             confhome = os.path.expanduser('~/.config')
 
-        self.confdir = confhome+'/kwpolska/pkgbuilder'
+        self.confdir = confhome + '/kwpolska/pkgbuilder'
 
         if not os.path.exists(self.confdir):
             try:
@@ -107,17 +108,17 @@ class PBDS:
                     pass
 
                 try:
-                    os.mkdir(confhome+'/kwpolska')
+                    os.mkdir(confhome + '/kwpolska')
                     os.mkdir(self.confdir)
                 except:
                     fancy_error('Cannot create the config directory \
 (~/.config/kwpolska/pkgbuilder).')
                     exit(1)
         logging.basicConfig(format='%(asctime)-15s [%(levelname)-7s] \
-:%(name)-10s: %(message)s', filename=self.confdir+'/pkgbuilder.log',
+:%(name)-10s: %(message)s', filename=self.confdir + '/pkgbuilder.log',
                             level=logging.DEBUG)
         self.log = logging.getLogger('pkgbuilder')
-        self.log.info('*** PKGBUILDer v'+VERSION)
+        self.log.info('*** PKGBUILDer v' + VERSION)
 
     def colorson(self):
         """Colors on.
@@ -129,14 +130,13 @@ class PBDS:
 :Exceptions: none.
 :Message codes: none."""
         self.colors = {
-                        'all_off':    '\x1b[1;0m',
-                        'bold':       '\x1b[1;1m',
-                        'blue':       '\x1b[1;1m\x1b[1;34m',
-                        'green':      '\x1b[1;1m\x1b[1;32m',
-                        'red':        '\x1b[1;1m\x1b[1;31m',
-                        'yellow':     '\x1b[1;1m\x1b[1;33m'
-                      }
-
+            'all_off':    '\x1b[1;0m',
+            'bold':       '\x1b[1;1m',
+            'blue':       '\x1b[1;1m\x1b[1;34m',
+            'green':      '\x1b[1;1m\x1b[1;32m',
+            'red':        '\x1b[1;1m\x1b[1;31m',
+            'yellow':     '\x1b[1;1m\x1b[1;33m'
+        }
 
     def colorsoff(self):
         """Colors off.
@@ -148,15 +148,16 @@ class PBDS:
 :Exceptions: none.
 :Message codes: none."""
         self.colors = {
-                        'all_off':    '',
-                        'bold':       '',
-                        'blue':       '',
-                        'green':      '',
-                        'red':        '',
-                        'yellow':     ''
-                      }
+            'all_off':    '',
+            'bold':       '',
+            'blue':       '',
+            'green':      '',
+            'red':        '',
+            'yellow':     ''
+        }
 
 DS = PBDS()
+
 
 # Fancy-schmancy messages stolen from makepkg.
 def fancy_msg(text):
@@ -168,9 +169,11 @@ def fancy_msg(text):
 :Returns: nothing.
 :Exceptions: none.
 :Message codes: none, although messages may contain some."""
-    sys.stderr.write(DS.colors['green']+'==>'+DS.colors['all_off']+
-                     DS.colors['bold']+' '+text+DS.colors['all_off']+'\n')
-    DS.log.info('(auto fancy_msg     ) '+text)
+    sys.stderr.write(DS.colors['green'] + '==>' + DS.colors['all_off'] +
+                     DS.colors['bold'] + ' ' + text +
+                     DS.colors['all_off'] + '\n')
+    DS.log.info('(auto fancy_msg     ) ' + text)
+
 
 def fancy_msg2(text):
     """makepkg's msg2().  Use for sub-messages.
@@ -181,9 +184,11 @@ def fancy_msg2(text):
 :Returns: nothing.
 :Exceptions: none.
 :Message codes: none, although messages may contain some."""
-    sys.stderr.write(DS.colors['blue']+'  ->'+DS.colors['all_off']+
-                     DS.colors['bold']+' '+text+DS.colors['all_off']+'\n')
-    DS.log.info('(auto fancy_msg2    ) '+text)
+    sys.stderr.write(DS.colors['blue'] + '  ->' + DS.colors['all_off'] +
+                     DS.colors['bold'] + ' ' + text +
+                     DS.colors['all_off'] + '\n')
+    DS.log.info('(auto fancy_msg2    ) ' + text)
+
 
 def fancy_warning(text):
     """makepkg's warning().  Use when you have problems.
@@ -194,10 +199,11 @@ def fancy_warning(text):
 :Returns: nothing.
 :Exceptions: none.
 :Message codes: none, although messages may contain some."""
-    sys.stderr.write(DS.colors['yellow']+'==> '+_('WARNING:')+
-                     DS.colors['all_off']+DS.colors['bold']+' '+text+
-                     DS.colors['all_off']+'\n')
-    DS.log.warning('(auto fancy_warning ) '+text)
+    sys.stderr.write(DS.colors['yellow'] + '==> ' + _('WARNING:') +
+                     DS.colors['all_off'] + DS.colors['bold'] +
+                     ' ' + text + DS.colors['all_off'] + '\n')
+    DS.log.warning('(auto fancy_warning ) ' + text)
+
 
 def fancy_warning2(text):
     """Like fancy_warning, but looks like a sub-message (fancy_msg2).
@@ -208,10 +214,11 @@ def fancy_warning2(text):
 :Returns: nothing.
 :Exceptions: none.
 :Message codes: none, although messages may contain some."""
-    sys.stderr.write(DS.colors['yellow']+'==> '+_('WARNING:')+
-                     DS.colors['all_off']+DS.colors['bold']+' '+text+
-                     DS.colors['all_off']+'\n')
-    DS.log.warning('(auto fancy_warning2) '+text)
+    sys.stderr.write(DS.colors['yellow'] + '==> ' + _('WARNING:') +
+                     DS.colors['all_off'] + DS.colors['bold'] +
+                     ' ' + text + DS.colors['all_off'] + '\n')
+    DS.log.warning('(auto fancy_warning2) ' + text)
+
 
 def fancy_error(text):
     """makepkg's error().  Use for errors.  Exitting is suggested.
@@ -222,10 +229,11 @@ def fancy_error(text):
 :Returns: nothing.
 :Exceptions: none.
 :Message codes: none, although messages may contain some."""
-    sys.stderr.write(DS.colors['red']+'==> '+_('ERROR:')+
-                     DS.colors['all_off']+DS.colors['bold']+
-                     ' '+text+DS.colors['all_off']+'\n')
-    DS.log.error('(auto fancy_error   ) '+text)
+    sys.stderr.write(DS.colors['red'] + '==> ' + _('ERROR:') +
+                     DS.colors['all_off'] + DS.colors['bold'] +
+                     ' ' + text + DS.colors['all_off'] + '\n')
+    DS.log.error('(auto fancy_error   ) ' + text)
+
 
 def fancy_error2(text):
     """Like fancy_error, but looks like a sub-message (fancy_msg2).
@@ -236,9 +244,11 @@ def fancy_error2(text):
 :Returns: nothing.
 :Exceptions: none.
 :Message codes: none, although messages may contain some."""
-    sys.stderr.write(DS.colors['red']+'  ->'+DS.colors['all_off']+
-                     DS.colors['bold']+' '+text+DS.colors['all_off']+'\n')
-    DS.log.error('(auto fancy_error2  ) '+text)
+    sys.stderr.write(DS.colors['red'] + '  ->' + DS.colors['all_off'] +
+                     DS.colors['bold'] + ' ' + text +
+                     DS.colors['all_off'] + '\n')
+    DS.log.error('(auto fancy_error2  ) ' + text)
+
 
 ### PBError         errors raised here      ###
 class PBError(Exception):
@@ -253,7 +263,7 @@ class PBError(Exception):
 :Returns: nothing.
 :Exceptions: none.
 :Message codes: none."""
-        DS.log.error('(auto PBError       ) '+msg)
+        DS.log.error('(auto PBError       ) ' + msg)
         self.msg = msg
 
     def __str__(self):
@@ -277,7 +287,7 @@ class AUR:
         self.rpc = '{0}://aur.archlinux.org/rpc.php?type={1}&arg={2}'
         self.mrpc = '{0}://aur.archlinux.org/rpc.php?type=multiinfo{1}'
 
-    def jsonreq(self, rtype, arg, prot = 'http'):
+    def jsonreq(self, rtype, arg, prot='http'):
         """Makes a request and returns plain JSON data.
 
 :Arguments: request type, argument (package name), protocol.
@@ -288,11 +298,12 @@ class AUR:
 :Message codes: ERR1001."""
         r = requests.get(self.rpc.format(prot, rtype, arg))
         if r.status_code != 200:
-            raise PBError(_('[ERR1001] AUR: HTTP Error {0}').format(r.status_code))
+            raise PBError(_('[ERR1001] AUR: HTTP Error {0}').format(
+                r.status_code))
 
         return r.text
 
-    def jsonmultiinfo(self, args, prot = 'http'):
+    def jsonmultiinfo(self, args, prot='http'):
         """Makes a multiinfo request and returns plain JSON data.
 
 :Arguments: a list of packages, protocol.
@@ -301,35 +312,37 @@ class AUR:
 :Returns: JSON data from the API.
 :Exceptions: requests.exceptions.*, PBError.
 :Message codes: ERR1001."""
-        urlargs = '&arg[]='+'&arg[]='.join(args)
+        urlargs = '&arg[]=' + '&arg[]='.join(args)
         r = requests.get(self.mrpc.format(prot, urlargs))
         if r.status_code != 200:
-            raise PBError(_('[ERR1001] AUR: HTTP Error {0}').format(r.status_code))
+            raise PBError(_('[ERR1001] AUR: HTTP Error {0}').format(
+                r.status_code))
 
         return r.text
 
-    def request(self, rtype, arg, prot = 'http'):
+    def request(self, rtype, arg, prot='http'):
         """Makes a request.
 
 :Arguments: request type, argument (package name), protocol.
 :Input: none.
 :Output: none.
 :Returns: data from the API.
-:Exceptions: requests.exceptions.*.
-:Message codes: none."""
+:Exceptions: requests.exceptions.*, PBError.
+:Message codes: ERR1001."""
         return json.loads(self.jsonreq(rtype, arg, prot))
 
-    def multiinfo(self, args, prot = 'http'):
+    def multiinfo(self, args, prot='http'):
         """Makes a multiinfo request.
 
 :Arguments: a list of packages, protocol.
 :Input: none.
 :Output: none.
 :Returns: data from the API.
-:Exceptions: requests.exceptions.*.
-:Message codes: none."""
+:Exceptions: requests.exceptions.*, PBError.
+:Message codes: ERR1001."""
 
         return json.loads(self.jsonmultiinfo(args, prot))
+
 
 ### Utils           common global utilities ###
 class Utils:
@@ -343,13 +356,14 @@ class Utils:
 :Output: none.
 :Returns: a Utils object."""
         self.aur = AUR()
+
     def info(self, pkgname):
         """Returns info about a package.
 
 :Arguments: package name.
 :Input: none.
 :Output: none.
-:Returns: a dict OR None.
+:Returns: a dict with package data OR None.
 :Exceptions: none.
 :Message codes: none.
 :Former data:
@@ -370,7 +384,7 @@ class Utils:
 :Arguments: package name.
 :Input: none.
 :Output: none.
-:Returns: a list.
+:Returns: a list of packages.
 :Exceptions: none.
 :Message codes: none."""
         aur_pkgs = self.aur.request('search', pkgname, DS.protocol)
@@ -379,7 +393,8 @@ class Utils:
         else:
             return aur_pkgs['results']
 
-    def print_package(self, pkg, use_categories = True, cachemode = False, prefix = ''):
+    def print_package(self, pkg, use_categories=True,
+                      cachemode=False, prefix=''):
         """Outputs info about package.
 
 :Arguments: package name, use categories, cache mode, line prefix.
@@ -403,32 +418,33 @@ class Utils:
         lpkg = localdb.get_pkg(pkg['Name'])
         category = ''
         installed = ''
-        if lpkg != None:
+        if lpkg is not None:
             if pyalpm.vercmp(pkg['Version'], lpkg.version) != 0:
                 installed = _(' [installed: {0}]').format(lpkg.version)
             else:
                 installed = _(' [installed]')
         if pkg['OutOfDate'] == '1':
-            installed = (installed + ' '+DS.colors['red']+_(
-            '[out of date]')+DS.colors['all_off'])
-        if use_categories :
+            installed = (installed + ' ' + DS.colors['red'] + _(
+                         '[out of date]') + DS.colors['all_off'])
+        if use_categories:
             category = DS.categories[int(pkg['CategoryID'])]
         else:
             category = 'aur'
         if prefix == '':
-            base = prefix+'{0}/{1} {2} ({4} '+_('votes')+'){5}\n'+prefix+'\
-    {3}'
+            base = (prefix + '{0}/{1} {2} ({4} ' + _('votes') +
+                    '){5}\n' + prefix + '    {3}')
         else:
-            base = prefix+' {0}/{1} {2} ({4} '+_('votes')+'){5}\n\
-'+prefix+'     {3}'
+            base = (prefix + ' {0}/{1} {2} ({4} ' + _('votes') +
+                    '){5}\n' + prefix + '     {3}')
 
         entry = (base.format(category, pkg['Name'], pkg['Version'],
-                          pkg['Description'], pkg['NumVotes'], installed))
+                             pkg['Description'], pkg['NumVotes'], installed))
 
         if cachemode:
             return entry
         else:
             print(entry)
+
 
 ### Build       build functions and helpers ###
 class Build:
@@ -446,8 +462,8 @@ class Build:
         self.utils = Utils()
         self.aururl = '{0}://aur.archlinux.org{1}'
 
-    def auto_build(self, pkgname, validate = True, performdepcheck = True,
-                   makepkginstall = True):
+    def auto_build(self, pkgname, validate=True, performdepcheck=True,
+                   makepkginstall=True):
         """NOT the actual build function.
 This function makes validation and building AUR deps possible.
 If you can, use it.
@@ -500,7 +516,7 @@ required.'))
         except PBError as inst:
             fancy_error(str(inst))
 
-    def download(self, urlpath, filename, prot = 'http'):
+    def download(self, urlpath, filename, prot='http'):
         """Downloads an AUR tarball (http) to the current directory.
 
 :Arguments: URL, filename for saving, protocol.
@@ -508,14 +524,14 @@ required.'))
 :Output: none.
 :Returns: bytes downloaded.
 :Exceptions:
-    PBError, IOError,
-    requests.exceptions.*
+    PBError, IOError, requests.exceptions.*
 :Message codes: ERR3101, ERR3102."""
         r = requests.get(self.aururl.format(prot, urlpath))
 
         # Error handling.
         if r.status_code != 200:
-            raise PBError(_('[ERR3102] download: HTTP Error {0}').format(r.status_code))
+            raise PBError(_('[ERR3102] download: HTTP Error {0}').format(
+                r.status_code))
         elif r.headers['content-length'] == '0':
             raise PBError(_('[ERR3101] download: 0 bytes downloaded'))
 
@@ -553,9 +569,8 @@ required.'))
     (can be empty.)
 :Exceptions: IOError.
 :Message codes: none."""
-        # This code is bad.  If you want to, fix it.
         fixedp = '0123456789abcdefghijklmnopqrstuvwxyz\
-ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
+ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&* + ,-./:;<=>?@[]^_`{|}~"\''
         pattern1 = 'depends=(' + OneOrMore(Word(fixedp)) + ')'
         pattern2 = 'makedepends=(' + OneOrMore(Word(fixedp)) + ')'
 
@@ -570,9 +585,9 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
             bmdepends = []
             makedepends = []
         if bashdepends != []:
-            depends = [ s.rstrip() for s in bashdepends[0][1:-1] ]
+            depends = [s.rstrip() for s in bashdepends[0][1:-1]]
         if bmdepends != []:
-            makedepends = [ s.rstrip() for s in bmdepends[0][1:-1] ]
+            makedepends = [s.rstrip() for s in bmdepends[0][1:-1]]
 
         bothdepends = depends + makedepends
         return [s.replace('"', '').replace('\'', '') for s in bothdepends]
@@ -607,24 +622,20 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
             H = pycman.config.init_with_config('/etc/pacman.conf')
             localpkgs = H.get_localdb().pkgcache
             syncpkgs = []
-            for j in [ i.pkgcache for i in H.get_syncdbs() ]:
+            for j in [i.pkgcache for i in H.get_syncdbs()]:
                 syncpkgs.append(j)
-            syncpkgs = functools.reduce(lambda x,y:x+y,syncpkgs)
-            #can someone help me fix the above line? TODO.
+            syncpkgs = functools.reduce(lambda x, y: x + y, syncpkgs)
             for dep in depends:
                 if re.search('[<=>]', dep):
                     vpat = '>=<|><=|=><|=<>|<>=|<=>|>=|=>|><|<>|=<|\
 <=|>|=|<'
                     ver_base = re.split(vpat, dep)
                     dep = ver_base[0]
-                #pkg = localdb.get_pkg(dep)
-                #repos = dict((db.name, db) for db in pyalpm.get_syncdbs())
-                if pyalpm.find_satisfier(localpkgs, dep): #pkg != None:
+                if pyalpm.find_satisfier(localpkgs, dep):
                     parseddeps[dep] = 0
                 elif pyalpm.find_satisfier(syncpkgs, dep):
-                    #pycman.action_sync.find_sync_package(dep, repos)[0]:
                     parseddeps[dep] = 1
-                elif self.utils.info(dep) != None:
+                elif self.utils.info(dep) is not None:
                     parseddeps[dep] = 2
                 else:
                     parseddeps[dep] = -1
@@ -632,8 +643,8 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
 anywhere').format(dep))
             return parseddeps
 
-    def build_runner(self, pkgname, performdepcheck = True,
-                     makepkginstall = True):
+    def build_runner(self, pkgname, performdepcheck=True,
+                     makepkginstall=True):
         """A build function, which actually links to others.  Do not use it
 unless you re-implement auto_build.
 
@@ -655,16 +666,16 @@ unless you re-implement auto_build.
         try:
             # exists
             pkg = self.utils.info(pkgname)
-            if pkg == None:
+            if pkg is None:
                 raise PBError(_('[ERR3001] Package {0} not found.').format(
                               pkgname))
             pkgname = pkg['Name']
             fancy_msg(_('Building {0}…').format(pkgname))
             self.utils.print_package(pkg,
-                                     prefix=DS.colors['blue']+'  ->'+
-                                     DS.colors['all_off']+
+                                     prefix=DS.colors['blue'] + '  ->' +
+                                     DS.colors['all_off'] +
                                      DS.colors['bold'])
-            filename = pkgname+'.tar.gz'
+            filename = pkgname + '.tar.gz'
             # Okay, this package exists, great then.  Thanks, user.
 
             fancy_msg(_('Downloading the tarball…'))
@@ -675,7 +686,7 @@ unless you re-implement auto_build.
             fancy_msg(_('Extracting…'))
             fancy_msg2(_('{0} files extracted').format(self.extract(
                                                        filename)))
-            os.chdir('./'+pkgname+'/')
+            os.chdir('./' + pkgname + '/')
             if performdepcheck:
                 fancy_msg(_('Checking dependencies…'))
                 try:
@@ -685,7 +696,7 @@ unless you re-implement auto_build.
                     depends = self.prepare_deps(pbcontents)
                     deps = self.depcheck(depends)
                     pkgtypes = [_('found in system'), _('found in repos'),
-                                _('found in the AUR')                     ]
+                                _('found in the AUR')]
                     aurbuild = []
                     if deps == {}:
                         fancy_msg2(_('none found'))
@@ -708,14 +719,14 @@ eg. in the Maintainer field.)  Error message: {0}').format(str(inst)))
 
             mpparams = ''
 
-            if makepkginstall != False:
-                mpparams = mpparams+'i'
+            if makepkginstall is not False:
+                mpparams = mpparams + 'i'
 
             if os.geteuid() == 0:
-                mpparams = mpparams+' --asroot'
+                mpparams = mpparams + ' --asroot'
 
-            return [subprocess.call('/usr/bin/makepkg -s'+mpparams,
-            shell=True), 'makepkg']
+            return [subprocess.call('/usr/bin/makepkg -s' + mpparams,
+                    shell=True), 'makepkg']
             # In version 2.0, this comment couldn't believe that
             # the main function takes only one line.  But, right now,
             # it doesn't think so.  Others look like it, too.
@@ -737,6 +748,7 @@ eg. in the Maintainer field.)  Error message: {0}').format(str(inst)))
         except IOError as inst:
             fancy_error(str(inst))
             return [3, ['io']]
+
 
 ### Upgrade     upgrade AUR packages        ###
 class Upgrade:
@@ -804,11 +816,10 @@ class Upgrade:
 :Output: text.
 :Returns: 0 or nothing.
 :Exceptions: none.
-:Message codes: none.
-:Notice: things break here A LOT."""
+:Message codes: none."""
         DS.log.info('Ran auto_upgrade.')
         if DS.pacman:
-            print(':: '+_('Gathering data about packages…'))
+            print(':: ' + _('Gathering data about packages…'))
         else:
             fancy_msg(_('Gathering data about packages…'))
 
@@ -820,7 +831,7 @@ class Upgrade:
                 print(_('Targets ({0}): ').format(upglen), end='')
             else:
                 fancy_msg(_('{0} upgradeable packages found:').format(
-                                                                upglen))
+                    upglen))
 
         if upglen == 0:
             if DS.pacman:
@@ -834,12 +845,12 @@ class Upgrade:
             query = _('Proceed with installation? [Y/n] ')
         else:
             fancy_msg2('  '.join(upgradeable))
-            query = (DS.colors['green']+'==>'+DS.colors['all_off']+
-                DS.colors['bold']+' '+_('Proceed with installation? \
-[Y/n] ')+DS.colors['all_off'])
+            query = (DS.colors['green'] + '==>' + DS.colors['all_off'] +
+                     DS.colors['bold'] + ' ' + _('Proceed with \
+installation? [Y/n] ') + DS.colors['all_off'])
 
         yesno = input(query)
-        yesno = yesno + ' ' # cheating…
+        yesno = yesno + ' '  # cheating…
         if yesno[0] == 'n' or yesno[0] == 'N':
             return 0
         for pkgname in upgradeable:
@@ -848,6 +859,7 @@ class Upgrade:
                                   DS.mkpginst)
 
 DS.log.info('Initialized.')
+
 
 def main_routine():
     """Main routine.
@@ -865,7 +877,7 @@ Wrapper-friendly (pacman-like output.)'), epilog=_('You can \
 use pacman syntax if you want to.'))
 
     parser.add_argument('-v', '--version', action='version',
-                        version='PKGBUILDer v'+VERSION)
+                        version='PKGBUILDer v' + VERSION)
     parser.add_argument('pkgs', metavar='PACKAGE', action='store',
                         nargs='*', help=_('packages to build'))
 
@@ -919,9 +931,9 @@ use pacman syntax if you want to.'))
         if args.info:
             for pkgname in args.pkgs:
                 pkg = utils.info(pkgname)
-                if pkg == None:
+                if pkg is None:
                     raise PBError(_('Package {0} not found.').format(
-                          pkgname))
+                        pkgname))
                 # TRANSLATORS: space it properly.  `yes/no' below are
                 # for `out of date'.
                 print(_("""Category       : {cat}
@@ -935,21 +947,20 @@ Maintainer     : {mnt}
 First Submitted: {fsb}
 Last Updated   : {upd}
 Description    : {dsc}
-""").format(
-                cat = DS.categories[int(pkg['CategoryID'])],
-                nme = pkg['Name'],
-                url = pkg['URL'],
-                ver = pkg['Version'],
-                lic = pkg['License'],
-                cmv = pkg['NumVotes'],
-                ood = DS.colors['red']+_('yes')+DS.colors['all_off'] if (
-                      pkg['OutOfDate'] == '1') else _('no'),
-                mnt = pkg['Maintainer'],
-                upd = datetime.datetime.fromtimestamp(float(pkg['Last\
+""").format(cat=DS.categories[int(pkg['CategoryID'])],
+            nme=pkg['Name'],
+            url=pkg['URL'],
+            ver=pkg['Version'],
+            lic=pkg['License'],
+            cmv=pkg['NumVotes'],
+            ood=DS.colors['red'] + _('yes') + DS.colors['all_off'] if (
+                pkg['OutOfDate'] == '1') else _('no'),
+            mnt=pkg['Maintainer'],
+            upd=datetime.datetime.fromtimestamp(float(pkg['Last\
 Modified'])).strftime('%a %d %b %Y %H:%m:%S %p %Z'),
-                fsb = datetime.datetime.fromtimestamp(float(pkg['First\
+            fsb=datetime.datetime.fromtimestamp(float(pkg['First\
 Submitted'])).strftime('%a %d %b %Y %H:%m:%S %p %Z'),
-                dsc = pkg['Description']))
+            dsc=pkg['Description']))
 
                 exit(0)
 
@@ -961,15 +972,15 @@ Submitted'])).strftime('%a %d %b %Y %H:%m:%S %p %Z'),
                 fancy_error(_('[ERR5002] search string too short, API \
 limitation'))
                 fancy_msg(_('Searching for exact match…'))
-                search = [utils.info(searchstring)] # workaround
+                search = [utils.info(searchstring)]  # workaround
                 if search == [None]:
                     fancy_error2(_('not found'))
                     exit(0)
                 else:
                     utils.print_package(search[0], prefix=(
-                                      DS.colors['blue']+'  ->'+
-                                      DS.colors['all_off']+
-                                      DS.colors['bold']))
+                                        DS.colors['blue'] + '  ->' +
+                                        DS.colors['all_off'] +
+                                        DS.colors['bold']))
                     print(DS.colors['all_off'], end='')
                     exit(0)
             else:
@@ -978,9 +989,11 @@ limitation'))
             output = ''
             for pkg in search:
                 if args.pac:
-                    output = output + utils.print_package(pkg, False, True) + '\n'
+                    output = output + utils.print_package(pkg, False,
+                                                          True) + '\n'
                 else:
-                    output = output + utils.print_package(pkg, True, True) + '\n'
+                    output = output + utils.print_package(pkg, True,
+                                                          True) + '\n'
             print(output.rstrip())
             exit(0)
 
@@ -1011,7 +1024,7 @@ limitation'))
 
     DS.log.info('Quitting.')
 
-# Over 900 lines!  Compare this to build.pl's 56 (including ~8 useless…)
+# Over 1000 lines!  Compare this to build.pl's 56 (including ~8 useless…)
 # New features will be included when they will be added to the AUR RPC.
 # RPC: <http://aur.archlinux.org/rpc.php> (search info msearch multiinfo)
 # If something new will appear there, tell me through GH Issues or mail.

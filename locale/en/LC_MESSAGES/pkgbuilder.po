@@ -1,13 +1,13 @@
-# PKGBUILDer pot file.
+# PKGBUILDer en translation file.
 # Copyright (C) 2011-2012, Kwpolska.
 # This file is distributed under the same license as the PKGBUILDer package.
 # Kwpolska <kwpolska@kwpolska.tk>, 2011-2012.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.2.31\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-22 10:16+0100\n"
+"Project-Id-Version: $version\n"
+"Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
+"POT-Creation-Date: 2012-07-30 11:31+0200\n"
 "PO-Revision-Date: 2012-07-27 13:44+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
@@ -16,212 +16,218 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pkgbuilder.py:90
+#: pkgbuilder.py:92
 msgid "[ERR5001] Aborted by user! Exiting…"
 msgstr "[ERR5001] Aborted by user! Exiting…"
 
-#: pkgbuilder.py:183
+#: pkgbuilder.py:202 pkgbuilder.py:217
 msgid "WARNING:"
 msgstr "WARNING:"
 
-#: pkgbuilder.py:197
+#: pkgbuilder.py:232
 msgid "ERROR:"
 msgstr "ERROR:"
 
-#: pkgbuilder.py:262
-#: pkgbuilder.py:278
+#: pkgbuilder.py:301 pkgbuilder.py:318
 msgid "[ERR1001] AUR: HTTP Error {0}"
 msgstr "[ERR1001] AUR: HTTP Error {0}"
 
-#: pkgbuilder.py:376
+#: pkgbuilder.py:423
 msgid " [installed: {0}]"
 msgstr " [installed: {0}]"
 
-#: pkgbuilder.py:378
+#: pkgbuilder.py:425
 msgid " [installed]"
 msgstr " [installed]"
 
-#: pkgbuilder.py:381
+#: pkgbuilder.py:428
 msgid "[out of date]"
 msgstr "[out of date]"
 
-#: pkgbuilder.py:387
-#: pkgbuilder.py:390
+#: pkgbuilder.py:434 pkgbuilder.py:437
 msgid "votes"
 msgstr "votes"
 
-#: pkgbuilder.py:431
+#: pkgbuilder.py:484
 msgid "The build function reported a proper build."
 msgstr "The build function reported a proper build."
 
-#: pkgbuilder.py:440
+#: pkgbuilder.py:493
 msgid "[ERR3451] validation: NOT installed"
 msgstr "[ERR3451] validation: NOT installed"
 
-#: pkgbuilder.py:444
+#: pkgbuilder.py:497
 msgid "[ERR3452] validation: outdated {0}"
 msgstr "[ERR3452] validation: outdated {0}"
 
-#: pkgbuilder.py:447
+#: pkgbuilder.py:500
 msgid "[INF3450] validation: installed {0}"
 msgstr "[INF3450] validation: installed {0}"
 
-#: pkgbuilder.py:451
+#: pkgbuilder.py:504
 msgid "[ERR3301] makepkg returned 1."
 msgstr "[ERR3301] makepkg returned 1."
 
-#: pkgbuilder.py:456
+#: pkgbuilder.py:509
 msgid "[ERR3401] Building more AUR packages is required."
 msgstr "[ERR3401] Building more AUR packages is required."
 
-#: pkgbuilder.py:481
+#: pkgbuilder.py:533
 msgid "[ERR3102] download: HTTP Error {0}"
 msgstr "[ERR3102] download: HTTP Error {0}"
 
-#: pkgbuilder.py:483
+#: pkgbuilder.py:536
 msgid "[ERR3101] download: 0 bytes downloaded"
 msgstr "[ERR3101] download: 0 bytes downloaded"
 
-#: pkgbuilder.py:503
+#: pkgbuilder.py:559
 msgid "[ERR3151] extract: no files extracted"
 msgstr "[ERR3151] extract: no files extracted"
 
-#: pkgbuilder.py:591
-#: pkgbuilder.py:653
+#: pkgbuilder.py:642 pkgbuilder.py:706
 msgid "[ERR3201] depcheck: cannot find {0} anywhere"
 msgstr "[ERR3201] depcheck: cannot find {0} anywhere"
 
-#: pkgbuilder.py:619
+#: pkgbuilder.py:670
 msgid "[ERR3001] Package {0} not found."
 msgstr "[ERR3001] Package {0} not found."
 
-#: pkgbuilder.py:622
+#: pkgbuilder.py:673
 msgid "Building {0}…"
 msgstr "Building {0}…"
 
 #. Okay, this package exists, great then.  Thanks, user.
-#: pkgbuilder.py:630
+#: pkgbuilder.py:681
 msgid "Downloading the tarball…"
 msgstr "Downloading the tarball…"
 
-#: pkgbuilder.py:633
+#: pkgbuilder.py:684
 msgid "{0} kB downloaded"
 msgstr "{0} kB downloaded"
 
-#: pkgbuilder.py:635
+#: pkgbuilder.py:686
 msgid "Extracting…"
 msgstr "Extracting…"
 
-#: pkgbuilder.py:636
+#: pkgbuilder.py:687
 msgid "{0} files extracted"
 msgstr "{0} files extracted"
 
-#: pkgbuilder.py:640
+#: pkgbuilder.py:691
 msgid "Checking dependencies…"
 msgstr "Checking dependencies…"
 
-#: pkgbuilder.py:645
+#: pkgbuilder.py:698
 msgid "found in system"
 msgstr "found in system"
 
-#: pkgbuilder.py:645
+#: pkgbuilder.py:698
 msgid "found in repos"
 msgstr "found in repos"
 
-#: pkgbuilder.py:646
+#: pkgbuilder.py:699
 msgid "found in the AUR"
 msgstr "found in the AUR"
 
-#: pkgbuilder.py:649
+#: pkgbuilder.py:702
 msgid "none found"
 msgstr "none found"
 
-#: pkgbuilder.py:663
-msgid "[ERR3202] depcheck: UnicodeDecodeError.  The PKGBUILD cannot be read.  There are invalid UTF-8 characters (eg. in the Maintainer field.)  Error message: {0}"
-msgstr "[ERR3202] depcheck: UnicodeDecodeError.  The PKGBUILD cannot be read.  There are invalid UTF-8 characters (eg. in the Maintainer field.)  Error message: {0}"
+#: pkgbuilder.py:716
+msgid ""
+"[ERR3202] depcheck: UnicodeDecodeError.  The PKGBUILD cannot be read.  There "
+"are invalid UTF-8 characters (eg. in the Maintainer field.)  Error message: "
+"{0}"
+msgstr ""
+"[ERR3202] depcheck: UnicodeDecodeError.  The PKGBUILD cannot be read.  There "
+"are invalid UTF-8 characters (eg. in the Maintainer field.)  Error message: "
+"{0}"
 
-#: pkgbuilder.py:769
-#: pkgbuilder.py:771
+#: pkgbuilder.py:822 pkgbuilder.py:824
 msgid "Gathering data about packages…"
 msgstr "Gathering data about packages…"
 
-#: pkgbuilder.py:777
+#: pkgbuilder.py:831
 msgid "Targets ({0}): "
 msgstr "Targets ({0}): "
 
-#: pkgbuilder.py:779
+#: pkgbuilder.py:833
 msgid "{0} upgradeable packages found:"
 msgstr "{0} upgradeable packages found:"
 
-#: pkgbuilder.py:783
-#: pkgbuilder.py:785
+#: pkgbuilder.py:838
+msgid " there is nothing to do"
+msgstr " there is nothing to do"
+
+#: pkgbuilder.py:840
 msgid "there is nothing to do"
 msgstr "there is nothing to do"
 
-#: pkgbuilder.py:790
-#: pkgbuilder.py:794
+#: pkgbuilder.py:845 pkgbuilder.py:849
 msgid "Proceed with installation? [Y/n] "
 msgstr "Proceed with installation? [Y/n] "
 
-#: pkgbuilder.py:819
+#: pkgbuilder.py:875
 msgid "An AUR helper/library.  Wrapper-friendly (pacman-like output.)"
 msgstr "An AUR helper/library.  Wrapper-friendly (pacman-like output.)"
 
-#: pkgbuilder.py:820
+#: pkgbuilder.py:876
 msgid "You can use pacman syntax if you want to."
 msgstr "You can use pacman syntax if you want to."
 
-#: pkgbuilder.py:826
+#: pkgbuilder.py:882
 msgid "packages to build"
 msgstr "packages to build"
 
-#: pkgbuilder.py:831
+#: pkgbuilder.py:887
 msgid "don't use                         colors in output"
 msgstr "don't use                         colors in output"
 
-#: pkgbuilder.py:834
+#: pkgbuilder.py:890
 msgid "don't                         check dependencies (may break makepkg)"
 msgstr "don't                         check dependencies (may break makepkg)"
 
-#: pkgbuilder.py:837
+#: pkgbuilder.py:893
 msgid "don't                         install packages after building"
 msgstr "don't                         install packages after building"
 
-#: pkgbuilder.py:840
-msgid "don't check                         if packages were installed after build"
-msgstr "don't check                         if packages were installed after build"
+#: pkgbuilder.py:896
+msgid ""
+"don't check                         if packages were installed after build"
+msgstr ""
+"don't check                         if packages were installed after build"
 
-#: pkgbuilder.py:843
+#: pkgbuilder.py:899
 msgid "pacman syntax compatiblity"
 msgstr "pacman syntax compatiblity"
 
-#: pkgbuilder.py:845
+#: pkgbuilder.py:901
 msgid "pacman                         syntax compatiblity"
 msgstr "pacman                         syntax compatiblity"
 
-#: pkgbuilder.py:848
+#: pkgbuilder.py:904
 msgid "view package information"
 msgstr "view package information"
 
-#: pkgbuilder.py:850
+#: pkgbuilder.py:906
 msgid "search the                         AUR for matching strings"
 msgstr "search the                         AUR for matching strings"
 
-#: pkgbuilder.py:854
+#: pkgbuilder.py:910
 msgid "upgrade installed AUR packages"
 msgstr "upgrade installed AUR packages"
 
-#: pkgbuilder.py:857
+#: pkgbuilder.py:913
 msgid "chooses protocol (default: http)"
 msgstr "chooses protocol (default: http)"
 
-#: pkgbuilder.py:879
+#: pkgbuilder.py:935
 msgid "Package {0} not found."
 msgstr "Package {0} not found."
 
-#. ## TRANSLATORS: space it properly.  `yes/no' below are
-#. ## for `out of date'.
-#: pkgbuilder.py:883
+#. TRANSLATORS: space it properly.  `yes/no' below are
+#. for `out of date'.
+#: pkgbuilder.py:939
 msgid ""
 "Category       : {cat}\n"
 "Name           : {nme}\n"
@@ -247,67 +253,37 @@ msgstr ""
 "Last Updated   : {upd}\n"
 "Description    : {dsc}\n"
 
-#: pkgbuilder.py:901
+#: pkgbuilder.py:956
 msgid "yes"
 msgstr "yes"
 
-#: pkgbuilder.py:902
+#: pkgbuilder.py:957
 msgid "no"
 msgstr "no"
 
 #. this would be too many entries.  The API is really
 #. having this limitation, though.
-#: pkgbuilder.py:917
+#: pkgbuilder.py:972
 msgid "[ERR5002] search string too short, API limitation"
 msgstr "[ERR5002] search string too short, API limitation"
 
-#: pkgbuilder.py:919
+#: pkgbuilder.py:974
 msgid "Searching for exact match…"
 msgstr "Searching for exact match…"
 
-#: pkgbuilder.py:922
-#: INSTALL.py:84
-#: INSTALL.py:93
-#: INSTALL.py:102
-#: INSTALL.py:111
+#: pkgbuilder.py:977 INSTALL.py:62 INSTALL.py:71 INSTALL.py:80 INSTALL.py:89
 msgid "not found"
 msgstr "not found"
 
-#: INSTALL.py:53
-msgid ""
-"Hello!\n"
-"\n"
-"PKGBUILDer is now available as an AUR package.  It is the suggested\n"
-"way of installing PKGBUILDer.  This script will download the AUR\n"
-"package and install it.  If you will have problems, please download\n"
-"and compile the package manually.\n"
-"\n"
-msgstr ""
-"Hello!\n"
-"\n"
-"PKGBUILDer is now available as an AUR package.  It is the suggested\n"
-"way of installing PKGBUILDer.  This script will download the AUR\n"
-"package and install it.  If you will have problems, please download\n"
-"and compile the package manually.\n"
-"\n"
-
-#: INSTALL.py:62
-msgid "Hit Enter/Return to continue. "
-msgstr "Hit Enter/Return to continue. "
-
-#. Dependency check.
-#: INSTALL.py:73
+#: INSTALL.py:51
 msgid "Performing a dependency check..."
 msgstr "Performing a dependency check..."
 
-#: INSTALL.py:81
-#: INSTALL.py:90
-#: INSTALL.py:99
-#: INSTALL.py:108
+#: INSTALL.py:59 INSTALL.py:68 INSTALL.py:77 INSTALL.py:86
 msgid "found"
 msgstr "found"
 
-#: INSTALL.py:129
+#: INSTALL.py:110
 msgid ""
 "\n"
 "\n"
@@ -329,11 +305,33 @@ msgstr ""
 "\n"
 "If I am wrong, though, congratulations!\n"
 
-#: INSTALL.py:141
+#: INSTALL.py:128
+msgid ""
+"Hello!\n"
+"\n"
+"PKGBUILDer is now available as an AUR package.  It is the suggested\n"
+"way of installing PKGBUILDer.  This script will download the AUR\n"
+"package and install it.  If you will have problems, please download\n"
+"and compile the package manually.\n"
+"\n"
+msgstr ""
+"Hello!\n"
+"\n"
+"PKGBUILDer is now available as an AUR package.  It is the suggested\n"
+"way of installing PKGBUILDer.  This script will download the AUR\n"
+"package and install it.  If you will have problems, please download\n"
+"and compile the package manually.\n"
+"\n"
+
+#: INSTALL.py:137
+msgid "Hit Enter/Return to continue. "
+msgstr "Hit Enter/Return to continue. "
+
+#: INSTALL.py:149
 msgid "Installing missing AUR dependencies..."
 msgstr "Installing missing AUR dependencies..."
 
-#: INSTALL.py:150
+#: INSTALL.py:158
 msgid ""
 "\n"
 "\n"
@@ -361,7 +359,7 @@ msgstr ""
 "(zsh users: hash -r, other shells may need another command).  For\n"
 "python module usage, type `import pkgbuilder` into the python prompt.\n"
 
-#: INSTALL.py:166
+#: INSTALL.py:174
 msgid ""
 "It looks like you want to quit.  Okay then, goodbye.\n"
 "No work has been started yet.\n"
@@ -375,7 +373,7 @@ msgstr ""
 "If that's what you want to do, go for it.  If it isn't, run this\n"
 "script again."
 
-#: INSTALL.py:172
+#: INSTALL.py:180
 msgid ""
 "It looks like you want to quit.  Okay then, goodbye.\n"
 "All the files this script was working on are placed in\n"
@@ -392,4 +390,3 @@ msgstr ""
 "\n"
 "If that's what you want to do, go for it.  If it isn't, run this\n"
 "script again."
-
