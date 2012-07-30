@@ -62,40 +62,30 @@ for i in ./locale/*; do
     sed 's/\"Project-Id-Version: .*/\"Project-Id-Version: $version\\n\"/' $popath -i
     msgmerge $popath messages.pot -o $popath
     fuzzy=$(cat $popath | grep '#, fuzzy')
-    if [[ $fuzzy != '' ]]; then
-        echo "Notice: language $language has fuzzy strings.  Press any key to validate."
-        read validatesure
-        if [[ $EDITOR == 'vim' ]]; then
-            vim $popath -c '/#, fuzzy'
-        else
-            $EDITOR $popath
-        fi
-    fi
+    echo "Please press a key to validate language $language."
+    read validatesure
+    $EDITOR $popath
     msgfmt -o $podir/pkgbuilder.mo $popath
 done
 
 ./setup.py sdist upload
 
-opwd=$(pwd)
-pbdir="/tmp/$project-pkgbuild-$version"
-mkdir -p $pbdir
-cp PKGBUILD $pbdir
-cd $pbdir
-makepkg -cg > $pbdir/md5sums
-md5out=$(cat $pbdir/md5sums)
-cd $opwd
-sed "s/md5sums=.*/$md5out/" PKGBUILD -i
-cp PKGBUILD $pbdir
-cd $pbdir
-makepkg -f --source
-aurupload Kwpolska - $aurcat $pbdir/*.src.tar.gz
-cd $opwd
+md5out=$(md5sum 'dist/'$project'-'$version'.tar.gz'|awk '{print $1}')
+sed "s/md5sums=.*/md5sums=('$md5out')/" PKGBUILD -i
+rm -rf MKPKGBUILD
+mkdir -p MKPKGBUILD/$project
+cp PKGBUILD MKPKGBUILD/$project
+cd MKPKGBUILD
+tar -czvf pkgbuilder.src.tar.gz pkgbuilder
+burp -u Kwpolska -c system pkgbuilder.src.tar.gz
+cd ..
+rm -rf MKPKGBUILD
 
 echo 'Commit message (sans the version?)'
 echo -n '> '
 read commitmsg
 
-rm -rf pkgbuilder.egg-info
+rm -rf pkgbuilder.egg-info __pycache__
 
 git add *
 git commit -asm "v$version: $commitmsg"
