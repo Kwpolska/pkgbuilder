@@ -60,7 +60,7 @@ release = '2.1.2.33'
 # non-false value, then it is used:
 #today = ''
 # Else, today_fmt is used as the format for a strftime call.
-today_fmt = '%Y-%m-%dT%H:%m:%SZ'
+today_fmt = '%Y-%m-%dT%H:%m:%S%z'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -124,7 +124,7 @@ html_theme = 'default'
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
-html_last_updated_fmt = '%Y-%m-%dT%H:%m:%SZ'
+html_last_updated_fmt = '%Y-%m-%dT%H:%m:%S%z'
 
 # If true, SmartyPants will be used to convert quotes and dashes to
 # typographically correct entities.
