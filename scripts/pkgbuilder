@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Run PKGBUILDer."""
 import pkgbuilder
+import pkgbuilder.main
 try:
-    pkgbuilder.main_routine()
+    pkgbuilder.main.main()
 except KeyboardInterrupt:
-    pkgbuilder.fancy_error(pkgbuilder.DS.inttext)
+    pkgbuilder.DS.fancy_error(pkgbuilder.DS.inttext)
     exit(0)

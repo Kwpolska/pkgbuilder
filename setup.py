@@ -1,14 +1,19 @@
 #!/usr/bin/env python3
-from setuptools import setup
+
+try:
+    from setuptools import setup
+except ImportError:
+    from distutils.core import setup
+#from distutils.core import setup
 
 setup(name='pkgbuilder',
-      version='2.1.2.33',
-      description='An AUR helper (and library) in python3',
+      version='2.1.3.0',
+      description='An AUR helper (and library) in Python 3.',
       author='Kwpolska',
       author_email='kwpolska@kwpolska.tk',
       url='https://github.com/Kwpolska/pkgbuilder',
       license='3-clause BSD',
-      long_description='A nice AUR helper (and library) written in Python3.',
+      long_description='A nice AUR helper (and library) written in Python 3.',
       platforms='Arch Linux',
       classifiers=['Development Status :: 5 - Production/Stable',
                    'Environment :: Console',
@@ -21,16 +26,12 @@ setup(name='pkgbuilder',
                    'Programming Language :: Python :: 3',
                    'Topic :: System',
                    'Topic :: System :: Archiving :: Packaging',
-                   'Topic :: Utilities'
-                  ],
-      py_modules=['pkgbuilder'],
+                   'Topic :: Utilities'],
+      packages=['pkgbuilder'],
       requires=['pyparsing', 'pyalpm', 'requests'],
       scripts=['scripts/pkgbuilder'],
-      data_files=[
-                  ('share/man/man8', ['docs/pkgbuilder.8.gz']),
+      data_files=[('share/man/man8', ['docs/pkgbuilder.8.gz']),
                   ('share/locale/en/LC_MESSAGES', ['locale/en/LC_MESSAGES/\
 pkgbuilder.mo']),
                   ('share/locale/pl/LC_MESSAGES', ['locale/pl/LC_MESSAGES/\
-pkgbuilder.mo'])
-                 ]
-     )
+pkgbuilder.mo'])])

@@ -17,18 +17,18 @@ sed "s/release = .*/release = '$version'/" docs/conf.py -i
 sed "s/:Version: .*/:Version: $version/" docs/*.rst -i
 sed "s/:Version: .*/:Version: $version/" README.rst -i
 sed "s/BUILDer .* do/BUILDer $version do/" docs/index.rst -i
-sed "s/# PKG.*/# PKGBUILDer v$version/" pkgbuilder.py -i
-sed "s/VERSION = .*/VERSION = '$version'/" pkgbuilder.py -i
+sed "s/# PKG.*/# PKGBUILDer v$version/" pkgbuilder/*.py -i
+sed "s/__version__ = .*/__version__ = '$version'/" pkgbuilder/__init__.py -i
 sed "s/pkgver=.*/pkgver=$version/" PKGBUILD -i
 
-sed "s/:Date: .*/:Date: #{date}/" docs/*.rst -i
-sed "s/:Date: .*/:Date: #{date}/" README.rst -i
+sed "s/:Date: .*/:Date: $date/" docs/*.rst -i
+sed "s/:Date: .*/:Date: $date/" README.rst -i
 
 rm docs/pkgbuilder.8.gz | true
 rst2man2 docs/pkgbuilder.rst > docs/pkgbuilder.8
 gzip docs/pkgbuilder.8
 
-xgettext -c pkgbuilder.py INSTALL.py -o ./messages.pot
+xgettext -c ./pkgbuilder/* INSTALL.py -o ./messages.pot
 
 sed '1,+17d' ./messages.pot > ./messages.pot.tmp
 
@@ -85,9 +85,13 @@ echo 'Commit message (sans the version?)'
 echo -n '> '
 read commitmsg
 
-rm -rf pkgbuilder.egg-info __pycache__
+rm -rf pkgbuilder.egg-info __pycache__ pkgbuilder/__pycache__
 
 git add *
-git commit -asm "v$version: $commitmsg"
+if [[ $2 = '-c' ]]; then
+    git commit -as
+else
+    git commit -asm "v$version: $commitmsg"
+fi
 git tag -a "v$version" -m "Version $version"
 git push --tags

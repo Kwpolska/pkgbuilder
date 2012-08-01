@@ -3,8 +3,10 @@ Appendix C. Changelog
 =====================
 :Info: This is a partial changelog for PKGBUILDer.
 :Author: Kwpolska <kwpolska@kwpolska.tk>
-:Date: #{date}
-:Version: 2.1.2.33
+:Date: 2012-08-01
+:Version: 2.1.3.0
+
+.. index:: CHANGELOG
 
 Versioning scheme
 =================
@@ -19,7 +21,10 @@ PKGBUILDer uses the following versioning scheme:
 
 Generation 2
 ============
-:2.1.3.0: Planned after 2.1.2.31; contains test suite, requests and file division.
+:2.1.3.0: Now divided into modules.
+:2.1.2.33: Bugfix release, final release of 2.1.2 series.
+:2.1.2.32: Test suite introduced.
+:2.1.2.31: The changes begin.  Introducing requests.
 :2.1.2.0: Support for the new pyalpm.
 :2.1.1.0: Introducing the Upgrade functionality.
 :2.1.0.0: First OOP-based release.

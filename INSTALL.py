@@ -35,7 +35,8 @@
 # There are no install instructions.  If you want to install
 # the script, run this script with python.
 
-"""PKGBUILDer AUR installer.  Use it if you don't have any AUR helpers installed."""
+"""PKGBUILDer AUR installer.
+Use it if you don't have any AUR helpers installed."""
 
 import subprocess
 import os
@@ -45,12 +46,14 @@ import tarfile
 import random
 import gettext
 
+
 def depcheck():
     """Dependency check."""
 
     print(_("""Performing a dependency check..."""))
 
-    deps = {'pyparsing': None, 'pyalpm': None, 'certifi': None, 'requests': None}
+    deps = {'pyparsing': None, 'pyalpm': None,
+            'certifi': None, 'requests': None}
 
     print("""pyparsing | community | """, end='')
     try:
@@ -90,21 +93,22 @@ def depcheck():
 
     return deps
 
+
 def install(pkgname):
     """Cheap installation function."""
     PKGDATA = json.loads(urllib.request.urlopen('http://aur.archlinux\
-.org/rpc.php?type=info&arg='+pkgname).read().decode())
-    RHANDLE = urllib.request.urlopen('http://aur.archlinux.org'+
-    PKGDATA['results']['URLPath'])
-    open(pkgname+'.tar.gz', 'wb').write(RHANDLE.read())
-    THANDLE = tarfile.open(pkgname+'.tar.gz', 'r:gz')
+.org/rpc.php?type=info&arg=' + pkgname).read().decode())
+    RHANDLE = urllib.request.urlopen('http://aur.archlinux.org' +
+                                     PKGDATA['results']['URLPath'])
+    open(pkgname + '.tar.gz', 'wb').write(RHANDLE.read())
+    THANDLE = tarfile.open(pkgname + '.tar.gz', 'r:gz')
     THANDLE.extractall()
-    os.chdir('./'+pkgname+'/')
+    os.chdir('./' + pkgname + '/')
 
     ASROOT = ''
     if os.geteuid() == 0:
         ASROOT = ' --asroot'
-    MPKG = subprocess.call('/usr/bin/makepkg -si'+ASROOT, shell=True)
+    MPKG = subprocess.call('/usr/bin/makepkg -si' + ASROOT, shell=True)
 
     if MPKG == 1:
         print(_("""
@@ -139,18 +143,18 @@ and compile the package manually.
 
         UID = os.geteuid()
         PATH = '/tmp/pkgbuilderinstall-{0}'.format(random.randint(1, 100))
-        if os.path.exists(PATH) == False:
+        if os.path.exists(PATH) is False:
             os.mkdir(PATH)
         os.chdir(PATH)
 
         deps = depcheck()
 
-        if deps['certifi'] == False or deps['requests'] == False:
+        if deps['certifi'] is False or deps['requests'] is False:
             print(_("""Installing missing AUR dependencies..."""))
-            if deps['certifi'] == False:
+            if deps['certifi'] is False:
                 install('python-certifi')
 
-            if deps['requests'] == False:
+            if deps['requests'] is False:
                 install('python-requests')
 
         install('pkgbuilder')
