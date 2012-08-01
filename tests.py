@@ -34,27 +34,23 @@
 
 import unittest
 import pkgbuilder
-
+import pkgbuilder.aur
+import pkgbuilder.build
+import pkgbuilder.pbds
+import pkgbuilder.upgrade
+import pkgbuilder.utils
 import os
 import json
 import requests
 
 
 class TestPB(unittest.TestCase):
-    # PBDS
-    def test_pbds(self):
-        pbds = pkgbuilder.PBDS()
-
-    def test_pbds_logging(self):
-        pbds = pkgbuilder.PBDS()
-        pbds.log.debug('PB unittest/TestPB is running now on this machine.')
-
     # AUR
     def test_aur(self):
-        aur = pkgbuilder.AUR()
+        aur = pkgbuilder.aur.AUR()
 
     def test_aur_exact(self):
-        aur = pkgbuilder.AUR()
+        aur = pkgbuilder.aur.AUR()
         jrr = json.loads(aur.jsonreq('info', 'pkgbuilder', 'http'))
         jrs = json.loads(aur.jsonreq('info', 'pkgbuilder', 'https'))
         arr = aur.request('info', 'pkgbuilder', 'http')
@@ -75,7 +71,7 @@ class TestPB(unittest.TestCase):
 see stdout for details')
 
     def test_aur_request(self):
-        aur = pkgbuilder.AUR()
+        aur = pkgbuilder.aur.AUR()
         req = aur.request('info', 'pkgbuilder', 'http')
         if req['results']['Maintainer'] != 'Kwpolska':
             raise Exception('test_aur_contents: Kwpolska isn’t \
@@ -85,12 +81,55 @@ the maintainer of PKGBUILDer')
             raise Exception('test_aur_contents: AUR is terribly broken, \
 “pkgbuilder” isn’t the name of package “pkgbuilder”')
 
+    # Build
+    def test_build(self):
+        build = pkgbuilder.build.Build()
+
+    def test_build_download(self):
+        build = pkgbuilder.build.Build()
+        req = build.download('/packages/pk/pkgbuilder/pkgbuilder.tar.gz',
+                             '/dev/null')
+        if req == 0:
+            raise Exception('test_build_download: the file is empty, \
+            and the error handling in the actual script ignored that.')
+
+    def test_build_extract(self):
+        os.chdir('/tmp')
+        build = pkgbuilder.build.Build()
+        r = requests.get('http://kwpolska.github.com/pb-testsuite.tar.gz')
+        f = open('/tmp/pb-testsuite.tar.gz', 'wb')
+        f.write(r.content)
+        f.close()
+        req = build.extract('/tmp/pb-testsuite.tar.gz')
+        if req != 2:
+            raise Exception('test_build_extract: need to extract \
+exactly 2 files')
+        scf = open('/tmp/pb-testsuite/testsuite', 'r')
+        sanitycheck = scf.read().strip()
+        scf.close()
+        if sanitycheck != '26313240':
+            raise Exception('test_build_extract: file value test failed, '
+                            + sanitycheck + ' vs 26313240')
+
+    # PBDS
+    def test_pbds(self):
+        pbds = pkgbuilder.pbds.PBDS()
+
+    def test_pbds_logging(self):
+        pbds = pkgbuilder.pbds.PBDS()
+        pbds.log.debug('PB unittest/TestPB is running now on this machine.')
+
+    # Upgrade
+    def test_upgrade(self):
+        upgrade = pkgbuilder.upgrade.Upgrade()
+        # Cannot test too much here.
+
     # Utils
     def test_utils(self):
-        utils = pkgbuilder.Utils()
+        utils = pkgbuilder.utils.Utils()
 
     def test_utils_info(self):
-        utils = pkgbuilder.Utils()
+        utils = pkgbuilder.utils.Utils()
         req = utils.info('pkgbuilder')
         if req['Maintainer'] != 'Kwpolska':
             raise Exception('test_utils_info: Kwpolska isn’t \
@@ -101,7 +140,7 @@ the maintainer of PKGBUILDer')
 “pkgbuilder” isn’t the name of package “pkgbuilder”')
 
     def test_utils_search(self):
-        utils = pkgbuilder.Utils()
+        utils = pkgbuilder.utils.Utils()
         req = utils.search('pkgbuilder')
         if req[0]['Maintainer'] != 'Kwpolska':
             raise Exception('test_utils_search: Kwpolska isn’t \
@@ -112,7 +151,7 @@ the maintainer of PKGBUILDer')
 “pkgbuilder” isn’t the name of package “pkgbuilder”')
 
     def test_utils_print_package(self):
-        utils = pkgbuilder.Utils()
+        utils = pkgbuilder.utils.Utils()
         # It’s cheaper to use existing package data.
         fpkg = {'CategoryID': '16',
                 'Description': 'A basic Python AUR helper/library.',
@@ -137,41 +176,6 @@ the maintainer of PKGBUILDer')
         if req != sample:
             raise Exception('test_utils_print_package: output doesn’t \
 match the example')
-
-    # Build
-    def test_build(self):
-        build = pkgbuilder.Build()
-
-    def test_build_download(self):
-        build = pkgbuilder.Build()
-        req = build.download('/packages/pk/pkgbuilder/pkgbuilder.tar.gz',
-                             '/dev/null')
-        if req == 0:
-            raise Exception('test_build_download: the file is empty, \
-            and the error handling in the actual script ignored that.')
-
-    def test_build_extract(self):
-        os.chdir('/tmp')
-        build = pkgbuilder.Build()
-        r = requests.get('http://kwpolska.github.com/pb-testsuite.tar.gz')
-        f = open('/tmp/pb-testsuite.tar.gz', 'wb')
-        f.write(r.content)
-        f.close()
-        req = build.extract('/tmp/pb-testsuite.tar.gz')
-        if req != 2:
-            raise Exception('test_build_extract: need to extract \
-exactly 2 files')
-        scf = open('/tmp/pb-testsuite/testsuite', 'r')
-        sanitycheck = scf.read().strip()
-        scf.close()
-        if sanitycheck != '26313240':
-            raise Exception('test_build_extract: file value test failed, '
-                            + sanitycheck + ' vs 26313240')
-
-    # Upgrade
-    def test_upgrade(self):
-        upgrade = pkgbuilder.Upgrade()
-        # Cannot test too much here.
 
 if __name__ == '__main__':
     unittest.main()

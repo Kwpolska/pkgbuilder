@@ -1,10 +1,12 @@
-===========================================
-Appendix A. PKGBUILDer message numbers list
-===========================================
+==========================================
+Appendix A. PKGBUILDer message codess list
+==========================================
 :Info: This is an appendix to the PKGBUILDer documentation.
 :Author: Kwpolska <kwpolska@kwpolska.tk>
-:Date: #{date}
-:Version: 2.1.2.33
+:Date: 2012-08-01
+:Version: 2.1.3.0
+
+.. index:: Message Codes
 
 In order to help debugging, messages are numbered.
 Each message number has four digits:  the first one is the
@@ -45,7 +47,7 @@ INF#     Component       Message
 ======== =============== =========================================
 
 .. [3450] occurs, when PKGBUILDer finds out that the package that
-   was meant to be bulit is correctly installed.i
+   was meant to be bulit is correctly installed.
 
 Warnings
 ========

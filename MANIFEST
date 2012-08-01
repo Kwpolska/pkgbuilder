@@ -3,7 +3,7 @@ INSTALL.py
 LICENSE
 README
 README.rst
-pkgbuilder.py
+requirements.txt
 setup.py
 docs/CHANGELOG.rst
 docs/LICENSE.rst
@@ -17,4 +17,11 @@ docs/pkgbuilder.rst
 docs/html/index.html
 locale/en/LC_MESSAGES/pkgbuilder.mo
 locale/pl/LC_MESSAGES/pkgbuilder.mo
+pkgbuilder/__init__.py
+pkgbuilder/aur.py
+pkgbuilder/build.py
+pkgbuilder/main.py
+pkgbuilder/pbds.py
+pkgbuilder/upgrade.py
+pkgbuilder/utils.py
 scripts/pkgbuilder

@@ -20,7 +20,7 @@ For standalone use, see the :doc:`PKGBUILDer man page <pkgbuilder>`.
 Reading the appendices (:doc:`README` and
 :doc:`Message codes <messagecodes>`) is also a good idea.
 
-For python module usage, see the :doc:`Classes list <classes>`.
+For python module usage, see the respective class documents.
 
 Table of Contents
 -----------------
@@ -29,10 +29,16 @@ Table of Contents
    :numbered:
 
    pkgbuilder
-   classes
+   aur
+   build
+   main
+   pbds
+   upgrade
+   utils
    README
    messagecodes
    LICENSE
+   CHANGELOG
 
 Indices and tables
 ------------------
