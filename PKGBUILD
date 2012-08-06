@@ -9,7 +9,7 @@ license=('BSD')
 depends=('python' 'pyalpm>=0.5.1-1' 'python-pyparsing' 'python-requests')
 options=(!emptydirs)
 source=("http://pypi.python.org/packages/source/p/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-md5sums=('4124278c8bd6c4c3f0a72bcba617b90d')
+md5sums=('f438fa19e0a82e2cfd7c204769c6acd6')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
