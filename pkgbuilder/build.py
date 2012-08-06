@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.3.0
+# PKGBUILDer v2.1.3.1
 # An AUR helper/library.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -240,26 +240,26 @@ unless you re-implement auto_build.
                 raise PBError(_('[ERR3001] Package {0} not found.').format(
                               pkgname))
             pkgname = pkg['Name']
-            DS.fancy_msg(_('Building {0}…').format(pkgname))
-            self.utils.print_package(pkg,
-                                     prefix=DS.colors['blue'] + '  ->' +
-                                     DS.colors['all_off'] +
-                                     DS.colors['bold'] + ' ',
-                                     prefixp='  -> ')
+            DS.fancy_msg(_('Building {0}...').format(pkgname))
+            self.utils.print_package_search(pkg,
+                                            prefix=DS.colors['blue'] +
+                                            '  ->' + DS.colors['all_off'] +
+                                            DS.colors['bold'] + ' ',
+                                            prefixp='  -> ')
             filename = pkgname + '.tar.gz'
             # Okay, this package exists, great then.  Thanks, user.
 
-            DS.fancy_msg(_('Downloading the tarball…'))
+            DS.fancy_msg(_('Downloading the tarball...'))
             downloadbytes = self.download(pkg['URLPath'], filename)
             kbytes = int(downloadbytes) / 1000
             DS.fancy_msg2(_('{0} kB downloaded').format(kbytes))
 
-            DS.fancy_msg(_('Extracting…'))
+            DS.fancy_msg(_('Extracting...'))
             DS.fancy_msg2(_('{0} files extracted').format(self.extract(
                 filename)))
             os.chdir('./' + pkgname + '/')
             if performdepcheck:
-                DS.fancy_msg(_('Checking dependencies…'))
+                DS.fancy_msg(_('Checking dependencies...'))
                 try:
                     fhandle = open('./PKGBUILD', 'rb')
                     pbcontents = fhandle.read().decode('utf8', 'ignore')

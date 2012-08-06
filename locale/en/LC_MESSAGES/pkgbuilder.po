@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.3.0\n"
+"Project-Id-Version: $version\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-08-01 09:47+0200\n"
+"POT-Creation-Date: 2012-08-06 17:17+0200\n"
 "PO-Revision-Date: 2012-07-27 13:44+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
@@ -65,29 +65,29 @@ msgid "[ERR3001] Package {0} not found."
 msgstr "[ERR3001] Package {0} not found."
 
 #: pkgbuilder/build.py:243
-msgid "Building {0}…"
-msgstr "Building {0}…"
+msgid "Building {0}..."
+msgstr "Building {0}..."
 
 #. Okay, this package exists, great then.  Thanks, user.
 #: pkgbuilder/build.py:252
-msgid "Downloading the tarball…"
-msgstr "Downloading the tarball…"
+msgid "Downloading the tarball..."
+msgstr "Downloading the tarball..."
 
 #: pkgbuilder/build.py:255
 msgid "{0} kB downloaded"
 msgstr "{0} kB downloaded"
 
 #: pkgbuilder/build.py:257
-msgid "Extracting…"
-msgstr "Extracting…"
+msgid "Extracting..."
+msgstr "Extracting..."
 
 #: pkgbuilder/build.py:258
 msgid "{0} files extracted"
 msgstr "{0} files extracted"
 
 #: pkgbuilder/build.py:262
-msgid "Checking dependencies…"
-msgstr "Checking dependencies…"
+msgid "Checking dependencies..."
+msgstr "Checking dependencies..."
 
 #: pkgbuilder/build.py:269
 msgid "found in system"
@@ -115,33 +115,33 @@ msgstr ""
 "are invalid UTF-8 characters (eg. in the Maintainer field.)  Error message: "
 "{0}"
 
-#: pkgbuilder/main.py:33
+#: pkgbuilder/main.py:32
 msgid "An AUR helper/library.  Wrapper-friendly (pacman-like output.)"
 msgstr "An AUR helper/library.  Wrapper-friendly (pacman-like output.)"
 
-#: pkgbuilder/main.py:34
+#: pkgbuilder/main.py:33
 msgid "You can use pacman syntax if you want to."
 msgstr "You can use pacman syntax if you want to."
 
-#: pkgbuilder/main.py:40
+#: pkgbuilder/main.py:39
 msgid "packages to build"
 msgstr "packages to build"
 
-#: pkgbuilder/main.py:45
+#: pkgbuilder/main.py:44
 msgid "don't use                             colors in output"
 msgstr "don't use                             colors in output"
 
-#: pkgbuilder/main.py:48
+#: pkgbuilder/main.py:47
 msgid ""
 "don't                             check dependencies (may break makepkg)"
 msgstr ""
 "don't                              check dependencies (may break makepkg)"
 
-#: pkgbuilder/main.py:51
+#: pkgbuilder/main.py:50
 msgid "don't                             install packages after building"
 msgstr "don't                             install packages after building"
 
-#: pkgbuilder/main.py:54
+#: pkgbuilder/main.py:53
 msgid ""
 "don't check                             if packages were installed after "
 "build"
@@ -149,88 +149,48 @@ msgstr ""
 "don't check                              if packages were installed after "
 "build"
 
-#: pkgbuilder/main.py:57
+#: pkgbuilder/main.py:56
 msgid "pacman syntax compatiblity"
 msgstr "pacman syntax compatiblity"
 
-#: pkgbuilder/main.py:59
+#: pkgbuilder/main.py:58
 msgid "pacman                             syntax compatiblity"
 msgstr "pacman                             syntax compatiblity"
 
-#: pkgbuilder/main.py:62
+#: pkgbuilder/main.py:61
 msgid "view package information"
 msgstr "view package information"
 
-#: pkgbuilder/main.py:64
+#: pkgbuilder/main.py:63
 msgid "search the                             AUR for matching strings"
 msgstr "search the                             AUR for matching strings"
 
-#: pkgbuilder/main.py:68
+#: pkgbuilder/main.py:67
 msgid "upgrade installed AUR packages"
 msgstr "upgrade installed AUR packages"
 
-#: pkgbuilder/main.py:71
+#: pkgbuilder/main.py:70
 msgid "chooses protocol (default: http)"
 msgstr "chooses protocol (default: http)"
 
-#: pkgbuilder/main.py:91
-msgid "Package {0} not found."
-msgstr "Package {0} not found."
-
-#. TRANSLATORS: space it properly.  `yes/no' below are
-#. for `out of date'.
-#: pkgbuilder/main.py:95
-msgid ""
-"Category       : {cat}\n"
-"Name           : {nme}\n"
-"Version        : {ver}\n"
-"URL            : {url}\n"
-"Licenses       : {lic}\n"
-"Votes          : {cmv}\n"
-"Out of Date    : {ood}\n"
-"Maintainer     : {mnt}\n"
-"First Submitted: {fsb}\n"
-"Last Updated   : {upd}\n"
-"Description    : {dsc}\n"
-msgstr ""
-"Category       : {cat}\n"
-"Name           : {nme}\n"
-"Version        : {ver}\n"
-"URL            : {url}\n"
-"Licenses       : {lic}\n"
-"Votes          : {cmv}\n"
-"Out of Date    : {ood}\n"
-"Maintainer     : {mnt}\n"
-"First Submitted: {fsb}\n"
-"Last Updated   : {upd}\n"
-"Description    : {dsc}\n"
-
-#: pkgbuilder/main.py:112
-msgid "yes"
-msgstr "yes"
-
-#: pkgbuilder/main.py:113
-msgid "no"
-msgstr "no"
-
 #. this would be too many entries.  The API is really
 #. having this limitation, though.
-#: pkgbuilder/main.py:128
+#: pkgbuilder/main.py:97
 msgid "[ERR5002] search string too short, API limitation"
 msgstr "[ERR5002] search string too short, API limitation"
 
-#: pkgbuilder/main.py:130
-msgid "Searching for exact match…"
-msgstr "Searching for exact match…"
+#: pkgbuilder/main.py:99
+msgid "Searching for exact match..."
+msgstr "Searching for exact match..."
 
-#: pkgbuilder/main.py:133 INSTALL.py:65 INSTALL.py:74 INSTALL.py:83
+#: pkgbuilder/main.py:102 INSTALL.py:65 INSTALL.py:74 INSTALL.py:83
 #: INSTALL.py:92
 msgid "not found"
 msgstr "not found"
 
 #: pkgbuilder/pbds.py:58
-msgid "[ERR5001] Aborted by user! Exiting…"
-msgstr "[ERR5001] Aborted by user! Exiting…"
+msgid "[ERR5001] Aborted by user! Exiting..."
+msgstr "[ERR5001] Aborted by user! Exiting..."
 
 #: pkgbuilder/pbds.py:164 pkgbuilder/pbds.py:178
 msgid "WARNING:"
@@ -241,8 +201,8 @@ msgid "ERROR:"
 msgstr "ERROR:"
 
 #: pkgbuilder/upgrade.py:95 pkgbuilder/upgrade.py:97
-msgid "Gathering data about packages…"
-msgstr "Gathering data about packages…"
+msgid "Gathering data about packages..."
+msgstr "Gathering data about packages..."
 
 #: pkgbuilder/upgrade.py:104
 msgid "Targets ({0}): "
@@ -264,21 +224,61 @@ msgstr "there is nothing to do"
 msgid "Proceed with installation? [Y/n] "
 msgstr "Proceed with installation? [Y/n] "
 
-#: pkgbuilder/utils.py:110
+#: pkgbuilder/utils.py:112
 msgid " [installed: {0}]"
 msgstr " [installed: {0}]"
 
-#: pkgbuilder/utils.py:112
+#: pkgbuilder/utils.py:114
 msgid " [installed]"
 msgstr " [installed]"
 
-#: pkgbuilder/utils.py:115
+#: pkgbuilder/utils.py:117
 msgid "[out of date]"
 msgstr "[out of date]"
 
-#: pkgbuilder/utils.py:127
+#: pkgbuilder/utils.py:129
 msgid "votes"
 msgstr "votes"
+
+#: pkgbuilder/utils.py:152
+msgid "Package {0} not found."
+msgstr "Package {0} not found."
+
+#. TRANSLATORS: space it properly.  `yes/no' below are
+#. for `out of date'.
+#: pkgbuilder/utils.py:180
+msgid ""
+"Category       : {cat}\n"
+"Name           : {nme}\n"
+"Version        : {ver}\n"
+"URL            : {url}\n"
+"Licenses       : {lic}\n"
+"Votes          : {cmv}\n"
+"Out of Date    : {ood}\n"
+"Maintainer     : {mnt}\n"
+"First Submitted: {fsb}\n"
+"Last Updated   : {upd}\n"
+"Description    : {dsc}\n"
+msgstr ""
+"Category       : {cat}\n"
+"Name           : {nme}\n"
+"Version        : {ver}\n"
+"URL            : {url}\n"
+"Licenses       : {lic}\n"
+"Votes          : {cmv}\n"
+"Out of Date    : {ood}\n"
+"Maintainer     : {mnt}\n"
+"First Submitted: {fsb}\n"
+"Last Updated   : {upd}\n"
+"Description    : {dsc}\n"
+
+#: pkgbuilder/utils.py:197
+msgid "yes"
+msgstr "yes"
+
+#: pkgbuilder/utils.py:198
+msgid "no"
+msgstr "no"
 
 #: INSTALL.py:53
 msgid "Performing a dependency check..."
@@ -395,6 +395,3 @@ msgstr ""
 "\n"
 "If that's what you want to do, go for it.  If it isn't, run this\n"
 "script again."
-
-#~ msgid "[ERR3301] makepkg returned 1."
-#~ msgstr "[ERR3301] makepkg returned 1."

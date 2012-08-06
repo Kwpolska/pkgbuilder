@@ -4,8 +4,8 @@ utils module (Utils class)
 
 :Author: Kwpolska
 :Copyright: See Appendix B.
-:Date: 2012-08-01
-:Version: 2.1.3.0
+:Date: 2012-08-06
+:Version: 2.1.3.1
 
 .. module:: utils
 
@@ -53,10 +53,10 @@ Searches for AUR packages and returns them as a list.  Almost equivalent
 to :meth:`AUR.request('search', pkgname)`, but returns **`[]`** if no
 packages were found.
 
-.. method:: print_package(pkg[, use_categories][, cachemode][, prefix][, prefixp])
+.. method:: print_package_search(pkg[, use_categories][, cachemode][, prefix][, prefixp])
 .. index:: print
 
-:Arguments: package name, use categories, cache mode, line prefix, line prefix in plain form (no colors etc.)
+:Arguments: package object, use categories, cache mode, line prefix, line prefix in plain form (no colors etc.)
 :Input: none.
 :Output: with cache mode **off**, package details as in the Format field, otherwise nothing.
 :Retruns: with cache mode **on**, package details as in the Format field, otherwise nothing.
@@ -70,4 +70,32 @@ packages were found.
 :Former data:
     2.0 Name: showInfo.
 
-Prints data about `pkg` (returns the data in cache mode).  Format specified above, in the Format field.
+Outputs/returns a package representation similar to ``pacman -Ss``.  Format specified above, in the Format field.
+
+.. method:: print_package_info(pkg[, cachemode][, force_utc])
+.. index:: print
+
+Outputs/returns a package representation similar to ``pacman -Si``.
+
+:Arguments: package object, cache mode, force UTC.
+:Input: none.
+:Output: with cache mode off, package info, otherwise nothing.
+:Returns: with cache mode on, package info, otherwise nothing.
+:Exceptions: none.
+:Message codes: none.
+:Former data:
+    2.1.3.0 Location: .main.main() (inaccessible to 3rd parties)
+
+Outputs/returns a package representation similar to ``pacman -Si``.  Format (with en/C locale)::
+
+    Category       : package category
+    Name           : package name
+    Version        : package version
+    URL            : package URL (from PKGBUILD)
+    Licenses       : package license
+    Votes          : votes count
+    Out of Date    : out of date (yes/no), red if yes
+    Maintainer     : package maintainer
+    First Submitted: date of package’s first submission
+    Last Updated   : date of package’s last update
+    Description    : package description

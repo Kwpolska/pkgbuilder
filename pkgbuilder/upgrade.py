@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.3.0
+# PKGBUILDer v2.1.3.1
 # An AUR helper/library.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -92,9 +92,9 @@ class Upgrade:
 :Message codes: none."""
         DS.log.info('Ran auto_upgrade.')
         if DS.pacman:
-            print(':: ' + _('Gathering data about packages…'))
+            print(':: ' + _('Gathering data about packages...'))
         else:
-            DS.fancy_msg(_('Gathering data about packages…'))
+            DS.fancy_msg(_('Gathering data about packages...'))
 
         foreign = self.gather_foreign_pkgs()
         upgradeable = self.list_upgradeable(foreign.keys())
@@ -123,7 +123,7 @@ class Upgrade:
 installation? [Y/n] ') + DS.colors['all_off'])
 
         yesno = input(query)
-        yesno = yesno + ' '  # cheating…
+        yesno = yesno + ' '  # cheating...
         if yesno[0] == 'n' or yesno[0] == 'N':
             return 0
         for pkgname in upgradeable:

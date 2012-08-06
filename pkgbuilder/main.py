@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.3.0
+# PKGBUILDer v2.1.3.1
 # An AUR helper/library.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -22,7 +22,6 @@ from .utils import Utils
 from .upgrade import Upgrade
 import argparse
 import os
-import datetime
 
 
 ### main()          The main routine        ###
@@ -86,37 +85,7 @@ use pacman syntax if you want to.'))
 
         if args.info:
             for pkgname in args.pkgs:
-                pkg = utils.info(pkgname)
-                if pkg is None:
-                    raise PBError(_('Package {0} not found.').format(
-                        pkgname))
-                # TRANSLATORS: space it properly.  `yes/no' below are
-                # for `out of date'.
-                print(_("""Category       : {cat}
-Name           : {nme}
-Version        : {ver}
-URL            : {url}
-Licenses       : {lic}
-Votes          : {cmv}
-Out of Date    : {ood}
-Maintainer     : {mnt}
-First Submitted: {fsb}
-Last Updated   : {upd}
-Description    : {dsc}
-""").format(cat=DS.categories[int(pkg['CategoryID'])],
-            nme=pkg['Name'],
-            url=pkg['URL'],
-            ver=pkg['Version'],
-            lic=pkg['License'],
-            cmv=pkg['NumVotes'],
-            ood=DS.colors['red'] + _('yes') + DS.colors['all_off'] if (
-                pkg['OutOfDate'] == '1') else _('no'),
-            mnt=pkg['Maintainer'],
-            upd=datetime.datetime.fromtimestamp(float(pkg['Last\
-Modified'])).strftime('%a %d %b %Y %H:%m:%S %p %Z'),
-            fsb=datetime.datetime.fromtimestamp(float(pkg['First\
-Submitted'])).strftime('%a %d %b %Y %H:%m:%S %p %Z'),
-            dsc=pkg['Description']))
+                utils.print_package_info(utils.info(pkgname))
 
                 exit(0)
 
@@ -127,17 +96,17 @@ Submitted'])).strftime('%a %d %b %Y %H:%m:%S %p %Z'),
                 # having this limitation, though.
                 DS.fancy_error(_('[ERR5002] search string too short, API \
 limitation'))
-                DS.fancy_msg(_('Searching for exact match…'))
+                DS.fancy_msg(_('Searching for exact match...'))
                 search = [utils.info(searchstring)]  # workaround
                 if search == [None]:
                     DS.fancy_error2(_('not found'))
                     exit(0)
                 else:
-                    utils.print_package(search[0], prefix=(
-                                        DS.colors['blue'] + '  ->' +
-                                        DS.colors['all_off'] +
-                                        DS.colors['bold']) + ' ',
-                                        prefixp='  -> ')
+                    utils.print_package_search(search[0], prefix=(
+                                               DS.colors['blue'] + '  ->' +
+                                               DS.colors['all_off'] +
+                                               DS.colors['bold'] + ' '),
+                                               prefixp='  -> ')
                     print(DS.colors['all_off'], end='')
                     exit(0)
             else:
@@ -146,11 +115,11 @@ limitation'))
             output = ''
             for pkg in search:
                 if args.pac:
-                    output = output + utils.print_package(pkg, False,
-                                                          True) + '\n'
+                    output = output + utils.print_package_search(pkg, False,
+                                                                 True) + '\n'
                 else:
-                    output = output + utils.print_package(pkg, True,
-                                                          True) + '\n'
+                    output = output + utils.print_package_search(pkg, True,
+                                                                 True) + '\n'
             print(output.rstrip())
             exit(0)
 
@@ -172,7 +141,7 @@ limitation'))
         exit(0)
 
     # If we didn't exit, we shall build the packages.
-    DS.log.info('Ran through all the addon features, building…')
+    DS.log.info('Ran through all the addon features, building...')
     for pkgname in args.pkgs:
         DS.log.info('Building {0}'.format(pkgname))
         build.auto_build(pkgname, DS.validate, DS.depcheck, DS.mkpginst)

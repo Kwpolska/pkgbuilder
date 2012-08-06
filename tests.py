@@ -150,14 +150,14 @@ the maintainer of PKGBUILDer')
             raise Exception('test_utils_search: AUR is terribly broken, \
 “pkgbuilder” isn’t the name of package “pkgbuilder”')
 
-    def test_utils_print_package(self):
+    def test_utils_print_package_search(self):
         utils = pkgbuilder.utils.Utils()
         # It’s cheaper to use existing package data.
         fpkg = {'CategoryID': '16',
                 'Description': 'A basic Python AUR helper/library.',
                 'FirstSubmitted': '1316529993',
                 'ID': '52542',
-                'LastModified': 'two universes ago',
+                'LastModified': '4294967294',
                 'License': 'BSD',
                 'Maintainer': 'Kwpolska',
                 'Name': 'pkgbuilder-is-awesome',
@@ -171,11 +171,45 @@ the maintainer of PKGBUILDer')
 \x1b[1;1m\x1b[1;31m[out of date]\x1b[1;0m
     A basic Python AUR helper/library."""
 
-        req = utils.print_package(fpkg, True, True)
+        req = utils.print_package_search(fpkg, True, True)
 
         if req != sample:
-            raise Exception('test_utils_print_package: output doesn’t \
-match the example')
+            raise Exception('test_utils_print_package_search: output \
+doesn’t match the example')
+
+    def test_utils_print_package_info(self):
+        utils = pkgbuilder.utils.Utils()
+        # It’s cheaper to use existing package data.
+        fpkg = {'CategoryID': '16',
+                'Description': 'A basic Python AUR helper/library.',
+                'FirstSubmitted': '1316529993',
+                'ID': '52542',
+                'LastModified': '4294967294',
+                'License': 'BSD',
+                'Maintainer': 'Kwpolska',
+                'Name': 'pkgbuilder-is-awesome',
+                'NumVotes': '8897',  # brought to you by random.org
+                'OutOfDate': '1',
+                'URL': 'https://github.com/Kwpolska/pkgbuilder',
+                'URLPath': '/packages/pk/pkgbuilder/pkgbuilder.tar.gz',
+                'Version': 'testsuite'}
+
+        sample = """Category       : system
+Name           : pkgbuilder-is-awesome
+Version        : testsuite
+URL            : https://github.com/Kwpolska/pkgbuilder
+Licenses       : BSD
+Votes          : 8897
+Out of Date    : \x1b[1;1m\x1b[1;31myes\x1b[1;0m
+Maintainer     : Kwpolska
+First Submitted: Tue 20 Sep 2011 14:09:33 PM UTC
+Last Updated   : Sun 07 Feb 2106 06:02:14 AM UTC
+Description    : A basic Python AUR helper/library.
+"""
+        req = utils.print_package_info(fpkg, True, True)
+        if req != sample:
+            raise Exception('test_utils_print_package_info: output \
+doesn’t match the example')
 
 if __name__ == '__main__':
     unittest.main()

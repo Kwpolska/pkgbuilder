@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.3.0
+# PKGBUILDer v2.1.3.1
 # An AUR helper/library.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -22,6 +22,7 @@ import pyalpm
 import pycman
 import os
 import textwrap
+import datetime
 
 
 ### Utils           common global utilities ###
@@ -73,11 +74,11 @@ class Utils:
         else:
             return aur_pkgs['results']
 
-    def print_package(self, pkg, use_categories=True,
-                      cachemode=False, prefix='', prefixp=''):
-        """Outputs info about a package.
+    def print_package_search(self, pkg, use_categories=True,
+                             cachemode=False, prefix='', prefixp=''):
+        """Outputs/returns a package representation similar to ``pacman -Ss``.
 
-:Arguments: package name, use categories, cache mode,
+:Arguments: package object, use categories, cache mode,
     line prefix, line prefix in plain form (no colors etc.)
 :Input: none.
 :Output: (with cache mode off, otherwise nothing)
@@ -95,6 +96,7 @@ class Utils:
 :Exceptions: none.
 :Message codes: none.
 :Former data:
+    2.1.3.0 Name: print_package.
     2.0 Name: showInfo.
 """
         termwidth = int(os.popen('stty size', 'r').read().split()[1])
@@ -133,3 +135,73 @@ class Utils:
             return entry
         else:
             print(entry)
+
+    def print_package_info(self, pkg, cachemode=False, force_utc=False):
+        """Outputs/returns a package representation similar to ``pacman -Si``.
+
+:Arguments: package object, cache mode, force UTC.
+:Input: none.
+:Output: with cache mode off, package info, otherwise nothing.
+:Returns: with cache mode on, package info, otherwise nothing.
+:Exceptions: none.
+:Message codes: none.
+:Former data:
+    2.1.3.0 Location: .main.main() (inaccessible to 3rd parties)
+"""
+        if pkg is None:
+            raise PBError(_('Package {0} not found.').format(
+                pkgname))
+        else:
+            if force_utc:
+                class UTC(datetime.tzinfo):
+                    """UTC"""
+
+                    def utcoffset(self, dt):
+                        return datetime.timedelta(0)
+
+                    def tzname(self, dt):
+                        return "UTC"
+
+                    def dst(self, dt):
+                        return datetime.timedelta(0)
+
+                upd = datetime.datetime.fromtimestamp(float(pkg['Last\
+Modified']), tz=UTC()).strftime('%a %d %b %Y %H:%m:%S %p %Z')
+                fsb = datetime.datetime.fromtimestamp(float(pkg['First\
+Submitted']), tz=UTC()).strftime('%a %d %b %Y %H:%m:%S %p %Z')
+            else:
+                upd = datetime.datetime.fromtimestamp(float(pkg['Last\
+Modified'])).strftime('%a %d %b %Y %H:%m:%S %p %Z')
+                fsb = datetime.datetime.fromtimestamp(float(pkg['First\
+Submitted'])).strftime('%a %d %b %Y %H:%m:%S %p %Z')
+
+            # TRANSLATORS: space it properly.  `yes/no' below are
+            # for `out of date'.
+            toout = _("""Category       : {cat}
+Name           : {nme}
+Version        : {ver}
+URL            : {url}
+Licenses       : {lic}
+Votes          : {cmv}
+Out of Date    : {ood}
+Maintainer     : {mnt}
+First Submitted: {fsb}
+Last Updated   : {upd}
+Description    : {dsc}
+""").format(cat=DS.categories[int(pkg['CategoryID'])],
+            nme=pkg['Name'],
+            url=pkg['URL'],
+            ver=pkg['Version'],
+            lic=pkg['License'],
+            cmv=pkg['NumVotes'],
+            ood=DS.colors['red'] + _('yes') + DS.colors['all_off'] if (
+                pkg['OutOfDate'] == '1') else _('no'),
+            mnt=pkg['Maintainer'],
+            upd=upd,
+            fsb=fsb,
+            dsc=pkg['Description'])
+
+        if cachemode:
+            return toout
+        else:
+            print(toout)
