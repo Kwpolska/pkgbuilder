@@ -72,6 +72,9 @@ if [[ $? = 1 ]]; then
     echo "Tests failed.  Fix your code or don't come back."
     exit 1
 fi
+
+rm -rf pkgbuilder.egg-info __pycache__ pkgbuilder/__pycache__
+
 ./setup.py sdist upload
 
 md5out=$(md5sum 'dist/'$project'-'$version'.tar.gz'|awk '{print $1}')

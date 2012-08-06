@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.3.0
+# PKGBUILDer v2.1.3.1
 # An AUR helper/library.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -55,9 +55,9 @@ class PBDS():
                            'lib', 'modules', 'multimedia', 'network',
                            'office', 'science', 'system', 'x11',
                            'xfce', 'kernels']
-        self.inttext = _('[ERR5001] Aborted by user! Exiting…')
+        self.inttext = _('[ERR5001] Aborted by user! Exiting...')
 
-        # Creating the configuration/log stuff…
+        # Creating the configuration/log stuff...
         confhome = os.getenv('XDG_CONFIG_HOME')
         if confhome is None:
             confhome = os.path.expanduser('~/.config')

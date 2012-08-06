@@ -5,7 +5,7 @@ __pycache__
 # Packages
 *.egg
 *.egg-info
-#dist
+dist
 build
 eggs
 parts
@@ -21,8 +21,6 @@ pip-log.txt
 # Unit test / coverage reports
 .coverage
 .tox
-
-#Translations
 
 #Mr Developer
 .mr.developer.cfg
