@@ -3,8 +3,8 @@ Appendix A. PKGBUILDer message codess list
 ==========================================
 :Info: This is an appendix to the PKGBUILDer documentation.
 :Author: Kwpolska <kwpolska@kwpolska.tk>
-:Date: 2012-08-06
-:Version: 2.1.3.1
+:Date: 2012-08-08
+:Version: 2.1.3.2
 
 .. index:: Message Codes
 

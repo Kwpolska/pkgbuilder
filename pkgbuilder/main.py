@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.3.1
+# PKGBUILDer v2.1.3.2
 # An AUR helper/library.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -120,7 +120,8 @@ limitation'))
                 else:
                     output = output + utils.print_package_search(pkg, True,
                                                                  True) + '\n'
-            print(output.rstrip())
+            if output != '':
+                print(output.rstrip())
             exit(0)
 
         if args.pac:

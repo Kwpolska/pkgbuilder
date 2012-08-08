@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.3.1
+# PKGBUILDer v2.1.3.2
 # An AUR helper/library.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -16,7 +16,7 @@
     :License: BSD (see /LICENSE).
 """
 
-from . import DS, T, _, PBError
+from . import DS, _, PBError
 from .aur import AUR
 import pyalpm
 import pycman
