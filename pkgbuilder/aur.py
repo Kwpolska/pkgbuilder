@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.3.1
+# PKGBUILDer v2.1.3.2
 # An AUR helper/library.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -16,7 +16,7 @@
     :License: BSD (see /LICENSE).
 """
 
-from . import DS, T, _, PBError
+from . import _, PBError
 import requests
 import json
 
@@ -46,12 +46,12 @@ class AUR:
 :Returns: JSON data from the API.
 :Exceptions: requests.exceptions.*, PBError.
 :Message codes: ERR1001."""
-        r = requests.get(self.rpc.format(prot, rtype, arg))
-        if r.status_code != 200:
+        req = requests.get(self.rpc.format(prot, rtype, arg))
+        if req.status_code != 200:
             raise PBError(_('[ERR1001] AUR: HTTP Error {0}').format(
-                r.status_code))
+                req.status_code))
 
-        return r.text
+        return req.text
 
     def jsonmultiinfo(self, args, prot='http'):
         """Makes a multiinfo request and returns plain JSON data.
@@ -63,12 +63,12 @@ class AUR:
 :Exceptions: requests.exceptions.*, PBError.
 :Message codes: ERR1001."""
         urlargs = '&arg[]=' + '&arg[]='.join(args)
-        r = requests.get(self.mrpc.format(prot, urlargs))
-        if r.status_code != 200:
+        req = requests.get(self.mrpc.format(prot, urlargs))
+        if req.status_code != 200:
             raise PBError(_('[ERR1001] AUR: HTTP Error {0}').format(
-                r.status_code))
+                req.status_code))
 
-        return r.text
+        return req.text
 
     def request(self, rtype, arg, prot='http'):
         """Makes a request.

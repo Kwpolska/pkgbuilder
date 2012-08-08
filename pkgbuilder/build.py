@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.3.1
+# PKGBUILDer v2.1.3.2
 # An AUR helper/library.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -16,7 +16,7 @@
     :License: BSD (see /LICENSE).
 """
 
-from . import DS, T, _, PBError
+from . import DS, _, PBError
 from .utils import Utils
 from pyparsing import OneOrMore, Word
 import os
@@ -68,8 +68,8 @@ If you can, use it.
                 os.chdir('../')
                 if validate:
                     # check if installed
-                    H = pycman.config.init_with_config('/etc/pacman.conf')
-                    localdb = H.get_localdb()
+                    pyc = pycman.config.init_with_config('/etc/pacman.conf')
+                    localdb = pyc.get_localdb()
                     pkg = localdb.get_pkg(pkgname)
                     aurversion = self.utils.info(pkgname)['Version']
                     if pkg is None:
@@ -192,10 +192,10 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
             return {}
         else:
             parseddeps = {}
-            H = pycman.config.init_with_config('/etc/pacman.conf')
-            localpkgs = H.get_localdb().pkgcache
+            pyc = pycman.config.init_with_config('/etc/pacman.conf')
+            localpkgs = pyc.get_localdb().pkgcache
             syncpkgs = []
-            for j in [i.pkgcache for i in H.get_syncdbs()]:
+            for j in [i.pkgcache for i in pyc.get_syncdbs()]:
                 syncpkgs.append(j)
             syncpkgs = functools.reduce(lambda x, y: x + y, syncpkgs)
             for dep in depends:
