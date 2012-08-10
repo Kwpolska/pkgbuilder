@@ -3,8 +3,8 @@ build module (Build class)
 ==========================
 :Author: Kwpolska
 :Copyright: See Appendix B.
-:Date: 2012-08-08
-:Version: 2.1.3.2
+:Date: 2012-08-10
+:Version: 2.1.3.3
 
 .. module:: build
 

@@ -7,13 +7,13 @@ except ImportError:
 #from distutils.core import setup
 
 setup(name='pkgbuilder',
-      version='2.1.3.2',
+      version='2.1.3.3',
       description='An AUR helper (and library) in Python 3.',
       author='Kwpolska',
       author_email='kwpolska@kwpolska.tk',
       url='https://github.com/Kwpolska/pkgbuilder',
       license='3-clause BSD',
-      long_description='A nice AUR helper (and library) written in Python 3.',
+      long_description=open('./docs/README.rst').read(),
       platforms='Arch Linux',
       classifiers=['Development Status :: 5 - Production/Stable',
                    'Environment :: Console',
