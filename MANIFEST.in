@@ -3,6 +3,6 @@ include LICENSE
 include README.rst
 include requirements.txt
 recursive-include docs *
-recursive-include scripts *
+recursive-include bin *
 recursive-include pkgbuilder *
 recursive-include locale *.mo
