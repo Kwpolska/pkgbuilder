@@ -1,5 +1,5 @@
-PKGBUILDer.  A Python AUR helper/library.
-=========================================
+PKGBUILDer.  An AUR helper (and library) in Python 3.
+=====================================================
 
 
 .. note::

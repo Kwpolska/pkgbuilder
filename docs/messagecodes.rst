@@ -1,10 +1,10 @@
-==========================================
-Appendix A. PKGBUILDer message codess list
-==========================================
+=========================================
+Appendix A. PKGBUILDer message codes list
+=========================================
 :Info: This is an appendix to the PKGBUILDer documentation.
 :Author: Kwpolska <kwpolska@kwpolska.tk>
-:Date: 2012-08-10
-:Version: 2.1.3.3
+:Date: 2012-08-12
+:Version: 2.1.3.4
 
 .. index:: Message Codes
 

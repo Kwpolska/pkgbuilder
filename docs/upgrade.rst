@@ -4,8 +4,8 @@ upgrade module (Upgrade class)
 
 :Author: Kwpolska
 :Copyright: See Appendix B.
-:Date: 2012-08-10
-:Version: 2.1.3.3
+:Date: 2012-08-12
+:Version: 2.1.3.4
 
 .. module:: upgrade
 

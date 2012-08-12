@@ -12,15 +12,15 @@ fi
 date=$(date '+%Y-%m-%d')
 datel=$(date '+%Y-%m-%d %H:%M%z')
 
-sed "s/version=.*/version='$version',/" setup.py -i
-sed "s/release = .*/release = '$version'/" docs/conf.py -i
-sed "s/:Version: .*/:Version: $version/" docs/*.rst -i
-sed "s/BUILDer .* do/BUILDer $version do/" docs/index.rst -i
-sed "s/# PKG.*/# PKGBUILDer v$version/" pkgbuilder/*.py -i
-sed "s/__version__ = .*/__version__ = '$version'/" pkgbuilder/__init__.py -i
-sed "s/pkgver=.*/pkgver=$version/" PKGBUILD -i
+sed "s/version=.*/version='$version',/g" setup.py -i
+sed "s/release = .*/release = '$version'/g" docs/conf.py -i
+sed "s/:Version: .*/:Version: $version/g" docs/*.rst -i
+sed "s/BUILDer .* do/BUILDer $version do/g" docs/index.rst -i
+sed "s/# PKG.*/# PKGBUILDer v$version/g" pkgbuilder/*.py -i
+sed "s/__version__ = .*/__version__ = '$version'/g" pkgbuilder/__init__.py -i
+sed "s/pkgver=.*/pkgver=$version/g" PKGBUILD -i
 
-sed "s/:Date: .*/:Date: $date/" docs/*.rst -i
+sed "s/:Date: .*/:Date: $date/g" docs/*.rst -i
 
 cp docs/README.rst README.rst
 cp docs/README.rst README
@@ -40,10 +40,10 @@ pot='# PKGBUILDer pot file.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: '$version'\\n"
+"Project-Id-Version: #version\\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\\n"
-"POT-Creation-Date: '$datel'\\n"
-"PO-Revision-Date: '$datel'\\n"
+"POT-Creation-Date: #datel\\n"
+"PO-Revision-Date: #datel\\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\\n"
 "Language: en\\n"
@@ -55,12 +55,15 @@ echo $pot > messages.pot
 cat ./messages.pot.tmp >> messages.pot
 rm ./messages.pot.tmp
 
+sed "s/#version/$version/g" messages.pot -i
+sed "s/#datel/$datel/g" messages.pot -i
+
 for i in ./locale/*; do
     language=$(basename $i)
 
     podir="./locale/$language/LC_MESSAGES"
     popath="./locale/$language/LC_MESSAGES/pkgbuilder.po"
-    sed 's/\"Project-Id-Version: .*/\"Project-Id-Version: $version\\n\"/' $popath -i
+    sed 's/\"Project-Id-Version: .*/\"Project-Id-Version: '$version'\\n\"/' $popath -i
     msgmerge $popath messages.pot -o $popath
     fuzzy=$(cat $popath | grep '#, fuzzy')
     echo "Please press a key to validate language $language."
@@ -68,6 +71,12 @@ for i in ./locale/*; do
     $EDITOR $popath
     msgfmt -o $podir/pkgbuilder.mo $popath
 done
+
+python -c 'import pkgbuilder'
+if [[ $? = 1 ]]; then
+    echo "Import failed.  Fix your code or don't come back."
+    exit 1
+fi
 ./tests.py
 if [[ $? = 1 ]]; then
     echo "Tests failed.  Fix your code or don't come back."
@@ -103,3 +112,4 @@ else
 fi
 git tag -a "v$version" -m "Version $version"
 git push --tags
+git push
