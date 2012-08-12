@@ -7,7 +7,7 @@ except ImportError:
 #from distutils.core import setup
 
 setup(name='pkgbuilder',
-      version='2.1.3.3',
+      version='2.1.3.4',
       description='An AUR helper (and library) in Python 3.',
       author='Kwpolska',
       author_email='kwpolska@kwpolska.tk',
@@ -29,7 +29,7 @@ setup(name='pkgbuilder',
                    'Topic :: Utilities'],
       packages=['pkgbuilder'],
       requires=['pyparsing', 'pyalpm', 'requests'],
-      scripts=['scripts/pkgbuilder'],
+      scripts=['bin/pkgbuilder'],
       data_files=[('share/man/man8', ['docs/pkgbuilder.8.gz']),
                   ('share/locale/en/LC_MESSAGES', ['locale/en/LC_MESSAGES/\
 pkgbuilder.mo']),
