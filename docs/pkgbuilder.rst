@@ -25,9 +25,6 @@ much as possible.
 Since version 2.1.0, PKGBUILDer provides modules that can be used in
 other scripts.
 
-Development of the PKGBUILDer is stalled.  However, patches are welcome
-all the time at GitHub.
-
 OPERATIONS
 ==========
 
@@ -64,15 +61,17 @@ OPTIONS
 EXAMPLES
 ========
 
-pkgbuilder dropbox
-    Installs the package "dropbox" from the AUR.  It is being built in
+pkgbuilder trashman
+    Installs the package "trashman" from the AUR.  It is being built in
     the CWD.
 
-pkgbuilder -S dropbox
-    Installs "dropbox", but builds thhe package in /tmp-pkgbuilder-UID.
+pkgbuilder -S trashman
+    Installs "trashman", but builds the package in /tmp-pkgbuilder-UID.
 
 pkgbuilder -Syu
     Checks for updates and offers installing them.
+
+(Trashman is an XDG trash manager by Kwpolska.)
 
 SEE ALSO
 ========
@@ -83,6 +82,6 @@ for more info.
 
 BUGS
 ====
-Bugs shall be reported at the GitHub page
+Bugs should be reported at the GitHub page
 (<https://github.com/Kwpolska/pkgbuilder/issues>).  You can also
 send mail to <kwpolska@kwpolska.tk>.

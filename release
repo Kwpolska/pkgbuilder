@@ -26,7 +26,7 @@ cp docs/README.rst README.rst
 cp docs/README.rst README
 
 rm docs/pkgbuilder.8.gz | true
-rst2man2 docs/pkgbuilder.rst > docs/pkgbuilder.8
+rst2man docs/pkgbuilder.rst > docs/pkgbuilder.8
 gzip docs/pkgbuilder.8
 
 xgettext -c ./pkgbuilder/* INSTALL.py -o ./messages.pot

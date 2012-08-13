@@ -8,6 +8,9 @@ PKGBUILDer.  An AUR helper (and library) in Python 3.
     The current version on your system can be checked by running
     `pkgbuilder -v`.
 
+    Most of the documentation is likely compatible with previous
+    releases of the |version| series.
+
 PKGBUILDer is an AUR helper, i.e. an application which builds AUR
 packages.  It can be used in conjunction with pacman (with a special
 script).  It uses various techniques to automatize the process as
@@ -17,8 +20,8 @@ Since version 2.1.0, PKGBUILDer provides modules that can be used in
 other scripts.
 
 For standalone use, see the :doc:`PKGBUILDer man page <pkgbuilder>`.
-Reading the appendices (:doc:`README` and
-:doc:`Message codes <messagecodes>`) is also a good idea.
+Reading the :doc:`README <README>` and
+the :doc:`Message codes list <messagecodes>` is also a good idea.
 
 For python module usage, see the respective class documents.
 
@@ -35,7 +38,7 @@ Table of Contents
    pbds
    upgrade
    utils
-   README
+   README for PKGBUILDer <README>
    messagecodes
    LICENSE
    CHANGELOG
