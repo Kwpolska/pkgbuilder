@@ -12,7 +12,7 @@ PKGBUILDer
 SYNOPSIS
 ========
 
-*pkgbuilder* <operation> [options] [targets]
+*pkgbuilder* [-hvCDVwSy] [-p PROTOCOL] [-isu] [PACKAGE [PACKAGE ...]]
 
 DESCRIPTION
 ===========
@@ -29,10 +29,10 @@ OPERATIONS
 ==========
 
 **-i, --info**
-    Displays info about **targets** in a fashion similar to pacman.
+    Displays info about **PACKAGE** in a fashion similar to pacman.
 
 **-s, --search**
-    Searches the AUR for packages with **targets** as the query.
+    Searches the AUR for packages with **PACKAGE** as the query.
 
 **-u, --sysupgrade**
     Checks for package updates in the AUR.  If updates are found,
@@ -49,14 +49,27 @@ OPTIONS
 **-C, --nocolor**
     Forces the script to ignore the ANSI color codes.
 
+**-D, --nodepcheck**
+    Skips dependency checks.  It may (and, most likely, will)
+    break makepkg.
+
 **-V, --novalidation**
     Skips package installation validation phase (checking
     if the package is installed).
+
+**-w, --buildonly**
+    Skips package installation after building.
+
+**-p PROTOCOL, --protocol PROTOCOL**
+    Chooses the protocol, http by default.
 
 **-S, --sync**
     Originally for pacman syntax compatibility, now makes the script more
     wrapper-friendly: builds packages in */tmp* and uses *aur* instead of
     the category in search.
+
+**-y, --refresh**
+    A dummy option for pacman syntax compatibility.
 
 EXAMPLES
 ========
@@ -75,7 +88,7 @@ pkgbuilder -Syu
 
 SEE ALSO
 ========
-**pacman(8)**, **makepkg(8)**
+**pacman(8)**, **makepkg(8)**, **PKGBUILD(5)**
 
 You can visit the git repo at <https://github.com/Kwpolska/pkgbuilder>
 for more info.

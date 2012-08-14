@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
 # PKGBUILDer v2.1.3.4
-# An AUR helper/library.
+# An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
 
@@ -29,34 +29,35 @@ def main():
     """Main routine of PKGBUILDer."""
     try:
         DS.log.info('Running argparse.')
-        parser = argparse.ArgumentParser(description=_('An AUR helper/library.\
-  Wrapper-friendly (pacman-like output.)'), epilog=_('You can \
-use pacman syntax if you want to.'))
+        parser = argparse.ArgumentParser(description=_('An AUR helper \
+        (and library) in Python 3.'))
 
         parser.add_argument('-v', '--version', action='version',
                             version='PKGBUILDer v' + __version__)
         parser.add_argument('pkgs', metavar='PACKAGE', action='store',
                             nargs='*', help=_('packages to build'))
 
-        argopt = parser.add_argument_group('options')
-        argopr = parser.add_argument_group('operations')
+        argopt = parser.add_argument_group(_('options'))
+        argopr = parser.add_argument_group(_('operations'))
+        argsyn = parser.add_argument_group(_('pacman compatibility'))
+
         argopt.add_argument('-C', '--nocolor', action='store_false',
                             default=True, dest='color', help=_('don\'t use \
                             colors in output'))
         argopt.add_argument('-D', '--nodepcheck', action='store_false',
                             default=True, dest='depcheck', help=_('don\'t \
                             check dependencies (may break makepkg)'))
-        argopt.add_argument('-w', '--buildonly', action='store_false',
-                            default=True, dest='mkpginst', help=_('don\'t \
-                            install packages after building'))
         argopt.add_argument('-V', '--novalidation', action='store_false',
                             default=True, dest='valid', help=_('don\'t check \
                             if packages were installed after build'))
-        argopt.add_argument('-S', '--sync', action='store_true', default=False,
-                            dest='pac', help=_('pacman syntax compatiblity'))
-        argopt.add_argument('-y', '--refresh', action='store_true',
-                            default=False, dest='pacupd', help=_('pacman \
-                            syntax compatiblity'))
+        argopt.add_argument('-w', '--buildonly', action='store_false',
+                            default=True, dest='mkpginst', help=_('don\'t \
+                            install packages after building'))
+        argopt.add_argument('-p', '--protocol', action='store',
+                            default='http', dest='protocol',
+                            metavar=_('PROTOCOL'), help=_('chooses \
+                            protocol (default: http)'))
+
         argopr.add_argument('-i', '--info', action='store_true', default=False,
                             dest='info', help=_('view package information'))
         argopr.add_argument('-s', '--search', action='store_true',
@@ -65,9 +66,12 @@ use pacman syntax if you want to.'))
         argopr.add_argument('-u', '--sysupgrade', action='store_true',
                             default=False, dest='upgrade',
                             help=_('upgrade installed AUR packages'))
-        argopr.add_argument('-p', '--protocol', action='store',
-                            default='http', dest='protocol',
-                            help=_('chooses protocol (default: http)'))
+
+        argsyn.add_argument('-S', '--sync', action='store_true', default=False,
+                            dest='pac', help=_('pacman-like mode \
+                            (/tmp/ build, aur/ in -s)'))
+        argsyn.add_argument('-y', '--refresh', action='store_true',
+                            default=False, dest='pacupd', help=_('(dummy)'))
 
         args = parser.parse_args()
         DS.validate = args.valid
