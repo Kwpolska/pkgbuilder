@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.3.4\n"
+"Project-Id-Version: 2.1.3.5\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-08-12 20:37+0200\n"
+"POT-Creation-Date: 2012-08-14 19:44+0200\n"
 "PO-Revision-Date: 2012-07-27 13:44+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
@@ -116,32 +116,36 @@ msgstr ""
 "{0}"
 
 #: pkgbuilder/main.py:32
-msgid "An AUR helper/library.  Wrapper-friendly (pacman-like output.)"
-msgstr "An AUR helper/library.  Wrapper-friendly (pacman-like output.)"
+msgid "An AUR helper         (and library) in Python 3."
+msgstr "An AUR helper         (and library) in Python 3."
 
-#: pkgbuilder/main.py:33
-msgid "You can use pacman syntax if you want to."
-msgstr "You can use pacman syntax if you want to."
-
-#: pkgbuilder/main.py:39
+#: pkgbuilder/main.py:38
 msgid "packages to build"
 msgstr "packages to build"
 
-#: pkgbuilder/main.py:44
+#: pkgbuilder/main.py:40
+msgid "options"
+msgstr "options"
+
+#: pkgbuilder/main.py:41
+msgid "operations"
+msgstr "operations"
+
+#: pkgbuilder/main.py:42
+msgid "pacman compatibility"
+msgstr "pacman compatiblity"
+
+#: pkgbuilder/main.py:45
 msgid "don't use                             colors in output"
 msgstr "don't use                             colors in output"
 
-#: pkgbuilder/main.py:47
+#: pkgbuilder/main.py:48
 msgid ""
 "don't                             check dependencies (may break makepkg)"
 msgstr ""
 "don't                              check dependencies (may break makepkg)"
 
-#: pkgbuilder/main.py:50
-msgid "don't                             install packages after building"
-msgstr "don't                             install packages after building"
-
-#: pkgbuilder/main.py:53
+#: pkgbuilder/main.py:51
 msgid ""
 "don't check                             if packages were installed after "
 "build"
@@ -149,41 +153,49 @@ msgstr ""
 "don't check                              if packages were installed after "
 "build"
 
-#: pkgbuilder/main.py:56
-msgid "pacman syntax compatiblity"
-msgstr "pacman syntax compatiblity"
+#: pkgbuilder/main.py:54
+msgid "don't                             install packages after building"
+msgstr "don't                             install packages after building"
 
 #: pkgbuilder/main.py:58
-msgid "pacman                             syntax compatiblity"
-msgstr "pacman                             syntax compatiblity"
+msgid "PROTOCOL"
+msgstr "PROTOCOL"
+
+#: pkgbuilder/main.py:58
+msgid "choose                             protocol (default: http)"
+msgstr "choose                             protocol (default: http)"
 
 #: pkgbuilder/main.py:61
+msgid "pacman-like mode                             (/tmp/ build, aur/ in -s)"
+msgstr "pacman-like mode                             (/tmp/ build, aur/ in -s)"
+
+#: pkgbuilder/main.py:64
+msgid "(dummy)"
+msgstr "(dummy)"
+
+#: pkgbuilder/main.py:67
 msgid "view package information"
 msgstr "view package information"
 
-#: pkgbuilder/main.py:63
+#: pkgbuilder/main.py:69
 msgid "search the                             AUR for matching strings"
 msgstr "search the                             AUR for matching strings"
 
-#: pkgbuilder/main.py:67
+#: pkgbuilder/main.py:73
 msgid "upgrade installed AUR packages"
 msgstr "upgrade installed AUR packages"
 
-#: pkgbuilder/main.py:70
-msgid "chooses protocol (default: http)"
-msgstr "chooses protocol (default: http)"
-
 #. this would be too many entries.  The API is really
 #. having this limitation, though.
-#: pkgbuilder/main.py:97
+#: pkgbuilder/main.py:101
 msgid "[ERR5002] search string too short, API limitation"
 msgstr "[ERR5002] search string too short, API limitation"
 
-#: pkgbuilder/main.py:99
+#: pkgbuilder/main.py:103
 msgid "Searching for exact match..."
 msgstr "Searching for exact match..."
 
-#: pkgbuilder/main.py:102 INSTALL.py:65 INSTALL.py:74 INSTALL.py:83
+#: pkgbuilder/main.py:106 INSTALL.py:65 INSTALL.py:74 INSTALL.py:83
 #: INSTALL.py:92
 msgid "not found"
 msgstr "not found"
@@ -395,3 +407,12 @@ msgstr ""
 "\n"
 "If that's what you want to do, go for it.  If it isn't, run this\n"
 "script again."
+
+#~ msgid "An AUR helper/library.  Wrapper-friendly (pacman-like output.)"
+#~ msgstr "An AUR helper/library.  Wrapper-friendly (pacman-like output.)"
+
+#~ msgid "You can use pacman syntax if you want to."
+#~ msgstr "You can use pacman syntax if you want to."
+
+#~ msgid "choose protocol (default: http)"
+#~ msgstr "choose protocol (default: http)"

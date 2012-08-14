@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.3.4
+# PKGBUILDer v2.1.3.5
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -55,8 +55,13 @@ def main():
                             install packages after building'))
         argopt.add_argument('-p', '--protocol', action='store',
                             default='http', dest='protocol',
-                            metavar=_('PROTOCOL'), help=_('chooses \
+                            metavar=_('PROTOCOL'), help=_('choose \
                             protocol (default: http)'))
+        argopt.add_argument('-S', '--sync', action='store_true', default=False,
+                            dest='pac', help=_('pacman-like mode \
+                            (/tmp/ build, aur/ in -s)'))
+        argopt.add_argument('-y', '--refresh', action='store_true',
+                            default=False, dest='pacupd', help=_('(dummy)'))
 
         argopr.add_argument('-i', '--info', action='store_true', default=False,
                             dest='info', help=_('view package information'))
@@ -67,11 +72,6 @@ def main():
                             default=False, dest='upgrade',
                             help=_('upgrade installed AUR packages'))
 
-        argsyn.add_argument('-S', '--sync', action='store_true', default=False,
-                            dest='pac', help=_('pacman-like mode \
-                            (/tmp/ build, aur/ in -s)'))
-        argsyn.add_argument('-y', '--refresh', action='store_true',
-                            default=False, dest='pacupd', help=_('(dummy)'))
 
         args = parser.parse_args()
         DS.validate = args.valid

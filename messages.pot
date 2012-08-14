@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.3.4\n"
+"Project-Id-Version: 2.1.3.5\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-08-12 20:37+0200\n"
-"PO-Revision-Date: 2012-08-12 20:37+0200\n"
+"POT-Creation-Date: 2012-08-14 19:44+0200\n"
+"PO-Revision-Date: 2012-08-14 19:44+0200\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language: en\n"
@@ -113,71 +113,83 @@ msgid ""
 msgstr ""
 
 #: pkgbuilder/main.py:32
-msgid "An AUR helper/library.  Wrapper-friendly (pacman-like output.)"
+msgid "An AUR helper         (and library) in Python 3."
 msgstr ""
 
-#: pkgbuilder/main.py:33
-msgid "You can use pacman syntax if you want to."
-msgstr ""
-
-#: pkgbuilder/main.py:39
+#: pkgbuilder/main.py:38
 msgid "packages to build"
 msgstr ""
 
-#: pkgbuilder/main.py:44
+#: pkgbuilder/main.py:40
+msgid "options"
+msgstr ""
+
+#: pkgbuilder/main.py:41
+msgid "operations"
+msgstr ""
+
+#: pkgbuilder/main.py:42
+msgid "pacman compatibility"
+msgstr ""
+
+#: pkgbuilder/main.py:45
 msgid "don't use                             colors in output"
 msgstr ""
 
-#: pkgbuilder/main.py:47
+#: pkgbuilder/main.py:48
 msgid ""
 "don't                             check dependencies (may break makepkg)"
 msgstr ""
 
-#: pkgbuilder/main.py:50
-msgid "don't                             install packages after building"
-msgstr ""
-
-#: pkgbuilder/main.py:53
+#: pkgbuilder/main.py:51
 msgid ""
 "don't check                             if packages were installed after "
 "build"
 msgstr ""
 
-#: pkgbuilder/main.py:56
-msgid "pacman syntax compatiblity"
+#: pkgbuilder/main.py:54
+msgid "don't                             install packages after building"
 msgstr ""
 
 #: pkgbuilder/main.py:58
-msgid "pacman                             syntax compatiblity"
+msgid "PROTOCOL"
+msgstr ""
+
+#: pkgbuilder/main.py:58
+msgid "choose                             protocol (default: http)"
 msgstr ""
 
 #: pkgbuilder/main.py:61
-msgid "view package information"
+msgid "pacman-like mode                             (/tmp/ build, aur/ in -s)"
 msgstr ""
 
-#: pkgbuilder/main.py:63
-msgid "search the                             AUR for matching strings"
+#: pkgbuilder/main.py:64
+msgid "(dummy)"
 msgstr ""
 
 #: pkgbuilder/main.py:67
-msgid "upgrade installed AUR packages"
+msgid "view package information"
 msgstr ""
 
-#: pkgbuilder/main.py:70
-msgid "chooses protocol (default: http)"
+#: pkgbuilder/main.py:69
+msgid "search the                             AUR for matching strings"
+msgstr ""
+
+#: pkgbuilder/main.py:73
+msgid "upgrade installed AUR packages"
 msgstr ""
 
 #. this would be too many entries.  The API is really
 #. having this limitation, though.
-#: pkgbuilder/main.py:97
+#: pkgbuilder/main.py:101
 msgid "[ERR5002] search string too short, API limitation"
 msgstr ""
 
-#: pkgbuilder/main.py:99
+#: pkgbuilder/main.py:103
 msgid "Searching for exact match..."
 msgstr ""
 
-#: pkgbuilder/main.py:102 INSTALL.py:65 INSTALL.py:74 INSTALL.py:83
+#: pkgbuilder/main.py:106 INSTALL.py:65 INSTALL.py:74 INSTALL.py:83
 #: INSTALL.py:92
 msgid "not found"
 msgstr ""

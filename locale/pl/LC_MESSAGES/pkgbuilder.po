@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.3.4\n"
+"Project-Id-Version: 2.1.3.5\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-08-12 20:37+0200\n"
+"POT-Creation-Date: 2012-08-14 19:44+0200\n"
 "PO-Revision-Date: 2012-07-27 14:20+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
@@ -115,73 +115,83 @@ msgstr ""
 "Znajdują się w nim nieprawidłowe znaki UTF-8.  Treść błędu: {0}"
 
 #: pkgbuilder/main.py:32
-msgid "An AUR helper/library.  Wrapper-friendly (pacman-like output.)"
-msgstr ""
-"Biblioteka/pomocnik AUR.  Przyjazna dla wrapperów (wyjście podobne do "
-"pacmana.)"
+msgid "An AUR helper         (and library) in Python 3."
+msgstr "Pomocnik AUR (i biblioteka) w Pythonie 3."
 
-#: pkgbuilder/main.py:33
-msgid "You can use pacman syntax if you want to."
-msgstr "Jeśli chcesz, możesz używać składni pacmana."
-
-#: pkgbuilder/main.py:39
+#: pkgbuilder/main.py:38
 msgid "packages to build"
 msgstr "pakiety do zbudowania"
 
-#: pkgbuilder/main.py:44
-msgid "don't use                             colors in output"
-msgstr "nie używa kolorów na wyjścu"
+#: pkgbuilder/main.py:40
+msgid "options"
+msgstr "opcje"
 
-#: pkgbuilder/main.py:47
+#: pkgbuilder/main.py:41
+msgid "operations"
+msgstr "operacje"
+
+#: pkgbuilder/main.py:42
+msgid "pacman compatibility"
+msgstr "kompatybilność z pacmanem"
+
+#: pkgbuilder/main.py:45
+msgid "don't use                             colors in output"
+msgstr "nie używa kolorów na wyjściu"
+
+#: pkgbuilder/main.py:48
 msgid ""
 "don't                             check dependencies (may break makepkg)"
 msgstr "nie sprawdza zależności (może popsuć makepkg)"
 
-#: pkgbuilder/main.py:50
-msgid "don't                             install packages after building"
-msgstr "nie instaluje pakietów po zbudowaniu"
-
-#: pkgbuilder/main.py:53
+#: pkgbuilder/main.py:51
 msgid ""
 "don't check                             if packages were installed after "
 "build"
 msgstr "nie sprawdza czy pakiety zostały zainstalowane po zbudowaniu"
 
-#: pkgbuilder/main.py:56
-msgid "pacman syntax compatiblity"
-msgstr "kompatybilność ze składnią pacmana"
+#: pkgbuilder/main.py:54
+msgid "don't                             install packages after building"
+msgstr "nie instaluje pakietów po zbudowaniu"
 
 #: pkgbuilder/main.py:58
-msgid "pacman                             syntax compatiblity"
-msgstr "kompatybilność ze składnią pacmana"
+msgid "PROTOCOL"
+msgstr "PROTOKÓŁ"
+
+#: pkgbuilder/main.py:58
+msgid "choose                             protocol (default: http)"
+msgstr "wybiera protokół (domyślnie: http)"
 
 #: pkgbuilder/main.py:61
+msgid "pacman-like mode                             (/tmp/ build, aur/ in -s)"
+msgstr "tryb podobny do pacmana (budowanie w /tmp, aur/ w -s)"
+
+#: pkgbuilder/main.py:64
+msgid "(dummy)"
+msgstr "(dummy)"
+
+#: pkgbuilder/main.py:67
 msgid "view package information"
 msgstr "wyświetla informację o pakiecie"
 
-#: pkgbuilder/main.py:63
+#: pkgbuilder/main.py:69
 msgid "search the                             AUR for matching strings"
 msgstr "przeszukuje AUR według pasujących ciągów"
 
-#: pkgbuilder/main.py:67
+#: pkgbuilder/main.py:73
 msgid "upgrade installed AUR packages"
 msgstr "uaktualnia zainstalowane pakiety z AUR"
 
-#: pkgbuilder/main.py:70
-msgid "chooses protocol (default: http)"
-msgstr "wybiera protokół (domyślnie: http)"
-
 #. this would be too many entries.  The API is really
 #. having this limitation, though.
-#: pkgbuilder/main.py:97
+#: pkgbuilder/main.py:101
 msgid "[ERR5002] search string too short, API limitation"
 msgstr "[ERR5002] ciąg zbyt krótki, limitacja API"
 
-#: pkgbuilder/main.py:99
+#: pkgbuilder/main.py:103
 msgid "Searching for exact match..."
 msgstr "Szukanie dokładnego dopasowania..."
 
-#: pkgbuilder/main.py:102 INSTALL.py:65 INSTALL.py:74 INSTALL.py:83
+#: pkgbuilder/main.py:106 INSTALL.py:65 INSTALL.py:74 INSTALL.py:83
 #: INSTALL.py:92
 msgid "not found"
 msgstr "nie znaleziono"
@@ -393,3 +403,14 @@ msgstr ""
 "\n"
 "Jeśli to jest to, co chcesz zrobić, proszę bardzo.  Jeśli nie,\n"
 "uruchom ten skrypt jeszcze raz."
+
+#~ msgid "An AUR helper/library.  Wrapper-friendly (pacman-like output.)"
+#~ msgstr ""
+#~ "Biblioteka/pomocnik AUR.  Przyjazna dla wrapperów (wyjście podobne do "
+#~ "pacmana.)"
+
+#~ msgid "You can use pacman syntax if you want to."
+#~ msgstr "Jeśli chcesz, możesz używać składni pacmana."
+
+#~ msgid "choose protocol (default: http)"
+#~ msgstr "wybiera protokół (domyślnie: http)"
