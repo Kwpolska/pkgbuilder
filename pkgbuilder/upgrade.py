@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.3.5
+# PKGBUILDer v2.1.3.6
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -26,12 +26,11 @@ import pycman
 ### Upgrade     upgrade AUR packages        ###
 class Upgrade:
     """Tools for performing upgrades of AUR packages."""
-    def __init__(self):
-        """Upgrade init."""
-        self.aur = AUR()
-        self.build = Build()
-        self.H = pycman.config.init_with_config('/etc/pacman.conf')
-        self.localdb = self.H.get_localdb()
+
+    aur = AUR()
+    build = Build()
+    H = pycman.config.init_with_config('/etc/pacman.conf')
+    localdb = H.get_localdb()
 
     def gather_foreign_pkgs(self):
         """Gathers a list of all foreign packages.

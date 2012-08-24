@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.3.5
+# PKGBUILDer v2.1.3.6
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -33,17 +33,8 @@ import functools
 class Build:
     """Functions for building packages."""
 
-    def __init__(self):
-        """Build init.
-
-:Arguments: none.
-:Input: none.
-:Output: none.
-:Returns: a Build object.
-:Exceptions: none.
-:Message codes: none."""
-        self.utils = Utils()
-        self.aururl = '{0}://aur.archlinux.org{1}'
+    utils = Utils()
+    aururl = '{0}://aur.archlinux.org{1}'
 
     def auto_build(self, pkgname, validate=True, performdepcheck=True,
                    makepkginstall=True):

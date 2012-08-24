@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.3.5\n"
+"Project-Id-Version: 2.1.3.6\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-08-14 19:44+0200\n"
-"PO-Revision-Date: 2012-08-14 19:44+0200\n"
+"POT-Creation-Date: 2012-08-24 20:35+0200\n"
+"PO-Revision-Date: 2012-08-24 20:35+0200\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language: en\n"
@@ -16,96 +16,96 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pkgbuilder/aur.py:51 pkgbuilder/aur.py:68
+#: pkgbuilder/aur.py:42 pkgbuilder/aur.py:59
 msgid "[ERR1001] AUR: HTTP Error {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:67
+#: pkgbuilder/build.py:58
 msgid "The build function reported a proper build."
 msgstr ""
 
-#: pkgbuilder/build.py:76
+#: pkgbuilder/build.py:67
 msgid "[ERR3451] validation: NOT installed"
 msgstr ""
 
-#: pkgbuilder/build.py:80
+#: pkgbuilder/build.py:71
 msgid "[ERR3452] validation: outdated {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:83
+#: pkgbuilder/build.py:74
 msgid "[INF3450] validation: installed {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:87
+#: pkgbuilder/build.py:78
 msgid "[ERR3402] Something went wrong.  EC={0} EM={1}"
 msgstr ""
 
-#: pkgbuilder/build.py:91
+#: pkgbuilder/build.py:82
 msgid "[WRN3401] Building more AUR packages is required."
 msgstr ""
 
-#: pkgbuilder/build.py:115
+#: pkgbuilder/build.py:106
 msgid "[ERR3102] download: HTTP Error {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:118
+#: pkgbuilder/build.py:109
 msgid "[ERR3101] download: 0 bytes downloaded"
 msgstr ""
 
-#: pkgbuilder/build.py:141
+#: pkgbuilder/build.py:132
 msgid "[ERR3151] extract: no files extracted"
 msgstr ""
 
-#: pkgbuilder/build.py:215 pkgbuilder/build.py:277
+#: pkgbuilder/build.py:206 pkgbuilder/build.py:268
 msgid "[ERR3201] depcheck: cannot find {0} anywhere"
 msgstr ""
 
-#: pkgbuilder/build.py:240
+#: pkgbuilder/build.py:231
 msgid "[ERR3001] Package {0} not found."
 msgstr ""
 
-#: pkgbuilder/build.py:243
+#: pkgbuilder/build.py:234
 msgid "Building {0}..."
 msgstr ""
 
 #. Okay, this package exists, great then.  Thanks, user.
-#: pkgbuilder/build.py:252
+#: pkgbuilder/build.py:243
 msgid "Downloading the tarball..."
 msgstr ""
 
-#: pkgbuilder/build.py:255
+#: pkgbuilder/build.py:246
 msgid "{0} kB downloaded"
 msgstr ""
 
-#: pkgbuilder/build.py:257
+#: pkgbuilder/build.py:248
 msgid "Extracting..."
 msgstr ""
 
-#: pkgbuilder/build.py:258
+#: pkgbuilder/build.py:249
 msgid "{0} files extracted"
 msgstr ""
 
-#: pkgbuilder/build.py:262
+#: pkgbuilder/build.py:253
 msgid "Checking dependencies..."
 msgstr ""
 
-#: pkgbuilder/build.py:269
+#: pkgbuilder/build.py:260
 msgid "found in system"
 msgstr ""
 
-#: pkgbuilder/build.py:269
+#: pkgbuilder/build.py:260
 msgid "found in repos"
 msgstr ""
 
-#: pkgbuilder/build.py:270
+#: pkgbuilder/build.py:261
 msgid "found in the AUR"
 msgstr ""
 
-#: pkgbuilder/build.py:273
+#: pkgbuilder/build.py:264
 msgid "none found"
 msgstr ""
 
-#: pkgbuilder/build.py:287
+#: pkgbuilder/build.py:278
 msgid ""
 "[ERR3202] depcheck: UnicodeDecodeError.  The PKGBUILD cannot be read.  There "
 "are invalid UTF-8 characters (eg. in the Maintainer field.)  Error message: "
@@ -194,65 +194,66 @@ msgstr ""
 msgid "not found"
 msgstr ""
 
-#: pkgbuilder/pbds.py:58
+#: pkgbuilder/o.pbds.py:58 pkgbuilder/pbds.py:49
 msgid "[ERR5001] Aborted by user! Exiting..."
 msgstr ""
 
-#: pkgbuilder/pbds.py:164 pkgbuilder/pbds.py:178
+#: pkgbuilder/o.pbds.py:164 pkgbuilder/o.pbds.py:178 pkgbuilder/pbds.py:155
+#: pkgbuilder/pbds.py:169
 msgid "WARNING:"
 msgstr ""
 
-#: pkgbuilder/pbds.py:192
+#: pkgbuilder/o.pbds.py:192 pkgbuilder/pbds.py:183
 msgid "ERROR:"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:95 pkgbuilder/upgrade.py:97
+#: pkgbuilder/upgrade.py:94 pkgbuilder/upgrade.py:96
 msgid "Gathering data about packages..."
 msgstr ""
 
-#: pkgbuilder/upgrade.py:104
+#: pkgbuilder/upgrade.py:103
 msgid "Targets ({0}): "
 msgstr ""
 
-#: pkgbuilder/upgrade.py:106
+#: pkgbuilder/upgrade.py:105
 msgid "{0} upgradeable packages found:"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:111
+#: pkgbuilder/upgrade.py:110
 msgid " there is nothing to do"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:113
+#: pkgbuilder/upgrade.py:112
 msgid "there is nothing to do"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:118 pkgbuilder/upgrade.py:122
+#: pkgbuilder/upgrade.py:117 pkgbuilder/upgrade.py:121
 msgid "Proceed with installation? [Y/n] "
 msgstr ""
 
-#: pkgbuilder/utils.py:112
+#: pkgbuilder/utils.py:105
 msgid " [installed: {0}]"
 msgstr ""
 
-#: pkgbuilder/utils.py:114
+#: pkgbuilder/utils.py:107
 msgid " [installed]"
 msgstr ""
 
-#: pkgbuilder/utils.py:117
+#: pkgbuilder/utils.py:110
 msgid "[out of date]"
 msgstr ""
 
-#: pkgbuilder/utils.py:129
+#: pkgbuilder/utils.py:122
 msgid "votes"
 msgstr ""
 
-#: pkgbuilder/utils.py:152
+#: pkgbuilder/utils.py:145
 msgid "Package {0} not found."
 msgstr ""
 
 #. TRANSLATORS: space it properly.  `yes/no' below are
 #. for `out of date'.
-#: pkgbuilder/utils.py:180
+#: pkgbuilder/utils.py:173
 msgid ""
 "Category       : {cat}\n"
 "Name           : {nme}\n"
@@ -267,11 +268,11 @@ msgid ""
 "Description    : {dsc}\n"
 msgstr ""
 
-#: pkgbuilder/utils.py:197
+#: pkgbuilder/utils.py:190
 msgid "yes"
 msgstr ""
 
-#: pkgbuilder/utils.py:198
+#: pkgbuilder/utils.py:191
 msgid "no"
 msgstr ""
 

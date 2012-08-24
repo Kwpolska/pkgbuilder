@@ -26,56 +26,65 @@ import logging
 ### PBDS           PB global data storage  ###
 class PBDS():
     """PKGBUILDer Data Storage."""
-    # For fancy-schmancy messages stolen from makepkg.
-    colors = {
-        'all_off':    '\x1b[1;0m',
-        'bold':       '\x1b[1;1m',
-        'blue':       '\x1b[1;1m\x1b[1;34m',
-        'green':      '\x1b[1;1m\x1b[1;32m',
-        'red':        '\x1b[1;1m\x1b[1;31m',
-        'yellow':     '\x1b[1;1m\x1b[1;33m'
-    }
+    def __init__(self):
+        """PBself.init.
 
-    pacman = False
-    validate = True
-    depcheck = True
-    mkpginst = True
-    protocol = 'http'
-    categories = ['ERROR', 'none', 'daemons', 'devel', 'editors',
-                  'emulators', 'games', 'gnome', 'i18n', 'kde',
-                  'lib', 'modules', 'multimedia', 'network',
-                  'office', 'science', 'system', 'x11',
-                  'xfce', 'kernels']
-    inttext = _('[ERR5001] Aborted by user! Exiting...')
+:Arguments: none.
+:Input: none.
+:Output: none.
+:Returns: a PBself.object.
+:Exceptions: none.
+:Message codes: none."""
+        # For fancy-schmancy messages stolen from makepkg.
+        self.colors = {
+            'all_off':    '\x1b[1;0m',
+            'bold':       '\x1b[1;1m',
+            'blue':       '\x1b[1;1m\x1b[1;34m',
+            'green':      '\x1b[1;1m\x1b[1;32m',
+            'red':        '\x1b[1;1m\x1b[1;31m',
+            'yellow':     '\x1b[1;1m\x1b[1;33m'
+        }
 
-    # Creating the configuration/log stuff...
-    confhome = os.getenv('XDG_CONFIG_HOME')
-    if confhome is None:
-        confhome = os.path.expanduser('~/.config')
+        self.pacman = False
+        self.validate = True
+        self.depcheck = True
+        self.mkpginst = True
+        self.protocol = 'http'
+        self.categories = ['ERROR', 'none', 'daemons', 'devel', 'editors',
+                           'emulators', 'games', 'gnome', 'i18n', 'kde',
+                           'lib', 'modules', 'multimedia', 'network',
+                           'office', 'science', 'system', 'x11',
+                           'xfce', 'kernels']
+        self.inttext = _('[ERR5001] Aborted by user! Exiting...')
 
-    confdir = confhome + '/kwpolska/pkgbuilder'
+        # Creating the configuration/log stuff...
+        confhome = os.getenv('XDG_CONFIG_HOME')
+        if confhome is None:
+            confhome = os.path.expanduser('~/.config')
 
-    if not os.path.exists(confdir):
-        try:
-            os.mkdir(confdir)
-        except:
+        self.confdir = confhome + '/kwpolska/pkgbuilder'
+
+        if not os.path.exists(self.confdir):
             try:
-                os.mkdir(confhome)
+                os.mkdir(self.confdir)
             except:
-                pass
+                try:
+                    os.mkdir(confhome)
+                except:
+                    pass
 
-            try:
-                os.mkdir(confhome + '/kwpolska')
-                os.mkdir(confdir)
-            except:
-                fancy_error('Cannot create the config directory \
+                try:
+                    os.mkdir(confhome + '/kwpolska')
+                    os.mkdir(self.confdir)
+                except:
+                    fancy_error('Cannot create the config directory \
 (~/.config/kwpolska/pkgbuilder).')
-                exit(1)
-    logging.basicConfig(format='%(asctime)-15s [%(levelname)-7s] \
-:%(name)-10s: %(message)s', filename=confdir + '/pkgbuilder.log',
-                        level=logging.DEBUG)
-    log = logging.getLogger('pkgbuilder')
-    log.info('*** PKGBUILDer v' + __version__)
+                    exit(1)
+        logging.basicConfig(format='%(asctime)-15s [%(levelname)-7s] \
+:%(name)-10s: %(message)s', filename=self.confdir + '/pkgbuilder.log',
+                            level=logging.DEBUG)
+        self.log = logging.getLogger('pkgbuilder')
+        self.log.info('*** PKGBUILDer v' + __version__)
 
     def colorson(self):
         """Colors on.

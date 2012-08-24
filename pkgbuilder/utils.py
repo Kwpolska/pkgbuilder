@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.3.5
+# PKGBUILDer v2.1.3.6
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -29,14 +29,7 @@ import datetime
 class Utils:
     """Common global utilities.  Provides useful data."""
 
-    def __init__(self):
-        """Utils init.
-
-:Arguments: none.
-:Input: none.
-:Output: none.
-:Returns: a Utils object."""
-        self.aur = AUR()
+    aur = AUR()
 
     def info(self, pkgname):
         """Returns info about a package.
