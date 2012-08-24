@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.3.5
+# PKGBUILDer v2.1.3.6
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -25,17 +25,8 @@ import json
 class AUR:
     """A class for calling the AUR API."""
 
-    def __init__(self):
-        """AUR init.
-
-:Arguments: none.
-:Input: none.
-:Output: none.
-:Returns: an AUR object.
-:Exceptions: none.
-:Message codes: none."""
-        self.rpc = '{0}://aur.archlinux.org/rpc.php?type={1}&arg={2}'
-        self.mrpc = '{0}://aur.archlinux.org/rpc.php?type=multiinfo{1}'
+    rpc = '{0}://aur.archlinux.org/rpc.php?type={1}&arg={2}'
+    mrpc = '{0}://aur.archlinux.org/rpc.php?type=multiinfo{1}'
 
     def jsonreq(self, rtype, arg, prot='http'):
         """Makes a request and returns plain JSON data.

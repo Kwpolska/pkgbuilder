@@ -4,8 +4,8 @@ pbds module (PBDS class)
 
 :Author: Kwpolska
 :Copyright: See Appendix B.
-:Date: 2012-08-14
-:Version: 2.1.3.5
+:Date: 2012-08-24
+:Version: 2.1.3.6
 
 .. module: pbds
 
