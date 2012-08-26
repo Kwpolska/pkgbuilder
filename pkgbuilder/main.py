@@ -8,15 +8,15 @@
 # Names convention: pkg = a package object, pkgname = a package name.
 
 """
-    pkgbuilder.main
-    ~~~~~~~~~~~~~~~
+    pkgbuilder.main()
+    ~~~~~~~~~~~~~~~~
     Main routine of PKGBUILDer.
 
     :Copyright: (C) 2011-2012, Kwpolska.
     :License: BSD (see /LICENSE).
 """
 
-from . import DS, T, _, PBError, __version__
+from . import DS, _, PBError, __version__
 from .build import Build
 from .utils import Utils
 from .upgrade import Upgrade
