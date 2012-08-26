@@ -16,7 +16,7 @@
     :License: BSD (see /LICENSE).
 """
 
-from . import DS, T, _, PBError
+from . import DS, _, PBError
 from .aur import AUR
 from .build import Build
 import pyalpm
