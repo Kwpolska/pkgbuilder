@@ -51,8 +51,8 @@ __docformat__ = 'restructuredtext en'
 
 import gettext
 
-T = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
-_ = T.gettext
+G = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
+_ = G.gettext
 
 
 ### PBError         errors raised here      ###
