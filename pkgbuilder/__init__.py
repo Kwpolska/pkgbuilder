@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.3.6
+# PKGBUILDer v2.1.3.7
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # All rights reserved.
@@ -44,15 +44,15 @@
 """
 
 __title__ = 'PKGBUILDer'
-__version__ = '2.1.3.6'
+__version__ = '2.1.3.7'
 __author__ = 'Kwpolska'
 __license__ = '3-clause BSD'
 __docformat__ = 'restructuredtext en'
 
 import gettext
 
-T = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
-_ = T.gettext
+G = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
+_ = G.gettext
 
 
 ### PBError         errors raised here      ###

@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.3.6\n"
+"Project-Id-Version: 2.1.3.7\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-08-24 20:35+0200\n"
+"POT-Creation-Date: 2012-08-26 16:00+0200\n"
 "PO-Revision-Date: 2012-07-27 13:44+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
@@ -56,56 +56,56 @@ msgstr "[ERR3101] download: 0 bytes downloaded"
 msgid "[ERR3151] extract: no files extracted"
 msgstr "[ERR3151] extract: no files extracted"
 
-#: pkgbuilder/build.py:206 pkgbuilder/build.py:268
+#: pkgbuilder/build.py:210 pkgbuilder/build.py:272
 msgid "[ERR3201] depcheck: cannot find {0} anywhere"
 msgstr "[ERR3201] depcheck: cannot find {0} anywhere"
 
-#: pkgbuilder/build.py:231
+#: pkgbuilder/build.py:235
 msgid "[ERR3001] Package {0} not found."
 msgstr "[ERR3001] Package {0} not found."
 
-#: pkgbuilder/build.py:234
+#: pkgbuilder/build.py:238
 msgid "Building {0}..."
 msgstr "Building {0}..."
 
 #. Okay, this package exists, great then.  Thanks, user.
-#: pkgbuilder/build.py:243
+#: pkgbuilder/build.py:247
 msgid "Downloading the tarball..."
 msgstr "Downloading the tarball..."
 
-#: pkgbuilder/build.py:246
+#: pkgbuilder/build.py:250
 msgid "{0} kB downloaded"
 msgstr "{0} kB downloaded"
 
-#: pkgbuilder/build.py:248
+#: pkgbuilder/build.py:252
 msgid "Extracting..."
 msgstr "Extracting..."
 
-#: pkgbuilder/build.py:249
+#: pkgbuilder/build.py:253
 msgid "{0} files extracted"
 msgstr "{0} files extracted"
 
-#: pkgbuilder/build.py:253
+#: pkgbuilder/build.py:257
 msgid "Checking dependencies..."
 msgstr "Checking dependencies..."
 
-#: pkgbuilder/build.py:260
+#: pkgbuilder/build.py:264
 msgid "found in system"
 msgstr "found in system"
 
-#: pkgbuilder/build.py:260
+#: pkgbuilder/build.py:264
 msgid "found in repos"
 msgstr "found in repos"
 
-#: pkgbuilder/build.py:261
+#: pkgbuilder/build.py:265
 msgid "found in the AUR"
 msgstr "found in the AUR"
 
-#: pkgbuilder/build.py:264
+#: pkgbuilder/build.py:268
 msgid "none found"
 msgstr "none found"
 
-#: pkgbuilder/build.py:278
+#: pkgbuilder/build.py:282
 msgid ""
 "[ERR3202] depcheck: UnicodeDecodeError.  The PKGBUILD cannot be read.  There "
 "are invalid UTF-8 characters (eg. in the Maintainer field.)  Error message: "
