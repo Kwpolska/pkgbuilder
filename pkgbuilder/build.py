@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.3.6
+# PKGBUILDer v2.1.3.7
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -190,11 +190,15 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
                 syncpkgs.append(j)
             syncpkgs = functools.reduce(lambda x, y: x + y, syncpkgs)
             for dep in depends:
+                if dep == '': # eg. pyload 0.4.9-4
+                    continue
+
                 if re.search('[<=>]', dep):
                     vpat = '>=<|><=|=><|=<>|<>=|<=>|>=|=>|><|<>|=<|\
 <=|>|=|<'
                     ver_base = re.split(vpat, dep)
                     dep = ver_base[0]
+
                 if pyalpm.find_satisfier(localpkgs, dep):
                     parseddeps[dep] = 0
                 elif pyalpm.find_satisfier(syncpkgs, dep):
