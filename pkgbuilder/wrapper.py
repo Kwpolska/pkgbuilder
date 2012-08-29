@@ -107,12 +107,12 @@ manpages/help commands for details.'))
 
     if args.ver:
         pacpkg = localdb.get_pkg('pacman')
-        print("""PBWrapper v{}
-{}
-PKGBUILDer v{}
-pacman v{}
-pyalpm v{}""".format(__wrapperversion__, _('using:'), __version__,
-                     pacpkg.version.split('-', 1)[0], pyalpm.version()))
+        print("""PBWrapper   v{}
+PKGBUILDer  v{}
+pacman      v{}
+pyalpm      v{}""".format(__wrapperversion__, __version__,
+                          pacpkg.version.split('-', 1)[0],
+                          pyalpm.version()))
 
     #args.pkgnames; args.__dict__
 
