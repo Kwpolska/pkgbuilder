@@ -52,17 +52,8 @@ def depcheck():
 
     print(_("""Performing a dependency check..."""))
 
-    deps = {'pyparsing': None, 'pyalpm': None,
+    deps = {'pyalpm': None,
             'certifi': None, 'requests': None}
-
-    print("""pyparsing | community | """, end='')
-    try:
-        import pyparsing
-        deps['pyparsing'] = True
-        print(_('found'))
-    except ImportError:
-        deps['pyparsing'] = False
-        print(_('not found'))
 
     print("""pyalpm    | extra     | """, end='')
     try:

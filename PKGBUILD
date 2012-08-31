@@ -6,7 +6,7 @@ pkgdesc='A Python AUR helper/library.'
 arch=('any')
 url='https://github.com/Kwpolska/pkgbuilder'
 license=('BSD')
-depends=('python' 'pyalpm>=0.5.1-1' 'python-pyparsing' 'python-requests')
+depends=('python' 'pyalpm>=0.5.1-1' 'python-requests')
 options=(!emptydirs)
 source=("http://pypi.python.org/packages/source/p/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 md5sums=('1f6613ea44e5186610a5245e7e16a20a')

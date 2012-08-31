@@ -12,7 +12,7 @@ PKGBUILDer
 SYNOPSIS
 ========
 
-*pkgbuilder* [-hvCDVwSy] [-p PROTOCOL] [-isu] [PACKAGE [PACKAGE ...]]
+*pkgbuilder* [-hVcdvwSy] [-p PROTOCOL] [-isu] [PACKAGE [PACKAGE ...]]
 
 DESCRIPTION
 ===========
@@ -46,14 +46,14 @@ working directory (CWD).
 OPTIONS
 =======
 
-**-C, --nocolor**
+**-c, --nocolors**
     Forces the script to ignore the ANSI color codes.
 
-**-D, --nodepcheck**
+**-d, --nodepcheck**
     Skips dependency checks.  It may (and, most likely, will)
     break makepkg.
 
-**-V, --novalidation**
+**-v, --novalidation**
     Skips package installation validation phase (checking
     if the package is installed).
 

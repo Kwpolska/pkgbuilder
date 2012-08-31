@@ -18,7 +18,6 @@
 
 from . import DS, _, PBError
 from .utils import Utils
-from pyparsing import OneOrMore, Word
 import os
 import pyalpm
 import pycman
@@ -134,36 +133,41 @@ required.'))
     def prepare_deps(self, pkgbuild):
         """Gets (make)depends from a PKGBUILD and returns them.
 
-:Arguments: PKGBUILD contents
+:Arguments: PKGBUILD location.
 :Input: none.
 :Output: none.
 :Returns:
     a list with entries from PKGBUILD's depends and makedepends
     (can be empty.)
 :Exceptions: IOError.
-:Message codes: none."""
-        fixedp = '0123456789abcdefghijklmnopqrstuvwxyz\
-ABCDEFGHIJKLMNOPQRSTUVWXYZ!#$%&*+,-./:;<=>?@[]^_`{|}~"\''
-        pattern1 = 'depends=(' + OneOrMore(Word(fixedp)) + ')'
-        pattern2 = 'makedepends=(' + OneOrMore(Word(fixedp)) + ')'
+:Message codes: none.
+:Former data:
+    2.1.3.7 Arguments: PKGBUILD contents (!)"""
+        # I decided to use Popen instead of pyparsing magic.  Less deps
+        # for PB itself and no problems if makedepends are before depends
+        # in the file.  (eg. python-gitdb)
+        # And it takes only 7 lines instead of about 40 in the pyparsing
+        # implementation.
 
-        try:
-            bashdepends = next(pattern1.scanString(pkgbuild))
-        except StopIteration:
-            bashdepends = []
-            depends = []
-        try:
-            bmdepends = next(pattern2.scanString(pkgbuild))
-        except StopIteration:
-            bmdepends = []
-            makedepends = []
-        if bashdepends != []:
-            depends = [s.rstrip() for s in bashdepends[0][1:-1]]
-        if bmdepends != []:
-            makedepends = [s.rstrip() for s in bmdepends[0][1:-1]]
+        # Temporary workaround.  TODO: remove in .13 or 2012-10, whichever
+        # comes first.
+        if not os.path.exists(pkgbuild):
+            tempfile = open('/tmp/pkgbuilderTempWorkaround')
+            tempfile.write(pkgbuild)
+            tempfile.close()
+            pkgbuild = '/tmp/pkgbuilderTempWorkaround'
 
-        bothdepends = depends + makedepends
-        return [s.replace('"', '').replace('\'', '') for s in bothdepends]
+        pb = subprocess.Popen('source '+pkgbuild+'; for i in ${depends[*]}; \
+do echo $i; done; for i in ${makedepends[*]}; do echo $i; done', shell=True,
+                              stdout=subprocess.PIPE)
+        deps = pb.stdout.read()
+        deps = deps.decode('utf-8')
+        deps = deps.split('\n')
+
+        if pkgbuild == '/tmp/pkgbuilderTempWorkaround':
+            os.remove('/tmp/pkgbuilderTempWorkaround')
+        return deps
+
 
     def depcheck(self, depends):
         """Performs a dependency check.
@@ -256,10 +260,7 @@ unless you re-implement auto_build.
             if performdepcheck:
                 DS.fancy_msg(_('Checking dependencies...'))
                 try:
-                    fhandle = open('./PKGBUILD', 'rb')
-                    pbcontents = fhandle.read().decode('utf8', 'ignore')
-                    fhandle.close()
-                    depends = self.prepare_deps(pbcontents)
+                    depends = self.prepare_deps(os.path.abspath('./PKGBUILD'))
                     deps = self.depcheck(depends)
                     pkgtypes = [_('found in system'), _('found in repos'),
                                 _('found in the AUR')]

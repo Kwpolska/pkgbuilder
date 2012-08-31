@@ -255,6 +255,7 @@ msgstr ""
 #. for `out of date'.
 #: pkgbuilder/utils.py:173
 msgid ""
+"Repository     : aur\n"
 "Category       : {cat}\n"
 "Name           : {nme}\n"
 "Version        : {ver}\n"

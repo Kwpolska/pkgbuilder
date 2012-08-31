@@ -154,7 +154,7 @@ the maintainer of PKGBUILDer')
         utils = pkgbuilder.utils.Utils()
         # It’s cheaper to use existing package data.
         fpkg = {'CategoryID': '16',
-                'Description': 'A basic Python AUR helper/library.',
+                'Description': 'A Python AUR helper/library.',
                 'FirstSubmitted': '1316529993',
                 'ID': '52542',
                 'LastModified': '4294967294',
@@ -169,7 +169,7 @@ the maintainer of PKGBUILDer')
 
         sample = """system/pkgbuilder-is-awesome testsuite (8897 votes) \
 \x1b[1;1m\x1b[1;31m[out of date]\x1b[1;0m
-    A basic Python AUR helper/library."""
+    A Python AUR helper/library."""
 
         req = utils.print_package_search(fpkg, True, True)
 
@@ -181,7 +181,7 @@ doesn’t match the example')
         utils = pkgbuilder.utils.Utils()
         # It’s cheaper to use existing package data.
         fpkg = {'CategoryID': '16',
-                'Description': 'A basic Python AUR helper/library.',
+                'Description': 'A Python AUR helper/library.',
                 'FirstSubmitted': '1316529993',
                 'ID': '52542',
                 'LastModified': '4294967294',
@@ -194,7 +194,8 @@ doesn’t match the example')
                 'URLPath': '/packages/pk/pkgbuilder/pkgbuilder.tar.gz',
                 'Version': 'testsuite'}
 
-        sample = """Category       : system
+        sample = """Repository     : aur
+Category       : system
 Name           : pkgbuilder-is-awesome
 Version        : testsuite
 URL            : https://github.com/Kwpolska/pkgbuilder
@@ -202,9 +203,9 @@ Licenses       : BSD
 Votes          : 8897
 Out of Date    : \x1b[1;1m\x1b[1;31myes\x1b[1;0m
 Maintainer     : Kwpolska
-First Submitted: Tue 20 Sep 2011 14:09:33 PM UTC
-Last Updated   : Sun 07 Feb 2106 06:02:14 AM UTC
-Description    : A basic Python AUR helper/library.
+First Submitted: 2011-09-20T14:46:33Z
+Last Updated   : 2106-02-07T06:28:14Z
+Description    : A Python AUR helper/library.
 """
         req = utils.print_package_info(fpkg, True, True)
         if req != sample:

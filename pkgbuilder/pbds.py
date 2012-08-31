@@ -16,10 +16,9 @@
     :License: BSD (see /LICENSE).
 """
 
-from . import _, PBError, __version__
+from . import _, __version__
 import sys
 import os
-import gettext
 import logging
 
 
@@ -51,26 +50,24 @@ class PBDS():
     # Creating the configuration/log stuff...
     confhome = os.getenv('XDG_CONFIG_HOME')
     if confhome is None:
-        confhome = os.path.expanduser('~/.config')
+        confhome = os.path.expanduser('~/.config/')
 
-    confdir = confhome + '/kwpolska/pkgbuilder'
+    kwdir = os.path.join(confhome, 'kwpolska')
+    confdir = os.path.join(kwdir, 'pkgbuilder')
+
+    if not os.path.exists(confhome):
+        os.mkdir(confhome)
+
+    if not os.path.exists(kwdir):
+        os.mkdir(kwdir)
 
     if not os.path.exists(confdir):
-        try:
-            os.mkdir(confdir)
-        except:
-            try:
-                os.mkdir(confhome)
-            except:
-                pass
+        os.mkdir(confdir)
 
-            try:
-                os.mkdir(confhome + '/kwpolska')
-                os.mkdir(confdir)
-            except:
-                fancy_error('Cannot create the config directory \
-(~/.config/kwpolska/pkgbuilder).')
-                exit(1)
+    if not os.path.exists(confdir):
+        fancy_error(_('Cannot create the configuration directory.'))
+        fancy_warning(_('Logs will not be created.'))
+
     logging.basicConfig(format='%(asctime)-15s [%(levelname)-7s] \
 :%(name)-10s: %(message)s', filename=confdir + '/pkgbuilder.log',
                         level=logging.DEBUG)
