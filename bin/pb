@@ -1,0 +1,8 @@
+#!/usr/bin/env python3
+"""Run PBWrapper: A pacman/PKGBUILDer wrapper, part of PKGBUILDer."""
+import pkgbuilder.wrapper
+try:
+    pkgbuilder.wrapper.wrapper()
+except KeyboardInterrupt:
+    pkgbuilder.DS.fancy_error(pkgbuilder.DS.inttext)
+    exit(0)

@@ -24,3 +24,9 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+# Backup versions of files
+o.*
+
+# release testing
+pbwrapperdiff
