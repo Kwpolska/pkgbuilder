@@ -25,14 +25,14 @@ import os
 
 
 ### main()          The main routine        ###
-def main():
+def main(source='AUTO'):
     """Main routine of PKGBUILDer."""
     try:
         DS.log.info('Running argparse.')
         parser = argparse.ArgumentParser(description=_('An AUR helper \
         (and library) in Python 3.'))
 
-        parser.add_argument('-v', '--version', action='version',
+        parser.add_argument('-V', '--version', action='version',
                             version='PKGBUILDer v' + __version__)
         parser.add_argument('pkgs', metavar='PACKAGE', action='store',
                             nargs='*', help=_('packages to build'))
@@ -41,13 +41,13 @@ def main():
         argopr = parser.add_argument_group(_('operations'))
         argsyn = parser.add_argument_group(_('pacman compatibility'))
 
-        argopt.add_argument('-C', '--nocolor', action='store_false',
+        argopt.add_argument('-c', '--nocolors', action='store_false',
                             default=True, dest='color', help=_('don\'t use \
                             colors in output'))
-        argopt.add_argument('-D', '--nodepcheck', action='store_false',
+        argopt.add_argument('-d', '--nodepcheck', action='store_false',
                             default=True, dest='depcheck', help=_('don\'t \
                             check dependencies (may break makepkg)'))
-        argopt.add_argument('-V', '--novalidation', action='store_false',
+        argopt.add_argument('-v', '--novalidation', action='store_false',
                             default=True, dest='valid', help=_('don\'t check \
                             if packages were installed after build'))
         argopt.add_argument('-w', '--buildonly', action='store_false',
@@ -73,7 +73,10 @@ def main():
                             help=_('upgrade installed AUR packages'))
 
 
-        args = parser.parse_args()
+        if source != 'AUTO':
+            args = parser.parse_args(source)
+        else:
+            args = parser.parse_args()
         DS.validate = args.valid
         DS.depcheck = args.depcheck
         DS.pacman = args.pac

@@ -85,7 +85,9 @@ Extracts an AUR tarball.  Data normally provided by :meth:`build_runner()`.
 .. method:: prepare_deps(pkgbuild)
 .. index:: depcheck, dependency
 
-:Arguments: PKGBUILD contents
+.. versionchanged:: 2.1.3.7
+
+:Arguments: PKGBUILD location.
 :Input: none.
 :Output: none.
 :Returns:
@@ -93,11 +95,12 @@ Extracts an AUR tarball.  Data normally provided by :meth:`build_runner()`.
     (can be empty.)
 :Exceptions: IOError.
 :Message codes: none.
+:Former data:
+    2.1.3.7 Arguments: PKGBUILD contents. (!)
 
 Gets (make)depends from a PKGBUILD and returns them.
 
-.. note::
-    `pkgbuild` is a string, not a file handle.
+..note:: due to a radical change of the algorithm, please provide the **absolute** path to the PKGBUILD (``os.path.abspath``).  Handles are not supported.  For a short while, strings will still be supported, but will raise an error.
 
 .. method:: depcheck(depends)
 .. index:: depcheck, dependency

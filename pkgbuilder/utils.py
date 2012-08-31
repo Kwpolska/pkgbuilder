@@ -92,7 +92,9 @@ class Utils:
     2.1.3.0 Name: print_package.
     2.0 Name: showInfo.
 """
-        termwidth = int(os.popen('stty size', 'r').read().split()[1])
+        size = os.popen('stty size', 'r')
+        termwidth = int(size.read().split()[1])
+        size.close()
         H = pycman.config.init_with_config('/etc/pacman.conf')
         localdb = H.get_localdb()
         lpkg = localdb.get_pkg(pkg['Name'])
@@ -142,35 +144,47 @@ class Utils:
     2.1.3.0 Location: .main.main() (inaccessible to 3rd parties)
 """
         if pkg is None:
-            raise PBError(_('Package {0} not found.').format(
-                pkgname))
+            raise PBError(_('Package not found.'))
         else:
+            loct = os.getenv('LC_TIME')
+            loc = os.getenv('LC_ALL')
+
+            if loc == '':
+                loc = os.getenv('LANG')
+
+            if loc == '':
+                loc = 'en_US.UTF-8'
+
+            if loct == '':
+                loct = loc
+
             if force_utc:
                 class UTC(datetime.tzinfo):
-                    """UTC"""
+                    """Universal Time, Coordinated."""
 
                     def utcoffset(self, dt):
                         return datetime.timedelta(0)
 
                     def tzname(self, dt):
-                        return "UTC"
+                        return "Z"
 
                     def dst(self, dt):
                         return datetime.timedelta(0)
 
                 upd = datetime.datetime.fromtimestamp(float(pkg['Last\
-Modified']), tz=UTC()).strftime('%a %d %b %Y %H:%m:%S %p %Z')
+Modified']), tz=UTC()).strftime('%Y-%m-%dT%H:%M:%S%Z')
                 fsb = datetime.datetime.fromtimestamp(float(pkg['First\
-Submitted']), tz=UTC()).strftime('%a %d %b %Y %H:%m:%S %p %Z')
+Submitted']), tz=UTC()).strftime('%Y-%m-%dT%H:%M:%S%Z')
             else:
                 upd = datetime.datetime.fromtimestamp(float(pkg['Last\
-Modified'])).strftime('%a %d %b %Y %H:%m:%S %p %Z')
+Modified'])).strftime('%Y-%m-%dT%H:%M:%S%Z')
                 fsb = datetime.datetime.fromtimestamp(float(pkg['First\
-Submitted'])).strftime('%a %d %b %Y %H:%m:%S %p %Z')
+Submitted'])).strftime('%Y-%m-%dT%H:%M:%S%Z')
 
             # TRANSLATORS: space it properly.  `yes/no' below are
             # for `out of date'.
-            toout = _("""Category       : {cat}
+            toout = _("""Repository     : aur
+Category       : {cat}
 Name           : {nme}
 Version        : {ver}
 URL            : {url}
