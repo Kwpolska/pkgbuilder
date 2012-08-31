@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """Run PKGBUILDer."""
-import pkgbuilder
 import pkgbuilder.main
 try:
     pkgbuilder.main.main()

@@ -16,10 +16,9 @@
     :License: BSD (see /LICENSE).
 """
 
-from . import _, PBError, __version__
+from . import _, __version__
 import sys
 import os
-import gettext
 import logging
 
 

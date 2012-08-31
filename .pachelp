@@ -1,0 +1,149 @@
+usage:  pacman <operation> [...]
+operations:
+    pacman {-h --help}
+    pacman {-V --version}
+    pacman {-D --database} <options> <package(s)>
+    pacman {-Q --query}    [options] [package(s)]
+    pacman {-R --remove}   [options] <package(s)>
+    pacman {-S --sync}     [options] [package(s)]
+    pacman {-T --deptest}  [options] [package(s)]
+    pacman {-U --upgrade}  [options] <file(s)>
+
+use 'pacman {-h --help}' with an operation for available options
+usage:  pacman {-D --database} <options> <package(s)>
+options:
+  -b, --dbpath <path>  set an alternate database location
+  -r, --root <path>    set an alternate installation root
+  -v, --verbose        be verbose
+      --arch <arch>    set an alternate architecture
+      --asdeps         mark packages as non-explicitly installed
+      --asexplicit     mark packages as explicitly installed
+      --cachedir <dir> set an alternate package cache location
+      --config <path>  set an alternate configuration file
+      --debug          display debug messages
+      --gpgdir <path>  set an alternate home directory for GnuPG
+      --logfile <path> set an alternate log file
+      --noconfirm      do not ask for any confirmation
+usage:  pacman {-Q --query} [options] [package(s)]
+options:
+  -b, --dbpath <path>  set an alternate database location
+  -c, --changelog      view the changelog of a package
+  -d, --deps           list packages installed as dependencies [filter]
+  -e, --explicit       list packages explicitly installed [filter]
+  -g, --groups         view all members of a package group
+  -i, --info           view package information (-ii for backup files)
+  -k, --check          check that the files owned by the package(s) are present
+  -l, --list           list the contents of the queried package
+  -m, --foreign        list installed packages not found in sync db(s) [filter]
+  -o, --owns <file>    query the package that owns <file>
+  -p, --file <package> query a package file instead of the database
+  -q, --quiet          show less information for query and search
+  -r, --root <path>    set an alternate installation root
+  -s, --search <regex> search locally-installed packages for matching strings
+  -t, --unrequired     list packages not required by any package [filter]
+  -u, --upgrades       list outdated packages [filter]
+  -v, --verbose        be verbose
+      --arch <arch>    set an alternate architecture
+      --cachedir <dir> set an alternate package cache location
+      --config <path>  set an alternate configuration file
+      --debug          display debug messages
+      --gpgdir <path>  set an alternate home directory for GnuPG
+      --logfile <path> set an alternate log file
+      --noconfirm      do not ask for any confirmation
+usage:  pacman {-R --remove} [options] <package(s)>
+options:
+  -b, --dbpath <path>  set an alternate database location
+  -c, --cascade        remove packages and all packages that depend on them
+  -d, --nodeps         skip dependency version checks (-dd to skip all checks)
+  -n, --nosave         remove configuration files
+  -p, --print          print the targets instead of performing the operation
+  -r, --root <path>    set an alternate installation root
+  -s, --recursive      remove unnecessary dependencies
+                       (-ss includes explicitly installed dependencies)
+  -u, --unneeded       remove unneeded packages
+  -v, --verbose        be verbose
+      --arch <arch>    set an alternate architecture
+      --cachedir <dir> set an alternate package cache location
+      --config <path>  set an alternate configuration file
+      --dbonly         only modify database entries, not package files
+      --debug          display debug messages
+      --gpgdir <path>  set an alternate home directory for GnuPG
+      --logfile <path> set an alternate log file
+      --noconfirm      do not ask for any confirmation
+      --noprogressbar  do not show a progress bar when downloading files
+      --noscriptlet    do not execute the install scriptlet if one exists
+      --print-format <string>
+                       specify how the targets should be printed
+usage:  pacman {-S --sync} [options] [package(s)]
+options:
+  -b, --dbpath <path>  set an alternate database location
+  -c, --clean          remove old packages from cache directory (-cc for all)
+  -d, --nodeps         skip dependency version checks (-dd to skip all checks)
+  -f, --force          force install, overwrite conflicting files
+  -g, --groups         view all members of a package group
+  -i, --info           view package information
+  -l, --list <repo>    view a list of packages in a repo
+  -p, --print          print the targets instead of performing the operation
+  -q, --quiet          show less information for query and search
+  -r, --root <path>    set an alternate installation root
+  -s, --search <regex> search remote repositories for matching strings
+  -u, --sysupgrade     upgrade installed packages (-uu allows downgrade)
+  -v, --verbose        be verbose
+  -w, --downloadonly   download packages but do not install/upgrade anything
+  -y, --refresh        download fresh package databases from the server
+      --arch <arch>    set an alternate architecture
+      --asdeps         install packages as non-explicitly installed
+      --asexplicit     install packages as explicitly installed
+      --cachedir <dir> set an alternate package cache location
+      --config <path>  set an alternate configuration file
+      --dbonly         only modify database entries, not package files
+      --debug          display debug messages
+      --gpgdir <path>  set an alternate home directory for GnuPG
+      --ignore <pkg>   ignore a package upgrade (can be used more than once)
+      --ignoregroup <grp>
+                       ignore a group upgrade (can be used more than once)
+      --logfile <path> set an alternate log file
+      --needed         do not reinstall up to date packages
+      --noconfirm      do not ask for any confirmation
+      --noprogressbar  do not show a progress bar when downloading files
+      --noscriptlet    do not execute the install scriptlet if one exists
+      --print-format <string>
+                       specify how the targets should be printed
+usage:  pacman {-T --deptest} [options] [package(s)]
+options:
+  -b, --dbpath <path>  set an alternate database location
+  -r, --root <path>    set an alternate installation root
+  -v, --verbose        be verbose
+      --arch <arch>    set an alternate architecture
+      --cachedir <dir> set an alternate package cache location
+      --config <path>  set an alternate configuration file
+      --debug          display debug messages
+      --gpgdir <path>  set an alternate home directory for GnuPG
+      --logfile <path> set an alternate log file
+      --noconfirm      do not ask for any confirmation
+usage:  pacman {-U --upgrade} [options] <file(s)>
+options:
+  -b, --dbpath <path>  set an alternate database location
+  -d, --nodeps         skip dependency version checks (-dd to skip all checks)
+  -f, --force          force install, overwrite conflicting files
+  -p, --print          print the targets instead of performing the operation
+  -r, --root <path>    set an alternate installation root
+  -v, --verbose        be verbose
+      --arch <arch>    set an alternate architecture
+      --asdeps         install packages as non-explicitly installed
+      --asexplicit     install packages as explicitly installed
+      --cachedir <dir> set an alternate package cache location
+      --config <path>  set an alternate configuration file
+      --dbonly         only modify database entries, not package files
+      --debug          display debug messages
+      --gpgdir <path>  set an alternate home directory for GnuPG
+      --ignore <pkg>   ignore a package upgrade (can be used more than once)
+      --ignoregroup <grp>
+                       ignore a group upgrade (can be used more than once)
+      --logfile <path> set an alternate log file
+      --needed         do not reinstall up to date packages
+      --noconfirm      do not ask for any confirmation
+      --noprogressbar  do not show a progress bar when downloading files
+      --noscriptlet    do not execute the install scriptlet if one exists
+      --print-format <string>
+                       specify how the targets should be printed

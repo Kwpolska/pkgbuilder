@@ -68,17 +68,41 @@ for i in ./locale/*; do
     sed 's/\"Project-Id-Version: .*/\"Project-Id-Version: '$version'\\n\"/' $popath -i
     msgmerge $popath messages.pot -o $popath
     fuzzy=$(cat $popath | grep '#, fuzzy')
-    echo "Please press a key to validate language $language."
+    echo "Hit Enter to validate language $language."
     read validatesure
     $EDITOR $popath
     msgfmt -o $podir/pkgbuilder.mo $popath
 done
+
+# pacman help testing, for pbwrapper
+pacman -h > /tmp/pachelp
+pacman -Dh >> /tmp/pachelp
+pacman -Qh >> /tmp/pachelp
+pacman -Rh >> /tmp/pachelp
+pacman -Sh >> /tmp/pachelp
+pacman -Th >> /tmp/pachelp
+pacman -Uh >> /tmp/pachelp
+
+diff -u .pachelp /tmp/pachelp > /tmp/pbwrapperdiff
+if [[ $? = 1 ]]; then
+    echo 'Pacman help has changed.'
+    cat /tmp/pbwrapperdiff
+    echo 'Hit Enter to quit or c to copy the file over and continue.'
+    read pachelp
+    if [[ pachelp = 'c' ]]; then
+        cp /tmp/pachelp .pachelp
+        rm /tmp/pachelp /tmp/pbwrapperdiff
+        echo 'Continuing with release scripts.'
+    else
+    fi
+fi
 
 python -c 'import pkgbuilder'
 if [[ $? = 1 ]]; then
     echo "Import failed.  Fix your code or don't come back."
     exit 1
 fi
+
 ./tests.py
 if [[ $? = 1 ]]; then
     echo "Tests failed.  Fix your code or don't come back."
