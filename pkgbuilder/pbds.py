@@ -65,14 +65,29 @@ class PBDS():
         os.mkdir(confdir)
 
     if not os.path.exists(confdir):
-        fancy_error(_('Cannot create the configuration directory.'))
-        fancy_warning(_('Logs will not be created.'))
+        print(_('Cannot create the configuration directory.'))
+        print(_('Logs will not be created.'))
 
-    logging.basicConfig(format='%(asctime)-15s [%(levelname)-7s] \
-:%(name)-10s: %(message)s', filename=confdir + '/pkgbuilder.log',
+    logging.basicConfig(format='%(asctime)-15s [%(levelname)-7s] '
+                        ':%(name)-10s: %(message)s',
+                        filename=os.path.join(confdir, 'pkgbuilder.log'),
                         level=logging.DEBUG)
     log = logging.getLogger('pkgbuilder')
     log.info('*** PKGBUILDer v' + __version__)
+    def debugout(self):
+        """Print all the logged messages to stderr.
+
+:Arguments: none.
+:Input: none.
+:Output: none.
+:Returns: nothing.
+:Exceptions: none.
+:Message codes: none."""
+        console = logging.StreamHandler()
+        console.setLevel(logging.DEBUG)
+        console.setFormatter(logging.Formatter('[%(levelname)-7s] '
+        ':%(name)-10s: %(message)s'))
+        logging.getLogger('').addHandler(console)
 
     def colorson(self):
         """Colors on.

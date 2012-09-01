@@ -75,6 +75,19 @@ information:
 
 It also has a few methods:
 
+.. method:: debugout()
+
+.. versionadded:: 2.1.4.0
+
+:Arguments: none.
+:Input: none.
+:Output: none.
+:Returns: nothing.
+:Exceptions: none.
+:Message codes: none.
+
+Print all the logged messages to stderr.
+
 .. method:: colorson()
 
 :Arguments: none.

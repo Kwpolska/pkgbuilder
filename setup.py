@@ -28,7 +28,7 @@ setup(name='pkgbuilder',
                    'Topic :: Utilities'],
       packages=['pkgbuilder'],
       requires=['pyparsing', 'pyalpm', 'requests'],
-      scripts=['bin/pkgbuilder'],
+      scripts=['bin/pkgbuilder', 'bin/pb'],
       data_files=[('share/man/man8', ['docs/pkgbuilder.8.gz']),
                   ('share/locale/en/LC_MESSAGES', ['locale/en/LC_MESSAGES/\
 pkgbuilder.mo']),

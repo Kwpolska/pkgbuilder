@@ -39,11 +39,12 @@ def main(source='AUTO'):
 
         argopt = parser.add_argument_group(_('options'))
         argopr = parser.add_argument_group(_('operations'))
-        argsyn = parser.add_argument_group(_('pacman compatibility'))
 
         argopt.add_argument('-c', '--nocolors', action='store_false',
                             default=True, dest='color', help=_('don\'t use \
                             colors in output'))
+        argopt.add_argument('--debug', action='store_true', default=False,
+                            dest='debug', help=_('display debug messages'))
         argopt.add_argument('-d', '--nodepcheck', action='store_false',
                             default=True, dest='depcheck', help=_('don\'t \
                             check dependencies (may break makepkg)'))
@@ -85,7 +86,13 @@ def main(source='AUTO'):
         utils = Utils()
         build = Build()
         upgrade = Upgrade()
-        DS.log.info('Arguments parsed.')
+
+        if args.debug:
+            DS.debugout()
+            DS.log.info('*** PKGBUILDer v{}'.format(__version__))
+            DS.log.debug('*** debug output on.')
+
+        DS.log.info('Arguments parsed. {}'.format(args.__dict__))
 
         if not args.color:
             DS.colorsoff()
