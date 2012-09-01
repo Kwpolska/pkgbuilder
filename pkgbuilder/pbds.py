@@ -65,8 +65,9 @@ class PBDS():
         os.mkdir(confdir)
 
     if not os.path.exists(confdir):
-        print(_('Cannot create the configuration directory.'))
-        print(_('Logs will not be created.'))
+        print(' '.join(_('ERROR:'), _('Cannot create the configuration '
+                                      'directory.')))
+        print(' '.join(_('WARNING:'), _('Logs will not be created.')))
 
     logging.basicConfig(format='%(asctime)-15s [%(levelname)-7s] '
                         ':%(name)-10s: %(message)s',
