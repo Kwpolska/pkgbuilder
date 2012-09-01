@@ -18,94 +18,152 @@
 """
 
 from . import DS, _, PBError, __version__
+from .main import main
 from .utils import Utils
+import re
 import logging
 import pyalpm
 import pycman
 import argparse
 import sys
+import subprocess
 
 __wrapperversion__ = '0.1.0'
 
 ### wrapper()       A wrapper for pacman/PB ###
 def wrapper(source='AUTO'):
     """A wrapper for pacman and PKGBUILDer."""
-    # A very tricky way of getting all the pacman arguments.  Not for humans.
-    pacmancommands = [['D', 'database'], ['Q', 'query'], ['R', 'remove'],
-                     ['T', 'deptest'], ['U', 'upgrade']]
-    pbcommands = [[None, 'nocolors'], [None, 'nodepcheck'], [None,
-                   'novalidation'], [None, 'buildonly']]
-    commoncommands = [['S', 'sync'], ['w', None], ['c', None], ['d', None],
-                     ['v', None]]
-    specialcommands = [['p', 'protocol']]
-
-    pacmanshort = ['e', 'f', 'g', 'i', 'k', 'm', 'n', 'q', 't',
-                   'u']
-    pacmanlong = ['asdeps', 'asexplicit', 'cascade', 'changelog', 'check',
-                  'clean', 'dbonly', 'debug', 'deps', 'downloadonly',
-                  'explicit', 'force', 'foreign', 'groups', 'info',
-                  'needed', 'noconfirm', 'nodeps', 'noprogressbar', 'nosave',
-                  'noscriptlet', 'print', 'quiet', 'recursive', 'refresh',
-                  'sysupgrade', 'unneeded', 'unrequired', 'upgrades',
-                  'verbose']
-    pacmanshorta = ['b', 'l', 'o', 'p', 'r', 's']
-    pacmanlonga = ['arch', 'cachedir', 'config', 'dbpath', 'file', 'gpgdir',
-                   'ignore', 'ignoregroup', 'list', 'logfile', 'owns',
-                   'print-format', 'root', 'search']
-
-    #TODO `list` and `protocol` SPECIAL PARSING; ALSO FOR CONFLICTING SHORTA
-
-    parser = argparse.ArgumentParser(add_help=False, usage='usage:  %(prog)s \
-<operation> [...]', argument_default=argparse.SUPPRESS)
-    parser.add_argument('-h', '--help', action='store_true', default=False, dest='halp')
-    parser.add_argument('-V', '--version', action='store_true', default=False, dest='ver')
-    prog = parser.prog
-    commands = pacmancommands + pbcommands + commoncommands
-
-    parser.add_argument('pkgnames', nargs=argparse.REMAINDER)
-
-    for i in commands:
-        if i[0] is None:
-            parser.add_argument('--'+i[1], action='store_true', default=False)
-        elif i[1] is None:
-            parser.add_argument('-'+i[0], action='store_true', default=False)
-        else:
-            parser.add_argument('-'+i[0], '--'+i[1], action='store_true',
-                                default=False, dest=i[1])
-
-    pacmann = pacmanshort + pacmanlong
-    pacmana = pacmanshorta + pacmanlonga
-
-    for i in pacmann:
-        parser.add_argument('-'+i, action='store_true', default=False,
-                            dest=i)
-
-    # This is where shit gets real.
-    for i in pacmana:
-        parser.add_argument('-'+i, action='store', nargs='?', default='NIL',
-                            dest=i)
-
-    # Starting actual work.
-
-    log = logging.getLogger('pbwrapper')
-    log.info('*** PBwrapper v' + __version__)
-
-    if source != 'AUTO':
-        args = parser.parse_args(source)
-    else:
-        args = parser.parse_args()
-
     pyc = pycman.config.init_with_config('/etc/pacman.conf')
     localdb = pyc.get_localdb()
+    # Because I need only -S, I am going to only use regexps on the list.
+    # Sorry.
+    if source == 'AUTO':
+        source = sys.argv
+        args = source[1:]  # Temporary!
+    else:
+        args = source
 
-    if args.halp:
-        # see pacman’s localizations
+    log = logging.getLogger('pbwrapper')
+    if '--debug' in args:
+        DS.debugout()
+
+    log.info('*** PBwrapper v{} (PKGBUILDer '
+             '{})'.format(__wrapperversion__,  __version__))
+
+    if (('-S' in args) or ('--sync' in args) or (re.search('-[a-zA-Z]*S',
+                                                 ' '.join(args))
+                                                 is not None)):
+        # The user has requested -S.
+        pacmanshort = ['f', 'g', 'p', 'q']
+        pacmanlong = ['asdeps', 'asexplicit', 'clean', 'dbonly',
+                      'downloadonly', 'force', 'groups', 'needed',
+                      'noconfirm', 'nodeps', 'noprogressbar', 'noscriptlet',
+                      'print', 'quiet', 'verbose']
+        pacmanshorta = ['b', 'l', 'r']
+        pacmanlonga = ['arch', 'cachedir', 'config', 'dbpath', 'gpgdir',
+                       'ignore', 'ignoregroup', 'list', 'logfile',
+                       'print-format', 'root']
+        pblong = ['nocolors', 'nodepcheck', 'novalidation', 'buildonly']
+        commonshort = ['S', 'c', 'd', 'i', 's', 'u', 'v', 'w', 'y']
+        commonlong = ['debug', 'info', 'refresh', 'search' ,'sync', 'sysupgrade']
+
+        # This is a mess that needs to be cleaned up.
+        allpacman = pacmanshort + pacmanlong + pacmanshorta + pacmanlonga
+        allpb = pblong
+        allcommon = commonshort + commonlong
+        allcmd = allpacman + allpb + allcommon
+
+        allshort = pacmanshort + commonshort
+        alllong = pacmanlong + pblong + commonlong
+
+        parser = argparse.ArgumentParser(add_help=False, usage='usage:  %(prog)s '
+                                         '<operation> [...]',
+                                         argument_default=argparse.SUPPRESS)
+        parser.add_argument('-h', '--help', action='store_true',
+                            default=False, dest='help')
+        parser.add_argument('-V', '--version', action='store_true',
+                            default=False, dest='ver')
+        parser.add_argument('pkgnames', nargs=argparse.REMAINDER)
+
+
+        for i in allshort:
+            parser.add_argument('-' + i, action='store_true', default=False,
+                                dest=i)
+
+        for i in alllong:
+            parser.add_argument('--' + i, action='store_true', default=False,
+                                dest=i)
+
+        for i in pacmanshorta:
+            parser.add_argument('-' + i, action='store', nargs='?',
+                                default='NIL', dest=i)
+
+        for i in pacmanlonga:
+            parser.add_argument('--' + i, action='store', nargs='?',
+                                default='NIL', dest=i)
+
+        # Starting actual work.
+
+        if source != 'AUTO':
+            args = parser.parse_args(source)
+        else:
+            args = parser.parse_args()
+
+    #args.pkgnames; args.__dict__
+
+        execargs = []
+        for i in args.__dict__.items():
+            if i[1] is not False:
+                # == This argument has been provided.
+                if i[1] == True:
+                    # == This argument doesn't have a value.
+                    if i[0] in allshort:
+                        execargs.append('-' + i[0])
+                    elif i[0] in alllong:
+                        execargs.append('--' + i[0])
+
+        pacargs = [i for i in execargs if i in allpacman]
+        pbargs = [i for i in execargs if i in allpb]
+
+        for i in args.__dict__.items():
+            if i[1] is not False and i[1] != 'NIL':
+                # == This argument can take values and has one.
+                if i[0] in pacmanlonga:
+                    pacargs.append('-' + i[0])
+                    pacargs.append(i[1])
+                elif i[0] in pacmanshorta:
+                    pacargs.append('--' + i[0])
+                    pacargs.append(i[1])
+
+        if args.u or args.sysupgrade or args.search or args.s:
+            subprocess.call(['pacman'] + pacargs)
+            main(pbargs)
+        else:
+            pacmanpkgnames = []
+            pbpkgnames = []
+            utils = Utils()
+            for i in args.pkgnames:
+                if utils.info(i) is None:
+                    pacmanpkgnames.append(i)
+                else:
+                    pbpkgnames.append(i)
+
+            if pacmanpkgnames != []:
+                subprocess.call(['pacman'] + pacargs + pacmanpkgnames)
+
+            if pbpkgnames != []:
+                main(pbargs + pacmanpkgnames)
+
+    elif ('-h' in args) or ('--help' in args):
+        # TRANSLATORS: see pacman’s localizations
         print(_('usage:  {} <operation> [...]').format(sys.argv[0]))
-        print('\n'+_('{}, a wrapper for pacman and PKGBUILDer.').format(prog))
-        print(_('Pacman and PKGBUILDer syntaxes apply.  Consult their \
-manpages/help commands for details.'))
+        print('\n' + _('{}, a wrapper for pacman and '
+              'PKGBUILDer.').format('pb'))
+        print(_('Pacman and PKGBUILDer syntaxes apply.  Consult their ' \
+                'manpages/help commands for details.'))
 
-    if args.ver:
+
+    elif ('-V' in args) or ('--version' in args):
         pacpkg = localdb.get_pkg('pacman')
         print("""PBWrapper   v{}
 PKGBUILDer  v{}
@@ -113,8 +171,5 @@ pacman      v{}
 pyalpm      v{}""".format(__wrapperversion__, __version__,
                           pacpkg.version.split('-', 1)[0],
                           pyalpm.version()))
-
-    #args.pkgnames; args.__dict__
-
-    if args.sync:
-        print('We’re not done yet! --Billy Mays, may he rest in peace.')
+    else:
+        subprocess.call(['pacman'] + args)

@@ -49,6 +49,9 @@ OPTIONS
 **-c, --nocolors**
     Forces the script to ignore the ANSI color codes.
 
+**--debug**
+    Outputs debug information to stderr.
+
 **-d, --nodepcheck**
     Skips dependency checks.  It may (and, most likely, will)
     break makepkg.

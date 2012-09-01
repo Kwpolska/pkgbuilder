@@ -74,24 +74,19 @@ for i in ./locale/*; do
     msgfmt -o $podir/pkgbuilder.mo $popath
 done
 
-# pacman help testing, for pbwrapper
-pacman -h > /tmp/pachelp
-pacman -Dh >> /tmp/pachelp
-pacman -Qh >> /tmp/pachelp
-pacman -Rh >> /tmp/pachelp
-pacman -Sh >> /tmp/pachelp
-pacman -Th >> /tmp/pachelp
-pacman -Uh >> /tmp/pachelp
+# pbwrapper help testingpper
+pacman -Sh > /tmp/pbwrapperhelp
+bin/pkgbuilder -h >> /tmp/pbwrapperhelp
 
-diff -u .pachelp /tmp/pachelp > /tmp/pbwrapperdiff
+diff -u .pbwrapperhelp /tmp/pbwrapperhelp > /tmp/pbwrapperdiff
 if [[ $? = 1 ]]; then
-    echo 'Pacman help has changed.'
+    echo 'pbwrapperhelp has changed.'
     cat /tmp/pbwrapperdiff
     echo 'Hit Enter to quit or c to copy the file over and continue.'
-    read pachelp
-    if [[ pachelp = 'c' ]]; then
-        cp /tmp/pachelp .pachelp
-        rm /tmp/pachelp /tmp/pbwrapperdiff
+    read pbwrapperhelp
+    if [[ pbwrapperhelp = 'c' ]]; then
+        cp /tmp/pbwrapperhelp .pbwrapperhelp
+        rm /tmp/pbwrapperhelp /tmp/pbwrapperdiff
         echo 'Continuing with release scripts.'
     else
     fi
