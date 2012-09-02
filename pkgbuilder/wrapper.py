@@ -35,23 +35,22 @@ def wrapper(source='AUTO'):
     """A wrapper for pacman and PKGBUILDer."""
     pyc = pycman.config.init_with_config('/etc/pacman.conf')
     localdb = pyc.get_localdb()
-    # Because I need only -S, I am going to only use regexps on the list.
-    # Sorry.
+    # Because I need to work with -S and nothing else, I am going to use
+    # regular expressions on the argument list.  Sorry.
     if source == 'AUTO':
-        source = sys.argv
-        args = source[1:]  # Temporary!
+        argst = sys.argv[1:]
     else:
-        args = source
+        argst = source
 
     log = logging.getLogger('pbwrapper')
-    if '--debug' in args:
+    if '--debug' in argst:
         DS.debugout()
 
     log.info('*** PBwrapper v{} (PKGBUILDer '
              '{})'.format(__wrapperversion__,  __version__))
 
-    if (('-S' in args) or ('--sync' in args) or (re.search('-[a-zA-Z]*S',
-                                                 ' '.join(args))
+    if (('-S' in argst) or ('--sync' in argst) or (re.search('-[a-zA-Z]*S',
+                                                 ' '.join(argst))
                                                  is not None)):
         # The user has requested -S.
         pacmanshort = ['f', 'g', 'p', 'q']
@@ -76,15 +75,13 @@ def wrapper(source='AUTO'):
         allshort = pacmanshort + commonshort
         alllong = pacmanlong + pblong + commonlong
 
-        parser = argparse.ArgumentParser(add_help=False, usage='usage:  %(prog)s '
+        parser = argparse.ArgumentParser(add_help=False, usage='%(prog)s '
                                          '<operation> [...]',
                                          argument_default=argparse.SUPPRESS)
         parser.add_argument('-h', '--help', action='store_true',
                             default=False, dest='help')
         parser.add_argument('-V', '--version', action='store_true',
                             default=False, dest='ver')
-        parser.add_argument('pkgnames', nargs=argparse.REMAINDER)
-
 
         for i in allshort:
             parser.add_argument('-' + i, action='store_true', default=False,
@@ -95,12 +92,14 @@ def wrapper(source='AUTO'):
                                 dest=i)
 
         for i in pacmanshorta:
-            parser.add_argument('-' + i, action='store', nargs='?',
+            parser.add_argument('-' + i, action='store', nargs=1,
                                 default='NIL', dest=i)
 
         for i in pacmanlonga:
-            parser.add_argument('--' + i, action='store', nargs='?',
+            parser.add_argument('--' + i, action='store', nargs=1,
                                 default='NIL', dest=i)
+
+        parser.add_argument('pkgnames', action='store', nargs='*')
 
         # Starting actual work.
 
@@ -109,9 +108,15 @@ def wrapper(source='AUTO'):
         else:
             args = parser.parse_args()
 
-    #args.pkgnames; args.__dict__
+        try:
+            pkgnames = args.pkgnames
+        except AttributeError:
+            pkgnames = []
 
         execargs = []
+        pacargs = []
+        pbargs = []
+
         for i in args.__dict__.items():
             if i[1] is not False:
                 # == This argument has been provided.
@@ -122,27 +127,43 @@ def wrapper(source='AUTO'):
                     elif i[0] in alllong:
                         execargs.append('--' + i[0])
 
-        pacargs = [i for i in execargs if i in allpacman]
-        pbargs = [i for i in execargs if i in allpb]
+        for i in execargs:
+            if i[1:] in allshort:
+                s = i[1:]
+            elif i[2:] in alllong:
+                s = i[2:]
+            else:
+                raise PBError('argparse broke')
+
+            if s in allcommon:
+                pacargs.append(i)
+                pbargs.append(i)
+
+            if s in allpacman:
+                pacargs.append(i)
+            elif s in allpb:
+                pbargs.append(i)
 
         for i in args.__dict__.items():
             if i[1] is not False and i[1] != 'NIL':
                 # == This argument can take values and has one.
-                if i[0] in pacmanlonga:
+                if i[0] in pacmanshorta:
                     pacargs.append('-' + i[0])
-                    pacargs.append(i[1])
-                elif i[0] in pacmanshorta:
+                    pacargs.append(i[1][0])
+                elif i[0] in pacmanlonga:
                     pacargs.append('--' + i[0])
-                    pacargs.append(i[1])
+                    pacargs.append(i[1][0])
 
         if args.u or args.sysupgrade or args.search or args.s:
-            subprocess.call(['pacman'] + pacargs)
+            subprocess.call(['pacman'] + pacargs + pkgnames)
             main(pbargs)
+        elif args.y or args.refresh or args.l != 'NIL' or args.list != 'NIL':
+            subprocess.call(['pacman'] + pacargs + pkgnames)
         else:
             pacmanpkgnames = []
             pbpkgnames = []
             utils = Utils()
-            for i in args.pkgnames:
+            for i in pkgnames:
                 if utils.info(i) is None:
                     pacmanpkgnames.append(i)
                 else:
@@ -152,9 +173,9 @@ def wrapper(source='AUTO'):
                 subprocess.call(['pacman'] + pacargs + pacmanpkgnames)
 
             if pbpkgnames != []:
-                main(pbargs + pacmanpkgnames)
+                main(pbargs + pbpkgnames)
 
-    elif ('-h' in args) or ('--help' in args):
+    elif ('-h' in argst) or ('--help' in argst):
         # TRANSLATORS: see pacman’s localizations
         print(_('usage:  {} <operation> [...]').format(sys.argv[0]))
         print('\n' + _('{}, a wrapper for pacman and '
@@ -163,7 +184,7 @@ def wrapper(source='AUTO'):
                 'manpages/help commands for details.'))
 
 
-    elif ('-V' in args) or ('--version' in args):
+    elif ('-V' in argst) or ('--version' in argst):
         pacpkg = localdb.get_pkg('pacman')
         print("""PBWrapper   v{}
 PKGBUILDer  v{}
@@ -172,4 +193,4 @@ pyalpm      v{}""".format(__wrapperversion__, __version__,
                           pacpkg.version.split('-', 1)[0],
                           pyalpm.version()))
     else:
-        subprocess.call(['pacman'] + args)
+        subprocess.call(['pacman'] + argst)
