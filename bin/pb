@@ -4,5 +4,4 @@ import pkgbuilder.wrapper
 try:
     pkgbuilder.wrapper.wrapper()
 except KeyboardInterrupt:
-    pkgbuilder.DS.fancy_error(pkgbuilder.DS.inttext)
     exit(0)
