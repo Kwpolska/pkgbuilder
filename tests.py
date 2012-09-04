@@ -39,6 +39,7 @@ import pkgbuilder.build
 import pkgbuilder.pbds
 import pkgbuilder.upgrade
 import pkgbuilder.utils
+import pkgbuilder.wrapper
 import os
 import json
 import requests
@@ -211,6 +212,14 @@ Description    : A Python AUR helper/library.
         if req != sample:
             raise Exception('test_utils_print_package_info: output \
 doesn’t match the example')
+
+    def test_main(self):
+        # Can’t test too much here…
+        pkgbuilder.main.main([])
+
+    def test_wrapper(self):
+        # …or there…
+        pkgbuilder.wrapper.wrapper(['unittests', 'UTshibboleet'])
 
 if __name__ == '__main__':
     unittest.main()

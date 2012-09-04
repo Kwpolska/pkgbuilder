@@ -4,15 +4,15 @@ PKGBUILDer
 
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: See Appendix B.
-:Date: 2012-08-26
-:Version: 2.1.3.7
+:Date: 2012-09-04
+:Version: 2.1.4.0
 :Manual section: 8
 :Manual group: PKGBUILDer manual
 
 SYNOPSIS
 ========
 
-*pkgbuilder* [-hVcdvwSy] [-p PROTOCOL] [-isu] [PACKAGE [PACKAGE ...]]
+*pkgbuilder* [-hVcdvwSy] [-P PROTOCOL] [-isu] [PACKAGE [PACKAGE ...]]
 
 DESCRIPTION
 ===========
@@ -63,7 +63,7 @@ OPTIONS
 **-w, --buildonly**
     Skips package installation after building.
 
-**-p PROTOCOL, --protocol PROTOCOL**
+**-P PROTOCOL, --protocol PROTOCOL**
     Chooses the protocol, http by default.
 
 **-S, --sync**
@@ -87,10 +87,13 @@ pkgbuilder -S trashman
 pkgbuilder -Syu
     Checks for updates and offers installing them.
 
-(Trashman is an XDG trash manager by Kwpolska.)
+(Trashman is an XDG trash manager by Kwpolska, which you should install.)
 
 SEE ALSO
 ========
+**pb(8)**, a wrapper for pacman and PKGBUILDer, included with PKGBUILDer, also
+known as PBWrapper.
+
 **pacman(8)**, **makepkg(8)**, **PKGBUILD(5)**
 
 You can visit the git repo at <https://github.com/Kwpolska/pkgbuilder>

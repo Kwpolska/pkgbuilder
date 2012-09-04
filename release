@@ -31,7 +31,11 @@ rm docs/pkgbuilder.8.gz | true
 rst2man docs/pkgbuilder.rst > docs/pkgbuilder.8
 gzip docs/pkgbuilder.8
 
-xgettext -c ./pkgbuilder/*.py INSTALL.py -o ./messages.pot
+rm docs/pb.8.gz | true
+rst2man docs/pb.rst > docs/pb.8
+gzip docs/pb.8
+
+xgettext -c ./pkgbuilder/*.py INSTALL.py localeprovider.py -o ./messages.pot
 
 sed '1,+17d' ./messages.pot > ./messages.pot.tmp
 

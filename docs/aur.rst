@@ -3,8 +3,8 @@ aur module (AUR class)
 ======================
 :Author: Kwpolska
 :Copyright: See Appendix B.
-:Date: 2012-08-26
-:Version: 2.1.3.7
+:Date: 2012-09-04
+:Version: 2.1.4.0
 
 .. module:: aur
 

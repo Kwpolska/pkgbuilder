@@ -3,8 +3,8 @@ PBWrapper
 =========
 :Author: Kwpolska
 :Copyright: See Appendix B.
-:Date: 2012-08-26
-:Version: 2.1.3.7
+:Date: 2012-09-04
+:Version: 2.1.4.0
 :PBWrapper Version: 0.1.0
 
 .. index:: wrapper
@@ -26,3 +26,6 @@ with additional arguments applicable to one or another.
 .. note:: Actually, pkgbuilder isn’t called as a subprocess, the arguments are
     just passed to the main() function, so no time is wasted on reloading
     everything.
+
+.. note:: Currently, the -P --protocol argument is not supported.  It will be fixed
+    as soon as possible.
