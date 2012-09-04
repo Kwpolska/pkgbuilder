@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.3.7
+# PKGBUILDer v2.1.4.0
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -148,14 +148,6 @@ required.'))
         # in the file.  (eg. python-gitdb)
         # And it takes only 7 lines instead of about 40 in the pyparsing
         # implementation.
-
-        # Temporary workaround.  TODO: remove in .13 or 2012-10, whichever
-        # comes first.
-        if not os.path.exists(pkgbuild):
-            tempfile = open('/tmp/pkgbuilderTempWorkaround')
-            tempfile.write(pkgbuild)
-            tempfile.close()
-            pkgbuild = '/tmp/pkgbuilderTempWorkaround'
 
         pb = subprocess.Popen('source '+pkgbuild+'; for i in ${depends[*]}; \
 do echo $i; done; for i in ${makedepends[*]}; do echo $i; done', shell=True,

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.3.7
+# PKGBUILDer v2.1.4.0
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -28,12 +28,13 @@ import os
 def main(source='AUTO'):
     """Main routine of PKGBUILDer."""
     try:
-        DS.log.info('Running argparse.')
+        DS.log.info('Initialized, parsing arguments.')
         parser = argparse.ArgumentParser(description=_('An AUR helper \
         (and library) in Python 3.'))
 
         parser.add_argument('-V', '--version', action='version',
-                            version='PKGBUILDer v' + __version__)
+                            version='PKGBUILDer v' + __version__,
+                            help=_('show version number and quit'))
         parser.add_argument('pkgs', metavar='PACKAGE', action='store',
                             nargs='*', help=_('packages to build'))
 
@@ -54,7 +55,7 @@ def main(source='AUTO'):
         argopt.add_argument('-w', '--buildonly', action='store_false',
                             default=True, dest='mkpginst', help=_('don\'t \
                             install packages after building'))
-        argopt.add_argument('-p', '--protocol', action='store',
+        argopt.add_argument('-P', '--protocol', action='store',
                             default='http', dest='protocol',
                             metavar=_('PROTOCOL'), help=_('choose \
                             protocol (default: http)'))
@@ -78,6 +79,7 @@ def main(source='AUTO'):
             args = parser.parse_args(source)
         else:
             args = parser.parse_args()
+
         DS.validate = args.valid
         DS.depcheck = args.depcheck
         DS.pacman = args.pac
@@ -88,30 +90,33 @@ def main(source='AUTO'):
         upgrade = Upgrade()
 
         if args.debug:
-            DS.debugout()
+            DS.debugout(nochange=True)
             DS.log.info('*** PKGBUILDer v{}'.format(__version__))
             DS.log.debug('*** debug output on.')
 
-        DS.log.info('Arguments parsed. {}'.format(args.__dict__))
+        DS.log.info('Arguments parsed.  {}'.format(args.__dict__))
 
         if not args.color:
             DS.colorsoff()
+            DS.log.debug('Colors turned off.')
 
         if args.info:
+            DS.log.debug('Showing info...')
             for pkgname in args.pkgs:
                 utils.print_package_info(utils.info(pkgname))
 
                 exit(0)
 
         if args.search:
+            DS.log.debug('Searching...')
             searchstring = '+'.join(args.pkgs)
             if len(searchstring) < 3:
-                # this would be too many entries.  The API is really
-                # having this limitation, though.
-                DS.fancy_error(_('[ERR5002] search string too short, API \
-limitation'))
+                # this would be too many entries, but this is an actual API
+                # limitation and not an idea of yours truly.
+                DS.fancy_error(_('[ERR5002] search string too short, API '
+                                 'limitation'))
                 DS.fancy_msg(_('Searching for exact match...'))
-                search = [utils.info(searchstring)]  # workaround
+                search = [utils.info(searchstring)]
                 if search == [None]:
                     DS.fancy_error2(_('not found'))
                     exit(0)
@@ -139,7 +144,7 @@ limitation'))
             exit(0)
 
         if args.pac:
-            # -S assumes being a wrapper and/or wanting to build in /tmp.
+            DS.log.debug('-S passed, building in /tmp/.')
             uid = os.geteuid()
             path = '/tmp/pkgbuilder-{0}'.format(str(uid))
             if not os.path.exists(path):
@@ -151,12 +156,13 @@ limitation'))
         exit(0)
 
     if args.upgrade:
+        DS.log.info('Starting upgrade...')
         upgrade.auto_upgrade()
         del(upgrade)
         exit(0)
 
     # If we didn't exit, we shall build the packages.
-    DS.log.info('Ran through all the addon features, building...')
+    DS.log.info('Starting build...')
     for pkgname in args.pkgs:
         DS.log.info('Building {0}'.format(pkgname))
         build.auto_build(pkgname, DS.validate, DS.depcheck, DS.mkpginst)

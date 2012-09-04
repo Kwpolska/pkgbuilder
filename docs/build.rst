@@ -3,8 +3,8 @@ build module (Build class)
 ==========================
 :Author: Kwpolska
 :Copyright: See Appendix B.
-:Date: 2012-08-26
-:Version: 2.1.3.7
+:Date: 2012-09-04
+:Version: 2.1.4.0
 
 .. module:: build
 
@@ -100,7 +100,7 @@ Extracts an AUR tarball.  Data normally provided by :meth:`build_runner()`.
 
 Gets (make)depends from a PKGBUILD and returns them.
 
-..note:: due to a radical change of the algorithm, please provide the **absolute** path to the PKGBUILD (``os.path.abspath``).  Handles are not supported.  For a short while, strings will still be supported, but will raise an error.
+..note:: due to a radical change of the algorithm, please provide the **absolute** path to the PKGBUILD (``os.path.abspath``).  Handles are not supported.  Strings are not supported since 2.1.4.0.
 
 .. method:: depcheck(depends)
 .. index:: depcheck, dependency

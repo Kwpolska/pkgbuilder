@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.3.7
+# PKGBUILDer v2.1.4.0
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -39,13 +39,15 @@ class PBDS():
     validate = True
     depcheck = True
     mkpginst = True
+    debug = False  # DO NOT CHANGE, HUMAN BEING!
+    console = None  # SAME GOES FOR THIS ONE!
     protocol = 'http'
     categories = ['ERROR', 'none', 'daemons', 'devel', 'editors',
                   'emulators', 'games', 'gnome', 'i18n', 'kde',
                   'lib', 'modules', 'multimedia', 'network',
                   'office', 'science', 'system', 'x11',
                   'xfce', 'kernels']
-    inttext = _('[ERR5001] Aborted by user! Exiting...')
+    inttext = _('[ERR5001] Aborted by user! Quitting...')
 
     # Creating the configuration/log stuff...
     confhome = os.getenv('XDG_CONFIG_HOME')
@@ -75,20 +77,27 @@ class PBDS():
                         level=logging.DEBUG)
     log = logging.getLogger('pkgbuilder')
     log.info('*** PKGBUILDer v' + __version__)
-    def debugout(self):
+    def debugout(self, nochange=False):
         """Print all the logged messages to stderr.
 
-:Arguments: none.
+:Arguments: make no changes if not necessary.
 :Input: none.
 :Output: none.
 :Returns: nothing.
 :Exceptions: none.
 :Message codes: none."""
-        console = logging.StreamHandler()
-        console.setLevel(logging.DEBUG)
-        console.setFormatter(logging.Formatter('[%(levelname)-7s] '
-        ':%(name)-10s: %(message)s'))
-        logging.getLogger('').addHandler(console)
+        if not self.debug:
+            self.console = logging.StreamHandler()
+            self.console.setLevel(logging.DEBUG)
+            self.console.setFormatter(logging.Formatter('[%(levelname)-7s] '
+            ':%(name)-10s: %(message)s'))
+            logging.getLogger('').addHandler(self.console)
+            self.debug = True
+        elif self.debug and nochange:
+            pass
+        else:
+            logging.getLogger('').removeHandler(self.console)
+            self.debug = False
 
     def colorson(self):
         """Colors on.
