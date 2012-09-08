@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.1
+# PKGBUILDer v2.1.4.2
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -158,6 +158,8 @@ class Utils:
             if loct == '':
                 loct = loc
 
+            fmt = '%Y-%m-%dT%H:%M:%S%Z'
+
             if force_utc:
                 class UTC(datetime.tzinfo):
                     """Universal Time, Coordinated."""
@@ -170,8 +172,6 @@ class Utils:
 
                     def dst(self, dt):
                         return datetime.timedelta(0)
-
-                fmt = '%Y-%m-%dT%H:%M:%S%Z'
 
                 upd = datetime.datetime.fromtimestamp(float(pkg['Last'
                                                             'Modified']),
