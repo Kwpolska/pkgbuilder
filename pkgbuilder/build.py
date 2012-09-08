@@ -220,7 +220,7 @@ unless you re-implement auto_build.
 :Input: none.
 :Output: text.
 :Returns: ::
-    [makepkg's/auto_build's retcode OR 16 if an AUR dep is needed,
+    [makepkg's/auto_build's retcode OR 72337 if an AUR dep is needed,
         [AUR deps or retcode source]]
 :Exceptions: PBError.
 :Message codes: ERR3001, ERR3201, ERR3202.
@@ -272,7 +272,7 @@ unless you re-implement auto_build.
                     DS.fancy_msg2('{}: {}'.format(pkg,
                                                   pkgtypes[pkgtype]))
                 if aurbuild != []:
-                    return [16, aurbuild]
+                    return [72337, aurbuild]
 
             mpparams = ''
 
