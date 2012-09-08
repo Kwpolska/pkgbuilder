@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.0
+# PKGBUILDer v2.1.4.1
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -104,7 +104,7 @@ class Utils:
         prefixp2 = prefixp + '    '
         if lpkg is not None:
             if pyalpm.vercmp(pkg['Version'], lpkg.version) != 0:
-                installed = _(' [installed: {0}]').format(lpkg.version)
+                installed = _(' [installed: {}]').format(lpkg.version)
             else:
                 installed = _(' [installed]')
         if pkg['OutOfDate'] == '1':
@@ -171,15 +171,21 @@ class Utils:
                     def dst(self, dt):
                         return datetime.timedelta(0)
 
-                upd = datetime.datetime.fromtimestamp(float(pkg['Last\
-Modified']), tz=UTC()).strftime('%Y-%m-%dT%H:%M:%S%Z')
-                fsb = datetime.datetime.fromtimestamp(float(pkg['First\
-Submitted']), tz=UTC()).strftime('%Y-%m-%dT%H:%M:%S%Z')
+                fmt = '%Y-%m-%dT%H:%M:%S%Z'
+
+                upd = datetime.datetime.fromtimestamp(float(pkg['Last'
+                                                            'Modified']),
+                                                      tz=UTC()).strftime(fmt)
+                fsb = datetime.datetime.fromtimestamp(float(pkg['First'
+                                                            'Submitted']),
+                                                      tz=UTC()).strftime(fmt)
             else:
-                upd = datetime.datetime.fromtimestamp(float(pkg['Last\
-Modified'])).strftime('%Y-%m-%dT%H:%M:%S%Z')
-                fsb = datetime.datetime.fromtimestamp(float(pkg['First\
-Submitted'])).strftime('%Y-%m-%dT%H:%M:%S%Z')
+                upd = datetime.datetime.fromtimestamp(float(pkg['Last'
+                                                            'Modified'])
+                                                      ).strftime(fmt)
+                fsb = datetime.datetime.fromtimestamp(float(pkg['First'
+                                                            'Submitted'])
+                                                      ).strftime(fmt)
 
             # TRANSLATORS: space it properly.  `yes/no' below are
             # for `out of date'.

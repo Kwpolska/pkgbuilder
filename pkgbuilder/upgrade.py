@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.0
+# PKGBUILDer v2.1.4.1
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -100,9 +100,9 @@ class Upgrade:
         upglen = len(upgradeable)
         if upglen > 0:
             if DS.pacman:
-                print(_('Targets ({0}): ').format(upglen), end='')
+                print(_('Targets ({}): ').format(upglen), end='')
             else:
-                DS.fancy_msg(_('{0} upgradeable packages found:').format(
+                DS.fancy_msg(_('{} upgradeable packages found:').format(
                     upglen))
 
         if upglen == 0:
@@ -118,14 +118,14 @@ class Upgrade:
         else:
             DS.fancy_msg2('  '.join(upgradeable))
             query = (DS.colors['green'] + '==>' + DS.colors['all_off'] +
-                     DS.colors['bold'] + ' ' + _('Proceed with \
-installation? [Y/n] ') + DS.colors['all_off'])
+                     DS.colors['bold'] + ' ' + _('Proceed with '
+                     'installation? [Y/n] ') + DS.colors['all_off'])
 
         yesno = input(query)
         yesno = yesno + ' '  # cheating...
         if yesno[0] == 'n' or yesno[0] == 'N':
             return 0
         for pkgname in upgradeable:
-            DS.log.info('Building {0}'.format(pkgname))
+            DS.log.info('Building {}'.format(pkgname))
             self.build.auto_build(pkgname, DS.validate, DS.depcheck,
                                   DS.mkpginst)

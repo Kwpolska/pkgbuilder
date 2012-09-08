@@ -107,7 +107,7 @@ def install(pkgname):
 Something went wrong.  Please read makepkg's output and try again.
 You can also try to debug the work of this script yourself.
 All the files this script was working on are placed in
-    {0}
+    {}
 (the number is random).
 
 If I am wrong, though, congratulations!
@@ -133,7 +133,7 @@ and compile the package manually.
         print('')
 
         UID = os.geteuid()
-        PATH = '/tmp/pkgbuilderinstall-{0}'.format(random.randint(1, 100))
+        PATH = '/tmp/pkgbuilderinstall-{}'.format(random.randint(1, 100))
         if os.path.exists(PATH) is False:
             os.mkdir(PATH)
         os.chdir(PATH)
@@ -155,7 +155,7 @@ and compile the package manually.
 Read the above output.  If the script had any problems, run it
 again.  You can also try to debug the work of this script yourself.
 All the files this script was working on are placed in
-    {0}
+    {}
 (the number is random).
 
 If everything went fine, though, congratulations!  You can now use
@@ -174,7 +174,7 @@ script again."""))
         else:
             print(_("""It looks like you want to quit.  Okay then, goodbye.
 All the files this script was working on are placed in
-    {0}
+    {}
 (the number is random).
 
 If that's what you want to do, go for it.  If it isn't, run this

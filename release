@@ -72,9 +72,11 @@ for i in ./locale/*; do
     sed 's/\"Project-Id-Version: .*/\"Project-Id-Version: '$version'\\n\"/' $popath -i
     msgmerge $popath messages.pot -o $popath
     fuzzy=$(cat $popath | grep '#, fuzzy')
-    echo "Hit Enter to validate language $language."
+    echo "Hit Enter to validate language $language or c to cancel and ignore."
     read validatesure
-    $EDITOR $popath
+    if [[ $validatesure != 'c' ]]; then
+        $EDITOR $popath
+    fi
     msgfmt -o $podir/pkgbuilder.mo $popath
 done
 
@@ -88,11 +90,13 @@ if [[ $? = 1 ]]; then
     cat /tmp/pbwrapperdiff
     echo 'Hit Enter to quit or c to copy the file over and continue.'
     read pbwrapperhelp
-    if [[ pbwrapperhelp = 'c' ]]; then
+    if [[ $pbwrapperhelp = 'c' ]]; then
         cp /tmp/pbwrapperhelp .pbwrapperhelp
         rm /tmp/pbwrapperhelp /tmp/pbwrapperdiff
         echo 'Continuing with release scripts.'
     else
+        rm /tmp/pbwrapperhelp /tmp/pbwrapperdiff
+        exit 1
     fi
 fi
 
@@ -107,6 +111,9 @@ if [[ $? = 1 ]]; then
     echo "Tests failed.  Fix your code or don't come back."
     exit 1
 fi
+
+echo 'This is the last chance to quit.  Hit ^C now if you want to.'
+read bailout
 
 ./setup.py sdist upload
 

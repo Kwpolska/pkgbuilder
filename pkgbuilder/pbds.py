@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.0
+# PKGBUILDer v2.1.4.1
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -77,6 +77,7 @@ class PBDS():
                         level=logging.DEBUG)
     log = logging.getLogger('pkgbuilder')
     log.info('*** PKGBUILDer v' + __version__)
+
     def debugout(self, nochange=False):
         """Print all the logged messages to stderr.
 
@@ -90,7 +91,7 @@ class PBDS():
             self.console = logging.StreamHandler()
             self.console.setLevel(logging.DEBUG)
             self.console.setFormatter(logging.Formatter('[%(levelname)-7s] '
-            ':%(name)-10s: %(message)s'))
+                                      ':%(name)-10s: %(message)s'))
             logging.getLogger('').addHandler(self.console)
             self.debug = True
         elif self.debug and nochange:
