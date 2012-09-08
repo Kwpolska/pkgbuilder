@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
 # PBWrapper v0.1.0
-# PKGBUILDer v2.1.4.2
+# PKGBUILDer v2.1.4.3
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -56,15 +56,17 @@ def wrapper(source='AUTO'):
                                                              ' '.join(argst))
                                                    is not None)):
         # The user has requested -S.
+        # -l/--list is in not in *a because it takes over the whole package
+        # list, and that is a workaround.
         log.debug('Got -S, preparing to parse arguments...')
-        pacmanshort = ['f', 'g', 'p', 'q']
+        pacmanshort = ['f', 'g', 'l', 'p', 'q']
         pacmanlong = ['asdeps', 'asexplicit', 'clean', 'dbonly',
-                      'downloadonly', 'force', 'groups', 'needed',
+                      'downloadonly', 'force', 'groups', 'list',  'needed',
                       'noconfirm', 'nodeps', 'noprogressbar', 'noscriptlet',
                       'print', 'quiet', 'verbose']
-        pacmanshorta = ['b', 'l', 'r']
+        pacmanshorta = ['b', 'r']
         pacmanlonga = ['arch', 'cachedir', 'config', 'dbpath', 'gpgdir',
-                       'ignore', 'ignoregroup', 'list', 'logfile',
+                       'ignore', 'ignoregroup', 'logfile',
                        'print-format', 'root']
         pblong = ['nocolors', 'nodepcheck', 'novalidation', 'buildonly']
         pbshorta = ['P']
@@ -81,9 +83,6 @@ def wrapper(source='AUTO'):
         allshort = pacmanshort + commonshort
         alllong = pacmanlong + pblong + commonlong
 
-        # TRANSLATORS: Note the double space, which is present in
-        # pacman itself.  Please consult your pacman localization
-        # for details.
         parser = argparse.ArgumentParser(add_help=False, usage=_('%(prog)s'
                                          ' <operation> [...]'),
                                          argument_default=argparse.SUPPRESS)
@@ -173,48 +172,64 @@ def wrapper(source='AUTO'):
 
         log.debug('Preparing to run pacman and/or PKGBUILDer...')
 
-        if args.u or args.sysupgrade or args.search or args.s:
-            log.debug('Got -s/-u.')
+        if args.search or args.s:
+            log.debug('Got -s.')
             log.info('Running pacman.')
             subprocess.call(['pacman'] + pacargs + pkgnames)
             log.info('Running pkgbuilder (pkgbuilder.main.main()).')
             main(pbargs + pkgnames)
-        elif args.y or args.refresh or args.l != 'NIL' or args.list != 'NIL':
-            log.debug('Got -y/-l.')
+            exit()
+        elif args.l or args.list:
+            log.debug('Got -l.')
             log.info('Running pacman.')
             subprocess.call(['pacman'] + pacargs + pkgnames)
+            exit()
+        elif args.u or args.sysupgrade:
+            log.debug('Got -u.')
+            log.info('Running pacman.')
+            subprocess.call(['pacman'] + pacargs)
+            log.info('Running pkgbuilder (pkgbuilder.main.main()).')
+            main(pbargs, noquit=True)
+        elif args.y or args.refresh:
+            log.debug('Got -y.')
+            log.info('Running pacman.')
+            subprocess.call(['pacman'] + pacargs)
+
+        log.debug('Generating AUR packages list...')
+        pacmanpkgnames = []
+        pbpkgnames = []
+        utils = Utils()
+        for i in pkgnames:
+            if utils.info(i) is None:
+                pacmanpkgnames.append(i)
+            else:
+                pbpkgnames.append(i)
+
+        droppable = ['-u', '-y', '--sysupgrade', '--refresh']
+
+        pacargs = [i for i in pacargs if i not in droppable]
+        pbargs = [i for i in pbargs if i not in droppable]
+
+        log.debug('Generated.')
+
+        if pacmanpkgnames != []:
+            log.info('Running pacman.')
+            subprocess.call(['pacman'] + pacargs + pacmanpkgnames)
         else:
-            log.debug('No special arguments.')
-            log.debug('Generating AUR packages list...')
-            pacmanpkgnames = []
-            pbpkgnames = []
-            utils = Utils()
-            for i in pkgnames:
-                if utils.info(i) is None:
-                    pacmanpkgnames.append(i)
-                else:
-                    pbpkgnames.append(i)
+            log.info('No repo packages in the list.')
 
-            log.debug('Generated.')
+        if pbpkgnames != []:
+            log.info('Running pkgbuilder (pkgbuilder.main.main()).')
+            main(pbargs + pbpkgnames)
+        else:
+            log.info('No AUR packages in the list.')
 
-            if pacmanpkgnames != []:
-                log.info('Running pacman.')
-                subprocess.call(['pacman'] + pacargs + pacmanpkgnames)
-            else:
-                log.info('No repo packages in the list.')
-
-            if pbpkgnames != []:
-                log.info('Running pkgbuilder (pkgbuilder.main.main()).')
-                main(pbargs + pbpkgnames)
-            else:
-                log.info('No AUR packages in the list.')
-
-            sanitycheck = set(pacmanpkgnames + pbpkgnames)
-            if sanitycheck != set(pkgnames):
-                log.info('Running pacman.')
-                sanityargs = [item for item in pkgnames if (item not in
-                              sanitycheck)]
-                subprocess.call(['pacman'] + pacargs + sanityargs)
+        sanitycheck = set(pacmanpkgnames + pbpkgnames)
+        if sanitycheck != set(pkgnames):
+            log.info('Running pacman due to failed sanity check.')
+            sanityargs = [item for item in pkgnames if (item not in
+                          sanitycheck)]
+            subprocess.call(['pacman'] + pacargs + sanityargs)
     elif ('-h' in argst) or ('--help' in argst):
         # TRANSLATORS: see pacman’s localizations
         print(_('usage: {} <operation> [...]').format(
