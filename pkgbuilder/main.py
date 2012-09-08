@@ -113,8 +113,7 @@ def main(source='AUTO'):
             if len(searchstring) < 3:
                 # this would be too many entries, but this is an actual API
                 # limitation and not an idea of yours truly.
-                DS.fancy_error(_('[ERR5002] search string too short, API '
-                                 'limitation'))
+                DS.fancy_error(_('search string too short, API limitation'))
                 DS.fancy_msg(_('Searching for exact match...'))
                 search = [utils.info(searchstring)]
                 if search == [None]:
