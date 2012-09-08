@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
 # PBWrapper v0.1.0
-# PKGBUILDer v2.1.4.0
+# PKGBUILDer v2.1.4.1
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -32,6 +32,8 @@ import subprocess
 __wrapperversion__ = '0.1.0'
 
 ### wrapper()       A wrapper for pacman/PB ###
+
+
 def wrapper(source='AUTO'):
     """A wrapper for pacman and PKGBUILDer."""
     pyc = pycman.config.init_with_config('/etc/pacman.conf')
@@ -48,11 +50,11 @@ def wrapper(source='AUTO'):
         DS.debugout()
 
     log.info('*** PBwrapper v{} (PKGBUILDer '
-             '{})'.format(__wrapperversion__,  __version__))
+             '{})'.format(__wrapperversion__, __version__))
 
     if (('-S' in argst) or ('--sync' in argst) or (re.search('-[a-zA-Z]*S',
-                                                 ' '.join(argst))
-                                                 is not None)):
+                                                             ' '.join(argst))
+                                                   is not None)):
         # The user has requested -S.
         log.debug('Got -S, preparing to parse arguments...')
         pacmanshort = ['f', 'g', 'p', 'q']
@@ -68,7 +70,8 @@ def wrapper(source='AUTO'):
         pbshorta = ['P']
         pblonga = ['protocol']
         commonshort = ['S', 'c', 'd', 'i', 's', 'u', 'v', 'w', 'y']
-        commonlong = ['debug', 'info', 'refresh', 'search' ,'sync', 'sysupgrade']
+        commonlong = ['debug', 'info', 'refresh', 'search',
+                      'sync', 'sysupgrade']
 
         allpacman = pacmanshort + pacmanlong + pacmanshorta + pacmanlonga
         allpb = pblong + pbshorta + pblonga
@@ -131,7 +134,7 @@ def wrapper(source='AUTO'):
         for i in args.__dict__.items():
             if i[1] is not False:
                 # == This argument has been provided.
-                if i[1] == True:
+                if i[1]:
                     # == This argument doesn't have a value.
                     if i[0] in allshort:
                         execargs.append('-' + i[0])
@@ -218,9 +221,8 @@ def wrapper(source='AUTO'):
             os.path.basename(sys.argv[0])))
         print('\n' + _('{}, a wrapper for pacman and '
               'PKGBUILDer.').format('pb'))
-        print(_('Pacman and PKGBUILDer syntaxes apply.  Consult their ' \
+        print(_('Pacman and PKGBUILDer syntaxes apply.  Consult their '
                 'manpages/help commands for details.'))
-
 
     elif ('-V' in argst) or ('--version' in argst):
         pacpkg = localdb.get_pkg('pacman')

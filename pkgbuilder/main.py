@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.0
+# PKGBUILDer v2.1.4.1
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -29,8 +29,8 @@ def main(source='AUTO'):
     """Main routine of PKGBUILDer."""
     try:
         DS.log.info('Initialized, parsing arguments.')
-        parser = argparse.ArgumentParser(description=_('An AUR helper \
-        (and library) in Python 3.'))
+        parser = argparse.ArgumentParser(description=_('An AUR helper'
+                                         ' (and library) in Python 3.'))
 
         parser.add_argument('-V', '--version', action='version',
                             version='PKGBUILDer v' + __version__,
@@ -42,38 +42,35 @@ def main(source='AUTO'):
         argopr = parser.add_argument_group(_('operations'))
 
         argopt.add_argument('-c', '--nocolors', action='store_false',
-                            default=True, dest='color', help=_('don\'t use \
-                            colors in output'))
+                            default=True, dest='color', help=_('don\'t use '
+                            'colors in output'))
         argopt.add_argument('--debug', action='store_true', default=False,
                             dest='debug', help=_('display debug messages'))
         argopt.add_argument('-d', '--nodepcheck', action='store_false',
-                            default=True, dest='depcheck', help=_('don\'t \
-                            check dependencies (may break makepkg)'))
+                            default=True, dest='depcheck', help=_('don\'t '
+                            'check dependencies (may break makepkg)'))
         argopt.add_argument('-v', '--novalidation', action='store_false',
-                            default=True, dest='valid', help=_('don\'t check \
-                            if packages were installed after build'))
+                            default=True, dest='valid', help=_('don\'t check '
+                            'if packages were installed after build'))
         argopt.add_argument('-w', '--buildonly', action='store_false',
-                            default=True, dest='mkpginst', help=_('don\'t \
-                            install packages after building'))
+                            default=True, dest='mkpginst', help=_('don\'t '
+                            'install packages after building'))
         argopt.add_argument('-P', '--protocol', action='store',
                             default='http', dest='protocol',
-                            metavar=_('PROTOCOL'), help=_('choose \
-                            protocol (default: http)'))
+                            metavar=_('PROTOCOL'), help=_('choose '
+                            'protocol (default: http)'))
         argopt.add_argument('-S', '--sync', action='store_true', default=False,
-                            dest='pac', help=_('pacman-like mode \
-                            (/tmp/ build, aur/ in -s)'))
+                            dest='pac', help=_('pacman-like mode'))
         argopt.add_argument('-y', '--refresh', action='store_true',
                             default=False, dest='pacupd', help=_('(dummy)'))
-
         argopr.add_argument('-i', '--info', action='store_true', default=False,
                             dest='info', help=_('view package information'))
         argopr.add_argument('-s', '--search', action='store_true',
-                            default=False, dest='search', help=_('search the \
-                            AUR for matching strings'))
+                            default=False, dest='search', help=_('search the '
+                            'AUR for matching strings'))
         argopr.add_argument('-u', '--sysupgrade', action='store_true',
                             default=False, dest='upgrade',
                             help=_('upgrade installed AUR packages'))
-
 
         if source != 'AUTO':
             args = parser.parse_args(source)
@@ -113,7 +110,7 @@ def main(source='AUTO'):
             if len(searchstring) < 3:
                 # this would be too many entries, but this is an actual API
                 # limitation and not an idea of yours truly.
-                DS.fancy_error(_('search string too short, API limitation'))
+                DS.fancy_error(_('Search query too short, API limitation'))
                 DS.fancy_msg(_('Searching for exact match...'))
                 search = [utils.info(searchstring)]
                 if search == [None]:
@@ -145,7 +142,7 @@ def main(source='AUTO'):
         if args.pac:
             DS.log.debug('-S passed, building in /tmp/.')
             uid = os.geteuid()
-            path = '/tmp/pkgbuilder-{0}'.format(str(uid))
+            path = '/tmp/pkgbuilder-{}'.format(str(uid))
             if not os.path.exists(path):
                 os.mkdir(path)
             os.chdir(path)
@@ -163,7 +160,7 @@ def main(source='AUTO'):
     # If we didn't exit, we shall build the packages.
     DS.log.info('Starting build...')
     for pkgname in args.pkgs:
-        DS.log.info('Building {0}'.format(pkgname))
+        DS.log.info('Building {}'.format(pkgname))
         build.auto_build(pkgname, DS.validate, DS.depcheck, DS.mkpginst)
 
     DS.log.info('Quitting.')

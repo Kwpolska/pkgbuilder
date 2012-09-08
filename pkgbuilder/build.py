@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.0
+# PKGBUILDer v2.1.4.1
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -33,7 +33,7 @@ class Build:
     """Functions for building packages."""
 
     utils = Utils()
-    aururl = '{0}://aur.archlinux.org{1}'
+    aururl = '{}://aur.archlinux.org{}'
 
     def auto_build(self, pkgname, validate=True, performdepcheck=True,
                    makepkginstall=True):
@@ -61,15 +61,14 @@ If you can, use it.
                     pkg = localdb.get_pkg(pkgname)
                     aurversion = self.utils.info(pkgname)['Version']
                     if pkg is None:
-                        DS.fancy_error2(_('validation: NOT \
-installed'))
+                        DS.fancy_error2(_('validation: NOT installed'))
                     else:
                         if pyalpm.vercmp(aurversion, pkg.version) > 0:
-                            DS.fancy_error2(_('validation: \
-outdated {0}').format(pkg.version))
+                            DS.fancy_error2(_('validation: outdated '
+                                              '{}').format(pkg.version))
                         else:
-                            DS.fancy_msg2(_('validation: \
-installed {0}').format(pkg.version))
+                            DS.fancy_msg2(_('validation: installed '
+                                            '{}').format(pkg.version))
             elif build_result[0] >= 0 and build_result[0] < 72000:  # PBxxx.
                 raise PBError(_('makepkg (or someone else) failed and '
                                 'returned {}.').format(build_result[0]))
@@ -78,7 +77,8 @@ installed {0}').format(pkg.version))
                 raise PBError(_('PKGBUILDer had a problem.'))
                 exit(1)
             elif build_result[0] == 72737:  # PBREQ.
-                raise PBError(_('PKGBUILDer (or the requests library) had'
+                # TRANSLATORS: do not translate the word 'requests'.
+                raise PBError(_('PKGBUILDer (or the requests library) had '
                                 'problems with fulfilling an HTTP request.'))
                 exit(1)
             elif build_result[0] == 72101:  # I/O error.
@@ -108,7 +108,7 @@ installed {0}').format(pkg.version))
 
         # Error handling.
         if r.status_code != 200:
-            raise PBError(_('download: HTTP Error {0}').format(
+            raise PBError(_('download: HTTP Error {}').format(
                 r.status_code))
         elif r.headers['content-length'] == '0':
             raise PBError(_('download: 0 bytes downloaded'))
@@ -155,15 +155,15 @@ installed {0}').format(pkg.version))
         # And it takes only 7 lines instead of about 40 in the pyparsing
         # implementation.
 
-        pb = subprocess.Popen('source '+pkgbuild+'; for i in ${depends[*]}; \
-do echo $i; done; for i in ${makedepends[*]}; do echo $i; done', shell=True,
-                              stdout=subprocess.PIPE)
+        pb = subprocess.Popen('source ' + pkgbuild + '; for i in ${depends'
+                              '[*]}; do echo $i; done; for i in '
+                              '${makedepends[*]}; do echo $i; done',
+                              shell=True, stdout=subprocess.PIPE)
         deps = pb.stdout.read()
         deps = deps.decode('utf-8')
         deps = deps.split('\n')
 
         return deps
-
 
     def depcheck(self, depends):
         """Performs a dependency check.
@@ -190,12 +190,12 @@ do echo $i; done; for i in ${makedepends[*]}; do echo $i; done', shell=True,
                 syncpkgs.append(j)
             syncpkgs = functools.reduce(lambda x, y: x + y, syncpkgs)
             for dep in depends:
-                if dep == '': # eg. pyload 0.4.9-4
+                if dep == '':
                     continue
 
                 if re.search('[<=>]', dep):
-                    vpat = '>=<|><=|=><|=<>|<>=|<=>|>=|=>|><|<>|=<|\
-<=|>|=|<'
+                    vpat = ('>=<|><=|=><|=<>|<>=|<=>|>=|=>|><|<>|=<|'
+                            '<=|>|=|<')
                     ver_base = re.split(vpat, dep)
                     dep = ver_base[0]
 
@@ -207,7 +207,7 @@ do echo $i; done; for i in ${makedepends[*]}; do echo $i; done', shell=True,
                     parseddeps[dep] = 2
                 else:
                     parseddeps[dep] = -1
-                    raise PBError(_('depcheck: cannot find {0} '
+                    raise PBError(_('depcheck: cannot find {} '
                                     'anywhere').format(dep))
             return parseddeps
 
@@ -232,9 +232,9 @@ unless you re-implement auto_build.
             # exists
             pkg = self.utils.info(pkgname)
             if pkg is None:
-                raise PBError(_('Package {0} not found.').format(pkgname))
+                raise PBError(_('Package {} not found.').format(pkgname))
             pkgname = pkg['Name']
-            DS.fancy_msg(_('Building {0}...').format(pkgname))
+            DS.fancy_msg(_('Building {}...').format(pkgname))
             self.utils.print_package_search(pkg,
                                             prefix=DS.colors['blue'] +
                                             '  ->' + DS.colors['all_off'] +
@@ -246,10 +246,10 @@ unless you re-implement auto_build.
             DS.fancy_msg(_('Downloading the tarball...'))
             downloadbytes = self.download(pkg['URLPath'], filename)
             kbytes = int(downloadbytes) / 1000
-            DS.fancy_msg2(_('{0} kB downloaded').format(kbytes))
+            DS.fancy_msg2(_('{} kB downloaded').format(kbytes))
 
             DS.fancy_msg(_('Extracting...'))
-            DS.fancy_msg2(_('{0} files extracted').format(self.extract(
+            DS.fancy_msg2(_('{} files extracted').format(self.extract(
                 filename)))
             os.chdir('./{}/'.format(pkgname))
 
@@ -269,8 +269,8 @@ unless you re-implement auto_build.
                     if pkgtype == 2:
                         aurbuild.append(pkg)
 
-                    DS.fancy_msg2('{0}: {1}'.format(pkg,
-                                                    pkgtypes[pkgtype]))
+                    DS.fancy_msg2('{}: {}'.format(pkg,
+                                                  pkgtypes[pkgtype]))
                 if aurbuild != []:
                     return [16, aurbuild]
 

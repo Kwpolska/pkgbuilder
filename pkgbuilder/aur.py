@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.0
+# PKGBUILDer v2.1.4.1
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -25,8 +25,8 @@ import json
 class AUR:
     """A class for calling the AUR API."""
 
-    rpc = '{0}://aur.archlinux.org/rpc.php?type={1}&arg={2}'
-    mrpc = '{0}://aur.archlinux.org/rpc.php?type=multiinfo{1}'
+    rpc = '{}://aur.archlinux.org/rpc.php?type={}&arg={}'
+    mrpc = '{}://aur.archlinux.org/rpc.php?type=multiinfo{}'
 
     def jsonreq(self, rtype, arg, prot='http'):
         """Makes a request and returns plain JSON data.
@@ -39,7 +39,7 @@ class AUR:
 :Message codes: ERR1001."""
         req = requests.get(self.rpc.format(prot, rtype, arg))
         if req.status_code != 200:
-            raise PBError(_('AUR: HTTP Error {0}').format(
+            raise PBError(_('AUR: HTTP Error {}').format(
                 req.status_code))
 
         return req.text
@@ -56,7 +56,7 @@ class AUR:
         urlargs = '&arg[]=' + '&arg[]='.join(args)
         req = requests.get(self.mrpc.format(prot, urlargs))
         if req.status_code != 200:
-            raise PBError(_('AUR: HTTP Error {0}').format(
+            raise PBError(_('AUR: HTTP Error {}').format(
                 req.status_code))
 
         return req.text
