@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.1.4.0\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-09-04 20:49+0200\n"
+"POT-Creation-Date: 2012-09-08 11:57+0200\n"
 "PO-Revision-Date: 2012-07-27 13:44+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
@@ -17,103 +17,122 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: pkgbuilder/aur.py:42 pkgbuilder/aur.py:59
-msgid "[ERR1001] AUR: HTTP Error {0}"
+#, fuzzy
+msgid "AUR: HTTP Error {0}"
 msgstr "[ERR1001] AUR: HTTP Error {0}"
 
-#: pkgbuilder/build.py:57
+#: pkgbuilder/build.py:56
 msgid "The build function reported a proper build."
 msgstr "The build function reported a proper build."
 
-#: pkgbuilder/build.py:66
-msgid "[ERR3451] validation: NOT installed"
+#: pkgbuilder/build.py:64
+#, fuzzy
+msgid "validation: NOT installed"
 msgstr "[ERR3451] validation: NOT installed"
 
-#: pkgbuilder/build.py:70
-msgid "[ERR3452] validation: outdated {0}"
+#: pkgbuilder/build.py:68
+#, fuzzy
+msgid "validation: outdated {0}"
 msgstr "[ERR3452] validation: outdated {0}"
 
-#: pkgbuilder/build.py:73
-msgid "[INF3450] validation: installed {0}"
+#: pkgbuilder/build.py:71
+#, fuzzy
+msgid "validation: installed {0}"
 msgstr "[INF3450] validation: installed {0}"
 
-#: pkgbuilder/build.py:77
-msgid "[ERR3402] Something went wrong.  EC={0} EM={1}"
-msgstr "[ERR3402] Something went wrong.  EC={0} EM={1}"
+#. PBxxx.
+#: pkgbuilder/build.py:74
+msgid "makepkg (or someone else) failed and returned {}."
+msgstr ""
 
+#. PBSUX.
+#: pkgbuilder/build.py:78
+msgid "PKGBUILDer had a problem."
+msgstr ""
+
+#. PBREQ.
 #: pkgbuilder/build.py:81
-msgid "[WRN3401] Building more AUR packages is required."
+msgid ""
+"PKGBUILDer (or the requests library) hadproblems with fulfilling an HTTP "
+"request."
+msgstr ""
+
+#. I/O error.
+#: pkgbuilder/build.py:85
+msgid "There was an input/output error."
+msgstr ""
+
+#. PBDEP.
+#: pkgbuilder/build.py:88
+#, fuzzy
+msgid "Building more AUR packages is required."
 msgstr "[WRN3401] Building more AUR packages is required."
 
-#: pkgbuilder/build.py:105
-msgid "[ERR3102] download: HTTP Error {0}"
+#: pkgbuilder/build.py:111
+#, fuzzy
+msgid "download: HTTP Error {0}"
 msgstr "[ERR3102] download: HTTP Error {0}"
 
-#: pkgbuilder/build.py:108
-msgid "[ERR3101] download: 0 bytes downloaded"
+#: pkgbuilder/build.py:114
+#, fuzzy
+msgid "download: 0 bytes downloaded"
 msgstr "[ERR3101] download: 0 bytes downloaded"
 
-#: pkgbuilder/build.py:131
-msgid "[ERR3151] extract: no files extracted"
+#: pkgbuilder/build.py:137
+#, fuzzy
+msgid "extract: no files extracted"
 msgstr "[ERR3151] extract: no files extracted"
 
-#: pkgbuilder/build.py:206 pkgbuilder/build.py:265
-msgid "[ERR3201] depcheck: cannot find {0} anywhere"
+#: pkgbuilder/build.py:210
+#, fuzzy
+msgid "depcheck: cannot find {0} anywhere"
 msgstr "[ERR3201] depcheck: cannot find {0} anywhere"
 
-#: pkgbuilder/build.py:231
-msgid "[ERR3001] Package {0} not found."
-msgstr "[ERR3001] Package {0} not found."
+#: pkgbuilder/build.py:235
+#, fuzzy
+msgid "Package {0} not found."
+msgstr "Package not found."
 
-#: pkgbuilder/build.py:234
+#: pkgbuilder/build.py:237
 msgid "Building {0}..."
 msgstr "Building {0}..."
 
 #. Okay, this package exists, great then.  Thanks, user.
-#: pkgbuilder/build.py:243
+#: pkgbuilder/build.py:246
 msgid "Downloading the tarball..."
 msgstr "Downloading the tarball..."
 
-#: pkgbuilder/build.py:246
+#: pkgbuilder/build.py:249
 msgid "{0} kB downloaded"
 msgstr "{0} kB downloaded"
 
-#: pkgbuilder/build.py:248
+#: pkgbuilder/build.py:251
 msgid "Extracting..."
 msgstr "Extracting..."
 
-#: pkgbuilder/build.py:249
+#: pkgbuilder/build.py:252
 msgid "{0} files extracted"
 msgstr "{0} files extracted"
 
-#: pkgbuilder/build.py:253
+#: pkgbuilder/build.py:257
 msgid "Checking dependencies..."
 msgstr "Checking dependencies..."
 
-#: pkgbuilder/build.py:257
+#: pkgbuilder/build.py:260
 msgid "found in system"
 msgstr "found in system"
 
-#: pkgbuilder/build.py:257
+#: pkgbuilder/build.py:260
 msgid "found in repos"
 msgstr "found in repos"
 
-#: pkgbuilder/build.py:258
+#: pkgbuilder/build.py:261
 msgid "found in the AUR"
 msgstr "found in the AUR"
 
-#: pkgbuilder/build.py:261
+#: pkgbuilder/build.py:264
 msgid "none found"
 msgstr "none found"
-
-#: pkgbuilder/build.py:275
-msgid ""
-"[ERR3202] depcheck: UnicodeDecodeError.  The PKGBUILD cannot be read.  There "
-"are invalid UTF-8 characters (eg. in the Maintainer field.)  Error message: "
-"{0}"
-msgstr ""
-"[ERR3202] depcheck: UnicodeDecodeError.  The PKGBUILD cannot be read.  There "
-"are invalid UTF-8 characters (eg. in the Maintainer field.)  Error message: "
-"{0}"
 
 #: pkgbuilder/main.py:32
 msgid "An AUR helper         (and library) in Python 3."
@@ -192,19 +211,21 @@ msgstr "upgrade installed AUR packages"
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
 #: pkgbuilder/main.py:116
-msgid "[ERR5002] search string too short, API limitation"
+#, fuzzy
+msgid "search string too short, API limitation"
 msgstr "[ERR5002] search string too short, API limitation"
 
-#: pkgbuilder/main.py:118
+#: pkgbuilder/main.py:117
 msgid "Searching for exact match..."
 msgstr "Searching for exact match..."
 
-#: pkgbuilder/main.py:121 INSTALL.py:65 INSTALL.py:74 INSTALL.py:83
+#: pkgbuilder/main.py:120 INSTALL.py:65 INSTALL.py:74 INSTALL.py:83
 msgid "not found"
 msgstr "not found"
 
 #: pkgbuilder/pbds.py:50
-msgid "[ERR5001] Aborted by user! Quitting..."
+#, fuzzy
+msgid "Aborted by user! Quitting..."
 msgstr "[ERR5001] Aborted by user! Quitting..."
 
 #: pkgbuilder/pbds.py:70 pkgbuilder/pbds.py:205
@@ -462,3 +483,18 @@ msgstr "optional arguments"
 #: localeprovider.py:2
 msgid "show this help message and exit"
 msgstr "show this help message and quit"
+
+#~ msgid "[ERR3402] Something went wrong.  EC={0} EM={1}"
+#~ msgstr "[ERR3402] Something went wrong.  EC={0} EM={1}"
+
+#~ msgid "[ERR3001] Package {0} not found."
+#~ msgstr "[ERR3001] Package {0} not found."
+
+#~ msgid ""
+#~ "[ERR3202] depcheck: UnicodeDecodeError.  The PKGBUILD cannot be read.  "
+#~ "There are invalid UTF-8 characters (eg. in the Maintainer field.)  Error "
+#~ "message: {0}"
+#~ msgstr ""
+#~ "[ERR3202] depcheck: UnicodeDecodeError.  The PKGBUILD cannot be read.  "
+#~ "There are invalid UTF-8 characters (eg. in the Maintainer field.)  Error "
+#~ "message: {0}"
