@@ -4,7 +4,7 @@ PBWrapper
 
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: See Appendix B.
-:Date: 2012-09-04
+:Date: 2012-09-08
 :Version: 2.1.4.0
 :Wrapper Version: 0.1.0
 :Manual section: 8

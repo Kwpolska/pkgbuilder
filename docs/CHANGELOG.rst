@@ -3,7 +3,7 @@ Appendix C. Changelog
 =====================
 :Info: This is a partial changelog for PKGBUILDer.
 :Author: Kwpolska <kwpolska@kwpolska.tk>
-:Date: 2012-09-04
+:Date: 2012-09-08
 :Version: 2.1.4.0
 
 .. index:: CHANGELOG

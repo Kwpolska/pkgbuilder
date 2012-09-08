@@ -71,8 +71,8 @@ outdated {0}').format(pkg.version))
                             DS.fancy_msg2(_('validation: \
 installed {0}').format(pkg.version))
             elif build_result[0] >= 0 and build_result[0] < 72000:  # PBxxx.
-                raise PBError(_('makepkg failed and returned {}.'.format(
-                    build_result[0])
+                raise PBError(_('makepkg (or someone else) failed and '
+                                'returned {}.').format(build_result[0]))
                 exit(build_result[0])
             elif build_result[0] == 72789:  # PBSUX.
                 raise PBError(_('PKGBUILDer had a problem.'))
@@ -162,8 +162,6 @@ do echo $i; done; for i in ${makedepends[*]}; do echo $i; done', shell=True,
         deps = deps.decode('utf-8')
         deps = deps.split('\n')
 
-        if pkgbuild == '/tmp/pkgbuilderTempWorkaround':
-            os.remove('/tmp/pkgbuilderTempWorkaround')
         return deps
 
 
@@ -253,34 +251,28 @@ unless you re-implement auto_build.
             DS.fancy_msg(_('Extracting...'))
             DS.fancy_msg2(_('{0} files extracted').format(self.extract(
                 filename)))
-            os.chdir('./' + pkgname + '/')
+            os.chdir('./{}/'.format(pkgname))
+
             if performdepcheck:
                 DS.fancy_msg(_('Checking dependencies...'))
-                try:
-                    depends = self.prepare_deps(os.path.abspath('./PKGBUILD'))
-                    deps = self.depcheck(depends)
-                    pkgtypes = [_('found in system'), _('found in repos'),
-                                _('found in the AUR')]
-                    aurbuild = []
-                    if deps == {}:
-                        DS.fancy_msg2(_('none found'))
+                depends = self.prepare_deps(os.path.abspath('./PKGBUILD'))
+                deps = self.depcheck(depends)
+                pkgtypes = [_('found in system'), _('found in repos'),
+                            _('found in the AUR')]
+                aurbuild = []
+                if deps == {}:
+                    DS.fancy_msg2(_('none found'))
 
-                    for pkg, pkgtype in deps.items():
-                        # I checked for -1 here.  Dropped this one as it was
-                        # handled by the depcheck function already.
-                        if pkgtype == 2:
-                            aurbuild.append(pkg)
+                for pkg, pkgtype in deps.items():
+                    # I checked for -1 here.  Dropped this one as it was
+                    # handled by the depcheck function already.
+                    if pkgtype == 2:
+                        aurbuild.append(pkg)
 
-                        DS.fancy_msg2('{0}: {1}'.format(pkg,
-                                                        pkgtypes[pkgtype]))
-                    if aurbuild != []:
-                        return [16, aurbuild]
-                except UnicodeDecodeError as inst:
-                    DS.fancy_error2(_('depcheck: UnicodeDecodeError.  The'
-                                      'PKGBUILD cannot be read.  There are'
-                                      'invalid UTF-8 characters (eg. in'
-                                      'the Maintainer field.)  Error'
-                                      'message: {0}').format(str(inst)))
+                    DS.fancy_msg2('{0}: {1}'.format(pkg,
+                                                    pkgtypes[pkgtype]))
+                if aurbuild != []:
+                    return [16, aurbuild]
 
             mpparams = ''
 
@@ -305,7 +297,7 @@ unless you re-implement auto_build.
             DS.fancy_error(str(inst))
             return [72737]
         except requests.exceptions.TooManyRedirects as inst:
-            DS.fancy_error(str(inst)
+            DS.fancy_error(str(inst))
             return [72737]
         except IOError as inst:
             DS.fancy_error(str(inst))
