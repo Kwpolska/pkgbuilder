@@ -39,7 +39,7 @@ class AUR:
 :Message codes: ERR1001."""
         req = requests.get(self.rpc.format(prot, rtype, arg))
         if req.status_code != 200:
-            raise PBError(_('[ERR1001] AUR: HTTP Error {0}').format(
+            raise PBError(_('AUR: HTTP Error {0}').format(
                 req.status_code))
 
         return req.text
@@ -56,7 +56,7 @@ class AUR:
         urlargs = '&arg[]=' + '&arg[]='.join(args)
         req = requests.get(self.mrpc.format(prot, urlargs))
         if req.status_code != 200:
-            raise PBError(_('[ERR1001] AUR: HTTP Error {0}').format(
+            raise PBError(_('AUR: HTTP Error {0}').format(
                 req.status_code))
 
         return req.text

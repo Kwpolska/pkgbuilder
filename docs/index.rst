@@ -20,10 +20,12 @@ Since version 2.1.0, PKGBUILDer provides modules that can be used in
 other scripts.
 
 For standalone use, see the :doc:`PKGBUILDer man page <pkgbuilder>`.
-Reading the :doc:`README <README>` and
-the :doc:`Message codes list <messagecodes>` is also a good idea.
+Reading the :doc:`README <README>` is also a good idea.
 
-For python module usage, see the respective class documents.
+For the PBWrapper (``pb``), see the `PBWrapper man page <pb>`.
+
+For developers using PKGBUILDer as a Python module, see the respective class
+documents.
 
 Table of Contents
 -----------------
@@ -31,7 +33,8 @@ Table of Contents
 .. toctree::
    :numbered:
 
-   pkgbuilder
+   PKGBUILDer (man page) <pkgbuilder>
+   PBWrapper (man page) <pb>
    aur
    build
    main
@@ -39,7 +42,6 @@ Table of Contents
    upgrade
    utils
    README for PKGBUILDer <README>
-   messagecodes
    LICENSE
    CHANGELOG
 

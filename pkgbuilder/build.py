@@ -46,16 +46,14 @@ If you can, use it.
 :Output: text.
 :Returns: nothing.
 :Exceptions: PBError.
-:Message codes:
-    WRN3401, ERR3402, INF3450, ERR3451, ERR3452.
 :Former data:
     2.0 Name: build."""
         build_result = self.build_runner(pkgname, performdepcheck,
                                          makepkginstall)
+        os.chdir('../')
         try:
             if build_result[0] == 0:
                 DS.fancy_msg(_('The build function reported a proper build.'))
-                os.chdir('../')
                 if validate:
                     # check if installed
                     pyc = pycman.config.init_with_config('/etc/pacman.conf')
@@ -63,23 +61,31 @@ If you can, use it.
                     pkg = localdb.get_pkg(pkgname)
                     aurversion = self.utils.info(pkgname)['Version']
                     if pkg is None:
-                        DS.fancy_error2(_('[ERR3451] validation: NOT \
+                        DS.fancy_error2(_('validation: NOT \
 installed'))
                     else:
                         if pyalpm.vercmp(aurversion, pkg.version) > 0:
-                            DS.fancy_error2(_('[ERR3452] validation: \
+                            DS.fancy_error2(_('validation: \
 outdated {0}').format(pkg.version))
                         else:
-                            DS.fancy_msg2(_('[INF3450] validation: \
+                            DS.fancy_msg2(_('validation: \
 installed {0}').format(pkg.version))
-            elif build_result[0] >= 0 and build_result[0] <= 15:
-                os.chdir('../')
-                raise PBError(_('[ERR3402] Something went wrong.  \
-EC={0} EM={1}').format(build_result[0], build_result[1]))
-            elif build_result[0] == 16:
-                os.chdir('../')
-                DS.fancy_warning(_('[WRN3401] Building more AUR packages is \
-required.'))
+            elif build_result[0] >= 0 and build_result[0] < 72000:  # PBxxx.
+                raise PBError(_('makepkg failed and returned {}.'.format(
+                    build_result[0])
+                exit(build_result[0])
+            elif build_result[0] == 72789:  # PBSUX.
+                raise PBError(_('PKGBUILDer had a problem.'))
+                exit(1)
+            elif build_result[0] == 72737:  # PBREQ.
+                raise PBError(_('PKGBUILDer (or the requests library) had'
+                                'problems with fulfilling an HTTP request.'))
+                exit(1)
+            elif build_result[0] == 72101:  # I/O error.
+                raise PBError(_('There was an input/output error.'))
+                exit(1)
+            elif build_result[0] == 72337:  # PBDEP.
+                DS.fancy_warning(_('Building more AUR packages is required.'))
                 for pkgname2 in build_result[1]:
                     self.auto_build(pkgname2, validate, performdepcheck,
                                     makepkginstall)
@@ -102,10 +108,10 @@ required.'))
 
         # Error handling.
         if r.status_code != 200:
-            raise PBError(_('[ERR3102] download: HTTP Error {0}').format(
+            raise PBError(_('download: HTTP Error {0}').format(
                 r.status_code))
         elif r.headers['content-length'] == '0':
-            raise PBError(_('[ERR3101] download: 0 bytes downloaded'))
+            raise PBError(_('download: 0 bytes downloaded'))
 
         f = open(filename, 'wb')
         f.write(r.content)
@@ -128,7 +134,7 @@ required.'))
         if names != []:
             return len(names)
         else:
-            raise PBError(_('[ERR3151] extract: no files extracted'))
+            raise PBError(_('extract: no files extracted'))
 
     def prepare_deps(self, pkgbuild):
         """Gets (make)depends from a PKGBUILD and returns them.
@@ -203,8 +209,8 @@ do echo $i; done; for i in ${makedepends[*]}; do echo $i; done', shell=True,
                     parseddeps[dep] = 2
                 else:
                     parseddeps[dep] = -1
-                    raise PBError(_('[ERR3201] depcheck: cannot find {0} \
-anywhere').format(dep))
+                    raise PBError(_('depcheck: cannot find {0} '
+                                    'anywhere').format(dep))
             return parseddeps
 
     def build_runner(self, pkgname, performdepcheck=True,
@@ -228,8 +234,7 @@ unless you re-implement auto_build.
             # exists
             pkg = self.utils.info(pkgname)
             if pkg is None:
-                raise PBError(_('[ERR3001] Package {0} not found.').format(
-                              pkgname))
+                raise PBError(_('Package {0} not found.').format(pkgname))
             pkgname = pkg['Name']
             DS.fancy_msg(_('Building {0}...').format(pkgname))
             self.utils.print_package_search(pkg,
@@ -261,9 +266,8 @@ unless you re-implement auto_build.
                         DS.fancy_msg2(_('none found'))
 
                     for pkg, pkgtype in deps.items():
-                        if pkgtype == -1:
-                            raise PBError(_('[ERR3201] depcheck: cannot \
-find {0} anywhere').format(pkg))
+                        # I checked for -1 here.  Dropped this one as it was
+                        # handled by the depcheck function already.
                         if pkgtype == 2:
                             aurbuild.append(pkg)
 
@@ -272,9 +276,11 @@ find {0} anywhere').format(pkg))
                     if aurbuild != []:
                         return [16, aurbuild]
                 except UnicodeDecodeError as inst:
-                    DS.fancy_error2(_('[ERR3202] depcheck: UnicodeDecodeEr\
-ror.  The PKGBUILD cannot be read.  There are invalid UTF-8 characters (\
-eg. in the Maintainer field.)  Error message: {0}').format(str(inst)))
+                    DS.fancy_error2(_('depcheck: UnicodeDecodeError.  The'
+                                      'PKGBUILD cannot be read.  There are'
+                                      'invalid UTF-8 characters (eg. in'
+                                      'the Maintainer field.)  Error'
+                                      'message: {0}').format(str(inst)))
 
             mpparams = ''
 
@@ -288,19 +294,19 @@ eg. in the Maintainer field.)  Error message: {0}').format(str(inst)))
                     shell=True), 'makepkg']
         except PBError as inst:
             DS.fancy_error(str(inst))
-            return [3, ['pb']]
+            return [72789]
         except requests.exceptions.ConnectionError as inst:
             DS.fancy_error(str(inst))
-            return [3, ['requests.exceptions.ConnectionError']]
+            return [72737]
         except requests.exceptions.HTTPError as inst:
             DS.fancy_error(str(inst))
-            return [3, ['requests.exceptions.HTTPError']]
+            return [72737]
         except requests.exceptions.Timeout as inst:
             DS.fancy_error(str(inst))
-            return [3, ['requests.exceptions.Timeout']]
+            return [72737]
         except requests.exceptions.TooManyRedirects as inst:
-            DS.fancy_error(str(inst))
-            return [3, ['requests.exceptions.TooManyRedirects']]
+            DS.fancy_error(str(inst)
+            return [72737]
         except IOError as inst:
             DS.fancy_error(str(inst))
-            return [3, ['io']]
+            return [72101]
