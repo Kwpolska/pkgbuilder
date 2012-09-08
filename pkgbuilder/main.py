@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.2
+# PKGBUILDer v2.1.4.3
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -25,7 +25,7 @@ import os
 
 
 ### main()          The main routine        ###
-def main(source='AUTO'):
+def main(source='AUTO', noquit=False):
     """Main routine of PKGBUILDer."""
     try:
         DS.log.info('Initialized, parsing arguments.')
@@ -154,8 +154,8 @@ def main(source='AUTO'):
     if args.upgrade:
         DS.log.info('Starting upgrade...')
         upgrade.auto_upgrade()
-        del(upgrade)
-        exit(0)
+        if not noquit:
+            exit(0)
 
     # If we didn't exit, we shall build the packages.
     DS.log.info('Starting build...')

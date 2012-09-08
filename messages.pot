@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.4.2\n"
+"Project-Id-Version: 2.1.4.3\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-09-08 13:41+0200\n"
-"PO-Revision-Date: 2012-09-08 13:41+0200\n"
+"POT-Creation-Date: 2012-09-08 15:24+0200\n"
+"PO-Revision-Date: 2012-09-08 15:24+0200\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language: en\n"
@@ -297,24 +297,21 @@ msgstr ""
 msgid "no"
 msgstr ""
 
-#. TRANSLATORS: Note the double space, which is present in
-#. pacman itself.  Please consult your pacman localization
-#. for details.
-#: pkgbuilder/wrapper.py:87
+#: pkgbuilder/wrapper.py:86
 #, python-format
 msgid "%(prog)s <operation> [...]"
 msgstr ""
 
 #. TRANSLATORS: see pacman’s localizations
-#: pkgbuilder/wrapper.py:220
+#: pkgbuilder/wrapper.py:235
 msgid "usage: {} <operation> [...]"
 msgstr ""
 
-#: pkgbuilder/wrapper.py:222
+#: pkgbuilder/wrapper.py:237
 msgid "{}, a wrapper for pacman and PKGBUILDer."
 msgstr ""
 
-#: pkgbuilder/wrapper.py:224
+#: pkgbuilder/wrapper.py:239
 msgid ""
 "Pacman and PKGBUILDer syntaxes apply.  Consult their manpages/help commands "
 "for details."

@@ -4,7 +4,7 @@ PBWrapper
 :Author: Kwpolska
 :Copyright: See Appendix B.
 :Date: 2012-09-08
-:Version: 2.1.4.2
+:Version: 2.1.4.3
 :PBWrapper Version: 0.1.0
 
 .. index:: wrapper
