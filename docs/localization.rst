@@ -24,7 +24,7 @@ so hard, and requires just a few minutes.
    text editor, do not use poedit for that!)  and modify them.  The
    Last-Translator, Language-Team and Language are important, the others are
    auto-generated anyways.
-5. Commit and hit *Pull Request* on GitHub.
+5. Commit (with the ``-s/--signoff`` flag!) and hit *Pull Request* on GitHub.
 6. Your translation will be added in the next release, or, if a release isn’t
    planned in the near future, a new release will be made.  Your addition will
    be appreciated.  Note that I cannot translate new strings, and, as a result,
