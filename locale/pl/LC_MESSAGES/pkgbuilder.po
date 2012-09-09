@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.1.4.3\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-09-08 15:24+0200\n"
+"POT-Creation-Date: 2012-09-09 13:05+0200\n"
 "PO-Revision-Date: 2012-09-08 12:44+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
@@ -129,85 +129,91 @@ msgstr "znaleziono w AUR"
 msgid "none found"
 msgstr "brak"
 
-#: pkgbuilder/main.py:32
+#. TRANSLATORS: translate the whole sentence.
+#. Alternatively, use translation instead of locale.
+#: pkgbuilder/main.py:34
+msgid "LANG locale by AUTHOR <MAIL@IF.YOU.WANT>"
+msgstr "Polskie tłumaczenie autorstwa Kwpolska <kwpolska@kwpolska.tk>"
+
+#: pkgbuilder/main.py:38
 msgid "An AUR helper (and library) in Python 3."
 msgstr "Pomocnik AUR (i biblioteka) w Pythonie 3."
 
-#: pkgbuilder/main.py:37
+#: pkgbuilder/main.py:44
 msgid "show version number and quit"
 msgstr "pokaż numer wersji i wyjdź"
 
-#: pkgbuilder/main.py:39
+#: pkgbuilder/main.py:46
 msgid "packages to build"
 msgstr "pakiety do zbudowania"
 
-#: pkgbuilder/main.py:41
+#: pkgbuilder/main.py:48
 msgid "options"
 msgstr "opcje"
 
-#: pkgbuilder/main.py:42
+#: pkgbuilder/main.py:49
 msgid "operations"
 msgstr "operacje"
 
-#: pkgbuilder/main.py:45
+#: pkgbuilder/main.py:52
 msgid "don't use colors in output"
 msgstr "nie używa kolorów na wyjściu"
 
-#: pkgbuilder/main.py:48
+#: pkgbuilder/main.py:55
 msgid "display debug messages"
 msgstr "pokazuje wiadomości debugowania"
 
-#: pkgbuilder/main.py:50
+#: pkgbuilder/main.py:57
 msgid "don't check dependencies (may break makepkg)"
 msgstr "nie sprawdza zależności (może popsuć makepkg)"
 
-#: pkgbuilder/main.py:53
+#: pkgbuilder/main.py:60
 msgid "don't check if packages were installed after build"
 msgstr "nie sprawdza czy pakiety zostały zainstalowane po zbudowaniu"
 
-#: pkgbuilder/main.py:56
+#: pkgbuilder/main.py:63
 msgid "don't install packages after building"
 msgstr "nie instaluje pakietów po zbudowaniu"
 
-#: pkgbuilder/main.py:60
+#: pkgbuilder/main.py:67
 msgid "PROTOCOL"
 msgstr "PROTOKÓŁ"
 
-#: pkgbuilder/main.py:60
+#: pkgbuilder/main.py:67
 msgid "choose protocol (default: http)"
 msgstr "wybiera protokół (domyślnie: http)"
 
-#: pkgbuilder/main.py:63
+#: pkgbuilder/main.py:70
 msgid "pacman-like mode"
 msgstr "tryb podobny do pacmana"
 
-#: pkgbuilder/main.py:65
+#: pkgbuilder/main.py:72
 msgid "(dummy)"
 msgstr "(dummy)"
 
-#: pkgbuilder/main.py:67
+#: pkgbuilder/main.py:74
 msgid "view package information"
 msgstr "wyświetla informację o pakiecie"
 
-#: pkgbuilder/main.py:69
+#: pkgbuilder/main.py:76
 msgid "search the AUR for matching strings"
 msgstr "przeszukuje AUR według pasujących ciągów"
 
-#: pkgbuilder/main.py:73
+#: pkgbuilder/main.py:80
 msgid "upgrade installed AUR packages"
 msgstr "uaktualnia zainstalowane pakiety z AUR"
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
-#: pkgbuilder/main.py:113
+#: pkgbuilder/main.py:120
 msgid "Search query too short, API limitation"
 msgstr "zapytanie do wyszukiwarki zbyt krótkie, limitacja API"
 
-#: pkgbuilder/main.py:114
+#: pkgbuilder/main.py:121
 msgid "Searching for exact match..."
 msgstr "Szukanie dokładnego dopasowania..."
 
-#: pkgbuilder/main.py:117 INSTALL.py:65 INSTALL.py:74 INSTALL.py:83
+#: pkgbuilder/main.py:124 INSTALL.py:65 INSTALL.py:74 INSTALL.py:83
 msgid "not found"
 msgstr "nie znaleziono"
 

@@ -28,12 +28,19 @@ import os
 def main(source='AUTO', noquit=False):
     """Main routine of PKGBUILDer."""
     try:
+        verstring = 'PKGBUILDer v'+__version__
+        # TRANSLATORS: translate the whole sentence.
+        # Alternatively, use translation instead of locale.
+        locale = _('LANG locale by AUTHOR <MAIL@IF.YOU.WANT>')
+        if locale != 'LANG locale by AUTHOR <MAIL@IF.YOU.WANT>':
+            verstring = '\n'.join([verstring, locale])
         DS.log.info('Initialized, parsing arguments.')
         parser = argparse.ArgumentParser(description=_('An AUR helper'
-                                         ' (and library) in Python 3.'))
+            ' (and library) in Python 3.'),
+            formatter_class=argparse.RawTextHelpFormatter)
 
         parser.add_argument('-V', '--version', action='version',
-                            version='PKGBUILDer v' + __version__,
+                            version=verstring,
                             help=_('show version number and quit'))
         parser.add_argument('pkgs', metavar='PACKAGE', action='store',
                             nargs='*', help=_('packages to build'))
