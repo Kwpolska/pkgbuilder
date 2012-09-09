@@ -1,6 +1,6 @@
-==================
-Localization Guide
-==================
+==============================
+Appendix A. Localization Guide
+==============================
 :Author: Kwpolska
 :Copyright: See Appendix B.
 :Date: 2012-09-09
