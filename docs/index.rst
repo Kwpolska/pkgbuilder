@@ -35,13 +35,14 @@ Table of Contents
 
    PKGBUILDer (man page) <pkgbuilder>
    PBWrapper (man page) <pb>
+   README for PKGBUILDer <README>
    aur
    build
    main
    pbds
    upgrade
    utils
-   README for PKGBUILDer <README>
+   localization
    LICENSE
    CHANGELOG
 
