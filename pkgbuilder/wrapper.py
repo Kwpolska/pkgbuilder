@@ -47,7 +47,7 @@ def wrapper(source='AUTO'):
 
     log = logging.getLogger('pbwrapper')
     if '--debug' in argst:
-        DS.debugout()
+        DS.debugmode()
 
     log.info('*** PBwrapper v{} (PKGBUILDer '
              '{})'.format(__wrapperversion__, __version__))
