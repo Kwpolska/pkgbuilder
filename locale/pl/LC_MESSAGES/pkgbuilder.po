@@ -247,7 +247,7 @@ msgid "Gathering data about packages..."
 msgstr "Zbieranie informacji o pakietach..."
 
 #: pkgbuilder/upgrade.py:110 pkgbuilder/upgrade.py:116
-msgid "{} downgradeable packages found:"
+msgid "{} downgradable packages found:"
 msgstr "Znaleziono {} pakietów w nowszej wersji, niż w AUR:"
 
 #: pkgbuilder/upgrade.py:113 pkgbuilder/upgrade.py:120
