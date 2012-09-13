@@ -35,6 +35,9 @@ class PBDS():
         'yellow':     '\x1b[1;1m\x1b[1;33m'
     }
 
+    # Message prefix.  Changed by debugmode().
+    mp = ''
+
     pacman = False
     validate = True
     depcheck = True
@@ -78,7 +81,7 @@ class PBDS():
     log = logging.getLogger('pkgbuilder')
     log.info('*** PKGBUILDer v' + __version__)
 
-    def debugout(self, nochange=False):
+    def debugmode(self, nochange=False):
         """Print all the logged messages to stderr.
 
 :Arguments: make no changes if not necessary.
@@ -94,11 +97,13 @@ class PBDS():
                                       ':%(name)-10s: %(message)s'))
             logging.getLogger('').addHandler(self.console)
             self.debug = True
+            self.mp = 'p'
         elif self.debug and nochange:
             pass
         else:
             logging.getLogger('').removeHandler(self.console)
             self.debug = False
+            self.mp = ''
 
     def colorson(self):
         """Colors on.
@@ -145,7 +150,7 @@ class PBDS():
     :Returns: nothing.
     :Exceptions: none.
     :Message codes: none, although messages may contain some."""
-        sys.stderr.write(self.colors['green'] + '==>' +
+        sys.stderr.write(self.mp + self.colors['green'] + '==>' +
                          self.colors['all_off'] +
                          self.colors['bold'] + ' ' + text +
                          self.colors['all_off'] + '\n')
@@ -160,7 +165,7 @@ class PBDS():
     :Returns: nothing.
     :Exceptions: none.
     :Message codes: none, although messages may contain some."""
-        sys.stderr.write(self.colors['blue'] + '  ->' +
+        sys.stderr.write(self.mp + self.colors['blue'] + '  ->' +
                          self.colors['all_off'] +
                          self.colors['bold'] + ' ' + text +
                          self.colors['all_off'] + '\n')
@@ -175,9 +180,10 @@ class PBDS():
     :Returns: nothing.
     :Exceptions: none.
     :Message codes: none, although messages may contain some."""
-        sys.stderr.write(self.colors['yellow'] + '==> ' + _('WARNING:') +
-                         self.colors['all_off'] + self.colors['bold'] +
-                         ' ' + text + self.colors['all_off'] + '\n')
+        sys.stderr.write(self.mp + self.colors['yellow'] + '==> ' +
+                         _('WARNING:') + self.colors['all_off'] +
+                         self.colors['bold'] + ' ' + text +
+                         self.colors['all_off'] + '\n')
         self.log.warning('(auto fancy_warning ) ' + text)
 
     def fancy_warning2(self, text):
@@ -189,9 +195,9 @@ class PBDS():
     :Returns: nothing.
     :Exceptions: none.
     :Message codes: none, although messages may contain some."""
-        sys.stderr.write(self.colors['yellow'] + '==> ' + _('WARNING:') +
-                         self.colors['all_off'] + self.colors['bold'] +
-                         ' ' + text + self.colors['all_off'] + '\n')
+        sys.stderr.write(self.mp + self.colors['yellow'] + '  ->' +
+                         self.colors['all_off'] + self.colors['bold'] + ' ' +
+                         text + self.colors['all_off'] + '\n')
         self.log.warning('(auto fancy_warning2) ' + text)
 
     def fancy_error(self, text):
@@ -203,9 +209,9 @@ class PBDS():
     :Returns: nothing.
     :Exceptions: none.
     :Message codes: none, although messages may contain some."""
-        sys.stderr.write(self.colors['red'] + '==> ' + _('ERROR:') +
-                         self.colors['all_off'] + self.colors['bold'] +
-                         ' ' + text + self.colors['all_off'] + '\n')
+        sys.stderr.write(self.mp + self.colors['red'] + '==> ' + _('ERROR:') +
+                         self.colors['all_off'] + self.colors['bold'] + ' ' +
+                         text + self.colors['all_off'] + '\n')
         self.log.error('(auto fancy_error   ) ' + text)
 
     def fancy_error2(self, text):
@@ -217,8 +223,7 @@ class PBDS():
     :Returns: nothing.
     :Exceptions: none.
     :Message codes: none, although messages may contain some."""
-        sys.stderr.write(self.colors['red'] + '  ->' +
-                         self.colors['all_off'] +
-                         self.colors['bold'] + ' ' + text +
-                         self.colors['all_off'] + '\n')
+        sys.stderr.write(self.mp + self.colors['red'] + '  ->' +
+                         self.colors['all_off'] + self.colors['bold'] + ' ' +
+                         text + self.colors['all_off'] + '\n')
         self.log.error('(auto fancy_error2  ) ' + text)

@@ -97,7 +97,7 @@ def main(source='AUTO', noquit=False):
         upgrade = Upgrade()
 
         if args.debug:
-            DS.debugout(nochange=True)
+            DS.debugmode(nochange=True)
             DS.log.info('*** PKGBUILDer v{}'.format(__version__))
             DS.log.debug('*** debug output on.')
 

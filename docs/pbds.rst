@@ -19,35 +19,42 @@ PBDS
 This is the class used for storing data.  Currently, it stores this
 information:
 
-+-----------+-----------------------------------------------+-------------------+
-| variable  | contents/usage                                | default           |
-+===========+===============================================+===================+
-| colors    | colors currently used in the script           | [colors]_         |
-+-----------+-----------------------------------------------+-------------------+
-| pacman    | using wrapper-friendly behavior? [pacman]_    | False             |
-+-----------+-----------------------------------------------+-------------------+
-| validate  | validating package installation?              | True              |
-+-----------+-----------------------------------------------+-------------------+
-| depcheck  | checking if deps are installed?               | True              |
-+-----------+-----------------------------------------------+-------------------+
-| mkpkginst | if makepkg should install packages            | True              |
-+-----------+-----------------------------------------------+-------------------+
-| protocol  | protocol used to connect to the AUR           | http              |
-+-----------+-----------------------------------------------+-------------------+
-| categories| AUR categories list                           | [categories]_     |
-+-----------+-----------------------------------------------+-------------------+
-| inttext   | text shown while interrupting (^C)            | [inttext]_        |
-+-----------+-----------------------------------------------+-------------------+
-| confdir   | configuration directory                       | [confdir]_        |
-+-----------+-----------------------------------------------+-------------------+
-| log       | logger object (eg. PBDS.log.info)             | logger object     |
-+-----------+-----------------------------------------------+-------------------+
++-----------+-----------------------------------------------+---------------+
+| variable  | contents/usage                                | default       |
++===========+===============================================+===============+
+| colors    | colors currently used in the script           | [colors]_     |
++-----------+-----------------------------------------------+---------------+
+| mp        | message prefix (enabled by :func:`debugout`)  | ''            |
++-----------+-----------------------------------------------+---------------+
+| pacman    | using wrapper-friendly behavior? [pacman]_    | False         |
++-----------+-----------------------------------------------+---------------+
+| validate  | validating package installation?              | True          |
++-----------+-----------------------------------------------+---------------+
+| depcheck  | checking if deps are installed?               | True          |
++-----------+-----------------------------------------------+---------------+
+| mkpkginst | if makepkg should install packages            | True          |
++-----------+-----------------------------------------------+---------------+
+| protocol  | protocol used to connect to the AUR           | http          |
++-----------+-----------------------------------------------+---------------+
+| categories| AUR categories list                           | [categories]_ |
++-----------+-----------------------------------------------+---------------+
+| inttext   | text shown while interrupting (^C)            | [inttext]_    |
++-----------+-----------------------------------------------+---------------+
+| confhome  | configuration home                            | [conf]_       |
++-----------+-----------------------------------------------+---------------+
+| kwdir     | directory used by all projects by yours truly | [conf]_       |
++-----------+-----------------------------------------------+---------------+
+| confdir   | configuration directory                       | [conf]_       |
++-----------+-----------------------------------------------+---------------+
+| log       | logger object (eg. PBDS.log.info)             | logger object |
++-----------+-----------------------------------------------+---------------+
 
 .. [colors] Code below.
 
 ::
 
-    self.colors = {
+
+    colors = {
         'all_off':    '\x1b[1;0m',
         'bold':       '\x1b[1;1m',
         'blue':       '\x1b[1;1m\x1b[1;34m',
@@ -59,23 +66,26 @@ information:
 .. [pacman] *wrapper-friendly behavior* (-S): building in /tmp;
     :meth:`Utils.print_package` says aur/name
 
-.. [categories] The categories come from `aurweb <https://aur.archlinux.org>`_, and are as follows:
+.. [categories] The categories come from `aurweb <https://aur.archlinux.org>`_,
+    and are as follows:
 
 ::
 
-    self.categories = ['ERROR', 'none', 'daemons', 'devel', 'editors',
-                       'emulators', 'games', 'gnome', 'i18n', 'kde',
-                       'lib', 'modules', 'multimedia', 'network',
-                       'office', 'science', 'system', 'x11',
-                       'xfce', 'kernels']
+    categories = ['ERROR', 'none', 'daemons', 'devel', 'editors',
+                  'emulators', 'games', 'gnome', 'i18n', 'kde',
+                  'lib', 'modules', 'multimedia', 'network',
+                  'office', 'science', 'system', 'x11',
+                  'xfce', 'kernels']
 
-.. [inttext] Used by /scripts/pkgbuilder, internationalized, looks like this: ``[ERR5001] Aborted by user! Exiting…``
+.. [inttext] Used by /scripts/pkgbuilder, internationalized, looks like this:
+    ``Aborted by user! Quitting...``
 
-.. [confdir] Config directory.  Usually ``~/.config/kwpolska/pkgbuilder``
+.. [conf] In order: ``~/.config/``, ``~/.config/kwpolska``,
+    ``~/.config/kwpolska/pkgbuilder`` (may differ depending on system config)
 
 It also has a few methods:
 
-.. method:: debugout(nochange)
+.. method:: debugmode(nochange)
 
 .. versionadded:: 2.1.4.0
 
