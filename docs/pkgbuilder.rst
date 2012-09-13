@@ -4,7 +4,7 @@ PKGBUILDer
 
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: See Appendix B.
-:Date: 2012-09-09
+:Date: 2012-09-13
 :Version: 2.1.4.3
 :Manual section: 8
 :Manual group: PKGBUILDer manual
@@ -55,6 +55,11 @@ OPTIONS
 **-d, --nodepcheck**
     Skips dependency checks.  It may (and, most likely, will)
     break makepkg.
+
+**-D, --downgrade**
+    Downgrades packages while running **-u/--sysupgrade**.
+    WARNING: Please check the comments for all the packages
+    you want to downgrade!
 
 **-v, --novalidation**
     Skips package installation validation phase (checking

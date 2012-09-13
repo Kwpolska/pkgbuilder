@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.1.4.3\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-09-09 13:05+0200\n"
+"POT-Creation-Date: 2012-09-13 16:42+0200\n"
 "PO-Revision-Date: 2012-09-08 12:44+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
@@ -168,52 +168,56 @@ msgid "don't check dependencies (may break makepkg)"
 msgstr "nie sprawdza zależności (może popsuć makepkg)"
 
 #: pkgbuilder/main.py:60
+msgid "downgrade AUR packages (-u/--sysupgrade)"
+msgstr "zdezaktualizuj pakiety z AUR (-u/--sysupgrade)"
+
+#: pkgbuilder/main.py:63
 msgid "don't check if packages were installed after build"
 msgstr "nie sprawdza czy pakiety zostały zainstalowane po zbudowaniu"
 
-#: pkgbuilder/main.py:63
+#: pkgbuilder/main.py:66
 msgid "don't install packages after building"
 msgstr "nie instaluje pakietów po zbudowaniu"
 
-#: pkgbuilder/main.py:67
+#: pkgbuilder/main.py:70
 msgid "PROTOCOL"
 msgstr "PROTOKÓŁ"
 
-#: pkgbuilder/main.py:67
+#: pkgbuilder/main.py:70
 msgid "choose protocol (default: http)"
 msgstr "wybiera protokół (domyślnie: http)"
 
-#: pkgbuilder/main.py:70
+#: pkgbuilder/main.py:73
 msgid "pacman-like mode"
 msgstr "tryb podobny do pacmana"
 
-#: pkgbuilder/main.py:72
+#: pkgbuilder/main.py:75
 msgid "(dummy)"
 msgstr "(dummy)"
 
-#: pkgbuilder/main.py:74
+#: pkgbuilder/main.py:77
 msgid "view package information"
 msgstr "wyświetla informację o pakiecie"
 
-#: pkgbuilder/main.py:76
+#: pkgbuilder/main.py:79
 msgid "search the AUR for matching strings"
 msgstr "przeszukuje AUR według pasujących ciągów"
 
-#: pkgbuilder/main.py:80
+#: pkgbuilder/main.py:83
 msgid "upgrade installed AUR packages"
 msgstr "uaktualnia zainstalowane pakiety z AUR"
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
-#: pkgbuilder/main.py:120
+#: pkgbuilder/main.py:123
 msgid "Search query too short, API limitation"
 msgstr "zapytanie do wyszukiwarki zbyt krótkie, limitacja API"
 
-#: pkgbuilder/main.py:121
+#: pkgbuilder/main.py:124
 msgid "Searching for exact match..."
 msgstr "Szukanie dokładnego dopasowania..."
 
-#: pkgbuilder/main.py:124 INSTALL.py:65 INSTALL.py:74 INSTALL.py:83
+#: pkgbuilder/main.py:127 INSTALL.py:65 INSTALL.py:74 INSTALL.py:83
 msgid "not found"
 msgstr "nie znaleziono"
 
@@ -230,6 +234,7 @@ msgid "Cannot create the configuration directory."
 msgstr "Nie można utworzyć katalogu konfiguracji."
 
 #: pkgbuilder/pbds.py:72 pkgbuilder/pbds.py:178 pkgbuilder/pbds.py:192
+#: pkgbuilder/upgrade.py:110
 msgid "WARNING:"
 msgstr "UWAGA:"
 
@@ -237,27 +242,35 @@ msgstr "UWAGA:"
 msgid "Logs will not be created."
 msgstr "Logi nie będą tworzone."
 
-#: pkgbuilder/upgrade.py:94 pkgbuilder/upgrade.py:96
+#: pkgbuilder/upgrade.py:98 pkgbuilder/upgrade.py:100
 msgid "Gathering data about packages..."
 msgstr "Zbieranie informacji o pakietach..."
 
-#: pkgbuilder/upgrade.py:103
-msgid "Targets ({}): "
-msgstr "Cele ({}):"
+#: pkgbuilder/upgrade.py:110 pkgbuilder/upgrade.py:116
+msgid "{} downgradeable packages found:"
+msgstr "Znaleziono {} pakietów w nowszej wersji, niż w AUR:"
 
-#: pkgbuilder/upgrade.py:105
-msgid "{} upgradeable packages found:"
-msgstr "Znaleziono {} pakietów do aktualizacji:"
+#: pkgbuilder/upgrade.py:113 pkgbuilder/upgrade.py:120
+msgid ""
+"Run with -D to downgrade, and please check the AUR comments for those "
+"packages!"
+msgstr ""
+"Uruchom z -D, żeby zdezaktualizować, ale najpierw sprawdź komentarze w AUR "
+"dla tych pakietów!"
 
-#: pkgbuilder/upgrade.py:110
-msgid " there is nothing to do"
-msgstr " nie ma nic do zrobienia"
+#: pkgbuilder/upgrade.py:127 pkgbuilder/upgrade.py:129
+msgid "Downgrading: adding to Targets list..."
+msgstr "Downgrade: dodwanie do listy Celów..."
 
-#: pkgbuilder/upgrade.py:112
+#: pkgbuilder/upgrade.py:138 pkgbuilder/upgrade.py:140
 msgid "there is nothing to do"
 msgstr "nie ma nic do zrobienia"
 
-#: pkgbuilder/upgrade.py:117 pkgbuilder/upgrade.py:121
+#: pkgbuilder/upgrade.py:146 pkgbuilder/upgrade.py:148
+msgid "Targets ({}): "
+msgstr "Cele ({}):"
+
+#: pkgbuilder/upgrade.py:152 pkgbuilder/upgrade.py:156
 msgid "Proceed with installation? [Y/n] "
 msgstr "Kontynuować instalację? [Y/n] "
 
@@ -319,21 +332,21 @@ msgstr "tak"
 msgid "no"
 msgstr "nie"
 
-#: pkgbuilder/wrapper.py:86
+#: pkgbuilder/wrapper.py:88
 #, python-format
 msgid "%(prog)s <operation> [...]"
 msgstr "%(prog)s <operacja> [...]"
 
 #. TRANSLATORS: see pacman’s localizations
-#: pkgbuilder/wrapper.py:235
+#: pkgbuilder/wrapper.py:237
 msgid "usage: {} <operation> [...]"
 msgstr "sposób użycia: {} <operation> [...]"
 
-#: pkgbuilder/wrapper.py:237
+#: pkgbuilder/wrapper.py:239
 msgid "{}, a wrapper for pacman and PKGBUILDer."
 msgstr "{}, wrapper dla pacmana i PKGBUILDera."
 
-#: pkgbuilder/wrapper.py:239
+#: pkgbuilder/wrapper.py:241
 msgid ""
 "Pacman and PKGBUILDer syntaxes apply.  Consult their manpages/help commands "
 "for details."
@@ -473,3 +486,6 @@ msgstr "argumenty opcjonalne"
 #: localeprovider.py:2
 msgid "show this help message and exit"
 msgstr "pokaż tą wiadomość i wyjdź"
+
+#~ msgid " there is nothing to do"
+#~ msgstr " nie ma nic do zrobienia"

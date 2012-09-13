@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PBWrapper v0.1.0
+# PBWrapper v0.1.1
 # PKGBUILDer v2.1.4.3
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
@@ -29,7 +29,7 @@ import sys
 import os
 import subprocess
 
-__wrapperversion__ = '0.1.0'
+__wrapperversion__ = '0.1.1'
 
 ### wrapper()       A wrapper for pacman/PB ###
 
@@ -68,7 +68,9 @@ def wrapper(source='AUTO'):
         pacmanlonga = ['arch', 'cachedir', 'config', 'dbpath', 'gpgdir',
                        'ignore', 'ignoregroup', 'logfile',
                        'print-format', 'root']
-        pblong = ['nocolors', 'nodepcheck', 'novalidation', 'buildonly']
+        pbshort = ['D']
+        pblong = ['downgrade', 'nocolors', 'nodepcheck', 'novalidation',
+                  'buildonly']
         pbshorta = ['P']
         pblonga = ['protocol']
         commonshort = ['S', 'c', 'd', 'i', 's', 'u', 'v', 'w', 'y']
@@ -76,11 +78,11 @@ def wrapper(source='AUTO'):
                       'sync', 'sysupgrade']
 
         allpacman = pacmanshort + pacmanlong + pacmanshorta + pacmanlonga
-        allpb = pblong + pbshorta + pblonga
+        allpb = pbshort + pblong + pbshorta + pblonga
         allcommon = commonshort + commonlong
         allcmd = allpacman + allpb + allcommon
 
-        allshort = pacmanshort + commonshort
+        allshort = pacmanshort + pbshort + commonshort
         alllong = pacmanlong + pblong + commonlong
 
         parser = argparse.ArgumentParser(add_help=False, usage=_('%(prog)s'
