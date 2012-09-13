@@ -55,8 +55,8 @@ class Upgrade:
 
         return foreign
 
-    def list_upgradeable(self, pkglist):
-        """Compares package versions and returns upgradeable ones.
+    def list_upgradable(self, pkglist):
+        """Compares package versions and returns upgradable ones.
 
 :Arguments: a package list.
 :Input:
@@ -64,7 +64,7 @@ class Upgrade:
 
     suggestion: self.gather_foreign_pkgs().keys()
 :Output: none.
-:Returns: [upgradeable packages, downgradeable packages].
+:Returns: [upgradable packages, downgradable packages].
 :Exceptions: none.
 :Message codes: none."""
 
@@ -72,17 +72,17 @@ class Upgrade:
         # It's THAT easy.  Oh, and by the way: it is much, MUCH faster
         # than others.  It makes ONE multiinfo request rather than
         # len(installed_packages) info requests.
-        upgradeable = []
-        downgradeable = []
+        upgradable = []
+        downgradable = []
 
         for i in aurlist:
             pkg = self.localdb.get_pkg(i['Name'])
             vc = pyalpm.vercmp(i['Version'], pkg.version)
             if vc > 0:
-                upgradeable.append(i['Name'])
+                upgradable.append(i['Name'])
             elif vc < 0:
-                downgradeable.append(i['Name'])
-        return [upgradeable, downgradeable]
+                downgradable.append(i['Name'])
+        return [upgradable, downgradable]
 
     def auto_upgrade(self, downgrade=False):
         """Upgrades packages.  Simillar to Build.auto_build().
@@ -100,22 +100,22 @@ class Upgrade:
             DS.fancy_msg(_('Gathering data about packages...'))
 
         foreign = self.gather_foreign_pkgs()
-        gradeable = self.list_upgradeable(foreign.keys())
-        upgradeable = gradeable[0]
-        downgradeable = gradeable[1]
-        upglen = len(upgradeable)
-        downlen = len(downgradeable)
+        gradeable = self.list_upgradable(foreign.keys())
+        upgradable = gradeable[0]
+        downgradable = gradeable[1]
+        upglen = len(upgradable)
+        downlen = len(downgradable)
         if downlen > 0:
             if DS.pacman:
-                print(_('WARNING:') + ' ' + _('{} downgradeable packages'
+                print(_('WARNING:') + ' ' + _('{} downgradable packages'
                       ' found:').format(downlen))
-                print('  '.join(downgradeable))
+                print('  '.join(downgradable))
                 print(_('Run with -D to downgrade, and please check'
                         ' the AUR comments for those packages!'))
             else:
-                DS.fancy_warning(_('{} downgradeable packages found:'
+                DS.fancy_warning(_('{} downgradable packages found:'
                                   ).format(downlen))
-                DS.fancy_warning2('  '.join(downgradeable))
+                DS.fancy_warning2('  '.join(downgradable))
 
                 DS.fancy_msg(_('Run with -D to downgrade, and please check'
                                 ' the AUR comments for those packages!'))
@@ -130,8 +130,8 @@ class Upgrade:
 
                 upglen = upglen + downlen
 
-                for i in downgradeable:
-                    upgradeable.append(i)
+                for i in downgradable:
+                    upgradable.append(i)
 
         if upglen == 0 and downlen == 0:
             if DS.pacman:
@@ -148,10 +148,10 @@ class Upgrade:
                 DS.fancy_msg(_('Targets ({}): ').format(upglen))
 
         if DS.pacman:
-            print('  '.join(upgradeable))
+            print('  '.join(upgradable))
             query = _('Proceed with installation? [Y/n] ')
         else:
-            DS.fancy_msg2('  '.join(upgradeable))
+            DS.fancy_msg2('  '.join(upgradable))
             query = (DS.colors['green'] + '==>' + DS.colors['all_off'] +
                      DS.colors['bold'] + ' ' + _('Proceed with '
                      'installation? [Y/n] ') + DS.colors['all_off'])
@@ -160,7 +160,7 @@ class Upgrade:
         yesno = yesno + ' '  # cheating...
         if yesno[0] == 'n' or yesno[0] == 'N':
             return 0
-        for pkgname in upgradeable:
+        for pkgname in upgradable:
             DS.log.info('Building {}'.format(pkgname))
             self.build.auto_build(pkgname, DS.validate, DS.depcheck,
                                   DS.mkpginst)

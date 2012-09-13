@@ -243,7 +243,7 @@ msgid "Gathering data about packages..."
 msgstr ""
 
 #: pkgbuilder/upgrade.py:110 pkgbuilder/upgrade.py:116
-msgid "{} downgradeable packages found:"
+msgid "{} downgradable packages found:"
 msgstr ""
 
 #: pkgbuilder/upgrade.py:113 pkgbuilder/upgrade.py:120

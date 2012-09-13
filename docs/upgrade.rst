@@ -45,7 +45,9 @@ Upgrades packages.  Simillar to :meth:`Build.auto_build()`.
 
 Gathers a list of all foreign packages.
 
-.. method:: list_upgradeable(pkglist)
+.. method:: list_upgradable(pkglist)
+
+.. versionchanged:: 2.1.4.4
 
 :Arguments: a package list.
 :Input:
@@ -53,8 +55,8 @@ Gathers a list of all foreign packages.
 
     suggestion: self.gather_foreign_pkgs().keys()
 :Output: none.
-:Returns: upgradeable packages.
+:Returns: upgradable packages.
 :Exceptions: none.
 :Message codes: none.
 
-Compares package versions and returns upgradeable ones.
+Compares package versions and returns upgradable ones.
