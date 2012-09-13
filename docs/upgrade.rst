@@ -4,7 +4,7 @@ upgrade module (Upgrade class)
 
 :Author: Kwpolska
 :Copyright: See Appendix B.
-:Date: 2012-09-09
+:Date: 2012-09-13
 :Version: 2.1.4.3
 
 .. module:: upgrade
@@ -21,10 +21,10 @@ Upgrade
 This is the class for upgrading the installed packages.  It defines one base
 method and two additional ones.
 
-.. method:: auto_upgrade()
+.. method:: auto_upgrade(downgrade)
 .. index:: upgrade
 
-:Arguments: none.
+:Arguments: allow downgrade.
 :Input: user interaction.
 :Output: text.
 :Returns: 0 or nothing.

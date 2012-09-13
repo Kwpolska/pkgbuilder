@@ -56,6 +56,9 @@ def main(source='AUTO', noquit=False):
         argopt.add_argument('-d', '--nodepcheck', action='store_false',
                             default=True, dest='depcheck', help=_('don\'t '
                             'check dependencies (may break makepkg)'))
+        argopt.add_argument('-D', '--downgrade', action='store_true',
+                            default=False, dest='downgrade', help=_('downgrade '
+                            'AUR packages (-u/--sysupgrade)'))
         argopt.add_argument('-v', '--novalidation', action='store_false',
                             default=True, dest='valid', help=_('don\'t check '
                             'if packages were installed after build'))
@@ -160,7 +163,7 @@ def main(source='AUTO', noquit=False):
 
     if args.upgrade:
         DS.log.info('Starting upgrade...')
-        upgrade.auto_upgrade()
+        upgrade.auto_upgrade(args.downgrade)
         if not noquit:
             exit(0)
 

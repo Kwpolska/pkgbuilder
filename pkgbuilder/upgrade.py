@@ -64,7 +64,7 @@ class Upgrade:
 
     suggestion: self.gather_foreign_pkgs().keys()
 :Output: none.
-:Returns: upgradeable packages.
+:Returns: [upgradeable packages, downgradeable packages].
 :Exceptions: none.
 :Message codes: none."""
 
@@ -73,17 +73,21 @@ class Upgrade:
         # than others.  It makes ONE multiinfo request rather than
         # len(installed_packages) info requests.
         upgradeable = []
+        downgradeable = []
 
         for i in aurlist:
             pkg = self.localdb.get_pkg(i['Name'])
-            if pyalpm.vercmp(i['Version'], pkg.version) > 0:
+            vc = pyalpm.vercmp(i['Version'], pkg.version)
+            if vc > 0:
                 upgradeable.append(i['Name'])
-        return upgradeable
+            elif vc < 0:
+                downgradeable.append(i['Name'])
+        return [upgradeable, downgradeable]
 
-    def auto_upgrade(self):
+    def auto_upgrade(self, downgrade=False):
         """Upgrades packages.  Simillar to Build.auto_build().
 
-:Arguments: none.
+:Arguments: allow downgrade.
 :Input: user interaction.
 :Output: text.
 :Returns: 0 or nothing.
@@ -96,22 +100,53 @@ class Upgrade:
             DS.fancy_msg(_('Gathering data about packages...'))
 
         foreign = self.gather_foreign_pkgs()
-        upgradeable = self.list_upgradeable(foreign.keys())
+        gradeable = self.list_upgradeable(foreign.keys())
+        upgradeable = gradeable[0]
+        downgradeable = gradeable[1]
         upglen = len(upgradeable)
-        if upglen > 0:
+        downlen = len(downgradeable)
+        if downlen > 0:
             if DS.pacman:
-                print(_('Targets ({}): ').format(upglen), end='')
+                print(_('WARNING:') + ' ' + _('{} downgradeable packages'
+                      ' found:').format(downlen))
+                print('  '.join(downgradeable))
+                print(_('Run with -D to downgrade, and please check'
+                        ' the AUR comments for those packages!'))
             else:
-                DS.fancy_msg(_('{} upgradeable packages found:').format(
-                    upglen))
+                DS.fancy_warning(_('{} downgradeable packages found:'
+                                  ).format(downlen))
+                DS.fancy_warning2('  '.join(downgradeable))
 
-        if upglen == 0:
+                DS.fancy_msg(_('Run with -D to downgrade, and please check'
+                                ' the AUR comments for those packages!'))
+
+            print()
+
+            if downgrade:
+                if DS.pacman:
+                    print(_('Downgrading: adding to Targets list...'))
+                else:
+                    DS.fancy_msg(_('Downgrading: adding to Targets list...'))
+
+                upglen = upglen + downlen
+
+                for i in downgradeable:
+                    upgradeable.append(i)
+
+        if upglen == 0 and downlen == 0:
             if DS.pacman:
-                print(_(' there is nothing to do'))
+                print(' ' + _('there is nothing to do'))
             else:
                 DS.fancy_msg2(_('there is nothing to do'))
 
             return 0
+
+        if upglen > 0:
+            if DS.pacman:
+                print(_('Targets ({}): ').format(upglen), end='')
+            else:
+                DS.fancy_msg(_('Targets ({}): ').format(upglen))
+
         if DS.pacman:
             print('  '.join(upgradeable))
             query = _('Proceed with installation? [Y/n] ')
