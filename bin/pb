@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
 """Run PBWrapper: A pacman/PKGBUILDer wrapper, part of PKGBUILDer."""
+import sys
+if sys.version_info[0] < 3:
+    print('ERROR: RUNNING PY2K INSTEAD OF PY3K.')
+    print('If you replaced /usr/bin/python with python2, you are an idiot.')
+    print('Please revert that change.')
+    exit(1)
+
 import pkgbuilder.wrapper
 try:
     pkgbuilder.wrapper.wrapper()
