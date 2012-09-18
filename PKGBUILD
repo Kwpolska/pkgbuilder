@@ -13,7 +13,7 @@ md5sums=('c7fd5d0e48beaa074899fa0d5172add3')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  python3 setup.py install --root="${pkgdir}/" --optimize=1
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
