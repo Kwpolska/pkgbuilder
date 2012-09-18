@@ -22,7 +22,7 @@ other scripts.
 For standalone use, see the :doc:`PKGBUILDer man page <pkgbuilder>`.
 Reading the :doc:`README <README>` is also a good idea.
 
-For the PBWrapper (``pb``), see the `PBWrapper man page <pb>`.
+For the PBWrapper (``pb``), see the :doc:`PBWrapper man page <pb>`.
 
 For developers using PKGBUILDer as a Python module, see the respective class
 documents.
@@ -45,6 +45,7 @@ Table of Contents
    localization
    LICENSE
    CHANGELOG
+   CONTRIBUTING
 
 Indices and tables
 ------------------
