@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.3
+# PKGBUILDer v2.1.4.4
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -37,17 +37,11 @@ class Build:
 
     def auto_build(self, pkgname, validate=True, performdepcheck=True,
                    makepkginstall=True):
-        """NOT the actual build function.
-This function makes validation and building AUR deps possible.
-If you can, use it.
-
-:Arguments: package name, validate installation, perform dependency checks.
-:Input: none.
-:Output: text.
-:Returns: nothing.
-:Exceptions: PBError.
-:Former data:
-    2.0 Name: build."""
+        """
+        NOT the actual build function.
+        This function makes validation and building AUR deps possible.
+        If you can, use it.
+        """
         build_result = self.build_runner(pkgname, performdepcheck,
                                          makepkginstall)
         os.chdir('../')
@@ -95,15 +89,7 @@ If you can, use it.
             DS.fancy_error(str(inst))
 
     def download(self, urlpath, filename, prot='http'):
-        """Downloads an AUR tarball (http) to the current directory.
-
-:Arguments: URL, filename for saving, protocol.
-:Input: none.
-:Output: none.
-:Returns: bytes downloaded.
-:Exceptions:
-    PBError, IOError, requests.exceptions.*
-:Message codes: ERR3101, ERR3102."""
+        """Downloads an AUR tarball (http) to the current directory."""
         r = requests.get(self.aururl.format(prot, urlpath))
 
         # Error handling.
@@ -119,14 +105,7 @@ If you can, use it.
         return r.headers['content-length']
 
     def extract(self, filename):
-        """Extracts an AUR tarball.
-
-:Arguments: filename.
-:Input: none.
-:Output: none.
-:Returns: file count.
-:Exceptions: PBError, IOError.
-:Message codes: ERR3151."""
+        """Extracts an AUR tarball."""
         thandle = tarfile.open(filename, 'r:gz')
         thandle.extractall()
         names = thandle.getnames()
@@ -137,18 +116,7 @@ If you can, use it.
             raise PBError(_('extract: no files extracted'))
 
     def prepare_deps(self, pkgbuild):
-        """Gets (make)depends from a PKGBUILD and returns them.
-
-:Arguments: PKGBUILD location.
-:Input: none.
-:Output: none.
-:Returns:
-    a list with entries from PKGBUILD's depends and makedepends
-    (can be empty.)
-:Exceptions: IOError.
-:Message codes: none.
-:Former data:
-    2.1.3.7 Arguments: PKGBUILD contents (!)"""
+        """Gets (make)depends from a PKGBUILD and returns them."""
         # I decided to use Popen instead of pyparsing magic.  Less deps
         # for PB itself and no problems if makedepends are before depends
         # in the file.  (eg. python-gitdb)
@@ -166,18 +134,7 @@ If you can, use it.
         return deps
 
     def depcheck(self, depends):
-        """Performs a dependency check.
-
-:Arguments: a python dependency list.
-:Input: none.
-:Output: none.
-:Returns:
-    a dict, key is the package name, and value is: -1 = nowhere, 0 = system,
-    1 = repos, 2 = AUR.
-:Exceptions: PBError.
-:Message codes: ERR3201.
-:Former data:
-    2.0 Returns: no -1"""
+        """Performs a dependency check."""
         if depends == []:
             # THANK YOU, MAINTAINER, FOR HAVING NO DEPS AND DESTROYING ME!
             return {}
@@ -213,21 +170,10 @@ If you can, use it.
 
     def build_runner(self, pkgname, performdepcheck=True,
                      makepkginstall=True):
-        """A build function, which actually links to others.  Do not use it
-unless you re-implement auto_build.
-
-:Arguments: pkgname, perform dependency checks.
-:Input: none.
-:Output: text.
-:Returns: ::
-    [makepkg's/auto_build's retcode OR 72337 if an AUR dep is needed,
-        [AUR deps or retcode source]]
-:Exceptions: PBError.
-:Message codes: ERR3001, ERR3201, ERR3202.
-:Former data:
-    2.0 Behavior: all functions inside
-
-    2.0 Name: buildSub"""
+        """
+        A build function, which actually links to others.  Do not use it
+        unless you re-implement auto_build.
+        """
         try:
             # exists
             pkg = self.utils.info(pkgname)

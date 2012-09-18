@@ -4,8 +4,8 @@ pbds module (PBDS class)
 
 :Author: Kwpolska
 :Copyright: See Appendix B.
-:Date: 2012-09-13
-:Version: 2.1.4.3
+:Date: 2012-09-18
+:Version: 2.1.4.4
 
 .. module: pbds
 
@@ -89,49 +89,21 @@ It also has a few methods:
 
 .. versionadded:: 2.1.4.0
 
-:Arguments: make no changes if not necessary.
-:Input: none.
-:Output: none.
-:Returns: nothing.
-:Exceptions: none.
-:Message codes: none.
-
 Print all the logged messages to stderr.
 
 .. method:: colorson()
-
-:Arguments: none.
-:Input: none.
-:Output: none.
-:Returns: nothing.
-:Exceptions: none.
-:Message codes: none.
 
 Turns colors on.
 
 .. method:: colorsoff()
 
-:Arguments: none.
-:Input: none.
-:Output: none.
-:Returns: nothing.
-:Exceptions: none.
-:Message codes: none.
-
 Turns colors off.
 
-.. method:: fancy_msg()
-.. method:: fancy_msg2()
-.. method:: fancy_warning()
-.. method:: fancy_warning2()
-.. method:: fancy_error()
-.. method:: fancy_error2()
-
-:Arguments: a message to show.
-:Input: none.
-:Output: the message.
-:Returns: nothing.
-:Exceptions: none.
-:Message codes: none, although messages may contain some.
+.. method:: fancy_msg(msg)
+.. method:: fancy_msg2(msg)
+.. method:: fancy_warning(msg)
+.. method:: fancy_warning2(msg)
+.. method:: fancy_error(msg)
+.. method:: fancy_error2(msg)
 
 ``makepkg``’s message functions with PKGBUILDer’s own additions.  Use for displaying messages.

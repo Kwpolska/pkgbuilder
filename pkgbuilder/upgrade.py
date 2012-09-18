@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.3
+# PKGBUILDer v2.1.4.4
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -21,6 +21,7 @@ from .aur import AUR
 from .build import Build
 import pyalpm
 import pycman
+import datetime
 
 
 ### Upgrade     upgrade AUR packages        ###
@@ -33,15 +34,7 @@ class Upgrade:
     localdb = H.get_localdb()
 
     def gather_foreign_pkgs(self):
-        """Gathers a list of all foreign packages.
-
-:Arguments: none.
-:Input: none.
-:Output: none.
-:Returns: foreign packages.
-:Exceptions: none.
-:Message codes: none."""
-
+        """Gathers a list of all foreign packages."""
         # Based on paconky.py.
         installed = set(p for p in self.localdb.pkgcache)
 
@@ -56,18 +49,7 @@ class Upgrade:
         return foreign
 
     def list_upgradable(self, pkglist):
-        """Compares package versions and returns upgradable ones.
-
-:Arguments: a package list.
-:Input:
-    a list of packages to be compared.
-
-    suggestion: self.gather_foreign_pkgs().keys()
-:Output: none.
-:Returns: [upgradable packages, downgradable packages].
-:Exceptions: none.
-:Message codes: none."""
-
+        """Compares package versions and returns upgradable ones."""
         aurlist = self.aur.multiinfo(pkglist, DS.protocol)['results']
         # It's THAT easy.  Oh, and by the way: it is much, MUCH faster
         # than others.  It makes ONE multiinfo request rather than
@@ -79,20 +61,39 @@ class Upgrade:
             pkg = self.localdb.get_pkg(i['Name'])
             vc = pyalpm.vercmp(i['Version'], pkg.version)
             if vc > 0:
-                upgradable.append(i['Name'])
+                upgradable.append([i['Name'], pkg.version, i['Version']])
             elif vc < 0:
-                downgradable.append(i['Name'])
+                # If the package version is a date or the name ends in
+                # -{git,hg,bzr,svn,cvs,darcs}, do not mark it as downgradable.
+                # BTW: the above is yours truly’s list of VCS preference, if
+                # you added a gap between git and hg and then HUGE gaps between
+                # everything else.
+
+                try:
+                    # For epoch packages.  Also, cheating here.
+                    v = i['Version'].split(':')[1]
+                except IndexError:
+                    v = i['Version']
+
+                try:
+                    d = datetime.datetime.strptime(v.split('-')[0], '%Y%m%d')
+                    datever = True
+                except:
+                    datever = False
+
+                if (i['Name'].endswith(('git', 'hg', 'bzr', 'svn', 'cvs',
+                                        'darcs'))):
+                    DS.log.warning('{} is -[vcs], ignored for '
+                                   'downgrade.'.format(i['Name']))
+                elif datever:
+                    DS.log.warning('{} version is a date, ignored for '
+                                   'downgrade.'.format(i['Name']))
+                else:
+                    downgradable.append([i['Name'], pkg.version, i['Version']])
         return [upgradable, downgradable]
 
     def auto_upgrade(self, downgrade=False):
-        """Upgrades packages.  Simillar to Build.auto_build().
-
-:Arguments: allow downgrade.
-:Input: user interaction.
-:Output: text.
-:Returns: 0 or nothing.
-:Exceptions: none.
-:Message codes: none."""
+        """Upgrades packages.  Simillar to Build.auto_build()."""
         DS.log.info('Ran auto_upgrade.')
         if DS.pacman:
             print(':: ' + _('Gathering data about packages...'))
@@ -105,22 +106,15 @@ class Upgrade:
         downgradable = gradeable[1]
         upglen = len(upgradable)
         downlen = len(downgradable)
+
         if downlen > 0:
-            if DS.pacman:
-                print(_('WARNING:') + ' ' + _('{} downgradable packages'
-                      ' found:').format(downlen))
-                print('  '.join(downgradable))
-                print(_('Run with -D to downgrade, and please check'
-                        ' the AUR comments for those packages!'))
-            else:
-                DS.fancy_warning(_('{} downgradable packages found:'
-                                  ).format(downlen))
-                DS.fancy_warning2('  '.join(downgradable))
-
-                DS.fancy_msg(_('Run with -D to downgrade, and please check'
-                                ' the AUR comments for those packages!'))
-
-            print()
+            for i in downgradable:
+                if DS.pacman:
+                    print(_('{}: local ({}) is newer than aur ({})').format(
+                          i[0], i[1], i[2]))
+                else:
+                    DS.fancy_warning(_('{}: local ({}) is newer than aur '
+                                     '({})').format(i[0], i[1], i[2]))
 
             if downgrade:
                 if DS.pacman:
@@ -129,11 +123,9 @@ class Upgrade:
                     DS.fancy_msg(_('Downgrading: adding to Targets list...'))
 
                 upglen = upglen + downlen
+                upgradable = upgradable + downgradable
 
-                for i in downgradable:
-                    upgradable.append(i)
-
-        if upglen == 0 and downlen == 0:
+        if upglen == 0:
             if DS.pacman:
                 print(' ' + _('there is nothing to do'))
             else:
@@ -141,26 +133,24 @@ class Upgrade:
 
             return 0
 
+        upgnames = [i[0] for i in upgradable]
+
         if upglen > 0:
             if DS.pacman:
                 print(_('Targets ({}): ').format(upglen), end='')
+                print('  '.join(upgnames))
+                query = _('Proceed with installation? [Y/n] ')
             else:
                 DS.fancy_msg(_('Targets ({}): ').format(upglen))
+                DS.fancy_msg2('  '.join(upgnames))
+                query = (DS.colors['green'] + '==>' + DS.colors['all_off'] +
+                         DS.colors['bold'] + ' ' + _('Proceed with '
+                         'installation? [Y/n] ') + DS.colors['all_off'])
 
-        if DS.pacman:
-            print('  '.join(upgradable))
-            query = _('Proceed with installation? [Y/n] ')
-        else:
-            DS.fancy_msg2('  '.join(upgradable))
-            query = (DS.colors['green'] + '==>' + DS.colors['all_off'] +
-                     DS.colors['bold'] + ' ' + _('Proceed with '
-                     'installation? [Y/n] ') + DS.colors['all_off'])
-
-        yesno = input(query)
-        yesno = yesno + ' '  # cheating...
-        if yesno[0] == 'n' or yesno[0] == 'N':
-            return 0
-        for pkgname in upgradable:
-            DS.log.info('Building {}'.format(pkgname))
-            self.build.auto_build(pkgname, DS.validate, DS.depcheck,
-                                  DS.mkpginst)
+            yesno = input(query)
+            if yesno.lower().startswith('n'):
+                return 0
+            for pkgname in upgnames:
+                DS.log.info('Building {}'.format(pkgname))
+                self.build.auto_build(pkgname, DS.validate, DS.depcheck,
+                                      DS.mkpginst)

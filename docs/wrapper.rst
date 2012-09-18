@@ -3,8 +3,8 @@ PBWrapper
 =========
 :Author: Kwpolska
 :Copyright: See Appendix B.
-:Date: 2012-09-13
-:Version: 2.1.4.3
+:Date: 2012-09-18
+:Version: 2.1.4.4
 :PBWrapper Version: 0.1.1
 
 .. index:: wrapper

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.3
+# PKGBUILDer v2.1.4.4
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -29,14 +29,7 @@ class AUR:
     mrpc = '{}://aur.archlinux.org/rpc.php?type=multiinfo{}'
 
     def jsonreq(self, rtype, arg, prot='http'):
-        """Makes a request and returns plain JSON data.
-
-:Arguments: request type, argument (package name), protocol.
-:Input: none.
-:Output: none.
-:Returns: JSON data from the API.
-:Exceptions: requests.exceptions.*, PBError.
-:Message codes: ERR1001."""
+        """Makes a request and returns plain JSON data."""
         req = requests.get(self.rpc.format(prot, rtype, arg))
         if req.status_code != 200:
             raise PBError(_('AUR: HTTP Error {}').format(
@@ -45,14 +38,7 @@ class AUR:
         return req.text
 
     def jsonmultiinfo(self, args, prot='http'):
-        """Makes a multiinfo request and returns plain JSON data.
-
-:Arguments: a list of packages, protocol.
-:Input: none.
-:Output: none.
-:Returns: JSON data from the API.
-:Exceptions: requests.exceptions.*, PBError.
-:Message codes: ERR1001."""
+        """Makes a multiinfo request and returns plain JSON data."""
         urlargs = '&arg[]=' + '&arg[]='.join(args)
         req = requests.get(self.mrpc.format(prot, urlargs))
         if req.status_code != 200:
@@ -62,24 +48,9 @@ class AUR:
         return req.text
 
     def request(self, rtype, arg, prot='http'):
-        """Makes a request.
-
-:Arguments: request type, argument (package name), protocol.
-:Input: none.
-:Output: none.
-:Returns: data from the API.
-:Exceptions: requests.exceptions.*, PBError.
-:Message codes: ERR1001."""
+        """Makes a request."""
         return json.loads(self.jsonreq(rtype, arg, prot))
 
     def multiinfo(self, args, prot='http'):
-        """Makes a multiinfo request.
-
-:Arguments: a list of packages, protocol.
-:Input: none.
-:Output: none.
-:Returns: data from the API.
-:Exceptions: requests.exceptions.*, PBError.
-:Message codes: ERR1001."""
-
+        """Makes a multiinfo request."""
         return json.loads(self.jsonmultiinfo(args, prot))
