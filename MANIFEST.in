@@ -6,5 +6,5 @@ include PKGBUILD
 include PKGBUILD-git
 recursive-include docs *
 recursive-include bin *
-recursive-include pkgbuilder *
+recursive-include pkgbuilder *.py
 recursive-include locale *.mo

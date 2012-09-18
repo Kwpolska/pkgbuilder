@@ -26,6 +26,7 @@ sed "s/:Date: .*/:Date: $date/g" docs/*.rst -i
 
 cp docs/README.rst README.rst
 cp docs/README.rst README
+cp docs/CONTRIBUTING.rst CONTRIBUTING.rst
 
 rm docs/pkgbuilder.8.gz | true
 rst2man docs/pkgbuilder.rst > docs/pkgbuilder.8
