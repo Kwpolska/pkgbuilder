@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.3
+# PKGBUILDer v2.1.4.4
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # All rights reserved.
@@ -44,7 +44,7 @@
 """
 
 __title__ = 'PKGBUILDer'
-__version__ = '2.1.4.3'
+__version__ = '2.1.4.4'
 __author__ = 'Kwpolska'
 __license__ = '3-clause BSD'
 __docformat__ = 'restructuredtext en'
@@ -60,14 +60,7 @@ class PBError(Exception):
     """Exceptions raised by the PKGBUILDer."""
 
     def __init__(self, msg):
-        """PBError init.
-
-:Arguments: a message.
-:Input: none.
-:Output: none.
-:Returns: nothing.
-:Exceptions: none.
-:Message codes: none."""
+        """PBError init."""
         DS.log.error('(auto PBError       ) ' + msg)
         self.msg = msg
 

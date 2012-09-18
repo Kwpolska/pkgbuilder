@@ -4,15 +4,15 @@ PKGBUILDer
 
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: See Appendix B.
-:Date: 2012-09-13
-:Version: 2.1.4.3
+:Date: 2012-09-18
+:Version: 2.1.4.4
 :Manual section: 8
 :Manual group: PKGBUILDer manual
 
 SYNOPSIS
 ========
 
-*pkgbuilder* [-hVcdvwSy] [-P PROTOCOL] [-isu] [PACKAGE [PACKAGE ...]]
+*pkgbuilder* [-hVcdDvwSy] [-P PROTOCOL] [-isu] [PACKAGE [PACKAGE ...]]
 
 DESCRIPTION
 ===========

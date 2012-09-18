@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.3
+# PKGBUILDer v2.1.4.4
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -32,20 +32,7 @@ class Utils:
     aur = AUR()
 
     def info(self, pkgname):
-        """Returns info about a package.
-
-:Arguments: package name.
-:Input: none.
-:Output: none.
-:Returns: a dict with package data OR None.
-:Exceptions: none.
-:Message codes: none.
-:Former data:
-    2.1.2.1 Returns: a dict OR False.
-
-    2.0 Returns: aur_pkgs, list->dict, not null.
-
-    2.0 Behavior: exception and quit when not found."""
+        """Returns info about a package."""
         aur_pkgs = self.aur.request('info', pkgname, DS.protocol)
         if aur_pkgs['results'] == 'No results found':
             return None
@@ -53,14 +40,7 @@ class Utils:
             return aur_pkgs['results']
 
     def search(self, pkgname):
-        """Searches for AUR packages.
-
-:Arguments: package name.
-:Input: none.
-:Output: none.
-:Returns: a list of packages.
-:Exceptions: none.
-:Message codes: none."""
+        """Searches for AUR packages."""
         aur_pkgs = self.aur.request('search', pkgname, DS.protocol)
         if aur_pkgs['results'] == 'No results found':
             return []
@@ -69,29 +49,10 @@ class Utils:
 
     def print_package_search(self, pkg, use_categories=True,
                              cachemode=False, prefix='', prefixp=''):
-        """Outputs/returns a package representation similar to ``pacman -Ss``.
-
-:Arguments: package object, use categories, cache mode,
-    line prefix, line prefix in plain form (no colors etc.)
-:Input: none.
-:Output: (with cache mode off, otherwise nothing)
-
-    ::
-    prefix category/name version (num votes) [installed: version] [out of date]
-    prefix     description
-
-:Returns: (with cache mode on, otherwise nothing)
-
-    ::
-    prefix category/name version (num votes) [installed: version] [out of date]
-    prefix     description
-
-:Exceptions: none.
-:Message codes: none.
-:Former data:
-    2.1.3.0 Name: print_package.
-    2.0 Name: showInfo.
-"""
+        """
+        Outputs/returns a package representation, which is close to the output
+        of ``pacman -Ss``.
+        """
         size = os.popen('stty size', 'r')
         termwidth = int(size.read().split()[1])
         size.close()
@@ -132,17 +93,10 @@ class Utils:
             print(entry)
 
     def print_package_info(self, pkg, cachemode=False, force_utc=False):
-        """Outputs/returns a package representation similar to ``pacman -Si``.
-
-:Arguments: package object, cache mode, force UTC.
-:Input: none.
-:Output: with cache mode off, package info, otherwise nothing.
-:Returns: with cache mode on, package info, otherwise nothing.
-:Exceptions: none.
-:Message codes: none.
-:Former data:
-    2.1.3.0 Location: .main.main() (inaccessible to 3rd parties)
-"""
+        """
+        Outputs/returns a package representation, which is close to the output
+        of ``pacman -Si``.
+        """
         if pkg is None:
             raise PBError(_('Package not found.'))
         else:

@@ -4,8 +4,8 @@ upgrade module (Upgrade class)
 
 :Author: Kwpolska
 :Copyright: See Appendix B.
-:Date: 2012-09-13
-:Version: 2.1.4.3
+:Date: 2012-09-18
+:Version: 2.1.4.4
 
 .. module:: upgrade
 
@@ -24,24 +24,10 @@ method and two additional ones.
 .. method:: auto_upgrade(downgrade)
 .. index:: upgrade
 
-:Arguments: allow downgrade.
-:Input: user interaction.
-:Output: text.
-:Returns: 0 or nothing.
-:Exceptions: none.
-:Message codes: none.
-
 Upgrades packages.  Simillar to :meth:`Build.auto_build()`.
 
 .. method:: gather_foreign_packages()
 .. index:: foreign packages
-
-:Arguments: none.
-:Input: none.
-:Output: none.
-:Returns: foreign packages.
-:Exceptions: none.
-:Message codes: none.
 
 Gathers a list of all foreign packages.
 
@@ -49,14 +35,4 @@ Gathers a list of all foreign packages.
 
 .. versionchanged:: 2.1.4.4
 
-:Arguments: a package list.
-:Input:
-    a list of packages to be compared.
-
-    suggestion: self.gather_foreign_pkgs().keys()
-:Output: none.
-:Returns: upgradable packages.
-:Exceptions: none.
-:Message codes: none.
-
-Compares package versions and returns upgradable ones.
+Compares package versions and returns upgradable and downgradable ones. ones.

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.3
+# PKGBUILDer v2.1.4.4
 # An AUR helper (and library) in Python 3.
 # Copyright (C) 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -82,14 +82,7 @@ class PBDS():
     log.info('*** PKGBUILDer v' + __version__)
 
     def debugmode(self, nochange=False):
-        """Print all the logged messages to stderr.
-
-:Arguments: make no changes if not necessary.
-:Input: none.
-:Output: none.
-:Returns: nothing.
-:Exceptions: none.
-:Message codes: none."""
+        """Print all the logged messages to stderr."""
         if not self.debug:
             self.console = logging.StreamHandler()
             self.console.setLevel(logging.DEBUG)
@@ -106,14 +99,7 @@ class PBDS():
             self.mp = ''
 
     def colorson(self):
-        """Colors on.
-
-:Arguments: none.
-:Input: none.
-:Output: none.
-:Returns: nothing.
-:Exceptions: none.
-:Message codes: none."""
+        """Colors on."""
         self.colors = {
             'all_off':    '\x1b[1;0m',
             'bold':       '\x1b[1;1m',
@@ -124,14 +110,7 @@ class PBDS():
         }
 
     def colorsoff(self):
-        """Colors off.
-
-:Arguments: none.
-:Input: none.
-:Output: none.
-:Returns: nothing.
-:Exceptions: none.
-:Message codes: none."""
+        """Colors off."""
         self.colors = {
             'all_off':    '',
             'bold':       '',
@@ -142,14 +121,7 @@ class PBDS():
         }
 
     def fancy_msg(self, text):
-        """makepkg's msg().  Use for main messages.
-
-    :Arguments: a message to show.
-    :Input: none.
-    :Output: the message.
-    :Returns: nothing.
-    :Exceptions: none.
-    :Message codes: none, although messages may contain some."""
+        """makepkg's msg().  Use for main messages."""
         sys.stderr.write(self.mp + self.colors['green'] + '==>' +
                          self.colors['all_off'] +
                          self.colors['bold'] + ' ' + text +
@@ -157,14 +129,7 @@ class PBDS():
         self.log.info('(auto fancy_msg     ) ' + text)
 
     def fancy_msg2(self, text):
-        """makepkg's msg2().  Use for sub-messages.
-
-    :Arguments: a message to show.
-    :Input: none.
-    :Output: the message.
-    :Returns: nothing.
-    :Exceptions: none.
-    :Message codes: none, although messages may contain some."""
+        """makepkg's msg2().  Use for sub-messages."""
         sys.stderr.write(self.mp + self.colors['blue'] + '  ->' +
                          self.colors['all_off'] +
                          self.colors['bold'] + ' ' + text +
@@ -172,14 +137,7 @@ class PBDS():
         self.log.info('(auto fancy_msg2    ) ' + text)
 
     def fancy_warning(self, text):
-        """makepkg's warning().  Use when you have problems.
-
-    :Arguments: a message to show.
-    :Input: none.
-    :Output: the message.
-    :Returns: nothing.
-    :Exceptions: none.
-    :Message codes: none, although messages may contain some."""
+        """makepkg's warning().  Use when you have problems."""
         sys.stderr.write(self.mp + self.colors['yellow'] + '==> ' +
                          _('WARNING:') + self.colors['all_off'] +
                          self.colors['bold'] + ' ' + text +
@@ -187,42 +145,21 @@ class PBDS():
         self.log.warning('(auto fancy_warning ) ' + text)
 
     def fancy_warning2(self, text):
-        """Like fancy_warning, but looks like a sub-message (fancy_msg2).
-
-    :Arguments: a message to show.
-    :Input: none.
-    :Output: the message.
-    :Returns: nothing.
-    :Exceptions: none.
-    :Message codes: none, although messages may contain some."""
+        """Like fancy_warning, but looks like a sub-message (fancy_msg2)."""
         sys.stderr.write(self.mp + self.colors['yellow'] + '  ->' +
                          self.colors['all_off'] + self.colors['bold'] + ' ' +
                          text + self.colors['all_off'] + '\n')
         self.log.warning('(auto fancy_warning2) ' + text)
 
     def fancy_error(self, text):
-        """makepkg's error().  Use for errors.  Exitting is suggested.
-
-    :Arguments: a message to show.
-    :Input: none.
-    :Output: the message.
-    :Returns: nothing.
-    :Exceptions: none.
-    :Message codes: none, although messages may contain some."""
+        """makepkg's error().  Use for errors.  Quitting is suggested."""
         sys.stderr.write(self.mp + self.colors['red'] + '==> ' + _('ERROR:') +
                          self.colors['all_off'] + self.colors['bold'] + ' ' +
                          text + self.colors['all_off'] + '\n')
         self.log.error('(auto fancy_error   ) ' + text)
 
     def fancy_error2(self, text):
-        """Like fancy_error, but looks like a sub-message (fancy_msg2).
-
-    :Arguments: a message to show.
-    :Input: none.
-    :Output: the message.
-    :Returns: nothing.
-    :Exceptions: none.
-    :Message codes: none, although messages may contain some."""
+        """Like fancy_error, but looks like a sub-message (fancy_msg2)."""
         sys.stderr.write(self.mp + self.colors['red'] + '  ->' +
                          self.colors['all_off'] + self.colors['bold'] + ' ' +
                          text + self.colors['all_off'] + '\n')

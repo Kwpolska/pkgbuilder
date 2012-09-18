@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.4.3\n"
+"Project-Id-Version: 2.1.4.4\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-09-13 16:42+0200\n"
+"POT-Creation-Date: 2012-09-18 17:50+0200\n"
 "PO-Revision-Date: 2012-09-08 12:44+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
@@ -16,41 +16,41 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pkgbuilder/aur.py:42 pkgbuilder/aur.py:59
+#: pkgbuilder/aur.py:35 pkgbuilder/aur.py:45
 msgid "AUR: HTTP Error {}"
 msgstr "AUR: Błąd HTTP {}"
 
-#: pkgbuilder/build.py:56
+#: pkgbuilder/build.py:50
 msgid "The build function reported a proper build."
 msgstr "Funkcja budowania paczek powiadomiła o prawidłowym zbudowaniu."
 
-#: pkgbuilder/build.py:64
+#: pkgbuilder/build.py:58
 msgid "validation: NOT installed"
 msgstr "walidacja: NIE zainstalowano"
 
-#: pkgbuilder/build.py:67
+#: pkgbuilder/build.py:61
 msgid "validation: outdated {}"
 msgstr "walidacja: nieaktualny {}"
 
-#: pkgbuilder/build.py:70
+#: pkgbuilder/build.py:64
 msgid "validation: installed {}"
 msgstr "walidacja: zainstalowany {}"
 
 #. PBxxx.
-#: pkgbuilder/build.py:73
+#: pkgbuilder/build.py:67
 msgid "makepkg (or someone else) failed and returned {}."
 msgstr ""
 "tworzenie pakietu przez makepkg (lub coś innego) nie powiodło się i zwróciło "
 "{}."
 
 #. PBSUX.
-#: pkgbuilder/build.py:77
+#: pkgbuilder/build.py:71
 msgid "PKGBUILDer had a problem."
 msgstr "PKGBUILDer miał problem."
 
 #. PBREQ.
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/build.py:81
+#: pkgbuilder/build.py:75
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
@@ -59,73 +59,73 @@ msgstr ""
 "HTTP."
 
 #. I/O error.
-#: pkgbuilder/build.py:85
+#: pkgbuilder/build.py:79
 msgid "There was an input/output error."
 msgstr "Wystąpił błąd wejścia/wyjścia."
 
 #. PBDEP.
-#: pkgbuilder/build.py:88
+#: pkgbuilder/build.py:82
 msgid "Building more AUR packages is required."
 msgstr "Należy zainstalować więcej pakietów z AUR."
 
-#: pkgbuilder/build.py:111
+#: pkgbuilder/build.py:97
 msgid "download: HTTP Error {}"
 msgstr "download: Błąd HTTP {}"
 
-#: pkgbuilder/build.py:114
+#: pkgbuilder/build.py:100
 msgid "download: 0 bytes downloaded"
 msgstr "download: pobrano 0 bajtów"
 
-#: pkgbuilder/build.py:137
+#: pkgbuilder/build.py:116
 msgid "extract: no files extracted"
 msgstr "extract: wypakowano 0 plików"
 
-#: pkgbuilder/build.py:210
+#: pkgbuilder/build.py:167
 msgid "depcheck: cannot find {} anywhere"
 msgstr "depcheck: nie można nigdzie znaleźć pakietu {}"
 
-#: pkgbuilder/build.py:235
+#: pkgbuilder/build.py:181
 msgid "Package {} not found."
 msgstr "Nie znaleziono pakietu {}."
 
-#: pkgbuilder/build.py:237
+#: pkgbuilder/build.py:183
 msgid "Building {}..."
 msgstr "Budowanie {}..."
 
 #. Okay, this package exists, great then.  Thanks, user.
-#: pkgbuilder/build.py:246
+#: pkgbuilder/build.py:192
 msgid "Downloading the tarball..."
 msgstr "Pobieranie tarballa..."
 
-#: pkgbuilder/build.py:249
+#: pkgbuilder/build.py:195
 msgid "{} kB downloaded"
 msgstr "pobrano {} kB"
 
-#: pkgbuilder/build.py:251
+#: pkgbuilder/build.py:197
 msgid "Extracting..."
 msgstr "Wypakowywanie..."
 
-#: pkgbuilder/build.py:252
+#: pkgbuilder/build.py:198
 msgid "{} files extracted"
 msgstr "wypakowano {} plików"
 
-#: pkgbuilder/build.py:257
+#: pkgbuilder/build.py:203
 msgid "Checking dependencies..."
 msgstr "Sprawdzanie zależności..."
 
-#: pkgbuilder/build.py:260
+#: pkgbuilder/build.py:206
 msgid "found in system"
 msgstr "znaleziono w systemie"
 
-#: pkgbuilder/build.py:260
+#: pkgbuilder/build.py:206
 msgid "found in repos"
 msgstr "znaleziono w repozytoriach"
 
-#: pkgbuilder/build.py:261
+#: pkgbuilder/build.py:207
 msgid "found in the AUR"
 msgstr "znaleziono w AUR"
 
-#: pkgbuilder/build.py:264
+#: pkgbuilder/build.py:210
 msgid "none found"
 msgstr "brak"
 
@@ -221,82 +221,73 @@ msgstr "Szukanie dokładnego dopasowania..."
 msgid "not found"
 msgstr "nie znaleziono"
 
-#: pkgbuilder/pbds.py:50
+#: pkgbuilder/pbds.py:53
 msgid "Aborted by user! Quitting..."
 msgstr "Przerwane przez użytkownika! Kończenie..."
 
-#: pkgbuilder/pbds.py:70 pkgbuilder/pbds.py:206
+#: pkgbuilder/pbds.py:73 pkgbuilder/pbds.py:156
 msgid "ERROR:"
 msgstr "BŁĄD:"
 
-#: pkgbuilder/pbds.py:70
+#: pkgbuilder/pbds.py:73
 msgid "Cannot create the configuration directory."
 msgstr "Nie można utworzyć katalogu konfiguracji."
 
-#: pkgbuilder/pbds.py:72 pkgbuilder/pbds.py:178 pkgbuilder/pbds.py:192
-#: pkgbuilder/upgrade.py:110
+#: pkgbuilder/pbds.py:75 pkgbuilder/pbds.py:142
 msgid "WARNING:"
 msgstr "UWAGA:"
 
-#: pkgbuilder/pbds.py:72
+#: pkgbuilder/pbds.py:75
 msgid "Logs will not be created."
 msgstr "Logi nie będą tworzone."
 
-#: pkgbuilder/upgrade.py:98 pkgbuilder/upgrade.py:100
+#: pkgbuilder/upgrade.py:99 pkgbuilder/upgrade.py:101
 msgid "Gathering data about packages..."
 msgstr "Zbieranie informacji o pakietach..."
 
-#: pkgbuilder/upgrade.py:110 pkgbuilder/upgrade.py:116
-msgid "{} downgradable packages found:"
-msgstr "Znaleziono {} pakietów w nowszej wersji, niż w AUR:"
+#: pkgbuilder/upgrade.py:113 pkgbuilder/upgrade.py:116
+msgid "{}: local ({}) is newer than aur ({})"
+msgstr "{}: local ({}) jest nowsze niż aur ({})"
 
-#: pkgbuilder/upgrade.py:113 pkgbuilder/upgrade.py:120
-msgid ""
-"Run with -D to downgrade, and please check the AUR comments for those "
-"packages!"
-msgstr ""
-"Uruchom z -D, żeby zdezaktualizować, ale najpierw sprawdź komentarze w AUR "
-"dla tych pakietów!"
-
-#: pkgbuilder/upgrade.py:127 pkgbuilder/upgrade.py:129
+#: pkgbuilder/upgrade.py:121 pkgbuilder/upgrade.py:123
 msgid "Downgrading: adding to Targets list..."
 msgstr "Downgrade: dodwanie do listy Celów..."
 
-#: pkgbuilder/upgrade.py:138 pkgbuilder/upgrade.py:140
+#: pkgbuilder/upgrade.py:130 pkgbuilder/upgrade.py:132
 msgid "there is nothing to do"
 msgstr "nie ma nic do zrobienia"
 
-#: pkgbuilder/upgrade.py:146 pkgbuilder/upgrade.py:148
+#: pkgbuilder/upgrade.py:140 pkgbuilder/upgrade.py:144
 msgid "Targets ({}): "
 msgstr "Cele ({}):"
 
-#: pkgbuilder/upgrade.py:152 pkgbuilder/upgrade.py:156
+#: pkgbuilder/upgrade.py:142 pkgbuilder/upgrade.py:147
 msgid "Proceed with installation? [Y/n] "
 msgstr "Kontynuować instalację? [Y/n] "
 
-#: pkgbuilder/utils.py:107
+#: pkgbuilder/utils.py:68
 msgid " [installed: {}]"
 msgstr " [zainstalowano: {}]"
 
-#: pkgbuilder/utils.py:109
+#: pkgbuilder/utils.py:70
 msgid " [installed]"
 msgstr " [zainstalowano]"
 
-#: pkgbuilder/utils.py:112
+#: pkgbuilder/utils.py:73
 msgid "[out of date]"
 msgstr "[nieaktualny]"
 
-#: pkgbuilder/utils.py:124
+#: pkgbuilder/utils.py:85
 msgid "votes"
 msgstr "głosów"
 
-#: pkgbuilder/utils.py:147
+#: pkgbuilder/utils.py:101
 msgid "Package not found."
 msgstr "Nie znaleziono pakietu."
 
 #. TRANSLATORS: space it properly.  `yes/no' below are
 #. for `out of date'.
-#: pkgbuilder/utils.py:192
+#: pkgbuilder/utils.py:146
 msgid ""
 "Repository     : aur\n"
 "Category       : {cat}\n"
@@ -324,11 +315,11 @@ msgstr ""
 "Ost. aktualiz. : {upd}\n"
 "Opis           : {dsc}\n"
 
-#: pkgbuilder/utils.py:210
+#: pkgbuilder/utils.py:164
 msgid "yes"
 msgstr "tak"
 
-#: pkgbuilder/utils.py:211
+#: pkgbuilder/utils.py:165
 msgid "no"
 msgstr "nie"
 
@@ -486,6 +477,3 @@ msgstr "argumenty opcjonalne"
 #: localeprovider.py:2
 msgid "show this help message and exit"
 msgstr "pokaż tą wiadomość i wyjdź"
-
-#~ msgid " there is nothing to do"
-#~ msgstr " nie ma nic do zrobienia"
