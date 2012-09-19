@@ -42,6 +42,7 @@ Table of Contents
    pbds
    upgrade
    utils
+   wrapper
    localization
    LICENSE
    CHANGELOG
