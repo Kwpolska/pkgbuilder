@@ -56,9 +56,6 @@ def main(source='AUTO', noquit=False):
         argopt.add_argument('-d', '--nodepcheck', action='store_false',
                             default=True, dest='depcheck', help=_('don\'t '
                             'check dependencies (may break makepkg)'))
-        argopt.add_argument('-D', '--downgrade', action='store_true',
-                            default=False, dest='downgrade', help=_('downgrade '
-                            'AUR packages (-u/--sysupgrade)'))
         argopt.add_argument('-v', '--novalidation', action='store_false',
                             default=True, dest='valid', help=_('don\'t check '
                             'if packages were installed after build'))
@@ -78,7 +75,7 @@ def main(source='AUTO', noquit=False):
         argopr.add_argument('-s', '--search', action='store_true',
                             default=False, dest='search', help=_('search the '
                             'AUR for matching strings'))
-        argopr.add_argument('-u', '--sysupgrade', action='store_true',
+        argopr.add_argument('-u', '--sysupgrade', action='count',
                             default=False, dest='upgrade',
                             help=_('upgrade installed AUR packages'))
 
@@ -161,9 +158,14 @@ def main(source='AUTO', noquit=False):
         DS.fancy_error(str(inst))
         exit(0)
 
-    if args.upgrade:
+    if args.upgrade > 0:
         DS.log.info('Starting upgrade...')
-        upgrade.auto_upgrade(args.downgrade)
+        if args.upgrade > 1:
+            dodowngrade = True
+        else:
+            dodowngrade = False
+
+        upgrade.auto_upgrade(dodowngrade)
         if not noquit:
             exit(0)
 
