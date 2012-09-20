@@ -69,30 +69,39 @@ def wrapper(source='AUTO'):
         # list, and that is a workaround.
         log.debug('Got -S, preparing to parse arguments...')
         pacmanshort = ['f', 'g', 'l', 'p', 'q']
-        pacmanlong = ['asdeps', 'asexplicit', 'clean', 'dbonly',
-                      'downloadonly', 'force', 'groups', 'list',  'needed',
-                      'noconfirm', 'nodeps', 'noprogressbar', 'noscriptlet',
-                      'print', 'quiet', 'verbose']
+        pacmanlong = ['asdeps', 'asexplicit', 'dbonly', 'downloadonly',
+                      'force', 'groups', 'list',  'needed', 'noconfirm',
+                      'nodeps', 'noprogressbar', 'noscriptlet', 'print',
+                      'quiet', 'verbose']
         pacmanshorta = ['b', 'r']
         pacmanlonga = ['arch', 'cachedir', 'config', 'dbpath', 'gpgdir',
-                       'ignore', 'ignoregroup', 'logfile',
-                       'print-format', 'root']
+                       'ignore', 'ignoregroup', 'logfile', 'print-format',
+                       'root']
+        pacmanlongc = ['clean']
+
         pbshort = ['D']
         pblong = ['downgrade', 'nocolors', 'nodepcheck', 'novalidation',
                   'buildonly']
         pbshorta = ['P']
         pblonga = ['protocol']
-        commonshort = ['S', 'c', 'd', 'i', 's', 'u', 'v', 'w', 'y']
-        commonlong = ['debug', 'info', 'refresh', 'search',
-                      'sync', 'sysupgrade']
 
-        allpacman = pacmanshort + pacmanlong + pacmanshorta + pacmanlonga
+        commonshort = ['S', 'd', 'i', 's', 'v', 'w']
+        commonlong = ['debug', 'info', 'search', 'sync']
+        commonshortc = ['c', 'y', 'u']
+        commonlongc = ['refresh', 'sysupgrade']
+
+        allpacman = (pacmanshort + pacmanlong + pacmanshorta + pacmanlonga +
+                     pacmanlongc)
         allpb = pbshort + pblong + pbshorta + pblonga
-        allcommon = commonshort + commonlong
+        allcommon = commonshort + commonlong + commonshortc + commonlongc
         allcmd = allpacman + allpb + allcommon
 
         allshort = pacmanshort + pbshort + commonshort
         alllong = pacmanlong + pblong + commonlong
+
+        allshortc = commonshortc
+        alllongc = commonlongc + pacmanlongc
+        allcountable = allshortc + alllongc
 
         parser = argparse.ArgumentParser(add_help=False, usage=_('%(prog)s'
                                          ' <operation> [...]'),
@@ -109,6 +118,12 @@ def wrapper(source='AUTO'):
         for i in alllong:
             parser.add_argument('--' + i, action='store_true', default=False,
                                 dest=i)
+
+        for i in allshortc:
+            parser.add_argument('-' + i, action='count', dest=i)
+
+        for i in alllongc:
+            parser.add_argument('--' + i, action='count', dest=i)
 
         for i in pacmanshorta:
             parser.add_argument('-' + i, action='store', nargs=1,
@@ -144,7 +159,15 @@ def wrapper(source='AUTO'):
         for i in args.__dict__.items():
             if i[1] is not False:
                 # == This argument has been provided.
-                if i[1]:
+                if i[0] in allcountable:
+                    # == This is a countable argument.
+                    if i[0] in allshortc:
+                        for x in range(i[1]):
+                            execargs.append('-' + i[0])
+                    elif i[0] in alllongc:
+                        for x in range(i[1]):
+                            execargs.append('--' + i[0])
+                elif i[1]:
                     # == This argument doesn't have a value.
                     if i[0] in allshort:
                         execargs.append('-' + i[0])
@@ -152,9 +175,9 @@ def wrapper(source='AUTO'):
                         execargs.append('--' + i[0])
 
         for i in execargs:
-            if i[1:] in allshort:
+            if i[1:] in allshort + allshortc:
                 s = i[1:]
-            elif i[2:] in alllong:
+            elif i[2:] in alllong + alllongc:
                 s = i[2:]
             else:
                 raise PBError('argparse broke')
@@ -177,16 +200,6 @@ def wrapper(source='AUTO'):
                 elif i[0] in pacmanlonga:
                     pacargs.append('--' + i[0])
                     pacargs.append(i[1][0])
-
-
-        # CHEAT!  I need to invent something to do this for long arguments.
-        if re.search('-[a-zA-Z]*yy[a-zA-Z]*', ' '.join(argst)) is not None:
-            pacargs.append('-y')
-        elif re.search('-[a-zA-Z]*uu[a-zA-Z]*', ' '.join(argst)) is not None:
-            pacargs.append('-u')
-            pbargs.append('-u')
-        elif re.search('-[a-zA-Z]*cc[a-zA-Z]*', ' '.join(argst)) is not None:
-            pacargs.append('-c')
 
         pbargs.append('--protocol')
         pbargs.append(args.protocol)
