@@ -2,9 +2,10 @@
 main module
 ===========
 :Author: Kwpolska
-:Copyright: See Appendix B.
-:Date: 2012-09-18
-:Version: 2.1.4.4
+:Copyright: © 2011-2012, Kwpolska.
+:License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
+:Date: 2012-09-20
+:Version: 2.1.4.5
 
 .. index:: main
 .. versionadded:: 2.1.3.0

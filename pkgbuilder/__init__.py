@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.4
+# PKGBUILDer v2.1.4.5
 # An AUR helper (and library) in Python 3.
-# Copyright (C) 2011-2012, Kwpolska.
+# Copyright © 2011-2012, Kwpolska.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -39,12 +39,12 @@
 
     An AUR helper (and library) in Python 3.
 
-    :Copyright: (C) 2011-2012, Kwpolska.
+    :Copyright: © 2011-2012, Kwpolska.
     :License: BSD (see /LICENSE).
 """
 
 __title__ = 'PKGBUILDer'
-__version__ = '2.1.4.4'
+__version__ = '2.1.4.5'
 __author__ = 'Kwpolska'
 __license__ = '3-clause BSD'
 __docformat__ = 'restructuredtext en'
