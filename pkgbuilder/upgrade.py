@@ -36,11 +36,11 @@ class Upgrade:
     def gather_foreign_pkgs(self):
         """Gathers a list of all foreign packages."""
         # Based on paconky.py.
-        installed = set(p for p in self.localdb.pkgcache)
+        installed = [p for p in self.localdb.pkgcache]
 
         syncdbs = self.H.get_syncdbs()
         for sdb in syncdbs:
-            for pkg in list(installed):
+            for pkg in installed:
                 if sdb.get_pkg(pkg.name):
                     installed.remove(pkg)
 
@@ -129,17 +129,19 @@ class Upgrade:
             return 0
 
         upgnames = [i[0] for i in upgradable]
+        upgstrings = [i[0]+'-'+i[2] for i in upgradable]
 
         if upglen > 0:
+            for i in upgradable:
             if DS.pacman:
                 print()
                 print(_('Targets ({}): ').format(upglen), end='')
-                print('  '.join(upgnames))
+                print('  '.join(upgstrings))
                 print()
                 query = _('Proceed with installation? [Y/n] ')
             else:
                 DS.fancy_msg(_('Targets ({}): ').format(upglen))
-                DS.fancy_msg2('  '.join(upgnames))
+                DS.fancy_msg2('  '.join(upgstrings))
                 query = (DS.colors['green'] + '==>' + DS.colors['all_off'] +
                          DS.colors['bold'] + ' ' + _('Proceed with '
                          'installation? [Y/n] ') + DS.colors['all_off'])

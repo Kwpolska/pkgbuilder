@@ -186,6 +186,7 @@ class Build:
                                             '  ->' + DS.colors['all_off'] +
                                             DS.colors['bold'] + ' ',
                                             prefixp='  -> ')
+            print(DS.colors['all_off'], end='')
             filename = pkgname + '.tar.gz'
             # Okay, this package exists, great then.  Thanks, user.
 
