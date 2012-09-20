@@ -36,8 +36,8 @@ class PBDS():
     }
 
     # Message prefix.  Changed by debugmode().
-    mp = ''
-
+    mp1 = '=='
+    mp2 = '  '
     pacman = False
     validate = True
     depcheck = True
@@ -50,7 +50,7 @@ class PBDS():
                   'lib', 'modules', 'multimedia', 'network',
                   'office', 'science', 'system', 'x11',
                   'xfce', 'kernels']
-    inttext = _('Aborted by user! Quitting...')
+    inttext = _('Aborted by user! Exiting...')
 
     # Creating the configuration/log stuff...
     confhome = os.getenv('XDG_CONFIG_HOME')
@@ -90,13 +90,15 @@ class PBDS():
                                       ':%(name)-10s: %(message)s'))
             logging.getLogger('').addHandler(self.console)
             self.debug = True
-            self.mp = 'p'
+            self.mp1 = 'pb'
+            self.mp2 = 'pb'
         elif self.debug and nochange:
             pass
         else:
             logging.getLogger('').removeHandler(self.console)
             self.debug = False
-            self.mp = ''
+            self.mp1 = '=='
+            self.mp2 = '  '
 
     def colorson(self):
         """Colors on."""
@@ -122,7 +124,7 @@ class PBDS():
 
     def fancy_msg(self, text):
         """makepkg's msg().  Use for main messages."""
-        sys.stderr.write(self.mp + self.colors['green'] + '==>' +
+        sys.stderr.write(self.colors['green'] + self.mp1 + '>' +
                          self.colors['all_off'] +
                          self.colors['bold'] + ' ' + text +
                          self.colors['all_off'] + '\n')
@@ -130,7 +132,7 @@ class PBDS():
 
     def fancy_msg2(self, text):
         """makepkg's msg2().  Use for sub-messages."""
-        sys.stderr.write(self.mp + self.colors['blue'] + '  ->' +
+        sys.stderr.write(self.colors['blue'] + self.mp2 + '->' +
                          self.colors['all_off'] +
                          self.colors['bold'] + ' ' + text +
                          self.colors['all_off'] + '\n')
@@ -138,7 +140,7 @@ class PBDS():
 
     def fancy_warning(self, text):
         """makepkg's warning().  Use when you have problems."""
-        sys.stderr.write(self.mp + self.colors['yellow'] + '==> ' +
+        sys.stderr.write(self.colors['yellow'] + self.mp1 + '> ' +
                          _('WARNING:') + self.colors['all_off'] +
                          self.colors['bold'] + ' ' + text +
                          self.colors['all_off'] + '\n')
@@ -146,21 +148,21 @@ class PBDS():
 
     def fancy_warning2(self, text):
         """Like fancy_warning, but looks like a sub-message (fancy_msg2)."""
-        sys.stderr.write(self.mp + self.colors['yellow'] + '  ->' +
+        sys.stderr.write(self.colors['yellow'] + self.mp2 + '->' +
                          self.colors['all_off'] + self.colors['bold'] + ' ' +
                          text + self.colors['all_off'] + '\n')
         self.log.warning('(auto fancy_warning2) ' + text)
 
     def fancy_error(self, text):
         """makepkg's error().  Use for errors.  Quitting is suggested."""
-        sys.stderr.write(self.mp + self.colors['red'] + '==> ' + _('ERROR:') +
+        sys.stderr.write(self.colors['red'] + self.mp1 + '> ' + _('ERROR:') +
                          self.colors['all_off'] + self.colors['bold'] + ' ' +
                          text + self.colors['all_off'] + '\n')
         self.log.error('(auto fancy_error   ) ' + text)
 
     def fancy_error2(self, text):
         """Like fancy_error, but looks like a sub-message (fancy_msg2)."""
-        sys.stderr.write(self.mp + self.colors['red'] + '  ->' +
+        sys.stderr.write(self.colors['red'] + self.mp2 + '->' +
                          self.colors['all_off'] + self.colors['bold'] + ' ' +
                          text + self.colors['all_off'] + '\n')
         self.log.error('(auto fancy_error2  ) ' + text)

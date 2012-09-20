@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.1.4.5\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-09-20 17:43+0200\n"
-"PO-Revision-Date: 2012-09-20 17:43+0200\n"
+"POT-Creation-Date: 2012-09-20 20:06+0200\n"
+"PO-Revision-Date: 2012-09-20 20:06+0200\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language: en\n"
@@ -89,39 +89,39 @@ msgid "Building {}..."
 msgstr ""
 
 #. Okay, this package exists, great then.  Thanks, user.
-#: pkgbuilder/build.py:192
+#: pkgbuilder/build.py:193
 msgid "Downloading the tarball..."
 msgstr ""
 
-#: pkgbuilder/build.py:195
+#: pkgbuilder/build.py:196
 msgid "{} kB downloaded"
 msgstr ""
 
-#: pkgbuilder/build.py:197
+#: pkgbuilder/build.py:198
 msgid "Extracting..."
 msgstr ""
 
-#: pkgbuilder/build.py:198
+#: pkgbuilder/build.py:199
 msgid "{} files extracted"
 msgstr ""
 
-#: pkgbuilder/build.py:203
+#: pkgbuilder/build.py:204
 msgid "Checking dependencies..."
 msgstr ""
 
-#: pkgbuilder/build.py:206
+#: pkgbuilder/build.py:207
 msgid "found in system"
 msgstr ""
 
-#: pkgbuilder/build.py:206
+#: pkgbuilder/build.py:207
 msgid "found in repos"
 msgstr ""
 
-#: pkgbuilder/build.py:207
+#: pkgbuilder/build.py:208
 msgid "found in the AUR"
 msgstr ""
 
-#: pkgbuilder/build.py:210
+#: pkgbuilder/build.py:211
 msgid "none found"
 msgstr ""
 
@@ -214,10 +214,10 @@ msgid "not found"
 msgstr ""
 
 #: pkgbuilder/pbds.py:53
-msgid "Aborted by user! Quitting..."
+msgid "Aborted by user! Exiting..."
 msgstr ""
 
-#: pkgbuilder/pbds.py:73 pkgbuilder/pbds.py:156
+#: pkgbuilder/pbds.py:73 pkgbuilder/pbds.py:158
 msgid "ERROR:"
 msgstr ""
 
@@ -225,7 +225,7 @@ msgstr ""
 msgid "Cannot create the configuration directory."
 msgstr ""
 
-#: pkgbuilder/pbds.py:75 pkgbuilder/pbds.py:142
+#: pkgbuilder/pbds.py:75 pkgbuilder/pbds.py:144
 msgid "WARNING:"
 msgstr ""
 
