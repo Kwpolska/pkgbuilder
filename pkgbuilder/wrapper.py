@@ -184,6 +184,7 @@ def wrapper(source='AUTO'):
             pacargs.append('-y')
         elif re.search('-[a-zA-Z]*uu[a-zA-Z]*', ' '.join(argst)) is not None:
             pacargs.append('-u')
+            pbargs.append('-u')
         elif re.search('-[a-zA-Z]*cc[a-zA-Z]*', ' '.join(argst)) is not None:
             pacargs.append('-c')
 

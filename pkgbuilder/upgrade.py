@@ -117,11 +117,6 @@ class Upgrade:
                                      '({})').format(i[0], i[1], i[2]))
 
             if downgrade:
-                if DS.pacman:
-                    print(_('Downgrading: adding to Targets list...'))
-                else:
-                    DS.fancy_msg(_('Downgrading: adding to Targets list...'))
-
                 upglen = upglen + downlen
                 upgradable = upgradable + downgradable
 
@@ -137,8 +132,10 @@ class Upgrade:
 
         if upglen > 0:
             if DS.pacman:
+                print()
                 print(_('Targets ({}): ').format(upglen), end='')
                 print('  '.join(upgnames))
+                print()
                 query = _('Proceed with installation? [Y/n] ')
             else:
                 DS.fancy_msg(_('Targets ({}): ').format(upglen))

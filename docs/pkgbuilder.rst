@@ -12,7 +12,7 @@ PKGBUILDer
 SYNOPSIS
 ========
 
-*pkgbuilder* [-hVcdDvwSy] [-P PROTOCOL] [-isu] [PACKAGE [PACKAGE ...]]
+*pkgbuilder* [-hVcdvwSy] [-P PROTOCOL] [-isu] [PACKAGE [PACKAGE ...]]
 
 DESCRIPTION
 ===========
@@ -36,7 +36,7 @@ OPERATIONS
 
 **-u, --sysupgrade**
     Checks for package updates in the AUR.  If updates are found,
-    they will be installed if the user says so.
+    they will be installed if the user says so.  Pass twice to downgrade.
 
 Additionally, parameters **-S**, **--sync**, **-y** and **-refresh**
 are accepted for pacman syntax compatibility. **-S**/**--sync**
@@ -55,11 +55,6 @@ OPTIONS
 **-d, --nodepcheck**
     Skips dependency checks.  It may (and, most likely, will)
     break makepkg.
-
-**-D, --downgrade**
-    Downgrades packages while running **-u/--sysupgrade**.
-    WARNING: Please check the comments for all the packages
-    you want to downgrade!
 
 **-v, --novalidation**
     Skips package installation validation phase (checking
