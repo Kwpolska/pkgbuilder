@@ -21,6 +21,8 @@ PKGBUILDer uses the following versioning scheme:
 
 Generation 2
 ============
+:2.1.4.4: The mature release.  yay~~
+:2.1.4.0: ``pb`` wrapper!
 :2.1.3.0: Now divided into modules.
 :2.1.2.33: Bugfix release, final release of 2.1.2 series.
 :2.1.2.32: Test suite introduced.
