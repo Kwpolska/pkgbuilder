@@ -169,6 +169,15 @@ def wrapper(source='AUTO'):
                     pacargs.append('--' + i[0])
                     pacargs.append(i[1][0])
 
+
+        # CHEAT!  I need to invent something to do this for long arguments.
+        if re.search('-[a-zA-Z]*yy[a-zA-Z]*', ' '.join(argst)) is not None:
+            pacargs.append('-y')
+        elif re.search('-[a-zA-Z]*uu[a-zA-Z]*', ' '.join(argst)) is not None:
+            pacargs.append('-u')
+        elif re.search('-[a-zA-Z]*cc[a-zA-Z]*', ' '.join(argst)) is not None:
+            pacargs.append('-c')
+
         pbargs.append('--protocol')
         pbargs.append(args.protocol)
 
