@@ -2,10 +2,12 @@
 PKGBUILDer
 ==========
 
+:Subtitle: An AUR helper for humans.
 :Author: Kwpolska <kwpolska@kwpolska.tk>
-:Copyright: See Appendix B.
-:Date: 2012-09-18
-:Version: 2.1.4.4
+:Copyright: © 2011-2012, Kwpolska.
+:License: BSD (see /LICENSE or Appendix B.)
+:Date: 2012-09-20
+:Version: 2.1.4.5
 :Manual section: 8
 :Manual group: PKGBUILDer manual
 

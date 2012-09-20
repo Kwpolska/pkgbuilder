@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PBWrapper v0.1.1
-# PKGBUILDer v2.1.4.4
+# PBWrapper v0.1.2
+# PKGBUILDer v2.1.4.5
 # An AUR helper (and library) in Python 3.
-# Copyright (C) 2011-2012, Kwpolska.
+# Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
 
 # Names convention: pkg = a package object, pkgname = a package name.
@@ -13,7 +13,7 @@
     ~~~~~~~~~~~~~~~~~~
     A wrapper for pacman and PKGBUILDer.  (PBWrapper/pb)
 
-    :Copyright: (C) 2011-2012, Kwpolska.
+    :Copyright: © 2011-2012, Kwpolska.
     :License: BSD (see /LICENSE).
 """
 
@@ -29,7 +29,7 @@ import sys
 import os
 import subprocess
 
-__wrapperversion__ = '0.1.1'
+__wrapperversion__ = '0.1.2'
 
 ### wrapper()       A wrapper for pacman/PB ###
 

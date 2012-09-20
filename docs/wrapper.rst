@@ -2,10 +2,11 @@
 PBWrapper
 =========
 :Author: Kwpolska
-:Copyright: See Appendix B.
-:Date: 2012-09-18
-:Version: 2.1.4.4
-:PBWrapper Version: 0.1.1
+:Copyright: © 2011-2012, Kwpolska.
+:License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
+:Date: 2012-09-20
+:Version: 2.1.4.5
+:PBWrapper Version: 0.1.2
 
 .. index:: wrapper
 .. index:: PBWrapper

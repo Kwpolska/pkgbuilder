@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.4
+# PKGBUILDer v2.1.4.5
 # An AUR helper (and library) in Python 3.
-# Copyright (C) 2011-2012, Kwpolska.
+# Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
 
 # Names convention: pkg = a package object, pkgname = a package name.
@@ -12,7 +12,7 @@
     ~~~~~~~~~~~~~~~~~~
     Tools for performing upgrades of AUR packages.
 
-    :Copyright: (C) 2011-2012, Kwpolska.
+    :Copyright: © 2011-2012, Kwpolska.
     :License: BSD (see /LICENSE).
 """
 
