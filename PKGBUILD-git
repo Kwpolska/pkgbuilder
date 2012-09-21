@@ -9,6 +9,8 @@ license=('BSD')
 depends=('python' 'pyalpm>=0.5.1-1' 'python-requests')
 makedepends=('git')
 options=(!emptydirs)
+provides=('pkgbuilder')
+conflicts=('pkgbuilder')
 
 _gitroot=git://github.com/Kwpolska/pkgbuilder.git
 _gitname=pkgbuilder
