@@ -13,6 +13,7 @@ rm -rf pkgbuilder.egg-info __pycache__ pkgbuilder/__pycache__ dist build
 
 date=$(date '+%Y-%m-%d')
 datel=$(date '+%Y-%m-%d %H:%M%z')
+datep=$(date '+%Y%m%d')
 
 sed "s/version=.*/version='$version',/g" setup.py -i
 sed "s/release = .*/release = '$version'/g" docs/conf.py -i
@@ -22,6 +23,7 @@ sed "s/# PKG.*/# PKGBUILDer v$version/g" pkgbuilder/*.py -i
 sed "s/__version__ = .*/__version__ = '$version'/g" pkgbuilder/__init__.py -i
 sed "s/pkgver=.*/pkgver=$version/g" PKGBUILD -i
 
+sed "s/pkgver=.*/pkgver=$datep/g" PKGBUILD-git -i
 sed "s/:Date: .*/:Date: $date/g" docs/*.rst -i
 
 cp docs/README.rst README.rst
@@ -121,11 +123,15 @@ read bailout
 md5out=$(md5sum 'dist/'$project'-'$version'.tar.gz'|awk '{print $1}')
 sed "s/md5sums=.*/md5sums=('$md5out')/" PKGBUILD -i
 rm -rf MKPKGBUILD
-mkdir -p MKPKGBUILD/$project
+mkdir -p MKPKGBUILD/$project MKPKGBUILD/$project"-git"
 cp PKGBUILD MKPKGBUILD/$project
+cp PKGBUILD-git MKPKGBUILD/$project"-git/PKGBUILD"
 cd MKPKGBUILD
-tar -czvf pkgbuilder.src.tar.gz pkgbuilder
-burp -u Kwpolska -c system pkgbuilder.src.tar.gz
+tar -czvf $project.src.tar.gz $project
+tar -czvf $project"-git".src.tar.gz $project"-git"
+burp -u Kwpolska -c system $project.src.tar.gz $project"-git".src.tar.gz
+
+
 cd ..
 rm -rf MKPKGBUILD
 
