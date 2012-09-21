@@ -1,5 +1,6 @@
 #!/bin/zsh
 project="pkgbuilder"
+projectc="PKGBUILDer"
 aurcat="system"
 
 version=$1
@@ -9,7 +10,7 @@ if [[ $version = '' ]]; then
     read version
 fi
 
-rm -rf pkgbuilder.egg-info __pycache__ pkgbuilder/__pycache__ dist build
+rm -rf $project.egg-info __pycache__ $project/__pycache__ dist build
 
 date=$(date '+%Y-%m-%d')
 datel=$(date '+%Y-%m-%d %H:%M%z')
@@ -18,9 +19,8 @@ datep=$(date '+%Y%m%d')
 sed "s/version=.*/version='$version',/g" setup.py -i
 sed "s/release = .*/release = '$version'/g" docs/conf.py -i
 sed "s/:Version: .*/:Version: $version/g" docs/*.rst -i
-sed "s/BUILDer .* do/BUILDer $version do/g" docs/index.rst -i
-sed "s/# PKG.*/# PKGBUILDer v$version/g" pkgbuilder/*.py -i
-sed "s/__version__ = .*/__version__ = '$version'/g" pkgbuilder/__init__.py -i
+sed "s/# $projectc v*/# $projectc v$version/g" $project/*.py -i
+sed "s/__version__ = .*/__version__ = '$version'/g" $project/__init__.py -i
 sed "s/pkgver=.*/pkgver=$version/g" PKGBUILD -i
 
 sed "s/pkgver=.*/pkgver=$datep/g" PKGBUILD-git -i
@@ -30,21 +30,21 @@ cp docs/README.rst README.rst
 cp docs/README.rst README
 cp docs/CONTRIBUTING.rst CONTRIBUTING.rst
 
-rm docs/pkgbuilder.8.gz | true
-rst2man docs/pkgbuilder.rst > docs/pkgbuilder.8
-gzip docs/pkgbuilder.8
+rm docs/$project.8.gz | true
+rst2man docs/$project.rst > docs/$project.8
+gzip docs/$project.8
 
 rm docs/pb.8.gz | true
 rst2man docs/pb.rst > docs/pb.8
 gzip docs/pb.8
 
-xgettext -c ./pkgbuilder/*.py INSTALL.py localeprovider.py -o ./messages.pot
+xgettext -c ./$project/*.py INSTALL.py localeprovider.py -o ./messages.pot
 
 sed '1,+17d' ./messages.pot > ./messages.pot.tmp
 
-pot='# PKGBUILDer pot file.
+pot='# '$projectc' pot file.
 # Copyright (C) 2011-2012, Kwpolska.
-# This file is distributed under the same license as the PKGBUILDer package.
+# This file is distributed under the same license as the '$projectc' package.
 # Kwpolska <kwpolska@kwpolska.tk>, 2011-2012.
 #
 msgid ""
@@ -71,7 +71,7 @@ for i in ./locale/*; do
     language=$(basename $i)
 
     podir="./locale/$language/LC_MESSAGES"
-    popath="./locale/$language/LC_MESSAGES/pkgbuilder.po"
+    popath="./locale/$language/LC_MESSAGES/$project.po"
     sed 's/\"Project-Id-Version: .*/\"Project-Id-Version: '$version'\\n\"/' $popath -i
     msgmerge $popath messages.pot -o $popath
     fuzzy=$(cat $popath | grep '#, fuzzy')
@@ -80,12 +80,12 @@ for i in ./locale/*; do
     if [[ $validatesure != 'c' ]]; then
         $EDITOR $popath
     fi
-    msgfmt -o $podir/pkgbuilder.mo $popath
+    msgfmt -o $podir/$project.mo $popath
 done
 
 # pbwrapper help testingpper
 pacman -Sh > /tmp/pbwrapperhelp
-bin/pkgbuilder -h >> /tmp/pbwrapperhelp
+bin/$project -h >> /tmp/pbwrapperhelp
 
 diff -u .pbwrapperhelp /tmp/pbwrapperhelp > /tmp/pbwrapperdiff
 if [[ $? = 1 ]]; then
@@ -103,7 +103,7 @@ if [[ $? = 1 ]]; then
     fi
 fi
 
-python -c 'import pkgbuilder'
+python -c "import $project"
 if [[ $? = 1 ]]; then
     echo "Import failed.  Fix your code or don't come back."
     exit 1
@@ -139,7 +139,7 @@ echo 'Commit message (sans the version?)'
 echo -n '> '
 read commitmsg
 
-rm -rf pkgbuilder.egg-info __pycache__ pkgbuilder/__pycache__
+rm -rf $project.egg-info __pycache__ $project/__pycache__
 
 git add *
 if [[ $2 = '-c' ]]; then
