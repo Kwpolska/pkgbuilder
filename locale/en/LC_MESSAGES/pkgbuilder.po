@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.4.5\n"
+"Project-Id-Version: 2.1.4.6\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-09-20 20:06+0200\n"
+"POT-Creation-Date: 2012-09-21 20:21+0200\n"
 "PO-Revision-Date: 2012-09-08 12:44+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
@@ -235,23 +235,23 @@ msgstr "WARNING:"
 msgid "Logs will not be created."
 msgstr "Logs will not be created."
 
-#: pkgbuilder/upgrade.py:99 pkgbuilder/upgrade.py:101
+#: pkgbuilder/upgrade.py:102 pkgbuilder/upgrade.py:104
 msgid "Gathering data about packages..."
 msgstr "Gathering data about packages..."
 
-#: pkgbuilder/upgrade.py:113 pkgbuilder/upgrade.py:116
+#: pkgbuilder/upgrade.py:116 pkgbuilder/upgrade.py:119
 msgid "{}: local ({}) is newer than aur ({})"
 msgstr "{}: local ({}) is newer than aur ({})"
 
-#: pkgbuilder/upgrade.py:125 pkgbuilder/upgrade.py:127
+#: pkgbuilder/upgrade.py:128 pkgbuilder/upgrade.py:130
 msgid "there is nothing to do"
 msgstr "there is nothing to do"
 
-#: pkgbuilder/upgrade.py:136 pkgbuilder/upgrade.py:141
+#: pkgbuilder/upgrade.py:140 pkgbuilder/upgrade.py:145
 msgid "Targets ({}): "
 msgstr "Targets ({}): "
 
-#: pkgbuilder/upgrade.py:139 pkgbuilder/upgrade.py:144
+#: pkgbuilder/upgrade.py:143 pkgbuilder/upgrade.py:148
 msgid "Proceed with installation? [Y/n] "
 msgstr "Proceed with installation? [Y/n] "
 
