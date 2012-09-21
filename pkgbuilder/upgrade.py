@@ -59,37 +59,40 @@ class Upgrade:
 
         for i in aurlist:
             pkg = self.localdb.get_pkg(i['Name'])
-            vc = pyalpm.vercmp(i['Version'], pkg.version)
-            if vc > 0:
-                upgradable.append([i['Name'], pkg.version, i['Version']])
-            elif vc < 0:
-                # If the package version is a date or the name ends in
-                # -{git,hg,bzr,svn,cvs,darcs}, do not mark it as downgradable.
-                # BTW: the above is yours truly’s list of VCS preference, if
-                # you added a gap between git and hg and then HUGE gaps between
-                # everything else.
+            if pkg is not None:
+                vc = pyalpm.vercmp(i['Version'], pkg.version)
+                if vc > 0:
+                    upgradable.append([i['Name'], pkg.version, i['Version']])
+                elif vc < 0:
+                    # If the package version is a date or the name ends in
+                    # -{git,hg,bzr,svn,cvs,darcs}, do not mark it as
+                    # downgradable.  BTW: the above is yours truly’s list of
+                    # VCS preference, if you added a gap between git and hg and
+                    # then HUGE gaps between everything else.
 
-                try:
-                    # For epoch packages.  Also, cheating here.
-                    v = i['Version'].split(':')[1]
-                except IndexError:
-                    v = i['Version']
+                    try:
+                        # For epoch packages.  Also, cheating here.
+                        v = i['Version'].split(':')[1]
+                    except IndexError:
+                        v = i['Version']
 
-                try:
-                    d = datetime.datetime.strptime(v.split('-')[0], '%Y%m%d')
-                    datever = True
-                except:
-                    datever = False
+                    try:
+                        d = datetime.datetime.strptime(v.split('-')[0],
+                                                       '%Y%m%d')
+                        datever = True
+                    except:
+                        datever = False
 
-                if (i['Name'].endswith(('git', 'hg', 'bzr', 'svn', 'cvs',
-                                        'darcs'))):
-                    DS.log.warning('{} is -[vcs], ignored for '
-                                   'downgrade.'.format(i['Name']))
-                elif datever:
-                    DS.log.warning('{} version is a date, ignored for '
-                                   'downgrade.'.format(i['Name']))
-                else:
-                    downgradable.append([i['Name'], pkg.version, i['Version']])
+                    if (i['Name'].endswith(('git', 'hg', 'bzr', 'svn', 'cvs',
+                                            'darcs'))):
+                        DS.log.warning('{} is -[vcs], ignored for '
+                                       'downgrade.'.format(i['Name']))
+                    elif datever:
+                        DS.log.warning('{} version is a date, ignored for '
+                                       'downgrade.'.format(i['Name']))
+                    else:
+                        downgradable.append([i['Name'], pkg.version,
+                                             i['Version']])
         return [upgradable, downgradable]
 
     def auto_upgrade(self, downgrade=False):
@@ -132,7 +135,6 @@ class Upgrade:
         upgstrings = [i[0]+'-'+i[2] for i in upgradable]
 
         if upglen > 0:
-            for i in upgradable:
             if DS.pacman:
                 print()
                 print(_('Targets ({}): ').format(upglen), end='')
