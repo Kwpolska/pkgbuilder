@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.1.4.6\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-09-22 12:09+0200\n"
+"POT-Creation-Date: 2012-09-22 20:20+0200\n"
 "PO-Revision-Date: 2012-09-08 12:44+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
@@ -20,37 +20,40 @@ msgstr ""
 msgid "AUR: HTTP Error {}"
 msgstr "AUR: Błąd HTTP {}"
 
-#: pkgbuilder/build.py:58
+#: pkgbuilder/build.py:48
+#, fuzzy
+msgid "{}: NOT installed"
+msgstr "walidacja: NIE zainstalowano"
+
+#: pkgbuilder/build.py:51
+#, fuzzy
+msgid "{}: outdated {}"
+msgstr "walidacja: nieaktualny {}"
+
+#: pkgbuilder/build.py:54
+#, fuzzy
+msgid "{}: installed {}"
+msgstr " [zainstalowano: {}]"
+
+#: pkgbuilder/build.py:89
 msgid "The build function reported a proper build."
 msgstr "Funkcja budowania paczek powiadomiła o prawidłowym zbudowaniu."
 
-#: pkgbuilder/build.py:66
-msgid "validation: NOT installed"
-msgstr "walidacja: NIE zainstalowano"
-
-#: pkgbuilder/build.py:69
-msgid "validation: outdated {}"
-msgstr "walidacja: nieaktualny {}"
-
-#: pkgbuilder/build.py:72
-msgid "validation: installed {}"
-msgstr "walidacja: zainstalowany {}"
-
 #. PBxxx.
-#: pkgbuilder/build.py:75
+#: pkgbuilder/build.py:92
 msgid "makepkg (or someone else) failed and returned {}."
 msgstr ""
 "tworzenie pakietu przez makepkg (lub coś innego) nie powiodło się i zwróciło "
 "{}."
 
 #. PBSUX.
-#: pkgbuilder/build.py:79
+#: pkgbuilder/build.py:96
 msgid "PKGBUILDer had a problem."
 msgstr "PKGBUILDer miał problem."
 
 #. PBREQ.
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/build.py:83
+#: pkgbuilder/build.py:100
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
@@ -59,73 +62,73 @@ msgstr ""
 "HTTP."
 
 #. I/O error.
-#: pkgbuilder/build.py:87
+#: pkgbuilder/build.py:104
 msgid "There was an input/output error."
 msgstr "Wystąpił błąd wejścia/wyjścia."
 
 #. PBDEP.
-#: pkgbuilder/build.py:90
+#: pkgbuilder/build.py:107
 msgid "Building more AUR packages is required."
 msgstr "Należy zainstalować więcej pakietów z AUR."
 
-#: pkgbuilder/build.py:111
+#: pkgbuilder/build.py:131
 msgid "download: HTTP Error {}"
 msgstr "download: Błąd HTTP {}"
 
-#: pkgbuilder/build.py:114
+#: pkgbuilder/build.py:134
 msgid "download: 0 bytes downloaded"
 msgstr "download: pobrano 0 bajtów"
 
-#: pkgbuilder/build.py:130
+#: pkgbuilder/build.py:150
 msgid "extract: no files extracted"
 msgstr "extract: wypakowano 0 plików"
 
-#: pkgbuilder/build.py:181
+#: pkgbuilder/build.py:201
 msgid "depcheck: cannot find {} anywhere"
 msgstr "depcheck: nie można nigdzie znaleźć pakietu {}"
 
-#: pkgbuilder/build.py:195
+#: pkgbuilder/build.py:215
 msgid "Package {} not found."
 msgstr "Nie znaleziono pakietu {}."
 
-#: pkgbuilder/build.py:197
+#: pkgbuilder/build.py:217
 msgid "Building {}..."
 msgstr "Budowanie {}..."
 
 #. Okay, this package exists, great then.  Thanks, user.
-#: pkgbuilder/build.py:207
+#: pkgbuilder/build.py:227
 msgid "Downloading the tarball..."
 msgstr "Pobieranie tarballa..."
 
-#: pkgbuilder/build.py:210
+#: pkgbuilder/build.py:230
 msgid "{} kB downloaded"
 msgstr "pobrano {} kB"
 
-#: pkgbuilder/build.py:212
+#: pkgbuilder/build.py:232
 msgid "Extracting..."
 msgstr "Wypakowywanie..."
 
-#: pkgbuilder/build.py:213
+#: pkgbuilder/build.py:233
 msgid "{} files extracted"
 msgstr "wypakowano {} plików"
 
-#: pkgbuilder/build.py:218
+#: pkgbuilder/build.py:238
 msgid "Checking dependencies..."
 msgstr "Sprawdzanie zależności..."
 
-#: pkgbuilder/build.py:221
+#: pkgbuilder/build.py:241
 msgid "found in system"
 msgstr "znaleziono w systemie"
 
-#: pkgbuilder/build.py:221
+#: pkgbuilder/build.py:241
 msgid "found in repos"
 msgstr "znaleziono w repozytoriach"
 
-#: pkgbuilder/build.py:222
+#: pkgbuilder/build.py:242
 msgid "found in the AUR"
 msgstr "znaleziono w AUR"
 
-#: pkgbuilder/build.py:225
+#: pkgbuilder/build.py:245
 msgid "none found"
 msgstr "brak"
 
@@ -319,21 +322,21 @@ msgstr "tak"
 msgid "no"
 msgstr "nie"
 
-#: pkgbuilder/wrapper.py:98
+#: pkgbuilder/wrapper.py:97
 #, python-format
 msgid "%(prog)s <operation> [...]"
 msgstr "%(prog)s <operacja> [...]"
 
 #. TRANSLATORS: see pacman’s localizations
-#: pkgbuilder/wrapper.py:281
+#: pkgbuilder/wrapper.py:280
 msgid "usage: {} <operation> [...]"
 msgstr "sposób użycia: {} <operation> [...]"
 
-#: pkgbuilder/wrapper.py:283
+#: pkgbuilder/wrapper.py:282
 msgid "{}, a wrapper for pacman and PKGBUILDer."
 msgstr "{}, wrapper dla pacmana i PKGBUILDera."
 
-#: pkgbuilder/wrapper.py:285
+#: pkgbuilder/wrapper.py:284
 msgid ""
 "Pacman and PKGBUILDer syntaxes apply.  Consult their manpages/help commands "
 "for details."
@@ -473,3 +476,6 @@ msgstr "argumenty opcjonalne"
 #: localeprovider.py:2
 msgid "show this help message and exit"
 msgstr "pokaż tą wiadomość i wyjdź"
+
+#~ msgid "validation: installed {}"
+#~ msgstr "walidacja: zainstalowany {}"
