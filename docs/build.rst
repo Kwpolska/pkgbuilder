@@ -19,13 +19,19 @@ Build
 This is the class for building packages.  It defines two base methods and
 four additional ones.
 
-.. method:: auto_build(pkgname[, validate][, depcheck])
+.. method:: auto_build(pkgname[, validate][, performdepcheck][, pkginstall])
 .. index:: makepkg; build
 
 This is a function that handles building packages automatically.  This is
 the recommended way of building packages through PKGBUILDer.
 
-.. method:: build_runner(pkgname[, depcheck])
+.. note::
+
+    This function returns a list of packages to install with pacman -U.  Please
+    take care of it.  Running PKGBUILDer/PBWrapper standalone or .main.main()
+    will do that.
+
+.. method:: build_runner(pkgname[, performdepcheck][, pkginstall])
 .. index:: makepkg; build; validate
 
 This is the function running building.  It is not supposed to be used
