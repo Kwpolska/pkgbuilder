@@ -165,10 +165,18 @@ def main(source='AUTO', noquit=False):
         if not noquit:
             exit(0)
 
-    # If we didn't exit, we shall build the packages.
+    # If we didn't quit, we should build the packages.
     DS.log.info('Starting build...')
     for pkgname in args.pkgs:
         DS.log.info('Building {}'.format(pkgname))
-        build.auto_build(pkgname, DS.validate, DS.depcheck, DS.mkpginst)
+        toinstall = build.auto_build(pkgname, DS.validate, DS.depcheck,
+                                     DS.mkpginst)
+
+        if toinstall:
+            if DS.hassudo:
+                subprocess.call(['sudo', DS.paccommand, '-U'] + toinstall)
+            else:
+                subprocess.call('su -c "{} -U {}"'.format(DS.paccommand,
+                                                          ''.join(toinstall)))
 
     DS.log.info('Quitting.')
