@@ -35,15 +35,11 @@ class PBDS():
         'yellow':     '\x1b[1;1m\x1b[1;33m'
     }
 
-    # Message prefix.  Changed by debugmode().
-    mp1 = '=='
-    mp2 = '  '
+
     pacman = False
     validate = True
     depcheck = True
     mkpginst = True
-    debug = False  # DO NOT CHANGE, HUMAN BEING!
-    console = None  # SAME GOES FOR THIS ONE!
     protocol = 'http'
     categories = ['ERROR', 'none', 'daemons', 'devel', 'editors',
                   'emulators', 'games', 'gnome', 'i18n', 'kde',
@@ -51,6 +47,22 @@ class PBDS():
                   'office', 'science', 'system', 'x11',
                   'xfce', 'kernels']
     inttext = _('Aborted by user! Exiting...')
+
+    ### STUFF NOT TO BE CHANGED BY HUMAN BEINGS.  EVER.
+    mp1 = '=='
+    mp2 = '  '
+    debug = False
+    console = None
+
+    if os.getenv('PACMAN') is None:
+        paccommand = 'pacman'
+    else:
+        paccommand = os.getenv('PACMAN')
+
+    if os.path.exists('/usr/bin/sudo'):
+        hassudo = True
+    else:
+        hassudo = False
 
     # Creating the configuration/log stuff...
     confhome = os.getenv('XDG_CONFIG_HOME')
