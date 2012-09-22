@@ -207,7 +207,7 @@ class Build:
                 pkgtypes = [_('found in system'), _('found in repos'),
                             _('found in the AUR')]
                 aurbuild = []
-                if deps == {}:
+                if not deps:
                     DS.fancy_msg2(_('none found'))
 
                 for pkg, pkgtype in deps.items():
