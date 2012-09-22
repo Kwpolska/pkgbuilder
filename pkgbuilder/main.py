@@ -63,7 +63,7 @@ def main(source='AUTO', noquit=False):
                             default=True, dest='valid', help=_('don\'t check '
                             'if packages were installed after build'))
         argopt.add_argument('-w', '--buildonly', action='store_false',
-                            default=True, dest='pkgginst', help=_('don\'t '
+                            default=True, dest='pkginst', help=_('don\'t '
                             'install packages after building'))
         argopt.add_argument('-P', '--protocol', action='store',
                             default='http', dest='protocol',
