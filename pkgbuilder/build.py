@@ -26,7 +26,8 @@ import re
 import tarfile
 import subprocess
 import functools
-
+import glob
+import datetime
 
 ### Build       build functions and helpers ###
 class Build:
@@ -36,14 +37,21 @@ class Build:
     aururl = '{}://aur.archlinux.org{}'
 
     def auto_build(self, pkgname, validate=True, performdepcheck=True,
-                   makepkginstall=True):
+                   pkginstall=True):
         """
         NOT the actual build function.
         This function makes validation and building AUR deps possible.
         If you can, use it.
+
+
+        .. note::
+
+            This function returns a list of packages to install with pacman -U.
+            Please take care of it.  Running PKGBUILDer/PBWrapper standalone or
+            .main.main() will do that.
         """
         build_result = self.build_runner(pkgname, performdepcheck,
-                                         makepkginstall)
+                                         pkginstall)
         os.chdir('../')
         try:
             if build_result[0] == 0:
@@ -82,9 +90,15 @@ class Build:
                 DS.fancy_warning(_('Building more AUR packages is required.'))
                 for pkgname2 in build_result[1]:
                     self.auto_build(pkgname2, validate, performdepcheck,
-                                    makepkginstall)
+                                    pkginstall)
                 self.auto_build(pkgname, validate, performdepcheck,
-                                makepkginstall)
+                                pkginstall)
+
+            # Package installation magic.  To be parsed later.
+            if pkginstall and build_result[0] < 72000:
+                return build_result[1]
+            else:
+                return None
         except PBError as inst:
             DS.fancy_error(str(inst))
 
@@ -169,7 +183,7 @@ class Build:
             return parseddeps
 
     def build_runner(self, pkgname, performdepcheck=True,
-                     makepkginstall=True):
+                     pkginstall=True):
         """
         A build function, which actually links to others.  Do not use it
         unless you re-implement auto_build.
@@ -223,14 +237,36 @@ class Build:
 
             mpparams = ''
 
-            if makepkginstall is not False:
-                mpparams = mpparams + 'i'
-
             if os.geteuid() == 0:
                 mpparams = mpparams + ' --asroot'
 
-            return [subprocess.call('/usr/bin/makepkg -s' + mpparams,
-                    shell=True), 'makepkg']
+            mpstatus = subprocess.call('/usr/bin/makepkg -s' + mpparams,
+                                       shell=True)
+            if pkginstall:
+                # .pkg.tar.xz FTW, but some people change that.
+                pkgfilestr = './{}-{}-{}.pkg.*'
+                # I hope nobody builds packages at 23:5* local.  And if they
+                # do, they will be caught by the 2nd fallback (crapy packages)
+                datep = datetime.date.today().strftime('%Y%m%d')
+                if glob.glob(pkgfilestr.format(pkgname, pkg['Version'], '*')):
+                    toinstall = os.path.abspath(glob.glob(pkgfilestr.format(
+                                                          pkgname,
+                                                          pkg['Version'],
+                                                          '*')
+                elif glob.glob(pkgfilestr.format(pkgname, datep, '*')):
+                    # Fallback #1, for VCS packages
+                    toinstall = os.path.abspath(glob.glob(pkgfilestr.format(
+                                                          pkgname,
+                                                          datep,
+                                                          '*')
+                elif glob.glob(pkgfilestr.format(pkgname, '*', '*')):
+                    # Fallback #2, for crappy packages
+                    toinstall = os.path.abspath(glob.glob(pkgfilestr.format(
+                                                          pkgname, '*', '*')
+            else:
+                toinstall = None
+
+            return [mpstatus, toinstall]
         except PBError as inst:
             DS.fancy_error(str(inst))
             return [72789]
