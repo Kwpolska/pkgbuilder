@@ -160,11 +160,7 @@ def main(source='AUTO', noquit=False):
 
     if args.upgrade > 0:
         DS.log.info('Starting upgrade...')
-        if args.upgrade > 1:
-            dodowngrade = True
-        else:
-            dodowngrade = False
-
+        dodowngrade = args.upgrade > 1
         upgrade.auto_upgrade(dodowngrade)
         if not noquit:
             exit(0)
