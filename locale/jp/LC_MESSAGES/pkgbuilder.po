@@ -30,11 +30,11 @@ msgstr "有効状態：インストールされていない"
 
 #: pkgbuilder/build.py:61
 msgid "validation: outdated {}"
-msgstr "有効状態：要更新"
+msgstr "有効状態：「{}」より要更新"
 
 #: pkgbuilder/build.py:64
 msgid "validation: installed {}"
-msgstr "有効状態：インストール済み"
+msgstr "有効状態：「{}」からインストール済み"
 
 #. PBxxx.
 #: pkgbuilder/build.py:67
@@ -316,7 +316,6 @@ msgstr "最新"
 #, python-format
 msgid "%(prog)s <operation> [...]"
 msgstr "%(prog)s <選択肢> [...]"
-#. What is `%(prog)s`?
 
 #. TRANSLATORS: see pacman’s localizations
 #: pkgbuilder/wrapper.py:289
