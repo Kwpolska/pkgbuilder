@@ -44,9 +44,8 @@ class Upgrade:
                 if sdb.get_pkg(pkg.name):
                     installed.remove(pkg)
 
-        foreign = dict([(p.name, p) for p in installed])
-
-        return foreign
+        # Return foreign packages.
+        return dict([(p.name, p) for p in installed])
 
     def list_upgradable(self, pkglist):
         """Compares package versions and returns upgradable ones."""
