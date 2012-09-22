@@ -38,15 +38,7 @@ def wrapper(source='AUTO'):
     """A wrapper for pacman and PKGBUILDer."""
     pyc = pycman.config.init_with_config('/etc/pacman.conf')
     localdb = pyc.get_localdb()
-    if os.getenv('PACMAN') is None:
-        paccommand = 'pacman'
-    else:
-        paccommand = os.getenv('PACMAN')
 
-    if os.path.exists('/usr/bin/sudo'):
-        hassudo = True
-    else:
-        hassudo = False
     # Because I need to work with -S and nothing else, I am going to use
     # regular expressions on the argument list.  Sorry.
     if source == 'AUTO':
@@ -209,32 +201,32 @@ def wrapper(source='AUTO'):
         if args.search or args.s:
             log.debug('Got -s.')
             log.info('Running pacman.')
-            subprocess.call([paccommand] + pacargs + pkgnames)
+            subprocess.call([DS.paccommand] + pacargs + pkgnames)
             log.info('Running pkgbuilder (pkgbuilder.main.main()).')
             main(pbargs + pkgnames)
             exit()
         elif args.l or args.list:
             log.debug('Got -l.')
             log.info('Running pacman.')
-            subprocess.call([paccommand] + pacargs + pkgnames)
+            subprocess.call([DS.paccommand] + pacargs + pkgnames)
             exit()
         elif args.u or args.sysupgrade:
             log.debug('Got -u.')
             log.info('Running pacman.')
-            if hassudo:
-                subprocess.call(['sudo', paccommand] + pacargs)
+            if DS.hassudo:
+                subprocess.call(['sudo', DS.paccommand] + pacargs)
             else:
-                subprocess.call('su -c "{} {}"'.format(paccommand,
+                subprocess.call('su -c "{} {}"'.format(DS.paccommand,
                                                        ''.join(pacargs)))
             log.info('Running pkgbuilder (pkgbuilder.main.main()).')
             main(pbargs, noquit=True)
         elif args.y or args.refresh:
             log.debug('Got -y.')
             log.info('Running pacman.')
-            if hassudo:
-                subprocess.call(['sudo', paccommand] + pacargs)
+            if DS.hassudo:
+                subprocess.call(['sudo', DS.paccommand] + pacargs)
             else:
-                subprocess.call('su -c "{} {}"'.format(paccommand,
+                subprocess.call('su -c "{} {}"'.format(DS.paccommand,
                                                        ''.join(pacargs)))
 
         log.debug('Generating AUR packages list...')
@@ -256,11 +248,11 @@ def wrapper(source='AUTO'):
 
         if pacmanpkgnames != []:
             log.info('Running pacman.')
-            if hassudo:
-                subprocess.call(['sudo', paccommand] + pacargs +
+            if DS.hassudo:
+                subprocess.call(['sudo', DS.paccommand] + pacargs +
                                 pacmanpkgnames)
             else:
-                subprocess.call('su -c "{} {} {}"'.format(paccommand,
+                subprocess.call('su -c "{} {} {}"'.format(DS.paccommand,
                                                           ''.join(pacargs),
                                                           pacmanpkgnames))
         else:
@@ -277,11 +269,11 @@ def wrapper(source='AUTO'):
             log.info('Running pacman due to failed sanity check.')
             sanityargs = [item for item in pkgnames if (item not in
                           sanitycheck)]
-            if hassudo:
-                subprocess.call(['sudo', paccommand] + pacargs +
+            if DS.hassudo:
+                subprocess.call(['sudo', DS.paccommand] + pacargs +
                                 pacmanpkgnames)
             else:
-                subprocess.call('su -c "{} {} {}"'.format(paccommand,
+                subprocess.call('su -c "{} {} {}"'.format(DS.paccommand,
                                                           ''.join(pacargs),
                                                           sanityargs))
     elif ('-h' in argst) or ('--help' in argst):
@@ -308,8 +300,8 @@ pyalpm      v{}""".format(__wrapperversion__, __version__,
         else:
             print('Please don’t use the reserved UTshibboleet argument.')
     else:
-        if hassudo:
-            subprocess.call(['sudo', paccommand] + argst)
+        if DS.hassudo:
+            subprocess.call(['sudo', DS.paccommand] + argst)
         else:
-            subprocess.call('su -c "{} {}"'.format(paccommand,
-                                                      ''.join(argst)))
+            subprocess.call('su -c "{} {}"'.format(DS.paccommand,
+                                                   ''.join(argst)))
