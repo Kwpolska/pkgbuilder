@@ -33,8 +33,8 @@ options:
       --noscriptlet    do not execute the install scriptlet if one exists
       --print-format <string>
                        specify how the targets should be printed
-usage: pkgbuilder [-h] [-V] [-c] [--debug] [-d] [-v] [-w] [-P PROTOCOL] [-S]
-                  [-y] [-i] [-s] [-u]
+usage: pkgbuilder [-h] [-V] [-c] [-C] [--debug] [-d] [-v] [-w] [-P PROTOCOL]
+                  [-S] [-y] [-i] [-s] [-u]
                   [PACKAGE [PACKAGE ...]]
 
 An AUR helper (and library) in Python 3.
@@ -47,7 +47,8 @@ optional arguments:
   -V, --version         show version number and quit
 
 options:
-  -c, --nocolors        don't use colors in output
+  -c, --clean           clean up work files after build
+  -C, --nocolors        don't use colors in output
   --debug               display debug messages
   -d, --nodepcheck      don't check dependencies (may break makepkg)
   -v, --novalidation    don't check if packages were installed after build

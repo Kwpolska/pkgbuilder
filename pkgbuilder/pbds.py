@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.62.1.4.62.1.4.5
+# PKGBUILDer v2.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -39,7 +39,7 @@ class PBDS():
     pacman = False
     validate = True
     depcheck = True
-    mkpginst = True
+    pkginst = True
     protocol = 'http'
     categories = ['ERROR', 'none', 'daemons', 'devel', 'editors',
                   'emulators', 'games', 'gnome', 'i18n', 'kde',
