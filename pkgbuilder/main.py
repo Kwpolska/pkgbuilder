@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.62.1.4.62.1.4.5
+# PKGBUILDer v2.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -22,6 +22,7 @@ from .utils import Utils
 from .upgrade import Upgrade
 import argparse
 import os
+import subprocess
 
 
 ### main()          The main routine        ###
@@ -47,8 +48,10 @@ def main(source='AUTO', noquit=False):
 
         argopt = parser.add_argument_group(_('options'))
         argopr = parser.add_argument_group(_('operations'))
-
-        argopt.add_argument('-c', '--nocolors', action='store_false',
+        argopt.add_argument('-c', '--clean', action='store_true',
+                            default=True, dest='cleanup', help=_('clean up '
+                            'work files after build'))
+        argopt.add_argument('-C', '--nocolors', action='store_false',
                             default=True, dest='color', help=_('don\'t use '
                             'colors in output'))
         argopt.add_argument('--debug', action='store_true', default=False,
@@ -60,7 +63,7 @@ def main(source='AUTO', noquit=False):
                             default=True, dest='valid', help=_('don\'t check '
                             'if packages were installed after build'))
         argopt.add_argument('-w', '--buildonly', action='store_false',
-                            default=True, dest='mkpginst', help=_('don\'t '
+                            default=True, dest='pkgginst', help=_('don\'t '
                             'install packages after building'))
         argopt.add_argument('-P', '--protocol', action='store',
                             default='http', dest='protocol',
@@ -87,8 +90,9 @@ def main(source='AUTO', noquit=False):
         DS.validate = args.valid
         DS.depcheck = args.depcheck
         DS.pacman = args.pac
-        DS.mkpginst = args.mkpginst
+        DS.pkginst = args.pkginst
         DS.protocol = args.protocol
+        DS.cleanup = args.cleanup
         utils = Utils()
         build = Build()
         upgrade = Upgrade()
@@ -167,16 +171,20 @@ def main(source='AUTO', noquit=False):
 
     # If we didn't quit, we should build the packages.
     DS.log.info('Starting build...')
+    toinstall = []
     for pkgname in args.pkgs:
         DS.log.info('Building {}'.format(pkgname))
-        toinstall = build.auto_build(pkgname, DS.validate, DS.depcheck,
-                                     DS.mkpginst)
+        toinstall += build.auto_build(pkgname, DS.validate, DS.depcheck,
+                                      DS.pkginst)
 
-        if toinstall:
-            if DS.hassudo:
-                subprocess.call(['sudo', DS.paccommand, '-U'] + toinstall)
-            else:
-                subprocess.call('su -c "{} -U {}"'.format(DS.paccommand,
-                                                          ''.join(toinstall)))
+    if toinstall:
+        if DS.hassudo:
+            subprocess.call(['sudo', 'cp'] + toinstall +
+                            ['/var/cache/pacman/pkg/'])
+            subprocess.call(['sudo', DS.paccommand, '-U'] + toinstall)
+        else:
+            ti = ' '.join(toinstall)
+            subprocess.call('su -c "cp {} /var/cache/pacman/pkg/"; '
+                            '{} -U {}'.format(ti, DS.paccommand, ti))
 
     DS.log.info('Quitting.')

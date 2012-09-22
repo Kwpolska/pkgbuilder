@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
 # PBWrapper v0.1.2
-# PKGBUILDer v2.1.4.62.1.4.62.1.4.5
+# PKGBUILDer v2.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -69,9 +69,8 @@ def wrapper(source='AUTO'):
         pacmanlonga = ['arch', 'cachedir', 'config', 'dbpath', 'gpgdir',
                        'ignore', 'ignoregroup', 'logfile', 'print-format',
                        'root']
-        pacmanlongc = ['clean']
 
-        pbshort = ['D']
+        pbshort = ['D', 'C']
         pblong = ['downgrade', 'nocolors', 'nodepcheck', 'novalidation',
                   'buildonly']
         pbshorta = ['P']
@@ -80,7 +79,7 @@ def wrapper(source='AUTO'):
         commonshort = ['S', 'd', 'i', 's', 'v', 'w']
         commonlong = ['debug', 'info', 'search', 'sync']
         commonshortc = ['c', 'y', 'u']
-        commonlongc = ['refresh', 'sysupgrade']
+        commonlongc = ['clean', 'refresh', 'sysupgrade']
 
         allpacman = (pacmanshort + pacmanlong + pacmanshorta + pacmanlonga +
                      pacmanlongc)

@@ -5,7 +5,7 @@ pbds module (PBDS class)
 :Author: Kwpolska
 :Copyright: © 2011-2012, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2012-09-21
+:Date: 2012-09-22
 :Version: 2.1.4.6
 
 .. module: pbds
@@ -17,15 +17,13 @@ PBDS
 .. versionadded:: 2.1.0.0
 .. class:: PBDS
 
-This is the class used for storing data.  Currently, it stores this
-information:
+This is the class used for storing data.  Currently, it stores the following
+information (not including information humans should not touch and care about):
 
 +-----------+-----------------------------------------------+---------------+
 | variable  | contents/usage                                | default       |
 +===========+===============================================+===============+
 | colors    | colors currently used in the script           | [colors]_     |
-+-----------+-----------------------------------------------+---------------+
-| mp        | message prefix (enabled by :func:`debugout`)  | ''            |
 +-----------+-----------------------------------------------+---------------+
 | pacman    | using wrapper-friendly behavior? [pacman]_    | False         |
 +-----------+-----------------------------------------------+---------------+
@@ -33,7 +31,7 @@ information:
 +-----------+-----------------------------------------------+---------------+
 | depcheck  | checking if deps are installed?               | True          |
 +-----------+-----------------------------------------------+---------------+
-| mkpkginst | if makepkg should install packages            | True          |
+| pkginst   | if makepkg should install packages            | True          |
 +-----------+-----------------------------------------------+---------------+
 | protocol  | protocol used to connect to the AUR           | http          |
 +-----------+-----------------------------------------------+---------------+

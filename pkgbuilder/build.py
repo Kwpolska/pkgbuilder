@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.62.1.4.62.1.4.5
+# PKGBUILDer v2.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -224,45 +224,44 @@ class Build:
                 if not deps:
                     DS.fancy_msg2(_('none found'))
 
-                for pkg, pkgtype in deps.items():
+                for dpkg, pkgtype in deps.items():
                     # I checked for -1 here.  Dropped this one as it was
                     # handled by the depcheck function already.
                     if pkgtype == 2:
-                        aurbuild.append(pkg)
+                        aurbuild.append(dpkg)
 
-                    DS.fancy_msg2('{}: {}'.format(pkg,
+                    DS.fancy_msg2('{}: {}'.format(dpkg,
                                                   pkgtypes[pkgtype]))
                 if aurbuild != []:
                     return [72337, aurbuild]
 
             mpparams = ''
 
-            if os.geteuid() == 0:
-                mpparams = mpparams + ' --asroot'
+            if DS.cleanup:
+                mpparams += ' -c'
 
-            mpstatus = subprocess.call('/usr/bin/makepkg -s' + mpparams,
+            if os.geteuid() == 0:
+                mpparams += ' --asroot'
+
+            mpstatus = subprocess.call('/usr/bin/makepkg -sf' + mpparams,
                                        shell=True)
             if pkginstall:
                 # .pkg.tar.xz FTW, but some people change that.
-                pkgfilestr = './{}-{}-{}.pkg.*'
+                pkgfilestr = os.path.abspath('./{}-{}-{}.pkg.*')
                 # I hope nobody builds packages at 23:5* local.  And if they
                 # do, they will be caught by the 2nd fallback (crapy packages)
                 datep = datetime.date.today().strftime('%Y%m%d')
                 if glob.glob(pkgfilestr.format(pkgname, pkg['Version'], '*')):
-                    toinstall = os.path.abspath(glob.glob(pkgfilestr.format(
-                                                          pkgname,
-                                                          pkg['Version'],
-                                                          '*')
+                    toinstall = glob.glob(pkgfilestr.format(pkgname,
+                                          pkg['Version'], '*'))
                 elif glob.glob(pkgfilestr.format(pkgname, datep, '*')):
                     # Fallback #1, for VCS packages
-                    toinstall = os.path.abspath(glob.glob(pkgfilestr.format(
-                                                          pkgname,
-                                                          datep,
-                                                          '*')
+                    toinstall = glob.glob(pkgfilestr.format(pkgname, datep,
+                                                            '*'))
                 elif glob.glob(pkgfilestr.format(pkgname, '*', '*')):
                     # Fallback #2, for crappy packages
-                    toinstall = os.path.abspath(glob.glob(pkgfilestr.format(
-                                                          pkgname, '*', '*')
+                    toinstall = glob.glob(pkgfilestr.format(pkgname, '*',
+                                                            '*'))
             else:
                 toinstall = None
 
