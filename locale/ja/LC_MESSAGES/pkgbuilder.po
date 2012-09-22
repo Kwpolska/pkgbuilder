@@ -23,17 +23,17 @@ msgstr "AUR: HTTPエラー発生 {}"
 #: pkgbuilder/build.py:48
 #, fuzzy
 msgid "{}: NOT installed"
-msgstr "有効状態：インストールされていない"
+msgstr "{}：インストールされていない"
 
 #: pkgbuilder/build.py:51
 #, fuzzy
 msgid "{}: outdated {}"
-msgstr "有効状態：「{}」より要更新"
+msgstr "{}：「{}」より要更新"
 
 #: pkgbuilder/build.py:54
 #, fuzzy
 msgid "{}: installed {}"
-msgstr "[インストール済み：{}]"
+msgstr "{}: [インストール済み：{}]"
 
 #: pkgbuilder/build.py:89
 msgid "The build function reported a proper build."
@@ -106,7 +106,7 @@ msgstr "抽出中・・・"
 
 #: pkgbuilder/build.py:233
 msgid "{} files extracted"
-msgstr "ファイルを{}つ抽出した"
+msgstr "ファイルを{}個抽出した"
 
 #: pkgbuilder/build.py:238
 msgid "Checking dependencies..."
@@ -156,7 +156,7 @@ msgstr "選択肢"
 
 #: pkgbuilder/main.py:52
 msgid "clean up work files after build"
-msgstr ""
+msgstr "作成後、作成に必要だったファイルを削除"
 
 #: pkgbuilder/main.py:55
 msgid "don't use colors in output"
