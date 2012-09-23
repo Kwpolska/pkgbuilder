@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.1.4.6\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-09-22 20:20+0200\n"
+"POT-Creation-Date: 2012-09-23 13:51+0200\n"
 "PO-Revision-Date: 2012-09-21 20:21+0200\n"
 "Last-Translator: Colin Woodbury <colingw@gmail.com>\n"
 "Language-Team: Colin Woodbury <colingw@gmail.com>\n"
@@ -21,19 +21,16 @@ msgid "AUR: HTTP Error {}"
 msgstr "AUR: HTTPエラー発生 {}"
 
 #: pkgbuilder/build.py:48
-#, fuzzy
 msgid "{}: NOT installed"
 msgstr "{}：インストールされていない"
 
 #: pkgbuilder/build.py:51
-#, fuzzy
 msgid "{}: outdated {}"
 msgstr "{}：「{}」より要更新"
 
 #: pkgbuilder/build.py:54
-#, fuzzy
 msgid "{}: installed {}"
-msgstr "{}: [インストール済み：{}]"
+msgstr ""
 
 #: pkgbuilder/build.py:89
 msgid "The build function reported a proper build."
@@ -171,52 +168,56 @@ msgid "don't check dependencies (may break makepkg)"
 msgstr "従属パッケージ確認を行わない。作成が失敗する可能性あり。"
 
 #: pkgbuilder/main.py:63
+msgid "upgrade all the VCS/date-versioned packages"
+msgstr ""
+
+#: pkgbuilder/main.py:66
 msgid "don't check if packages were installed after build"
 msgstr "作成後、パッケージ無事インストール確認を行わない"
 
-#: pkgbuilder/main.py:66
+#: pkgbuilder/main.py:69
 msgid "don't install packages after building"
 msgstr "作成後、パッケージをインストールしない"
 
-#: pkgbuilder/main.py:70
+#: pkgbuilder/main.py:73
 msgid "PROTOCOL"
 msgstr "プロトコル"
 
-#: pkgbuilder/main.py:70
+#: pkgbuilder/main.py:73
 msgid "choose protocol (default: http)"
 msgstr "プロトコルを選択（デフォルト：http）"
 
-#: pkgbuilder/main.py:73
+#: pkgbuilder/main.py:76
 msgid "pacman-like mode"
 msgstr "pacmanモード"
 
-#: pkgbuilder/main.py:75
+#: pkgbuilder/main.py:78
 msgid "(dummy)"
 msgstr "（本当は何もしない）"
 
-#: pkgbuilder/main.py:77
+#: pkgbuilder/main.py:80
 msgid "view package information"
 msgstr "パッケージ情報を見る"
 
-#: pkgbuilder/main.py:79
+#: pkgbuilder/main.py:82
 msgid "search the AUR for matching strings"
 msgstr "AURを検索"
 
-#: pkgbuilder/main.py:83
+#: pkgbuilder/main.py:86
 msgid "upgrade installed AUR packages"
 msgstr "インストール済みのAURパッケージをアップグレード"
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
-#: pkgbuilder/main.py:124
+#: pkgbuilder/main.py:127
 msgid "Search query too short, API limitation"
 msgstr "検索の問いが短すぎる"
 
-#: pkgbuilder/main.py:125
+#: pkgbuilder/main.py:128
 msgid "Searching for exact match..."
 msgstr "完全一致を検索中・・・"
 
-#: pkgbuilder/main.py:128 INSTALL.py:65 INSTALL.py:74 INSTALL.py:83
+#: pkgbuilder/main.py:131 INSTALL.py:65 INSTALL.py:74 INSTALL.py:83
 msgid "not found"
 msgstr "見つからなかった"
 
@@ -240,23 +241,23 @@ msgstr "警告："
 msgid "Logs will not be created."
 msgstr "ログは作られない。"
 
-#: pkgbuilder/upgrade.py:101 pkgbuilder/upgrade.py:103
+#: pkgbuilder/upgrade.py:109 pkgbuilder/upgrade.py:111
 msgid "Gathering data about packages..."
 msgstr "パッケージデータを収集中・・・"
 
-#: pkgbuilder/upgrade.py:115 pkgbuilder/upgrade.py:118
+#: pkgbuilder/upgrade.py:123 pkgbuilder/upgrade.py:126
 msgid "{}: local ({}) is newer than aur ({})"
 msgstr "{}: ローカル「{}」はAURの「{}」より最新"
 
-#: pkgbuilder/upgrade.py:127 pkgbuilder/upgrade.py:129
+#: pkgbuilder/upgrade.py:135 pkgbuilder/upgrade.py:137
 msgid "there is nothing to do"
 msgstr "することがない"
 
-#: pkgbuilder/upgrade.py:139 pkgbuilder/upgrade.py:144
+#: pkgbuilder/upgrade.py:147 pkgbuilder/upgrade.py:152
 msgid "Targets ({}): "
 msgstr "「{}」の該当パッケージ："
 
-#: pkgbuilder/upgrade.py:142 pkgbuilder/upgrade.py:147
+#: pkgbuilder/upgrade.py:150 pkgbuilder/upgrade.py:155
 msgid "Proceed with installation? [Y/n] "
 msgstr "続行？ [Y/n]"
 
@@ -318,21 +319,21 @@ msgstr "要更新"
 msgid "no"
 msgstr "最新"
 
-#: pkgbuilder/wrapper.py:97
+#: pkgbuilder/wrapper.py:96
 #, python-format
 msgid "%(prog)s <operation> [...]"
 msgstr "%(prog)s <選択肢> [...]"
 
 #. TRANSLATORS: see pacman’s localizations
-#: pkgbuilder/wrapper.py:280
+#: pkgbuilder/wrapper.py:279
 msgid "usage: {} <operation> [...]"
 msgstr "使い方：{} <選択肢> [...]"
 
-#: pkgbuilder/wrapper.py:282
+#: pkgbuilder/wrapper.py:281
 msgid "{}, a wrapper for pacman and PKGBUILDer."
 msgstr "{}・pacmanとPKGBUILDerを囲うスクリプト。"
 
-#: pkgbuilder/wrapper.py:284
+#: pkgbuilder/wrapper.py:283
 msgid ""
 "Pacman and PKGBUILDer syntaxes apply.  Consult their manpages/help commands "
 "for details."
