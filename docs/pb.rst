@@ -46,6 +46,8 @@ the next PKGBUILDer/PBWrapper release.
 The **--debug** option enables additional debug information from
 PBWrapper.
 
+An additional option is **--unlock**, which unlocks the pacman database.
+
 EXAMPLES
 ========
 
