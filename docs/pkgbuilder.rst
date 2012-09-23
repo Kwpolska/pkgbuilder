@@ -6,7 +6,7 @@ PKGBUILDer
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: © 2011-2012, Kwpolska.
 :License: BSD (see /LICENSE or Appendix B.)
-:Date: 2012-09-22
+:Date: 2012-09-23
 :Version: 2.1.4.6
 :Manual section: 8
 :Manual group: PKGBUILDer manual
@@ -14,7 +14,7 @@ PKGBUILDer
 SYNOPSIS
 ========
 
-*pkgbuilder* [-hVcdvwSy] [-P PROTOCOL] [-isu] [PACKAGE [PACKAGE ...]]
+*pkgbuilder* [-hVcCdvwSy] [-P PROTOCOL] [-isu] [PACKAGE [PACKAGE ...]]
 
 DESCRIPTION
 ===========
@@ -92,7 +92,7 @@ pkgbuilder -S trashman
 pkgbuilder -Syu
     Checks for updates and offers installing them.
 
-(Trashman is an XDG trash manager by Kwpolska, which you should install.)
+(Trashman is a trash manager by Kwpolska, which you should install ASAP.)
 
 SEE ALSO
 ========

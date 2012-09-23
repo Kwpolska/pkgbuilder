@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
+# PKGBUILDer v2.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -36,11 +36,42 @@ class Build:
     utils = Utils()
     aururl = '{}://aur.archlinux.org{}'
 
-    def auto_build(self, pkgname, validate=True, performdepcheck=True,
+    def validate(self, pkgnames):
+        """Check if packages were installed."""
+        DS.fancy_msg('Validating installation status...')
+        pyc = pycman.config.init_with_config('/etc/pacman.conf')
+        localdb = pyc.get_localdb()
+        for pkgname in pkgnames:
+            pkg = localdb.get_pkg(pkgname)
+            aurversion = self.utils.info(pkgname)['Version']
+            if pkg is None:
+                DS.fancy_error2(_('{}: NOT installed').format(pkgname))
+            else:
+                if pyalpm.vercmp(aurversion, pkg.version) > 0:
+                    DS.fancy_error2(_('{}: outdated {}').format(pkgname,
+                                    pkg.version))
+                else:
+                    DS.fancy_msg2(_('{}: installed {}').format(pkgname,
+                                  pkg.version))
+
+    def install(self, pkgpaths):
+        """Install packages through ``pacman -U``."""
+        if DS.hassudo:
+            subprocess.call(['sudo', 'cp'] + pkgpaths +
+                            ['/var/cache/pacman/pkg/'])
+            subprocess.call(['sudo', DS.paccommand, '-U'] + pkgpaths)
+        else:
+            ti = ' '.join(pkgpaths)
+            subprocess.call('su -c "cp {} /var/cache/pacman/pkg/"; '
+                            '{} -U {}'.format(ti, DS.paccommand, ti))
+
+
+
+    def auto_build(self, pkgname, performdepcheck=True,
                    pkginstall=True):
         """
         NOT the actual build function.
-        This function makes validation and building AUR deps possible.
+        This function makes building AUR deps possible.
         If you can, use it.
 
 
@@ -56,21 +87,7 @@ class Build:
         try:
             if build_result[0] == 0:
                 DS.fancy_msg(_('The build function reported a proper build.'))
-                if validate:
-                    # check if installed
-                    pyc = pycman.config.init_with_config('/etc/pacman.conf')
-                    localdb = pyc.get_localdb()
-                    pkg = localdb.get_pkg(pkgname)
-                    aurversion = self.utils.info(pkgname)['Version']
-                    if pkg is None:
-                        DS.fancy_error2(_('validation: NOT installed'))
-                    else:
-                        if pyalpm.vercmp(aurversion, pkg.version) > 0:
-                            DS.fancy_error2(_('validation: outdated '
-                                              '{}').format(pkg.version))
-                        else:
-                            DS.fancy_msg2(_('validation: installed '
-                                            '{}').format(pkg.version))
+
             elif build_result[0] >= 0 and build_result[0] < 72000:  # PBxxx.
                 raise PBError(_('makepkg (or someone else) failed and '
                                 'returned {}.').format(build_result[0]))
@@ -89,9 +106,12 @@ class Build:
             elif build_result[0] == 72337:  # PBDEP.
                 DS.fancy_warning(_('Building more AUR packages is required.'))
                 for pkgname2 in build_result[1]:
-                    self.auto_build(pkgname2, validate, performdepcheck,
+                    self.auto_build(pkgname2, performdepcheck,
                                     pkginstall)
-                self.auto_build(pkgname, validate, performdepcheck,
+
+                self.validate(build_result[1])
+                self.install(build_result[1])
+                self.auto_build(pkgname, performdepcheck,
                                 pkginstall)
 
             # Package installation magic.  To be parsed later.
@@ -262,6 +282,8 @@ class Build:
                     # Fallback #2, for crappy packages
                     toinstall = glob.glob(pkgfilestr.format(pkgname, '*',
                                                             '*'))
+                else:
+                    toinstall = None
             else:
                 toinstall = None
 

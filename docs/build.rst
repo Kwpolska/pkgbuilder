@@ -4,7 +4,7 @@ build module (Build class)
 :Author: Kwpolska
 :Copyright: © 2011-2012, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2012-09-22
+:Date: 2012-09-23
 :Version: 2.1.4.6
 
 .. module:: build
@@ -19,7 +19,7 @@ Build
 This is the class for building packages.  It defines two base methods and
 four additional ones.
 
-.. method:: auto_build(pkgname[, validate][, performdepcheck][, pkginstall])
+.. method:: auto_build(pkgname[, performdepcheck][, pkginstall])
 .. index:: makepkg; build
 
 This is a function that handles building packages automatically.  This is
@@ -41,6 +41,14 @@ standalone, because it is embedded by :meth:`auto_build()`.
 
     Data returned by this function may not be helpful.  Using :meth:`auto_build()`
     eliminates this problem.
+
+.. method:: validate(pkgnames)
+
+Check if packages were installed.
+
+.. method:: install(pkgpaths)
+
+Install packages through ``pacman -U``.
 
 .. method:: download(urlpath, filename[, prot])
 
