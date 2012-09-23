@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.1.4.6\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-09-23 13:51+0200\n"
+"POT-Creation-Date: 2012-09-23 14:46+0200\n"
 "PO-Revision-Date: 2012-09-21 20:21+0200\n"
 "Last-Translator: Colin Woodbury <colingw@gmail.com>\n"
 "Language-Team: Colin Woodbury <colingw@gmail.com>\n"
@@ -319,26 +319,24 @@ msgstr "要更新"
 msgid "no"
 msgstr "最新"
 
-#: pkgbuilder/wrapper.py:96
+#: pkgbuilder/wrapper.py:107
 #, python-format
 msgid "%(prog)s <operation> [...]"
 msgstr "%(prog)s <選択肢> [...]"
 
 #. TRANSLATORS: see pacman’s localizations
-#: pkgbuilder/wrapper.py:279
-msgid "usage: {} <operation> [...]"
-msgstr "使い方：{} <選択肢> [...]"
-
-#: pkgbuilder/wrapper.py:281
-msgid "{}, a wrapper for pacman and PKGBUILDer."
-msgstr "{}・pacmanとPKGBUILDerを囲うスクリプト。"
-
-#: pkgbuilder/wrapper.py:283
+#: pkgbuilder/wrapper.py:291
 msgid ""
-"Pacman and PKGBUILDer syntaxes apply.  Consult their manpages/help commands "
-"for details."
+"usage:  {} <operation> [...]\n"
+"\n"
+"{}, a wrapper for pacman and PKGBUILDer.\n"
+"\n"
+"Pacman and PKGBUILDer syntaxes apply.  Consult their manpages/help\n"
+"commands for more details.\n"
+"\n"
+"Additional options:\n"
+"  -L, --unlock         unlock the pacman database"
 msgstr ""
-"PacmanとPKGBUILDer両方の選択肢が利用できる。詳しいことはそれぞれのmanpageまで"
 
 #: INSTALL.py:53
 msgid "Performing a dependency check..."
@@ -466,6 +464,3 @@ msgstr "副選択肢"
 #: localeprovider.py:2
 msgid "show this help message and exit"
 msgstr "このメッセージを出力して終わる"
-
-#~ msgid "validation: installed {}"
-#~ msgstr "有効状態：「{}」からインストール済み"
