@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
 # PBWrapper v0.1.2
-# PKGBUILDer v2.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
+# PKGBUILDer v2.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -29,7 +29,7 @@ import sys
 import os
 import subprocess
 
-__wrapperversion__ = '0.1.2'
+__wrapperversion__ = '0.1.3'
 
 ### wrapper()       A wrapper for pacman/PB ###
 
@@ -71,7 +71,7 @@ def wrapper(source='AUTO'):
                        'root']
 
         pbshort = ['D', 'C']
-        pblong = ['downgrade', 'nocolors', 'nodepcheck', 'novalidation',
+        pblong = ['vcsupgrade', 'nocolors', 'nodepcheck', 'novalidation',
                   'buildonly']
         pbshorta = ['P']
         pblonga = ['protocol']
@@ -81,8 +81,7 @@ def wrapper(source='AUTO'):
         commonshortc = ['c', 'y', 'u']
         commonlongc = ['clean', 'refresh', 'sysupgrade']
 
-        allpacman = (pacmanshort + pacmanlong + pacmanshorta + pacmanlonga +
-                     pacmanlongc)
+        allpacman = pacmanshort + pacmanlong + pacmanshorta + pacmanlonga
         allpb = pbshort + pblong + pbshorta + pblonga
         allcommon = commonshort + commonlong + commonshortc + commonlongc
         allcmd = allpacman + allpb + allcommon
@@ -91,7 +90,7 @@ def wrapper(source='AUTO'):
         alllong = pacmanlong + pblong + commonlong
 
         allshortc = commonshortc
-        alllongc = commonlongc + pacmanlongc
+        alllongc = commonlongc
         allcountable = allshortc + alllongc
 
         parser = argparse.ArgumentParser(add_help=False, usage=_('%(prog)s'
