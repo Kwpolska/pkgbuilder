@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
+# PKGBUILDer v2.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -59,6 +59,9 @@ def main(source='AUTO', noquit=False):
         argopt.add_argument('-d', '--nodepcheck', action='store_false',
                             default=True, dest='depcheck', help=_('don\'t '
                             'check dependencies (may break makepkg)'))
+        argopt.add_argument('-D', '--vcsupgrade', action='store_true',
+                            default=False, dest='vcsup', help=_('upgrade '
+                            'all the VCS/date-versioned packages'))
         argopt.add_argument('-v', '--novalidation', action='store_false',
                             default=True, dest='valid', help=_('don\'t check '
                             'if packages were installed after build'))
@@ -165,26 +168,23 @@ def main(source='AUTO', noquit=False):
     if args.upgrade > 0:
         DS.log.info('Starting upgrade...')
         dodowngrade = args.upgrade > 1
-        upgrade.auto_upgrade(dodowngrade)
+        upgrade.auto_upgrade(dodowngrade, args.vcsup)
+
         if not noquit:
             exit(0)
 
     # If we didn't quit, we should build the packages.
-    DS.log.info('Starting build...')
-    toinstall = []
-    for pkgname in args.pkgs:
-        DS.log.info('Building {}'.format(pkgname))
-        toinstall += build.auto_build(pkgname, DS.validate, DS.depcheck,
-                                      DS.pkginst)
+    if args.pkgs:
+        DS.log.info('Starting build...')
+        toinstall = []
+        for pkgname in args.pkgs:
+            DS.log.info('Building {}'.format(pkgname))
+            toinstall += build.auto_build(pkgname, DS.depcheck, DS.pkginst)
 
-    if toinstall:
-        if DS.hassudo:
-            subprocess.call(['sudo', 'cp'] + toinstall +
-                            ['/var/cache/pacman/pkg/'])
-            subprocess.call(['sudo', DS.paccommand, '-U'] + toinstall)
-        else:
-            ti = ' '.join(toinstall)
-            subprocess.call('su -c "cp {} /var/cache/pacman/pkg/"; '
-                            '{} -U {}'.format(ti, DS.paccommand, ti))
+        if toinstall:
+            build.install(toinstall)
+
+        if DS.validate:
+            build.validate(args.pkgs)
 
     DS.log.info('Quitting.')

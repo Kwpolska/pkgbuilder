@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
+# PKGBUILDer v2.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -47,7 +47,7 @@ class Upgrade:
         # Return foreign packages.
         return dict([(p.name, p) for p in installed])
 
-    def list_upgradable(self, pkglist):
+    def list_upgradable(self, pkglist, vcsup=False):
         """Compares package versions and returns upgradable ones."""
         aurlist = self.aur.multiinfo(pkglist, DS.protocol)['results']
         # It's THAT easy.  Oh, and by the way: it is much, MUCH faster
@@ -82,19 +82,27 @@ class Upgrade:
                     except:
                         datever = False
 
+                    dt = datetime.date.today().strftime('%Y%m%d')
+
                     if (i['Name'].endswith(('git', 'hg', 'bzr', 'svn', 'cvs',
                                             'darcs'))):
-                        DS.log.warning('{} is -[vcs], ignored for '
-                                       'downgrade.'.format(i['Name']))
+                        if vcsup:
+                            upgradable.append([i['Name'], pkg.version, dt])
+                        else:
+                            DS.log.warning('{} is -[vcs], ignored for '
+                                           'downgrade.'.format(i['Name']))
                     elif datever:
-                        DS.log.warning('{} version is a date, ignored for '
-                                       'downgrade.'.format(i['Name']))
+                        if vcsup:
+                            upgradable.append([i['Name'], pkg.version, dt])
+                        else:
+                            DS.log.warning('{} version is a date, ignored '
+                                           'for downgrade.'.format(i['Name']))
                     else:
                         downgradable.append([i['Name'], pkg.version,
                                              i['Version']])
         return [upgradable, downgradable]
 
-    def auto_upgrade(self, downgrade=False):
+    def auto_upgrade(self, downgrade=False, vcsup=False):
         """Upgrades packages.  Simillar to Build.auto_build()."""
         DS.log.info('Ran auto_upgrade.')
         if DS.pacman:
@@ -103,9 +111,9 @@ class Upgrade:
             DS.fancy_msg(_('Gathering data about packages...'))
 
         foreign = self.gather_foreign_pkgs()
-        gradeable = self.list_upgradable(foreign.keys())
-        upgradable = gradeable[0]
-        downgradable = gradeable[1]
+        gradable = self.list_upgradable(foreign.keys(), vcsup)
+        upgradable = gradable[0]
+        downgradable = gradable[1]
         upglen = len(upgradable)
         downlen = len(downgradable)
 
@@ -150,7 +158,15 @@ class Upgrade:
             yesno = input(query)
             if yesno.lower().startswith('n'):
                 return 0
+
+            toinstall = []
             for pkgname in upgnames:
                 DS.log.info('Building {}'.format(pkgname))
-                self.build.auto_build(pkgname, DS.validate, DS.depcheck,
-                                      DS.mkpginst)
+                toinstall += self.build.auto_build(pkgname, DS.depcheck,
+                                                   DS.pkginst)
+
+            if toinstall:
+                self.build.install(toinstall)
+
+            if DS.validate:
+                self.build.validate(upgnames)

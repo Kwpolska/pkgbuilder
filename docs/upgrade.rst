@@ -5,7 +5,7 @@ upgrade module (Upgrade class)
 :Author: Kwpolska
 :Copyright: © 2011-2012, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2012-09-22
+:Date: 2012-09-23
 :Version: 2.1.4.6
 
 .. module:: upgrade
@@ -22,7 +22,7 @@ Upgrade
 This is the class for upgrading the installed packages.  It defines one base
 method and two additional ones.
 
-.. method:: auto_upgrade(downgrade)
+.. method:: auto_upgrade([downgrade][, vcsup])
 .. index:: upgrade
 
 Upgrades packages.  Simillar to :meth:`Build.auto_build()`.
@@ -32,7 +32,7 @@ Upgrades packages.  Simillar to :meth:`Build.auto_build()`.
 
 Gathers a list of all foreign packages.
 
-.. method:: list_upgradable(pkglist)
+.. method:: list_upgradable(pkglist[, vcsup])
 
 .. versionchanged:: 2.1.4.4
 
