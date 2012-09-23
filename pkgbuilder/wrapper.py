@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
 # PBWrapper v0.1.2
-# PKGBUILDer v2.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
+# PKGBUILDer v2.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -53,9 +53,17 @@ def wrapper(source='AUTO'):
     log.info('*** PBwrapper v{} (PKGBUILDer '
              '{})'.format(__wrapperversion__, __version__))
 
+    if (('-L' in argst) or ('--unlock' in argst) or (re.search('-[a-zA-Z]*L',
+            ' '.join(argst)) is not None)):
+        try:
+            os.remove('/var/lib/pacman/db.lck')
+        except OSError as e:
+            DS.fancy_error('[-L --unlock] ' + e.strerror)
+
+        exit(0)
+
     if (('-S' in argst) or ('--sync' in argst) or (re.search('-[a-zA-Z]*S',
-                                                             ' '.join(argst))
-                                                   is not None)):
+            ' '.join(argst)) is not None)):
         # The user has requested -S.
         # -l/--list is in not in *a because it takes over the whole package
         # list, and that is a workaround.
@@ -81,6 +89,9 @@ def wrapper(source='AUTO'):
         commonshortc = ['c', 'y', 'u']
         commonlongc = ['clean', 'refresh', 'sysupgrade']
 
+        ignoredshort = ['L']
+        ignoredlong = ['unlock']
+
         allpacman = pacmanshort + pacmanlong + pacmanshorta + pacmanlonga
         allpb = pbshort + pblong + pbshorta + pblonga
         allcommon = commonshort + commonlong + commonshortc + commonlongc
@@ -101,11 +112,11 @@ def wrapper(source='AUTO'):
         parser.add_argument('-V', '--version', action='store_true',
                             default=False, dest='ver')
 
-        for i in allshort:
+        for i in allshort + ignoredshort:
             parser.add_argument('-' + i, action='store_true', default=False,
                                 dest=i)
 
-        for i in alllong:
+        for i in alllong + ignoredlong:
             parser.add_argument('--' + i, action='store_true', default=False,
                                 dest=i)
 
@@ -276,12 +287,17 @@ def wrapper(source='AUTO'):
                                                           sanityargs))
     elif ('-h' in argst) or ('--help' in argst):
         # TRANSLATORS: see pacman’s localizations
-        print(_('usage: {} <operation> [...]').format(
-            os.path.basename(sys.argv[0])))
-        print('\n' + _('{}, a wrapper for pacman and '
-              'PKGBUILDer.').format('pb'))
-        print(_('Pacman and PKGBUILDer syntaxes apply.  Consult their '
-                'manpages/help commands for details.'))
+
+        print(_("""usage:  {} <operation> [...]
+
+{}, a wrapper for pacman and PKGBUILDer.
+
+Pacman and PKGBUILDer syntaxes apply.  Consult their manpages/help
+commands for more details.
+
+Additional options:
+  -L, --unlock         unlock the pacman database""").format(
+    os.path.basename(sys.argv[0])), 'PBWrapper')
 
     elif ('-V' in argst) or ('--version' in argst):
         pacpkg = localdb.get_pkg('pacman')
