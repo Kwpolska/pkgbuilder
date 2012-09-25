@@ -344,8 +344,7 @@ msgstr "使い方： {} <引数> [...]\n"
 "それぞれのhelpメッセージまで。\n"
 "\n"
 "その他の選択（引数）：\n"
-"  -L, --unlock         pacmanのデータベースを・・・?"
-#. What does it mean exactly to "unlock the pacman database"?
+"  -L, --unlock         pacmanのデータベースを開放"
 
 #: INSTALL.py:53
 msgid "Performing a dependency check..."
