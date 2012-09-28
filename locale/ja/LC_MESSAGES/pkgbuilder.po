@@ -30,7 +30,7 @@ msgstr "{}：「{}」より要更新"
 
 #: pkgbuilder/build.py:54
 msgid "{}: installed {}"
-msgstr ""
+msgstr "{}: 「{}」をインストール済み"
 
 #: pkgbuilder/build.py:89
 msgid "The build function reported a proper build."
@@ -169,7 +169,7 @@ msgstr "従属パッケージ確認を行わない。作成が失敗する可能
 
 #: pkgbuilder/main.py:63
 msgid "upgrade all the VCS/date-versioned packages"
-msgstr ""
+msgstr "VCSパッケージを全て強制アップグレード"
 
 #: pkgbuilder/main.py:66
 msgid "don't check if packages were installed after build"
@@ -336,7 +336,15 @@ msgid ""
 "\n"
 "Additional options:\n"
 "  -L, --unlock         unlock the pacman database"
-msgstr ""
+msgstr "使い方： {} <引数> [...]\n"
+"\n"
+"{}はPacmanとPKGBUILDerを統一するスクリプト。\n"
+"\n"
+"PacmanとPKGBUILDer両方の引数が使える。詳しいことmanpageや、\n"
+"それぞれのhelpメッセージまで。\n"
+"\n"
+"その他の選択（引数）：\n"
+"  -L, --unlock         pacmanのデータベースを開放"
 
 #: INSTALL.py:53
 msgid "Performing a dependency check..."
