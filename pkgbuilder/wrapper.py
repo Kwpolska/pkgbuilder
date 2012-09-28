@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
 # PBWrapper v0.1.2
-# PKGBUILDer v2.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
+# PKGBUILDer v2.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -57,10 +57,10 @@ def wrapper(source='AUTO'):
             ' '.join(argst)) is not None)):
         try:
             os.remove('/var/lib/pacman/db.lck')
+            exit(0)
         except OSError as e:
             DS.fancy_error('[-L --unlock] ' + e.strerror)
-
-        exit(0)
+            exit(1)
 
     if (('-S' in argst) or ('--sync' in argst) or (re.search('-[a-zA-Z]*S',
             ' '.join(argst)) is not None)):
@@ -121,10 +121,10 @@ def wrapper(source='AUTO'):
                                 dest=i)
 
         for i in allshortc:
-            parser.add_argument('-' + i, action='count', dest=i)
+            parser.add_argument('-' + i, action='count', default=0, dest=i)
 
         for i in alllongc:
-            parser.add_argument('--' + i, action='count', dest=i)
+            parser.add_argument('--' + i, action='count', default=0, dest=i)
 
         for i in pacmanshorta:
             parser.add_argument('-' + i, action='store', nargs=1,

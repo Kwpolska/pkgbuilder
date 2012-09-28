@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.4.6\n"
+"Project-Id-Version: 2.1.4.7\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-09-23 14:46+0200\n"
+"POT-Creation-Date: 2012-09-28 16:34+0200\n"
 "PO-Revision-Date: 2012-09-08 12:44+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
@@ -225,23 +225,29 @@ msgstr "Szukanie dokładnego dopasowania..."
 msgid "not found"
 msgstr "nie znaleziono"
 
-#: pkgbuilder/pbds.py:49
+#. TRANSLATORS: see makepkg.
+#: pkgbuilder/pbds.py:50
 msgid "Aborted by user! Exiting..."
 msgstr "Przerwane przez użytkownika! Kończenie..."
 
-#: pkgbuilder/pbds.py:85 pkgbuilder/pbds.py:170
+#. TRANSLATORS: see pacman.
+#: pkgbuilder/pbds.py:52
+msgid "Interrupt signal received\n"
+msgstr ""
+
+#: pkgbuilder/pbds.py:88 pkgbuilder/pbds.py:173
 msgid "ERROR:"
 msgstr "BŁĄD:"
 
-#: pkgbuilder/pbds.py:85
+#: pkgbuilder/pbds.py:88
 msgid "Cannot create the configuration directory."
 msgstr "Nie można utworzyć katalogu konfiguracji."
 
-#: pkgbuilder/pbds.py:87 pkgbuilder/pbds.py:156
+#: pkgbuilder/pbds.py:90 pkgbuilder/pbds.py:159
 msgid "WARNING:"
 msgstr "UWAGA:"
 
-#: pkgbuilder/pbds.py:87
+#: pkgbuilder/pbds.py:90
 msgid "Logs will not be created."
 msgstr "Logi nie będą tworzone."
 
@@ -340,7 +346,8 @@ msgid ""
 "\n"
 "Additional options:\n"
 "  -L, --unlock         unlock the pacman database"
-msgstr "sposób użycia:  {} <operacja> [...]\n"
+msgstr ""
+"sposób użycia:  {} <operacja> [...]\n"
 "\n"
 "{}, wrapper dla pacmana i PKGBUILDera.\n"
 "\n"

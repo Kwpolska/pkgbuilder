@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.4.6\n"
+"Project-Id-Version: 2.1.4.7\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-09-23 14:46+0200\n"
+"POT-Creation-Date: 2012-09-28 16:34+0200\n"
 "PO-Revision-Date: 2012-09-21 20:21+0200\n"
 "Last-Translator: Colin Woodbury <colingw@gmail.com>\n"
 "Language-Team: Colin Woodbury <colingw@gmail.com>\n"
@@ -221,23 +221,29 @@ msgstr "完全一致を検索中・・・"
 msgid "not found"
 msgstr "見つからなかった"
 
-#: pkgbuilder/pbds.py:49
+#. TRANSLATORS: see makepkg.
+#: pkgbuilder/pbds.py:50
 msgid "Aborted by user! Exiting..."
 msgstr "ユーザーによる強制終了！"
 
-#: pkgbuilder/pbds.py:85 pkgbuilder/pbds.py:170
+#. TRANSLATORS: see pacman.
+#: pkgbuilder/pbds.py:52
+msgid "Interrupt signal received\n"
+msgstr ""
+
+#: pkgbuilder/pbds.py:88 pkgbuilder/pbds.py:173
 msgid "ERROR:"
 msgstr "エラー："
 
-#: pkgbuilder/pbds.py:85
+#: pkgbuilder/pbds.py:88
 msgid "Cannot create the configuration directory."
 msgstr "設定ディレクトリ作れなかった。"
 
-#: pkgbuilder/pbds.py:87 pkgbuilder/pbds.py:156
+#: pkgbuilder/pbds.py:90 pkgbuilder/pbds.py:159
 msgid "WARNING:"
 msgstr "警告："
 
-#: pkgbuilder/pbds.py:87
+#: pkgbuilder/pbds.py:90
 msgid "Logs will not be created."
 msgstr "ログは作られない。"
 
@@ -336,7 +342,8 @@ msgid ""
 "\n"
 "Additional options:\n"
 "  -L, --unlock         unlock the pacman database"
-msgstr "使い方： {} <引数> [...]\n"
+msgstr ""
+"使い方： {} <引数> [...]\n"
 "\n"
 "{}はPacmanとPKGBUILDerを統一するスクリプト。\n"
 "\n"

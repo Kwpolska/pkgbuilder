@@ -76,13 +76,13 @@ for i in ./locale/*; do
     msgmerge $popath messages.pot -o $popath
     fuzzy=$(cat $popath | grep '#, fuzzy')
     empty=$(cat $popath | pcregrep -M 'msgstr ""\n$')
-    countf=$(echo $fuzzy | wc -l)
-    counte=$(echo $empty | wc -l)
-    if [ countf != 0 ]; then
+    countf=$(echo -n $fuzzy | wc -l)
+    counte=$(echo -n $empty | wc -l)
+    if [ $countf != '0' ]; then
         echo "WARNING: $countf fuzzy strings in language $language."
     fi
 
-    if [ counte != 0 ]; then
+    if [ $counte != '0' ]; then
         echo "WARNING: $counte empty strings in language $language."
     fi
 
