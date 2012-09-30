@@ -6,8 +6,8 @@ PBWrapper
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: © 2011-2012, Kwpolska.
 :License: BSD (see /LICENSE or Appendix B.)
-:Date: 2012-09-28
-:Version: 2.1.4.7
+:Date: 2012-09-30
+:Version: 2.1.4.8
 :Wrapper Version: 0.1.3
 :Manual section: 8
 :Manual group: PKGBUILDer manual
@@ -27,6 +27,10 @@ information.
 
 It is a part of PKGBUILDer and is included since version 2.1.4.0 of
 PKGBUILDer.
+
+Notice: Running PKGBUILDer and/or PBWrapper as root can deal catastrophic
+damage to your system.  Run it as a regular user, you will be prompted for
+the root password when one will be required (i.e. to run **pacman**).
 
 OPERATIONS AND OPTIONS
 ======================
