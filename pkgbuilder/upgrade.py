@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
+# PKGBUILDer v2.1.4.82.1.4.82.1.4.82.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -106,9 +106,9 @@ class Upgrade:
         """Upgrades packages.  Simillar to Build.auto_build()."""
         DS.log.info('Ran auto_upgrade.')
         if DS.pacman:
-            print(':: ' + _('Gathering data about packages...'))
+            print(':: ' + _('Synchronizing package databases...'))
         else:
-            DS.fancy_msg(_('Gathering data about packages...'))
+            DS.fancy_msg(_('Synchronizing package databases...'))
 
         foreign = self.gather_foreign_pkgs()
         gradable = self.list_upgradable(foreign.keys(), vcsup)
@@ -116,6 +116,11 @@ class Upgrade:
         downgradable = gradable[1]
         upglen = len(upgradable)
         downlen = len(downgradable)
+
+        if DS.pacman:
+            print(':: ' + _('Starting full system upgrade...'))
+        else:
+            DS.fancy_msg(_('Starting full system upgrade...'))
 
         if downlen > 0:
             for i in downgradable:
@@ -160,6 +165,13 @@ class Upgrade:
                 return 0
 
             toinstall = []
+
+
+            if DS.uid == 0:
+                DS.log.warning('Running as root! (UID={})'.format(DS.uid))
+                DS.fancy_warning(_('Running PKGBUILDer as root can break '
+                                   'your system!'))
+
             for pkgname in upgnames:
                 DS.log.info('Building {}'.format(pkgname))
                 toinstall += self.build.auto_build(pkgname, DS.depcheck,

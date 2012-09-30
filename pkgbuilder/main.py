@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
+# PKGBUILDer v2.1.4.82.1.4.82.1.4.82.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -26,7 +26,7 @@ import subprocess
 
 
 ### main()          The main routine        ###
-def main(source='AUTO', noquit=False):
+def main(source='AUTO', quit=True):
     """Main routine of PKGBUILDer."""
     try:
         verstring = 'PKGBUILDer v'+__version__
@@ -113,9 +113,9 @@ def main(source='AUTO', noquit=False):
 
         if args.info:
             DS.log.debug('Showing info...')
-            for pkgname in args.pkgs:
-                utils.print_package_info(utils.info(pkgname))
+            utils.print_package_info(utils.info(args.pkgs))
 
+            if quit:
                 exit(0)
 
         if args.search:
@@ -126,10 +126,11 @@ def main(source='AUTO', noquit=False):
                 # limitation and not an idea of yours truly.
                 DS.fancy_error(_('Search query too short, API limitation'))
                 DS.fancy_msg(_('Searching for exact match...'))
-                search = [utils.info(searchstring)]
-                if search == [None]:
+                search = utils.info([searchstring])
+                if search == []:
                     DS.fancy_error2(_('not found'))
-                    exit(0)
+                    if quit:
+                        exit(0)
                 else:
                     utils.print_package_search(search[0], prefix=(
                                                DS.colors['blue'] + '  ->' +
@@ -137,7 +138,8 @@ def main(source='AUTO', noquit=False):
                                                DS.colors['bold'] + ' '),
                                                prefixp='  -> ')
                     print(DS.colors['all_off'], end='')
-                    exit(0)
+                    if quit:
+                        exit(0)
             else:
                 search = utils.search(searchstring)
 
@@ -151,7 +153,8 @@ def main(source='AUTO', noquit=False):
                                                                  True) + '\n'
             if output != '':
                 print(output.rstrip())
-            exit(0)
+            if quit:
+                exit(0)
 
         if args.pac:
             DS.log.debug('-S passed, building in /tmp/.')
@@ -170,11 +173,16 @@ def main(source='AUTO', noquit=False):
         dodowngrade = args.upgrade > 1
         upgrade.auto_upgrade(dodowngrade, args.vcsup)
 
-        if not noquit:
+        if quit:
             exit(0)
 
     # If we didn't quit, we should build the packages.
     if args.pkgs:
+        if DS.uid == 0:
+            DS.log.warning('Running as root! (UID={})'.format(DS.uid))
+            DS.fancy_warning(_('Running PKGBUILDer as root can break your '
+                               'system!'))
+
         DS.log.info('Starting build...')
         toinstall = []
         for pkgname in args.pkgs:

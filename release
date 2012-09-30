@@ -74,16 +74,14 @@ for i in ./locale/*; do
     popath="./locale/$language/LC_MESSAGES/$project.po"
     sed 's/\"Project-Id-Version: .*/\"Project-Id-Version: '$version'\\n\"/' $popath -i
     msgmerge $popath messages.pot -o $popath
-    fuzzy=$(cat $popath | grep '#, fuzzy')
-    empty=$(cat $popath | pcregrep -M 'msgstr ""\n$')
-    countf=$(echo -n $fuzzy | wc -l)
-    counte=$(echo -n $empty | wc -l)
-    if [ $countf != '0' ]; then
-        echo "WARNING: $countf fuzzy strings in language $language."
+    fuzzy=$(cat $popath | grep -c '#, fuzzy')
+    empty=$(cat $popath | pcregrep -cM 'msgstr ""\n$')
+    if [ $fuzzy != '0' ]; then
+        echo "WARNING: $fuzzy fuzzy strings in language $language."
     fi
 
-    if [ $counte != '0' ]; then
-        echo "WARNING: $counte empty strings in language $language."
+    if [ $empty != '0' ]; then
+        echo "WARNING: $empty empty strings in language $language."
     fi
 
     echo "$language: [enter] to edit, [c] to continue"
@@ -146,18 +144,37 @@ burp -u Kwpolska -c system $project.src.tar.gz $project"-git".src.tar.gz
 cd ..
 rm -rf MKPKGBUILD
 
-echo 'Commit message (sans the version?)'
-echo -n '> '
-read commitmsg
+if [[ $2 != '-c' ]]; then
+    echo 'Commit message (sans the version?)'
+    echo -n '> '
+    read commitmsg
+    if [[ commitmsg = '' ]]; then
+        cm='t'
+    fi
+else
+    cm='t'
+fi
 
 rm -rf $project.egg-info __pycache__ $project/__pycache__
 
 git add *
-if [[ $2 = '-c' ]]; then
+if [[ $? != '0' ]]; then
+    echo 'Open another terminal and fix the errors.'
+    read dn
+    git add *
+    if [[ $? != '0' ]]; then
+        echo 'But please test your changes using that other terminal.'
+        read dn2
+        git add *
+    fi
+fi
+
+if [[ $cm = 't' ]]; then
     git commit -as
 else
     git commit -asm "v$version: $commitmsg"
 fi
+
 git tag -a "v$version" -m "Version $version"
-git push --tags
 git push
+git push --tags

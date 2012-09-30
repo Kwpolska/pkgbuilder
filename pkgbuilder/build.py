@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
+# PKGBUILDer v2.1.4.82.1.4.82.1.4.82.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -41,9 +41,13 @@ class Build:
         DS.fancy_msg('Validating installation status...')
         pyc = pycman.config.init_with_config('/etc/pacman.conf')
         localdb = pyc.get_localdb()
+
+        aurpkgs = self.utils.info(pkgnames)
+
         for pkgname in pkgnames:
             pkg = localdb.get_pkg(pkgname)
-            aurversion = self.utils.info(pkgname)['Version']
+            aurversion = aurpkgs[pkgname]['Version']
+
             if pkg is None:
                 DS.fancy_error2(_('{}: NOT installed').format(pkgname))
             else:
@@ -56,16 +60,8 @@ class Build:
 
     def install(self, pkgpaths):
         """Install packages through ``pacman -U``."""
-        if DS.hassudo:
-            subprocess.call(['sudo', 'cp'] + pkgpaths +
-                            ['/var/cache/pacman/pkg/'])
-            subprocess.call(['sudo', DS.paccommand, '-U'] + pkgpaths)
-        else:
-            ti = ' '.join(pkgpaths)
-            subprocess.call('su -c "cp {} /var/cache/pacman/pkg/"; '
-                            '{} -U {}'.format(ti, DS.paccommand, ti))
-
-
+        DS.sudo('cp', pkgpaths, '/var/cache/pacman/pkg/')
+        DS.sudo(DS.paccommand, '-U', pkgpaths)
 
     def auto_build(self, pkgname, performdepcheck=True,
                    pkginstall=True):
@@ -194,7 +190,7 @@ class Build:
                     parseddeps[dep] = 0
                 elif pyalpm.find_satisfier(syncpkgs, dep):
                     parseddeps[dep] = 1
-                elif self.utils.info(dep) is not None:
+                elif self.utils.info([dep]):
                     parseddeps[dep] = 2
                 else:
                     parseddeps[dep] = -1
@@ -210,8 +206,8 @@ class Build:
         """
         try:
             # exists
-            pkg = self.utils.info(pkgname)
-            if pkg is None:
+            pkg = self.utils.info([pkgname])[0]
+            if not pkg:
                 raise PBError(_('Package {} not found.').format(pkgname))
             pkgname = pkg['Name']
             DS.fancy_msg(_('Building {}...').format(pkgname))
@@ -260,7 +256,7 @@ class Build:
             if DS.cleanup:
                 mpparams += ' -c'
 
-            if os.geteuid() == 0:
+            if DS.uid == 0:
                 mpparams += ' --asroot'
 
             mpstatus = subprocess.call('/usr/bin/makepkg -sf' + mpparams,

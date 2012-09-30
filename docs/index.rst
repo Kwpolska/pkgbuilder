@@ -47,6 +47,7 @@ Table of Contents
    LICENSE
    CHANGELOG
    CONTRIBUTING
+   TODO
 
 Indices and tables
 ------------------

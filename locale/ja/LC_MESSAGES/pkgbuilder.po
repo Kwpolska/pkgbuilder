@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.4.7\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-29 11:22+0200\n"
+"Project-Id-Version: 2.1.4.8\n"
+"Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
+"POT-Creation-Date: 2012-09-30 18:36+0200\n"
 "PO-Revision-Date: 2012-09-21 20:21+0200\n"
 "Last-Translator: Colin Woodbury <colingw@gmail.com>\n"
 "Language-Team: Colin Woodbury <colingw@gmail.com>\n"
@@ -223,7 +223,7 @@ msgstr "見つからなかった"
 
 #: pkgbuilder/main.py:183 pkgbuilder/upgrade.py:172
 msgid "Running PKGBUILDer as root can break your system!"
-msgstr ""
+msgstr "管理者としてPKGBUILDerを実行すると危険性あり！"
 
 #. TRANSLATORS: see makepkg.
 #: pkgbuilder/pbds.py:51
@@ -233,7 +233,7 @@ msgstr "ユーザーによる強制終了！"
 #. TRANSLATORS: see pacman.
 #: pkgbuilder/pbds.py:53
 msgid "Interrupt signal received\n"
-msgstr ""
+msgstr "途中切断\n"
 
 #: pkgbuilder/pbds.py:91 pkgbuilder/pbds.py:198
 msgid "ERROR:"
@@ -253,11 +253,11 @@ msgstr "ログは作られない。"
 
 #: pkgbuilder/upgrade.py:109 pkgbuilder/upgrade.py:111
 msgid "Synchronizing package databases..."
-msgstr ""
+msgstr "パッケージデーターベースを同期中・・・"
 
 #: pkgbuilder/upgrade.py:121 pkgbuilder/upgrade.py:123
 msgid "Starting full system upgrade..."
-msgstr ""
+msgstr "完全アップグレードを開始・・・"
 
 #: pkgbuilder/upgrade.py:128 pkgbuilder/upgrade.py:131
 msgid "{}: local ({}) is newer than aur ({})"

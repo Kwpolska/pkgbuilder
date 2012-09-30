@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
+# PKGBUILDer v2.1.4.82.1.4.82.1.4.82.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -20,6 +20,7 @@ from . import _, __version__
 import sys
 import os
 import logging
+import subprocess
 
 
 ### PBDS           PB global data storage  ###
@@ -67,6 +68,8 @@ class PBDS():
     else:
         hassudo = False
 
+    uid = os.geteuid()
+
     # Creating the configuration/log stuff...
     confhome = os.getenv('XDG_CONFIG_HOME')
     if confhome is None:
@@ -95,6 +98,28 @@ class PBDS():
                         level=logging.DEBUG)
     log = logging.getLogger('pkgbuilder')
     log.info('*** PKGBUILDer v' + __version__)
+
+    def sudo(self, *rargs):
+        """
+        Run as root.  ``sudo`` if present, ``su -c`` otherwise, nothing if
+        already running as root.
+
+        .. note:: Accepts only one command.  `shell=False`, for safety.
+        """
+        args = []
+        for i in rargs:
+            if type(i) == list or type(i) == tuple:
+                args += i
+            else:
+                args += i.split(' ')
+
+        if self.uid != 0:
+            if self.hassudo:
+                subprocess.call(['sudo'] + args)
+            else:
+                subprocess.call('su -c "{}"'.format(' '.join(args)))
+        else:
+            subprocess.call(args)
 
     def debugmode(self, nochange=False):
         """Print all the logged messages to stderr."""
