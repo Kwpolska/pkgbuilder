@@ -131,7 +131,7 @@ exactly 2 files')
 
     def test_utils_info(self):
         utils = pkgbuilder.utils.Utils()
-        req = utils.info('pkgbuilder')
+        req = utils.info(['pkgbuilder'])[0]
         if req['Maintainer'] != 'Kwpolska':
             raise Exception('test_utils_info: Kwpolska isn’t \
 the maintainer of PKGBUILDer')
@@ -208,7 +208,7 @@ First Submitted: 2011-09-20T14:46:33Z
 Last Updated   : 2106-02-07T06:28:14Z
 Description    : A Python AUR helper/library.
 """
-        req = utils.print_package_info(fpkg, True, True)
+        req = utils.print_package_info([fpkg], True, True)
         if req != sample:
             raise Exception('test_utils_print_package_info: output \
 doesn’t match the example')

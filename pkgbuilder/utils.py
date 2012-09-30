@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
+# PKGBUILDer v2.1.4.82.1.4.82.1.4.82.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -31,11 +31,15 @@ class Utils:
 
     aur = AUR()
 
-    def info(self, pkgname):
-        """Returns info about a package."""
-        aur_pkgs = self.aur.request('info', pkgname, DS.protocol)
+    def info(self, pkgnames):
+        """
+        .. versionchanged:: 2.1.4.8
+
+        Returns info about packages.
+        """
+        aur_pkgs = self.aur.multiinfo(pkgnames, DS.protocol)
         if aur_pkgs['results'] == 'No results found':
-            return None
+            return []
         else:
             return aur_pkgs['results']
 
@@ -92,12 +96,14 @@ class Utils:
         else:
             print(entry)
 
-    def print_package_info(self, pkg, cachemode=False, force_utc=False):
+    def print_package_info(self, pkgs, cachemode=False, force_utc=False):
         """
+        .. versionchanged:: 2.1.4.8
+
         Outputs/returns a package representation, which is close to the output
         of ``pacman -Si``.
         """
-        if pkg is None:
+        if pkgs == []:
             raise PBError(_('Package not found.'))
         else:
             loct = os.getenv('LC_TIME')
@@ -114,36 +120,21 @@ class Utils:
 
             fmt = '%Y-%m-%dT%H:%M:%S%Z'
 
-            if force_utc:
-                class UTC(datetime.tzinfo):
-                    """Universal Time, Coordinated."""
+            class UTC(datetime.tzinfo):
+                """Universal Time, Coordinated."""
 
-                    def utcoffset(self, dt):
-                        return datetime.timedelta(0)
+                def utcoffset(self, dt):
+                    return datetime.timedelta(0)
 
-                    def tzname(self, dt):
-                        return "Z"
+                def tzname(self, dt):
+                    return "Z"
 
-                    def dst(self, dt):
-                        return datetime.timedelta(0)
-
-                upd = datetime.datetime.fromtimestamp(float(pkg['Last'
-                                                            'Modified']),
-                                                      tz=UTC()).strftime(fmt)
-                fsb = datetime.datetime.fromtimestamp(float(pkg['First'
-                                                            'Submitted']),
-                                                      tz=UTC()).strftime(fmt)
-            else:
-                upd = datetime.datetime.fromtimestamp(float(pkg['Last'
-                                                            'Modified'])
-                                                      ).strftime(fmt)
-                fsb = datetime.datetime.fromtimestamp(float(pkg['First'
-                                                            'Submitted'])
-                                                      ).strftime(fmt)
+                def dst(self, dt):
+                    return datetime.timedelta(0)
 
             # TRANSLATORS: space it properly.  `yes/no' below are
             # for `out of date'.
-            toout = _("""Repository     : aur
+            t = _("""Repository     : aur
 Category       : {cat}
 Name           : {nme}
 Version        : {ver}
@@ -155,20 +146,41 @@ Maintainer     : {mnt}
 First Submitted: {fsb}
 Last Updated   : {upd}
 Description    : {dsc}
-""").format(cat=DS.categories[int(pkg['CategoryID'])],
-            nme=pkg['Name'],
-            url=pkg['URL'],
-            ver=pkg['Version'],
-            lic=pkg['License'],
-            cmv=pkg['NumVotes'],
-            ood=DS.colors['red'] + _('yes') + DS.colors['all_off'] if (
-                pkg['OutOfDate'] == '1') else _('no'),
-            mnt=pkg['Maintainer'],
-            upd=upd,
-            fsb=fsb,
-            dsc=pkg['Description'])
+""")
+
+            toout = []
+            for pkg in pkgs:
+                if force_utc:
+                    upd = datetime.datetime.fromtimestamp(
+                            float(pkg['LastModified']),
+                            tz=UTC()).strftime(fmt)
+                    fsb = datetime.datetime.fromtimestamp(
+                            float(pkg['FirstSubmitted']),
+                            tz=UTC()).strftime(fmt)
+                else:
+                    upd = datetime.datetime.fromtimestamp(
+                            float(pkg['LastModified'])).strftime(fmt)
+                    fsb = datetime.datetime.fromtimestamp(
+                            float(pkg['FirstSubmitted'])).strftime(fmt)
+
+                if pkg['OutOfDate'] == '1':
+                    ood = DS.colors['red'] + _('yes') + DS.colors['all_off']
+                else:
+                    ood = _('no')
+
+                toout.append(t.format(cat=DS.categories[int(pkg['CategoryID'])],
+                                      nme=pkg['Name'],
+                                      url=pkg['URL'],
+                                      ver=pkg['Version'],
+                                      lic=pkg['License'],
+                                      cmv=pkg['NumVotes'],
+                                      ood=ood,
+                                      mnt=pkg['Maintainer'],
+                                      upd=upd,
+                                      fsb=fsb,
+                                      dsc=pkg['Description']))
 
         if cachemode:
-            return toout
+            return '\n'.join(toout)
         else:
-            print(toout)
+            print('\n'.join(toout))

@@ -1,0 +1,24 @@
+#!/bin/bash
+project="pkgbuilder"
+language=$1
+
+xgettext -c ./$project/*.py INSTALL.py localeprovider.py -o ./messages.pot
+
+podir="./locale/$language/LC_MESSAGES"
+popath="./locale/$language/LC_MESSAGES/$project.po"
+
+test=$(ls $popath > /dev/null 2> /dev/null)
+
+if [[ $? == '2' ]]; then
+    echo -n 'No such locale!  Valid locales are:  '
+    ls --tabsize 50 ./locale
+    exit 1
+else
+    msgmerge $popath messages.pot -o $popath
+    fuzzy=$(cat $popath | grep -c '#, fuzzy')
+    empty=$(cat $popath | pcregrep -cM 'msgstr ""\n$')
+    echo "$fuzzy fuzzy strings"
+    echo "$empty empty strings"
+
+    msgfmt -o $podir/$project.mo $popath
+fi
