@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.82.1.4.82.1.4.82.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
+# PKGBUILDer v2.1.4.92.1.4.82.1.4.82.1.4.82.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -44,9 +44,12 @@ class Build:
 
         aurpkgs = self.utils.info(pkgnames)
 
+        i = 0
+
         for pkgname in pkgnames:
             pkg = localdb.get_pkg(pkgname)
-            aurversion = aurpkgs[pkgname]['Version']
+            aurversion = aurpkgs[i]['Version']
+            i += 1
 
             if pkg is None:
                 DS.fancy_error2(_('{}: NOT installed').format(pkgname))
@@ -101,12 +104,21 @@ class Build:
                 exit(1)
             elif build_result[0] == 72337:  # PBDEP.
                 DS.fancy_warning(_('Building more AUR packages is required.'))
+                toinstall2 = []
                 for pkgname2 in build_result[1]:
-                    self.auto_build(pkgname2, performdepcheck,
-                                    pkginstall)
+                    toinstall2 += self.auto_build(pkgname2, performdepcheck,
+                                                  pkginstall)
 
-                self.validate(build_result[1])
-                self.install(build_result[1])
+                if toinstall2:
+                    self.install(toinstall2)
+
+                if DS.validate:
+                    self.validate(build_result[1])
+
+                # Setting all the deps installed to be marked as such.  Using
+                # pacman because I need root, and I can’t get one there.
+                DS.sudo(DS.paccommand, '-D', '--asdeps', build_result[1])
+
                 self.auto_build(pkgname, performdepcheck,
                                 pkginstall)
 

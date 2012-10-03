@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
 # PBWrapper v0.1.2
-# PKGBUILDer v2.1.4.82.1.4.82.1.4.82.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
+# PKGBUILDer v2.1.4.92.1.4.82.1.4.82.1.4.82.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -217,18 +217,18 @@ def wrapper(source='AUTO'):
         elif args.l or args.list:
             log.debug('Got -l.')
             log.info('Running pacman.')
-            subprocess.call([DS.paccommand] + pacargs + pkgnames)
+            subprocess.call([DS.paccommand] + pacargs, pkgnames)
             exit()
         elif args.u or args.sysupgrade:
             log.debug('Got -u.')
             log.info('Running pacman.')
-            DS.sudo(DS.paccommand, pacargs)
+            DS.sudo([DS.paccommand, pacargs])
             log.info('Running pkgbuilder (pkgbuilder.main.main()).')
             main(pbargs, quit=False)
         elif args.y or args.refresh:
             log.debug('Got -y.')
             log.info('Running pacman.')
-            DS.sudo(DS.paccommand, pacargs)
+            DS.sudo([DS.paccommand, pacargs])
 
         log.debug('Generating AUR packages list...')
         pacmanpkgnames = []
@@ -249,8 +249,7 @@ def wrapper(source='AUTO'):
 
         if pacmanpkgnames != []:
             log.info('Running pacman.')
-            DS.sudo(DS.paccommand, pacargs, pacmanpkgnames)
-            DS.sudo(DS.paccommand + pacargs + pacmanpkgnames)
+            DS.sudo([DS.paccommand, pacargs, pacmanpkgnames])
         else:
             log.info('No repo packages in the list.')
 
@@ -265,7 +264,7 @@ def wrapper(source='AUTO'):
             log.info('Running pacman due to failed sanity check.')
             sanityargs = [item for item in pkgnames if (item not in
                           sanitycheck)]
-            DS.sudo(DS.paccommand, pacargs, sanityargs)
+            DS.sudo([DS.paccommand], pacargs, sanityargs)
     elif ('-h' in argst) or ('--help' in argst):
         # TRANSLATORS: see pacman’s localizations
 
@@ -295,4 +294,4 @@ pyalpm      v{}""".format(__wrapperversion__, __version__,
         else:
             print('Please don’t use the reserved UTshibboleet argument.')
     else:
-        DS.sudo(DS.paccommand + argst)
+        DS.sudo([DS.paccommand] + argst)
