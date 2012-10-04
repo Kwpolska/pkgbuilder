@@ -187,8 +187,9 @@ def main(source='AUTO', quit=True):
         toinstall = []
         for pkgname in args.pkgs:
             DS.log.info('Building {}'.format(pkgname))
-            toinstall += build.auto_build(pkgname, DS.depcheck, DS.pkginst)
-
+            out = build.auto_build(pkgname, DS.depcheck, DS.pkginst)
+            if out:
+                toinstall += out
         if toinstall:
             build.install(toinstall)
 

@@ -298,19 +298,19 @@ class Build:
             return [mpstatus, toinstall]
         except PBError as inst:
             DS.fancy_error(str(inst))
-            return [72789]
+            return [72789, None]
         except requests.exceptions.ConnectionError as inst:
             DS.fancy_error(str(inst))
-            return [72737]
+            return [72737, None]
         except requests.exceptions.HTTPError as inst:
             DS.fancy_error(str(inst))
-            return [72737]
+            return [72737, None]
         except requests.exceptions.Timeout as inst:
             DS.fancy_error(str(inst))
-            return [72737]
+            return [72737, None]
         except requests.exceptions.TooManyRedirects as inst:
             DS.fancy_error(str(inst))
-            return [72737]
+            return [72737, None]
         except IOError as inst:
             DS.fancy_error(str(inst))
-            return [72101]
+            return [72101, None]
