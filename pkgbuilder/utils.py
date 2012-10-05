@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.92.1.4.82.1.4.82.1.4.82.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
+# PKGBUILDer v2.1.5.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -38,7 +38,9 @@ class Utils:
         Returns info about packages.
         """
         aur_pkgs = self.aur.multiinfo(pkgnames, DS.protocol)
-        if aur_pkgs['results'] == 'No results found':
+        if aur_pkgs == []:
+            return []
+        elif aur_pkgs['results'] == 'No results found':
             return []
         else:
             return aur_pkgs['results']
@@ -46,7 +48,9 @@ class Utils:
     def search(self, pkgname):
         """Searches for AUR packages."""
         aur_pkgs = self.aur.request('search', pkgname, DS.protocol)
-        if aur_pkgs['results'] == 'No results found':
+        if aur_pkgs == []:
+            return []
+        elif aur_pkgs['results'] == 'No results found':
             return []
         else:
             return aur_pkgs['results']

@@ -19,7 +19,7 @@ datep=$(date '+%Y%m%d')
 sed "s/version=.*/version='$version',/g" setup.py -i
 sed "s/release = .*/release = '$version'/g" docs/conf.py -i
 sed "s/:Version: .*/:Version: $version/g" docs/*.rst -i
-sed "s/# $projectc v*/# $projectc v$version/g" $project/*.py -i
+sed "s/# $projectc v.*/# $projectc v$version/" $project/*.py -i
 sed "s/__version__ = .*/__version__ = '$version'/g" $project/__init__.py -i
 sed "s/pkgver=.*/pkgver=$version/g" PKGBUILD -i
 
@@ -175,6 +175,6 @@ else
     git commit -asm "v$version: $commitmsg"
 fi
 
-git tag -a "v$version" -m "Version $version"
+git tag -sa "v$version" -m "Version $version"
 git push
 git push --tags
