@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.92.1.4.82.1.4.82.1.4.82.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
+# PKGBUILDer v2.1.4.9
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -37,15 +37,17 @@ class Upgrade:
         """Gathers a list of all foreign packages."""
         # Based on paconky.py.
         installed = [p for p in self.localdb.pkgcache]
-
+        repo = []
+        aur = []
         syncdbs = self.H.get_syncdbs()
         for sdb in syncdbs:
             for pkg in installed:
                 if sdb.get_pkg(pkg.name):
-                    installed.remove(pkg)
+                    repo.append(pkg)
 
+        aur = set(set(installed) - set(repo))
         # Return foreign packages.
-        return dict([(p.name, p) for p in installed])
+        return dict([(p.name, p) for p in aur])
 
     def list_upgradable(self, pkglist, vcsup=False):
         """Compares package versions and returns upgradable ones."""
