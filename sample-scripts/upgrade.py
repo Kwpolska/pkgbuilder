@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.5.0
-# An AUR helper (and library) in Python 3.
+# Upgrade Counter and Lister
+# Part of PKGBUILDer Sample Scripts
 # Copyright © 2011-2012, Kwpolska.
 # All rights reserved.
 #
@@ -33,41 +33,46 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-"""
-    pkgbuilder
-    ~~~~~~~~~~
+"""A script for listing the possible upgrades for AUR packages."""
 
-    An AUR helper (and library) in Python 3.
+import pkgbuilder
+import pkgbuilder.upgrade
+import argparse
 
-    :Copyright: © 2011-2012, Kwpolska.
-    :License: BSD (see /LICENSE).
-"""
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Work with AUR upgrades.')
+    parser.add_argument('-c', '--count', action='store_true', default=False,
+                        dest='count', help='return only the count of '
+                        'available upgrades')
+    parser.add_argument('-l', '--list', action='store_true', default=False,
+                        dest='list', help='list possible upgrades')
+    parser.add_argument('-d', '--downgrade', action='store_true',
+                        default=False, dest='downgrade',
+                        help='include packages that can be downgraded')
+    args = parser.parse_args()
 
-__title__ = 'PKGBUILDer'
-__version__ = '2.1.5.0'
-__author__ = 'Kwpolska'
-__license__ = '3-clause BSD'
-__docformat__ = 'restructuredtext en'
+    if not args.count and not args.list:
+        exit(0)
 
-import gettext
+    upg = pkgbuilder.upgrade.Upgrade()
 
-G = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
-_ = G.gettext
+    foreign = upg.gather_foreign_pkgs()
+    gradable = upg.list_upgradable(foreign.keys(), False)
+    upgradable = gradable[0]
+    downgradable = gradable[1]
 
+    if args.downgrade:
+        count = len(upgradable) + len(downgradable)
+        plist = gradable[0] + gradable[1]
+        plist.sort()
+    else:
+        count = len(upgradable)
+        plist = gradable[0]
+        plist.sort()
 
-### PBError         errors raised here      ###
-class PBError(Exception):
-    """Exceptions raised by the PKGBUILDer."""
+    if args.count:
+        print(count)
 
-    def __init__(self, msg):
-        """PBError init."""
-        DS.log.error('(auto PBError       ) ' + msg)
-        self.msg = msg
-
-    def __str__(self):
-        """You want to see error messages, don’t you?"""
-        return self.msg
-
-
-from .pbds import PBDS
-DS = PBDS()
+    if args.list:
+        for i in plist:
+            print('{} - {} -> {}'.format(i[0], i[1], i[2]))

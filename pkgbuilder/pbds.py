@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.92.1.4.82.1.4.82.1.4.82.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
+# PKGBUILDer v2.1.5.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -109,9 +109,11 @@ class PBDS():
         args = []
         for i in rargs:
             if type(i) == list or type(i) == tuple:
-                args += i
+                for j in i:
+                    args.append(j)
             else:
-                args += i.split(' ')
+                for j in i.split(' '):
+                    args.append(j)
 
         if self.uid != 0:
             if self.hassudo:

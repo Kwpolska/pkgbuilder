@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.92.1.4.82.1.4.82.1.4.82.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.72.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
+# PKGBUILDer v2.1.5.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -218,8 +218,9 @@ class Build:
         """
         try:
             # exists
-            pkg = self.utils.info([pkgname])[0]
-            if not pkg:
+            try:
+                pkg = self.utils.info([pkgname])[0]
+            except IndexError:
                 raise PBError(_('Package {} not found.').format(pkgname))
             pkgname = pkg['Name']
             DS.fancy_msg(_('Building {}...').format(pkgname))
