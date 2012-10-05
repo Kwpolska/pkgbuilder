@@ -6,9 +6,9 @@ PBWrapper
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: © 2011-2012, Kwpolska.
 :License: BSD (see /LICENSE or Appendix B.)
-:Date: 2012-10-03
-:Version: 2.1.4.9
-:Wrapper Version: 0.1.3
+:Date: 2012-10-05
+:Version: 2.1.5.0
+:Wrapper Version: 0.1.4
 :Manual section: 8
 :Manual group: PKGBUILDer manual
 
