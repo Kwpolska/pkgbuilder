@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.5.0
+# PKGBUILDer v2.1.5.1
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -152,39 +152,39 @@ Last Updated   : {upd}
 Description    : {dsc}
 """)
 
-            toout = []
+            to = []
             for pkg in pkgs:
                 if force_utc:
                     upd = datetime.datetime.fromtimestamp(
-                            float(pkg['LastModified']),
-                            tz=UTC()).strftime(fmt)
+                        float(pkg['LastModified']),
+                        tz=UTC()).strftime(fmt)
                     fsb = datetime.datetime.fromtimestamp(
-                            float(pkg['FirstSubmitted']),
-                            tz=UTC()).strftime(fmt)
+                        float(pkg['FirstSubmitted']),
+                        tz=UTC()).strftime(fmt)
                 else:
                     upd = datetime.datetime.fromtimestamp(
-                            float(pkg['LastModified'])).strftime(fmt)
+                        float(pkg['LastModified'])).strftime(fmt)
                     fsb = datetime.datetime.fromtimestamp(
-                            float(pkg['FirstSubmitted'])).strftime(fmt)
+                        float(pkg['FirstSubmitted'])).strftime(fmt)
 
                 if pkg['OutOfDate'] == '1':
                     ood = DS.colors['red'] + _('yes') + DS.colors['all_off']
                 else:
                     ood = _('no')
 
-                toout.append(t.format(cat=DS.categories[int(pkg['CategoryID'])],
-                                      nme=pkg['Name'],
-                                      url=pkg['URL'],
-                                      ver=pkg['Version'],
-                                      lic=pkg['License'],
-                                      cmv=pkg['NumVotes'],
-                                      ood=ood,
-                                      mnt=pkg['Maintainer'],
-                                      upd=upd,
-                                      fsb=fsb,
-                                      dsc=pkg['Description']))
+                to.append(t.format(cat=DS.categories[int(pkg['CategoryID'])],
+                                   nme=pkg['Name'],
+                                   url=pkg['URL'],
+                                   ver=pkg['Version'],
+                                   lic=pkg['License'],
+                                   cmv=pkg['NumVotes'],
+                                   ood=ood,
+                                   mnt=pkg['Maintainer'],
+                                   upd=upd,
+                                   fsb=fsb,
+                                   dsc=pkg['Description']))
 
         if cachemode:
-            return '\n'.join(toout)
+            return '\n'.join(to)
         else:
-            print('\n'.join(toout))
+            print('\n'.join(to))

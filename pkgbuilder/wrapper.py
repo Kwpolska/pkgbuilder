@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
 # PBWrapper v0.1.4
-# PKGBUILDer v2.1.5.0
+# PKGBUILDer v2.1.5.1
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -54,7 +54,8 @@ def wrapper(source='AUTO'):
              '{})'.format(__wrapperversion__, __version__))
 
     if (('-L' in argst) or ('--unlock' in argst) or (re.search('-[a-zA-Z]*L',
-            ' '.join(argst)) is not None)):
+                                                               ' '.join(argst))
+                                                     is not None)):
         try:
             os.remove('/var/lib/pacman/db.lck')
             exit(0)
@@ -63,7 +64,8 @@ def wrapper(source='AUTO'):
             exit(1)
 
     if (('-S' in argst) or ('--sync' in argst) or (re.search('-[a-zA-Z]*S',
-            ' '.join(argst)) is not None)):
+                                                             ' '.join(argst))
+                                                   is not None)):
         # The user has requested -S.
         # -l/--list is in not in *a because it takes over the whole package
         # list, and that is a workaround.
@@ -95,7 +97,7 @@ def wrapper(source='AUTO'):
         allpacman = pacmanshort + pacmanlong + pacmanshorta + pacmanlonga
         allpb = pbshort + pblong + pbshorta + pblonga
         allcommon = commonshort + commonlong + commonshortc + commonlongc
-        allcmd = allpacman + allpb + allcommon
+        # allcmd = allpacman + allpb + allcommon (unused)
 
         allshort = pacmanshort + pbshort + commonshort
         alllong = pacmanlong + pblong + commonlong
@@ -276,7 +278,7 @@ commands for more details.
 
 Additional options:
   -L, --unlock         unlock the pacman database""").format(
-    os.path.basename(sys.argv[0])), 'PBWrapper')
+            os.path.basename(sys.argv[0])), 'PBWrapper')
 
     elif ('-V' in argst) or ('--version' in argst):
         pacpkg = localdb.get_pkg('pacman')

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.5.0
+# PKGBUILDer v2.1.5.1
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -146,7 +146,7 @@ class Upgrade:
             return 0
 
         upgnames = [i[0] for i in upgradable]
-        upgstrings = [i[0]+'-'+i[2] for i in upgradable]
+        upgstrings = [i[0] + '-' + i[2] for i in upgradable]
 
         if upglen > 0:
             if DS.pacman:
@@ -168,12 +168,10 @@ class Upgrade:
 
             toinstall = []
 
-
             if DS.uid == 0:
                 DS.log.warning('Running as root! (UID={})'.format(DS.uid))
                 DS.fancy_warning(_('Running PKGBUILDer as root can break '
                                    'your system!'))
-
             for pkgname in upgnames:
                 DS.log.info('Building {}'.format(pkgname))
                 toinstall += self.build.auto_build(pkgname, DS.depcheck,

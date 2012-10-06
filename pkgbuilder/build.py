@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.5.0
+# PKGBUILDer v2.1.5.1
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -29,6 +29,7 @@ import functools
 import glob
 import datetime
 
+
 ### Build       build functions and helpers ###
 class Build:
     """Functions for building packages."""
@@ -38,7 +39,8 @@ class Build:
 
     def validate(self, pkgnames):
         """Check if packages were installed."""
-        DS.fancy_msg('Validating installation status...')
+        DS.fancy_msg(_('Validating installation status...'))
+        DS.log.info('Validating: ' + '; '.join(pkgnames))
         pyc = pycman.config.init_with_config('/etc/pacman.conf')
         localdb = pyc.get_localdb()
 
@@ -62,9 +64,28 @@ class Build:
                                   pkg.version))
 
     def install(self, pkgpaths):
-        """Install packages through ``pacman -U``."""
-        DS.sudo('cp', pkgpaths, '/var/cache/pacman/pkg/')
-        DS.sudo(DS.paccommand, '-U', pkgpaths)
+        """
+        Install packages through ``pacman -U``.  Warning::
+
+        pkgpaths = [packages, sigfiles-if-any-or-None]
+        """
+        DS.fancy_msg(_('Installing built packages...'))
+
+        if pkgpaths[0]:
+            pkgs = pkgpaths[0]
+        else:
+            pkgs = []
+
+        if pkgpaths[1]:
+            sigs = pkgpaths[1]
+        else:
+            sigs = []
+
+        DS.log.info('pkgs={}; sigs={}'.format(pkgs, sigs))
+        DS.log.debug('cp {} {} /var/cache/pcman/pkg/'.format(pkgs, sigs))
+        DS.sudo('cp', pkgs + sigs, '/var/cache/pacman/pkg/')
+        DS.log.debug('$PACMAN -U {}'.format(pkgs))
+        DS.sudo(DS.paccommand, '-U', pkgs)
 
     def auto_build(self, pkgname, performdepcheck=True,
                    pkginstall=True):
@@ -277,24 +298,34 @@ class Build:
             if pkginstall:
                 # .pkg.tar.xz FTW, but some people change that.
                 pkgfilestr = os.path.abspath('./{}-{}-{}.pkg.*')
-                # I hope nobody builds packages at 23:5* local.  And if they
-                # do, they will be caught by the 2nd fallback (crapy packages)
+                # I hope nobody builds VCS packages at 23:5* local.  And if
+                # they do, they will be caught by the 2nd fallback (crappy
+                # packages)
                 datep = datetime.date.today().strftime('%Y%m%d')
-                if glob.glob(pkgfilestr.format(pkgname, pkg['Version'], '*')):
-                    toinstall = glob.glob(pkgfilestr.format(pkgname,
-                                          pkg['Version'], '*'))
-                elif glob.glob(pkgfilestr.format(pkgname, datep, '*')):
+                att0 = set(glob.glob(pkgfilestr.format(pkgname,
+                                     pkg['Version'], '*')))
+                att1 = set(glob.glob(pkgfilestr.format(pkgname, datep, '*')))
+                att2 = set(glob.glob(pkgfilestr.format(pkgname, '*', '*')))
+                sigf = set(glob.glob(pkgfilestr.format(pkgname, '*', '*' +
+                                                       'sig')))
+                if not sigf:
+                    sigf = set()
+                att0 = list(att0 - sigf)
+                att1 = list(att1 - sigf)
+                att2 = list(att2 - sigf)
+                if att0:
+                    # Standard run, for humans.
+                    toinstall = [att0, list(sigf)]
+                elif att1:
                     # Fallback #1, for VCS packages
-                    toinstall = glob.glob(pkgfilestr.format(pkgname, datep,
-                                                            '*'))
-                elif glob.glob(pkgfilestr.format(pkgname, '*', '*')):
+                    toinstall = [att1, list(sigf)]
+                elif att2:
                     # Fallback #2, for crappy packages
-                    toinstall = glob.glob(pkgfilestr.format(pkgname, '*',
-                                                            '*'))
+                    toinstall = [att2, list(sigf)]
                 else:
-                    toinstall = None
+                    toinstall = [None, None]
             else:
-                toinstall = None
+                toinstall = [None, None]
 
             return [mpstatus, toinstall]
         except PBError as inst:
