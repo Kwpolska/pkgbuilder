@@ -36,4 +36,4 @@ Gathers a list of all foreign packages.
 
 .. versionchanged:: 2.1.4.4
 
-Compares package versions and returns upgradable and downgradable ones. ones.
+Compares package versions and returns upgradable and downgradable ones.
