@@ -14,21 +14,11 @@ Building and installing AUR packages.
 
 INSTALLATION
 ------------
-Copy pkgbuilder.py to /usr/bin or ~/bin.  You need to install
-pyalpm from [extra] and python3-aur from the AUR.
+PyPI or AUR.  Alternatively, INSTALL.py.
 
 NOTES
 -----
-This is Version 2 of PKGBUILDer.  The original Perl version is included,
-but it should not be used.
-
-Version 2.1 is a big leap forward.  It introduces many new features.
-It is now stable.  It is now available as an AUR and PyPI package.
-
-The -S (DS.pacman) parameter adds pacman wrapper compatibility.
-
-For more info, refer to the pkgbuilder(8) man page or HTML docs in
-docs/html.
+For more info, refer to the pkgbuilder(8) man page or the documentation.
 
 COPYRIGHT
 ---------
