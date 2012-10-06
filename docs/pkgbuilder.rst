@@ -2,7 +2,7 @@
 PKGBUILDer
 ==========
 
-:Subtitle: An AUR helper for humans.
+:Subtitle: An AUR helper (and library) in Python 3.
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: © 2011-2012, Kwpolska.
 :License: BSD (see /LICENSE or Appendix B.)

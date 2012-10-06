@@ -27,11 +27,14 @@ setup(name='pkgbuilder',
                    'Topic :: System :: Archiving :: Packaging',
                    'Topic :: Utilities'],
       packages=['pkgbuilder'],
-      requires=['pyparsing', 'pyalpm', 'requests'],
+      requires=['pyalpm', 'requests'],
       scripts=['bin/pkgbuilder', 'bin/pb'],
       data_files=[('share/man/man8', ['docs/pkgbuilder.8.gz']),
                   ('share/man/man8', ['docs/pb.8.gz']),
                   ('share/locale/en/LC_MESSAGES', ['locale/en/LC_MESSAGES/\
 pkgbuilder.mo']),
                   ('share/locale/pl/LC_MESSAGES', ['locale/pl/LC_MESSAGES/\
+pkgbuilder.mo']),
+
+                  ('share/locale/ja/LC_MESSAGES', ['locale/pl/LC_MESSAGES/\
 pkgbuilder.mo'])])
