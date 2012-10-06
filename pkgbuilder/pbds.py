@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.5.0
+# PKGBUILDer v2.1.5.1
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -35,7 +35,6 @@ class PBDS():
         'red':        '\x1b[1;1m\x1b[1;31m',
         'yellow':     '\x1b[1;1m\x1b[1;33m'
     }
-
 
     pacman = False
     validate = True

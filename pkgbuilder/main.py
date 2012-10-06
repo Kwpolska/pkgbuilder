@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.5.0
+# PKGBUILDer v2.1.5.1
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -29,7 +29,7 @@ import subprocess
 def main(source='AUTO', quit=True):
     """Main routine of PKGBUILDer."""
     try:
-        verstring = 'PKGBUILDer v'+__version__
+        verstring = 'PKGBUILDer v' + __version__
         # TRANSLATORS: translate the whole sentence.
         # Alternatively, use translation instead of locale.
         locale = _('LANG locale by AUTHOR <MAIL@IF.YOU.WANT>')
@@ -37,9 +37,7 @@ def main(source='AUTO', quit=True):
             verstring = '\n'.join([verstring, locale])
         DS.log.info('Initialized, parsing arguments.')
         parser = argparse.ArgumentParser(description=_('An AUR helper'
-            ' (and library) in Python 3.'),
-            formatter_class=argparse.RawTextHelpFormatter)
-
+                                         ' (and library) in Python 3.'))
         parser.add_argument('-V', '--version', action='version',
                             version=verstring,
                             help=_('show version number and quit'))
@@ -121,7 +119,7 @@ def main(source='AUTO', quit=True):
         if args.search:
             DS.log.debug('Searching...')
             searchstring = '+'.join(args.pkgs)
-            if len(searchstring) < 3:
+            if len(searchstring) < 2:
                 # this would be too many entries, but this is an actual API
                 # limitation and not an idea of yours truly.
                 DS.fancy_error(_('Search query too short, API limitation'))

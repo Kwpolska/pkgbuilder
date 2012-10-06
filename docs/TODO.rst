@@ -3,8 +3,8 @@ Appendix E. TODO for PKGBUILDer
 ===============================
 :Author: Kwpolska
 :Copyright: See Appendix B.
-:Date: 2012-10-05
-:Version: 2.1.5.0
+:Date: 2012-10-06
+:Version: 2.1.5.1
 
 .. index:: TODO
 

@@ -26,9 +26,8 @@ sed "s/pkgver=.*/pkgver=$version/g" PKGBUILD -i
 sed "s/pkgver=.*/pkgver=$datep/g" PKGBUILD-git -i
 sed "s/:Date: .*/:Date: $date/g" docs/*.rst -i
 
-cp docs/README.rst README.rst
+cp docs/README.rst docs/CHANGELOG.rst docs/CONTRIBUTING.rst .
 cp docs/README.rst README
-cp docs/CONTRIBUTING.rst CONTRIBUTING.rst
 
 rm docs/$project.8.gz | true
 rst2man docs/$project.rst > docs/$project.8
