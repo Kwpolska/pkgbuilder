@@ -188,6 +188,7 @@ def main(source='AUTO', quit=True):
             out = build.auto_build(pkgname, DS.depcheck, DS.pkginst)
             if out:
                 toinstall += out
+
         if toinstall:
             build.install(toinstall)
 

@@ -22,7 +22,7 @@ msgstr "AUR: HTTPエラー発生 {}"
 
 #: pkgbuilder/build.py:42
 msgid "Validating installation status..."
-msgstr ""
+msgstr "インストール無事終了確認中・・・"
 
 #: pkgbuilder/build.py:57
 msgid "{}: NOT installed"
@@ -38,7 +38,7 @@ msgstr "{}: 「{}」をインストール済み"
 
 #: pkgbuilder/build.py:72
 msgid "Installing built packages..."
-msgstr ""
+msgstr "作成したパッケージをインストール中・・・"
 
 #: pkgbuilder/build.py:109
 msgid "The build function reported a proper build."

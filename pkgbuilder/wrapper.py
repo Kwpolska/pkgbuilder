@@ -64,8 +64,7 @@ def wrapper(source='AUTO'):
             exit(1)
 
     if (('-S' in argst) or ('--sync' in argst) or (re.search('-[a-zA-Z]*S',
-                                                             ' '.join(argst))
-                                                   is not None)):
+            ' '.join(argst)) is not None)):
         # The user has requested -S.
         # -l/--list is in not in *a because it takes over the whole package
         # list, and that is a workaround.
