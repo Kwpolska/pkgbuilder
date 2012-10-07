@@ -82,7 +82,7 @@ class Build:
             sigs = []
 
         DS.log.info('pkgs={}; sigs={}'.format(pkgs, sigs))
-        DS.log.debug('cp {} {} /var/cache/pcman/pkg/'.format(pkgs, sigs))
+        DS.log.debug('cp {} {} /var/cache/pacman/pkg/'.format(pkgs, sigs))
         DS.sudo('cp', pkgs + sigs, '/var/cache/pacman/pkg/')
         DS.log.debug('$PACMAN -U {}'.format(pkgs))
         DS.sudo(DS.paccommand, '-U', pkgs)
