@@ -8,7 +8,7 @@ Appendix B. License for PKGBUILDer
 
 .. index:: LICENSE
 
-Copyright (C) 2011-2012, Kwpolska.
+Copyright © 2011-2012, Kwpolska.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
