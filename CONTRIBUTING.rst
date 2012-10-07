@@ -4,8 +4,8 @@ Appendix D. Contribution rules
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: © 2011-2012, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2012-09-23
-:Version: 2.1.4.6
+:Date: 2012-10-06
+:Version: 2.1.5.1
 
 Do you want to contribute to this project?  Great!  I’d love to see some help,
 but you need to comply with some easy rules.
@@ -15,6 +15,10 @@ Issue reporting
 
 GitHub Issues are the best way to report an issue.  If you do not have an
 account there, get one or mail me.
+
+When pasting console sessions, please paste them fully, *prompt-to-prompt*, to
+see all the messages and your input.  Trim only stuff that you are 1000% sure
+that is not related to the project in question.
 
 Code contributions
 ==================

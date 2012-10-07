@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
+# PKGBUILDer v2.1.5.1
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -29,6 +29,7 @@ import functools
 import glob
 import datetime
 
+
 ### Build       build functions and helpers ###
 class Build:
     """Functions for building packages."""
@@ -38,12 +39,20 @@ class Build:
 
     def validate(self, pkgnames):
         """Check if packages were installed."""
-        DS.fancy_msg('Validating installation status...')
+        DS.fancy_msg(_('Validating installation status...'))
+        DS.log.info('Validating: ' + '; '.join(pkgnames))
         pyc = pycman.config.init_with_config('/etc/pacman.conf')
         localdb = pyc.get_localdb()
+
+        aurpkgs = self.utils.info(pkgnames)
+
+        i = 0
+
         for pkgname in pkgnames:
             pkg = localdb.get_pkg(pkgname)
-            aurversion = self.utils.info(pkgname)['Version']
+            aurversion = aurpkgs[i]['Version']
+            i += 1
+
             if pkg is None:
                 DS.fancy_error2(_('{}: NOT installed').format(pkgname))
             else:
@@ -55,17 +64,28 @@ class Build:
                                   pkg.version))
 
     def install(self, pkgpaths):
-        """Install packages through ``pacman -U``."""
-        if DS.hassudo:
-            subprocess.call(['sudo', 'cp'] + pkgpaths +
-                            ['/var/cache/pacman/pkg/'])
-            subprocess.call(['sudo', DS.paccommand, '-U'] + pkgpaths)
+        """
+        Install packages through ``pacman -U``.  Warning::
+
+        pkgpaths = [packages, sigfiles-if-any-or-None]
+        """
+        DS.fancy_msg(_('Installing built packages...'))
+
+        if pkgpaths[0]:
+            pkgs = pkgpaths[0]
         else:
-            ti = ' '.join(pkgpaths)
-            subprocess.call('su -c "cp {} /var/cache/pacman/pkg/"; '
-                            '{} -U {}'.format(ti, DS.paccommand, ti))
+            pkgs = []
 
+        if pkgpaths[1]:
+            sigs = pkgpaths[1]
+        else:
+            sigs = []
 
+        DS.log.info('pkgs={}; sigs={}'.format(pkgs, sigs))
+        DS.log.debug('cp {} {} /var/cache/pcman/pkg/'.format(pkgs, sigs))
+        DS.sudo('cp', pkgs + sigs, '/var/cache/pacman/pkg/')
+        DS.log.debug('$PACMAN -U {}'.format(pkgs))
+        DS.sudo(DS.paccommand, '-U', pkgs)
 
     def auto_build(self, pkgname, performdepcheck=True,
                    pkginstall=True):
@@ -105,12 +125,21 @@ class Build:
                 exit(1)
             elif build_result[0] == 72337:  # PBDEP.
                 DS.fancy_warning(_('Building more AUR packages is required.'))
+                toinstall2 = []
                 for pkgname2 in build_result[1]:
-                    self.auto_build(pkgname2, performdepcheck,
-                                    pkginstall)
+                    toinstall2 += self.auto_build(pkgname2, performdepcheck,
+                                                  pkginstall)
 
-                self.validate(build_result[1])
-                self.install(build_result[1])
+                if toinstall2:
+                    self.install(toinstall2)
+
+                if DS.validate:
+                    self.validate(build_result[1])
+
+                # Setting all the deps installed to be marked as such.  Using
+                # pacman because I need root, and I can’t get one there.
+                DS.sudo(DS.paccommand, '-D', '--asdeps', build_result[1])
+
                 self.auto_build(pkgname, performdepcheck,
                                 pkginstall)
 
@@ -194,7 +223,7 @@ class Build:
                     parseddeps[dep] = 0
                 elif pyalpm.find_satisfier(syncpkgs, dep):
                     parseddeps[dep] = 1
-                elif self.utils.info(dep) is not None:
+                elif self.utils.info([dep]):
                     parseddeps[dep] = 2
                 else:
                     parseddeps[dep] = -1
@@ -210,8 +239,9 @@ class Build:
         """
         try:
             # exists
-            pkg = self.utils.info(pkgname)
-            if pkg is None:
+            try:
+                pkg = self.utils.info([pkgname])[0]
+            except IndexError:
                 raise PBError(_('Package {} not found.').format(pkgname))
             pkgname = pkg['Name']
             DS.fancy_msg(_('Building {}...').format(pkgname))
@@ -260,7 +290,7 @@ class Build:
             if DS.cleanup:
                 mpparams += ' -c'
 
-            if os.geteuid() == 0:
+            if DS.uid == 0:
                 mpparams += ' --asroot'
 
             mpstatus = subprocess.call('/usr/bin/makepkg -sf' + mpparams,
@@ -268,41 +298,51 @@ class Build:
             if pkginstall:
                 # .pkg.tar.xz FTW, but some people change that.
                 pkgfilestr = os.path.abspath('./{}-{}-{}.pkg.*')
-                # I hope nobody builds packages at 23:5* local.  And if they
-                # do, they will be caught by the 2nd fallback (crapy packages)
+                # I hope nobody builds VCS packages at 23:5* local.  And if
+                # they do, they will be caught by the 2nd fallback (crappy
+                # packages)
                 datep = datetime.date.today().strftime('%Y%m%d')
-                if glob.glob(pkgfilestr.format(pkgname, pkg['Version'], '*')):
-                    toinstall = glob.glob(pkgfilestr.format(pkgname,
-                                          pkg['Version'], '*'))
-                elif glob.glob(pkgfilestr.format(pkgname, datep, '*')):
+                att0 = set(glob.glob(pkgfilestr.format(pkgname,
+                                     pkg['Version'], '*')))
+                att1 = set(glob.glob(pkgfilestr.format(pkgname, datep, '*')))
+                att2 = set(glob.glob(pkgfilestr.format(pkgname, '*', '*')))
+                sigf = set(glob.glob(pkgfilestr.format(pkgname, '*', '*' +
+                                                       'sig')))
+                if not sigf:
+                    sigf = set()
+                att0 = list(att0 - sigf)
+                att1 = list(att1 - sigf)
+                att2 = list(att2 - sigf)
+                if att0:
+                    # Standard run, for humans.
+                    toinstall = [att0, list(sigf)]
+                elif att1:
                     # Fallback #1, for VCS packages
-                    toinstall = glob.glob(pkgfilestr.format(pkgname, datep,
-                                                            '*'))
-                elif glob.glob(pkgfilestr.format(pkgname, '*', '*')):
+                    toinstall = [att1, list(sigf)]
+                elif att2:
                     # Fallback #2, for crappy packages
-                    toinstall = glob.glob(pkgfilestr.format(pkgname, '*',
-                                                            '*'))
+                    toinstall = [att2, list(sigf)]
                 else:
-                    toinstall = None
+                    toinstall = [None, None]
             else:
-                toinstall = None
+                toinstall = [None, None]
 
             return [mpstatus, toinstall]
         except PBError as inst:
             DS.fancy_error(str(inst))
-            return [72789]
+            return [72789, None]
         except requests.exceptions.ConnectionError as inst:
             DS.fancy_error(str(inst))
-            return [72737]
+            return [72737, None]
         except requests.exceptions.HTTPError as inst:
             DS.fancy_error(str(inst))
-            return [72737]
+            return [72737, None]
         except requests.exceptions.Timeout as inst:
             DS.fancy_error(str(inst))
-            return [72737]
+            return [72737, None]
         except requests.exceptions.TooManyRedirects as inst:
             DS.fancy_error(str(inst))
-            return [72737]
+            return [72737, None]
         except IOError as inst:
             DS.fancy_error(str(inst))
-            return [72101]
+            return [72101, None]

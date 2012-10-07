@@ -4,8 +4,8 @@ aur module (AUR class)
 :Author: Kwpolska
 :Copyright: © 2011-2012, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2012-09-23
-:Version: 2.1.4.6
+:Date: 2012-10-06
+:Version: 2.1.5.1
 
 .. module:: aur
 

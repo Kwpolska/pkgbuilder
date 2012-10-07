@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
+# PKGBUILDer v2.1.5.1
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -20,6 +20,7 @@ from . import _, __version__
 import sys
 import os
 import logging
+import subprocess
 
 
 ### PBDS           PB global data storage  ###
@@ -35,7 +36,6 @@ class PBDS():
         'yellow':     '\x1b[1;1m\x1b[1;33m'
     }
 
-
     pacman = False
     validate = True
     depcheck = True
@@ -46,7 +46,10 @@ class PBDS():
                   'lib', 'modules', 'multimedia', 'network',
                   'office', 'science', 'system', 'x11',
                   'xfce', 'kernels']
+    # TRANSLATORS: see makepkg.
     inttext = _('Aborted by user! Exiting...')
+    # TRANSLATORS: see pacman.
+    wrapperinttext = _('Interrupt signal received\n')
 
     ### STUFF NOT TO BE CHANGED BY HUMAN BEINGS.  EVER.
     mp1 = '=='
@@ -63,6 +66,8 @@ class PBDS():
         hassudo = True
     else:
         hassudo = False
+
+    uid = os.geteuid()
 
     # Creating the configuration/log stuff...
     confhome = os.getenv('XDG_CONFIG_HOME')
@@ -92,6 +97,30 @@ class PBDS():
                         level=logging.DEBUG)
     log = logging.getLogger('pkgbuilder')
     log.info('*** PKGBUILDer v' + __version__)
+
+    def sudo(self, *rargs):
+        """
+        Run as root.  ``sudo`` if present, ``su -c`` otherwise, nothing if
+        already running as root.
+
+        .. note:: Accepts only one command.  `shell=False`, for safety.
+        """
+        args = []
+        for i in rargs:
+            if type(i) == list or type(i) == tuple:
+                for j in i:
+                    args.append(j)
+            else:
+                for j in i.split(' '):
+                    args.append(j)
+
+        if self.uid != 0:
+            if self.hassudo:
+                subprocess.call(['sudo'] + args)
+            else:
+                subprocess.call('su -c "{}"'.format(' '.join(args)))
+        else:
+            subprocess.call(args)
 
     def debugmode(self, nochange=False):
         """Print all the logged messages to stderr."""

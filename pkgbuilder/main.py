@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
+# PKGBUILDer v2.1.5.1
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -26,10 +26,10 @@ import subprocess
 
 
 ### main()          The main routine        ###
-def main(source='AUTO', noquit=False):
+def main(source='AUTO', quit=True):
     """Main routine of PKGBUILDer."""
     try:
-        verstring = 'PKGBUILDer v'+__version__
+        verstring = 'PKGBUILDer v' + __version__
         # TRANSLATORS: translate the whole sentence.
         # Alternatively, use translation instead of locale.
         locale = _('LANG locale by AUTHOR <MAIL@IF.YOU.WANT>')
@@ -37,9 +37,7 @@ def main(source='AUTO', noquit=False):
             verstring = '\n'.join([verstring, locale])
         DS.log.info('Initialized, parsing arguments.')
         parser = argparse.ArgumentParser(description=_('An AUR helper'
-            ' (and library) in Python 3.'),
-            formatter_class=argparse.RawTextHelpFormatter)
-
+                                         ' (and library) in Python 3.'))
         parser.add_argument('-V', '--version', action='version',
                             version=verstring,
                             help=_('show version number and quit'))
@@ -113,23 +111,24 @@ def main(source='AUTO', noquit=False):
 
         if args.info:
             DS.log.debug('Showing info...')
-            for pkgname in args.pkgs:
-                utils.print_package_info(utils.info(pkgname))
+            utils.print_package_info(utils.info(args.pkgs))
 
+            if quit:
                 exit(0)
 
         if args.search:
             DS.log.debug('Searching...')
             searchstring = '+'.join(args.pkgs)
-            if len(searchstring) < 3:
+            if len(searchstring) < 2:
                 # this would be too many entries, but this is an actual API
                 # limitation and not an idea of yours truly.
                 DS.fancy_error(_('Search query too short, API limitation'))
                 DS.fancy_msg(_('Searching for exact match...'))
-                search = [utils.info(searchstring)]
-                if search == [None]:
+                search = utils.info([searchstring])
+                if search == []:
                     DS.fancy_error2(_('not found'))
-                    exit(0)
+                    if quit:
+                        exit(0)
                 else:
                     utils.print_package_search(search[0], prefix=(
                                                DS.colors['blue'] + '  ->' +
@@ -137,7 +136,8 @@ def main(source='AUTO', noquit=False):
                                                DS.colors['bold'] + ' '),
                                                prefixp='  -> ')
                     print(DS.colors['all_off'], end='')
-                    exit(0)
+                    if quit:
+                        exit(0)
             else:
                 search = utils.search(searchstring)
 
@@ -151,7 +151,8 @@ def main(source='AUTO', noquit=False):
                                                                  True) + '\n'
             if output != '':
                 print(output.rstrip())
-            exit(0)
+            if quit:
+                exit(0)
 
         if args.pac:
             DS.log.debug('-S passed, building in /tmp/.')
@@ -170,16 +171,23 @@ def main(source='AUTO', noquit=False):
         dodowngrade = args.upgrade > 1
         upgrade.auto_upgrade(dodowngrade, args.vcsup)
 
-        if not noquit:
+        if quit:
             exit(0)
 
     # If we didn't quit, we should build the packages.
     if args.pkgs:
+        if DS.uid == 0:
+            DS.log.warning('Running as root! (UID={})'.format(DS.uid))
+            DS.fancy_warning(_('Running PKGBUILDer as root can break your '
+                               'system!'))
+
         DS.log.info('Starting build...')
         toinstall = []
         for pkgname in args.pkgs:
             DS.log.info('Building {}'.format(pkgname))
-            toinstall += build.auto_build(pkgname, DS.depcheck, DS.pkginst)
+            out = build.auto_build(pkgname, DS.depcheck, DS.pkginst)
+            if out:
+                toinstall += out
 
         if toinstall:
             build.install(toinstall)

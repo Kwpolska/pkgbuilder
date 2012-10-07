@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
+# PKGBUILDer v2.1.5.1
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -37,15 +37,17 @@ class Upgrade:
         """Gathers a list of all foreign packages."""
         # Based on paconky.py.
         installed = [p for p in self.localdb.pkgcache]
-
+        repo = []
+        aur = []
         syncdbs = self.H.get_syncdbs()
         for sdb in syncdbs:
             for pkg in installed:
                 if sdb.get_pkg(pkg.name):
-                    installed.remove(pkg)
+                    repo.append(pkg)
 
+        aur = set(set(installed) - set(repo))
         # Return foreign packages.
-        return dict([(p.name, p) for p in installed])
+        return dict([(p.name, p) for p in aur])
 
     def list_upgradable(self, pkglist, vcsup=False):
         """Compares package versions and returns upgradable ones."""
@@ -106,9 +108,9 @@ class Upgrade:
         """Upgrades packages.  Simillar to Build.auto_build()."""
         DS.log.info('Ran auto_upgrade.')
         if DS.pacman:
-            print(':: ' + _('Gathering data about packages...'))
+            print(':: ' + _('Synchronizing package databases...'))
         else:
-            DS.fancy_msg(_('Gathering data about packages...'))
+            DS.fancy_msg(_('Synchronizing package databases...'))
 
         foreign = self.gather_foreign_pkgs()
         gradable = self.list_upgradable(foreign.keys(), vcsup)
@@ -116,6 +118,11 @@ class Upgrade:
         downgradable = gradable[1]
         upglen = len(upgradable)
         downlen = len(downgradable)
+
+        if DS.pacman:
+            print(':: ' + _('Starting full system upgrade...'))
+        else:
+            DS.fancy_msg(_('Starting full system upgrade...'))
 
         if downlen > 0:
             for i in downgradable:
@@ -139,7 +146,7 @@ class Upgrade:
             return 0
 
         upgnames = [i[0] for i in upgradable]
-        upgstrings = [i[0]+'-'+i[2] for i in upgradable]
+        upgstrings = [i[0] + '-' + i[2] for i in upgradable]
 
         if upglen > 0:
             if DS.pacman:
@@ -160,6 +167,11 @@ class Upgrade:
                 return 0
 
             toinstall = []
+
+            if DS.uid == 0:
+                DS.log.warning('Running as root! (UID={})'.format(DS.uid))
+                DS.fancy_warning(_('Running PKGBUILDer as root can break '
+                                   'your system!'))
             for pkgname in upgnames:
                 DS.log.info('Building {}'.format(pkgname))
                 toinstall += self.build.auto_build(pkgname, DS.depcheck,

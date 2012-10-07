@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PBWrapper v0.1.2
-# PKGBUILDer v2.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.62.1.4.5
+# PBWrapper v0.1.4
+# PKGBUILDer v2.1.5.1
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -29,7 +29,7 @@ import sys
 import os
 import subprocess
 
-__wrapperversion__ = '0.1.3'
+__wrapperversion__ = '0.1.4'
 
 ### wrapper()       A wrapper for pacman/PB ###
 
@@ -54,13 +54,14 @@ def wrapper(source='AUTO'):
              '{})'.format(__wrapperversion__, __version__))
 
     if (('-L' in argst) or ('--unlock' in argst) or (re.search('-[a-zA-Z]*L',
-            ' '.join(argst)) is not None)):
+                                                               ' '.join(argst))
+                                                     is not None)):
         try:
             os.remove('/var/lib/pacman/db.lck')
+            exit(0)
         except OSError as e:
             DS.fancy_error('[-L --unlock] ' + e.strerror)
-
-        exit(0)
+            exit(1)
 
     if (('-S' in argst) or ('--sync' in argst) or (re.search('-[a-zA-Z]*S',
             ' '.join(argst)) is not None)):
@@ -95,7 +96,7 @@ def wrapper(source='AUTO'):
         allpacman = pacmanshort + pacmanlong + pacmanshorta + pacmanlonga
         allpb = pbshort + pblong + pbshorta + pblonga
         allcommon = commonshort + commonlong + commonshortc + commonlongc
-        allcmd = allpacman + allpb + allcommon
+        # allcmd = allpacman + allpb + allcommon (unused)
 
         allshort = pacmanshort + pbshort + commonshort
         alllong = pacmanlong + pblong + commonlong
@@ -121,10 +122,10 @@ def wrapper(source='AUTO'):
                                 dest=i)
 
         for i in allshortc:
-            parser.add_argument('-' + i, action='count', dest=i)
+            parser.add_argument('-' + i, action='count', default=0, dest=i)
 
         for i in alllongc:
-            parser.add_argument('--' + i, action='count', dest=i)
+            parser.add_argument('--' + i, action='count', default=0, dest=i)
 
         for i in pacmanshorta:
             parser.add_argument('-' + i, action='store', nargs=1,
@@ -210,43 +211,34 @@ def wrapper(source='AUTO'):
         if args.search or args.s:
             log.debug('Got -s.')
             log.info('Running pacman.')
-            subprocess.call([DS.paccommand] + pacargs + pkgnames)
+            subprocess.call(DS.paccommand, pacargs, pkgnames)
             log.info('Running pkgbuilder (pkgbuilder.main.main()).')
             main(pbargs + pkgnames)
             exit()
         elif args.l or args.list:
             log.debug('Got -l.')
             log.info('Running pacman.')
-            subprocess.call([DS.paccommand] + pacargs + pkgnames)
+            subprocess.call(DS.paccommand, pacargs, pkgnames)
             exit()
         elif args.u or args.sysupgrade:
             log.debug('Got -u.')
             log.info('Running pacman.')
-            if DS.hassudo:
-                subprocess.call(['sudo', DS.paccommand] + pacargs)
-            else:
-                subprocess.call('su -c "{} {}"'.format(DS.paccommand,
-                                                       ''.join(pacargs)))
+            DS.sudo(DS.paccommand, pacargs)
             log.info('Running pkgbuilder (pkgbuilder.main.main()).')
-            main(pbargs, noquit=True)
+            main(pbargs, quit=False)
         elif args.y or args.refresh:
             log.debug('Got -y.')
             log.info('Running pacman.')
-            if DS.hassudo:
-                subprocess.call(['sudo', DS.paccommand] + pacargs)
-            else:
-                subprocess.call('su -c "{} {}"'.format(DS.paccommand,
-                                                       ''.join(pacargs)))
+            DS.sudo(DS.paccommand, pacargs)
 
         log.debug('Generating AUR packages list...')
-        pacmanpkgnames = []
         pbpkgnames = []
         utils = Utils()
-        for i in pkgnames:
-            if utils.info(i) is None:
-                pacmanpkgnames.append(i)
-            else:
-                pbpkgnames.append(i)
+        info = utils.info(pkgnames)
+        for i in info:
+            pbpkgnames.append(i['Name'])
+
+        pacmanpkgnames = list(set(pkgnames) - set(pbpkgnames))
 
         droppable = ['-u', '-y', '--sysupgrade', '--refresh']
 
@@ -257,13 +249,7 @@ def wrapper(source='AUTO'):
 
         if pacmanpkgnames != []:
             log.info('Running pacman.')
-            if DS.hassudo:
-                subprocess.call(['sudo', DS.paccommand] + pacargs +
-                                pacmanpkgnames)
-            else:
-                subprocess.call('su -c "{} {} {}"'.format(DS.paccommand,
-                                                          ''.join(pacargs),
-                                                          pacmanpkgnames))
+            DS.sudo(DS.paccommand, pacargs, pacmanpkgnames)
         else:
             log.info('No repo packages in the list.')
 
@@ -278,13 +264,7 @@ def wrapper(source='AUTO'):
             log.info('Running pacman due to failed sanity check.')
             sanityargs = [item for item in pkgnames if (item not in
                           sanitycheck)]
-            if DS.hassudo:
-                subprocess.call(['sudo', DS.paccommand] + pacargs +
-                                pacmanpkgnames)
-            else:
-                subprocess.call('su -c "{} {} {}"'.format(DS.paccommand,
-                                                          ''.join(pacargs),
-                                                          sanityargs))
+            DS.sudo(DS.paccommand, pacargs, sanityargs)
     elif ('-h' in argst) or ('--help' in argst):
         # TRANSLATORS: see pacman’s localizations
 
@@ -297,7 +277,7 @@ commands for more details.
 
 Additional options:
   -L, --unlock         unlock the pacman database""").format(
-    os.path.basename(sys.argv[0])), 'PBWrapper')
+            os.path.basename(sys.argv[0])), 'PBWrapper')
 
     elif ('-V' in argst) or ('--version' in argst):
         pacpkg = localdb.get_pkg('pacman')
@@ -314,8 +294,4 @@ pyalpm      v{}""".format(__wrapperversion__, __version__,
         else:
             print('Please don’t use the reserved UTshibboleet argument.')
     else:
-        if DS.hassudo:
-            subprocess.call(['sudo', DS.paccommand] + argst)
-        else:
-            subprocess.call('su -c "{} {}"'.format(DS.paccommand,
-                                                   ''.join(argst)))
+        DS.sudo(DS.paccommand + argst)

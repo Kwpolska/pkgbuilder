@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.5.1
-# An AUR helper (and library) in Python 3.
+# List non-AUR Foreigners
+# Part of PKGBUILDer Sample Scripts
 # Copyright © 2011-2012, Kwpolska.
 # All rights reserved.
 #
@@ -33,41 +33,16 @@
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-"""
-    pkgbuilder
-    ~~~~~~~~~~
+"""A script for listing the foreign packages that aren’t in the AUR."""
 
-    An AUR helper (and library) in Python 3.
+import pkgbuilder
+import pkgbuilder.utils
+import pkgbuilder.upgrade
 
-    :Copyright: © 2011-2012, Kwpolska.
-    :License: BSD (see /LICENSE).
-"""
+if __name__ == '__main__':
+    upg = pkgbuilder.upgrade.Upgrade()
+    uti = pkgbuilder.utils.Utils()
+    foreign = set(upg.gather_foreign_pkgs().keys())
+    aurinfo = set([i['Name'] for i in uti.info(foreign)])
 
-__title__ = 'PKGBUILDer'
-__version__ = '2.1.5.1'
-__author__ = 'Kwpolska'
-__license__ = '3-clause BSD'
-__docformat__ = 'restructuredtext en'
-
-import gettext
-
-G = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
-_ = G.gettext
-
-
-### PBError         errors raised here      ###
-class PBError(Exception):
-    """Exceptions raised by the PKGBUILDer."""
-
-    def __init__(self, msg):
-        """PBError init."""
-        DS.log.error('(auto PBError       ) ' + msg)
-        self.msg = msg
-
-    def __str__(self):
-        """You want to see error messages, don’t you?"""
-        return self.msg
-
-
-from .pbds import PBDS
-DS = PBDS()
+    print('\n'.join(foreign - aurinfo))

@@ -7,8 +7,10 @@ if sys.version_info[0] < 3:
     print('Please revert that change.')
     exit(1)
 
+import pkgbuilder
 import pkgbuilder.wrapper
 try:
     pkgbuilder.wrapper.wrapper()
 except KeyboardInterrupt:
+    print(pkgbuilder.DS.wrapperinttext + '\n') # for safety.
     exit(0)

@@ -5,8 +5,8 @@ pbds module (PBDS class)
 :Author: Kwpolska
 :Copyright: © 2011-2012, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2012-09-23
-:Version: 2.1.4.6
+:Date: 2012-10-06
+:Version: 2.1.5.1
 
 .. module: pbds
 
@@ -45,7 +45,11 @@ information (not including information humans should not touch and care about):
 +-----------+-----------------------------------------------+---------------+
 | confdir   | configuration directory                       | [conf]_       |
 +-----------+-----------------------------------------------+---------------+
-| log       | logger object (eg. PBDS.log.info)             | logger object |
+| log       | logger object (e.g. PBDS.log.info)            | logger object |
++-----------+-----------------------------------------------+---------------+
+| hassudo   | If ``sudo`` is present (see :meth:`sudo`)     | (bool)        |
++-----------+-----------------------------------------------+---------------+
+| uid       | User UID                                      | (int)         |
 +-----------+-----------------------------------------------+---------------+
 
 .. [colors] Code below.
@@ -83,6 +87,21 @@ information (not including information humans should not touch and care about):
     ``~/.config/kwpolska/pkgbuilder`` (may differ depending on system config)
 
 It also has a few methods:
+
+.. method:: sudo(\*args)
+
+.. versionadded:: 2.1.4.8
+
+Run as root.  ``sudo`` if present, ``su -c`` otherwise, nothing if
+already running as root.
+
+.. note:: Accepts only one command.  `shell=False`, for safety.
+
+``*args`` is catching all the arguments.  However, in order to make sure that
+nothing breaks, it checks if the element is a list or a tuple.  If yes, it is
+appended to the argument list (Python’s ``+`` operator); if not, it is split on
+spaces (``.split(' ')``) and appended to the argument list.  Finally, the list
+is passed to ``subprocess.call``.
 
 .. method:: debugmode(nochange)
 

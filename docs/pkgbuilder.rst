@@ -2,12 +2,12 @@
 PKGBUILDer
 ==========
 
-:Subtitle: An AUR helper for humans.
+:Subtitle: An AUR helper (and library) in Python 3.
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: © 2011-2012, Kwpolska.
 :License: BSD (see /LICENSE or Appendix B.)
-:Date: 2012-09-23
-:Version: 2.1.4.6
+:Date: 2012-10-06
+:Version: 2.1.5.1
 :Manual section: 8
 :Manual group: PKGBUILDer manual
 
@@ -26,6 +26,10 @@ much as possible.
 
 Since version 2.1.0, PKGBUILDer provides modules that can be used in
 other scripts.
+
+Notice: Running PKGBUILDer and/or PBWrapper as root can deal catastrophic
+damage to your system.  Run it as a regular user, you will be prompted for
+the root password when one will be required (i.e. to run **pacman**).
 
 OPERATIONS
 ==========
@@ -60,6 +64,9 @@ OPTIONS
 **-d, --nodepcheck**
     Skips dependency checks.  It may (and, most likely, will)
     break makepkg.
+
+**-D, --vcsupgrade**
+    Upgrades all the VCS packages on the system.  Requires **-u**.
 
 **-v, --novalidation**
     Skips package installation validation phase (checking
