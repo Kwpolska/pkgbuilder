@@ -64,15 +64,6 @@ def depcheck():
         deps['pyalpm'] = False
         print(_('not found'))
 
-    print("""certifi   | AUR       | """, end='')
-    try:
-        import certifi
-        deps['certifi'] = True
-        print(_('found'))
-    except ImportError:
-        deps['certifi'] = False
-        print(_('not found'))
-
     print("""requests  | AUR       | """, end='')
     try:
         import requests
@@ -140,10 +131,8 @@ and compile the package manually.
 
         deps = depcheck()
 
-        if deps['certifi'] is False or deps['requests'] is False:
+        if deps['requests'] is False:
             print(_("""Installing missing AUR dependencies..."""))
-            if deps['certifi'] is False:
-                install('python-certifi')
 
             if deps['requests'] is False:
                 install('python-requests')
