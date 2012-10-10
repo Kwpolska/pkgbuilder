@@ -4,8 +4,8 @@ main module
 :Author: Kwpolska
 :Copyright: © 2011-2012, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2012-10-06
-:Version: 2.1.5.1
+:Date: 2012-10-10
+:Version: 2.1.5.2
 
 .. index:: main
 .. versionadded:: 2.1.3.0
