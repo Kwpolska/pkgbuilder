@@ -1,9 +1,12 @@
 include INSTALL.py
 include LICENSE
 include README.rst
+include README
+include AUTHORS
 include requirements.txt
 include PKGBUILD
 include PKGBUILD-git
+include CHANGELOG.rst
 recursive-include docs *
 recursive-include bin *
 recursive-include pkgbuilder *.py
