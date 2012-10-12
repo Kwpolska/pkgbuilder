@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.5.2
+# PKGBUILDer v2.1.5.3
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -63,29 +63,16 @@ class Build:
                     DS.fancy_msg2(_('{}: installed {}').format(pkgname,
                                   pkg.version))
 
-    def install(self, pkgpaths):
-        """
-        Install packages through ``pacman -U``.  Warning::
-
-        pkgpaths = [packages, sigfiles-if-any-or-None]
-        """
+    def install(self, pkgpaths, sigpaths=[]):
+        """Install packages through ``pacman -U``."""
         DS.fancy_msg(_('Installing built packages...'))
 
-        if pkgpaths[0]:
-            pkgs = pkgpaths[0]
-        else:
-            pkgs = []
-
-        if pkgpaths[1]:
-            sigs = pkgpaths[1]
-        else:
-            sigs = []
-
-        DS.log.info('pkgs={}; sigs={}'.format(pkgs, sigs))
-        DS.log.debug('cp {} {} /var/cache/pacman/pkg/'.format(pkgs, sigs))
-        DS.sudo('cp', pkgs + sigs, '/var/cache/pacman/pkg/')
-        DS.log.debug('$PACMAN -U {}'.format(pkgs))
-        DS.sudo(DS.paccommand, '-U', pkgs)
+        DS.log.info('pkgs={}; sigs={}'.format(pkgpaths, sigpaths))
+        DS.log.debug('cp {} {} /var/cache/pacman/pkg/'.format(pkgpaths,
+                                                              sigpaths))
+        DS.sudo('cp', pkgpaths + sigpaths, '/var/cache/pacman/pkg/')
+        DS.log.debug('$PACMAN -U {}'.format(pkgpaths))
+        DS.sudo(DS.paccommand, '-U', pkgpaths)
 
     def auto_build(self, pkgname, performdepcheck=True,
                    pkginstall=True):

@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.5.2\n"
+"Project-Id-Version: 2.1.5.3\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-10-10 20:33+0200\n"
+"POT-Creation-Date: 2012-10-12 20:45+0200\n"
 "PO-Revision-Date: 2012-09-08 12:44+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
@@ -36,29 +36,29 @@ msgstr "{} nieaktualny {}"
 msgid "{}: installed {}"
 msgstr "{}: zainstalowany {}"
 
-#: pkgbuilder/build.py:72
+#: pkgbuilder/build.py:68
 msgid "Installing built packages..."
 msgstr "Instalowanie zbudowanych pakietów..."
 
-#: pkgbuilder/build.py:109
+#: pkgbuilder/build.py:96
 msgid "The build function reported a proper build."
 msgstr "Funkcja budowania paczek powiadomiła o prawidłowym zbudowaniu."
 
 #. PBxxx.
-#: pkgbuilder/build.py:112
+#: pkgbuilder/build.py:99
 msgid "makepkg (or someone else) failed and returned {}."
 msgstr ""
 "tworzenie pakietu przez makepkg (lub coś innego) nie powiodło się i zwróciło "
 "{}."
 
 #. PBSUX.
-#: pkgbuilder/build.py:116
+#: pkgbuilder/build.py:103
 msgid "PKGBUILDer had a problem."
 msgstr "PKGBUILDer miał problem."
 
 #. PBREQ.
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/build.py:120
+#: pkgbuilder/build.py:107
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
@@ -67,73 +67,73 @@ msgstr ""
 "HTTP."
 
 #. I/O error.
-#: pkgbuilder/build.py:124
+#: pkgbuilder/build.py:111
 msgid "There was an input/output error."
 msgstr "Wystąpił błąd wejścia/wyjścia."
 
 #. PBDEP.
-#: pkgbuilder/build.py:127
+#: pkgbuilder/build.py:114
 msgid "Building more AUR packages is required."
 msgstr "Należy zainstalować więcej pakietów z AUR."
 
-#: pkgbuilder/build.py:160
+#: pkgbuilder/build.py:147
 msgid "download: HTTP Error {}"
 msgstr "download: Błąd HTTP {}"
 
-#: pkgbuilder/build.py:163
+#: pkgbuilder/build.py:150
 msgid "download: 0 bytes downloaded"
 msgstr "download: pobrano 0 bajtów"
 
-#: pkgbuilder/build.py:179
+#: pkgbuilder/build.py:166
 msgid "extract: no files extracted"
 msgstr "extract: wypakowano 0 plików"
 
-#: pkgbuilder/build.py:230
+#: pkgbuilder/build.py:217
 msgid "depcheck: cannot find {} anywhere"
 msgstr "depcheck: nie można nigdzie znaleźć pakietu {}"
 
-#: pkgbuilder/build.py:245
+#: pkgbuilder/build.py:232
 msgid "Package {} not found."
 msgstr "Nie znaleziono pakietu {}."
 
-#: pkgbuilder/build.py:247
+#: pkgbuilder/build.py:234
 msgid "Building {}..."
 msgstr "Budowanie {}..."
 
 #. Okay, this package exists, great then.  Thanks, user.
-#: pkgbuilder/build.py:257
+#: pkgbuilder/build.py:244
 msgid "Downloading the tarball..."
 msgstr "Pobieranie tarballa..."
 
-#: pkgbuilder/build.py:260
+#: pkgbuilder/build.py:247
 msgid "{} kB downloaded"
 msgstr "pobrano {} kB"
 
-#: pkgbuilder/build.py:262
+#: pkgbuilder/build.py:249
 msgid "Extracting..."
 msgstr "Wypakowywanie..."
 
-#: pkgbuilder/build.py:263
+#: pkgbuilder/build.py:250
 msgid "{} files extracted"
 msgstr "wypakowano {} plików"
 
-#: pkgbuilder/build.py:268
+#: pkgbuilder/build.py:255
 msgid "Checking dependencies..."
 msgstr "Sprawdzanie zależności..."
 
-#: pkgbuilder/build.py:271
+#: pkgbuilder/build.py:258
 msgid "found in system"
 msgstr "znaleziono w systemie"
 
-#: pkgbuilder/build.py:271
+#: pkgbuilder/build.py:258
 msgid "found in repos"
 msgstr "znaleziono w repozytoriach"
 
-#: pkgbuilder/build.py:272
+#: pkgbuilder/build.py:259
 msgid "found in the AUR"
 msgstr "znaleziono w AUR"
 
-#: pkgbuilder/build.py:275
+#: pkgbuilder/build.py:262
 msgid "none found"
 msgstr "brak"
 
@@ -229,11 +229,11 @@ msgstr "zapytanie do wyszukiwarki zbyt krótkie, limitacja API"
 msgid "Searching for exact match..."
 msgstr "Szukanie dokładnego dopasowania..."
 
-#: pkgbuilder/main.py:129 INSTALL.py:65 INSTALL.py:74 INSTALL.py:83
+#: pkgbuilder/main.py:129 INSTALL.py:65 INSTALL.py:74
 msgid "not found"
 msgstr "nie znaleziono"
 
-#: pkgbuilder/main.py:181 pkgbuilder/upgrade.py:173
+#: pkgbuilder/main.py:181 pkgbuilder/upgrade.py:174
 msgid "Running PKGBUILDer as root can break your system!"
 msgstr "Używanie PKGBUILDera jako root może popsuć twój system!"
 
@@ -287,29 +287,29 @@ msgstr "Cele ({}):"
 msgid "Proceed with installation? [Y/n] "
 msgstr "Kontynuować instalację? [Y/n] "
 
-#: pkgbuilder/utils.py:76
+#: pkgbuilder/utils.py:82
 msgid " [installed: {}]"
 msgstr " [zainstalowano: {}]"
 
-#: pkgbuilder/utils.py:78
+#: pkgbuilder/utils.py:84
 msgid " [installed]"
 msgstr " [zainstalowano]"
 
-#: pkgbuilder/utils.py:81
+#: pkgbuilder/utils.py:87
 msgid "[out of date]"
 msgstr "[nieaktualny]"
 
-#: pkgbuilder/utils.py:93
+#: pkgbuilder/utils.py:99
 msgid "votes"
 msgstr "głosów"
 
-#: pkgbuilder/utils.py:111
+#: pkgbuilder/utils.py:117
 msgid "Package not found."
 msgstr "Nie znaleziono pakietu."
 
 #. TRANSLATORS: space it properly.  `yes/no' below are
 #. for `out of date'.
-#: pkgbuilder/utils.py:141
+#: pkgbuilder/utils.py:147
 msgid ""
 "Repository     : aur\n"
 "Category       : {cat}\n"
@@ -337,11 +337,11 @@ msgstr ""
 "Ost. aktualiz. : {upd}\n"
 "Opis           : {dsc}\n"
 
-#: pkgbuilder/utils.py:171
+#: pkgbuilder/utils.py:177
 msgid "yes"
 msgstr "tak"
 
-#: pkgbuilder/utils.py:173
+#: pkgbuilder/utils.py:179
 msgid "no"
 msgstr "nie"
 
@@ -377,11 +377,11 @@ msgstr ""
 msgid "Performing a dependency check..."
 msgstr "Sprawdzanie zależności..."
 
-#: INSTALL.py:62 INSTALL.py:71 INSTALL.py:80
+#: INSTALL.py:62 INSTALL.py:71
 msgid "found"
 msgstr "znaleziono"
 
-#: INSTALL.py:105
+#: INSTALL.py:96
 msgid ""
 "\n"
 "\n"
@@ -403,7 +403,7 @@ msgstr ""
 "\n"
 "Jeśli się mylę, gratulacje!\n"
 
-#: INSTALL.py:123
+#: INSTALL.py:114
 msgid ""
 "Hello!\n"
 "\n"
@@ -421,15 +421,15 @@ msgstr ""
 "ręcznie.\n"
 "\n"
 
-#: INSTALL.py:132
+#: INSTALL.py:123
 msgid "Hit Enter/Return to continue. "
 msgstr "Wciśnij Enter, aby kontynuować."
 
-#: INSTALL.py:144
+#: INSTALL.py:135
 msgid "Installing missing AUR dependencies..."
 msgstr "Instalowanie brakujących zależności z AUR..."
 
-#: INSTALL.py:153
+#: INSTALL.py:142
 msgid ""
 "\n"
 "\n"
@@ -457,7 +457,7 @@ msgstr ""
 "inne powłoki mogą wymagać innej komendy).  Dla użycia jako moduł\n"
 "Pythona, wpisz `import pkgbuilder` do interpretera.\n"
 
-#: INSTALL.py:169
+#: INSTALL.py:158
 msgid ""
 "It looks like you want to quit.  Okay then, goodbye.\n"
 "No work has been started yet.\n"
@@ -471,7 +471,7 @@ msgstr ""
 "Jeśli to jest to, co chcesz zrobić, proszę bardzo.  Jeśli nie,\n"
 "uruchom ten skrypt jeszcze raz."
 
-#: INSTALL.py:175
+#: INSTALL.py:164
 msgid ""
 "It looks like you want to quit.  Okay then, goodbye.\n"
 "All the files this script was working on are placed in\n"
@@ -494,14 +494,14 @@ msgstr ""
 msgid "usage"
 msgstr "sposób użycia"
 
-#: localeprovider.py:2
+#: localeprovider.py:3
 msgid "positional arguments"
 msgstr "argumenty"
 
-#: localeprovider.py:2
+#: localeprovider.py:4
 msgid "optional arguments"
 msgstr "argumenty opcjonalne"
 
-#: localeprovider.py:2
+#: localeprovider.py:5
 msgid "show this help message and exit"
 msgstr "pokaż tą wiadomość i wyjdź"
