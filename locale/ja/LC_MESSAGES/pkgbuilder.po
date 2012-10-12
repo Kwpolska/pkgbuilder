@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.5.2\n"
+"Project-Id-Version: 2.1.5.3\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-10-10 20:33+0200\n"
+"POT-Creation-Date: 2012-10-12 20:45+0200\n"
 "PO-Revision-Date: 2012-09-21 20:21+0200\n"
 "Last-Translator: Colin Woodbury <colingw@gmail.com>\n"
 "Language-Team: Colin Woodbury <colingw@gmail.com>\n"
@@ -36,100 +36,100 @@ msgstr "{}：「{}」より要更新"
 msgid "{}: installed {}"
 msgstr "{}: 「{}」をインストール済み"
 
-#: pkgbuilder/build.py:72
+#: pkgbuilder/build.py:68
 msgid "Installing built packages..."
 msgstr "作成したパッケージをインストール中・・・"
 
-#: pkgbuilder/build.py:109
+#: pkgbuilder/build.py:96
 msgid "The build function reported a proper build."
 msgstr "パッケージ作成成功。"
 
 #. PBxxx.
-#: pkgbuilder/build.py:112
+#: pkgbuilder/build.py:99
 msgid "makepkg (or someone else) failed and returned {}."
 msgstr "makepkgなどが「{}」で失敗したようだ。"
 
 #. PBSUX.
-#: pkgbuilder/build.py:116
+#: pkgbuilder/build.py:103
 msgid "PKGBUILDer had a problem."
 msgstr "PKGBUILDerに問題発生。"
 
 #. PBREQ.
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/build.py:120
+#: pkgbuilder/build.py:107
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
 msgstr "PKGBUILDerか「requests」ライブラリがHTTPリクエストを遂行できなかった。"
 
 #. I/O error.
-#: pkgbuilder/build.py:124
+#: pkgbuilder/build.py:111
 msgid "There was an input/output error."
 msgstr "入力・出力エラー発生。"
 
 #. PBDEP.
-#: pkgbuilder/build.py:127
+#: pkgbuilder/build.py:114
 msgid "Building more AUR packages is required."
 msgstr "AURパッケージを更に作成する必要がある。"
 
-#: pkgbuilder/build.py:160
+#: pkgbuilder/build.py:147
 msgid "download: HTTP Error {}"
 msgstr "ダウンロード状態：HTTPエラー {}"
 
-#: pkgbuilder/build.py:163
+#: pkgbuilder/build.py:150
 msgid "download: 0 bytes downloaded"
 msgstr "ダウンロード状態：1バイトもダウンロードされなかった"
 
-#: pkgbuilder/build.py:179
+#: pkgbuilder/build.py:166
 msgid "extract: no files extracted"
 msgstr "抽出状態：ファイルは1つも抽出されなかった"
 
-#: pkgbuilder/build.py:230
+#: pkgbuilder/build.py:217
 msgid "depcheck: cannot find {} anywhere"
 msgstr "従属パッケージ状態：「{}」をどこでも見つからなかった"
 
-#: pkgbuilder/build.py:245
+#: pkgbuilder/build.py:232
 msgid "Package {} not found."
 msgstr "パッケージ「{}」は見つからなかった。"
 
-#: pkgbuilder/build.py:247
+#: pkgbuilder/build.py:234
 msgid "Building {}..."
 msgstr "「{}」を作成中・・・"
 
 #. Okay, this package exists, great then.  Thanks, user.
-#: pkgbuilder/build.py:257
+#: pkgbuilder/build.py:244
 msgid "Downloading the tarball..."
 msgstr "ターボールをダウンロード中・・・"
 
-#: pkgbuilder/build.py:260
+#: pkgbuilder/build.py:247
 msgid "{} kB downloaded"
 msgstr "{} kBをダウンロード済み"
 
-#: pkgbuilder/build.py:262
+#: pkgbuilder/build.py:249
 msgid "Extracting..."
 msgstr "抽出中・・・"
 
-#: pkgbuilder/build.py:263
+#: pkgbuilder/build.py:250
 msgid "{} files extracted"
 msgstr "ファイルを{}個抽出した"
 
-#: pkgbuilder/build.py:268
+#: pkgbuilder/build.py:255
 msgid "Checking dependencies..."
 msgstr "従属パッケージを確認中・・・"
 
-#: pkgbuilder/build.py:271
+#: pkgbuilder/build.py:258
 msgid "found in system"
 msgstr "インストール済み"
 
-#: pkgbuilder/build.py:271
+#: pkgbuilder/build.py:258
 msgid "found in repos"
 msgstr "リポジトリに存在"
 
-#: pkgbuilder/build.py:272
+#: pkgbuilder/build.py:259
 msgid "found in the AUR"
 msgstr "AURに存在"
 
-#: pkgbuilder/build.py:275
+#: pkgbuilder/build.py:262
 msgid "none found"
 msgstr "従属パッケージなし"
 
@@ -225,11 +225,11 @@ msgstr "検索の問いが短すぎる"
 msgid "Searching for exact match..."
 msgstr "完全一致を検索中・・・"
 
-#: pkgbuilder/main.py:129 INSTALL.py:65 INSTALL.py:74 INSTALL.py:83
+#: pkgbuilder/main.py:129 INSTALL.py:65 INSTALL.py:74
 msgid "not found"
 msgstr "見つからなかった"
 
-#: pkgbuilder/main.py:181 pkgbuilder/upgrade.py:173
+#: pkgbuilder/main.py:181 pkgbuilder/upgrade.py:174
 msgid "Running PKGBUILDer as root can break your system!"
 msgstr "管理者としてPKGBUILDerを実行すると危険性あり！"
 
@@ -283,29 +283,29 @@ msgstr "「{}」の該当パッケージ："
 msgid "Proceed with installation? [Y/n] "
 msgstr "続行？ [Y/n]"
 
-#: pkgbuilder/utils.py:76
+#: pkgbuilder/utils.py:82
 msgid " [installed: {}]"
 msgstr "[インストール済み：{}]"
 
-#: pkgbuilder/utils.py:78
+#: pkgbuilder/utils.py:84
 msgid " [installed]"
 msgstr "[インストール済み]"
 
-#: pkgbuilder/utils.py:81
+#: pkgbuilder/utils.py:87
 msgid "[out of date]"
 msgstr "[要更新]"
 
-#: pkgbuilder/utils.py:93
+#: pkgbuilder/utils.py:99
 msgid "votes"
 msgstr "投票数"
 
-#: pkgbuilder/utils.py:111
+#: pkgbuilder/utils.py:117
 msgid "Package not found."
 msgstr "パッケージは見つからなかった。"
 
 #. TRANSLATORS: space it properly.  `yes/no' below are
 #. for `out of date'.
-#: pkgbuilder/utils.py:141
+#: pkgbuilder/utils.py:147
 msgid ""
 "Repository     : aur\n"
 "Category       : {cat}\n"
@@ -333,11 +333,11 @@ msgstr ""
 "最近更新日付   : {upd}\n"
 "説明           : {dsc}\n"
 
-#: pkgbuilder/utils.py:171
+#: pkgbuilder/utils.py:177
 msgid "yes"
 msgstr "要更新"
 
-#: pkgbuilder/utils.py:173
+#: pkgbuilder/utils.py:179
 msgid "no"
 msgstr "最新"
 
@@ -373,11 +373,11 @@ msgstr ""
 msgid "Performing a dependency check..."
 msgstr "従属パッケージ確認中・・・"
 
-#: INSTALL.py:62 INSTALL.py:71 INSTALL.py:80
+#: INSTALL.py:62 INSTALL.py:71
 msgid "found"
 msgstr "発見"
 
-#: INSTALL.py:105
+#: INSTALL.py:96
 msgid ""
 "\n"
 "\n"
@@ -399,7 +399,7 @@ msgstr ""
 "\n"
 "頑張って！\n"
 
-#: INSTALL.py:123
+#: INSTALL.py:114
 msgid ""
 "Hello!\n"
 "\n"
@@ -417,15 +417,15 @@ msgstr ""
 "自分でコードをダウンロードしてコンパイルして見て下さい。\n"
 "\n"
 
-#: INSTALL.py:132
+#: INSTALL.py:123
 msgid "Hit Enter/Return to continue. "
 msgstr "EnterやReturnを押して続行。"
 
-#: INSTALL.py:144
+#: INSTALL.py:135
 msgid "Installing missing AUR dependencies..."
 msgstr "必要な従属AURパッケージをインストール・・・"
 
-#: INSTALL.py:153
+#: INSTALL.py:142
 msgid ""
 "\n"
 "\n"
@@ -453,7 +453,7 @@ msgstr ""
 "「hash -r」が必要になるかもしれない。pythonのモジュール利用に関しては、\n"
 "`import pkgbuilder`をいつも通り打てば使える。\n"
 
-#: INSTALL.py:169
+#: INSTALL.py:158
 msgid ""
 "It looks like you want to quit.  Okay then, goodbye.\n"
 "No work has been started yet.\n"
@@ -465,7 +465,7 @@ msgstr ""
 "まだ何もしていないので。\n"
 "本当に終わりたいなら止めない。違ったら再度このスクリプトを実行！"
 
-#: INSTALL.py:175
+#: INSTALL.py:164
 msgid ""
 "It looks like you want to quit.  Okay then, goodbye.\n"
 "All the files this script was working on are placed in\n"
@@ -484,14 +484,14 @@ msgstr ""
 msgid "usage"
 msgstr "使い方"
 
-#: localeprovider.py:2
+#: localeprovider.py:3
 msgid "positional arguments"
 msgstr "選択肢"
 
-#: localeprovider.py:2
+#: localeprovider.py:4
 msgid "optional arguments"
 msgstr "副選択肢"
 
-#: localeprovider.py:2
+#: localeprovider.py:5
 msgid "show this help message and exit"
 msgstr "このメッセージを出力して終わる"

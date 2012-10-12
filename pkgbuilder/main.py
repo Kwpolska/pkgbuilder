@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.5.2
+# PKGBUILDer v2.1.5.3
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -183,13 +183,16 @@ def main(source='AUTO', quit=True):
 
         DS.log.info('Starting build...')
         toinstall = []
+        sigs = []
         for pkgname in args.pkgs:
             DS.log.info('Building {}'.format(pkgname))
             out = build.auto_build(pkgname, DS.depcheck, DS.pkginst)
             if out:
-                toinstall += out
+                toinstall += out[0]
+                sigs += out[1]
+
         if toinstall:
-            build.install(toinstall)
+            build.install(toinstall, sigs)
 
         if DS.validate:
             build.validate(args.pkgs)

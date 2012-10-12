@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.5.2
+# PKGBUILDer v2.1.5.3
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -21,6 +21,7 @@ from .aur import AUR
 import pyalpm
 import pycman
 import os
+import subprocess
 import textwrap
 import datetime
 
@@ -61,9 +62,14 @@ class Utils:
         Outputs/returns a package representation, which is close to the output
         of ``pacman -Ss``.
         """
-        size = os.popen('stty size', 'r')
-        termwidth = int(size.read().split()[1])
-        size.close()
+        size = subprocess.Popen(['stty', 'size'], stdout=subprocess.PIPE,
+                                stderr=subprocess.PIPE)
+        try:
+            termwidth = int(size.stdout.read().split()[1])
+        except IndexError:
+            termwidth = 9001  # Auto-wrap by terminal.  A reference to an old
+                              # meme and a cheat, too. Sorry.
+        size.stdout.close()
         H = pycman.config.init_with_config('/etc/pacman.conf')
         localdb = H.get_localdb()
         lpkg = localdb.get_pkg(pkg['Name'])

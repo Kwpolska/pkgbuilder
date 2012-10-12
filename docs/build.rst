@@ -4,8 +4,8 @@ build module (Build class)
 :Author: Kwpolska
 :Copyright: © 2011-2012, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2012-10-10
-:Version: 2.1.5.2
+:Date: 2012-10-12
+:Version: 2.1.5.3
 
 .. module:: build
 
@@ -46,11 +46,9 @@ standalone, because it is embedded by :meth:`auto_build()`.
 
 Check if packages were installed.
 
-.. method:: install(pkgpaths)
+.. method:: install(pkgpaths[, sigpaths])
 
-Install packages through ``pacman -U``.  Warning::
-
-    pkgpaths = [packages, sigfiles-if-any-or-None]
+Install packages through ``pacman -U``.
 
 .. method:: download(urlpath, filename[, prot])
 

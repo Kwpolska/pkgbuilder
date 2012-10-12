@@ -5,8 +5,8 @@ Appendix C. Changelog
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: © 2011-2012, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2012-10-10
-:Version: 2.1.5.2
+:Date: 2012-10-12
+:Version: 2.1.5.3
 
 .. index:: CHANGELOG
 
@@ -23,6 +23,10 @@ PKGBUILDer uses the following versioning scheme:
 
 Generation 2
 ============
+:2.1.5.3: A bugfix for package copying and installation (signatures were passed
+          to -U) broke the installation mechanism so only one package got
+          installed.  Also, fixing a bug with a STDIN that is not a terminal
+          (eg. ``xargs``, and I hope nobody is using it to search for stuff)
 :2.1.5.2: Fixed a bug where an error in makepkg while running an Upgrade
           crashed PB and thrown an unhelpful traceback.
 :2.1.5.1: More tiny bugfixes.

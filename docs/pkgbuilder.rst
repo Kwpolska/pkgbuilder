@@ -6,8 +6,8 @@ PKGBUILDer
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: © 2011-2012, Kwpolska.
 :License: BSD (see /LICENSE or Appendix B.)
-:Date: 2012-10-10
-:Version: 2.1.5.2
+:Date: 2012-10-12
+:Version: 2.1.5.3
 :Manual section: 8
 :Manual group: PKGBUILDer manual
 
