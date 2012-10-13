@@ -25,15 +25,15 @@ This is the class used for calling the AUR API.  It defines four methods:
 Makes a request and returns data.  Valid types of requests are listed on
 the `AUR API's page`_.  Currently tested and working ones are:
 
-+-------------+-----------------------------------+
-+ name        | purpose                           |
-+=============+===================================+
-| info        | get info about `arg`              |
-+-------------+-----------------------------------+
-| search      | search for `arg` in the AUR       |
-+-------------+-----------------------------------+
-| maintsearch | show packages maintained by `arg` |
-+-------------+-----------------------------------+
++---------+-----------------------------------+
++ name    | purpose                           |
++=========+===================================+
+| info    | get info about `arg`              |
++---------+-----------------------------------+
+| search  | search for `arg` in the AUR       |
++---------+-----------------------------------+
+| msearch | show packages maintained by `arg` |
++---------+-----------------------------------+
 
 multiinfo is implemented in another function, :meth:`multiinfo()`.
 
