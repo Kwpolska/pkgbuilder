@@ -212,14 +212,14 @@ def wrapper(source='AUTO'):
         if args.search or args.s:
             log.debug('Got -s.')
             log.info('Running pacman.')
-            subprocess.call(DS.paccommand, pacargs, pkgnames)
+            subprocess.call([DS.paccommand] + pacargs + pkgnames)
             log.info('Running pkgbuilder (pkgbuilder.main.main()).')
             main(pbargs + pkgnames)
             exit()
         elif args.l or args.list:
             log.debug('Got -l.')
             log.info('Running pacman.')
-            subprocess.call(DS.paccommand, pacargs, pkgnames)
+            subprocess.call([DS.paccommand] + pacargs + pkgnames)
             exit()
         elif args.u or args.sysupgrade:
             log.debug('Got -u.')
@@ -295,4 +295,4 @@ pyalpm      v{}""".format(__wrapperversion__, __version__,
         else:
             print('Please don’t use the reserved UTshibboleet argument.')
     else:
-        DS.sudo(DS.paccommand + argst)
+        DS.sudo([DS.paccommand] + argst)
