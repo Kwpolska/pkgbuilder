@@ -43,6 +43,10 @@ class Utils:
             return []
         elif aur_pkgs['results'] == 'No results found':
             return []
+        elif aur_pkgs['type'] == 'error':
+            # There are other cases where the "results" element is a string;
+            # type = error seems to cover at least one case
+            raise EnvironmentError(aur_pkgs['results'])
         else:
             return aur_pkgs['results']
 
