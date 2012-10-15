@@ -278,7 +278,7 @@ commands for more details.
 
 Additional options:
   -L, --unlock         unlock the pacman database""").format(
-            os.path.basename(sys.argv[0])), 'PBWrapper')
+            os.path.basename(sys.argv[0]), 'PBWrapper'))
 
     elif ('-V' in argst) or ('--version' in argst):
         pacpkg = localdb.get_pkg('pacman')
