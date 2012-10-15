@@ -117,6 +117,9 @@ def main(source='AUTO', quit=True):
                 exit(0)
 
         if args.search:
+            if not args.pkgs:
+                raise ValueError('Missing search arguments')
+            
             DS.log.debug('Searching...')
             searchstring = '+'.join(args.pkgs)
             if len(searchstring) < 2:
