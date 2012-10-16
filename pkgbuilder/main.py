@@ -118,31 +118,32 @@ def main(source='AUTO', quit=True):
 
         if args.search:
             if not args.pkgs:
-                raise ValueError('Missing search arguments')
-            
-            DS.log.debug('Searching...')
-            searchstring = '+'.join(args.pkgs)
-            if len(searchstring) < 2:
-                # this would be too many entries, but this is an actual API
-                # limitation and not an idea of yours truly.
-                DS.fancy_error(_('Search query too short, API limitation'))
-                DS.fancy_msg(_('Searching for exact match...'))
-                search = utils.info([searchstring])
-                if search == []:
-                    DS.fancy_error2(_('not found'))
-                    if quit:
-                        exit(0)
-                else:
-                    utils.print_package_search(search[0], prefix=(
-                                               DS.colors['blue'] + '  ->' +
-                                               DS.colors['all_off'] +
-                                               DS.colors['bold'] + ' '),
-                                               prefixp='  -> ')
-                    print(DS.colors['all_off'], end='')
-                    if quit:
-                        exit(0)
+                if quit:
+                    exit(1)
             else:
-                search = utils.search(searchstring)
+                DS.log.debug('Searching...')
+                searchstring = '+'.join(args.pkgs)
+                if len(searchstring) < 2:
+                    # this would be too many entries, but this is an actual API
+                    # limitation and not an idea of yours truly.
+                    DS.fancy_error(_('Search query too short, API limitation'))
+                    DS.fancy_msg(_('Searching for exact match...'))
+                    search = utils.info([searchstring])
+                    if search == []:
+                        DS.fancy_error2(_('not found'))
+                        if quit:
+                            exit(0)
+                    else:
+                        utils.print_package_search(search[0], prefix=(
+                                                   DS.colors['blue'] + '  ->' +
+                                                   DS.colors['all_off'] +
+                                                   DS.colors['bold'] + ' '),
+                                                   prefixp='  -> ')
+                        print(DS.colors['all_off'], end='')
+                        if quit:
+                            exit(0)
+                else:
+                    search = utils.search(searchstring)
 
             output = ''
             for pkg in search:
