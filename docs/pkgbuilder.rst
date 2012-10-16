@@ -94,7 +94,7 @@ pkgbuilder trashman
     the CWD.
 
 pkgbuilder -S trashman
-    Installs "trashman", but builds the package in /tmp-pkgbuilder-UID.
+    Installs "trashman", but builds the package in /tmp/pkgbuilder-UID.
 
 pkgbuilder -Syu
     Checks for updates and offers installing them.
