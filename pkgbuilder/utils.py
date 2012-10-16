@@ -72,7 +72,7 @@ class Utils:
         except IndexError:
             termwidth = 9001  # Auto-wrap by terminal.  A reference to an old
                               # meme and a cheat, too. Sorry.
-        
+
         H = pycman.config.init_with_config('/etc/pacman.conf')
         localdb = H.get_localdb()
         lpkg = localdb.get_pkg(pkg['Name'])
