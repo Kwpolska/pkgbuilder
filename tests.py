@@ -235,6 +235,16 @@ doesn’t match the example')
         
         # More interested in if the above erred rather than the actual output
         self.assertTrue(capture.getvalue())
+    
+    def test_call_pacman(self):
+        """Make sure "pb" command can call Pacman"""
+        
+        pacman = pkgbuilder.DS.paccommand
+        try:
+            pkgbuilder.DS.paccommand = "true"
+            pkgbuilder.wrapper.wrapper(["dummy-pacman-argument"])
+        finally:
+            pkgbuilder.DS.paccommand = pacman
 
 if __name__ == '__main__':
     unittest.main()
