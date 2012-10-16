@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.5.3\n"
+"Project-Id-Version: 2.1.5.4\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-10-12 20:45+0200\n"
+"POT-Creation-Date: 2012-10-16 16:07+0200\n"
 "PO-Revision-Date: 2012-09-08 12:44+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: pkgbuilder/aur.py:38 pkgbuilder/aur.py:51
+#: pkgbuilder/aur.py:39 pkgbuilder/aur.py:53
 msgid "AUR: HTTP Error {}"
 msgstr "AUR: HTTP Error {}"
 
@@ -219,19 +219,19 @@ msgstr "upgrade installed AUR packages"
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
-#: pkgbuilder/main.py:125
+#: pkgbuilder/main.py:129
 msgid "Search query too short, API limitation"
 msgstr "Search query too short, API limitation"
 
-#: pkgbuilder/main.py:126
+#: pkgbuilder/main.py:130
 msgid "Searching for exact match..."
 msgstr "Searching for exact match..."
 
-#: pkgbuilder/main.py:129 INSTALL.py:65 INSTALL.py:74
+#: pkgbuilder/main.py:133 INSTALL.py:65 INSTALL.py:74
 msgid "not found"
 msgstr "not found"
 
-#: pkgbuilder/main.py:181 pkgbuilder/upgrade.py:174
+#: pkgbuilder/main.py:185 pkgbuilder/upgrade.py:176
 msgid "Running PKGBUILDer as root can break your system!"
 msgstr "Running PKGBUILDer as root can break your system!"
 
@@ -261,53 +261,53 @@ msgstr "WARNING:"
 msgid "Logs will not be created."
 msgstr "Logs will not be created."
 
-#: pkgbuilder/upgrade.py:111 pkgbuilder/upgrade.py:113
+#: pkgbuilder/upgrade.py:113 pkgbuilder/upgrade.py:115
 msgid "Synchronizing package databases..."
 msgstr "Synchronizing package databases..."
 
-#: pkgbuilder/upgrade.py:123 pkgbuilder/upgrade.py:125
+#: pkgbuilder/upgrade.py:125 pkgbuilder/upgrade.py:127
 msgid "Starting full system upgrade..."
 msgstr "Starting full system upgrade..."
 
-#: pkgbuilder/upgrade.py:130 pkgbuilder/upgrade.py:133
+#: pkgbuilder/upgrade.py:132 pkgbuilder/upgrade.py:135
 msgid "{}: local ({}) is newer than aur ({})"
 msgstr "{}: local ({}) is newer than aur ({})"
 
-#: pkgbuilder/upgrade.py:142 pkgbuilder/upgrade.py:144
+#: pkgbuilder/upgrade.py:144 pkgbuilder/upgrade.py:146
 msgid "there is nothing to do"
 msgstr "there is nothing to do"
 
-#: pkgbuilder/upgrade.py:154 pkgbuilder/upgrade.py:159
+#: pkgbuilder/upgrade.py:156 pkgbuilder/upgrade.py:161
 msgid "Targets ({}): "
 msgstr "Targets ({}): "
 
-#: pkgbuilder/upgrade.py:157 pkgbuilder/upgrade.py:162
+#: pkgbuilder/upgrade.py:159 pkgbuilder/upgrade.py:164
 msgid "Proceed with installation? [Y/n] "
 msgstr "Proceed with installation? [Y/n] "
 
-#: pkgbuilder/utils.py:82
+#: pkgbuilder/utils.py:86
 msgid " [installed: {}]"
 msgstr " [installed: {}]"
 
-#: pkgbuilder/utils.py:84
+#: pkgbuilder/utils.py:88
 msgid " [installed]"
 msgstr " [installed]"
 
-#: pkgbuilder/utils.py:87
+#: pkgbuilder/utils.py:91
 msgid "[out of date]"
 msgstr "[out of date]"
 
-#: pkgbuilder/utils.py:99
+#: pkgbuilder/utils.py:103
 msgid "votes"
 msgstr "votes"
 
-#: pkgbuilder/utils.py:117
+#: pkgbuilder/utils.py:121
 msgid "Package not found."
 msgstr "Package not found."
 
 #. TRANSLATORS: space it properly.  `yes/no' below are
 #. for `out of date'.
-#: pkgbuilder/utils.py:147
+#: pkgbuilder/utils.py:151
 msgid ""
 "Repository     : aur\n"
 "Category       : {cat}\n"
@@ -335,11 +335,11 @@ msgstr ""
 "Last Updated   : {upd}\n"
 "Description    : {dsc}\n"
 
-#: pkgbuilder/utils.py:177
+#: pkgbuilder/utils.py:181
 msgid "yes"
 msgstr "yes"
 
-#: pkgbuilder/utils.py:179
+#: pkgbuilder/utils.py:183
 msgid "no"
 msgstr "no"
 
@@ -349,7 +349,7 @@ msgid "%(prog)s <operation> [...]"
 msgstr "%(prog)s <operation> [...]"
 
 #. TRANSLATORS: see pacman’s localizations
-#: pkgbuilder/wrapper.py:272
+#: pkgbuilder/wrapper.py:276
 msgid ""
 "usage:  {} <operation> [...]\n"
 "\n"
