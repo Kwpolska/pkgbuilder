@@ -66,14 +66,13 @@ class Utils:
         Outputs/returns a package representation, which is close to the output
         of ``pacman -Ss``.
         """
-        size = subprocess.Popen(['stty', 'size'], stdout=subprocess.PIPE,
-                                stderr=subprocess.PIPE)
+        size = subprocess.check_output(['stty', 'size'])
         try:
-            termwidth = int(size.stdout.read().split()[1])
+            termwidth = int(size.split()[1])
         except IndexError:
             termwidth = 9001  # Auto-wrap by terminal.  A reference to an old
                               # meme and a cheat, too. Sorry.
-        size.stdout.close()
+        
         H = pycman.config.init_with_config('/etc/pacman.conf')
         localdb = H.get_localdb()
         lpkg = localdb.get_pkg(pkg['Name'])
