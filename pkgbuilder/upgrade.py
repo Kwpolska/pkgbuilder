@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.5.3
+# PKGBUILDer v2.1.5.4
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -30,16 +30,16 @@ class Upgrade:
 
     aur = AUR()
     build = Build()
-    H = pycman.config.init_with_config('/etc/pacman.conf')
-    localdb = H.get_localdb()
 
     def gather_foreign_pkgs(self):
         """Gathers a list of all foreign packages."""
+        H = pycman.config.init_with_config('/etc/pacman.conf')
+        localdb = H.get_localdb()
         # Based on paconky.py.
-        installed = [p for p in self.localdb.pkgcache]
+        installed = [p for p in localdb.pkgcache]
         repo = []
         aur = []
-        syncdbs = self.H.get_syncdbs()
+        syncdbs = H.get_syncdbs()
         for sdb in syncdbs:
             for pkg in installed:
                 if sdb.get_pkg(pkg.name):
@@ -51,6 +51,8 @@ class Upgrade:
 
     def list_upgradable(self, pkglist, vcsup=False):
         """Compares package versions and returns upgradable ones."""
+        H = pycman.config.init_with_config('/etc/pacman.conf')
+        localdb = H.get_localdb()
         aurlist = self.aur.multiinfo(pkglist, DS.protocol)['results']
         # It's THAT easy.  Oh, and by the way: it is much, MUCH faster
         # than others.  It makes ONE multiinfo request rather than
@@ -59,7 +61,7 @@ class Upgrade:
         downgradable = []
 
         for i in aurlist:
-            pkg = self.localdb.get_pkg(i['Name'])
+            pkg = localdb.get_pkg(i['Name'])
             if pkg is not None:
                 vc = pyalpm.vercmp(i['Version'], pkg.version)
                 if vc > 0:

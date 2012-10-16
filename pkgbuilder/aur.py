@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.5.3
+# PKGBUILDer v2.1.5.4
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -34,6 +34,7 @@ class AUR:
             return '[]'  # No need to bother, string for JSON.
 
         req = requests.get(self.rpc.format(prot, rtype, arg))
+        req.raise_for_status()
         if req.status_code != 200:
             raise PBError(_('AUR: HTTP Error {}').format(
                 req.status_code))
@@ -47,6 +48,7 @@ class AUR:
 
         urlargs = '&arg[]=' + '&arg[]='.join(args)
         req = requests.get(self.mrpc.format(prot, urlargs))
+        req.raise_for_status()
         if req.status_code != 200:
             raise PBError(_('AUR: HTTP Error {}').format(
                 req.status_code))

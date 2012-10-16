@@ -5,8 +5,8 @@ Appendix C. Changelog
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: © 2011-2012, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2012-10-12
-:Version: 2.1.5.3
+:Date: 2012-10-16
+:Version: 2.1.5.4
 
 .. index:: CHANGELOG
 
@@ -23,6 +23,8 @@ PKGBUILDer uses the following versioning scheme:
 
 Generation 2
 ============
+:2.1.5.4: Applying patches from vadmium/pkgbuilder, also adding a few other
+          fixes and changing the ``pb`` version number up to 0.2.0.
 :2.1.5.3: A bugfix for package copying and installation (signatures were passed
           to -U) broke the installation mechanism so only one package got
           installed.  Also, fixing a bug with a STDIN that is not a terminal

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PBWrapper v0.1.4
-# PKGBUILDer v2.1.5.3
+# PBWrapper v0.2.0
+# PKGBUILDer v2.1.5.4
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -29,7 +29,7 @@ import sys
 import os
 import subprocess
 
-__wrapperversion__ = '0.1.4'
+__wrapperversion__ = '0.2.0'
 
 ### wrapper()       A wrapper for pacman/PB ###
 
@@ -213,7 +213,7 @@ def wrapper(source='AUTO'):
             log.debug('Got -s.')
             if args.pkgs:
                 log.info('Running pacman.')
-                subprocess.call([DS.paccommand] + pacargs + pkgnames)
+                subprocess.call(DS.paccommand, pacargs, pkgnames)
                 log.info('Running pkgbuilder (pkgbuilder.main.main()).')
                 main(pbargs + pkgnames)
             else:
@@ -223,7 +223,7 @@ def wrapper(source='AUTO'):
         elif args.l or args.list:
             log.debug('Got -l.')
             log.info('Running pacman.')
-            subprocess.call([DS.paccommand] + pacargs + pkgnames)
+            subprocess.call(DS.paccommand, pacargs, pkgnames)
             exit()
         elif args.u or args.sysupgrade:
             log.debug('Got -u.')
@@ -299,4 +299,4 @@ pyalpm      v{}""".format(__wrapperversion__, __version__,
         else:
             print('Please don’t use the reserved UTshibboleet argument.')
     else:
-        DS.sudo([DS.paccommand] + argst)
+        DS.sudo(DS.paccommand, argst)
