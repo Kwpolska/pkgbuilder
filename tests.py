@@ -220,6 +220,21 @@ doesn’t match the example')
     def test_wrapper(self):
         # …or there…
         pkgbuilder.wrapper.wrapper(['unittests', 'UTshibboleet'])
+    
+    def test_pb_help(self):
+        """Make sure "pb --help" works"""
+        import sys
+        from io import StringIO
+        capture = StringIO()
+        stdout = sys.stdout
+        try:
+            sys.stdout = capture
+            pkgbuilder.wrapper.wrapper(("--help"))
+        finally:
+            sys.stdout = stdout
+        
+        # More interested in if the above erred rather than the actual output
+        self.assertTrue(capture.getvalue())
 
 if __name__ == '__main__':
     unittest.main()
