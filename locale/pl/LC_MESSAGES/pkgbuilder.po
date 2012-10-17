@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.5.4\n"
+"Project-Id-Version: 2.1.5.5\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-10-16 16:07+0200\n"
+"POT-Creation-Date: 2012-10-17 18:23+0200\n"
 "PO-Revision-Date: 2012-09-08 12:44+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
@@ -151,6 +151,10 @@ msgstr "Pomocnik AUR (i biblioteka) w Pythonie 3."
 msgid "show version number and quit"
 msgstr "pokaż numer wersji i wyjdź"
 
+#: pkgbuilder/main.py:44
+msgid "PACKAGE"
+msgstr "PAKIET"
+
 #: pkgbuilder/main.py:45
 msgid "packages to build"
 msgstr "pakiety do zbudowania"
@@ -287,29 +291,29 @@ msgstr "Cele ({}):"
 msgid "Proceed with installation? [Y/n] "
 msgstr "Kontynuować instalację? [Y/n] "
 
-#: pkgbuilder/utils.py:86
+#: pkgbuilder/utils.py:85
 msgid " [installed: {}]"
 msgstr " [zainstalowano: {}]"
 
-#: pkgbuilder/utils.py:88
+#: pkgbuilder/utils.py:87
 msgid " [installed]"
 msgstr " [zainstalowano]"
 
-#: pkgbuilder/utils.py:91
+#: pkgbuilder/utils.py:90
 msgid "[out of date]"
 msgstr "[nieaktualny]"
 
-#: pkgbuilder/utils.py:103
+#: pkgbuilder/utils.py:102
 msgid "votes"
 msgstr "głosów"
 
-#: pkgbuilder/utils.py:121
+#: pkgbuilder/utils.py:120
 msgid "Package not found."
 msgstr "Nie znaleziono pakietu."
 
 #. TRANSLATORS: space it properly.  `yes/no' below are
 #. for `out of date'.
-#: pkgbuilder/utils.py:151
+#: pkgbuilder/utils.py:150
 msgid ""
 "Repository     : aur\n"
 "Category       : {cat}\n"
@@ -337,11 +341,11 @@ msgstr ""
 "Ost. aktualiz. : {upd}\n"
 "Opis           : {dsc}\n"
 
-#: pkgbuilder/utils.py:181
+#: pkgbuilder/utils.py:180
 msgid "yes"
 msgstr "tak"
 
-#: pkgbuilder/utils.py:183
+#: pkgbuilder/utils.py:182
 msgid "no"
 msgstr "nie"
 
