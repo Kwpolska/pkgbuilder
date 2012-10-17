@@ -4,8 +4,8 @@ Appendix D. Contribution rules
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: © 2011-2012, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2012-10-16
-:Version: 2.1.5.4
+:Date: 2012-10-17
+:Version: 2.1.5.5
 
 Do you want to contribute to this project?  Great!  I’d love to see some help,
 but you need to comply with some easy rules.
