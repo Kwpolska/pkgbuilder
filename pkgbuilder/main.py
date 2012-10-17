@@ -41,7 +41,7 @@ def main(source='AUTO', quit=True):
         parser.add_argument('-V', '--version', action='version',
                             version=verstring,
                             help=_('show version number and quit'))
-        parser.add_argument('pkgs', metavar='PACKAGE', action='store',
+        parser.add_argument('pkgnames', metavar=_('PACKAGE'), action='store',
                             nargs='*', help=_('packages to build'))
 
         argopt = parser.add_argument_group(_('options'))
@@ -111,18 +111,18 @@ def main(source='AUTO', quit=True):
 
         if args.info:
             DS.log.debug('Showing info...')
-            utils.print_package_info(utils.info(args.pkgs))
+            utils.print_package_info(utils.info(args.pkgnames))
 
             if quit:
                 exit(0)
 
         if args.search:
-            if not args.pkgs:
+            if not args.pkgnames:
                 if quit:
                     exit(1)
             else:
                 DS.log.debug('Searching...')
-                searchstring = '+'.join(args.pkgs)
+                searchstring = '+'.join(args.pkgnames)
                 if len(searchstring) < 2:
                     # this would be too many entries, but this is an actual API
                     # limitation and not an idea of yours truly.
@@ -179,7 +179,7 @@ def main(source='AUTO', quit=True):
             exit(0)
 
     # If we didn't quit, we should build the packages.
-    if args.pkgs:
+    if args.pkgnames:
         if DS.uid == 0:
             DS.log.warning('Running as root! (UID={})'.format(DS.uid))
             DS.fancy_warning(_('Running PKGBUILDer as root can break your '
@@ -188,7 +188,7 @@ def main(source='AUTO', quit=True):
         DS.log.info('Starting build...')
         toinstall = []
         sigs = []
-        for pkgname in args.pkgs:
+        for pkgname in args.pkgnames:
             DS.log.info('Building {}'.format(pkgname))
             out = build.auto_build(pkgname, DS.depcheck, DS.pkginst)
             if out:
@@ -199,6 +199,6 @@ def main(source='AUTO', quit=True):
             build.install(toinstall, sigs)
 
         if DS.validate:
-            build.validate(args.pkgs)
+            build.validate(args.pkgnames)
 
     DS.log.info('Quitting.')

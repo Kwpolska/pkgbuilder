@@ -211,19 +211,19 @@ def wrapper(source='AUTO'):
 
         if args.search or args.s:
             log.debug('Got -s.')
-            if args.pkgs:
+            if args.pkgnames:
                 log.info('Running pacman.')
-                subprocess.call(DS.paccommand, pacargs, pkgnames)
+                subprocess.call([DS.paccommand] + pacargs + pkgnames)
                 log.info('Running pkgbuilder (pkgbuilder.main.main()).')
                 main(pbargs + pkgnames)
             else:
-                log.info('Nothing to do — args.pkgs is empty.')
+                log.info('Nothing to do — args.pkgnames is empty.')
 
             exit()
         elif args.l or args.list:
             log.debug('Got -l.')
             log.info('Running pacman.')
-            subprocess.call(DS.paccommand, pacargs, pkgnames)
+            subprocess.call([DS.paccommand] + pacargs + pkgnames)
             exit()
         elif args.u or args.sysupgrade:
             log.debug('Got -u.')
