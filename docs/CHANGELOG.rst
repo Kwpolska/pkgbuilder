@@ -23,8 +23,9 @@ PKGBUILDer uses the following versioning scheme:
 
 Generation 2
 ============
-:2.1.5.4: Applying patches from vadmium/pkgbuilder, also adding a few other
-          fixes and changing the ``pb`` version number up to 0.2.0.
+:2.1.5.4—2.1.5.5: Applying patches from vadmium/pkgbuilder, also adding a few
+                  other fixes and changing the ``pb`` version number up to
+                  0.2.0.
 :2.1.5.3: A bugfix for package copying and installation (signatures were passed
           to -U) broke the installation mechanism so only one package got
           installed.  Also, fixing a bug with a STDIN that is not a terminal
