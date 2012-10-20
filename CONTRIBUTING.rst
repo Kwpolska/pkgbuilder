@@ -31,10 +31,10 @@ Pythonista?  Great!  There are a few things you need to do first.
 
 And these are the rules used while writing code or commiting:
 
- * PEP 8.  `pip install pep8` may help you.
+ * PEP 8.  ``pip install pep8`` may help you.
  * Commits should be logical.  Signoffs and long messages are welcome.  “fixes
    #xxx” is mandatory if an issue exists.
- * `./tests.py`.
+ * ``./tests.py``.
 
 Done?  Go hit the **Pull Request** button over on GitHub!  Your commit should
 be pulled up in the next few moments.
