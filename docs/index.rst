@@ -43,10 +43,9 @@ Table of Contents
    upgrade
    utils
    wrapper
-   localization
+   CONTRIBUTING
    LICENSE
    CHANGELOG
-   CONTRIBUTING
    TODO
 
 Indices and tables

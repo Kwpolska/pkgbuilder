@@ -145,8 +145,8 @@ class Utils:
                 def dst(self, dt):
                     return datetime.timedelta(0)
 
-            # TRANSLATORS: space it properly.  `yes/no' below are
-            # for `out of date'.
+            # TRANSLATORS: space it properly.  “yes/no” below are
+            # for “out of date”.
             t = _("""Repository     : aur
 Category       : {cat}
 Name           : {nme}
