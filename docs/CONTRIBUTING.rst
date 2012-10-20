@@ -1,5 +1,5 @@
 ==============================
-Appendix D. Contribution rules
+Appendix A. Contribution rules
 ==============================
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: © 2011-2012, Kwpolska.
@@ -43,6 +43,8 @@ with you through there is a better way.
 
 Fork the repo first.  Non-GitHub people, ``git clone``.
 
+.. _Rules:
+
 Rules
 =====
 
@@ -75,22 +77,27 @@ Code (Python)
 2. ``./tests.py``.
 3. Localize all the strings (``_('string')``)
 4. Strings must be quoted using ``'str'``.  Multi-line strings, ``"""str"""``.
-   Use the latter only if needed.  Otherwise, do::
+   Use the latter only if needed.  Otherwise, do:
 
->>> string = ('A very, very, very long string'
-...           'that’s broken up into multiple lines')
+.. code-block:: python
+   :linenos:
 
-For localized strings::
+   string = ('A very, very, very long string '
+             'that’s broken up into multiple lines.')
 
->>> string = _('A very, very, very long string'
-...            'that’s broken up into multiple lines')
+   string = _('A very, very, very log string '
+              'that’s broken up into multiple lines '
+              'and that is localized through gettext.'))
 
 5. ``str.format``.  Braces should be empty or contain a name that is later
    passed on to the function.  The format function should be inserted *after*
-   the parenthesis for string localization.  For example::
+   the parenthesis for string localization.  For example:
 
->>> string = _('{} is awesome').format('PKGBUILDer')
->>> string = _('{sth} is awesome').format(sth='PKGBUILDer')
+.. code-block:: python
+   :linenos:
+
+   string = _('{} is awesome').format('PKGBUILDer')
+   string = _('{sth} is awesome').format(sth='PKGBUILDer')
 
 6. Documentation is important.  Please take care of it.
 
@@ -124,11 +131,10 @@ Localization
    Last-Translator, Language-Team and Language are important, the others are
    auto-generated anyways.  The general :ref:`Rules` apply, please take care
    of it!
-5. Commit (``-s/--signoff`` is required here).
-6. Your translation will be added in the next release, or, if a release isn’t
+4. Commit (``-s/--signoff`` is required here).
+5. Your translation will be added in the next release, or, if a release isn’t
    planned in the near future, a new release will be made.  Your addition will
    be appreciated.  Note that I cannot translate new strings, and, as a result,
    I might ask you for additions in the future.
 
 .. _Poedit: http://www.poedit.net/
-
