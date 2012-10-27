@@ -24,8 +24,12 @@ packages.  It can be used in conjunction with pacman (with a special
 script).  It uses various techniques to automatize the process as
 much as possible.
 
-Since version 2.1.0, PKGBUILDer provides modules that can be used in
+Since version 2.1.0.0, PKGBUILDer provides modules that can be used in
 other scripts.
+
+Since version 2.1.5.6, PKGBUILDer also provides support for ABS packages.
+Passing an ABS package name to the ``-S`` option will result in a seamless
+detection and build process.
 
 Notice: Running PKGBUILDer and/or PBWrapper as root can deal catastrophic
 damage to your system.  Run it as a regular user, you will be prompted for

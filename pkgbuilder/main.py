@@ -38,12 +38,14 @@ def main(source='AUTO', quit=True):
             verstring = '\n'.join([verstring, locale])
         DS.log.info('Initialized, parsing arguments.')
         parser = argparse.ArgumentParser(description=_('An AUR helper'
-                                         ' (and library) in Python 3.'))
+                                         ' (and library) in Python 3.'),
+                                         epilog=_('Also accepting ABS '
+                                         'packages.'))
         parser.add_argument('-V', '--version', action='version',
                             version=verstring,
                             help=_('show version number and quit'))
         parser.add_argument('pkgnames', metavar=_('PACKAGE'), action='store',
-                            nargs='*', help=_('packages to build'))
+                            nargs='*', help=_('AUR/ABS packages to build'))
 
         argopt = parser.add_argument_group(_('options'))
         argopr = parser.add_argument_group(_('operations'))

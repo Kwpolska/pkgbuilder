@@ -16,4 +16,8 @@ Appendix E. TODO for PKGBUILDer
 
   Suggested name: aurqt.
 
+  Update: we’re quite far in the progress.  Bonus info: when aurqt will go
+  0.1.0, PB will go 3.0.0 (dropping the fouth digit.)  But #22 will need to
+  be resolved first.  I might also want to bump aurqt to 1.0.0 quicker.
+
 -- Kwpolska 2012-09-29T19:00:00Z

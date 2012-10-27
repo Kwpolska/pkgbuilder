@@ -250,6 +250,6 @@ class Mock(object):
         else:
             return Mock()
 
-MOCK_MODULES = ['pyalpm', 'pycman']
+MOCK_MODULES = ['pyalpm', 'pycman', 'requests']
 for mod_name in MOCK_MODULES:
     sys.modules[mod_name] = Mock()
