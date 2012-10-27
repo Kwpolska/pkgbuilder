@@ -8,7 +8,7 @@
 # Names convention: pkg = a package object, pkgname = a package name.
 
 """
-    pkgbuilder.PBDS
+    pkgbuilder.pbds
     ~~~~~~~~~~~~~~~
     PKGBUILDer Data Storage.
 
@@ -104,6 +104,13 @@ class PBDS():
         already running as root.
 
         .. note:: Accepts only one command.  `shell=False`, for safety.
+
+        ``*rargs`` is catching all the arguments.  However, in order to make
+        sure that nothing breaks, it checks if the element is a list or a
+        tuple.  If yes, it is appended to the argument list (Python’s ``+``
+        operator); if not, it is split on spaces (``.split(' ')``) and
+        appended to the argument list.  Finally, the list is passed to
+        ``subprocess.call``.
         """
         args = []
         for i in rargs:

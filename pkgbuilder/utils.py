@@ -8,7 +8,7 @@
 # Names convention: pkg = a package object, pkgname = a package name.
 
 """
-    pkgbuilder.Utils
+    pkgbuilder.utils
     ~~~~~~~~~~~~~~~~
     Common global utilities.  Provides useful data.
 
@@ -88,10 +88,14 @@ class Utils:
         if pkg['OutOfDate'] == '1':
             installed = (installed + ' ' + DS.colors['red'] + _(
                          '[out of date]') + DS.colors['all_off'])
-        if use_categories:
-            category = DS.categories[int(pkg['CategoryID'])]
+
+        if pkg['CategoryID'] != '0':
+            if use_categories:
+                category = DS.categories[int(pkg['CategoryID'])]
+            else:
+                category = 'aur'
         else:
-            category = 'aur'
+            category = pkg['Category']  # ABS build cheat.
 
         descl = textwrap.wrap(pkg['Description'], termwidth - len(prefixp2))
 
