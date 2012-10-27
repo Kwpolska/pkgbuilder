@@ -8,8 +8,8 @@
 # Names convention: pkg = a package object, pkgname = a package name.
 
 """
-    pkgbuilder.main()
-    ~~~~~~~~~~~~~~~~
+    pkgbuilder.main
+    ~~~~~~~~~~~~~~~
     Main routine of PKGBUILDer.
 
     :Copyright: © 2011-2012, Kwpolska.
@@ -22,7 +22,8 @@ from .utils import Utils
 from .upgrade import Upgrade
 import argparse
 import os
-import subprocess
+import sys
+import requests
 
 
 ### main()          The main routine        ###
@@ -47,7 +48,7 @@ def main(source='AUTO', quit=True):
         argopt = parser.add_argument_group(_('options'))
         argopr = parser.add_argument_group(_('operations'))
         argopt.add_argument('-c', '--clean', action='store_true',
-                            default=True, dest='cleanup', help=_('clean up '
+                            default=False, dest='cleanup', help=_('clean up '
                             'work files after build'))
         argopt.add_argument('-C', '--nocolors', action='store_false',
                             default=True, dest='color', help=_('don\'t use '
@@ -61,8 +62,8 @@ def main(source='AUTO', quit=True):
                             default=False, dest='vcsup', help=_('upgrade '
                             'all the VCS/date-versioned packages'))
         argopt.add_argument('-v', '--novalidation', action='store_false',
-                            default=True, dest='valid', help=_('don\'t check '
-                            'if packages were installed after build'))
+                            default=True, dest='validate', help=_('don\'t '
+                            'check if packages were installed after build'))
         argopt.add_argument('-w', '--buildonly', action='store_false',
                             default=True, dest='pkginst', help=_('don\'t '
                             'install packages after building'))
@@ -88,12 +89,10 @@ def main(source='AUTO', quit=True):
         else:
             args = parser.parse_args()
 
-        DS.validate = args.valid
-        DS.depcheck = args.depcheck
         DS.pacman = args.pac
-        DS.pkginst = args.pkginst
         DS.protocol = args.protocol
         DS.cleanup = args.cleanup
+        pkgnames = args.pkgnames
         utils = Utils()
         build = Build()
         upgrade = Upgrade()
@@ -111,18 +110,18 @@ def main(source='AUTO', quit=True):
 
         if args.info:
             DS.log.debug('Showing info...')
-            utils.print_package_info(utils.info(args.pkgnames))
+            utils.print_package_info(utils.info(pkgnames))
 
             if quit:
                 exit(0)
 
         if args.search:
-            if not args.pkgnames:
+            if not pkgnames:
                 if quit:
                     exit(1)
             else:
                 DS.log.debug('Searching...')
-                searchstring = '+'.join(args.pkgnames)
+                searchstring = '+'.join(pkgnames)
                 if len(searchstring) < 2:
                     # this would be too many entries, but this is an actual API
                     # limitation and not an idea of yours truly.
@@ -139,7 +138,7 @@ def main(source='AUTO', quit=True):
                                                    DS.colors['all_off'] +
                                                    DS.colors['bold'] + ' '),
                                                    prefixp='  -> ')
-                        print(DS.colors['all_off'], end='')
+                        sys.stdout.write(DS.colors['all_off'])
                         if quit:
                             exit(0)
                 else:
@@ -166,39 +165,64 @@ def main(source='AUTO', quit=True):
                 os.mkdir(path)
             os.chdir(path)
 
+        if args.upgrade > 0:
+            DS.log.info('Starting upgrade...')
+            dodowngrade = args.upgrade > 1
+            upnames = upgrade.auto_upgrade(dodowngrade, args.vcsup)
+            pkgnames = upnames + pkgnames
+
+        # If we didn't quit, we should build the packages.
+        if pkgnames:
+            if DS.uid == 0:
+                DS.log.warning('Running as root! (UID={})'.format(DS.uid))
+                DS.fancy_warning(_('Running PKGBUILDer as root can break your '
+                                   'system!'))
+
+            DS.log.info('Starting build...')
+            toinstall = []
+            sigs = []
+            tovalidate = set(pkgnames)
+
+            for pkgname in pkgnames:
+                DS.log.info('Building {}'.format(pkgname))
+                out = build.auto_build(pkgname, args.depcheck, args.pkginst)
+                if out:
+                    toinstall += out[1][0]
+                    sigs += out[1][1]
+                    if out[2]:
+                        tovalidate = tovalidate - set([pkgname])
+
+            if toinstall:
+                build.install(toinstall, sigs)
+
+            if args.validate and tovalidate:
+                build.validate(tovalidate)
+    except requests.exceptions.ConnectionError as inst:
+        DS.fancy_error(str(inst))
+        # TRANSLATORS: do not translate the word 'requests'.
+        DS.fancy_error(_('PKGBUILDer (or the requests library) had '
+                         'problems with fulfilling an HTTP request.'))
+        exit(1)
+    except requests.exceptions.HTTPError as inst:
+        DS.fancy_error(str(inst))
+        # TRANSLATORS: do not translate the word 'requests'.
+        DS.fancy_error(_('PKGBUILDer (or the requests library) had '
+                         'problems with fulfilling an HTTP request.'))
+        exit(1)
+    except requests.exceptions.Timeout as inst:
+        DS.fancy_error(str(inst))
+        # TRANSLATORS: do not translate the word 'requests'.
+        DS.fancy_error(_('PKGBUILDer (or the requests library) had '
+                         'problems with fulfilling an HTTP request.'))
+        exit(1)
+    except requests.exceptions.TooManyRedirects as inst:
+        DS.fancy_error(str(inst))
+        # TRANSLATORS: do not translate the word 'requests'.
+        DS.fancy_error(_('PKGBUILDer (or the requests library) had '
+                         'problems with fulfilling an HTTP request.'))
+        exit(1)
     except PBError as inst:
         DS.fancy_error(str(inst))
-        exit(0)
-
-    if args.upgrade > 0:
-        DS.log.info('Starting upgrade...')
-        dodowngrade = args.upgrade > 1
-        upgrade.auto_upgrade(dodowngrade, args.vcsup)
-
-        if quit:
-            exit(0)
-
-    # If we didn't quit, we should build the packages.
-    if args.pkgnames:
-        if DS.uid == 0:
-            DS.log.warning('Running as root! (UID={})'.format(DS.uid))
-            DS.fancy_warning(_('Running PKGBUILDer as root can break your '
-                               'system!'))
-
-        DS.log.info('Starting build...')
-        toinstall = []
-        sigs = []
-        for pkgname in args.pkgnames:
-            DS.log.info('Building {}'.format(pkgname))
-            out = build.auto_build(pkgname, DS.depcheck, DS.pkginst)
-            if out:
-                toinstall += out[0]
-                sigs += out[1]
-
-        if toinstall:
-            build.install(toinstall, sigs)
-
-        if DS.validate:
-            build.validate(args.pkgnames)
+        exit(1)
 
     DS.log.info('Quitting.')

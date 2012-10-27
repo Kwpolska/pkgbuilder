@@ -49,8 +49,6 @@ information (not including information humans should not touch and care about):
 +-----------+-----------------------------------------------+---------------+
 | hassudo   | If ``sudo`` is present (see :meth:`sudo`)     | (bool)        |
 +-----------+-----------------------------------------------+---------------+
-| uid       | User UID                                      | (int)         |
-+-----------+-----------------------------------------------+---------------+
 
 .. [colors] Code below.
 
@@ -86,42 +84,5 @@ information (not including information humans should not touch and care about):
 .. [conf] In order: ``~/.config/``, ``~/.config/kwpolska``,
     ``~/.config/kwpolska/pkgbuilder`` (may differ depending on system config)
 
-It also has a few methods:
-
-.. method:: sudo(\*args)
-
-.. versionadded:: 2.1.4.8
-
-Run as root.  ``sudo`` if present, ``su -c`` otherwise, nothing if
-already running as root.
-
-.. note:: Accepts only one command.  `shell=False`, for safety.
-
-``*args`` is catching all the arguments.  However, in order to make sure that
-nothing breaks, it checks if the element is a list or a tuple.  If yes, it is
-appended to the argument list (Python’s ``+`` operator); if not, it is split on
-spaces (``.split(' ')``) and appended to the argument list.  Finally, the list
-is passed to ``subprocess.call``.
-
-.. method:: debugmode(nochange)
-
-.. versionadded:: 2.1.4.0
-
-Print all the logged messages to stderr.
-
-.. method:: colorson()
-
-Turns colors on.
-
-.. method:: colorsoff()
-
-Turns colors off.
-
-.. method:: fancy_msg(msg)
-.. method:: fancy_msg2(msg)
-.. method:: fancy_warning(msg)
-.. method:: fancy_warning2(msg)
-.. method:: fancy_error(msg)
-.. method:: fancy_error2(msg)
-
-``makepkg``’s message functions with PKGBUILDer’s own additions.  Use for displaying messages.
+.. automodule:: pkgbuilder.pbds
+   :members:

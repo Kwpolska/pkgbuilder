@@ -8,7 +8,7 @@
 # Names convention: pkg = a package object, pkgname = a package name.
 
 """
-    pkgbuilder.AUR
+    pkgbuilder.aur
     ~~~~~~~~~~~~~~
     A class for calling the AUR API.
 
@@ -23,7 +23,23 @@ import json
 
 ### AUR             AUR RPC calls           ###
 class AUR:
-    """A class for calling the AUR API."""
+    """A class for calling the AUR API.
+
+    Valid request types for :meth:`request()` (and
+    :meth:`jsonrequest()`):
+
+    +---------+-----------------------------------+
+    + name    | purpose                           |
+    +=========+===================================+
+    | info    | get info about `arg`              |
+    +---------+-----------------------------------+
+    | search  | search for `arg` in the AUR       |
+    +---------+-----------------------------------+
+    | msearch | show packages maintained by `arg` |
+    +---------+-----------------------------------+
+
+    multiinfo is implemented in another function, :meth:`multiinfo()`.
+    """
 
     rpc = '{}://aur.archlinux.org/rpc.php?type={}&arg={}'
     mrpc = '{}://aur.archlinux.org/rpc.php?type=multiinfo{}'

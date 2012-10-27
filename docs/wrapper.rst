@@ -11,7 +11,8 @@ PBWrapper
 .. index:: wrapper
 .. index:: PBWrapper
 .. versionadded:: 2.1.4.0
-.. module:: wrapper
+.. automodule:: pkgbuilder.wrapper
+   :members:
 
 This is the wrapper for pacman and PKGBUILDer, ``bin/pb``.  It is a complete
 mess, but at least it works.  All the arguments it gets are passed to pacman,

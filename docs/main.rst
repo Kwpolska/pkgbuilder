@@ -9,8 +9,5 @@ main module
 
 .. index:: main
 .. versionadded:: 2.1.3.0
-.. module:: main
-
-main()
-======
-The main routine.  Please do not use it unless you have a good reason.
+.. automodule:: pkgbuilder.main
+    :members:

@@ -6,7 +6,7 @@ PKGBUILDer.  An AUR helper (and library) in Python 3.
     This documentation is compatible with version |release| of
     PKGBUILDer.
     The current version on your system can be checked by running
-    `pkgbuilder -v`.
+    ``pkgbuilder -v``.
 
     Most of the documentation is likely compatible with previous
     releases of the |version| series.
@@ -43,6 +43,7 @@ Table of Contents
    upgrade
    utils
    wrapper
+   sample-scripts
    CONTRIBUTING
    LICENSE
    CHANGELOG

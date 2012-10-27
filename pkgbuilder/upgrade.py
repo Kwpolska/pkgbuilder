@@ -8,7 +8,7 @@
 # Names convention: pkg = a package object, pkgname = a package name.
 
 """
-    pkgbuilder.Upgrade
+    pkgbuilder.upgrade
     ~~~~~~~~~~~~~~~~~~
     Tools for performing upgrades of AUR packages.
 
@@ -16,12 +16,14 @@
     :License: BSD (see /LICENSE).
 """
 
-from . import DS, _, PBError
+from . import DS, _
 from .aur import AUR
 from .build import Build
 import pyalpm
 import pycman
 import datetime
+import subprocess
+import textwrap
 
 
 ### Upgrade     upgrade AUR packages        ###
@@ -80,8 +82,8 @@ class Upgrade:
                         v = i['Version']
 
                     try:
-                        d = datetime.datetime.strptime(v.split('-')[0],
-                                                       '%Y%m%d')
+                        datetime.datetime.strptime(v.split('-')[0],
+                                                   '%Y%m%d')
                         datever = True
                     except:
                         datever = False
@@ -129,8 +131,8 @@ class Upgrade:
         if downlen > 0:
             for i in downgradable:
                 if DS.pacman:
-                    print(_('{}: local ({}) is newer than aur ({})').format(
-                          i[0], i[1], i[2]))
+                    print(_('{}: local ({}) is newer than aur '
+                            '({})').format(i[0], i[1], i[2]))
                 else:
                     DS.fancy_warning(_('{}: local ({}) is newer than aur '
                                      '({})').format(i[0], i[1], i[2]))
@@ -153,38 +155,36 @@ class Upgrade:
         if upglen > 0:
             if DS.pacman:
                 print()
-                print(_('Targets ({}): ').format(upglen), end='')
-                print('  '.join(upgstrings))
+                targetstring = _('Targets ({}): ').format(upglen)
+                size = subprocess.check_output(['stty', 'size'])
+                try:
+                    termwidth = int(size.split()[1])
+                except IndexError:
+                    termwidth = 9001  # Auto-wrap by terminal.  A reference to
+                                      # an old meme and a cheat, too. Sorry.
+
+                nowrap = targetstring + '  '.join(upgstrings)
+                wrapv = textwrap.wrap(nowrap, termwidth)
+                wrap0 = wrapv[0]
+                wraprest = textwrap.wrap(wrapv[1:],
+                                         termwidth - len(targetstring))
+                # TODO wraprest '  ' -> ' ' -> '  '
+                wraprest = [i.replace('  ', ' ').replace(' ', '  ') for i in wraprest]
+                print(wrap0)
+                print('\n'.join(wraprest))
                 print()
                 query = _('Proceed with installation? [Y/n] ')
             else:
                 DS.fancy_msg(_('Targets ({}): ').format(upglen))
                 DS.fancy_msg2('  '.join(upgstrings))
-                query = (DS.colors['green'] + '==>' + DS.colors['all_off'] +
-                         DS.colors['bold'] + ' ' + _('Proceed with '
-                         'installation? [Y/n] ') + DS.colors['all_off'])
+                query = (DS.colors['green'] + '==>' +
+                         DS.colors['all_off'] + DS.colors['bold'] + ' ' +
+                         _('Proceed with installation? [Y/n] ') +
+                         DS.colors['all_off'])
 
             yesno = input(query)
-            if yesno.lower().startswith('n'):
-                return 0
 
-            toinstall = []
-            sigs = []
-
-            if DS.uid == 0:
-                DS.log.warning('Running as root! (UID={})'.format(DS.uid))
-                DS.fancy_warning(_('Running PKGBUILDer as root can break '
-                                   'your system!'))
-            for pkgname in upgnames:
-                DS.log.info('Building {}'.format(pkgname))
-                out = self.build.auto_build(pkgname, DS.depcheck,
-                                            DS.pkginst)
-                if out:
-                    toinstall += out[0]
-                    sigs += out[1]
-
-            if toinstall:
-                self.build.install(toinstall, sigs)
-
-            if DS.validate:
-                self.build.validate(upgnames)
+            if yesno.lower().startswith('y'):
+                return upgnames
+            else:
+                return []

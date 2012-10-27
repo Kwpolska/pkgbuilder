@@ -8,7 +8,7 @@
 # Names convention: pkg = a package object, pkgname = a package name.
 
 """
-    pkgbuilder.Build
+    pkgbuilder.build
     ~~~~~~~~~~~~~~~~
     Functions for building packages.
 
@@ -18,6 +18,7 @@
 
 from . import DS, _, PBError
 from .utils import Utils
+import sys
 import os
 import pyalpm
 import pycman
@@ -102,23 +103,22 @@ class Build:
             elif build_result[0] == 72789:  # PBSUX.
                 raise PBError(_('PKGBUILDer had a problem.'))
                 exit(1)
-            elif build_result[0] == 72737:  # PBREQ.
-                # TRANSLATORS: do not translate the word 'requests'.
-                raise PBError(_('PKGBUILDer (or the requests library) had '
-                                'problems with fulfilling an HTTP request.'))
-                exit(1)
             elif build_result[0] == 72101:  # I/O error.
                 raise PBError(_('There was an input/output error.'))
                 exit(1)
             elif build_result[0] == 72337:  # PBDEP.
                 DS.fancy_warning(_('Building more AUR packages is required.'))
                 toinstall2 = []
+                sigs2 = []
                 for pkgname2 in build_result[1]:
-                    toinstall2 += self.auto_build(pkgname2, performdepcheck,
-                                                  pkginstall)
+                    (toinstall, sigs) = self.auto_build(pkgname2,
+                                                        performdepcheck,
+                                                        pkginstall)[0]
+                    toinstall2 += toinstall
+                    sigs2 += sigs
 
-                if toinstall2:
-                    self.install(toinstall2)
+                if toinstall2 and sigs2:
+                    self.install(toinstall2, sigs2)
 
                 if DS.validate:
                     self.validate(build_result[1])
@@ -130,11 +130,7 @@ class Build:
                 self.auto_build(pkgname, performdepcheck,
                                 pkginstall)
 
-            # Package installation magic.  To be parsed later.
-            if pkginstall and build_result[0] < 72000:
-                return build_result[1]
-            else:
-                return None
+            return build_result
         except PBError as inst:
             DS.fancy_error(str(inst))
 
@@ -173,11 +169,11 @@ class Build:
         # And it takes only 7 lines instead of about 40 in the pyparsing
         # implementation.
 
-        pb = subprocess.Popen('source ' + pkgbuild + '; for i in ${depends'
-                              '[*]}; do echo $i; done; for i in '
-                              '${makedepends[*]}; do echo $i; done',
-                              shell=True, stdout=subprocess.PIPE)
-        deps = pb.stdout.read()
+        deps = subprocess.check_output('source ' + pkgbuild + '; for i in '
+                                       '${depends[*]}; do echo $i; done; for '
+                                       'i in ${makedepends[*]}; do echo $i; '
+                                       'done',
+                                       shell=True)
         deps = deps.decode('utf-8')
         deps = deps.split('\n')
 
@@ -225,11 +221,33 @@ class Build:
         unless you re-implement auto_build.
         """
         try:
-            # exists
+            pkg = None
             try:
-                pkg = self.utils.info([pkgname])[0]
+                pkgname[9001]
+                pkg = self.utils.info([pkgname])
+                pkg = pkg[0]
+                useabs = False
             except IndexError:
+                try:
+                    DS.log.info('{} not found in the AUR, checking in '
+                                'ABS'.format(pkgname))
+                    pyc = pycman.config.init_with_config('/etc/pacman.conf')
+                    syncpkgs = []
+                    for j in [i.pkgcache for i in pyc.get_syncdbs()]:
+                        syncpkgs.append(j)
+                    syncpkgs = functools.reduce(lambda x, y: x + y, syncpkgs)
+                    abspkg = pyalpm.find_satisfier(syncpkgs, pkgname)
+                    pkg = {'CategoryID': '0', 'Category': abspkg.db.name,
+                            'Name': abspkg.name, 'Version': abspkg.version,
+                            'Description': abspkg.desc, 'OutOfDate': '0',
+                            'NumVotes': 'n/a', 'Arch': abspkg.arch}
+                    useabs = True
+                except AttributeError:
+                    pass
+
+            if not pkg:
                 raise PBError(_('Package {} not found.').format(pkgname))
+
             pkgname = pkg['Name']
             DS.fancy_msg(_('Building {}...').format(pkgname))
             self.utils.print_package_search(pkg,
@@ -237,18 +255,33 @@ class Build:
                                             '  ->' + DS.colors['all_off'] +
                                             DS.colors['bold'] + ' ',
                                             prefixp='  -> ')
-            print(DS.colors['all_off'], end='')
-            filename = pkgname + '.tar.gz'
-            # Okay, this package exists, great then.  Thanks, user.
+            sys.stdout.write(DS.colors['all_off'])
+            if useabs:
+                DS.fancy_msg(_('Synchronizing the ABS tree...'))
+                rsync = ['rsync', '-mrtv', '--no-motd', '--delete-after',
+                         '--no-p', '--no-o', '--no-g', # '--delete-excluded',
+                         '--include=/{}'.format(pkg['Category']),
+                         '--include=/{}/{}'.format(pkg['Category'],
+                             pkg['Name']),
+                         '--exclude=/{}/*'.format(pkg['Category']),
+                         '--exclude=/*',
+                         'rsync.archlinux.org::abs/{}/'.format(pkg['Arch']),
+                         '.']
+                rstatus = subprocess.call(rsync)
+                if rstatus > 0:
+                    raise PBError(_('Failed to synchronize the ABS tree.'))
 
-            DS.fancy_msg(_('Downloading the tarball...'))
-            downloadbytes = self.download(pkg['URLPath'], filename)
-            kbytes = int(downloadbytes) / 1000
-            DS.fancy_msg2(_('{} kB downloaded').format(kbytes))
+                os.chdir('./{}/'.format(pkg['Category']))
+            else:
+                filename = pkgname + '.tar.gz'
+                DS.fancy_msg(_('Downloading the tarball...'))
+                downloadbytes = self.download(pkg['URLPath'], filename)
+                kbytes = int(downloadbytes) / 1000
+                DS.fancy_msg2(_('{} kB downloaded').format(kbytes))
 
-            DS.fancy_msg(_('Extracting...'))
-            DS.fancy_msg2(_('{} files extracted').format(self.extract(
-                filename)))
+                DS.fancy_msg(_('Extracting...'))
+                DS.fancy_msg2(_('{} files extracted').format(self.extract(
+                    filename)))
             os.chdir('./{}/'.format(pkgname))
 
             if performdepcheck:
@@ -280,7 +313,7 @@ class Build:
             if DS.uid == 0:
                 mpparams += ' --asroot'
 
-            mpstatus = subprocess.call('/usr/bin/makepkg -sf' + mpparams,
+            mpstatus = subprocess.call('makepkg -sf' + mpparams,
                                        shell=True)
             if pkginstall:
                 # .pkg.tar.xz FTW, but some people change that.
@@ -314,22 +347,10 @@ class Build:
             else:
                 toinstall = [None, None]
 
-            return [mpstatus, toinstall]
+            return [mpstatus, toinstall, useabs]
         except PBError as inst:
             DS.fancy_error(str(inst))
             return [72789, None]
-        except requests.exceptions.ConnectionError as inst:
-            DS.fancy_error(str(inst))
-            return [72737, None]
-        except requests.exceptions.HTTPError as inst:
-            DS.fancy_error(str(inst))
-            return [72737, None]
-        except requests.exceptions.Timeout as inst:
-            DS.fancy_error(str(inst))
-            return [72737, None]
-        except requests.exceptions.TooManyRedirects as inst:
-            DS.fancy_error(str(inst))
-            return [72737, None]
         except IOError as inst:
             DS.fancy_error(str(inst))
             return [72101, None]
