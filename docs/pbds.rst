@@ -5,8 +5,8 @@ pbds module (PBDS class)
 :Author: Kwpolska
 :Copyright: © 2011-2012, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2012-10-17
-:Version: 2.1.5.5
+:Date: 2012-10-28
+:Version: 2.1.5.6
 
 .. module: pbds
 
@@ -33,7 +33,7 @@ information (not including information humans should not touch and care about):
 +-----------+-----------------------------------------------+---------------+
 | pkginst   | if makepkg should install packages            | True          |
 +-----------+-----------------------------------------------+---------------+
-| protocol  | protocol used to connect to the AUR           | http          |
+| protocol  | protocol used to connect to the AUR           | https         |
 +-----------+-----------------------------------------------+---------------+
 | categories| AUR categories list                           | [categories]_ |
 +-----------+-----------------------------------------------+---------------+
