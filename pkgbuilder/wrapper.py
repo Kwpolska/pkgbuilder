@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
 # PBWrapper v0.2.0
-# PKGBUILDer v2.1.5.5
+# PKGBUILDer v2.1.5.6
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -29,7 +29,7 @@ import sys
 import os
 import subprocess
 
-__wrapperversion__ = '0.2.0'
+__wrapperversion__ = '0.2.1'
 
 ### wrapper()       A wrapper for pacman/PB ###
 
@@ -83,8 +83,6 @@ def wrapper(source='AUTO'):
         pbshort = ['D', 'C']
         pblong = ['vcsupgrade', 'nocolors', 'nodepcheck', 'novalidation',
                   'buildonly']
-        pbshorta = ['P']
-        pblonga = ['protocol']
 
         commonshort = ['S', 'd', 'i', 's', 'v', 'w']
         commonlong = ['debug', 'info', 'search', 'sync']
@@ -95,7 +93,7 @@ def wrapper(source='AUTO'):
         ignoredlong = ['unlock']
 
         allpacman = pacmanshort + pacmanlong + pacmanshorta + pacmanlonga
-        allpb = pbshort + pblong + pbshorta + pblonga
+        allpb = pbshort + pblong #+ pbshorta + pblonga
         allcommon = commonshort + commonlong + commonshortc + commonlongc
         # allcmd = allpacman + allpb + allcommon (unused)
 

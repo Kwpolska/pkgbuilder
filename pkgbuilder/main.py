@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.5.5
+# PKGBUILDer v2.1.5.6
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -69,10 +69,6 @@ def main(source='AUTO', quit=True):
         argopt.add_argument('-w', '--buildonly', action='store_false',
                             default=True, dest='pkginst', help=_('don\'t '
                             'install packages after building'))
-        argopt.add_argument('-P', '--protocol', action='store',
-                            default='http', dest='protocol',
-                            metavar=_('PROTOCOL'), help=_('choose '
-                            'protocol (default: http)'))
         argopt.add_argument('-S', '--sync', action='store_true', default=False,
                             dest='pac', help=_('pacman-like mode'))
         argopt.add_argument('-y', '--refresh', action='store_true',
@@ -92,7 +88,6 @@ def main(source='AUTO', quit=True):
             args = parser.parse_args()
 
         DS.pacman = args.pac
-        DS.protocol = args.protocol
         DS.cleanup = args.cleanup
         pkgnames = args.pkgnames
         utils = Utils()
