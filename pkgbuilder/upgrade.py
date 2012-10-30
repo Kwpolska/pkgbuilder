@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.5.6
+# PKGBUILDer v2.1.5.7
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -154,7 +154,6 @@ class Upgrade:
 
         if upglen > 0:
             if DS.pacman:
-                print()
                 targetstring = _('Targets ({}): ').format(upglen)
                 size = subprocess.check_output(['stty', 'size'])
                 try:
@@ -166,12 +165,12 @@ class Upgrade:
                 nowrap = targetstring + '  '.join(upgstrings)
                 wrapv = textwrap.wrap(nowrap, termwidth)
                 wrap0 = wrapv[0]
-                wraprest = textwrap.wrap(wrapv[1:],
+                wraprest = textwrap.wrap('\n'.join(wrapv[1:]),
                                          termwidth - len(targetstring))
-                # TODO wraprest '  ' -> ' ' -> '  '
                 wraprest = [i.replace('  ', ' ').replace(' ', '  ') for i in wraprest]
                 print(wrap0)
-                print('\n'.join(wraprest))
+                for i in wraprest:
+                    print(len(targetstring) * ' ' + i)
                 print()
                 query = _('Proceed with installation? [Y/n] ')
             else:
