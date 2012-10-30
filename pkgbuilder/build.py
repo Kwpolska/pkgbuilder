@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.5.6
+# PKGBUILDer v2.1.5.7
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -223,7 +223,6 @@ class Build:
         try:
             pkg = None
             try:
-                pkgname[9001]
                 pkg = self.utils.info([pkgname])
                 pkg = pkg[0]
                 useabs = False

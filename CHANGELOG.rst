@@ -5,8 +5,8 @@ Appendix C. Changelog
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: © 2011-2012, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2012-10-28
-:Version: 2.1.5.6
+:Date: 2012-10-30
+:Version: 2.1.5.7
 
 .. index:: CHANGELOG
 
@@ -23,6 +23,9 @@ PKGBUILDer uses the following versioning scheme:
 
 Generation 2
 ============
+:2.1.5.7: Fixed some bugs that managed to slip through while working on
+          2.1.5.6.
+;2.1.5.6: Added ABS support.
 :2.1.5.4—2.1.5.5: Applying patches from vadmium/pkgbuilder, also adding a few
                   other fixes and changing the ``pb`` version number up to
                   0.2.0.
