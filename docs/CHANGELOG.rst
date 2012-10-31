@@ -6,7 +6,7 @@ Appendix C. Changelog
 :Copyright: © 2011-2012, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
 :Date: 2012-10-31
-:Version: 2.1.5.8
+:Version: 2.1.5.9
 
 .. index:: CHANGELOG
 
@@ -23,6 +23,15 @@ PKGBUILDer uses the following versioning scheme:
 
 Generation 2
 ============
+:2.1.5.9: And another issue that I have not noticed, in a tiny change of Update
+          behavior.  Sorry for all those updates, but I do not do testing on
+          everything, just on stuff I think could break a lot (have you seen a
+          bugfix for the ABS build magic?  I haven’t.  Well, the validation fix
+          was partially related to the ABS magic, but it was detected during a
+          run of ``pb -S`` with an inexistent package that I thought might
+          exist.  I actually revised all the changed that happened since
+          2.1.5.5 (a release without those bugs) and I think I’m done with
+          everything now.
 :2.1.5.8: A bug in the wrapper fixed.  Sorry, but sometimes I forget to test
           certain things, and I forgot that the protocol choice in PBWrapper
           is implemented through a workaround.  Also, fixed the installation
