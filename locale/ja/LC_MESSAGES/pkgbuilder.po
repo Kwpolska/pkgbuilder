@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.5.7\n"
+"Project-Id-Version: 2.1.5.8\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-10-30 20:53+0100\n"
+"POT-Creation-Date: 2012-10-31 17:09+0100\n"
 "PO-Revision-Date: 2012-09-21 20:21+0200\n"
 "Last-Translator: Colin Woodbury <colingw@gmail.com>\n"
 "Language-Team: Colin Woodbury <colingw@gmail.com>\n"
@@ -24,112 +24,117 @@ msgstr "AUR: HTTPエラー発生 {}"
 msgid "Validating installation status..."
 msgstr "インストール無事終了確認中・・・"
 
-#: pkgbuilder/build.py:58
-msgid "{}: NOT installed"
-msgstr "{}：インストールされていない"
+#: pkgbuilder/build.py:56
+#, fuzzy
+msgid "{}: not an AUR package"
+msgstr "インストール済みのAURパッケージをアップグレード"
 
-#: pkgbuilder/build.py:61
-msgid "{}: outdated {}"
-msgstr "{}：「{}」より要更新"
-
-#: pkgbuilder/build.py:64
+#: pkgbuilder/build.py:59 pkgbuilder/build.py:69
 msgid "{}: installed {}"
 msgstr "{}: 「{}」をインストール済み"
 
-#: pkgbuilder/build.py:69
+#: pkgbuilder/build.py:63
+msgid "{}: NOT installed"
+msgstr "{}：インストールされていない"
+
+#: pkgbuilder/build.py:66
+msgid "{}: outdated {}"
+msgstr "{}：「{}」より要更新"
+
+#: pkgbuilder/build.py:74
 msgid "Installing built packages..."
 msgstr "作成したパッケージをインストール中・・・"
 
-#: pkgbuilder/build.py:97
+#: pkgbuilder/build.py:102
 msgid "The build function reported a proper build."
 msgstr "パッケージ作成成功。"
 
 #. PBxxx.
-#: pkgbuilder/build.py:100
+#: pkgbuilder/build.py:105
 msgid "makepkg (or someone else) failed and returned {}."
 msgstr "makepkgなどが「{}」で失敗したようだ。"
 
 #. PBSUX.
-#: pkgbuilder/build.py:104
+#: pkgbuilder/build.py:109
 msgid "PKGBUILDer had a problem."
 msgstr "PKGBUILDerに問題発生。"
 
 #. I/O error.
-#: pkgbuilder/build.py:107
+#: pkgbuilder/build.py:112
 msgid "There was an input/output error."
 msgstr "入力・出力エラー発生。"
 
 #. PBDEP.
-#: pkgbuilder/build.py:110
+#: pkgbuilder/build.py:115
 msgid "Building more AUR packages is required."
 msgstr "AURパッケージを更に作成する必要がある。"
 
-#: pkgbuilder/build.py:143
+#: pkgbuilder/build.py:148
 msgid "download: HTTP Error {}"
 msgstr "ダウンロード状態：HTTPエラー {}"
 
-#: pkgbuilder/build.py:146
+#: pkgbuilder/build.py:151
 msgid "download: 0 bytes downloaded"
 msgstr "ダウンロード状態：1バイトもダウンロードされなかった"
 
-#: pkgbuilder/build.py:162
+#: pkgbuilder/build.py:167
 msgid "extract: no files extracted"
 msgstr "抽出状態：ファイルは1つも抽出されなかった"
 
-#: pkgbuilder/build.py:213
+#: pkgbuilder/build.py:218
 msgid "depcheck: cannot find {} anywhere"
 msgstr "従属パッケージ状態：「{}」をどこでも見つからなかった"
 
-#: pkgbuilder/build.py:248
+#: pkgbuilder/build.py:253
 msgid "Package {} not found."
 msgstr "パッケージ「{}」は見つからなかった。"
 
-#: pkgbuilder/build.py:251
+#: pkgbuilder/build.py:256
 msgid "Building {}..."
 msgstr "「{}」を作成中・・・"
 
-#: pkgbuilder/build.py:259
+#: pkgbuilder/build.py:264
 #, fuzzy
 msgid "Synchronizing the ABS tree..."
 msgstr "パッケージデーターベースを同期中・・・"
 
-#: pkgbuilder/build.py:271
+#: pkgbuilder/build.py:276
 msgid "Failed to synchronize the ABS tree."
 msgstr ""
 
-#: pkgbuilder/build.py:276
+#: pkgbuilder/build.py:281
 msgid "Downloading the tarball..."
 msgstr "ターボールをダウンロード中・・・"
 
-#: pkgbuilder/build.py:279
+#: pkgbuilder/build.py:284
 msgid "{} kB downloaded"
 msgstr "{} kBをダウンロード済み"
 
-#: pkgbuilder/build.py:281
+#: pkgbuilder/build.py:286
 msgid "Extracting..."
 msgstr "抽出中・・・"
 
-#: pkgbuilder/build.py:282
+#: pkgbuilder/build.py:287
 msgid "{} files extracted"
 msgstr "ファイルを{}個抽出した"
 
-#: pkgbuilder/build.py:287
+#: pkgbuilder/build.py:292
 msgid "Checking dependencies..."
 msgstr "従属パッケージを確認中・・・"
 
-#: pkgbuilder/build.py:290
+#: pkgbuilder/build.py:295
 msgid "found in system"
 msgstr "インストール済み"
 
-#: pkgbuilder/build.py:290
+#: pkgbuilder/build.py:295
 msgid "found in repos"
 msgstr "リポジトリに存在"
 
-#: pkgbuilder/build.py:291
+#: pkgbuilder/build.py:296
 msgid "found in the AUR"
 msgstr "AURに存在"
 
-#: pkgbuilder/build.py:294
+#: pkgbuilder/build.py:299
 msgid "none found"
 msgstr "従属パッケージなし"
 
@@ -356,7 +361,7 @@ msgid "%(prog)s <operation> [...]"
 msgstr "%(prog)s <選択肢> [...]"
 
 #. TRANSLATORS: see pacman’s localizations
-#: pkgbuilder/wrapper.py:274
+#: pkgbuilder/wrapper.py:268
 msgid ""
 "usage:  {} <operation> [...]\n"
 "\n"

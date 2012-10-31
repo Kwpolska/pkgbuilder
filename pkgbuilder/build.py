@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.5.7
+# PKGBUILDer v2.1.5.8
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -45,24 +45,29 @@ class Build:
         pyc = pycman.config.init_with_config('/etc/pacman.conf')
         localdb = pyc.get_localdb()
 
-        aurpkgs = self.utils.info(pkgnames)
-
-        i = 0
+        aurpkgs = {i['Name']: i['Version'] for i in self.utils.info(pkgnames)}
 
         for pkgname in pkgnames:
             pkg = localdb.get_pkg(pkgname)
-            aurversion = aurpkgs[i]['Version']
-            i += 1
-
-            if pkg is None:
-                DS.fancy_error2(_('{}: NOT installed').format(pkgname))
-            else:
-                if pyalpm.vercmp(aurversion, pkg.version) > 0:
-                    DS.fancy_error2(_('{}: outdated {}').format(pkgname,
-                                    pkg.version))
+            try:
+                aurversion = aurpkgs[pkgname]
+            except KeyError:
+                if not pkg:
+                    DS.fancy_error2(_('{}: not an AUR package').format(
+                                    pkgname))
                 else:
                     DS.fancy_msg2(_('{}: installed {}').format(pkgname,
                                   pkg.version))
+            else:
+                if not pkg:
+                    DS.fancy_error2(_('{}: NOT installed').format(pkgname))
+                else:
+                    if pyalpm.vercmp(aurversion, pkg.version) > 0:
+                        DS.fancy_error2(_('{}: outdated {}').format(pkgname,
+                                        pkg.version))
+                    else:
+                        DS.fancy_msg2(_('{}: installed {}').format(pkgname,
+                                      pkg.version))
 
     def install(self, pkgpaths, sigpaths=[]):
         """Install packages through ``pacman -U``."""
