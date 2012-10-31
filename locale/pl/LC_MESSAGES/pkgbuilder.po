@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.5.7\n"
+"Project-Id-Version: 2.1.5.8\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-10-30 20:53+0100\n"
+"POT-Creation-Date: 2012-10-31 17:09+0100\n"
 "PO-Revision-Date: 2012-09-08 12:44+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
@@ -24,113 +24,117 @@ msgstr "AUR: Błąd HTTP {}"
 msgid "Validating installation status..."
 msgstr "Walidowanie stanu instalacji..."
 
-#: pkgbuilder/build.py:58
-msgid "{}: NOT installed"
-msgstr "{}: NIE zainstalowano"
+#: pkgbuilder/build.py:56
+msgid "{}: not an AUR package"
+msgstr "{}: pakiet spoza AUR"
 
-#: pkgbuilder/build.py:61
-msgid "{}: outdated {}"
-msgstr "{} nieaktualny {}"
-
-#: pkgbuilder/build.py:64
+#: pkgbuilder/build.py:59 pkgbuilder/build.py:69
 msgid "{}: installed {}"
 msgstr "{}: zainstalowany {}"
 
-#: pkgbuilder/build.py:69
+#: pkgbuilder/build.py:63
+msgid "{}: NOT installed"
+msgstr "{}: NIE zainstalowano"
+
+#: pkgbuilder/build.py:66
+msgid "{}: outdated {}"
+msgstr "{} nieaktualny {}"
+
+#: pkgbuilder/build.py:74
 msgid "Installing built packages..."
 msgstr "Instalowanie zbudowanych pakietów..."
 
-#: pkgbuilder/build.py:97
+#: pkgbuilder/build.py:102
 msgid "The build function reported a proper build."
 msgstr "Funkcja budowania paczek powiadomiła o prawidłowym zbudowaniu."
 
 #. PBxxx.
-#: pkgbuilder/build.py:100
+#: pkgbuilder/build.py:105
 msgid "makepkg (or someone else) failed and returned {}."
 msgstr ""
 "tworzenie pakietu przez makepkg (lub coś innego) nie powiodło się i zwróciło "
 "{}."
 
 #. PBSUX.
-#: pkgbuilder/build.py:104
+#: pkgbuilder/build.py:109
 msgid "PKGBUILDer had a problem."
 msgstr "PKGBUILDer miał problem."
 
 #. I/O error.
-#: pkgbuilder/build.py:107
+#: pkgbuilder/build.py:112
 msgid "There was an input/output error."
 msgstr "Wystąpił błąd wejścia/wyjścia."
 
 #. PBDEP.
-#: pkgbuilder/build.py:110
+#: pkgbuilder/build.py:115
 msgid "Building more AUR packages is required."
 msgstr "Należy zainstalować więcej pakietów z AUR."
 
-#: pkgbuilder/build.py:143
+#: pkgbuilder/build.py:148
 msgid "download: HTTP Error {}"
 msgstr "download: Błąd HTTP {}"
 
-#: pkgbuilder/build.py:146
+#: pkgbuilder/build.py:151
 msgid "download: 0 bytes downloaded"
 msgstr "download: pobrano 0 bajtów"
 
-#: pkgbuilder/build.py:162
+#: pkgbuilder/build.py:167
 msgid "extract: no files extracted"
 msgstr "extract: wypakowano 0 plików"
 
-#: pkgbuilder/build.py:213
+#: pkgbuilder/build.py:218
 msgid "depcheck: cannot find {} anywhere"
 msgstr "depcheck: nie można nigdzie znaleźć pakietu {}"
 
-#: pkgbuilder/build.py:248
+#: pkgbuilder/build.py:253
 msgid "Package {} not found."
 msgstr "Nie znaleziono pakietu {}."
 
-#: pkgbuilder/build.py:251
+#: pkgbuilder/build.py:256
 msgid "Building {}..."
 msgstr "Budowanie {}..."
 
-#: pkgbuilder/build.py:259
+#: pkgbuilder/build.py:264
 msgid "Synchronizing the ABS tree..."
 msgstr "Synchronizowanie drzewa ABS..."
 
-#: pkgbuilder/build.py:271
+#: pkgbuilder/build.py:276
 msgid "Failed to synchronize the ABS tree."
 msgstr "Nie udało się zsynchronizować drzewa ABS."
 
-#: pkgbuilder/build.py:276
+#: pkgbuilder/build.py:281
 msgid "Downloading the tarball..."
 msgstr "Pobieranie tarballa..."
 
-#: pkgbuilder/build.py:279
+#: pkgbuilder/build.py:284
 msgid "{} kB downloaded"
 msgstr "pobrano {} kB"
 
-#: pkgbuilder/build.py:281
+#: pkgbuilder/build.py:286
 msgid "Extracting..."
 msgstr "Wypakowywanie..."
 
-#: pkgbuilder/build.py:282
+#: pkgbuilder/build.py:287
 msgid "{} files extracted"
 msgstr "wypakowano {} plików"
 
-#: pkgbuilder/build.py:287
+#: pkgbuilder/build.py:292
 msgid "Checking dependencies..."
 msgstr "Sprawdzanie zależności..."
 
-#: pkgbuilder/build.py:290
+#: pkgbuilder/build.py:295
 msgid "found in system"
 msgstr "znaleziono w systemie"
 
-#: pkgbuilder/build.py:290
+#: pkgbuilder/build.py:295
 msgid "found in repos"
 msgstr "znaleziono w repozytoriach"
 
-#: pkgbuilder/build.py:291
+#: pkgbuilder/build.py:296
 msgid "found in the AUR"
 msgstr "znaleziono w AUR"
 
-#: pkgbuilder/build.py:294
+#: pkgbuilder/build.py:299
 msgid "none found"
 msgstr "brak"
 
@@ -358,7 +362,7 @@ msgid "%(prog)s <operation> [...]"
 msgstr "%(prog)s <operacja> [...]"
 
 #. TRANSLATORS: see pacman’s localizations
-#: pkgbuilder/wrapper.py:274
+#: pkgbuilder/wrapper.py:268
 msgid ""
 "usage:  {} <operation> [...]\n"
 "\n"

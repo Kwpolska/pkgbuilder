@@ -5,8 +5,8 @@ Appendix C. Changelog
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: © 2011-2012, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2012-10-30
-:Version: 2.1.5.7
+:Date: 2012-10-31
+:Version: 2.1.5.8
 
 .. index:: CHANGELOG
 
@@ -23,6 +23,10 @@ PKGBUILDer uses the following versioning scheme:
 
 Generation 2
 ============
+:2.1.5.8: A bug in the wrapper fixed.  Sorry, but sometimes I forget to test
+          certain things, and I forgot that the protocol choice in PBWrapper
+          is implemented through a workaround.  Also, fixed the installation
+          validation behavior.
 :2.1.5.7: Fixed some bugs that managed to slip through while working on
           2.1.5.6.
 ;2.1.5.6: Added ABS support.

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PBWrapper v0.2.0
-# PKGBUILDer v2.1.5.7
+# PBWrapper v0.2.2
+# PKGBUILDer v2.1.5.8
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -29,7 +29,7 @@ import sys
 import os
 import subprocess
 
-__wrapperversion__ = '0.2.1'
+__wrapperversion__ = '0.2.2'
 
 ### wrapper()       A wrapper for pacman/PB ###
 
@@ -134,9 +134,6 @@ def wrapper(source='AUTO'):
             parser.add_argument('--' + i, action='store', nargs=1,
                                 default='NIL', dest=i)
 
-        parser.add_argument('-P', '--protocol', action='store',
-                            default='http', dest='protocol')
-
         parser.add_argument('pkgnames', action='store', nargs='*')
 
         # Starting actual work.
@@ -201,9 +198,6 @@ def wrapper(source='AUTO'):
                 elif i[0] in pacmanlonga:
                     pacargs.append('--' + i[0])
                     pacargs.append(i[1][0])
-
-        pbargs.append('--protocol')
-        pbargs.append(args.protocol)
 
         log.debug('Preparing to run pacman and/or PKGBUILDer...')
 
