@@ -147,7 +147,7 @@ class Upgrade:
             else:
                 DS.fancy_msg2(_('there is nothing to do'))
 
-            return 0
+            return []
 
         upgnames = [i[0] for i in upgradable]
         upgstrings = [i[0] + '-' + i[2] for i in upgradable]
