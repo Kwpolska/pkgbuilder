@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.5.9
+# PKGBUILDer v2.1.5.10
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -41,8 +41,6 @@ class Utils:
         aur_pkgs = self.aur.multiinfo(pkgnames, DS.protocol)
         if aur_pkgs == []:
             return []
-        elif aur_pkgs['results'] == 'No results found':
-            return []
         elif aur_pkgs['type'] == 'error':
             # There are other cases where the "results" element is a string;
             # type = error seems to cover at least one case
@@ -54,8 +52,6 @@ class Utils:
         """Searches for AUR packages."""
         aur_pkgs = self.aur.request('search', pkgname, DS.protocol)
         if aur_pkgs == []:
-            return []
-        elif aur_pkgs['results'] == 'No results found':
             return []
         else:
             return aur_pkgs['results']
@@ -85,13 +81,13 @@ class Utils:
                 installed = _(' [installed: {}]').format(lpkg.version)
             else:
                 installed = _(' [installed]')
-        if pkg['OutOfDate'] == '1':
+        if pkg['OutOfDate'] > 0:
             installed = (installed + ' ' + DS.colors['red'] + _(
                          '[out of date]') + DS.colors['all_off'])
 
-        if pkg['CategoryID'] != '0':
+        if pkg['CategoryID'] != 0:
             if use_categories:
-                category = DS.categories[int(pkg['CategoryID'])]
+                category = DS.categories[pkg['CategoryID']]
             else:
                 category = 'aur'
         else:
@@ -180,12 +176,12 @@ Description    : {dsc}
                     fsb = datetime.datetime.fromtimestamp(
                         float(pkg['FirstSubmitted'])).strftime(fmt)
 
-                if pkg['OutOfDate'] == '1':
+                if pkg['OutOfDate'] > 0:
                     ood = DS.colors['red'] + _('yes') + DS.colors['all_off']
                 else:
                     ood = _('no')
 
-                to.append(t.format(cat=DS.categories[int(pkg['CategoryID'])],
+                to.append(t.format(cat=DS.categories[pkg['CategoryID']],
                                    nme=pkg['Name'],
                                    url=pkg['URL'],
                                    ver=pkg['Version'],
