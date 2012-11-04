@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.5.10
+# PKGBUILDer v2.1.5.11
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.

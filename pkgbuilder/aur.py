@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.5.10
+# PKGBUILDer v2.1.5.11
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -44,7 +44,7 @@ class AUR:
     rpc = '{}://aur.archlinux.org/rpc.php?type={}&arg={}'
     mrpc = '{}://aur.archlinux.org/rpc.php?type=multiinfo{}'
 
-    def jsonreq(self, rtype, arg, prot='http'):
+    def jsonreq(self, rtype, arg, prot='https'):
         """Makes a request and returns plain JSON data."""
         if arg == []:
             return '[]'  # No need to bother, string for JSON.
@@ -57,7 +57,7 @@ class AUR:
 
         return req.text
 
-    def jsonmultiinfo(self, args, prot='http'):
+    def jsonmultiinfo(self, args, prot='https'):
         """Makes a multiinfo request and returns plain JSON data."""
         if args == []:
             return '[]'  # No need to bother, string for JSON.
@@ -71,10 +71,10 @@ class AUR:
 
         return req.text
 
-    def request(self, rtype, arg, prot='http'):
+    def request(self, rtype, arg, prot='https'):
         """Makes a request."""
         return json.loads(self.jsonreq(rtype, arg, prot))
 
-    def multiinfo(self, args, prot='http'):
+    def multiinfo(self, args, prot='https'):
         """Makes a multiinfo request."""
         return json.loads(self.jsonmultiinfo(args, prot))
