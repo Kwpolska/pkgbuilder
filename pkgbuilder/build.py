@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.5.9
+# PKGBUILDer v2.1.5.10
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -116,13 +116,13 @@ class Build:
                 toinstall2 = []
                 sigs2 = []
                 for pkgname2 in build_result[1]:
-                    (toinstall, sigs) = self.auto_build(pkgname2,
-                                                        performdepcheck,
-                                                        pkginstall)[0]
+                    toinstall, sigs = self.auto_build(pkgname2,
+                                                      performdepcheck,
+                                                      pkginstall)[1]
                     toinstall2 += toinstall
                     sigs2 += sigs
 
-                if toinstall2 and sigs2:
+                if toinstall2:
                     self.install(toinstall2, sigs2)
 
                 if DS.validate:
@@ -132,8 +132,8 @@ class Build:
                 # pacman because I need root, and I can’t get one there.
                 DS.sudo(DS.paccommand, '-D', '--asdeps', build_result[1])
 
-                self.auto_build(pkgname, performdepcheck,
-                                pkginstall)
+                return self.auto_build(pkgname, performdepcheck,
+                                       pkginstall)
 
             return build_result
         except PBError as inst:

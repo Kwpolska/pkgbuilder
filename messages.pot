@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.5.9\n"
+"Project-Id-Version: 2.1.5.10\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-10-31 20:25+0100\n"
-"PO-Revision-Date: 2012-10-31 20:25+0100\n"
+"POT-Creation-Date: 2012-11-04 15:06+0100\n"
+"PO-Revision-Date: 2012-11-04 15:06+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language: en\n"
@@ -294,29 +294,29 @@ msgstr ""
 msgid "Proceed with installation? [Y/n] "
 msgstr ""
 
-#: pkgbuilder/utils.py:85
+#: pkgbuilder/utils.py:81
 msgid " [installed: {}]"
 msgstr ""
 
-#: pkgbuilder/utils.py:87
+#: pkgbuilder/utils.py:83
 msgid " [installed]"
 msgstr ""
 
-#: pkgbuilder/utils.py:90
+#: pkgbuilder/utils.py:86
 msgid "[out of date]"
 msgstr ""
 
-#: pkgbuilder/utils.py:106
+#: pkgbuilder/utils.py:102
 msgid "votes"
 msgstr ""
 
-#: pkgbuilder/utils.py:124
+#: pkgbuilder/utils.py:120
 msgid "Package not found."
 msgstr ""
 
 #. TRANSLATORS: space it properly.  “yes/no” below are
 #. for “out of date”.
-#: pkgbuilder/utils.py:154
+#: pkgbuilder/utils.py:150
 msgid ""
 "Repository     : aur\n"
 "Category       : {cat}\n"
@@ -332,11 +332,11 @@ msgid ""
 "Description    : {dsc}\n"
 msgstr ""
 
-#: pkgbuilder/utils.py:184
+#: pkgbuilder/utils.py:180
 msgid "yes"
 msgstr ""
 
-#: pkgbuilder/utils.py:186
+#: pkgbuilder/utils.py:182
 msgid "no"
 msgstr ""
 

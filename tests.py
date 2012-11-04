@@ -48,7 +48,7 @@ import requests
 class TestPB(unittest.TestCase):
     # AUR
     def test_aur(self):
-        aur = pkgbuilder.aur.AUR()
+        pkgbuilder.aur.AUR()
 
     def test_aur_exact(self):
         aur = pkgbuilder.aur.AUR()
@@ -84,7 +84,7 @@ the maintainer of PKGBUILDer')
 
     # Build
     def test_build(self):
-        build = pkgbuilder.build.Build()
+        pkgbuilder.build.Build()
 
     def test_build_download(self):
         build = pkgbuilder.build.Build()
@@ -114,7 +114,7 @@ exactly 2 files')
 
     # PBDS
     def test_pbds(self):
-        pbds = pkgbuilder.pbds.PBDS()
+        pkgbuilder.pbds.PBDS()
 
     def test_pbds_logging(self):
         pbds = pkgbuilder.pbds.PBDS()
@@ -122,12 +122,12 @@ exactly 2 files')
 
     # Upgrade
     def test_upgrade(self):
-        upgrade = pkgbuilder.upgrade.Upgrade()
+        pkgbuilder.upgrade.Upgrade()
         # Cannot test too much here.
 
     # Utils
     def test_utils(self):
-        utils = pkgbuilder.utils.Utils()
+        pkgbuilder.utils.Utils()
 
     def test_utils_info(self):
         utils = pkgbuilder.utils.Utils()
@@ -154,16 +154,16 @@ the maintainer of PKGBUILDer')
     def test_utils_print_package_search(self):
         utils = pkgbuilder.utils.Utils()
         # It’s cheaper to use existing package data.
-        fpkg = {'CategoryID': '16',
+        fpkg = {'CategoryID': 16,
                 'Description': 'A Python AUR helper/library.',
-                'FirstSubmitted': '1316529993',
-                'ID': '52542',
-                'LastModified': '4294967294',
+                'FirstSubmitted': 1316529993,
+                'ID': 52542,
+                'LastModified': 4294967294,
                 'License': 'BSD',
                 'Maintainer': 'Kwpolska',
                 'Name': 'pkgbuilder-is-awesome',
-                'NumVotes': '8897',  # brought to you by random.org
-                'OutOfDate': '1',
+                'NumVotes': 8897,  # brought to you by random.org
+                'OutOfDate': 49498659,  # random number by yours truly.
                 'URL': 'https://github.com/Kwpolska/pkgbuilder',
                 'URLPath': '/packages/pk/pkgbuilder/pkgbuilder.tar.gz',
                 'Version': 'testsuite'}
@@ -181,16 +181,16 @@ doesn’t match the example')
     def test_utils_print_package_info(self):
         utils = pkgbuilder.utils.Utils()
         # It’s cheaper to use existing package data.
-        fpkg = {'CategoryID': '16',
+        fpkg = {'CategoryID': 16,
                 'Description': 'A Python AUR helper/library.',
-                'FirstSubmitted': '1316529993',
-                'ID': '52542',
-                'LastModified': '4294967294',
+                'FirstSubmitted': 1316529993,
+                'ID': 52542,
+                'LastModified': 4294967294,
                 'License': 'BSD',
                 'Maintainer': 'Kwpolska',
                 'Name': 'pkgbuilder-is-awesome',
-                'NumVotes': '8897',  # brought to you by random.org
-                'OutOfDate': '1',
+                'NumVotes': 8897,  # brought to you by random.org
+                'OutOfDate': 49498659,  # random number by yours truly.
                 'URL': 'https://github.com/Kwpolska/pkgbuilder',
                 'URLPath': '/packages/pk/pkgbuilder/pkgbuilder.tar.gz',
                 'Version': 'testsuite'}
@@ -220,7 +220,7 @@ doesn’t match the example')
     def test_wrapper(self):
         # …or there…
         pkgbuilder.wrapper.wrapper(['unittests', 'UTshibboleet'])
-    
+
     def test_pb_help(self):
         """Make sure "pb --help" works"""
         import sys
@@ -232,13 +232,13 @@ doesn’t match the example')
             pkgbuilder.wrapper.wrapper(("--help"))
         finally:
             sys.stdout = stdout
-        
+
         # More interested in if the above erred rather than the actual output
         self.assertTrue(capture.getvalue())
-    
+
     def test_call_pacman(self):
         """Make sure "pb" command can call Pacman"""
-        
+
         pacman = pkgbuilder.DS.paccommand
         try:
             pkgbuilder.DS.paccommand = "true"
