@@ -5,8 +5,8 @@ Appendix C. Changelog
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: © 2011-2012, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2012-11-04
-:Version: 2.1.5.11
+:Date: 2012-12-02
+:Version: 2.1.5.12
 
 .. index:: CHANGELOG
 
@@ -23,6 +23,8 @@ PKGBUILDer uses the following versioning scheme:
 
 Generation 2
 ============
+:2.1.5.11—2.1.5.12: Fixes to the AUR v2.0 magic.
+:2.1.5.10: AUR v2.0 support.
 :2.1.5.9: And another issue that I have not noticed, in a tiny change of Update
           behavior.  Sorry for all those updates, but I do not do testing on
           everything, just on stuff I think could break a lot (have you seen a
