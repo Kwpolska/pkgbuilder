@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.5.11
+# PKGBUILDer v2.1.5.12
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2012, Kwpolska.
 # See /LICENSE for licensing information.
@@ -241,9 +241,9 @@ class Build:
                         syncpkgs.append(j)
                     syncpkgs = functools.reduce(lambda x, y: x + y, syncpkgs)
                     abspkg = pyalpm.find_satisfier(syncpkgs, pkgname)
-                    pkg = {'CategoryID': '0', 'Category': abspkg.db.name,
+                    pkg = {'CategoryID': 0, 'Category': abspkg.db.name,
                             'Name': abspkg.name, 'Version': abspkg.version,
-                            'Description': abspkg.desc, 'OutOfDate': '0',
+                            'Description': abspkg.desc, 'OutOfDate': 0,
                             'NumVotes': 'n/a', 'Arch': abspkg.arch}
                     useabs = True
                 except AttributeError:
