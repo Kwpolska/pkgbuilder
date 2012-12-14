@@ -25,9 +25,8 @@ msgid "Validating installation status..."
 msgstr "インストール無事終了確認中・・・"
 
 #: pkgbuilder/build.py:56
-#, fuzzy
 msgid "{}: not an AUR package"
-msgstr "インストール済みのAURパッケージをアップグレード"
+msgstr "{}: AURパッケージではない"
 
 #: pkgbuilder/build.py:59 pkgbuilder/build.py:69
 msgid "{}: installed {}"
@@ -94,7 +93,6 @@ msgid "Building {}..."
 msgstr "「{}」を作成中・・・"
 
 #: pkgbuilder/build.py:264
-#, fuzzy
 msgid "Synchronizing the ABS tree..."
 msgstr "パッケージデーターベースを同期中・・・"
 
@@ -161,7 +159,6 @@ msgid "PACKAGE"
 msgstr "パッケージ"
 
 #: pkgbuilder/main.py:48
-#, fuzzy
 msgid "AUR/ABS packages to build"
 msgstr "作成するパッケージ"
 
