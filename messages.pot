@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.5.12\n"
+"Project-Id-Version: 2.1.5.13\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-12-02 20:01+0100\n"
-"PO-Revision-Date: 2012-12-02 20:01+0100\n"
+"POT-Creation-Date: 2013-01-01 16:30+0100\n"
+"PO-Revision-Date: 2013-01-01 16:30+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language: en\n"
@@ -68,71 +68,71 @@ msgstr ""
 msgid "Building more AUR packages is required."
 msgstr ""
 
-#: pkgbuilder/build.py:148
+#: pkgbuilder/build.py:144
 msgid "download: HTTP Error {}"
 msgstr ""
 
-#: pkgbuilder/build.py:151
+#: pkgbuilder/build.py:147
 msgid "download: 0 bytes downloaded"
 msgstr ""
 
-#: pkgbuilder/build.py:167
+#: pkgbuilder/build.py:163
 msgid "extract: no files extracted"
 msgstr ""
 
-#: pkgbuilder/build.py:218
+#: pkgbuilder/build.py:214
 msgid "depcheck: cannot find {} anywhere"
 msgstr ""
 
-#: pkgbuilder/build.py:253
+#: pkgbuilder/build.py:249
 msgid "Package {} not found."
 msgstr ""
 
-#: pkgbuilder/build.py:256
+#: pkgbuilder/build.py:252
 msgid "Building {}..."
 msgstr ""
 
-#: pkgbuilder/build.py:264
+#: pkgbuilder/build.py:260
 msgid "Synchronizing the ABS tree..."
 msgstr ""
 
-#: pkgbuilder/build.py:276
+#: pkgbuilder/build.py:272
 msgid "Failed to synchronize the ABS tree."
 msgstr ""
 
-#: pkgbuilder/build.py:281
+#: pkgbuilder/build.py:277
 msgid "Downloading the tarball..."
 msgstr ""
 
-#: pkgbuilder/build.py:284
+#: pkgbuilder/build.py:280
 msgid "{} kB downloaded"
 msgstr ""
 
-#: pkgbuilder/build.py:286
+#: pkgbuilder/build.py:282
 msgid "Extracting..."
 msgstr ""
 
-#: pkgbuilder/build.py:287
+#: pkgbuilder/build.py:283
 msgid "{} files extracted"
 msgstr ""
 
-#: pkgbuilder/build.py:292
+#: pkgbuilder/build.py:288
 msgid "Checking dependencies..."
 msgstr ""
 
-#: pkgbuilder/build.py:295
+#: pkgbuilder/build.py:291
 msgid "found in system"
 msgstr ""
 
-#: pkgbuilder/build.py:295
+#: pkgbuilder/build.py:291
 msgid "found in repos"
 msgstr ""
 
-#: pkgbuilder/build.py:296
+#: pkgbuilder/build.py:292
 msgid "found in the AUR"
 msgstr ""
 
-#: pkgbuilder/build.py:299
+#: pkgbuilder/build.py:295
 msgid "none found"
 msgstr ""
 

@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.5.12
+# PKGBUILDer v2.1.5.13
 # An AUR helper (and library) in Python 3.
-# Copyright © 2011-2012, Kwpolska.
+# Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
 
 # Names convention: pkg = a package object, pkgname = a package name.
@@ -12,7 +12,7 @@
     ~~~~~~~~~~~~~~~~
     Functions for building packages.
 
-    :Copyright: © 2011-2012, Kwpolska.
+    :Copyright: © 2011-2013, Kwpolska.
     :License: BSD (see /LICENSE).
 """
 
@@ -69,7 +69,7 @@ class Build:
                         DS.fancy_msg2(_('{}: installed {}').format(pkgname,
                                       pkg.version))
 
-    def install(self, pkgpaths, sigpaths=[]):
+    def install(self, pkgpaths, sigpaths=[], uopt=''):
         """Install packages through ``pacman -U``."""
         DS.fancy_msg(_('Installing built packages...'))
 
@@ -78,7 +78,7 @@ class Build:
                                                               sigpaths))
         DS.sudo('cp', pkgpaths + sigpaths, '/var/cache/pacman/pkg/')
         DS.log.debug('$PACMAN -U {}'.format(pkgpaths))
-        DS.sudo(DS.paccommand, '-U', pkgpaths)
+        DS.sudo(DS.paccommand, '-U', uopt, pkgpaths)
 
     def auto_build(self, pkgname, performdepcheck=True,
                    pkginstall=True):
@@ -123,14 +123,10 @@ class Build:
                     sigs2 += sigs
 
                 if toinstall2:
-                    self.install(toinstall2, sigs2)
+                    self.install(toinstall2, sigs2, uopt='--asdeps')
 
                 if DS.validate:
                     self.validate(build_result[1])
-
-                # Setting all the deps installed to be marked as such.  Using
-                # pacman because I need root, and I can’t get one there.
-                DS.sudo(DS.paccommand, '-D', '--asdeps', build_result[1])
 
                 return self.auto_build(pkgname, performdepcheck,
                                        pkginstall)

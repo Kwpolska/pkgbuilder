@@ -1,14 +1,14 @@
 # PKGBUILDer en translation file.
-# Copyright (C) 2011-2012, Kwpolska.
+# Copyright (C) 2011-2013, Kwpolska.
 # This file is distributed under the same license as the PKGBUILDer package.
-# Kwpolska <kwpolska@kwpolska.tk>, 2011-2012.
+# Kwpolska <kwpolska@kwpolska.tk>, 2011-2013.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.5.12\n"
+"Project-Id-Version: 2.1.5.13\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2012-12-02 20:01+0100\n"
-"PO-Revision-Date: 2012-09-08 12:44+0100\n"
+"POT-Creation-Date: 2013-01-01 16:30+0100\n"
+"PO-Revision-Date: 2013-09-08 12:44+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language: en\n"
@@ -68,71 +68,71 @@ msgstr "There was an input/output error."
 msgid "Building more AUR packages is required."
 msgstr "Building more AUR packages is required."
 
-#: pkgbuilder/build.py:148
+#: pkgbuilder/build.py:144
 msgid "download: HTTP Error {}"
 msgstr "download: HTTP Error {}"
 
-#: pkgbuilder/build.py:151
+#: pkgbuilder/build.py:147
 msgid "download: 0 bytes downloaded"
 msgstr "download: 0 bytes downloaded"
 
-#: pkgbuilder/build.py:167
+#: pkgbuilder/build.py:163
 msgid "extract: no files extracted"
 msgstr "extract: no files extracted"
 
-#: pkgbuilder/build.py:218
+#: pkgbuilder/build.py:214
 msgid "depcheck: cannot find {} anywhere"
 msgstr "depcheck: cannot find {} anywhere"
 
-#: pkgbuilder/build.py:253
+#: pkgbuilder/build.py:249
 msgid "Package {} not found."
 msgstr "Package {} not found."
 
-#: pkgbuilder/build.py:256
+#: pkgbuilder/build.py:252
 msgid "Building {}..."
 msgstr "Building {}..."
 
-#: pkgbuilder/build.py:264
+#: pkgbuilder/build.py:260
 msgid "Synchronizing the ABS tree..."
 msgstr "Synchronizing the ABS tree..."
 
-#: pkgbuilder/build.py:276
+#: pkgbuilder/build.py:272
 msgid "Failed to synchronize the ABS tree."
 msgstr "Failed to synchronize the ABS tree."
 
-#: pkgbuilder/build.py:281
+#: pkgbuilder/build.py:277
 msgid "Downloading the tarball..."
 msgstr "Downloading the tarball..."
 
-#: pkgbuilder/build.py:284
+#: pkgbuilder/build.py:280
 msgid "{} kB downloaded"
 msgstr "{} kB downloaded"
 
-#: pkgbuilder/build.py:286
+#: pkgbuilder/build.py:282
 msgid "Extracting..."
 msgstr "Extracting..."
 
-#: pkgbuilder/build.py:287
+#: pkgbuilder/build.py:283
 msgid "{} files extracted"
 msgstr "{} files extracted"
 
-#: pkgbuilder/build.py:292
+#: pkgbuilder/build.py:288
 msgid "Checking dependencies..."
 msgstr "Checking dependencies..."
 
-#: pkgbuilder/build.py:295
+#: pkgbuilder/build.py:291
 msgid "found in system"
 msgstr "found in system"
 
-#: pkgbuilder/build.py:295
+#: pkgbuilder/build.py:291
 msgid "found in repos"
 msgstr "found in repos"
 
-#: pkgbuilder/build.py:296
+#: pkgbuilder/build.py:292
 msgid "found in the AUR"
 msgstr "found in the AUR"
 
-#: pkgbuilder/build.py:299
+#: pkgbuilder/build.py:295
 msgid "none found"
 msgstr "none found"
 
