@@ -137,7 +137,7 @@ cp PKGBUILD-git MKPKGBUILD/$project"-git/PKGBUILD"
 cd MKPKGBUILD
 tar -czvf $project.src.tar.gz $project
 tar -czvf $project"-git".src.tar.gz $project"-git"
-burp -u Kwpolska -c system $project.src.tar.gz $project"-git".src.tar.gz
+aurploader -a system $project.src.tar.gz $project"-git".src.tar.gz
 
 cd ..
 rm -rf MKPKGBUILD
