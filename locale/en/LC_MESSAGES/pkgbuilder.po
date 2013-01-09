@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.5.13\n"
+"Project-Id-Version: 2.1.5.14\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2013-01-01 16:30+0100\n"
+"POT-Creation-Date: 2013-01-09 18:30+0100\n"
 "PO-Revision-Date: 2013-09-08 12:44+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
@@ -44,95 +44,95 @@ msgstr "{}: outdated {}"
 msgid "Installing built packages..."
 msgstr "Installing built packages..."
 
-#: pkgbuilder/build.py:102
+#: pkgbuilder/build.py:106
 msgid "The build function reported a proper build."
 msgstr "The build function reported a proper build."
 
 #. PBxxx.
-#: pkgbuilder/build.py:105
+#: pkgbuilder/build.py:108
 msgid "makepkg (or someone else) failed and returned {}."
 msgstr "makepkg (or someone else) failed and returned {}."
 
 #. PBSUX.
-#: pkgbuilder/build.py:109
+#: pkgbuilder/build.py:112
 msgid "PKGBUILDer had a problem."
 msgstr "PKGBUILDer had a problem."
 
 #. I/O error.
-#: pkgbuilder/build.py:112
+#: pkgbuilder/build.py:115
 msgid "There was an input/output error."
 msgstr "There was an input/output error."
 
 #. PBDEP.
-#: pkgbuilder/build.py:115
+#: pkgbuilder/build.py:118
 msgid "Building more AUR packages is required."
 msgstr "Building more AUR packages is required."
 
-#: pkgbuilder/build.py:144
+#: pkgbuilder/build.py:147
 msgid "download: HTTP Error {}"
 msgstr "download: HTTP Error {}"
 
-#: pkgbuilder/build.py:147
+#: pkgbuilder/build.py:150
 msgid "download: 0 bytes downloaded"
 msgstr "download: 0 bytes downloaded"
 
-#: pkgbuilder/build.py:163
+#: pkgbuilder/build.py:166
 msgid "extract: no files extracted"
 msgstr "extract: no files extracted"
 
-#: pkgbuilder/build.py:214
+#: pkgbuilder/build.py:217
 msgid "depcheck: cannot find {} anywhere"
 msgstr "depcheck: cannot find {} anywhere"
 
-#: pkgbuilder/build.py:249
+#: pkgbuilder/build.py:252
 msgid "Package {} not found."
 msgstr "Package {} not found."
 
-#: pkgbuilder/build.py:252
+#: pkgbuilder/build.py:255
 msgid "Building {}..."
 msgstr "Building {}..."
 
-#: pkgbuilder/build.py:260
+#: pkgbuilder/build.py:263
 msgid "Synchronizing the ABS tree..."
 msgstr "Synchronizing the ABS tree..."
 
-#: pkgbuilder/build.py:272
+#: pkgbuilder/build.py:275
 msgid "Failed to synchronize the ABS tree."
 msgstr "Failed to synchronize the ABS tree."
 
-#: pkgbuilder/build.py:277
+#: pkgbuilder/build.py:280
 msgid "Downloading the tarball..."
 msgstr "Downloading the tarball..."
 
-#: pkgbuilder/build.py:280
+#: pkgbuilder/build.py:283
 msgid "{} kB downloaded"
 msgstr "{} kB downloaded"
 
-#: pkgbuilder/build.py:282
+#: pkgbuilder/build.py:285
 msgid "Extracting..."
 msgstr "Extracting..."
 
-#: pkgbuilder/build.py:283
+#: pkgbuilder/build.py:286
 msgid "{} files extracted"
 msgstr "{} files extracted"
 
-#: pkgbuilder/build.py:288
+#: pkgbuilder/build.py:291
 msgid "Checking dependencies..."
 msgstr "Checking dependencies..."
 
-#: pkgbuilder/build.py:291
+#: pkgbuilder/build.py:294
 msgid "found in system"
 msgstr "found in system"
 
-#: pkgbuilder/build.py:291
+#: pkgbuilder/build.py:294
 msgid "found in repos"
 msgstr "found in repos"
 
-#: pkgbuilder/build.py:292
+#: pkgbuilder/build.py:295
 msgid "found in the AUR"
 msgstr "found in the AUR"
 
-#: pkgbuilder/build.py:295
+#: pkgbuilder/build.py:298
 msgid "none found"
 msgstr "none found"
 

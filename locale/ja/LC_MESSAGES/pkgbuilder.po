@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.5.13\n"
+"Project-Id-Version: 2.1.5.14\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2013-01-01 16:30+0100\n"
+"POT-Creation-Date: 2013-01-09 18:30+0100\n"
 "PO-Revision-Date: 2013-09-21 20:21+0200\n"
 "Last-Translator: Colin Woodbury <colingw@gmail.com>\n"
 "Language-Team: Colin Woodbury <colingw@gmail.com>\n"
@@ -45,96 +45,96 @@ msgstr "{}：「{}」より要更新"
 msgid "Installing built packages..."
 msgstr "作成したパッケージをインストール中・・・"
 
-#: pkgbuilder/build.py:102
+#: pkgbuilder/build.py:106
 msgid "The build function reported a proper build."
 msgstr "パッケージ作成成功。"
 
 #. PBxxx.
-#: pkgbuilder/build.py:105
+#: pkgbuilder/build.py:108
 msgid "makepkg (or someone else) failed and returned {}."
 msgstr "makepkgなどが「{}」で失敗したようだ。"
 
 #. PBSUX.
-#: pkgbuilder/build.py:109
+#: pkgbuilder/build.py:112
 msgid "PKGBUILDer had a problem."
 msgstr "PKGBUILDerに問題発生。"
 
 #. I/O error.
-#: pkgbuilder/build.py:112
+#: pkgbuilder/build.py:115
 msgid "There was an input/output error."
 msgstr "入力・出力エラー発生。"
 
 #. PBDEP.
-#: pkgbuilder/build.py:115
+#: pkgbuilder/build.py:118
 msgid "Building more AUR packages is required."
 msgstr "AURパッケージを更に作成する必要がある。"
 
-#: pkgbuilder/build.py:144
+#: pkgbuilder/build.py:147
 msgid "download: HTTP Error {}"
 msgstr "ダウンロード状態：HTTPエラー {}"
 
-#: pkgbuilder/build.py:147
+#: pkgbuilder/build.py:150
 msgid "download: 0 bytes downloaded"
 msgstr "ダウンロード状態：1バイトもダウンロードされなかった"
 
-#: pkgbuilder/build.py:163
+#: pkgbuilder/build.py:166
 msgid "extract: no files extracted"
 msgstr "抽出状態：ファイルは1つも抽出されなかった"
 
-#: pkgbuilder/build.py:214
+#: pkgbuilder/build.py:217
 msgid "depcheck: cannot find {} anywhere"
 msgstr "従属パッケージ状態：「{}」をどこでも見つからなかった"
 
-#: pkgbuilder/build.py:249
+#: pkgbuilder/build.py:252
 msgid "Package {} not found."
 msgstr "パッケージ「{}」は見つからなかった。"
 
-#: pkgbuilder/build.py:252
+#: pkgbuilder/build.py:255
 msgid "Building {}..."
 msgstr "「{}」を作成中・・・"
 
-#: pkgbuilder/build.py:260
+#: pkgbuilder/build.py:263
 #, fuzzy
 msgid "Synchronizing the ABS tree..."
 msgstr "パッケージデーターベースを同期中・・・"
 
-#: pkgbuilder/build.py:272
+#: pkgbuilder/build.py:275
 msgid "Failed to synchronize the ABS tree."
 msgstr ""
 
-#: pkgbuilder/build.py:277
+#: pkgbuilder/build.py:280
 msgid "Downloading the tarball..."
 msgstr "ターボールをダウンロード中・・・"
 
-#: pkgbuilder/build.py:280
+#: pkgbuilder/build.py:283
 msgid "{} kB downloaded"
 msgstr "{} kBをダウンロード済み"
 
-#: pkgbuilder/build.py:282
+#: pkgbuilder/build.py:285
 msgid "Extracting..."
 msgstr "抽出中・・・"
 
-#: pkgbuilder/build.py:283
+#: pkgbuilder/build.py:286
 msgid "{} files extracted"
 msgstr "ファイルを{}個抽出した"
 
-#: pkgbuilder/build.py:288
+#: pkgbuilder/build.py:291
 msgid "Checking dependencies..."
 msgstr "従属パッケージを確認中・・・"
 
-#: pkgbuilder/build.py:291
+#: pkgbuilder/build.py:294
 msgid "found in system"
 msgstr "インストール済み"
 
-#: pkgbuilder/build.py:291
+#: pkgbuilder/build.py:294
 msgid "found in repos"
 msgstr "リポジトリに存在"
 
-#: pkgbuilder/build.py:292
+#: pkgbuilder/build.py:295
 msgid "found in the AUR"
 msgstr "AURに存在"
 
-#: pkgbuilder/build.py:295
+#: pkgbuilder/build.py:298
 msgid "none found"
 msgstr "従属パッケージなし"
 

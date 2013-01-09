@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.5.13
+# PKGBUILDer v2.1.5.14
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
@@ -77,8 +77,12 @@ class Build:
         DS.log.debug('cp {} {} /var/cache/pacman/pkg/'.format(pkgpaths,
                                                               sigpaths))
         DS.sudo('cp', pkgpaths + sigpaths, '/var/cache/pacman/pkg/')
-        DS.log.debug('$PACMAN -U {}'.format(pkgpaths))
-        DS.sudo(DS.paccommand, '-U', uopt, pkgpaths)
+        if uopt:
+            DS.log.debug('$PACMAN -U {} {}'.format(uopt, pkgpaths))
+            DS.sudo(DS.paccommand, '-U', uopt, pkgpaths)
+        else:
+            DS.log.debug('$PACMAN -U {}'.format(pkgpaths))
+            DS.sudo(DS.paccommand, '-U', pkgpaths)
 
     def auto_build(self, pkgname, performdepcheck=True,
                    pkginstall=True):
@@ -100,7 +104,6 @@ class Build:
         try:
             if build_result[0] == 0:
                 DS.fancy_msg(_('The build function reported a proper build.'))
-
             elif build_result[0] >= 0 and build_result[0] < 72000:  # PBxxx.
                 raise PBError(_('makepkg (or someone else) failed and '
                                 'returned {}.').format(build_result[0]))
@@ -238,9 +241,9 @@ class Build:
                     syncpkgs = functools.reduce(lambda x, y: x + y, syncpkgs)
                     abspkg = pyalpm.find_satisfier(syncpkgs, pkgname)
                     pkg = {'CategoryID': 0, 'Category': abspkg.db.name,
-                            'Name': abspkg.name, 'Version': abspkg.version,
-                            'Description': abspkg.desc, 'OutOfDate': 0,
-                            'NumVotes': 'n/a', 'Arch': abspkg.arch}
+                           'Name': abspkg.name, 'Version': abspkg.version,
+                           'Description': abspkg.desc, 'OutOfDate': 0,
+                           'NumVotes': 'n/a', 'Arch': abspkg.arch}
                     useabs = True
                 except AttributeError:
                     pass
@@ -259,10 +262,10 @@ class Build:
             if useabs:
                 DS.fancy_msg(_('Synchronizing the ABS tree...'))
                 rsync = ['rsync', '-mrtv', '--no-motd', '--delete-after',
-                         '--no-p', '--no-o', '--no-g', # '--delete-excluded',
+                         '--no-p', '--no-o', '--no-g',
                          '--include=/{}'.format(pkg['Category']),
                          '--include=/{}/{}'.format(pkg['Category'],
-                             pkg['Name']),
+                         pkg['Name']),
                          '--exclude=/{}/*'.format(pkg['Category']),
                          '--exclude=/*',
                          'rsync.archlinux.org::abs/{}/'.format(pkg['Arch']),
@@ -317,19 +320,17 @@ class Build:
                                        shell=True)
             if pkginstall:
                 # .pkg.tar.xz FTW, but some people change that.
-                pkgfilestr = os.path.abspath('./{}-{}-{}.pkg.*')
+                pkgfilestr = os.path.abspath('./{}-{}-*.pkg.*{}')
                 # I hope nobody builds VCS packages at 23:5* local.  And if
                 # they do, they will be caught by the 2nd fallback (crappy
                 # packages)
                 datep = datetime.date.today().strftime('%Y%m%d')
                 att0 = set(glob.glob(pkgfilestr.format(pkgname,
                                      pkg['Version'], '*')))
-                att1 = set(glob.glob(pkgfilestr.format(pkgname, datep, '*')))
-                att2 = set(glob.glob(pkgfilestr.format(pkgname, '*', '*')))
-                sigf = set(glob.glob(pkgfilestr.format(pkgname, '*', '*' +
-                                                       'sig')))
-                if not sigf:
-                    sigf = set()
+                att1 = set(glob.glob(pkgfilestr.format(pkgname, datep, '')))
+                att2 = set(glob.glob(pkgfilestr.format(pkgname, '*', '')))
+                sigf = set(glob.glob(pkgfilestr.format(pkgname, '*', '.sig')))
+
                 att0 = list(att0 - sigf)
                 att1 = list(att1 - sigf)
                 att2 = list(att2 - sigf)
@@ -337,15 +338,15 @@ class Build:
                     # Standard run, for humans.
                     toinstall = [att0, list(sigf)]
                 elif att1:
-                    # Fallback #1, for VCS packages
+                    # Fallback #1, for VCS packages.
                     toinstall = [att1, list(sigf)]
                 elif att2:
-                    # Fallback #2, for crappy packages
+                    # Fallback #2, for crappy packages.
                     toinstall = [att2, list(sigf)]
                 else:
-                    toinstall = [None, None]
+                    toinstall = [[], []]
             else:
-                toinstall = [None, None]
+                toinstall = [[], []]
 
             return [mpstatus, toinstall, useabs]
         except PBError as inst:
