@@ -25,9 +25,8 @@ msgid "Validating installation status..."
 msgstr "インストール無事終了確認中・・・"
 
 #: pkgbuilder/build.py:56
-#, fuzzy
 msgid "{}: not an AUR package"
-msgstr "インストール済みのAURパッケージをアップグレード"
+msgstr "{}: AURパッケージではない"
 
 #: pkgbuilder/build.py:59 pkgbuilder/build.py:69
 msgid "{}: installed {}"
@@ -93,14 +92,13 @@ msgstr "パッケージ「{}」は見つからなかった。"
 msgid "Building {}..."
 msgstr "「{}」を作成中・・・"
 
-#: pkgbuilder/build.py:263
-#, fuzzy
+#: pkgbuilder/build.py:264
 msgid "Synchronizing the ABS tree..."
 msgstr "パッケージデーターベースを同期中・・・"
 
 #: pkgbuilder/build.py:275
 msgid "Failed to synchronize the ABS tree."
-msgstr ""
+msgstr "ABSの同期は失敗した。"
 
 #: pkgbuilder/build.py:280
 msgid "Downloading the tarball..."
@@ -150,7 +148,7 @@ msgstr "Python 3で作られたAUR Helper兼ライブラリ。"
 
 #: pkgbuilder/main.py:42
 msgid "Also accepting ABS packages."
-msgstr ""
+msgstr "ABSパッケージも対応可能。"
 
 #: pkgbuilder/main.py:46
 msgid "show version number and quit"
@@ -161,7 +159,6 @@ msgid "PACKAGE"
 msgstr "パッケージ"
 
 #: pkgbuilder/main.py:48
-#, fuzzy
 msgid "AUR/ABS packages to build"
 msgstr "作成するパッケージ"
 
