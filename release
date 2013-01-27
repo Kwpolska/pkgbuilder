@@ -42,9 +42,9 @@ xgettext -c ./$project/*.py INSTALL.py localeprovider.py -o ./messages.pot
 sed '1,+17d' ./messages.pot > ./messages.pot.tmp
 
 pot='# '$projectc' pot file.
-# Copyright (C) 2011-2012, Kwpolska.
+# Copyright © 2011-2013, Kwpolska.
 # This file is distributed under the same license as the '$projectc' package.
-# Kwpolska <kwpolska@kwpolska.tk>, 2011-2012.
+# Kwpolska <kwpolska@kwpolska.tk>, 2011-2013.
 #
 msgid ""
 msgstr ""
@@ -131,13 +131,13 @@ read bailout
 md5out=$(md5sum 'dist/'$project'-'$version'.tar.gz'|awk '{print $1}')
 sed "s/md5sums=.*/md5sums=('$md5out')/" PKGBUILD -i
 rm -rf MKPKGBUILD
-mkdir -p MKPKGBUILD/$project MKPKGBUILD/$project"-git"
+mkdir -p MKPKGBUILD/$project{,-git}
 cp PKGBUILD MKPKGBUILD/$project
 cp PKGBUILD-git MKPKGBUILD/$project"-git/PKGBUILD"
 cd MKPKGBUILD
 tar -czvf $project.src.tar.gz $project
 tar -czvf $project"-git".src.tar.gz $project"-git"
-aurploader -a $project.src.tar.gz $project"-git".src.tar.gz
+aurploader -a $project{,-git}.src.tar.gz
 
 cd ..
 rm -rf MKPKGBUILD
