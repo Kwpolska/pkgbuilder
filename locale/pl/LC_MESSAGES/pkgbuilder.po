@@ -1,5 +1,5 @@
 # PKGBUILDer pl translation file.
-# Copyright (C) 2011-2013, Kwpolska.
+# Copyright © 2011-2013, Kwpolska.
 # This file is distributed under the same license as the PKGBUILDer package.
 # Kwpolska <kwpolska@kwpolska.tk>, 2011-2013.
 #
