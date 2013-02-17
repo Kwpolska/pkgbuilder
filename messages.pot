@@ -1,7 +1,7 @@
 # PKGBUILDer pot file.
-# Copyright (C) 2011-2012, Kwpolska.
+# Copyright © 2011-2013, Kwpolska.
 # This file is distributed under the same license as the PKGBUILDer package.
-# Kwpolska <kwpolska@kwpolska.tk>, 2011-2012.
+# Kwpolska <kwpolska@kwpolska.tk>, 2011-2013.
 #
 msgid ""
 msgstr ""
