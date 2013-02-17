@@ -232,16 +232,15 @@ def wrapper(source='AUTO'):
         pbpkgnames = []
         utils = Utils()
         info = utils.info(pkgnames)
-        for i in info:
-            pbpkgnames.append(i['Name'])
 
-        pacmanpkgnames = list(set(pkgnames) - set(pbpkgnames))
+        names = [i['Name'] for i in info]
+        pbpkgnames = [n for n in pkgnames if n in names]
+        pacmanpkgnames = [i for i in pkgnames if i not in pbpkgnames]
 
         droppable = ['-u', '-y', '--sysupgrade', '--refresh']
 
         pacargs = [i for i in pacargs if i not in droppable]
         pbargs = [i for i in pbargs if i not in droppable]
-
         log.debug('Generated.')
 
         if pacmanpkgnames != []:
@@ -256,8 +255,8 @@ def wrapper(source='AUTO'):
         else:
             log.info('No AUR packages in the list.')
 
-        sanitycheck = set(pacmanpkgnames + pbpkgnames)
-        if sanitycheck != set(pkgnames):
+        sanitycheck = pacmanpkgnames + pbpkgnames
+        if len(sanitycheck) != len(pkgnames):
             log.info('Running pacman due to failed sanity check.')
             sanityargs = [item for item in pkgnames if (item not in
                           sanitycheck)]
