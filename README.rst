@@ -14,7 +14,12 @@ Building and installing AUR packages.
 
 INSTALLATION
 ------------
-PyPI or AUR.  Alternatively, INSTALL.py.
+
+::
+
+    pip install pkgbuilder
+
+Alternatively, use the AUR.  Or, if you absolutely must, ``./INSTALL.py``.
 
 NOTES
 -----
