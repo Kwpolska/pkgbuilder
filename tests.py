@@ -222,14 +222,14 @@ doesn’t match the example')
         pkgbuilder.wrapper.wrapper(['unittests', 'UTshibboleet'])
 
     def test_pb_help(self):
-        """Make sure "pb --help" works"""
+        """Make sure ``pb --help`` works"""
         import sys
         from io import StringIO
         capture = StringIO()
         stdout = sys.stdout
         try:
             sys.stdout = capture
-            pkgbuilder.wrapper.wrapper(("--help"))
+            pkgbuilder.wrapper.wrapper('--help')
         finally:
             sys.stdout = stdout
 
@@ -237,12 +237,12 @@ doesn’t match the example')
         self.assertTrue(capture.getvalue())
 
     def test_call_pacman(self):
-        """Make sure "pb" command can call Pacman"""
+        """Make sure ``pb`` command can call pacman"""
 
         pacman = pkgbuilder.DS.paccommand
         try:
-            pkgbuilder.DS.paccommand = "true"
-            pkgbuilder.wrapper.wrapper(["dummy-pacman-argument"])
+            pkgbuilder.DS.paccommand = 'true'
+            pkgbuilder.wrapper.wrapper('-Qh')
         finally:
             pkgbuilder.DS.paccommand = pacman
 

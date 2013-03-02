@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.5.14
+# PKGBUILDer v2.1.6.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
@@ -98,36 +98,56 @@ class PBDS():
     log = logging.getLogger('pkgbuilder')
     log.info('*** PKGBUILDer v' + __version__)
 
-    def sudo(self, *rargs):
+    def run_command(self, *rargs, **kwargs):
+        """
+        Run a command.
+
+        .. note:: Accepts only one command.  ``shell=False``, for safety.
+        asonearg is for ``su -c`` and most people don’t need nor want it.
+
+        ``*rargs`` is catching all the arguments.  However, in order to make
+        sure that nothing breaks, it checks if the element is a list or a
+        tuple.  If yes, it becomes the argument list; if not, the argument list
+        is ``*rargs`` split on spaces (``.split(' ')``).  Finally, the list is
+        passed to ``subprocess.call``.
+        """
+        args = []
+        if 'prepend' not in kwargs:
+            prepend = []
+        else:
+            prepend = kwargs['prepend']
+
+        if 'asonearg' not in kwargs:
+            asonearg = False
+        else:
+            asonearg = kwargs['asonearg']
+
+        for i in rargs:
+            if type(i) == list or type(i) == tuple:
+                args += i
+            else:
+                args += [j for j in i.split(' ')]
+
+        if asonearg:
+            return subprocess.call(prepend + [' '.join(args)])
+        else:
+            return subprocess.call(prepend + args)
+
+    def sudo(self, *args):
         """
         Run as root.  ``sudo`` if present, ``su -c`` otherwise, nothing if
         already running as root.
 
         .. note:: Accepts only one command.  `shell=False`, for safety.
-
-        ``*rargs`` is catching all the arguments.  However, in order to make
-        sure that nothing breaks, it checks if the element is a list or a
-        tuple.  If yes, it is appended to the argument list (Python’s ``+``
-        operator); if not, it is split on spaces (``.split(' ')``) and
-        appended to the argument list.  Finally, the list is passed to
-        ``subprocess.call``.
         """
-        args = []
-        for i in rargs:
-            if type(i) == list or type(i) == tuple:
-                for j in i:
-                    args.append(j)
-            else:
-                for j in i.split(' '):
-                    args.append(j)
-
         if self.uid != 0:
             if self.hassudo:
-                subprocess.call(['sudo'] + args)
+                return self.run_command(*args, prepend=['sudo'])
             else:
-                subprocess.call('su -c "{}"'.format(' '.join(args)))
+                return self.run_command(*args, prepend=['su', '-c'],
+                                        asonearg=True)
         else:
-            subprocess.call(args)
+            return subprocess.call(args)
 
     def debugmode(self, nochange=False):
         """Print all the logged messages to stderr."""

@@ -5,8 +5,8 @@ upgrade module (Upgrade class)
 :Author: Kwpolska
 :Copyright: © 2011-2013, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2013-01-09
-:Version: 2.1.5.14
+:Date: 2013-03-02
+:Version: 2.1.6.0
 
 .. index:: Upgrade
 .. index:: Syu
