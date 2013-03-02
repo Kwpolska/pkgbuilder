@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.5.14
+# PKGBUILDer v2.1.6.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
@@ -261,16 +261,18 @@ class Build:
             sys.stdout.write(DS.colors['all_off'])
             if useabs:
                 DS.fancy_msg(_('Synchronizing the ABS tree...'))
-                rsync = ['rsync', '-mrtv', '--no-motd', '--delete-after',
-                         '--no-p', '--no-o', '--no-g',
-                         '--include=/{}'.format(pkg['Category']),
-                         '--include=/{}/{}'.format(pkg['Category'],
-                         pkg['Name']),
-                         '--exclude=/{}/*'.format(pkg['Category']),
-                         '--exclude=/*',
-                         'rsync.archlinux.org::abs/{}/'.format(pkg['Arch']),
-                         '.']
-                rstatus = subprocess.call(rsync)
+                rstatus = DS.run_command('rsync', '-mrtv', '--no-motd',
+                                         '--delete-after', '--no-p', '--no-o',
+                                         '--no-g',
+                                         '--include=/{}'.format(
+                                             pkg['Category']),
+                                         '--include=/{}/{}'.format(
+                                             pkg['Category'], pkg['Name']),
+                                         '--exclude=/{}/*'.format(
+                                             pkg['Category']),
+                                         '--exclude=/*',
+                                         'rsync.archlinux.org::abs/{}/'.format(
+                                             pkg['Arch']), '.')
                 if rstatus > 0:
                     raise PBError(_('Failed to synchronize the ABS tree.'))
 

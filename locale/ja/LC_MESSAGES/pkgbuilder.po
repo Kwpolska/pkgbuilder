@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.5.14\n"
+"Project-Id-Version: 2.1.6.0\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2013-01-09 18:30+0100\n"
+"POT-Creation-Date: 2013-03-02 20:21+0100\n"
 "PO-Revision-Date: 2013-09-21 20:21+0200\n"
 "Last-Translator: Colin Woodbury <colingw@gmail.com>\n"
 "Language-Team: Colin Woodbury <colingw@gmail.com>\n"
@@ -92,7 +92,7 @@ msgstr "パッケージ「{}」は見つからなかった。"
 msgid "Building {}..."
 msgstr "「{}」を作成中・・・"
 
-#: pkgbuilder/build.py:264
+#: pkgbuilder/build.py:263
 msgid "Synchronizing the ABS tree..."
 msgstr "パッケージデーターベースを同期中・・・"
 
@@ -254,7 +254,7 @@ msgstr "ユーザーによる強制終了！"
 msgid "Interrupt signal received\n"
 msgstr "途中切断\n"
 
-#: pkgbuilder/pbds.py:90 pkgbuilder/pbds.py:206
+#: pkgbuilder/pbds.py:90 pkgbuilder/pbds.py:230
 msgid "ERROR:"
 msgstr "エラー："
 
@@ -262,7 +262,7 @@ msgstr "エラー："
 msgid "Cannot create the configuration directory."
 msgstr "設定ディレクトリ作れなかった。"
 
-#: pkgbuilder/pbds.py:92 pkgbuilder/pbds.py:192
+#: pkgbuilder/pbds.py:92 pkgbuilder/pbds.py:216
 msgid "WARNING:"
 msgstr "警告："
 
@@ -286,11 +286,23 @@ msgstr "{}: ローカル「{}」はAURの「{}」より最新"
 msgid "there is nothing to do"
 msgstr "することがない"
 
-#: pkgbuilder/upgrade.py:157 pkgbuilder/upgrade.py:177
+#: pkgbuilder/upgrade.py:164 pkgbuilder/upgrade.py:228
 msgid "Targets ({}): "
 msgstr "「{}」の該当パッケージ："
 
-#: pkgbuilder/upgrade.py:175 pkgbuilder/upgrade.py:181
+#: pkgbuilder/upgrade.py:180
+msgid "Name"
+msgstr ""
+
+#: pkgbuilder/upgrade.py:180
+msgid "Old Version"
+msgstr ""
+
+#: pkgbuilder/upgrade.py:180
+msgid "New Version"
+msgstr ""
+
+#: pkgbuilder/upgrade.py:226 pkgbuilder/upgrade.py:232
 msgid "Proceed with installation? [Y/n] "
 msgstr "続行？ [Y/n]"
 
@@ -358,7 +370,7 @@ msgid "%(prog)s <operation> [...]"
 msgstr "%(prog)s <選択肢> [...]"
 
 #. TRANSLATORS: see pacman’s localizations
-#: pkgbuilder/wrapper.py:268
+#: pkgbuilder/wrapper.py:267
 msgid ""
 "usage:  {} <operation> [...]\n"
 "\n"

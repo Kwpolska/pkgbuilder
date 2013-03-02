@@ -5,10 +5,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.5.14\n"
+"Project-Id-Version: 2.1.6.0\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2013-01-09 18:30+0100\n"
-"PO-Revision-Date: 2013-01-09 18:30+0100\n"
+"POT-Creation-Date: 2013-03-02 20:21+0100\n"
+"PO-Revision-Date: 2013-03-02 20:21+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language: en\n"
@@ -254,7 +254,7 @@ msgstr ""
 msgid "Interrupt signal received\n"
 msgstr ""
 
-#: pkgbuilder/pbds.py:90 pkgbuilder/pbds.py:206
+#: pkgbuilder/pbds.py:90 pkgbuilder/pbds.py:230
 msgid "ERROR:"
 msgstr ""
 
@@ -262,7 +262,7 @@ msgstr ""
 msgid "Cannot create the configuration directory."
 msgstr ""
 
-#: pkgbuilder/pbds.py:92 pkgbuilder/pbds.py:192
+#: pkgbuilder/pbds.py:92 pkgbuilder/pbds.py:216
 msgid "WARNING:"
 msgstr ""
 
@@ -286,11 +286,23 @@ msgstr ""
 msgid "there is nothing to do"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:157 pkgbuilder/upgrade.py:177
+#: pkgbuilder/upgrade.py:164 pkgbuilder/upgrade.py:228
 msgid "Targets ({}): "
 msgstr ""
 
-#: pkgbuilder/upgrade.py:175 pkgbuilder/upgrade.py:181
+#: pkgbuilder/upgrade.py:180
+msgid "Name"
+msgstr ""
+
+#: pkgbuilder/upgrade.py:180
+msgid "Old Version"
+msgstr ""
+
+#: pkgbuilder/upgrade.py:180
+msgid "New Version"
+msgstr ""
+
+#: pkgbuilder/upgrade.py:226 pkgbuilder/upgrade.py:232
 msgid "Proceed with installation? [Y/n] "
 msgstr ""
 
@@ -346,7 +358,7 @@ msgid "%(prog)s <operation> [...]"
 msgstr ""
 
 #. TRANSLATORS: see pacman’s localizations
-#: pkgbuilder/wrapper.py:268
+#: pkgbuilder/wrapper.py:267
 msgid ""
 "usage:  {} <operation> [...]\n"
 "\n"

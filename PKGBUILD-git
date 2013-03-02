@@ -1,7 +1,7 @@
 # Maintainer: Kwpolska <kwpolska@kwpolska.tk>
 pkgname=pkgbuilder-git
 _pyname=pkgbuilder
-pkgver=20130109
+pkgver=20130302
 pkgrel=1
 pkgdesc='A Python AUR helper/library.  Version from git.'
 arch=('any')
