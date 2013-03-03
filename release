@@ -128,17 +128,35 @@ read bailout
 
 ./setup.py sdist upload
 
+###: AUR Package Creation
 md5out=$(md5sum 'dist/'$project'-'$version'.tar.gz'|awk '{print $1}')
 sed "s/md5sums=.*/md5sums=('$md5out')/" PKGBUILD -i
-rm -rf MKPKGBUILD
-mkdir -p MKPKGBUILD/$project{,-git}
-cp PKGBUILD MKPKGBUILD/$project
-cp PKGBUILD-git MKPKGBUILD/$project"-git/PKGBUILD"
-cd MKPKGBUILD
-tar -czvf $project.src.tar.gz $project
-tar -czvf $project"-git".src.tar.gz $project"-git"
-aurploader -a $project{,-git}.src.tar.gz
+###: python2-$project package
+#sed "s/md5sums=.*/md5sums=('$md5out')/" PKGBUILD-2 -i
 
+rm -rf MKPKGBUILD
+mkdir MKPKGBUILD
+cd MKPKGBUILD
+
+###: $project{,-git} packages
+mkdir $project{,-git}
+cp ../PKGBUILD ./$project
+cp ../PKGBUILD-git ./$project"-git/PKGBUILD"
+tar -czvf $project"-0.1.0-1".src.tar.gz $project
+tar -czvf $project"-git-19700101-1".src.tar.gz $project"-git"
+
+###: python{2,}-$project{,-git} packages
+#mkdir python{,2}'-'$project{,-git}
+#cp ../PKGBUILD ./python-$project
+#cp ../PKGBUILD-git ./python-$project"-git/PKGBUILD"
+#cp ../PKGBUILD-2 ./python2-$project/PKGBUILD
+#cp ../PKGBUILD-2-git ./python2-$project"-git/PKGBUILD"
+#tar -czvf python-$project"-0.1.0-1".src.tar.gz python-$project
+#tar -czvf python2-$project"-0.1.0-1".src.tar.gz python-$project
+#tar -czvf python-$project"-git-19700101-1".src.tar.gz python-$project"-git"
+#tar -czvf python2-$project"-git-19700101-1".src.tar.gz python-$project"-git"
+
+aurploader -a *.src.tar.gz
 cd ..
 rm -rf MKPKGBUILD
 
