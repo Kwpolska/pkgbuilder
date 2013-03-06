@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.6.0\n"
+"Project-Id-Version: 2.1.6.1\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2013-03-02 20:21+0100\n"
+"POT-Creation-Date: 2013-03-06 20:12+0100\n"
 "PO-Revision-Date: 2013-09-08 12:44+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
@@ -98,43 +98,43 @@ msgstr "Budowanie {}..."
 msgid "Synchronizing the ABS tree..."
 msgstr "Synchronizowanie drzewa ABS..."
 
-#: pkgbuilder/build.py:275
+#: pkgbuilder/build.py:277
 msgid "Failed to synchronize the ABS tree."
 msgstr "Nie udało się zsynchronizować drzewa ABS."
 
-#: pkgbuilder/build.py:280
+#: pkgbuilder/build.py:282
 msgid "Downloading the tarball..."
 msgstr "Pobieranie tarballa..."
 
-#: pkgbuilder/build.py:283
+#: pkgbuilder/build.py:285
 msgid "{} kB downloaded"
 msgstr "pobrano {} kB"
 
-#: pkgbuilder/build.py:285
+#: pkgbuilder/build.py:287
 msgid "Extracting..."
 msgstr "Wypakowywanie..."
 
-#: pkgbuilder/build.py:286
+#: pkgbuilder/build.py:288
 msgid "{} files extracted"
 msgstr "wypakowano {} plików"
 
-#: pkgbuilder/build.py:291
+#: pkgbuilder/build.py:293
 msgid "Checking dependencies..."
 msgstr "Sprawdzanie zależności..."
 
-#: pkgbuilder/build.py:294
+#: pkgbuilder/build.py:296
 msgid "found in system"
 msgstr "znaleziono w systemie"
 
-#: pkgbuilder/build.py:294
+#: pkgbuilder/build.py:296
 msgid "found in repos"
 msgstr "znaleziono w repozytoriach"
 
-#: pkgbuilder/build.py:295
+#: pkgbuilder/build.py:297
 msgid "found in the AUR"
 msgstr "znaleziono w AUR"
 
-#: pkgbuilder/build.py:298
+#: pkgbuilder/build.py:300
 msgid "none found"
 msgstr "brak"
 
@@ -258,7 +258,7 @@ msgstr "Przerwane przez użytkownika! Kończenie..."
 msgid "Interrupt signal received\n"
 msgstr "Interrupt signal received\n"
 
-#: pkgbuilder/pbds.py:90 pkgbuilder/pbds.py:230
+#: pkgbuilder/pbds.py:90 pkgbuilder/pbds.py:226
 msgid "ERROR:"
 msgstr "BŁĄD:"
 
@@ -266,7 +266,7 @@ msgstr "BŁĄD:"
 msgid "Cannot create the configuration directory."
 msgstr "Nie można utworzyć katalogu konfiguracji."
 
-#: pkgbuilder/pbds.py:92 pkgbuilder/pbds.py:216
+#: pkgbuilder/pbds.py:92 pkgbuilder/pbds.py:212
 msgid "WARNING:"
 msgstr "UWAGA:"
 
@@ -368,13 +368,13 @@ msgstr "tak"
 msgid "no"
 msgstr "nie"
 
-#: pkgbuilder/wrapper.py:107
+#: pkgbuilder/wrapper.py:106
 #, python-format
 msgid "%(prog)s <operation> [...]"
 msgstr "%(prog)s <operacja> [...]"
 
 #. TRANSLATORS: see pacman’s localizations
-#: pkgbuilder/wrapper.py:267
+#: pkgbuilder/wrapper.py:266
 msgid ""
 "usage:  {} <operation> [...]\n"
 "\n"

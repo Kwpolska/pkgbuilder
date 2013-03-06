@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.6.0
+# PKGBUILDer v2.1.6.1
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
@@ -76,13 +76,13 @@ class Build:
         DS.log.info('pkgs={}; sigs={}'.format(pkgpaths, sigpaths))
         DS.log.debug('cp {} {} /var/cache/pacman/pkg/'.format(pkgpaths,
                                                               sigpaths))
-        DS.sudo('cp', pkgpaths + sigpaths, '/var/cache/pacman/pkg/')
+        DS.sudo(['cp'] + pkgpaths + sigpaths + ['/var/cache/pacman/pkg/'])
         if uopt:
             DS.log.debug('$PACMAN -U {} {}'.format(uopt, pkgpaths))
-            DS.sudo(DS.paccommand, '-U', uopt, pkgpaths)
+            DS.sudo([DS.paccommand, '-U', uopt] + pkgpaths)
         else:
             DS.log.debug('$PACMAN -U {}'.format(pkgpaths))
-            DS.sudo(DS.paccommand, '-U', pkgpaths)
+            DS.sudo([DS.paccommand, '-U'] + pkgpaths)
 
     def auto_build(self, pkgname, performdepcheck=True,
                    pkginstall=True):
