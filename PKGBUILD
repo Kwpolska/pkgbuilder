@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python' 'pyalpm>=0.5.1-1' 'python-requests')
 options=(!emptydirs)
 source=("http://pypi.python.org/packages/source/$(echo ${_pyname} | cut -c1)/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('a53de834ae80b826eb057f3a2f993fae')
+md5sums=('86fe3267f7fa90f75839154fb20a3f01')
 
 package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
