@@ -5,7 +5,9 @@
 # Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
 
-# Names convention: pkg = a package object, pkgname = a package name.
+# ``pkg`` always represents a dict with package information, while ``pkgname``
+# is where the package name goes (``pkg['Name']`` should be used where
+# possible.)
 
 """
     pkgbuilder.build
@@ -249,10 +251,9 @@ class Build:
                     pass
 
             if not pkg:
-                raise PBError(_('Package {} not found.').format(pkgname))
+                raise PBError(_('Package {} not found.').format(pkg['Name']))
 
-            pkgname = pkg['Name']
-            DS.fancy_msg(_('Building {}...').format(pkgname))
+            DS.fancy_msg(_('Building {}...').format(pkg['Name']))
             self.utils.print_package_search(pkg,
                                             prefix=DS.colors['blue'] +
                                             '  ->' + DS.colors['all_off'] +
@@ -278,7 +279,7 @@ class Build:
 
                 os.chdir('./{}/'.format(pkg['Category']))
             else:
-                filename = pkgname + '.tar.gz'
+                filename = pkg['Name'] + '.tar.gz'
                 DS.fancy_msg(_('Downloading the tarball...'))
                 downloadbytes = self.download(pkg['URLPath'], filename)
                 kbytes = int(downloadbytes) / 1000
@@ -287,7 +288,7 @@ class Build:
                 DS.fancy_msg(_('Extracting...'))
                 DS.fancy_msg2(_('{} files extracted').format(self.extract(
                     filename)))
-            os.chdir('./{}/'.format(pkgname))
+            os.chdir('./{}/'.format(pkg['Name']))
 
             if performdepcheck:
                 DS.fancy_msg(_('Checking dependencies...'))
@@ -327,11 +328,13 @@ class Build:
                 # they do, they will be caught by the 2nd fallback (crappy
                 # packages)
                 datep = datetime.date.today().strftime('%Y%m%d')
-                att0 = set(glob.glob(pkgfilestr.format(pkgname,
+                att0 = set(glob.glob(pkgfilestr.format(pkg['Name'],
                                      pkg['Version'], '*')))
-                att1 = set(glob.glob(pkgfilestr.format(pkgname, datep, '')))
-                att2 = set(glob.glob(pkgfilestr.format(pkgname, '*', '')))
-                sigf = set(glob.glob(pkgfilestr.format(pkgname, '*', '.sig')))
+                att1 = set(glob.glob(pkgfilestr.format(pkg['Name'], datep,
+                                                       '')))
+                att2 = set(glob.glob(pkgfilestr.format(pkg['Name'], '*', '')))
+                sigf = set(glob.glob(pkgfilestr.format(pkg['Name'], '*',
+                                                       '.sig')))
 
                 att0 = list(att0 - sigf)
                 att1 = list(att1 - sigf)
