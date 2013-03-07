@@ -71,6 +71,9 @@ def main(source='AUTO', quit=True):
                             'install packages after building'))
         argopt.add_argument('-S', '--sync', action='store_true', default=False,
                             dest='pac', help=_('pacman-like mode'))
+        argopt.add_argument('--safeupgrade', action='store_true',
+                            default=False, dest='safeupgrade', help=_(
+                                'Perform a failsafe upgrade for PKGBUILDer.'))
         argopt.add_argument('-y', '--refresh', action='store_true',
                             default=False, dest='pacupd', help=_('(dummy)'))
         argopr.add_argument('-i', '--info', action='store_true', default=False,
@@ -162,6 +165,39 @@ def main(source='AUTO', quit=True):
                 os.mkdir(path)
             os.chdir(path)
 
+        if args.safeupgrade:
+            DS.fancy_msg(_('PKGBUILDer Failsafe Upgrade'))
+            query = (DS.colors['green'] + '==>' +
+                     DS.colors['all_off'] + DS.colors['bold'] + ' ' +
+                     _('Build the git version? [y/N] ') +
+                     DS.colors['all_off'])
+
+            yesno = input(query)
+
+            if yesno.lower().strip().startswith('y'):
+                pkgname = 'pkgbuilder-git'
+            else:
+                pkgname = 'pkgbuilder'
+
+            DS.fancy_msg(_('Fetching package information...'))
+            pkg = utils.info([pkgname])[0]
+            DS.fancy_msg2(' '.join((pkg['Name'], pkg['Version'])))
+            filename = pkg['Name'] + '.tar.gz'
+            DS.fancy_msg(_('Downloading the tarball...'))
+            downloadbytes = build.download(pkg['URLPath'], filename)
+            kbytes = int(downloadbytes) / 1000
+            DS.fancy_msg2(_('{} kB downloaded').format(kbytes))
+
+            DS.fancy_msg(_('Extracting...'))
+            DS.fancy_msg2(_('{} files extracted').format(build.extract(
+                filename)))
+            os.chdir('./{}/'.format(pkg['Name']))
+            DS.fancy_msg(_('Building {}...').format(pkg['Name']))
+            import subprocess
+            mpstatus = subprocess.call('makepkg -sicf', shell=True)
+            DS.fancy_msg(_('Build finished with return code '
+                           '{}.').format(mpstatus))
+            exit(mpstatus)
         if args.upgrade > 0:
             DS.log.info('Starting upgrade...')
             dodowngrade = args.upgrade > 1
