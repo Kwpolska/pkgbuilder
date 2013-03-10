@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.6.1\n"
+"Project-Id-Version: 2.1.6.2\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2013-03-06 20:12+0100\n"
+"POT-Creation-Date: 2013-03-10 19:00+0100\n"
 "PO-Revision-Date: 2013-09-21 20:21+0200\n"
 "Last-Translator: Colin Woodbury <colingw@gmail.com>\n"
 "Language-Team: Colin Woodbury <colingw@gmail.com>\n"
@@ -20,119 +20,119 @@ msgstr ""
 msgid "AUR: HTTP Error {}"
 msgstr "AUR: HTTPエラー発生 {}"
 
-#: pkgbuilder/build.py:43
+#: pkgbuilder/build.py:45
 msgid "Validating installation status..."
 msgstr "インストール無事終了確認中・・・"
 
-#: pkgbuilder/build.py:56
+#: pkgbuilder/build.py:58
 msgid "{}: not an AUR package"
 msgstr "{}: AURパッケージではない"
 
-#: pkgbuilder/build.py:59 pkgbuilder/build.py:69
+#: pkgbuilder/build.py:61 pkgbuilder/build.py:71
 msgid "{}: installed {}"
 msgstr "{}: 「{}」をインストール済み"
 
-#: pkgbuilder/build.py:63
+#: pkgbuilder/build.py:65
 msgid "{}: NOT installed"
 msgstr "{}：インストールされていない"
 
-#: pkgbuilder/build.py:66
+#: pkgbuilder/build.py:68
 msgid "{}: outdated {}"
 msgstr "{}：「{}」より要更新"
 
-#: pkgbuilder/build.py:74
+#: pkgbuilder/build.py:76
 msgid "Installing built packages..."
 msgstr "作成したパッケージをインストール中・・・"
 
-#: pkgbuilder/build.py:106
+#: pkgbuilder/build.py:108
 msgid "The build function reported a proper build."
 msgstr "パッケージ作成成功。"
 
 #. PBxxx.
-#: pkgbuilder/build.py:108
+#: pkgbuilder/build.py:110
 msgid "makepkg (or someone else) failed and returned {}."
 msgstr "makepkgなどが「{}」で失敗したようだ。"
 
 #. PBSUX.
-#: pkgbuilder/build.py:112
+#: pkgbuilder/build.py:114
 msgid "PKGBUILDer had a problem."
 msgstr "PKGBUILDerに問題発生。"
 
 #. I/O error.
-#: pkgbuilder/build.py:115
+#: pkgbuilder/build.py:117
 msgid "There was an input/output error."
 msgstr "入力・出力エラー発生。"
 
 #. PBDEP.
-#: pkgbuilder/build.py:118
+#: pkgbuilder/build.py:120
 msgid "Building more AUR packages is required."
 msgstr "AURパッケージを更に作成する必要がある。"
 
-#: pkgbuilder/build.py:147
+#: pkgbuilder/build.py:149
 msgid "download: HTTP Error {}"
 msgstr "ダウンロード状態：HTTPエラー {}"
 
-#: pkgbuilder/build.py:150
+#: pkgbuilder/build.py:152
 msgid "download: 0 bytes downloaded"
 msgstr "ダウンロード状態：1バイトもダウンロードされなかった"
 
-#: pkgbuilder/build.py:166
+#: pkgbuilder/build.py:168
 msgid "extract: no files extracted"
 msgstr "抽出状態：ファイルは1つも抽出されなかった"
 
-#: pkgbuilder/build.py:217
+#: pkgbuilder/build.py:219
 msgid "depcheck: cannot find {} anywhere"
 msgstr "従属パッケージ状態：「{}」をどこでも見つからなかった"
 
-#: pkgbuilder/build.py:252
+#: pkgbuilder/build.py:254
 msgid "Package {} not found."
 msgstr "パッケージ「{}」は見つからなかった。"
 
-#: pkgbuilder/build.py:255
+#: pkgbuilder/build.py:256 pkgbuilder/main.py:195
 msgid "Building {}..."
 msgstr "「{}」を作成中・・・"
 
-#: pkgbuilder/build.py:263
+#: pkgbuilder/build.py:264
 msgid "Synchronizing the ABS tree..."
 msgstr "パッケージデーターベースを同期中・・・"
 
-#: pkgbuilder/build.py:277
+#: pkgbuilder/build.py:278
 msgid "Failed to synchronize the ABS tree."
 msgstr "ABSの同期は失敗した。"
 
-#: pkgbuilder/build.py:282
+#: pkgbuilder/build.py:283 pkgbuilder/main.py:186
 msgid "Downloading the tarball..."
 msgstr "ターボールをダウンロード中・・・"
 
-#: pkgbuilder/build.py:285
+#: pkgbuilder/build.py:286 pkgbuilder/main.py:189
 msgid "{} kB downloaded"
 msgstr "{} kBをダウンロード済み"
 
-#: pkgbuilder/build.py:287
+#: pkgbuilder/build.py:288 pkgbuilder/main.py:191
 msgid "Extracting..."
 msgstr "抽出中・・・"
 
-#: pkgbuilder/build.py:288
+#: pkgbuilder/build.py:289 pkgbuilder/main.py:192
 msgid "{} files extracted"
 msgstr "ファイルを{}個抽出した"
 
-#: pkgbuilder/build.py:293
+#: pkgbuilder/build.py:294
 msgid "Checking dependencies..."
 msgstr "従属パッケージを確認中・・・"
 
-#: pkgbuilder/build.py:296
+#: pkgbuilder/build.py:297
 msgid "found in system"
 msgstr "インストール済み"
 
-#: pkgbuilder/build.py:296
+#: pkgbuilder/build.py:297
 msgid "found in repos"
 msgstr "リポジトリに存在"
 
-#: pkgbuilder/build.py:297
+#: pkgbuilder/build.py:298
 msgid "found in the AUR"
 msgstr "AURに存在"
 
-#: pkgbuilder/build.py:300
+#: pkgbuilder/build.py:301
 msgid "none found"
 msgstr "従属パッケージなし"
 
@@ -202,43 +202,65 @@ msgstr "作成後、パッケージをインストールしない"
 msgid "pacman-like mode"
 msgstr "pacmanモード"
 
-#: pkgbuilder/main.py:75
+#: pkgbuilder/main.py:76
+msgid "perform a failsafe upgrade for PKGBUILDer"
+msgstr ""
+
+#: pkgbuilder/main.py:78
 msgid "(dummy)"
 msgstr "（本当は何もしない）"
 
-#: pkgbuilder/main.py:77
+#: pkgbuilder/main.py:80
 msgid "view package information"
 msgstr "パッケージ情報を見る"
 
-#: pkgbuilder/main.py:79
+#: pkgbuilder/main.py:82
 msgid "search the AUR for matching strings"
 msgstr "AURを検索"
 
-#: pkgbuilder/main.py:83
+#: pkgbuilder/main.py:86
 msgid "upgrade installed AUR packages"
 msgstr "インストール済みのAURパッケージをアップグレード"
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
-#: pkgbuilder/main.py:125
+#: pkgbuilder/main.py:128
 msgid "Search query too short, API limitation"
 msgstr "検索の問いが短すぎる"
 
-#: pkgbuilder/main.py:126
+#: pkgbuilder/main.py:129
 msgid "Searching for exact match..."
 msgstr "完全一致を検索中・・・"
 
-#: pkgbuilder/main.py:129 INSTALL.py:65 INSTALL.py:74
+#: pkgbuilder/main.py:132 INSTALL.py:65 INSTALL.py:74
 msgid "not found"
 msgstr "見つからなかった"
 
-#: pkgbuilder/main.py:175
+#: pkgbuilder/main.py:169
+#, fuzzy
+msgid "PKGBUILDer Failsafe Upgrade"
+msgstr "PKGBUILDerに問題発生。"
+
+#: pkgbuilder/main.py:172
+msgid "Build the git version? [y/N] "
+msgstr ""
+
+#: pkgbuilder/main.py:182
+#, fuzzy
+msgid "Fetching package information..."
+msgstr "パッケージ情報を見る"
+
+#: pkgbuilder/main.py:198
+msgid "Build finished with return code {}."
+msgstr ""
+
+#: pkgbuilder/main.py:211
 msgid "Running PKGBUILDer as root can break your system!"
 msgstr "管理者としてPKGBUILDerを実行すると危険性あり！"
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/main.py:200 pkgbuilder/main.py:206 pkgbuilder/main.py:212
-#: pkgbuilder/main.py:218
+#: pkgbuilder/main.py:236 pkgbuilder/main.py:242 pkgbuilder/main.py:248
+#: pkgbuilder/main.py:254
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
@@ -254,7 +276,7 @@ msgstr "ユーザーによる強制終了！"
 msgid "Interrupt signal received\n"
 msgstr "途中切断\n"
 
-#: pkgbuilder/pbds.py:90 pkgbuilder/pbds.py:226
+#: pkgbuilder/pbds.py:90 pkgbuilder/pbds.py:204
 msgid "ERROR:"
 msgstr "エラー："
 
@@ -262,7 +284,7 @@ msgstr "エラー："
 msgid "Cannot create the configuration directory."
 msgstr "設定ディレクトリ作れなかった。"
 
-#: pkgbuilder/pbds.py:92 pkgbuilder/pbds.py:212
+#: pkgbuilder/pbds.py:92 pkgbuilder/pbds.py:190
 msgid "WARNING:"
 msgstr "警告："
 

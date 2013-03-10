@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.1.6.1
+# PKGBUILDer v2.1.6.2
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
@@ -73,7 +73,7 @@ def main(source='AUTO', quit=True):
                             dest='pac', help=_('pacman-like mode'))
         argopt.add_argument('--safeupgrade', action='store_true',
                             default=False, dest='safeupgrade', help=_(
-                                'Perform a failsafe upgrade for PKGBUILDer.'))
+                                'perform a failsafe upgrade for PKGBUILDer'))
         argopt.add_argument('-y', '--refresh', action='store_true',
                             default=False, dest='pacupd', help=_('(dummy)'))
         argopr.add_argument('-i', '--info', action='store_true', default=False,
