@@ -98,42 +98,21 @@ class PBDS():
     log = logging.getLogger('pkgbuilder')
     log.info('*** PKGBUILDer v' + __version__)
 
-    def run_command(self, *rargs, **kwargs):
+    def run_command(self, args, prepend=[], asonearg=False):
         """
         Run a command.
 
         .. note:: Accepts only one command.  ``shell=False``, for safety.
         asonearg is for ``su -c`` and most people don’t need nor want it.
 
-        ``*rargs`` is catching all the arguments.  However, in order to make
-        sure that nothing breaks, it checks if the element is a list or a
-        tuple.  If yes, it becomes the argument list; if not, the argument list
-        is ``*rargs`` split on spaces (``.split(' ')``).  Finally, the list is
-        passed to ``subprocess.call``.
+        .. note:: since version 2.1.6.2, ``args`` must be a list.
         """
-        args = []
-        if 'prepend' not in kwargs:
-            prepend = []
-        else:
-            prepend = kwargs['prepend']
-
-        if 'asonearg' not in kwargs:
-            asonearg = False
-        else:
-            asonearg = kwargs['asonearg']
-
-        for i in rargs:
-            if type(i) == list or type(i) == tuple:
-                args += i
-            else:
-                args += [j for j in i.split(' ')]
-
         if asonearg:
             return subprocess.call(prepend + [' '.join(args)])
         else:
-            return subprocess.call(prepend + args)
+            return subprocess.call(prepend + list(args))
 
-    def sudo(self, *args):
+    def sudo(self, args):
         """
         Run as root.  ``sudo`` if present, ``su -c`` otherwise, nothing if
         already running as root.
@@ -142,12 +121,12 @@ class PBDS():
         """
         if self.uid != 0:
             if self.hassudo:
-                return self.run_command(*args, prepend=['sudo'])
+                return self.run_command(args, prepend=['sudo'])
             else:
-                return self.run_command(*args, prepend=['su', '-c'],
+                return self.run_command(args, prepend=['su', '-c'],
                                         asonearg=True)
         else:
-            return subprocess.call(args)
+            return self.run_command(args)
 
     def debugmode(self, nochange=False):
         """Print all the logged messages to stderr."""
@@ -158,8 +137,7 @@ class PBDS():
                                       ':%(name)-10s: %(message)s'))
             logging.getLogger('').addHandler(self.console)
             self.debug = True
-            self.mp1 = 'pb'
-            self.mp2 = 'pb'
+            self.mp1 = self.mp2 = 'pb'
         elif self.debug and nochange:
             pass
         else:
