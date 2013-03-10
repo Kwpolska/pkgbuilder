@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.6.1\n"
+"Project-Id-Version: 2.1.6.2\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2013-03-06 20:12+0100\n"
+"POT-Creation-Date: 2013-03-10 19:00+0100\n"
 "PO-Revision-Date: 2013-09-08 12:44+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
@@ -20,119 +20,119 @@ msgstr ""
 msgid "AUR: HTTP Error {}"
 msgstr "AUR: HTTP Error {}"
 
-#: pkgbuilder/build.py:43
+#: pkgbuilder/build.py:45
 msgid "Validating installation status..."
 msgstr "Validating installation status..."
 
-#: pkgbuilder/build.py:56
+#: pkgbuilder/build.py:58
 msgid "{}: not an AUR package"
 msgstr "{}: not an AUR package"
 
-#: pkgbuilder/build.py:59 pkgbuilder/build.py:69
+#: pkgbuilder/build.py:61 pkgbuilder/build.py:71
 msgid "{}: installed {}"
 msgstr "{}: installed {}"
 
-#: pkgbuilder/build.py:63
+#: pkgbuilder/build.py:65
 msgid "{}: NOT installed"
 msgstr "{}: NOT installed"
 
-#: pkgbuilder/build.py:66
+#: pkgbuilder/build.py:68
 msgid "{}: outdated {}"
 msgstr "{}: outdated {}"
 
-#: pkgbuilder/build.py:74
+#: pkgbuilder/build.py:76
 msgid "Installing built packages..."
 msgstr "Installing built packages..."
 
-#: pkgbuilder/build.py:106
+#: pkgbuilder/build.py:108
 msgid "The build function reported a proper build."
 msgstr "The build function reported a proper build."
 
 #. PBxxx.
-#: pkgbuilder/build.py:108
+#: pkgbuilder/build.py:110
 msgid "makepkg (or someone else) failed and returned {}."
 msgstr "makepkg (or someone else) failed and returned {}."
 
 #. PBSUX.
-#: pkgbuilder/build.py:112
+#: pkgbuilder/build.py:114
 msgid "PKGBUILDer had a problem."
 msgstr "PKGBUILDer had a problem."
 
 #. I/O error.
-#: pkgbuilder/build.py:115
+#: pkgbuilder/build.py:117
 msgid "There was an input/output error."
 msgstr "There was an input/output error."
 
 #. PBDEP.
-#: pkgbuilder/build.py:118
+#: pkgbuilder/build.py:120
 msgid "Building more AUR packages is required."
 msgstr "Building more AUR packages is required."
 
-#: pkgbuilder/build.py:147
+#: pkgbuilder/build.py:149
 msgid "download: HTTP Error {}"
 msgstr "download: HTTP Error {}"
 
-#: pkgbuilder/build.py:150
+#: pkgbuilder/build.py:152
 msgid "download: 0 bytes downloaded"
 msgstr "download: 0 bytes downloaded"
 
-#: pkgbuilder/build.py:166
+#: pkgbuilder/build.py:168
 msgid "extract: no files extracted"
 msgstr "extract: no files extracted"
 
-#: pkgbuilder/build.py:217
+#: pkgbuilder/build.py:219
 msgid "depcheck: cannot find {} anywhere"
 msgstr "depcheck: cannot find {} anywhere"
 
-#: pkgbuilder/build.py:252
+#: pkgbuilder/build.py:254
 msgid "Package {} not found."
 msgstr "Package {} not found."
 
-#: pkgbuilder/build.py:255
+#: pkgbuilder/build.py:256 pkgbuilder/main.py:195
 msgid "Building {}..."
 msgstr "Building {}..."
 
-#: pkgbuilder/build.py:263
+#: pkgbuilder/build.py:264
 msgid "Synchronizing the ABS tree..."
 msgstr "Synchronizing the ABS tree..."
 
-#: pkgbuilder/build.py:277
+#: pkgbuilder/build.py:278
 msgid "Failed to synchronize the ABS tree."
 msgstr "Failed to synchronize the ABS tree."
 
-#: pkgbuilder/build.py:282
+#: pkgbuilder/build.py:283 pkgbuilder/main.py:186
 msgid "Downloading the tarball..."
 msgstr "Downloading the tarball..."
 
-#: pkgbuilder/build.py:285
+#: pkgbuilder/build.py:286 pkgbuilder/main.py:189
 msgid "{} kB downloaded"
 msgstr "{} kB downloaded"
 
-#: pkgbuilder/build.py:287
+#: pkgbuilder/build.py:288 pkgbuilder/main.py:191
 msgid "Extracting..."
 msgstr "Extracting..."
 
-#: pkgbuilder/build.py:288
+#: pkgbuilder/build.py:289 pkgbuilder/main.py:192
 msgid "{} files extracted"
 msgstr "{} files extracted"
 
-#: pkgbuilder/build.py:293
+#: pkgbuilder/build.py:294
 msgid "Checking dependencies..."
 msgstr "Checking dependencies..."
 
-#: pkgbuilder/build.py:296
+#: pkgbuilder/build.py:297
 msgid "found in system"
 msgstr "found in system"
 
-#: pkgbuilder/build.py:296
+#: pkgbuilder/build.py:297
 msgid "found in repos"
 msgstr "found in repos"
 
-#: pkgbuilder/build.py:297
+#: pkgbuilder/build.py:298
 msgid "found in the AUR"
 msgstr "found in the AUR"
 
-#: pkgbuilder/build.py:300
+#: pkgbuilder/build.py:301
 msgid "none found"
 msgstr "none found"
 
@@ -202,43 +202,63 @@ msgstr "don't install packages after building"
 msgid "pacman-like mode"
 msgstr "pacman-like mode"
 
-#: pkgbuilder/main.py:75
+#: pkgbuilder/main.py:76
+msgid "perform a failsafe upgrade for PKGBUILDer"
+msgstr "erform a failsafe upgrade for PKGBUILDer"
+
+#: pkgbuilder/main.py:78
 msgid "(dummy)"
 msgstr "(dummy)"
 
-#: pkgbuilder/main.py:77
+#: pkgbuilder/main.py:80
 msgid "view package information"
 msgstr "view package information"
 
-#: pkgbuilder/main.py:79
+#: pkgbuilder/main.py:82
 msgid "search the AUR for matching strings"
 msgstr "search the AUR for matching strings"
 
-#: pkgbuilder/main.py:83
+#: pkgbuilder/main.py:86
 msgid "upgrade installed AUR packages"
 msgstr "upgrade installed AUR packages"
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
-#: pkgbuilder/main.py:125
+#: pkgbuilder/main.py:128
 msgid "Search query too short, API limitation"
 msgstr "Search query too short, API limitation"
 
-#: pkgbuilder/main.py:126
+#: pkgbuilder/main.py:129
 msgid "Searching for exact match..."
 msgstr "Searching for exact match..."
 
-#: pkgbuilder/main.py:129 INSTALL.py:65 INSTALL.py:74
+#: pkgbuilder/main.py:132 INSTALL.py:65 INSTALL.py:74
 msgid "not found"
 msgstr "not found"
 
-#: pkgbuilder/main.py:175
+#: pkgbuilder/main.py:169
+msgid "PKGBUILDer Failsafe Upgrade"
+msgstr "PKGBUILDer Failsafe Upgrade"
+
+#: pkgbuilder/main.py:172
+msgid "Build the git version? [y/N] "
+msgstr "Build the git version? [y/N] "
+
+#: pkgbuilder/main.py:182
+msgid "Fetching package information..."
+msgstr "Fetching package information..."
+
+#: pkgbuilder/main.py:198
+msgid "Build finished with return code {}."
+msgstr "Build finished with return code {}."
+
+#: pkgbuilder/main.py:211
 msgid "Running PKGBUILDer as root can break your system!"
 msgstr "Running PKGBUILDer as root can break your system!"
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/main.py:200 pkgbuilder/main.py:206 pkgbuilder/main.py:212
-#: pkgbuilder/main.py:218
+#: pkgbuilder/main.py:236 pkgbuilder/main.py:242 pkgbuilder/main.py:248
+#: pkgbuilder/main.py:254
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
@@ -256,7 +276,7 @@ msgstr "Aborted by user! Exiting..."
 msgid "Interrupt signal received\n"
 msgstr "Interrupt signal received\n"
 
-#: pkgbuilder/pbds.py:90 pkgbuilder/pbds.py:226
+#: pkgbuilder/pbds.py:90 pkgbuilder/pbds.py:204
 msgid "ERROR:"
 msgstr "ERROR:"
 
@@ -264,7 +284,7 @@ msgstr "ERROR:"
 msgid "Cannot create the configuration directory."
 msgstr "Cannot create the configuration directory."
 
-#: pkgbuilder/pbds.py:92 pkgbuilder/pbds.py:212
+#: pkgbuilder/pbds.py:92 pkgbuilder/pbds.py:190
 msgid "WARNING:"
 msgstr "WARNING:"
 

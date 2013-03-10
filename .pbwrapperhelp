@@ -33,8 +33,8 @@ options:
       --noscriptlet    do not execute the install scriptlet if one exists
       --print-format <string>
                        specify how the targets should be printed
-usage: pkgbuilder [-h] [-V] [-c] [-C] [--debug] [-d] [-D] [-v] [-w] [-S] [-y]
-                  [-i] [-s] [-u]
+usage: pkgbuilder [-h] [-V] [-c] [-C] [--debug] [-d] [-D] [-v] [-w] [-S]
+                  [--safeupgrade] [-y] [-i] [-s] [-u]
                   [PACKAGE [PACKAGE ...]]
 
 An AUR helper (and library) in Python 3.
@@ -55,6 +55,7 @@ options:
   -v, --novalidation  don't check if packages were installed after build
   -w, --buildonly     don't install packages after building
   -S, --sync          pacman-like mode
+  --safeupgrade       perform a failsafe upgrade for PKGBUILDer
   -y, --refresh       (dummy)
 
 operations:
