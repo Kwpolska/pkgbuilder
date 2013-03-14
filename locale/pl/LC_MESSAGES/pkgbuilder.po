@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: 2.1.6.2\n"
+"Project-Id-Version: 2.1.6.3\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2013-03-10 19:00+0100\n"
+"POT-Creation-Date: 2013-03-14 20:36+0100\n"
 "PO-Revision-Date: 2013-09-08 12:44+0100\n"
 "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
 "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
@@ -98,43 +98,43 @@ msgstr "Budowanie {}..."
 msgid "Synchronizing the ABS tree..."
 msgstr "Synchronizowanie drzewa ABS..."
 
-#: pkgbuilder/build.py:278
+#: pkgbuilder/build.py:276
 msgid "Failed to synchronize the ABS tree."
 msgstr "Nie udało się zsynchronizować drzewa ABS."
 
-#: pkgbuilder/build.py:283 pkgbuilder/main.py:186
+#: pkgbuilder/build.py:281 pkgbuilder/main.py:186
 msgid "Downloading the tarball..."
 msgstr "Pobieranie tarballa..."
 
-#: pkgbuilder/build.py:286 pkgbuilder/main.py:189
+#: pkgbuilder/build.py:284 pkgbuilder/main.py:189
 msgid "{} kB downloaded"
 msgstr "pobrano {} kB"
 
-#: pkgbuilder/build.py:288 pkgbuilder/main.py:191
+#: pkgbuilder/build.py:286 pkgbuilder/main.py:191
 msgid "Extracting..."
 msgstr "Wypakowywanie..."
 
-#: pkgbuilder/build.py:289 pkgbuilder/main.py:192
+#: pkgbuilder/build.py:287 pkgbuilder/main.py:192
 msgid "{} files extracted"
 msgstr "wypakowano {} plików"
 
-#: pkgbuilder/build.py:294
+#: pkgbuilder/build.py:292
 msgid "Checking dependencies..."
 msgstr "Sprawdzanie zależności..."
 
-#: pkgbuilder/build.py:297
+#: pkgbuilder/build.py:295
 msgid "found in system"
 msgstr "znaleziono w systemie"
 
-#: pkgbuilder/build.py:297
+#: pkgbuilder/build.py:295
 msgid "found in repos"
 msgstr "znaleziono w repozytoriach"
 
-#: pkgbuilder/build.py:298
+#: pkgbuilder/build.py:296
 msgid "found in the AUR"
 msgstr "znaleziono w AUR"
 
-#: pkgbuilder/build.py:301
+#: pkgbuilder/build.py:299
 msgid "none found"
 msgstr "brak"
 
