@@ -25,6 +25,7 @@ import os
 import pyalpm
 import pycman
 import requests
+import requests.exceptions
 import re
 import tarfile
 import subprocess
@@ -142,7 +143,11 @@ class Build:
 
     def download(self, urlpath, filename, prot='http'):
         """Downloads an AUR tarball (http) to the current directory."""
-        r = requests.get(self.aururl.format(prot, urlpath))
+        try:
+            r = requests.get(self.aururl.format(prot, urlpath))
+        except requests.exceptions.ConnectionError as e:
+            raise PBError(_('AUR: connection error '
+                            '({})').format(e.args[0].reason))
 
         # Error handling.
         if r.status_code != 200:
