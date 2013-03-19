@@ -18,6 +18,7 @@
 
 from . import _, PBError
 import requests
+import requests.exceptions
 import json
 
 
@@ -49,7 +50,12 @@ class AUR:
         if arg == []:
             return '[]'  # No need to bother, string for JSON.
 
-        req = requests.get(self.rpc.format(prot, rtype, arg))
+        try:
+            req = requests.get(self.rpc.format(prot, rtype, arg))
+        except requests.exceptions.ConnectionError as e:
+            raise PBError(_('AUR: connection error '
+                            '({})').format(e.args[0].reason))
+
         req.raise_for_status()
         if req.status_code != 200:
             raise PBError(_('AUR: HTTP Error {}').format(
@@ -63,7 +69,12 @@ class AUR:
             return '[]'  # No need to bother, string for JSON.
 
         urlargs = '&arg[]=' + '&arg[]='.join(args)
-        req = requests.get(self.mrpc.format(prot, urlargs))
+        try:
+            req = requests.get(self.mrpc.format(prot, urlargs))
+        except requests.exceptions.ConnectionError as e:
+            raise PBError(_('AUR: connection error '
+                            '({})').format(e.args[0].reason))
+
         req.raise_for_status()
         if req.status_code != 200:
             raise PBError(_('AUR: HTTP Error {}').format(
