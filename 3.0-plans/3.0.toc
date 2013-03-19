@@ -1,0 +1,16 @@
+\contentsline {part}{I\hspace {1em}Exceptions}{5}{part.1}
+\contentsline {chapter}{\numberline {1}The current system}{7}{chapter.1}
+\contentsline {section}{\numberline {1.1}But wait, there’s more!}{7}{section.1.1}
+\contentsline {section}{\numberline {1.2}Recap: why is it so \emph {evil}?}{8}{section.1.2}
+\contentsline {chapter}{\numberline {2}Exceptions \osn 2.0 \rm }{9}{chapter.2}
+\contentsline {section}{\numberline {2.1}How to fix it?}{9}{section.2.1}
+\contentsline {section}{\numberline {2.2}Proposed subclasses}{9}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}But will those subclasses be?}{9}{subsection.2.2.1}
+\contentsline {part}{II\hspace {1em}Improved \textsc {oop}}{11}{part.2}
+\contentsline {chapter}{\numberline {3}What and why}{13}{chapter.3}
+\contentsline {part}{III\hspace {1em}Force {\language \langwohyphens \texttt {--safeupgrade}} for \textsc {pkgbuild}er}{15}{part.3}
+\contentsline {chapter}{\numberline {4}Rationale}{17}{chapter.4}
+\contentsline {section}{\numberline {4.1}How to pull it off?}{17}{section.4.1}
+\contentsline {part}{IV\hspace {1em}{\language \langwohyphens \texttt {cower -d}} implementation}{19}{part.4}
+\contentsline {chapter}{\numberline {5}What does it do?}{21}{chapter.5}
+\contentsline {section}{\numberline {5.1}Implementation}{21}{section.5.1}

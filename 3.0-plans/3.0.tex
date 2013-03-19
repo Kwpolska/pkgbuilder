@@ -1,0 +1,442 @@
+% !TEX TS-program = xelatex
+% !TEX encoding = UTF-8 Unicode
+
+% Classes approved:
+% article   An article.  Standard printout.
+% paper     A paper.  Used for more advanced, non-printed documents.
+% proc      For demi-legal documents.
+% book      For things that will never happen.
+% letter    A letter.
+% report    A report.  For rare cases.
+\documentclass[a4paper,english]{book}
+\usepackage{fixltx2e}
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage[osf]{mathpazo}
+\setmainfont[Ligatures=TeX]{TeX Gyre Pagella}
+\setsansfont[Ligatures={NoRequired,NoCommon,NoContextual}]{Myriad Pro} % ligatures in sans-serifs are ugly and unnecessary.
+\setmonofont[]{DejaVu Sans Mono} % …and in monospace fonts, they are dumb (but DVSM has none no matter what)
+\newfontfamily{\osn}[Numbers=OldStyle]{TeX Gyre Pagella}
+\newfontfamily{\helv}[Numbers=Lining]{TeX Gyre Heros}
+\newcommand{\helvetica}[1]{{\helv #1}}
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+\usepackage{color}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{enumerate}
+\usepackage{varioref}
+\usepackage{setspace}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+\usepackage{hyphenat}
+\usepackage[parfill]{parskip}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{setspace}
+\usepackage{marginnote}
+\usepackage{xfrac}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{paralist}
+\usepackage{verbatim}
+\usepackage{subfig}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage[unicode, colorlinks, breaklinks, pdftitle={PKGBUILDer Exceptions 2.0},pdfauthor={Warrick, Chris “Kwpolska”}]{hyperref}
+\usepackage[vario]{fancyref}
+\usepackage{upquote}
+\usepackage{moreverb}
+\def\hypdate{\kern.1em-\kern.1em}
+\def\ndash{\ts--\hskip.25em}
+\def\mdash{\ts---\hskip.25em}
+\pdfpageheight\paperheight
+\pdfpagewidth\paperwidth
+\onehalfspacing
+
+\newcommand{\noun}[1]{\textsc{#1}}
+\providecommand{\tabularnewline}{\\}
+\date{}
+\makeatother
+\numberwithin{equation}{section}
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\nonfrenchspacing
+
+\usepackage{titlesec}
+
+\titleformat{\part}[display]
+{\normalfont\Huge\filcenter}
+{\fontsize{36pt}{1pc}\selectfont\textsc{Part} \thepart}
+{0.5pt}
+{\titlerule
+\vspace{0.25pc}%
+\fontsize{48pt}{1.2pt}\selectfont}
+
+\titleformat{\chapter}[display]
+{\normalfont\Large\filcenter}
+{\textsc{\chaptertitlename}\Huge{} \thechapter}
+{0.5pt}
+{\titlerule
+\vspace{0.25pc}%
+\Huge}
+
+\titleformat{\section}
+{\normalfont\LARGE}
+{\normalsize §\Huge\thesection}
+{0.5em}{}
+
+\titleformat{\subsection}
+{\normalfont\Large}
+{\footnotesize §\huge\thesubsection}
+{0.5em}{}
+
+\titleformat{\subsubsection}
+{\normalfont\large}
+{\scriptsize §\LARGE\thesubsubsection}
+{0.5em}{}
+
+\titleformat{\paragraph}[runin]
+{\bf}
+{¶\theparagraph}
+{1em}{}
+
+\titleformat{\subparagraph}[runin]
+{\bf}
+{\rm¶\bf\thesubparagraph}
+{1em}{}
+
+\titlespacing{\section}{0em}{0.1em}{0.1em}[0em]
+\titlespacing{\subsection}{0em}{0.1em}{0.1em}[0em]
+\titlespacing{\subsubsection}{0em}{0.1em}{0.1em}[0em]
+
+\usepackage{fancyvrb}
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.38,0.63,0.69}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.38,0.84}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.25,0.63,0.44}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.25,0.63,0.44}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.38,0.63,0.69}{##1}}\def\PY@bc##1{\setlength{\fboxsep}{0pt}\colorbox[rgb]{1.00,0.94,0.94}{\strut ##1}}}
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.38,0.84}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.25,0.63,0.44}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.84,0.33,0.22}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.13,0.44}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.05,0.52,0.71}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.38,0.68,0.84}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.05,0.52,0.71}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.33,0.33,0.33}{##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.02,0.16,0.49}{##1}}}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.44,0.63,0.82}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.38,0.84}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.02,0.16,0.45}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.38,0.84}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.78,0.36,0.04}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.78,0.36,0.04}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.38,0.63,0.69}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.38,0.63,0.69}{##1}}}
+\expandafter\def\csname PY@tok@ckw\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.0,0.66,0.86}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.25,0.63,0.44}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.32,0.47,0.09}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.14,0.33,0.53}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.25,0.63,0.44}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.25,0.63,0.44}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.56,0.13,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.44,0.13}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.44,0.63}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+\usepackage{float}
+\floatstyle{ruled}
+\newfloat{listingf}{tbh}{lop}
+\floatname{listingf}{Listing}
+
+\newcommand{\pb}[0]{\textsc{pkgbuild}er}
+\newcommand{\p}[1]{\nohyphens{\texttt{#1}}}
+\begin{document}
+\title{\pb{} \oldstylenums{3.0}}
+\author{Chris “Kwpolska” Warrick}
+\date{2013-03-19}
+
+
+\begin{titlepage} \fontsize{48pt}{2pt}\selectfont \begin{center}
+\null\vfil
+\pb{} \osn 3.0
+
+\Huge{} Chris \emph{Kwpolska} Warrick
+
+\huge \rm 2013-03-19
+\end{center}
+\normalsize
+
+~
+
+The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”,  “MAY”, and “OPTIONAL” in this document are to be interpreted as described in RFC 2119.
+
+Code listings were (more or less) heavily modified before inclusion.  Comments that are only in this document are marked with \PY{ckw}{\PYZsh{}} (as opposed to \PY{c}{\PYZsh{}}).
+
+\emph{This document plans many improvements.  Thus, I decided to name the new version 3.0, because 2.2 doesn’t feel right given the scale of those improvements.}
+
+\vfil\null
+
+\end{titlepage}
+
+
+
+\tableofcontents{}
+
+\part{Exceptions}
+\chapter{The current system}
+
+It is ugly.  There is one exception: PBError.  It takes messages.  You know, \emph{text}.  To display for \emph{humans}, not \emph{machines}.  For example, like this:
+
+\begin{listingf}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{raise} \PY{n}{PBError}\PY{p}{(}\PY{n}{\PYZus{}}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{AUR: HTTP Error \PYZob{}\PYZcb{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{req}\PY{o}{.}\PY{n}{status\PYZus{}code}\PY{p}{)}\PY{p}{)}
+\PY{k}{raise} \PY{n}{PBError}\PY{p}{(}\PY{n}{\PYZus{}}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{download: 0 bytes downloaded}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+\caption{Current error messages.}
+\end{listingf}
+
+That’s uninformative.  What does the error code mean, exactly?  Not everybody has the \textsc{http} status codes memorized (and \emph{nobody} memorizes the more obscure ones, which shouldn’t appear in PKGBUILDer at all\footnote{\label{fn:httpcodes}Error codes that are likely to appear and be unhandled in \pb: \osn 403, 404, 500, 501, 503.  Status codes that are handled by the awesome \emph{Requests} library include 200, 301, 302.\rm}).  Also, what does the \texttt{AUR} part mean, exactly?  The place \emph{in the code} where this message was produced.  In our case, it is \p{pkgbuilder.aur.AUR().jsonreq()} and \p{pkgbuilder.build.Build().download()}.
+
+\section{But wait, there’s more!}
+
+The exceptions output are currently handled in \emph{three} places:
+\begin{enumerate}[a)]
+\item \p{main.main()} (see Listing \vref{mainl});
+\item \p{build.Build().auto\_build()} (Listing \vref{buildl2}; this is the ugliest code in \pb);
+\item \p{build.Build().build\_runner()} (Listing \vref{buildl1}).
+\end{enumerate}
+
+\begin{listingf}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{main}\PY{p}{(}\PY{n}{source}\PY{o}{=}\PY{l+s}{\PYZsq{}}\PY{l+s}{AUTO}\PY{l+s}{\PYZsq{}}\PY{p}{,} \PY{n}{quit}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)}\PY{p}{:}
+    \PY{l+s+sd}{\PYZdq{}\PYZdq{}\PYZdq{}Main routine of PKGBUILDer.\PYZdq{}\PYZdq{}\PYZdq{}}
+    \PY{k}{try}\PY{p}{:}
+        \PY{ckw}{\PYZsh{} 200 (yes, exactly 200!) lines of logic}
+    \PY{k}{except} \PY{n}{requests}\PY{o}{.}\PY{n}{exceptions}\PY{o}{.}\PY{n}{ConnectionError} \PY{k}{as} \PY{n}{inst}\PY{p}{:}
+        \PY{n}{DS}\PY{o}{.}\PY{n}{fancy\PYZus{}error}\PY{p}{(}\PY{n+nb}{str}\PY{p}{(}\PY{n}{inst}\PY{p}{)}\PY{p}{)}
+        \PY{c}{\PYZsh{} TRANSLATORS: do not translate the word \PYZsq{}requests\PYZsq{}.}
+        \PY{n}{DS}\PY{o}{.}\PY{n}{fancy\PYZus{}error}\PY{p}{(}\PY{n}{\PYZus{}}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{PKGBUILDer (or the requests library) had }\PY{l+s}{\PYZsq{}}
+                         \PY{l+s}{\PYZsq{}}\PY{l+s}{problems with fulfilling an HTTP request.}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{exit}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+        \PY{ckw}{\PYZsh{} snip the exact same thing thrice, only with different exceptions}
+    \PY{k}{except} \PY{n}{PBError} \PY{k}{as} \PY{n}{inst}\PY{p}{:}
+        \PY{n}{DS}\PY{o}{.}\PY{n}{fancy\PYZus{}error}\PY{p}{(}\PY{n+nb}{str}\PY{p}{(}\PY{n}{inst}\PY{p}{)}\PY{p}{)}
+        \PY{n+nb}{exit}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+
+    \PY{n}{DS}\PY{o}{.}\PY{n}{log}\PY{o}{.}\PY{n}{info}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{Quitting.}\PY{l+s}{\PYZsq{}}\PY{p}{)}  \PY{ckw}{\PYZsh{} A very lonely line.}
+\end{Verbatim}
+\caption{\p{main.main()}}\label{mainl}
+\end{listingf}
+
+\begin{listingf}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{build\PYZus{}runner}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{pkgname}\PY{p}{,} \PY{n}{performdepcheck}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{,}
+                 \PY{n}{pkginstall}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)}\PY{p}{:}
+    \PY{ckw}{\PYZsh{} docstring goes here}
+    \PY{k}{try}\PY{p}{:}
+        \PY{ckw}{\PYZsh{} snip 79 lines of logic}
+            \PY{k}{if} \PY{n}{aurbuild} \PY{o}{!=} \PY{p}{[}\PY{p}{]}\PY{p}{:}
+                \PY{k}{return} \PY{p}{[}\PY{l+m+mi}{72337}\PY{p}{,} \PY{n}{aurbuild}\PY{p}{]}
+        \PY{ckw}{\PYZsh{} snip 43 lines}
+    \PY{k}{except} \PY{n}{PBError} \PY{k}{as} \PY{n}{inst}\PY{p}{:}
+        \PY{n}{DS}\PY{o}{.}\PY{n}{fancy\PYZus{}error}\PY{p}{(}\PY{n+nb}{str}\PY{p}{(}\PY{n}{inst}\PY{p}{)}\PY{p}{)}
+        \PY{k}{return} \PY{p}{[}\PY{l+m+mi}{72789}\PY{p}{,} \PY{n+nb+bp}{None}\PY{p}{]}
+    \PY{k}{except} \PY{n+ne}{IOError} \PY{k}{as} \PY{n}{inst}\PY{p}{:}
+        \PY{n}{DS}\PY{o}{.}\PY{n}{fancy\PYZus{}error}\PY{p}{(}\PY{n+nb}{str}\PY{p}{(}\PY{n}{inst}\PY{p}{)}\PY{p}{)}
+        \PY{k}{return} \PY{p}{[}\PY{l+m+mi}{72101}\PY{p}{,} \PY{n+nb+bp}{None}\PY{p}{]}
+\end{Verbatim}
+
+\caption{\p{build.Build().build\_runner().}}\label{buildl1}
+\end{listingf}
+
+\begin{listingf}
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k}{def} \PY{n+nf}{auto\PYZus{}build}\PY{p}{(}\PY{n+nb+bp}{self}\PY{p}{,} \PY{n}{pkgname}\PY{p}{,} \PY{n}{performdepcheck}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{,} \PY{n}{pkginstall}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)}\PY{p}{:}
+    \PY{ckw}{\PYZsh{} docstring goes here}
+    \PY{n}{build\PYZus{}result} \PY{o}{=} \PY{n+nb+bp}{self}\PY{o}{.}\PY{n}{build\PYZus{}runner}\PY{p}{(}\PY{n}{pkgname}\PY{p}{,} \PY{n}{performdepcheck}\PY{p}{,} \PY{n}{pkginstall}\PY{p}{)}
+    \PY{n}{os}\PY{o}{.}\PY{n}{chdir}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{../}\PY{l+s}{\PYZsq{}}\PY{p}{)}
+    \PY{k}{try}\PY{p}{:}
+        \PY{k}{if} \PY{n}{build\PYZus{}result}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
+            \PY{n}{DS}\PY{o}{.}\PY{n}{fancy\PYZus{}msg}\PY{p}{(}\PY{n}{\PYZus{}}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{The build function reported a proper build.}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+        \PY{k}{elif} \PY{n}{build\PYZus{}result}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{\PYZgt{}}\PY{o}{=} \PY{l+m+mi}{0} \PY{o+ow}{and} \PY{n}{build\PYZus{}result}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{\PYZlt{}} \PY{l+m+mi}{72000}\PY{p}{:}  \PY{c}{\PYZsh{} PBxxx.}
+            \PY{k}{raise} \PY{n}{PBError}\PY{p}{(}\PY{n}{\PYZus{}}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{makepkg (or someone else) failed and }\PY{l+s}{\PYZsq{}}
+                            \PY{l+s}{\PYZsq{}}\PY{l+s}{returned \PYZob{}\PYZcb{}.}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{build\PYZus{}result}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+            \PY{n+nb}{exit}\PY{p}{(}\PY{n}{build\PYZus{}result}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+        \PY{k}{elif} \PY{n}{build\PYZus{}result}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{==} \PY{l+m+mi}{72789}\PY{p}{:}  \PY{c}{\PYZsh{} PBSUX.}
+            \PY{k}{raise} \PY{n}{PBError}\PY{p}{(}\PY{n}{\PYZus{}}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{PKGBUILDer had a problem.}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+            \PY{n+nb}{exit}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+        \PY{k}{elif} \PY{n}{build\PYZus{}result}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{==} \PY{l+m+mi}{72101}\PY{p}{:}  \PY{c}{\PYZsh{} I/O error.}
+            \PY{k}{raise} \PY{n}{PBError}\PY{p}{(}\PY{n}{\PYZus{}}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{There was an input/output error.}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+            \PY{n+nb}{exit}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{)}
+        \PY{k}{elif} \PY{n}{build\PYZus{}result}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{==} \PY{l+m+mi}{72337}\PY{p}{:}  \PY{c}{\PYZsh{} PBDEP.}
+            \PY{ckw}{\PYZsh{} insert magic and recurrency here}
+
+        \PY{k}{return} \PY{n}{build\PYZus{}result}
+    \PY{k}{except} \PY{n}{PBError} \PY{k}{as} \PY{n}{inst}\PY{p}{:}
+        \PY{n}{DS}\PY{o}{.}\PY{n}{fancy\PYZus{}error}\PY{p}{(}\PY{n+nb}{str}\PY{p}{(}\PY{n}{inst}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+\caption{\p{build.Build().auto\_build()}, the ugliest code in \pb.}\label{buildl2}
+\end{listingf}
+
+\pagebreak
+\section{Recap: why is it so \emph{evil}?}\label{sec:e:1:recap}
+\osn The main problems are:
+
+\begin{enumerate}
+\item \emph{One} exception class that has only a \emph{human–only} (or even \emph{Chris–only!}) message;
+\item Weird return codes (\p{build.Build().auto\_build()} and his friend \p{build.Build().build\_runner()});
+\item Repetitiveness and general ugliness;
+\item If anyone uses \pb{} as a library in his code (eg. aurqt, which hadn’t had any problems \emph{yet} and to which this part the document applies), they hate my \p{PBError}s. \rm
+\end{enumerate}
+
+\chapter{Exceptions \osn 2.0 \rm}
+
+
+\section{How to fix it?}
+
+\rm Well, just the reverse of the list in \fref{sec:e:1:recap} and get: \osn
+
+\begin{enumerate}
+\item One base class (which, in order to break backwards compatibility for various reasons, \emph{won’t be named \p{PBError}}), multiple subclasses with appropriate class members;
+\item Replace the return codes with a true \p{try}…\p{except};
+\item Make it look pretty and drop all the repeats.
+\end{enumerate}
+
+\rm Easy, wasn’t it?  Even better, it is not too hard to fix it.  It requires time and thinking.
+
+\section{Proposed subclasses}
+
+\osn Keep in mind that this isn’t the finished list, and it might be expanded.  Also, as a general rule, we hate people doing \p{from} imports and make them \p{import pkgbuilder.exceptions}.
+
+\begin{enumerate}
+\item Base class: \Large\bf PBException\normalsize\rm\osn
+\begin{enumerate}
+
+\item AurError:
+\begin{itemize}
+\item \p{r.results} if \p{r.type == 'error'}.
+\end{itemize}
+
+\item MakepkgError:
+\begin{itemize}
+\item Carry non-zero return codes from \p{makepkg};
+\item Handled rather quickly, not to break anything.
+\end{itemize}
+
+\item NetworkError:
+\begin{itemize}
+\item Error codes listed in \fref{fn:httpcodes};
+\item \p{requests.exceptions}.
+\end{itemize}
+
+\item PackageError:
+\begin{itemize}
+\item When we can’t find a package or something regarding one is broken, somehow.
+\end{itemize}
+
+\item SanityError:
+\begin{itemize}
+\item When stuff goes apeshit.
+\end{itemize}
+
+\end{enumerate}
+\item IOError — handled in \p{main.main()} (now there are \p{build.Build()} handlers!).
+\end{enumerate}
+
+\subsection{But will those subclasses be?}
+
+I plan to put them in a new module, named (obviously) \p{exceptions}.  It will contain all the exceptions listed above, and anyone who needs them will import them.  This practice is inspired by \emph{Requests} by Kenneth Reitz.
+
+\part{Improved \textsc{oop}}
+
+\chapter{What and why}
+
+Our current \textsc{oop} is bad.  I plan to create a \p{Package} class, containing the obvious things, in an even nicer format.  Bonus points for handling AUR output as \p{pkg.\_\_dict\_\_.update()}.  Other classes, on the contrary, don’t make sense.
+
+\Large More details will be available soon. \normalsize
+
+\part{Force \p{--safeupgrade} for \pb}
+
+\chapter{Rationale}
+
+When pacman developers release a new version, you are asked to install it before any other upgrades.  \pb{} should do the same, but with one major change: using the \p{--safeupgrade} option, introduced in commit \p{0f91814e51} (merged in \p{72dda04c25}) and shipped with \rm 2.1.6.2. \osn
+
+\section{How to pull it off?}
+
+Steal the question from pacman localization files and ask it when we find a \pb{} upgrade.  When the user agrees, we need to run the \p{--safeupgrade} routine, which currently sits in \p{main.\textbf{main()}}.  It should be moved to \p{upgrade.pb\_failsafe()} or something like that.
+
+\part{\p{cower -d} implementation}
+
+\chapter{What does it do?}
+
+That’s probably the easiest improvement: add an option to run \p{build.Build.build\_runner()}, stopping right before \p{os.chdir('./\{\}/'.format(pkg['Name']))}.  Also, we will split the first few package determination lines to another function while we are at it.
+
+\section{Implementation}
+
+There is one major problem: \p{-dDw} are already used.  We would need to find a better abbreviation.
+
+\end{document}
