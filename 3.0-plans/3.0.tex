@@ -256,7 +256,8 @@ It is ugly.  There is one exception: PBError.  It takes messages.  You know, \em
 \PY{k}{raise} \PY{n}{PBError}\PY{p}{(}\PY{n}{\PYZus{}}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{AUR: HTTP Error \PYZob{}\PYZcb{}}\PY{l+s}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{format}\PY{p}{(}\PY{n}{req}\PY{o}{.}\PY{n}{status\PYZus{}code}\PY{p}{)}\PY{p}{)}
 \PY{k}{raise} \PY{n}{PBError}\PY{p}{(}\PY{n}{\PYZus{}}\PY{p}{(}\PY{l+s}{\PYZsq{}}\PY{l+s}{download: 0 bytes downloaded}\PY{l+s}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
-\caption{Current error messages.}
+\caption{Two sample exceptions raised in \pb{} \osn 2.1.6.3}
+
 \end{listingf}
 
 That’s uninformative.  What does the error code mean, exactly?  Not everybody has the \textsc{http} status codes memorized (and \emph{nobody} memorizes the more obscure ones, which shouldn’t appear in PKGBUILDer at all\footnote{\label{fn:httpcodes}Error codes that are likely to appear and be unhandled in \pb: \osn 403, 404, 500, 501, 503.  Status codes that are handled by the awesome \emph{Requests} library include 200, 301, 302.\rm}).  Also, what does the \texttt{AUR} part mean, exactly?  The place \emph{in the code} where this message was produced.  In our case, it is \p{pkgbuilder.aur.AUR().jsonreq()} and \p{pkgbuilder.build.Build().download()}.
@@ -358,11 +359,11 @@ The exceptions output are currently handled in \emph{three} places:
 
 \section{How to fix it?}
 
-\rm Well, just the reverse of the list in \fref{sec:e:1:recap} and get: \osn
+\rm Well, just reverse the list in \fref{sec:e:1:recap} and get: \osn
 
 \begin{enumerate}
-\item One base class (which, in order to break backwards compatibility for various reasons, \emph{won’t be named \p{PBError}}), multiple subclasses with appropriate class members;
-\item Replace the return codes with a true \p{try}…\p{except};
+\item One base class (which, in order to break backwards compatibility for various reasons, \emph{won’t be named} \p{PBError}), multiple subclasses with appropriate class members;
+\item Replace the return codes with a true \p{\PY{k}{try}/\PY{k}{except}} block;
 \item Make it look pretty and drop all the repeats.
 \end{enumerate}
 
@@ -376,48 +377,97 @@ The exceptions output are currently handled in \emph{three} places:
 \item Base class: \Large\bf PBException\normalsize\rm\osn
 \begin{enumerate}
 
-\item AurError:
-\begin{itemize}
-\item \p{r.results} if \p{r.type == 'error'}.
-\end{itemize}
-
-\item MakepkgError:
-\begin{itemize}
-\item Carry non-zero return codes from \p{makepkg};
-\item Handled rather quickly, not to break anything.
-\end{itemize}
-
-\item NetworkError:
-\begin{itemize}
-\item Error codes listed in \fref{fn:httpcodes};
-\item \p{requests.exceptions}.
-\end{itemize}
-
-\item PackageError:
-\begin{itemize}
-\item When we can’t find a package or something regarding one is broken, somehow.
-\end{itemize}
-
-\item SanityError:
-\begin{itemize}
-\item When stuff goes apeshit.
-\end{itemize}
-
+\item AURError (\p{\PY{n}{aur\PYZus{}response}\PY{o}{.}\PY{n}{results} \PY{k}{if} \PY{n}{aur\PYZus{}response}\PY{o}{.}\PY{n}{type} \PY{o}{==} \PY{l+s}{\PYZsq{}}\PY{l+s}{error}\PY{l+s}{\PYZsq{}}});
+\item MakepkgError;
+\item NetworkError;
+\item PackageError (see Part II and \fref{chap:2:package}):
+\begin{enumerate}
+\item PackageNotFoundError;
 \end{enumerate}
-\item IOError — handled in \p{main.main()} (now there are \p{build.Build()} handlers!).
+\item SanityError.
+\end{enumerate}
+\item IOError — handled in \p{main.main()} (now handled by the crazy \p{build.Build()} handlers!).
 \end{enumerate}
 
-\subsection{But will those subclasses be?}
+\subsection{But where will those subclasses be?}
 
-I plan to put them in a new module, named (obviously) \p{exceptions}.  It will contain all the exceptions listed above, and anyone who needs them will import them.  This practice is inspired by \emph{Requests} by Kenneth Reitz.
+I plan to put them in a new module, named (obviously) \p{exceptions}.  It will contain all the exceptions listed above, and anyone who needs them will import them.  This practice is inspired by \emph{Requests} by Kenneth \nohyphens{Reitz}.
+
+\chapter{Exception classes in depth}
+
+\section{PBException}
+
+This exception is used as a base exception.  All other exception inherit from this one.  It is also used for exceptions that don’t have their own classes yet.
+
+\section{AURError}
+
+This is the exception used for problems with the \textsc{aur rpc}.  When we get an answer, but it is an error, we should show it to the human verbatim, possibly throwing in some translations.
+
+\section{MakepkgError}
+
+Non–zero return codes of \p{makepkg}.  That is all.  Also, \emph{Resistance is futile.}  This means that we should not try to go anywhere further with this specific package when one occurs.  It should go up the stack to the first instance of \p{build.Build().auto\_build()}, preventing an infinite loop while building dependencies.
+
+\section{NetworkError}
+
+When anything in terms of the network breaks (didn’t get a response from the \textsc{aur rpc}, we throw a NetworkError.  Which should have a \p{origin} parameter, pointing to the \emph{Requests} exception.
+
+\section{PackageError}
+
+Anything that goes wrong regarding \p{Package}s.  The \p{Package} class is described in more detail in \fref{chap:2:package}.
+
+\subsection{PackageNotFoundError}
+
+No such package?  We throw this one instead.
+
+\section{SanityError}
+
+Any breakage and insanity goes here.  It is recommended to die as soon as a \p{SanityError} occurs.
 
 \part{Improved \textsc{oop}}
 
 \chapter{What and why}
 
-Our current \textsc{oop} is bad.  I plan to create a \p{Package} class, containing the obvious things, in an even nicer format.  Bonus points for handling AUR output as \p{pkg.\_\_dict\_\_.update()}.  Other classes, on the contrary, don’t make sense.
+Our current \textsc{oop} is bad.  I plan to create a \p{Package} class, containing the obvious things, in an even nicer format.  Bonus points for handling AUR output as \p{pkg.\_\_dict\_\_.update()} or a more human equvialent.  Certain other classes, on the contrary, don’t make sense.
 
-\Large More details will be available soon. \normalsize
+\chapter{The \p{Package} class and its subclasses} \label{chap:2:package}
+
+The \p{Package} class will replace what is currently known as \p{pkg} in the \p{Build} functions.  The current \p{pkg} is a dict, and in the future it will be an object of the \p{Package} class.  It will be compatible with both \textsc{aur} and \textsc{abs} packages, through two subclasses, \p{AURPackage} and \p{ABSPackage}.
+
+\section{Planned properties}
+
+Permitted types in italic.
+
+\subsection{\p{Package}}
+\begin{itemize}
+\item \emph{str} name;
+\item \emph{str} version;
+\item \emph{str} description;
+\item \emph{str} repo (Category for the \textsc{aur});
+\item \emph{str} url;
+\item \emph{str} licenses;
+\item \emph{str} human (Maintainer/Packager).
+\end{itemize}
+
+\subsection{\p{AURPackage}}
+
+\begin{itemize}
+\item \emph{int} id;
+\item \emph{bool} is\_outdated;
+\item \emph{datetime.datetime (aware)} added;
+\item \emph{datetime.datetime (aware)} modified;
+\item \emph{int} votes;
+\item \emph{str} urlpath.
+\end{itemize}
+
+\subsection{\p{ABSPackage}}
+
+\begin{itemize}
+\item \emph{str} architecture.
+\end{itemize}
+
+\chapter{Demolition of useless classes}
+
+\emph{Useless} means half of them.  \p{Utils}, \p{Build} and \p{Upgrade} \textbf{go to hell}.  Having them as classes is unnecessary.  I will turn those into modules and functions.  Basically, I will throw out one level of indentation from the file and nuke all \p{\PY{n+nb+bp}{self}\PY{o}{.}} instances.  Some more fixes, moving some things and it should be fine.  Did I mention completely demolishing backwards compatibility?  Well, this is where it becomes visible very nicely.
 
 \part{Force \p{--safeupgrade} for \pb}
 
@@ -437,6 +487,46 @@ That’s probably the easiest improvement: add an option to run \p{build.Build.b
 
 \section{Implementation}
 
-There is one major problem: \p{-dDw} are already used.  We would need to find a better abbreviation.
+There is one major problem: \p{-dDw} are already used.  We would need to find a better abbreviation.  \textbf{f}etch feels wrong IMO, because of \emph{force} which isn’t there \emph{yet} and won’t be in 3.0 (probably never, but still).  I could agree for a capital \textbf{F}, though.  And that is probably what will appear in the new version.
 
+\subsection{Sample output}
+
+\begin{listingf}
+\begin{Verbatim}
+[2/3] Downloading packages... [/] pkgbuilder
+\end{Verbatim}
+
+~
+
+\hrule
+
+~
+
+\begin{Verbatim}
+[3/3] Packages successfully downloaded
+[|] Extracting...
+\end{Verbatim}
+
+~
+
+\hrule
+
+~
+
+\begin{Verbatim}
+[3/3] Packages successfully downloaded
+[*] Packages successfully extracted
+Downloaded: pkgbuilder-git pkgbuilder python2-nikola-git
+\end{Verbatim}
+\caption{Sample output of the -F command, in three stages.}
+\end{listingf}
+
+\part{Other improvements}
+
+\chapter{Small fixes and improvements}
+\begin{enumerate}
+\item \p{\_\_all\_\_}.
+\item One instance of pycman/pyalpm per \pb{} instance.
+\item UI tools simillar to Tiedot.
+\end{enumerate}
 \end{document}
