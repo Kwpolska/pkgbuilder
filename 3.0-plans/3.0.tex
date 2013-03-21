@@ -427,11 +427,11 @@ Any breakage and insanity goes here.  It is recommended to die as soon as a \p{S
 
 \chapter{What and why}
 
-Our current \textsc{oop} is bad.  I plan to create a \p{Package} class, containing the obvious things, in an even nicer format.  Bonus points for handling AUR output as \p{pkg.\_\_dict\_\_.update()} or a more human equvialent.  Certain other classes, on the contrary, don’t make sense.
+Our current \textsc{oop} is bad.  I plan to create a \p{Package} class, containing the obvious things, in an even nicer format.  Bonus points for handling AUR output as \p{pkg.\_\_dict\_\_.update()} or a more human equvialent.  Certain other classes, on the contrary, don’t make sense.  This part describes the exact problems.
 
 \chapter{The \p{Package} class and its subclasses} \label{chap:2:package}
 
-The \p{Package} class will replace what is currently known as \p{pkg} in the \p{Build} functions.  The current \p{pkg} is a dict, and in the future it will be an object of the \p{Package} class.  It will be compatible with both \textsc{aur} and \textsc{abs} packages, through two subclasses, \p{AURPackage} and \p{ABSPackage}.
+The \p{Package} class will replace what is currently known as \p{pkg} in the \p{Build} functions.  The current \p{pkg} is a dict, coming directly from the \textsc{aur} or mimicking one as close as possible (\textsc{abs}), and in the future it will be an object of the \p{Package} class.  It will be compatible with both \textsc{aur} and \textsc{abs} packages, through two subclasses, \p{AURPackage} and \p{ABSPackage}.
 
 \section{Planned properties}
 
@@ -529,4 +529,24 @@ Downloaded: pkgbuilder-git pkgbuilder python2-nikola-git
 \item One instance of pycman/pyalpm per \pb{} instance.
 \item UI tools simillar to Tiedot.
 \end{enumerate}
+
+\part{Schedule}
+
+\chapter{The schedule at a glance}
+
+Names correspond to names of parts or chapters.  \(\Rightarrow\) is used to mark a dependency, i.e. \(\Rightarrow 1\) means that in order to do a stage, stage 1 needs to be completed.
+
+Note that work is the most likely to happen during the weekend.
+
+\begin{enumerate}[\bf {Stage} 1.\rm\osn]
+\item Demolition of useless classes
+\item Small fixes and improvements \(\Rightarrow 1\)
+\item Force \p{--safeupgrade} for \pb \(\Rightarrow 1\)
+\item \p{cower -d} implementation \(\Rightarrow 1, 2\)
+\item Exceptions 2.0 \(\Rightarrow 1\)
+\item The \p{Package} class and its subclasses \(\Rightarrow 1\)
+\end{enumerate}
+
+The full schedule will be available soon.
+
 \end{document}
