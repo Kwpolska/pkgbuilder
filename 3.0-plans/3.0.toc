@@ -31,3 +31,5 @@
 \contentsline {subsection}{\numberline {8.1.1}Sample output}{27}{subsection.8.1.1}
 \contentsline {part}{V\hspace {1em}Other improvements}{29}{part.5}
 \contentsline {chapter}{\numberline {9}Small fixes and improvements}{31}{chapter.9}
+\contentsline {part}{VI\hspace {1em}Schedule}{33}{part.6}
+\contentsline {chapter}{\numberline {10}The schedule at a glance}{35}{chapter.10}

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.4-0.9998 (TeX Live 2012/Arch Linux) (format=xelatex 2013.1.11)  20 MAR 2013 21:05
+This is XeTeX, Version 3.1415926-2.4-0.9998 (TeX Live 2012/Arch Linux) (format=xelatex 2013.1.11)  21 MAR 2013 21:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1478,22 +1478,28 @@ Chapter 8.
 
 ] [29] [30]
 Chapter 9.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 532.
 [31
 
+] [32
+
+] [33] [34]
+Chapter 10.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 552.
+[35
+
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 532.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 552.
  (./3.0.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 532.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 532.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 552.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 552.
  ) 
 Here is how much of TeX's memory you used:
- 27695 strings out of 494004
- 516016 string characters out of 3155736
+ 27696 strings out of 494004
+ 516024 string characters out of 3155736
  567646 words of memory out of 3000000
- 30538 multiletter control sequences out of 15000+200000
+ 30539 multiletter control sequences out of 15000+200000
  16116 words of font info for 116 fonts, out of 3000000 for 9000
  1144 hyphenation exceptions out of 8191
  61i,8n,96p,820b,480s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on 3.0.pdf (31 pages).
+Output written on 3.0.pdf (35 pages).
