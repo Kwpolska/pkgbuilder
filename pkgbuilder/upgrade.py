@@ -28,7 +28,7 @@ import textwrap
 RPC = AUR()
 
 
-def gather_foreign_pkgs(self):
+def gather_foreign_pkgs():
     """Gathers a list of all foreign packages."""
     H = pycman.config.init_with_config('/etc/pacman.conf')
     localdb = H.get_localdb()
