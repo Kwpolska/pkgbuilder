@@ -199,7 +199,8 @@ def main(source='AUTO', quit=True):
 
             for pkgname in pkgnames:
                 DS.log.info('Building {}'.format(pkgname))
-                out = build.auto_build(pkgname, args.depcheck, args.pkginst)
+                out = pkgbuilder.build.auto_build(pkgname, args.depcheck,
+                                                  args.pkginst)
                 if out:
                     toinstall += out[1][0]
                     sigs += out[1][1]
@@ -207,10 +208,10 @@ def main(source='AUTO', quit=True):
                         tovalidate = tovalidate - set([pkgname])
 
             if toinstall:
-                build.install(toinstall, sigs)
+                pkgbuilder.build.install(toinstall, sigs)
 
             if args.validate and tovalidate:
-                build.validate(tovalidate)
+                pkgbuilder.build.validate(tovalidate)
     except requests.exceptions.ConnectionError as inst:
         DS.fancy_error(str(inst))
         # TRANSLATORS: do not translate the word 'requests'.

@@ -19,7 +19,7 @@
 
 from . import DS, _, PBError, __version__
 from .main import main
-from .utils import Utils
+import pkgbuilder.utils
 import re
 import logging
 import pyalpm
@@ -229,8 +229,7 @@ def wrapper(source='AUTO'):
 
         log.debug('Generating AUR packages list...')
         pbpkgnames = []
-        utils = Utils()
-        info = utils.info(pkgnames)
+        info = pkgbuilder.utils.info(pkgnames)
 
         names = [i['Name'] for i in info]
         pbpkgnames = [n for n in pkgnames if n in names]
