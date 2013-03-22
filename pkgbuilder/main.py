@@ -17,9 +17,9 @@
 """
 
 from . import DS, _, PBError, __version__
-from .build import Build
-from .utils import Utils
-from .upgrade import Upgrade
+import pkgbuilder.build
+import pkgbuilder.utils
+import pkgbuilder.upgrade
 import argparse
 import os
 import sys
@@ -73,7 +73,7 @@ def main(source='AUTO', quit=True):
                             dest='pac', help=_('pacman-like mode'))
         argopt.add_argument('--safeupgrade', action='store_true',
                             default=False, dest='safeupgrade', help=_(
-                                'perform a failsafe upgrade for PKGBUILDer'))
+                                'perform a failsafe upgrade of PKGBUILDer'))
         argopt.add_argument('-y', '--refresh', action='store_true',
                             default=False, dest='pacupd', help=_('(dummy)'))
         argopr.add_argument('-i', '--info', action='store_true', default=False,
@@ -93,9 +93,6 @@ def main(source='AUTO', quit=True):
         DS.pacman = args.pac
         DS.cleanup = args.cleanup
         pkgnames = args.pkgnames
-        utils = Utils()
-        build = Build()
-        upgrade = Upgrade()
 
         if args.debug:
             DS.debugmode(nochange=True)
@@ -110,7 +107,7 @@ def main(source='AUTO', quit=True):
 
         if args.info:
             DS.log.debug('Showing info...')
-            utils.print_package_info(utils.info(pkgnames))
+            pkgbuilder.utils.print_package_info(pkgbuilder.utils.info(pkgnames))
 
             if quit:
                 exit(0)
@@ -127,31 +124,31 @@ def main(source='AUTO', quit=True):
                     # limitation and not an idea of yours truly.
                     DS.fancy_error(_('Search query too short, API limitation'))
                     DS.fancy_msg(_('Searching for exact match...'))
-                    search = utils.info([searchstring])
+                    search = pkgbuilder.utils.info([searchstring])
                     if search == []:
                         DS.fancy_error2(_('not found'))
                         if quit:
                             exit(0)
                     else:
-                        utils.print_package_search(search[0], prefix=(
-                                                   DS.colors['blue'] + '  ->' +
-                                                   DS.colors['all_off'] +
-                                                   DS.colors['bold'] + ' '),
-                                                   prefixp='  -> ')
+                        pkgbuilder.utils.print_package_search(
+                            search[0], prefix=(DS.colors['blue'] + '  ->' +
+                                               DS.colors['all_off'] +
+                                               DS.colors['bold'] + ' '),
+                            prefixp='  -> ')
                         sys.stdout.write(DS.colors['all_off'])
                         if quit:
                             exit(0)
                 else:
-                    search = utils.search(searchstring)
+                    search = pkgbuilder.utils.search(searchstring)
 
             output = ''
             for pkg in search:
                 if args.pac:
-                    output = output + utils.print_package_search(pkg, False,
-                                                                 True) + '\n'
+                    output = output + pkgbuilder.utils.print_package_search(
+                        pkg, False, True) + '\n'
                 else:
-                    output = output + utils.print_package_search(pkg, True,
-                                                                 True) + '\n'
+                    output = output + pkgbuilder.utils.print_package_search(
+                        pkg, True, True) + '\n'
             if output != '':
                 print(output.rstrip())
             if quit:
@@ -179,29 +176,13 @@ def main(source='AUTO', quit=True):
             else:
                 pkgname = 'pkgbuilder'
 
-            DS.fancy_msg(_('Fetching package information...'))
-            pkg = utils.info([pkgname])[0]
-            DS.fancy_msg2(' '.join((pkg['Name'], pkg['Version'])))
-            filename = pkg['Name'] + '.tar.gz'
-            DS.fancy_msg(_('Downloading the tarball...'))
-            downloadbytes = build.download(pkg['URLPath'], filename)
-            kbytes = int(downloadbytes) / 1000
-            DS.fancy_msg2(_('{} kB downloaded').format(kbytes))
+            mpstatus = pkgbuilder.build.safeupgrade(pkgname)
 
-            DS.fancy_msg(_('Extracting...'))
-            DS.fancy_msg2(_('{} files extracted').format(build.extract(
-                filename)))
-            os.chdir('./{}/'.format(pkg['Name']))
-            DS.fancy_msg(_('Building {}...').format(pkg['Name']))
-            import subprocess
-            mpstatus = subprocess.call('makepkg -sicf', shell=True)
-            DS.fancy_msg(_('Build finished with return code '
-                           '{}.').format(mpstatus))
             exit(mpstatus)
         if args.upgrade > 0:
             DS.log.info('Starting upgrade...')
             dodowngrade = args.upgrade > 1
-            upnames = upgrade.auto_upgrade(dodowngrade, args.vcsup)
+            upnames = pkgbuilder.upgrade.auto_upgrade(dodowngrade, args.vcsup)
             pkgnames = upnames + pkgnames
 
         # If we didn't quit, we should build the packages.
