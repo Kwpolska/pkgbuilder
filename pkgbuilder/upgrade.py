@@ -27,6 +27,7 @@ import textwrap
 
 RPC = AUR()
 
+
 def gather_foreign_pkgs(self):
     """Gathers a list of all foreign packages."""
     H = pycman.config.init_with_config('/etc/pacman.conf')
@@ -44,6 +45,7 @@ def gather_foreign_pkgs(self):
     aur = set(set(installed) - set(repo))
     # Return foreign packages.
     return dict([(p.name, p) for p in aur])
+
 
 def list_upgradable(pkglist, vcsup=False):
     """Compares package versions and returns upgradable ones."""
@@ -76,8 +78,7 @@ def list_upgradable(pkglist, vcsup=False):
                     v = i['Version']
 
                 try:
-                    datetime.datetime.strptime(v.split('-')[0],
-                                                '%Y%m%d')
+                    datetime.datetime.strptime(v.split('-')[0], '%Y%m%d')
                     datever = True
                 except:
                     datever = False
@@ -100,6 +101,7 @@ def list_upgradable(pkglist, vcsup=False):
                 else:
                     downgradable.append([i['Name'], pkg.version, i['Version']])
     return [upgradable, downgradable]
+
 
 def auto_upgrade(downgrade=False, vcsup=False):
     """
@@ -132,7 +134,7 @@ def auto_upgrade(downgrade=False, vcsup=False):
                         '({})').format(i[0], i[1], i[2]))
             else:
                 DS.fancy_warning(_('{}: local ({}) is newer than aur '
-                                    '({})').format(i[0], i[1], i[2]))
+                                   '({})').format(i[0], i[1], i[2]))
 
         if downgrade:
             upglen = upglen + downlen
@@ -189,12 +191,12 @@ def auto_upgrade(downgrade=False, vcsup=False):
                         sizes[2] = len(nv)
 
                 fstring = ('{{i[0]:<{s[0]}}}  {{i[1]:<{s[1]}}}  '
-                            '{{i[2]:<{s[2]}}}').format(s=sizes)
+                           '{{i[2]:<{s[2]}}}').format(s=sizes)
 
                 if len(fstring.format(i=4 * ['n'])) > termwidth:
                     verbosepkglists = False
                     DS.log.warning('VerbosePkgLists disabled, terminal is '
-                                    'not wide enough')
+                                   'not wide enough')
                 else:
                     print('\n{0}\n'.format(targetstring.strip()))
                     print(fstring.format(i=headers))

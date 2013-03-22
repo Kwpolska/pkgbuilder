@@ -36,6 +36,7 @@ import datetime
 
 AURURL = '{}://aur.archlinux.org{}'
 
+
 def validate(pkgnames):
     """Check if packages were installed."""
     DS.fancy_msg(_('Validating installation status...'))
@@ -44,7 +45,7 @@ def validate(pkgnames):
     localdb = pyc.get_localdb()
 
     aurpkgs = {i['Name']: i['Version'] for i in
-                pkgbuilder.utils.info(pkgnames)}
+               pkgbuilder.utils.info(pkgnames)}
 
     for pkgname in pkgnames:
         pkg = localdb.get_pkg(pkgname)
@@ -56,25 +57,25 @@ def validate(pkgnames):
                                 pkgname))
             else:
                 DS.fancy_msg2(_('{}: installed {}').format(pkgname,
-                                pkg.version))
+                                                           pkg.version))
         else:
             if not pkg:
                 DS.fancy_error2(_('{}: NOT installed').format(pkgname))
             else:
                 if pyalpm.vercmp(aurversion, pkg.version) > 0:
                     DS.fancy_error2(_('{}: outdated {}').format(pkgname,
-                                    pkg.version))
+                                                                pkg.version))
                 else:
                     DS.fancy_msg2(_('{}: installed {}').format(pkgname,
-                                    pkg.version))
+                                                               pkg.version))
+
 
 def install(pkgpaths, sigpaths=[], uopt=''):
     """Install packages through ``pacman -U``."""
     DS.fancy_msg(_('Installing built packages...'))
 
     DS.log.info('pkgs={}; sigs={}'.format(pkgpaths, sigpaths))
-    DS.log.debug('cp {} {} /var/cache/pacman/pkg/'.format(pkgpaths,
-                                                            sigpaths))
+    DS.log.debug('cp {} {} /var/cache/pacman/pkg/'.format(pkgpaths, sigpaths))
     DS.sudo(['cp'] + pkgpaths + sigpaths + ['/var/cache/pacman/pkg/'])
     if uopt:
         DS.log.debug('$PACMAN -U {} {}'.format(uopt, pkgpaths))
@@ -82,6 +83,7 @@ def install(pkgpaths, sigpaths=[], uopt=''):
     else:
         DS.log.debug('$PACMAN -U {}'.format(pkgpaths))
         DS.sudo([DS.paccommand, '-U'] + pkgpaths)
+
 
 def safeupgrade(pkgname):
     """Perform a safe upgrade of PKGBUILDer."""
@@ -102,6 +104,7 @@ def safeupgrade(pkgname):
     DS.fancy_msg(_('Build finished with return code {}.').format(mpstatus))
     return mpstatus
 
+
 def auto_build(pkgname, performdepcheck=True,
                pkginstall=True):
     """
@@ -116,8 +119,7 @@ def auto_build(pkgname, performdepcheck=True,
         Please take care of it.  Running PKGBUILDer/PBWrapper standalone or
         .main.main() will do that.
     """
-    build_result = build_runner(pkgname, performdepcheck,
-                                        pkginstall)
+    build_result = build_runner(pkgname, performdepcheck, pkginstall)
     os.chdir('../')
     try:
         if build_result[0] == 0:
@@ -137,9 +139,8 @@ def auto_build(pkgname, performdepcheck=True,
             toinstall2 = []
             sigs2 = []
             for pkgname2 in build_result[1]:
-                toinstall, sigs = auto_build(pkgname2,
-                                                    performdepcheck,
-                                                    pkginstall)[1]
+                toinstall, sigs = auto_build(pkgname2, performdepcheck,
+                                             pkginstall)[1]
                 toinstall2 += toinstall
                 sigs2 += sigs
 
@@ -149,14 +150,14 @@ def auto_build(pkgname, performdepcheck=True,
             if DS.validate:
                 validate(build_result[1])
 
-            return auto_build(pkgname, performdepcheck,
-                                    pkginstall)
+            return auto_build(pkgname, performdepcheck, pkginstall)
 
         return build_result
     except PBError as inst:
         DS.fancy_error(str(inst))
 
-def download( urlpath, filename, prot='http'):
+
+def download(urlpath, filename, prot='http'):
     """Downloads an AUR tarball (http) to the current directory."""
     try:
         r = requests.get(AURURL.format(prot, urlpath))
@@ -176,7 +177,8 @@ def download( urlpath, filename, prot='http'):
     f.close()
     return r.headers['content-length']
 
-def extract( filename):
+
+def extract(filename):
     """Extracts an AUR tarball."""
     thandle = tarfile.open(filename, 'r:gz')
     thandle.extractall()
@@ -187,6 +189,7 @@ def extract( filename):
     else:
         raise PBError(_('extract: no files extracted'))
 
+
 def prepare_deps(pkgbuild_path):
     """Gets (make)depends from a PKGBUILD and returns them."""
     # I decided to use a subprocess instead of pyparsing magic.  Less
@@ -196,14 +199,14 @@ def prepare_deps(pkgbuild_path):
     # instead of about 40 in the pyparsing implementation.
 
     deps = subprocess.check_output('source ' + pkgbuild_path + '; for i in '
-                                    '${depends[*]}; do echo $i; done; for '
-                                    'i in ${makedepends[*]}; do echo $i; '
-                                    'done',
-                                    shell=True)
+                                   '${depends[*]}; do echo $i; done; for '
+                                   'i in ${makedepends[*]}; do echo $i; '
+                                   'done', shell=True)
     deps = deps.decode('utf-8')
     deps = deps.split('\n')
 
     return deps
+
 
 def depcheck(depends):
     """Performs a dependency check."""
@@ -240,6 +243,7 @@ def depcheck(depends):
                                 'anywhere').format(dep))
         return parseddeps
 
+
 def build_runner(pkgname, performdepcheck=True,
                  pkginstall=True):
     """
@@ -263,9 +267,9 @@ def build_runner(pkgname, performdepcheck=True,
                 syncpkgs = functools.reduce(lambda x, y: x + y, syncpkgs)
                 abspkg = pyalpm.find_satisfier(syncpkgs, pkgname)
                 pkg = {'CategoryID': 0, 'Category': abspkg.db.name,
-                        'Name': abspkg.name, 'Version': abspkg.version,
-                        'Description': abspkg.desc, 'OutOfDate': 0,
-                        'NumVotes': 'n/a', 'Arch': abspkg.arch}
+                       'Name': abspkg.name, 'Version': abspkg.version,
+                       'Description': abspkg.desc, 'OutOfDate': 0,
+                       'NumVotes': 'n/a', 'Arch': abspkg.arch}
                 useabs = True
             except AttributeError:
                 pass
@@ -283,15 +287,15 @@ def build_runner(pkgname, performdepcheck=True,
         if useabs:
             DS.fancy_msg(_('Synchronizing the ABS tree...'))
             rstatus = DS.run_command(('rsync', '-mrtv', '--no-motd',
-                                        '--delete-after', '--no-p', '--no-o',
-                                        '--no-g', '--include=/{}'.format(
-                                            pkg['Category']),
-                                        '--include=/{}/{}'.format(
-                                            pkg['Category'], pkg['Name']),
-                                        '--exclude=/{}/*'.format(
-                                            pkg['Category']), '--exclude=/*',
-                                        'rsync.archlinux.org::abs/{}/'.format(
-                                            pkg['Arch']), '.'))
+                                      '--delete-after', '--no-p', '--no-o',
+                                      '--no-g', '--include=/{}'.format(
+                                          pkg['Category']),
+                                      '--include=/{}/{}'.format(
+                                          pkg['Category'], pkg['Name']),
+                                      '--exclude=/{}/*'.format(
+                                          pkg['Category']), '--exclude=/*',
+                                      'rsync.archlinux.org::abs/{}/'.format(
+                                          pkg['Arch']), '.'))
             if rstatus > 0:
                 raise PBError(_('Failed to synchronize the ABS tree.'))
 
@@ -324,8 +328,7 @@ def build_runner(pkgname, performdepcheck=True,
                 if pkgtype == 2:
                     aurbuild.append(dpkg)
 
-                DS.fancy_msg2('{}: {}'.format(dpkg,
-                                                pkgtypes[pkgtype]))
+                DS.fancy_msg2('{}: {}'.format(dpkg, pkgtypes[pkgtype]))
             if aurbuild != []:
                 return [72337, aurbuild]
 
@@ -338,7 +341,7 @@ def build_runner(pkgname, performdepcheck=True,
             mpparams += ' --asroot'
 
         mpstatus = subprocess.call('makepkg -sf' + mpparams,
-                                    shell=True)
+                                   shell=True)
         if pkginstall:
             # .pkg.tar.xz FTW, but some people change that.
             pkgfilestr = os.path.abspath('./{}-{}-*.pkg.*{}')

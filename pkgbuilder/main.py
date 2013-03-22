@@ -107,7 +107,8 @@ def main(source='AUTO', quit=True):
 
         if args.info:
             DS.log.debug('Showing info...')
-            pkgbuilder.utils.print_package_info(pkgbuilder.utils.info(pkgnames))
+            pkgbuilder.utils.print_package_info(
+                pkgbuilder.utils.info(pkgnames))
 
             if quit:
                 exit(0)
