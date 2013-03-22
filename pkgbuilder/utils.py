@@ -28,6 +28,7 @@ import datetime
 
 RPC = AUR()
 
+
 def info(pkgnames):
     """
     .. versionchanged:: 2.1.4.8
@@ -44,6 +45,7 @@ def info(pkgnames):
     else:
         return aur_pkgs['results']
 
+
 def search(pkgname):
     """Searches for AUR packages."""
     aur_pkgs = RPC.request('search', pkgname, DS.protocol)
@@ -52,8 +54,9 @@ def search(pkgname):
     else:
         return aur_pkgs['results']
 
-def print_package_search(pkg, use_categories=True,
-                            cachemode=False, prefix='', prefixp=''):
+
+def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
+                         prefixp=''):
     """
     Outputs/returns a package representation, which is close to the output
     of ``pacman -Ss``.
@@ -79,7 +82,7 @@ def print_package_search(pkg, use_categories=True,
             installed = _(' [installed]')
     if pkg['OutOfDate'] > 0:
         installed = (installed + ' ' + DS.colors['red'] + _(
-                        '[out of date]') + DS.colors['all_off'])
+                     '[out of date]') + DS.colors['all_off'])
 
     if pkg['CategoryID'] != 0:
         if use_categories:
@@ -95,15 +98,15 @@ def print_package_search(pkg, use_categories=True,
     for i in descl:
         desc.append(prefix2 + i)
     desc = '\n'.join(desc)
-    base = (prefix + '{0}/{1} {2} ({4} ' + _('votes') +
-            '){5}\n' + '{3}')
-    entry = (base.format(category, pkg['Name'], pkg['Version'],
-                            desc, pkg['NumVotes'], installed))
+    base = (prefix + '{0}/{1} {2} ({4} ' + _('votes') + '){5}\n' + '{3}')
+    entry = (base.format(category, pkg['Name'], pkg['Version'], desc,
+                         pkg['NumVotes'], installed))
 
     if cachemode:
         return entry
     else:
         print(entry)
+
 
 def print_package_info(pkgs, cachemode=False, force_utc=False):
     """
@@ -143,6 +146,7 @@ def print_package_info(pkgs, cachemode=False, force_utc=False):
 
         # TRANSLATORS: space it properly.  “yes/no” below are
         # for “out of date”.
+
         t = _("""Repository     : aur
 Category       : {cat}
 Name           : {nme}

@@ -92,7 +92,7 @@ def wrapper(source='AUTO'):
         ignoredlong = ['unlock']
 
         allpacman = pacmanshort + pacmanlong + pacmanshorta + pacmanlonga
-        allpb = pbshort + pblong #+ pbshorta + pblonga
+        allpb = pbshort + pblong  # + pbshorta + pblonga
         allcommon = commonshort + commonlong + commonshortc + commonlongc
         # allcmd = allpacman + allpb + allcommon (unused)
 
