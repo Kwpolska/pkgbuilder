@@ -549,4 +549,79 @@ Note that work is the most likely to happen during the weekend.
 
 The full schedule will be available soon.
 
+\chapter{Full schedule}
+
+\section{Demolition of useless classes}
+
+\begin{tabular}{l|p{20em}}
+Priority & \rm1\osn \\
+Implementation time & \rm1\osn \\
+Depends on & \emph{none}\\
+Required by & \begin{itemize}
+\item Small fixes and improvements
+\item Force \p{--safeupgrade} for \pb
+\item Exceptions 2.0
+\item The \p{Package} class and its subclasses
+\end{itemize}
+\end{tabular}
+
+\p{Build}, \p{Upgrade} and \p{Utils} go to hell.
+
+Long story short: \p{v<:\PYZpc{}s/self\PYZbs{}.//g\PY{ckw}{\PYZbs{}n}:\PYZpc{}:\PYZpc{}s/self, //g\PY{ckw}{\PYZbs{}n}:\PYZpc{}s/self)/)/g}.  This is why I love vim.  Add manual checks and reference removals and it is all done.
+
+\section{Small fixes and improvements}
+
+\begin{tabular}{l|p{20em}}
+Priority & \rm10\osn \\
+Implementation time & \rm1\osn \\
+Depends on & Demolition of useless classes \\
+Required by & \emph{none}
+\end{tabular}
+
+Easy to implement, so we will do it quite fast, even though the priority is 10.  Depends on Stage 1 because of \p{\_\_all\_\_}.
+
+\section{Force \p{--safeupgrade} for \pb}
+
+\begin{tabular}{l|p{20em}}
+Priority & \rm2\osn \\
+Implementation time & \rm1\osn \\
+Depends on & Demolition of useless classes \\
+Required by & \emph{none}
+\end{tabular}
+
+This one requires a move of one function and a few additions in the \p{upgrade} module (via Stage 1).
+
+\section{\p{cower -d} implementation}
+
+\begin{tabular}{l|p{20em}}
+Priority & \rm2\osn \\
+Implementation time & \rm1\osn \\
+Depends on & \begin{itemize}\item Demolition of useless classes \item Small fixes and improvements \end{itemize} \\
+Required by & \emph{none}
+\end{tabular}
+
+We grab \p{build.download()}, \p{build.extract()} (via Stage 1) and a few friends of theirs, and throw the Tiedot-style UI (via Stage 2) into the mix.
+
+\section{Exceptions 2.0}
+
+\begin{tabular}{l|p{20em}}
+Priority & \rm1\osn \\
+Implementation time & \rm4\osn \\
+Depends on & Demolition of useless classes \\
+Required by & \emph{none}
+\end{tabular}
+
+A lot of work, but it can be done.  Requires Stage 1 not to make a bigger mess than there is.
+
+\section{The \p{Package} class and its subclasses}
+
+\begin{tabular}{l|p{20em}}
+Priority & \rm1\osn \\
+Implementation time & \rm3\osn \\
+Depends on & Demolition of useless classes \\
+Required by & \emph{none}
+\end{tabular}
+
+Less work, but still quite a lot.  Requires Stage 1 not to make a bigger mess than there is.
+
 \end{document}

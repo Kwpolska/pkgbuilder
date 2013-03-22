@@ -33,3 +33,10 @@
 \contentsline {chapter}{\numberline {9}Small fixes and improvements}{31}{chapter.9}
 \contentsline {part}{VI\hspace {1em}Schedule}{33}{part.6}
 \contentsline {chapter}{\numberline {10}The schedule at a glance}{35}{chapter.10}
+\contentsline {chapter}{\numberline {11}Full schedule}{37}{chapter.11}
+\contentsline {section}{\numberline {11.1}Demolition of useless classes}{37}{section.11.1}
+\contentsline {section}{\numberline {11.2}Small fixes and improvements}{37}{section.11.2}
+\contentsline {section}{\numberline {11.3}Force {\language \langwohyphens \texttt {--safeupgrade}} for \textsc {pkgbuild}er}{37}{section.11.3}
+\contentsline {section}{\numberline {11.4}{\language \langwohyphens \texttt {cower -d}} implementation}{38}{section.11.4}
+\contentsline {section}{\numberline {11.5}Exceptions 2.0}{38}{section.11.5}
+\contentsline {section}{\numberline {11.6}The {\language \langwohyphens \texttt {Package}} class and its subclasses}{38}{section.11.6}
