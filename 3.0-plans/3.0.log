@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.4-0.9998 (TeX Live 2012/Arch Linux) (format=xelatex 2013.1.11)  21 MAR 2013 21:00
+This is XeTeX, Version 3.1415926-2.4-0.9998 (TeX Live 2012/Arch Linux) (format=xelatex 2013.1.11)  22 MAR 2013 20:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1484,22 +1484,54 @@ Chapter 9.
 
 ] [33] [34]
 Chapter 10.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 552.
 [35
 
+] [36
+
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 552.
+Chapter 11.
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\language' on input line 583.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\langwohyphens' on input line 583.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\language' on input line 594.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\langwohyphens' on input line 594.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [37]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\language' on input line 616.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\langwohyphens' on input line 616.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 627.
+[38]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 627.
  (./3.0.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 552.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 552.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 627.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 627.
  ) 
 Here is how much of TeX's memory you used:
- 27696 strings out of 494004
- 516024 string characters out of 3155736
+ 27701 strings out of 494004
+ 516216 string characters out of 3155736
  567646 words of memory out of 3000000
- 30539 multiletter control sequences out of 15000+200000
- 16116 words of font info for 116 fonts, out of 3000000 for 9000
+ 30542 multiletter control sequences out of 15000+200000
+ 16132 words of font info for 118 fonts, out of 3000000 for 9000
  1144 hyphenation exceptions out of 8191
- 61i,8n,96p,820b,480s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 61i,10n,96p,820b,480s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on 3.0.pdf (35 pages).
+Output written on 3.0.pdf (38 pages).
