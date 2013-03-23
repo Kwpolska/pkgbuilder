@@ -30,7 +30,6 @@ __all__ = ['wrapper']
 __wrapperversion__ = '0.2.2'
 
 
-### wrapper()       A wrapper for pacman/PB ###
 def wrapper(source='AUTO'):
     """A wrapper for pacman and PKGBUILDer."""
     pyc = pycman.config.init_with_config('/etc/pacman.conf')

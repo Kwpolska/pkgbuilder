@@ -22,7 +22,6 @@ import json
 __all__ = ['AUR']
 
 
-### AUR             AUR RPC calls           ###
 class AUR:
     """A class for calling the AUR API.
 

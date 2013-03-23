@@ -26,7 +26,6 @@ import requests
 __all__ = ['main']
 
 
-### main()          The main routine        ###
 def main(source='AUTO', quit=True):
     """Main routine of PKGBUILDer."""
     try:
