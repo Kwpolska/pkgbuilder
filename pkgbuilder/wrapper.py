@@ -21,7 +21,6 @@ import pkgbuilder.utils
 import re
 import logging
 import pyalpm
-import pycman
 import argparse
 import sys
 import os
@@ -32,8 +31,7 @@ __wrapperversion__ = '0.2.2'
 
 def wrapper(source='AUTO'):
     """A wrapper for pacman and PKGBUILDer."""
-    pyc = pycman.config.init_with_config('/etc/pacman.conf')
-    localdb = pyc.get_localdb()
+    localdb = DS.pyc.get_localdb()
 
     # Because I need to work with -S and nothing else, I am going to use
     # regular expressions on the argument list.  Sorry.

@@ -17,7 +17,6 @@
 from . import DS, _, PBError
 from .aur import AUR
 import pyalpm
-import pycman
 import os
 import subprocess
 import textwrap
@@ -66,8 +65,7 @@ def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
         termwidth = 9001  # Auto-wrap by terminal.  A reference to an old
                           # meme and a cheat, too. Sorry.
 
-    H = pycman.config.init_with_config('/etc/pacman.conf')
-    localdb = H.get_localdb()
+    localdb = DS.pyc.get_localdb()
     lpkg = localdb.get_pkg(pkg['Name'])
     category = ''
     installed = ''

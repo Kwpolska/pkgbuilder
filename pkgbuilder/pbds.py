@@ -19,6 +19,7 @@ import sys
 import os
 import logging
 import subprocess
+import pycman
 
 __all__ = ['PBDS']
 
@@ -55,6 +56,7 @@ class PBDS():
     mp2 = '  '
     debug = False
     console = None
+    _pyc = None
 
     if os.getenv('PACMAN') is None:
         paccommand = 'pacman'
@@ -96,6 +98,14 @@ class PBDS():
                         level=logging.DEBUG)
     log = logging.getLogger('pkgbuilder')
     log.info('*** PKGBUILDer v' + __version__)
+
+    @property
+    def pyc(self):
+        """Return a pycman handle, initializing one if necessary."""
+        if not self._pyc:
+            self._pyc = pycman.config.init_with_config('/etc/pacman.conf')
+
+        return self._pyc
 
     def run_command(self, args, prepend=[], asonearg=False):
         """

@@ -17,7 +17,6 @@
 from . import DS, _
 import pkgbuilder.utils
 import pyalpm
-import pycman
 import datetime
 import subprocess
 import textwrap
@@ -27,13 +26,12 @@ __all__ = ['gather_foreign_pkgs', 'list_upgradable', 'auto_upgrade']
 
 def gather_foreign_pkgs():
     """Gathers a list of all foreign packages."""
-    H = pycman.config.init_with_config('/etc/pacman.conf')
-    localdb = H.get_localdb()
+    localdb = DS.pyc.get_localdb()
     # Based on paconky.py.
     installed = [p for p in localdb.pkgcache]
     repo = []
     aur = []
-    syncdbs = H.get_syncdbs()
+    syncdbs = DS.pyc.get_syncdbs()
     for sdb in syncdbs:
         for pkg in installed:
             if sdb.get_pkg(pkg.name):
@@ -46,8 +44,7 @@ def gather_foreign_pkgs():
 
 def list_upgradable(pkglist, vcsup=False):
     """Compares package versions and returns upgradable ones."""
-    H = pycman.config.init_with_config('/etc/pacman.conf')
-    localdb = H.get_localdb()
+    localdb = DS.pyc.get_localdb()
     aurlist = pkgbuilder.utils.info(pkglist)
     # It's THAT easy.  Oh, and by the way: it is much, MUCH faster
     # than others.  It makes ONE multiinfo request rather than
