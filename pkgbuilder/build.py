@@ -187,8 +187,9 @@ def rsync(pkg, quiet=False):
                            '--include=/{}/{}'.format(pkg['Category'],
                                                      pkg['Name']),
                            '--exclude=/{}/*'.format(pkg['Category']),
-                           '--exclude=/*', 'rsync.archlinux.org::abs/{}/'.format(
-                               pkg['Arch']), '.'))
+                           '--exclude=/*',
+                           'rsync.archlinux.org::abs/{}/'.format(pkg['Arch']),
+                           '.'))
 
 
 def extract(filename):
@@ -262,7 +263,7 @@ def fetch_runner(pkgnames):
     abspkgs = []
     aurpkgs = []
     try:
-        print( ':: ' + _('Fetching package information...'))
+        print(':: ' + _('Fetching package information...'))
         for pkgname in pkgnames:
             pkg = None
             try:

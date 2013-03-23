@@ -42,9 +42,11 @@ class AURError(PBException):
         self.msg = msg
         self.args = args
         self.kwargs = kwargs
+
     def __str__(self):
         """Just so the user knows that it’s an AUR error."""
         return '[AUR] ' + self.msg
+
 
 class MakepkgError(PBException):
     """makepkg errors (return codes)"""
@@ -58,6 +60,7 @@ class MakepkgError(PBException):
     def __str__(self):
         """“1” isn’t too helpful for the human."""
         return _('makepkg returned {0}.').format(self.retcode)
+
 
 class NetworkError(PBException):
     """Network-related errors."""
@@ -74,6 +77,7 @@ class NetworkError(PBException):
         """The msg, wherever it may come from, isn’t helpful either."""
         return _('Network error: {0} (via {1})').format(self.msg, self.source)
 
+
 class PackageError(PBException):
     """Package-related errors."""
     def __init__(self, msg, source, *args, **kwargs):
@@ -89,6 +93,7 @@ class PackageError(PBException):
         """Would be helpful, but not enough."""
         return _('{0} (Package: {1})').format(self.msg, self.source)
 
+
 class PackageNotFoundError(PackageError):
     def __init__(self, name, *args, **kwargs):
         """Throw an error to the log and take the arguments."""
@@ -100,6 +105,7 @@ class PackageNotFoundError(PackageError):
     def __str__(self):
         """This would be far, FAR away from being informative."""
         return _('Package {0} not found.').format(self.name)
+
 
 class SanityError(PBException):
     """Sometimes PKGBUILDer or one of its friends can go insane."""
