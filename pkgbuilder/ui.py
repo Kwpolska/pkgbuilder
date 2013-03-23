@@ -34,9 +34,9 @@ class UI(object):
         self.pcur += 1
         sys.stdout.write('\r')
         ln = len(str(self.pcount))
-        sys.stdout.write(('({:>' + str(ln) + '}/{}) ').format(self.pcur,
-                                                              self.pcount))
-        sys.stdout.write('{:<70}'.format(msg))
+        sys.stdout.write(('({0:>' + str(ln) + '}/{1}) ').format(self.pcur,
+                                                                self.pcount))
+        sys.stdout.write('{0:<70}'.format(msg))
         sys.stdout.write('\r')
         if single:
             print()
@@ -51,10 +51,10 @@ class UI(object):
         self.throb = True
         while self.throb:
             for i in ('|', '/', '-', '\\'):
-                sys.stdout.write('\r({}) {}'.format(i, msg))
+                sys.stdout.write('\r({0}) {1}'.format(i, msg))
                 time.sleep(0.1)
         if not self.throb and printback:
-            sys.stdout.write('\r({}) {}'.format(finalthrob, msg))
+            sys.stdout.write('\r({0}) {1}'.format(finalthrob, msg))
             time.sleep(0.1)
             print()
 

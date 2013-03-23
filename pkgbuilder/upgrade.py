@@ -85,13 +85,13 @@ def list_upgradable(pkglist, vcsup=False):
                     if vcsup:
                         upgradable.append([i['Name'], pkg.version, dt])
                     else:
-                        DS.log.warning('{} is -[vcs], ignored for '
+                        DS.log.warning('{0} is -[vcs], ignored for '
                                        'downgrade.'.format(i['Name']))
                 elif datever:
                     if vcsup:
                         upgradable.append([i['Name'], pkg.version, dt])
                     else:
-                        DS.log.warning('{} version is a date, ignored '
+                        DS.log.warning('{0} version is a date, ignored '
                                        'for downgrade.'.format(i['Name']))
                 else:
                     downgradable.append([i['Name'], pkg.version, i['Version']])
@@ -125,11 +125,11 @@ def auto_upgrade(downgrade=False, vcsup=False):
     if downlen > 0:
         for i in downgradable:
             if DS.pacman:
-                print(_('{}: local ({}) is newer than aur '
-                        '({})').format(i[0], i[1], i[2]))
+                print(_('{0}: local ({1}) is newer than aur '
+                        '({2})').format(*i))
             else:
-                DS.fancy_warning(_('{}: local ({}) is newer than aur '
-                                   '({})').format(i[0], i[1], i[2]))
+                DS.fancy_warning(_('{0}: local ({1}) is newer than aur '
+                                   '({2})').format(*i))
 
         if downgrade:
             upglen = upglen + downlen
@@ -165,7 +165,7 @@ def auto_upgrade(downgrade=False, vcsup=False):
             if DS.pacman:
                 print('::' + _('The following packages should be upgraded '
                                'first:'))
-                print('    {}'.format(pkgbname))
+                print('    {0}'.format(pkgbname))
                 print('::' + _('Do you want to cancel the current operation'))
                 query = '::' + _('and upgrade these packages now? [Y/n] ')
             else:
@@ -188,7 +188,7 @@ def auto_upgrade(downgrade=False, vcsup=False):
                 return []
 
         if DS.pacman:
-            targetstring = _('Targets ({}): ').format(upglen)
+            targetstring = _('Targets ({0}): ').format(upglen)
 
             size = subprocess.check_output(['stty', 'size'])
             try:
@@ -252,7 +252,7 @@ def auto_upgrade(downgrade=False, vcsup=False):
             print()
             query = _('Proceed with installation? [Y/n] ')
         else:
-            DS.fancy_msg(_('Targets ({}): ').format(upglen))
+            DS.fancy_msg(_('Targets ({0}): ').format(upglen))
             DS.fancy_msg2('  '.join(upgstrings))
             query = (DS.colors['green'] + '==>' + DS.colors['all_off'] +
                      DS.colors['bold'] + ' ' +

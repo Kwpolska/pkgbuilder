@@ -41,8 +41,8 @@ class AUR:
     multiinfo is implemented in another function, :meth:`multiinfo()`.
     """
 
-    rpc = '{}://aur.archlinux.org/rpc.php?type={}&arg={}'
-    mrpc = '{}://aur.archlinux.org/rpc.php?type=multiinfo{}'
+    rpc = '{0}://aur.archlinux.org/rpc.php?type={1}&arg={2}'
+    mrpc = '{0}://aur.archlinux.org/rpc.php?type=multiinfo{2}'
 
     def jsonreq(self, rtype, arg, prot='https'):
         """Makes a request and returns plain JSON data."""
@@ -53,11 +53,11 @@ class AUR:
             req = requests.get(self.rpc.format(prot, rtype, arg))
         except requests.exceptions.ConnectionError as e:
             raise PBError(_('AUR: connection error '
-                            '({})').format(e.args[0].reason))
+                            '({0})').format(e.args[0].reason))
 
         req.raise_for_status()
         if req.status_code != 200:
-            raise PBError(_('AUR: HTTP Error {}').format(
+            raise PBError(_('AUR: HTTP Error {0}').format(
                 req.status_code))
 
         return req.text
@@ -72,11 +72,11 @@ class AUR:
             req = requests.get(self.mrpc.format(prot, urlargs))
         except requests.exceptions.ConnectionError as e:
             raise PBError(_('AUR: connection error '
-                            '({})').format(e.args[0].reason))
+                            '({0})').format(e.args[0].reason))
 
         req.raise_for_status()
         if req.status_code != 200:
-            raise PBError(_('AUR: HTTP Error {}').format(
+            raise PBError(_('AUR: HTTP Error {0}').format(
                 req.status_code))
 
         return req.text
