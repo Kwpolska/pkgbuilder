@@ -15,7 +15,7 @@
 """
 
 from . import DS, _
-from .aur import AUR
+import pkgbuilder.utils
 import pyalpm
 import pycman
 import datetime
@@ -23,7 +23,6 @@ import subprocess
 import textwrap
 
 __all__ = ['gather_foreign_pkgs', 'list_upgradable', 'auto_upgrade']
-RPC = AUR()
 
 
 def gather_foreign_pkgs():
@@ -49,7 +48,7 @@ def list_upgradable(pkglist, vcsup=False):
     """Compares package versions and returns upgradable ones."""
     H = pycman.config.init_with_config('/etc/pacman.conf')
     localdb = H.get_localdb()
-    aurlist = RPC.multiinfo(pkglist, DS.protocol)['results']
+    aurlist = pkgbuilder.utils.info(pkglist)
     # It's THAT easy.  Oh, and by the way: it is much, MUCH faster
     # than others.  It makes ONE multiinfo request rather than
     # len(installed_packages) info requests.
