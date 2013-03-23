@@ -5,8 +5,6 @@
 # Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
 
-# Names convention: pkg = a package object, pkgname = a package name.
-
 """
     pkgbuilder.upgrade
     ~~~~~~~~~~~~~~~~~~
