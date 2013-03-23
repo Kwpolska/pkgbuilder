@@ -56,7 +56,6 @@ G = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
 _ = G.gettext
 
 
-### PBError         errors raised here      ###
 class PBError(Exception):
     """Exceptions raised by the PKGBUILDer."""
 

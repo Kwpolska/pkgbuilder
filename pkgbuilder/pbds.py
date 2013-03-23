@@ -23,7 +23,6 @@ import subprocess
 __all__ = ['PBDS']
 
 
-### PBDS           PB global data storage  ###
 class PBDS():
     """PKGBUILDer Data Storage."""
     # For fancy-schmancy messages stolen from makepkg.
