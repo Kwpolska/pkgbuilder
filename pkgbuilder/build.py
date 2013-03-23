@@ -5,10 +5,6 @@
 # Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
 
-# ``pkg`` always represents a dict with package information, while ``pkgname``
-# is where the package name goes (``pkg['Name']`` should be used where
-# possible.)
-
 """
     pkgbuilder.build
     ~~~~~~~~~~~~~~~~
