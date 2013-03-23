@@ -22,7 +22,7 @@ import datetime
 import subprocess
 import textwrap
 
-
+__all__ = ['gather_foreign_pkgs', 'list_upgradable', 'auto_upgrade']
 RPC = AUR()
 
 
