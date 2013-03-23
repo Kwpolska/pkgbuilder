@@ -181,7 +181,7 @@ def rsync(pkg, quiet=False):
         qv = '--quiet'
     else:
         qv = '--verbose'
-    return DS.run_command(('rsync', qv, '-mrt', '--no-motd', '--delete-after',
+    return DS.run_command(('rsync', qv, '-mr', '--no-motd', '--delete-after',
                            '--no-p', '--no-o', '--no-g',
                            '--include=/{}'.format(pkg['Category']),
                            '--include=/{}/{}'.format(pkg['Category'],
