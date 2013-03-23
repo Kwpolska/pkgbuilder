@@ -23,7 +23,7 @@ import subprocess
 import textwrap
 import datetime
 
-
+__all__ = ['info', 'search', 'print_package_search', 'print_package_info']
 RPC = AUR()
 
 

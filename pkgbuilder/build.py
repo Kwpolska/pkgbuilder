@@ -29,7 +29,8 @@ import functools
 import glob
 import datetime
 
-
+__all__ = ['validate', 'install', 'safeupgrade', 'auto_build', 'download',
+           'extract', 'prepare_deps', 'depcheck', 'build_runner']
 AURURL = '{}://aur.archlinux.org{}'
 
 

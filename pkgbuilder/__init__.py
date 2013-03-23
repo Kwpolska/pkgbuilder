@@ -48,6 +48,7 @@ __version__ = '2.1.6.3'
 __author__ = 'Kwpolska'
 __license__ = '3-clause BSD'
 __docformat__ = 'restructuredtext en'
+__all__ = ['_', 'PBError', 'DS']
 
 import gettext
 
@@ -67,7 +68,6 @@ class PBError(Exception):
     def __str__(self):
         """You want to see error messages, don’t you?"""
         return self.msg
-
 
 from .pbds import PBDS
 DS = PBDS()

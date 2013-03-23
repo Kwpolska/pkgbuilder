@@ -20,6 +20,8 @@ import os
 import logging
 import subprocess
 
+__all__ = ['PBDS']
+
 
 ### PBDS           PB global data storage  ###
 class PBDS():

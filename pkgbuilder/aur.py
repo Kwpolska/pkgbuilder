@@ -19,6 +19,8 @@ import requests
 import requests.exceptions
 import json
 
+__all__ = ['AUR']
+
 
 ### AUR             AUR RPC calls           ###
 class AUR:

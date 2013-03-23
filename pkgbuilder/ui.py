@@ -15,10 +15,11 @@
     :License: BSD (see /LICENSE).
 """
 
-
 import sys
 import time
 import threading
+
+__all__ = ['UI']
 
 
 class UI(object):
