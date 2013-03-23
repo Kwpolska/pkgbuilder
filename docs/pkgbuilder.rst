@@ -38,6 +38,10 @@ the root password when one will be required (i.e. to run **pacman**).
 OPERATIONS
 ==========
 
+**-F, --fetch**
+    Fetch (and don’t build) **PACKAGE**\s in a fashion similar to
+    ``cower -d``.
+
 **-i, --info**
     Displays info about **PACKAGE** in a fashion similar to pacman.
 

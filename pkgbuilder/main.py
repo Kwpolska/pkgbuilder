@@ -46,8 +46,19 @@ def main(source='AUTO', quit=True):
         parser.add_argument('pkgnames', metavar=_('PACKAGE'), action='store',
                             nargs='*', help=_('AUR/ABS packages to build'))
 
-        argopt = parser.add_argument_group(_('options'))
         argopr = parser.add_argument_group(_('operations'))
+        argopr.add_argument('-F', '--fetch', action='store_true', default=False,
+                            dest='fetch', help=_('fetch package files'))
+        argopr.add_argument('-i', '--info', action='store_true', default=False,
+                            dest='info', help=_('view package information'))
+        argopr.add_argument('-s', '--search', action='store_true',
+                            default=False, dest='search', help=_('search the '
+                            'AUR for matching strings'))
+        argopr.add_argument('-u', '--sysupgrade', action='count',
+                            default=False, dest='upgrade',
+                            help=_('upgrade installed AUR packages'))
+
+        argopt = parser.add_argument_group(_('options'))
         argopt.add_argument('-c', '--clean', action='store_true',
                             default=False, dest='cleanup', help=_('clean up '
                             'work files after build'))
@@ -75,14 +86,6 @@ def main(source='AUTO', quit=True):
                                 'perform a failsafe upgrade of PKGBUILDer'))
         argopt.add_argument('-y', '--refresh', action='store_true',
                             default=False, dest='pacupd', help=_('(dummy)'))
-        argopr.add_argument('-i', '--info', action='store_true', default=False,
-                            dest='info', help=_('view package information'))
-        argopr.add_argument('-s', '--search', action='store_true',
-                            default=False, dest='search', help=_('search the '
-                            'AUR for matching strings'))
-        argopr.add_argument('-u', '--sysupgrade', action='count',
-                            default=False, dest='upgrade',
-                            help=_('upgrade installed AUR packages'))
 
         if source != 'AUTO':
             args = parser.parse_args(source)
@@ -122,7 +125,7 @@ def main(source='AUTO', quit=True):
                 if len(searchstring) < 2:
                     # this would be too many entries, but this is an actual API
                     # limitation and not an idea of yours truly.
-                    DS.fancy_error(_('Search query too short, API limitation'))
+                    DS.fancy_error(_('Search query too short'))
                     DS.fancy_msg(_('Searching for exact match...'))
                     search = pkgbuilder.utils.info([searchstring])
                     if search == []:
@@ -184,6 +187,10 @@ def main(source='AUTO', quit=True):
             dodowngrade = args.upgrade > 1
             upnames = pkgbuilder.upgrade.auto_upgrade(dodowngrade, args.vcsup)
             pkgnames = upnames + pkgnames
+
+        if args.fetch:
+            pkgbuilder.build.fetch_runner(pkgnames)
+            exit(0)
 
         # If we didn't quit, we should build the packages.
         if pkgnames:

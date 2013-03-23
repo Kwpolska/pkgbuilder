@@ -15,6 +15,7 @@
 """
 
 from . import DS, _, PBError
+import pkgbuilder.ui
 import pkgbuilder.utils
 import sys
 import os
@@ -29,7 +30,8 @@ import glob
 import datetime
 
 __all__ = ['validate', 'install', 'safeupgrade', 'auto_build', 'download',
-           'extract', 'prepare_deps', 'depcheck', 'build_runner']
+           'rsync', 'extract', 'prepare_deps', 'depcheck', 'fetch_runner',
+           'build_runner']
 AURURL = '{}://aur.archlinux.org{}'
 
 
@@ -173,6 +175,22 @@ def download(urlpath, filename, prot='http'):
     return r.headers['content-length']
 
 
+def rsync(pkg, quiet=False):
+    """Run rsync for a package."""
+    if quiet:
+        qv = '--quiet'
+    else:
+        qv = '--verbose'
+    return DS.run_command(('rsync', qv, '-mrt', '--no-motd', '--delete-after',
+                           '--no-p', '--no-o', '--no-g',
+                           '--include=/{}'.format(pkg['Category']),
+                           '--include=/{}/{}'.format(pkg['Category'],
+                                                     pkg['Name']),
+                           '--exclude=/{}/*'.format(pkg['Category']),
+                           '--exclude=/*', 'rsync.archlinux.org::abs/{}/'.format(
+                               pkg['Arch']), '.'))
+
+
 def extract(filename):
     """Extracts an AUR tarball."""
     thandle = tarfile.open(filename, 'r:gz')
@@ -238,6 +256,68 @@ def depcheck(depends):
         return parseddeps
 
 
+def fetch_runner(pkgnames):
+    """Run the fetch procedure."""
+    UI = pkgbuilder.ui.UI()
+    abspkgs = []
+    aurpkgs = []
+    try:
+        print( ':: ' + _('Fetching package information...'))
+        for pkgname in pkgnames:
+            pkg = None
+            try:
+                pkg = pkgbuilder.utils.info([pkgname])[0]
+                pkg['ABS'] = False
+            except IndexError:
+                try:
+                    DS.log.info('{} not found in the AUR, checking in '
+                                'ABS'.format(pkgname))
+                    syncpkgs = []
+                    for j in [i.pkgcache for i in DS.pyc.get_syncdbs()]:
+                        syncpkgs.append(j)
+                    syncpkgs = functools.reduce(lambda x, y: x + y, syncpkgs)
+                    abspkg = pyalpm.find_satisfier(syncpkgs, pkgname)
+                    pkg = {'CategoryID': 0, 'Category': abspkg.db.name,
+                           'Name': abspkg.name, 'Version': abspkg.version,
+                           'Description': abspkg.desc, 'OutOfDate': 0,
+                           'NumVotes': 'n/a', 'Arch': abspkg.arch}
+                    pkg['ABS'] = True
+                except AttributeError:
+                    pass
+
+            if not pkg:
+                raise PBError(_('Package {} not found.').format(pkg['Name']))
+            if pkg['ABS']:
+                abspkgs.append(pkg)
+            else:
+                aurpkgs.append(pkg)
+
+        if abspkgs:
+            print(_(':: Retrieving packages from abs...'))
+            UI.pcount = len(abspkgs)
+            for pkg in abspkgs:
+                UI.pmsg(_('retrieving {}').format(pkg['Name']), True)
+                if rsync(pkg, True) > 0:
+                    raise PBError(_('Failed to retieve {} (from ABS).').format(
+                        pkg['Name']))
+        print(_(':: Retrieving packages from aur...'))
+        UI.pcount = len(aurpkgs)
+        for pkg in aurpkgs:
+            UI.pmsg(_('retrieving {}').format(pkg['Name']), True)
+            filename = pkg['Name'] + '.tar.gz'
+            download(pkg['URLPath'], filename)
+
+        print(':: ' + _('Extracting AUR packages...'))
+        for pkg in aurpkgs:
+            filename = pkg['Name'] + '.tar.gz'
+            extract(filename)
+
+        print(_('Successfully fetched: ') + ' '.join(pkgnames))
+    except PBError as e:
+        print(':: ' + e.msg)
+        exit(1)
+
+
 def build_runner(pkgname, performdepcheck=True,
                  pkginstall=True):
     """
@@ -247,8 +327,7 @@ def build_runner(pkgname, performdepcheck=True,
     try:
         pkg = None
         try:
-            pkg = pkgbuilder.utils.info([pkgname])
-            pkg = pkg[0]
+            pkg = pkgbuilder.utils.info([pkgname])[0]
             useabs = False
         except IndexError:
             try:
@@ -279,17 +358,7 @@ def build_runner(pkgname, performdepcheck=True,
         sys.stdout.write(DS.colors['all_off'])
         if useabs:
             DS.fancy_msg(_('Synchronizing the ABS tree...'))
-            rstatus = DS.run_command(('rsync', '-mrtv', '--no-motd',
-                                      '--delete-after', '--no-p', '--no-o',
-                                      '--no-g', '--include=/{}'.format(
-                                          pkg['Category']),
-                                      '--include=/{}/{}'.format(
-                                          pkg['Category'], pkg['Name']),
-                                      '--exclude=/{}/*'.format(
-                                          pkg['Category']), '--exclude=/*',
-                                      'rsync.archlinux.org::abs/{}/'.format(
-                                          pkg['Arch']), '.'))
-            if rstatus > 0:
+            if rsync(pkg) > 0:
                 raise PBError(_('Failed to synchronize the ABS tree.'))
 
             os.chdir('./{}/'.format(pkg['Category']))
@@ -321,7 +390,7 @@ def build_runner(pkgname, performdepcheck=True,
                 if pkgtype == 2:
                     aurbuild.append(dpkg)
 
-                DS.fancy_msg2('{}: {}'.format(dpkg, pkgtypes[pkgtype]))
+                DS.fancy_msg2(': '.join(dpkg, pkgtypes[pkgtype]))
             if aurbuild != []:
                 return [72337, aurbuild]
 
