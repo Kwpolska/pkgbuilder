@@ -19,7 +19,6 @@ import pkgbuilder.utils
 import sys
 import os
 import pyalpm
-import pycman
 import requests
 import requests.exceptions
 import re
@@ -38,8 +37,7 @@ def validate(pkgnames):
     """Check if packages were installed."""
     DS.fancy_msg(_('Validating installation status...'))
     DS.log.info('Validating: ' + '; '.join(pkgnames))
-    pyc = pycman.config.init_with_config('/etc/pacman.conf')
-    localdb = pyc.get_localdb()
+    localdb = DS.pyc.get_localdb()
 
     aurpkgs = {i['Name']: i['Version'] for i in
                pkgbuilder.utils.info(pkgnames)}
@@ -212,10 +210,9 @@ def depcheck(depends):
         return {}
     else:
         parseddeps = {}
-        pyc = pycman.config.init_with_config('/etc/pacman.conf')
-        localpkgs = pyc.get_localdb().pkgcache
+        localpkgs = DS.pyc.get_localdb().pkgcache
         syncpkgs = []
-        for j in [i.pkgcache for i in pyc.get_syncdbs()]:
+        for j in [i.pkgcache for i in DS.pyc.get_syncdbs()]:
             syncpkgs.append(j)
         syncpkgs = functools.reduce(lambda x, y: x + y, syncpkgs)
         for dep in depends:
@@ -257,9 +254,8 @@ def build_runner(pkgname, performdepcheck=True,
             try:
                 DS.log.info('{} not found in the AUR, checking in '
                             'ABS'.format(pkgname))
-                pyc = pycman.config.init_with_config('/etc/pacman.conf')
                 syncpkgs = []
-                for j in [i.pkgcache for i in pyc.get_syncdbs()]:
+                for j in [i.pkgcache for i in DS.pyc.get_syncdbs()]:
                     syncpkgs.append(j)
                 syncpkgs = functools.reduce(lambda x, y: x + y, syncpkgs)
                 abspkg = pyalpm.find_satisfier(syncpkgs, pkgname)
