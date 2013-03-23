@@ -33,11 +33,10 @@ class UI(object):
         self.pcur += 1
         sys.stdout.write('\r')
         ln = len(str(self.pcount))
-        if ln < 2:
-            ln = 2
-        sys.stdout.write(('[{:>' + str(ln) + '}/{:<2}] ').format(self.pcur,
-                                                                 self.pcount))
+        sys.stdout.write(('({:>' + str(ln) + '}/{}) ').format(self.pcur,
+                                                              self.pcount))
         sys.stdout.write('{:<70}'.format(msg))
+        sys.stdout.write('\r')
         if self.pcur == self.pcount:
             self.pcount = 0
             self.pcur = 0
@@ -48,10 +47,10 @@ class UI(object):
         self.throb = True
         while self.throb:
             for i in ('|', '/', '-', '\\'):
-                sys.stdout.write('\r[{}] {}'.format(i, msg))
+                sys.stdout.write('\r({}) {}'.format(i, msg))
                 time.sleep(0.1)
         if not self.throb and printback:
-            sys.stdout.write('\r[{}] {}'.format(finalthrob, msg))
+            sys.stdout.write('\r({}) {}'.format(finalthrob, msg))
             time.sleep(0.1)
             print()
 
