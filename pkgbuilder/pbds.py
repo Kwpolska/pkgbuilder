@@ -183,7 +183,7 @@ class PBDS():
                          self.colors['all_off'] +
                          self.colors['bold'] + ' ' + text +
                          self.colors['all_off'] + '\n')
-        self.log.info('(auto fancy_msg     ) ' + text)
+        self.log.info('({0:<20}) {1}'.format('fancy_msg', text))
 
     def fancy_msg2(self, text):
         """makepkg's msg2().  Use for sub-messages."""
@@ -191,7 +191,7 @@ class PBDS():
                          self.colors['all_off'] +
                          self.colors['bold'] + ' ' + text +
                          self.colors['all_off'] + '\n')
-        self.log.info('(auto fancy_msg2    ) ' + text)
+        self.log.info('({0:<20}) {1}'.format('fancy_msg2', text))
 
     def fancy_warning(self, text):
         """makepkg's warning().  Use when you have problems."""
@@ -199,25 +199,25 @@ class PBDS():
                          _('WARNING:') + self.colors['all_off'] +
                          self.colors['bold'] + ' ' + text +
                          self.colors['all_off'] + '\n')
-        self.log.warning('(auto fancy_warning ) ' + text)
+        self.log.warning('({0:<20}) {1}'.format('fancy_warning', text))
 
     def fancy_warning2(self, text):
         """Like fancy_warning, but looks like a sub-message (fancy_msg2)."""
         sys.stderr.write(self.colors['yellow'] + self.mp2 + '->' +
                          self.colors['all_off'] + self.colors['bold'] + ' ' +
                          text + self.colors['all_off'] + '\n')
-        self.log.warning('(auto fancy_warning2) ' + text)
+        self.log.warning('({0:<20}) {1}'.format('fancy_warning2', text))
 
     def fancy_error(self, text):
         """makepkg's error().  Use for errors.  Quitting is suggested."""
         sys.stderr.write(self.colors['red'] + self.mp1 + '> ' + _('ERROR:') +
                          self.colors['all_off'] + self.colors['bold'] + ' ' +
                          text + self.colors['all_off'] + '\n')
-        self.log.error('(auto fancy_error   ) ' + text)
+        self.log.error('({0:<20}) {1}'.format('fancy_error', text))
 
     def fancy_error2(self, text):
         """Like fancy_error, but looks like a sub-message (fancy_msg2)."""
         sys.stderr.write(self.colors['red'] + self.mp2 + '->' +
                          self.colors['all_off'] + self.colors['bold'] + ' ' +
                          text + self.colors['all_off'] + '\n')
-        self.log.error('(auto fancy_error2  ) ' + text)
+        self.log.error('({0:<20}) {1}'.format('fancy_error2', text))
