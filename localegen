@@ -10,8 +10,6 @@ popath="./locale/$language/LC_MESSAGES/$project.po"
 test=$(ls $popath > /dev/null 2> /dev/null)
 
 if [[ $? == '2' ]]; then
-    echo -n 'No such locale!  Valid locales are:  '
-    ls --tabsize 50 ./locale
     exit 1
 else
     msgmerge $popath messages.pot -o $popath
