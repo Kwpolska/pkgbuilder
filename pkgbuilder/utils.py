@@ -73,7 +73,7 @@ def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
     prefixp2 = prefixp + '    '
     if lpkg is not None:
         if pyalpm.vercmp(pkg['Version'], lpkg.version) != 0:
-            installed = _(' [installed: {}]').format(lpkg.version)
+            installed = _(' [installed: {0}]').format(lpkg.version)
         else:
             installed = _(' [installed]')
     if pkg['OutOfDate'] > 0:

@@ -99,10 +99,10 @@ def main(source='AUTO', quit=True):
 
         if args.debug:
             DS.debugmode(nochange=True)
-            DS.log.info('*** PKGBUILDer v{}'.format(__version__))
+            DS.log.info('*** PKGBUILDer v{0}'.format(__version__))
             DS.log.debug('*** debug output on.')
 
-        DS.log.info('Arguments parsed.  {}'.format(args.__dict__))
+        DS.log.info('Arguments parsed.  {0}'.format(args.__dict__))
 
         if not args.color:
             DS.colorsoff()
@@ -161,7 +161,7 @@ def main(source='AUTO', quit=True):
         if args.pac:
             DS.log.debug('-S passed, building in /tmp/.')
             uid = os.geteuid()
-            path = '/tmp/pkgbuilder-{}'.format(str(uid))
+            path = '/tmp/pkgbuilder-{0}'.format(str(uid))
             if not os.path.exists(path):
                 os.mkdir(path)
             os.chdir(path)
@@ -196,7 +196,7 @@ def main(source='AUTO', quit=True):
         # If we didn't quit, we should build the packages.
         if pkgnames:
             if DS.uid == 0:
-                DS.log.warning('Running as root! (UID={})'.format(DS.uid))
+                DS.log.warning('Running as root! (UID={0})'.format(DS.uid))
                 DS.fancy_warning(_('Running PKGBUILDer as root can break your '
                                    'system!'))
 
@@ -206,7 +206,7 @@ def main(source='AUTO', quit=True):
             tovalidate = set(pkgnames)
 
             for pkgname in pkgnames:
-                DS.log.info('Building {}'.format(pkgname))
+                DS.log.info('Building {0}'.format(pkgname))
                 out = pkgbuilder.build.auto_build(pkgname, args.depcheck,
                                                   args.pkginst)
                 if out:

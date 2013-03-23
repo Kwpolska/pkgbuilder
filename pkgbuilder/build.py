@@ -32,7 +32,7 @@ import datetime
 __all__ = ['validate', 'install', 'safeupgrade', 'auto_build', 'download',
            'rsync', 'extract', 'prepare_deps', 'depcheck', 'fetch_runner',
            'build_runner']
-AURURL = '{}://aur.archlinux.org{}'
+AURURL = '{0}://aur.archlinux.org{1}'
 
 
 def validate(pkgnames):
@@ -50,35 +50,35 @@ def validate(pkgnames):
             aurversion = aurpkgs[pkgname]
         except KeyError:
             if not pkg:
-                DS.fancy_error2(_('{}: not an AUR package').format(
+                DS.fancy_error2(_('{0}: not an AUR package').format(
                                 pkgname))
             else:
-                DS.fancy_msg2(_('{}: installed {}').format(pkgname,
-                                                           pkg.version))
+                DS.fancy_msg2(_('{0}: installed {1}').format(pkgname,
+                                                             pkg.version))
         else:
             if not pkg:
-                DS.fancy_error2(_('{}: NOT installed').format(pkgname))
+                DS.fancy_error2(_('{0}: NOT installed').format(pkgname))
             else:
                 if pyalpm.vercmp(aurversion, pkg.version) > 0:
-                    DS.fancy_error2(_('{}: outdated {}').format(pkgname,
-                                                                pkg.version))
+                    DS.fancy_error2(_('{0}: outdated {1}').format(pkgname,
+                                                                  pkg.version))
                 else:
-                    DS.fancy_msg2(_('{}: installed {}').format(pkgname,
-                                                               pkg.version))
+                    DS.fancy_msg2(_('{0}: installed {1}').format(pkgname,
+                                                                 pkg.version))
 
 
 def install(pkgpaths, sigpaths=[], uopt=''):
     """Install packages through ``pacman -U``."""
     DS.fancy_msg(_('Installing built packages...'))
 
-    DS.log.info('pkgs={}; sigs={}'.format(pkgpaths, sigpaths))
-    DS.log.debug('cp {} {} /var/cache/pacman/pkg/'.format(pkgpaths, sigpaths))
+    DS.log.info('pkgs={0}; sigs={1}'.format(pkgpaths, sigpaths))
+    DS.log.debug('cp {0} {1} /var/cache/pacman/pkg/'.format(pkgpaths, sigpaths))
     DS.sudo(['cp'] + pkgpaths + sigpaths + ['/var/cache/pacman/pkg/'])
     if uopt:
-        DS.log.debug('$PACMAN -U {} {}'.format(uopt, pkgpaths))
+        DS.log.debug('$PACMAN -U {0} {1}'.format(uopt, pkgpaths))
         DS.sudo([DS.paccommand, '-U', uopt] + pkgpaths)
     else:
-        DS.log.debug('$PACMAN -U {}'.format(pkgpaths))
+        DS.log.debug('$PACMAN -U {0}'.format(pkgpaths))
         DS.sudo([DS.paccommand, '-U'] + pkgpaths)
 
 
@@ -91,14 +91,14 @@ def safeupgrade(pkgname):
     DS.fancy_msg(_('Downloading the tarball...'))
     downloadbytes = download(pkg['URLPath'], filename)
     kbytes = int(downloadbytes) / 1000
-    DS.fancy_msg2(_('{} kB downloaded').format(kbytes))
+    DS.fancy_msg2(_('{0} kB downloaded').format(kbytes))
 
     DS.fancy_msg(_('Extracting...'))
-    DS.fancy_msg2(_('{} files extracted').format(extract(filename)))
-    os.chdir('./{}/'.format(pkg['Name']))
-    DS.fancy_msg(_('Building {}...').format(pkg['Name']))
+    DS.fancy_msg2(_('{0} files extracted').format(extract(filename)))
+    os.chdir('./{0}/'.format(pkg['Name']))
+    DS.fancy_msg(_('Building {0}...').format(pkg['Name']))
     mpstatus = subprocess.call('makepkg -sicf', shell=True)
-    DS.fancy_msg(_('Build finished with return code {}.').format(mpstatus))
+    DS.fancy_msg(_('Build finished with return code {0}.').format(mpstatus))
     return mpstatus
 
 
@@ -123,7 +123,7 @@ def auto_build(pkgname, performdepcheck=True,
             DS.fancy_msg(_('The build function reported a proper build.'))
         elif build_result[0] >= 0 and build_result[0] < 72000:  # PBxxx.
             raise PBError(_('makepkg (or someone else) failed and '
-                            'returned {}.').format(build_result[0]))
+                            'returned {0}.').format(build_result[0]))
             exit(build_result[0])
         elif build_result[0] == 72789:  # PBSUX.
             raise PBError(_('PKGBUILDer had a problem.'))
@@ -160,11 +160,11 @@ def download(urlpath, filename, prot='http'):
         r = requests.get(AURURL.format(prot, urlpath))
     except requests.exceptions.ConnectionError as e:
         raise PBError(_('AUR: connection error '
-                        '({})').format(e.args[0].reason))
+                        '({0})').format(e.args[0].reason))
 
     # Error handling.
     if r.status_code != 200:
-        raise PBError(_('download: HTTP Error {}').format(
+        raise PBError(_('download: HTTP Error {0}').format(
             r.status_code))
     elif r.headers['content-length'] == '0':
         raise PBError(_('download: 0 bytes downloaded'))
@@ -183,12 +183,12 @@ def rsync(pkg, quiet=False):
         qv = '--verbose'
     return DS.run_command(('rsync', qv, '-mr', '--no-motd', '--delete-after',
                            '--no-p', '--no-o', '--no-g',
-                           '--include=/{}'.format(pkg['Category']),
-                           '--include=/{}/{}'.format(pkg['Category'],
-                                                     pkg['Name']),
-                           '--exclude=/{}/*'.format(pkg['Category']),
+                           '--include=/{0}'.format(pkg['Category']),
+                           '--include=/{0}/{1}'.format(pkg['Category'],
+                                                       pkg['Name']),
+                           '--exclude=/{0}/*'.format(pkg['Category']),
                            '--exclude=/*',
-                           'rsync.archlinux.org::abs/{}/'.format(pkg['Arch']),
+                           'rsync.archlinux.org::abs/{0}/'.format(pkg['Arch']),
                            '.'))
 
 
@@ -252,7 +252,7 @@ def depcheck(depends):
                 parseddeps[dep] = 2
             else:
                 parseddeps[dep] = -1
-                raise PBError(_('depcheck: cannot find {} '
+                raise PBError(_('depcheck: cannot find {0} '
                                 'anywhere').format(dep))
         return parseddeps
 
@@ -271,7 +271,7 @@ def fetch_runner(pkgnames):
                 pkg['ABS'] = False
             except IndexError:
                 try:
-                    DS.log.info('{} not found in the AUR, checking in '
+                    DS.log.info('{0} not found in the AUR, checking in '
                                 'ABS'.format(pkgname))
                     syncpkgs = []
                     for j in [i.pkgcache for i in DS.pyc.get_syncdbs()]:
@@ -287,7 +287,7 @@ def fetch_runner(pkgnames):
                     pass
 
             if not pkg:
-                raise PBError(_('Package {} not found.').format(pkg['Name']))
+                raise PBError(_('Package {0} not found.').format(pkg['Name']))
             if pkg['ABS']:
                 abspkgs.append(pkg)
             else:
@@ -297,14 +297,14 @@ def fetch_runner(pkgnames):
             print(_(':: Retrieving packages from abs...'))
             UI.pcount = len(abspkgs)
             for pkg in abspkgs:
-                UI.pmsg(_('retrieving {}').format(pkg['Name']), True)
+                UI.pmsg(_('retrieving {0}').format(pkg['Name']), True)
                 if rsync(pkg, True) > 0:
-                    raise PBError(_('Failed to retieve {} (from ABS).').format(
-                        pkg['Name']))
+                    raise PBError(_('Failed to retieve {0} (from ABS).'
+                                    ).format( pkg['Name']))
         print(_(':: Retrieving packages from aur...'))
         UI.pcount = len(aurpkgs)
         for pkg in aurpkgs:
-            UI.pmsg(_('retrieving {}').format(pkg['Name']), True)
+            UI.pmsg(_('retrieving {0}').format(pkg['Name']), True)
             filename = pkg['Name'] + '.tar.gz'
             download(pkg['URLPath'], filename)
 
@@ -332,7 +332,7 @@ def build_runner(pkgname, performdepcheck=True,
             useabs = False
         except IndexError:
             try:
-                DS.log.info('{} not found in the AUR, checking in '
+                DS.log.info('{0} not found in the AUR, checking in '
                             'ABS'.format(pkgname))
                 syncpkgs = []
                 for j in [i.pkgcache for i in DS.pyc.get_syncdbs()]:
@@ -348,9 +348,9 @@ def build_runner(pkgname, performdepcheck=True,
                 pass
 
         if not pkg:
-            raise PBError(_('Package {} not found.').format(pkg['Name']))
+            raise PBError(_('Package {0} not found.').format(pkg['Name']))
 
-        DS.fancy_msg(_('Building {}...').format(pkg['Name']))
+        DS.fancy_msg(_('Building {0}...').format(pkg['Name']))
         pkgbuilder.utils.print_package_search(pkg,
                                               prefix=DS.colors['blue'] +
                                               '  ->' + DS.colors['all_off'] +
@@ -362,18 +362,18 @@ def build_runner(pkgname, performdepcheck=True,
             if rsync(pkg) > 0:
                 raise PBError(_('Failed to synchronize the ABS tree.'))
 
-            os.chdir('./{}/'.format(pkg['Category']))
+            os.chdir('./{0}/'.format(pkg['Category']))
         else:
             filename = pkg['Name'] + '.tar.gz'
             DS.fancy_msg(_('Downloading the tarball...'))
             downloadbytes = download(pkg['URLPath'], filename)
             kbytes = int(downloadbytes) / 1000
-            DS.fancy_msg2(_('{} kB downloaded').format(kbytes))
+            DS.fancy_msg2(_('{0} kB downloaded').format(kbytes))
 
             DS.fancy_msg(_('Extracting...'))
-            DS.fancy_msg2(_('{} files extracted').format(extract(
+            DS.fancy_msg2(_('{0} files extracted').format(extract(
                 filename)))
-        os.chdir('./{}/'.format(pkg['Name']))
+        os.chdir('./{0}/'.format(pkg['Name']))
 
         if performdepcheck:
             DS.fancy_msg(_('Checking dependencies...'))
@@ -407,7 +407,7 @@ def build_runner(pkgname, performdepcheck=True,
                                    shell=True)
         if pkginstall:
             # .pkg.tar.xz FTW, but some people change that.
-            pkgfilestr = os.path.abspath('./{}-{}-*.pkg.*{}')
+            pkgfilestr = os.path.abspath('./{0}-{1}-*.pkg.*{2}')
             # I hope nobody builds VCS packages at 23:5* local.  And if they
             # do, they will be caught by the 2nd fallback (crappy packages)
             datep = datetime.date.today().strftime('%Y%m%d')

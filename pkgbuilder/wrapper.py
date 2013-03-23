@@ -44,8 +44,8 @@ def wrapper(source='AUTO'):
     if '--debug' in argst:
         DS.debugmode()
 
-    log.info('*** PBwrapper v{} (PKGBUILDer '
-             '{})'.format(__wrapperversion__, __version__))
+    log.info('*** PBwrapper v{0} (PKGBUILDer '
+             '{1})'.format(__wrapperversion__, __version__))
 
     if (('-L' in argst) or ('--unlock' in argst) or (re.search('-[a-zA-Z]*L',
                                                                ' '.join(argst))
@@ -137,7 +137,7 @@ def wrapper(source='AUTO'):
         else:
             args = parser.parse_args()
 
-        log.debug('Arguments parsed.  {}'.format(args.__dict__))
+        log.debug('Arguments parsed.  {0}'.format(args.__dict__))
 
         try:
             pkgnames = args.pkgnames
@@ -257,25 +257,25 @@ def wrapper(source='AUTO'):
     elif ('-h' in argst) or ('--help' in argst):
         # TRANSLATORS: see pacman’s localizations
 
-        print(_("""usage:  {} <operation> [...]
+        print(_("""usage:  {0} <operation> [...]
 
-{}, a wrapper for pacman and PKGBUILDer.
+PBWrapper, a wrapper for pacman and PKGBUILDer.
 
 Pacman and PKGBUILDer syntaxes apply.  Consult their manpages/help
 commands for more details.
 
 Additional options:
   -L, --unlock         unlock the pacman database""").format(
-            os.path.basename(sys.argv[0]), 'PBWrapper'))
+            os.path.basename(sys.argv[0])))
 
     elif ('-V' in argst) or ('--version' in argst):
         pacpkg = localdb.get_pkg('pacman')
-        print("""PBWrapper   v{}
-PKGBUILDer  v{}
-pacman      v{}
-pyalpm      v{}""".format(__wrapperversion__, __version__,
-                          pacpkg.version.split('-', 1)[0],
-                          pyalpm.version()))
+        print("""PBWrapper   v{0}
+PKGBUILDer  v{1}
+pacman      v{2}
+pyalpm      v{3}""".format(__wrapperversion__, __version__,
+                           pacpkg.version.split('-', 1)[0],
+                           pyalpm.version()))
     elif 'UTshibboleet' in argst:
         if argst[0] == 'unittests' and argst[1] == 'UTshibboleet':
             # http://xkcd.com/806/
