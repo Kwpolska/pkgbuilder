@@ -173,10 +173,10 @@ def auto_upgrade(downgrade=False, vcsup=False):
                                    'first:'))
                 DS.fancy_msg2(pkgbname)
                 query = (DS.colors['green'] + '==>' + DS.colors['all_off'] +
-                        DS.colors['bold'] + ' ' +
-                        _('Do you want to cancel the current operation and '
-                          'upgrade these packages now? [Y/n] ') +
-                        DS.colors['all_off'])
+                         DS.colors['bold'] + ' ' +
+                         _('Do you want to cancel the current operation and '
+                           'upgrade these packages now? [Y/n] ') +
+                         DS.colors['all_off'])
 
             yesno = input(query)
 

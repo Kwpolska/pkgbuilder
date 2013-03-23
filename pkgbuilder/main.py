@@ -47,8 +47,9 @@ def main(source='AUTO', quit=True):
                             nargs='*', help=_('AUR/ABS packages to build'))
 
         argopr = parser.add_argument_group(_('operations'))
-        argopr.add_argument('-F', '--fetch', action='store_true', default=False,
-                            dest='fetch', help=_('fetch package files'))
+        argopr.add_argument('-F', '--fetch', action='store_true',
+                            default=False, dest='fetch',
+                            help=_('fetch package files'))
         argopr.add_argument('-i', '--info', action='store_true', default=False,
                             dest='info', help=_('view package information'))
         argopr.add_argument('-s', '--search', action='store_true',
