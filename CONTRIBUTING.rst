@@ -4,17 +4,17 @@ Appendix A. Contribution rules
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: © 2011-2013, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2013-03-14
-:Version: 2.1.6.3
+:Date: 2013-03-23
+:Version: 2.99.4.0
 
 .. index:: contributing
 
 Do you want to contribute to this project?  Great!  I’d love to see some help,
 but you must comply with some rules.
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
-NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and
-"OPTIONAL" in this document are to be interpreted as described in
+The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL
+NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”,  “MAY”, and
+“OPTIONAL” in this document are to be interpreted as described in
 RFC 2119.
 
 ---------------
@@ -26,10 +26,9 @@ Issue reporting
 GitHub Issues are the recommended way to report an issue.  If you do not have an
 account there, get one or mail me.
 
-When pasting console sessions, you must paste them fully,
-*prompt-to-prompt*, to see all the messages and your input.
-Trim only stuff that you are 1000% sure that is not related
-to the project in question.
+When pasting console sessions, you must paste them fully, *prompt-to-prompt*,
+to see all the messages and your input.  Trim only stuff that you are 1000%
+sure that is not related to the project in question.
 
 --------------------------------------------
 General preparations, rules and pull process
@@ -38,8 +37,9 @@ General preparations, rules and pull process
 Prepare
 =======
 
-A GitHub account is recommended.  Patches by mail are accepted, but working
-with you through there is a better way.
+For code, a GitHub account is recommended.  For translations, a Transifex_
+account is mandatory.  Code patches by mail are accepted, but working with you
+through there is a better way.
 
 Fork the repo first.  Non-GitHub people, ``git clone``.
 
@@ -117,24 +117,6 @@ Localization
 
 .. index:: locale
 
-1. Run ``mkdir -p locale/[CODE]/LC_MESSAGES`` in your terminal, replacing
-   ``[CODE]`` by your language code, as in /usr/share/locale.
-2. Copy the ``/messages.pot`` file to
-   ``locale/[CODE]/LC_MESSAGES/[PROJECT].po`` (replace ``[PROJECT]`` with the
-   project name, all-lowercase)
-3. Do your work.  The comments will inform you where this string is, and the
-   ones starting with 'TRANSLATORS:' are for you to read and make use of.
-   Other comments come from my code and you should not care about them.  And
-   if it is directed for translators, let me know.  The Poedit_ app may be
-   of help.  Please take care of the headers at the top of the file (with a
-   text editor, do not use Poedit for that!)  and modify them.  The
-   Last-Translator, Language-Team and Language are important, the others are
-   auto-generated anyways.  The general :ref:`Rules` apply, please take care
-   of it!
-4. Commit (``-s/--signoff`` is required here).
-5. Your translation will be added in the next release, or, if a release isn’t
-   planned in the near future, a new release will be made.  Your addition will
-   be appreciated.  Note that I cannot translate new strings, and, as a result,
-   I might ask you for additions in the future.
+As of version 3.0.0, translations are handled over at Transifex_.
 
-.. _Poedit: http://www.poedit.net/
+.. _Transifex: https://www.transifex.com/projects/p/pkgbuilder/

@@ -5,24 +5,37 @@ Appendix C. Changelog
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: © 2011-2013, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2013-03-14
-:Version: 2.1.6.3
+:Date: 2013-03-23
+:Version: 2.99.4.0
 
 .. index:: CHANGELOG
 
 Versioning scheme
 =================
-PKGBUILDer uses the following versioning scheme:
+PKGBUILDer uses the following versioning schemes:
 
-    generation.major.minor.revision
+:3.0.0: generation.major.minor
+:2.99.x.x: 2.99.stage.revision (3.0.0 test versions)
+:2.1.1.0–2.1.6.3: generation.major.minor.revision
+:2.1.0: generation.major.minor
+:1.0–2.0: generation.revision
 
  * generation: 1 is the first Perl version, 2 is the Python version.
  * major: basic release number.
  * minor: sub-release number.
  * revision: changes that aren’t important enough to be new minor versions.
 
+Generation 3
+============
+
+:2.99.4.0: First four stages done.  [testing git-only version]
+
 Generation 2
 ============
+:2.1.6.0–2.1.6.3: VerbosePkgLists, DS.run_command() and subsequent fixes to
+                    the latter
+:2.1.5.14: Fixing a quite important bug in the install process
+:2.1.5.13: 2013!
 :2.1.5.11—2.1.5.12: Fixes to the AUR v2.0 magic.
 :2.1.5.10: AUR v2.0 support.
 :2.1.5.9: And another issue that I have not noticed, in a tiny change of Update
