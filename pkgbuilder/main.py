@@ -226,7 +226,7 @@ def main(source='AUTO', quit=True):
         DS.fancy_error(_('PKGBUILDer (or the requests library) had '
                          'problems with fulfilling an HTTP request.'))
         exit(1)
-    except pkgbuilder.exceptions.PBException as e:
+    except Exception as e:
         DS.fancy_error(str(e))
         exit(1)
 
