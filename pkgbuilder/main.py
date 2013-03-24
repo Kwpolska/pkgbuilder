@@ -14,14 +14,14 @@
     :License: BSD (see /LICENSE).
 """
 
-from . import DS, _, PBError, __version__
+from . import DS, _, __version__
+import pkgbuilder.exceptions
 import pkgbuilder.build
 import pkgbuilder.utils
 import pkgbuilder.upgrade
 import argparse
 import os
 import sys
-import requests
 
 __all__ = ['main']
 
@@ -220,32 +220,14 @@ def main(source='AUTO', quit=True):
 
             if args.validate and tovalidate:
                 pkgbuilder.build.validate(tovalidate)
-    except requests.exceptions.ConnectionError as inst:
-        DS.fancy_error(str(inst))
+    except pkgbuilder.exceptions.NetworkError as e:
+        DS.fancy_error(str(e))
         # TRANSLATORS: do not translate the word 'requests'.
         DS.fancy_error(_('PKGBUILDer (or the requests library) had '
                          'problems with fulfilling an HTTP request.'))
         exit(1)
-    except requests.exceptions.HTTPError as inst:
-        DS.fancy_error(str(inst))
-        # TRANSLATORS: do not translate the word 'requests'.
-        DS.fancy_error(_('PKGBUILDer (or the requests library) had '
-                         'problems with fulfilling an HTTP request.'))
-        exit(1)
-    except requests.exceptions.Timeout as inst:
-        DS.fancy_error(str(inst))
-        # TRANSLATORS: do not translate the word 'requests'.
-        DS.fancy_error(_('PKGBUILDer (or the requests library) had '
-                         'problems with fulfilling an HTTP request.'))
-        exit(1)
-    except requests.exceptions.TooManyRedirects as inst:
-        DS.fancy_error(str(inst))
-        # TRANSLATORS: do not translate the word 'requests'.
-        DS.fancy_error(_('PKGBUILDer (or the requests library) had '
-                         'problems with fulfilling an HTTP request.'))
-        exit(1)
-    except PBError as inst:
-        DS.fancy_error(str(inst))
+    except pkgbuilder.exceptions.PBException as e:
+        DS.fancy_error(str(e))
         exit(1)
 
     DS.log.info('Quitting.')

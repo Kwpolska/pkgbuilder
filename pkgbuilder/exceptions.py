@@ -17,15 +17,17 @@
 
 from . import DS, _
 __all__ = ['PBException', 'AURError', 'MakepkgError', 'NetworkError',
-           'PackageError', 'PackageNotFoundError', 'SanityError']
+           'ConnectionError', 'HTTPError', 'PackageError',
+           'PackageNotFoundError', 'SanityError']
 
 
 class PBException(Exception):
     """Base exception for PKGBUILDer."""
-    def __init__(self, msg, *args, **kwargs):
+    def __init__(self, msg, source, *args, **kwargs):
         """Throw an error to the log and take the arguments."""
         DS.log.error('({0:<20}) {1}'.format(self.__qualname__, msg))
         self.msg = msg
+        self.source = source
         self.args = args
         self.kwargs = kwargs
 
@@ -40,12 +42,13 @@ class AURError(PBException):
         """Throw an error to the log and take the arguments."""
         DS.log.error('({0:<20}) {1}'.format(self.__qualname__, msg))
         self.msg = msg
+        self.source = 'AUR'
         self.args = args
         self.kwargs = kwargs
 
     def __str__(self):
         """Just so the user knows that it’s an AUR error."""
-        return '[AUR] ' + self.msg
+        return _('AUR Error: {0}').format(self.msg)
 
 
 class MakepkgError(PBException):
@@ -54,6 +57,7 @@ class MakepkgError(PBException):
         """Throw an error to the log and take the arguments."""
         DS.log.error('({0:<20}) {1}'.format(self.__qualname__, retcode))
         self.retcode = retcode
+        self.source = 'makepkg'
         self.args = args
         self.kwargs = kwargs
 
@@ -69,13 +73,50 @@ class NetworkError(PBException):
         DS.log.error('({0:<20}) {1} (via {2})'.format(self.__qualname__, msg,
                                                       source))
         self.msg = msg
-        self.source = source
+        try:
+            self.source = source.args[0].reason
+        except:
+            try:
+                self.source = source.args[0]
+            except:
+                self.source = source
+        self._source = source
         self.args = args
         self.kwargs = kwargs
 
     def __str__(self):
         """The msg, wherever it may come from, isn’t helpful either."""
         return _('Network error: {0} (via {1})').format(self.msg, self.source)
+
+
+class ConnectionError(NetworkError):
+    def __str__(self):
+        return _('Connection error: {0} (via {1})').format(self.msg, self.source)
+
+
+class HTTPError(NetworkError):
+    def __init__(self, source, origin, *args, **kwargs):
+        DS.log.error('({0:<20}) {1} (via {2})'.format(self.__qualname__,
+                                                      source.status_code,
+                                                      source))
+        self.msg = _('HTTP Error {0} (via {1}').format(source.status_code,
+                                                       source)
+        self.source = source
+        try:
+            self.origin = origin.args[0].reason
+        except:
+            try:
+                self.origin = origin.args[0]
+            except:
+                self.source = origin
+        self._origin = origin
+        self.args = args
+        self.kwargs = kwargs
+        self.code = source.status_code
+
+    def __str__(self):
+        """For human-friendliness."""
+        return self.msg
 
 
 class PackageError(PBException):
@@ -95,25 +136,30 @@ class PackageError(PBException):
 
 
 class PackageNotFoundError(PackageError):
-    def __init__(self, name, *args, **kwargs):
+    def __init__(self, name, source, *args, **kwargs):
         """Throw an error to the log and take the arguments."""
-        DS.log.error('({0:<20}) {1}'.format(self.__qualname__, name))
+        DS.log.error('({0:<20}) {1} (via {2})'.format(self.__qualname__, name,
+                                                      source))
         self.name = name
+        self.msg = _('Package {0} not found. (via {1})').format(name, source)
+        self.source = source
         self.args = args
         self.kwargs = kwargs
 
     def __str__(self):
         """This would be far, FAR away from being informative."""
-        return _('Package {0} not found.').format(self.name)
+        return self.msg
 
 
 class SanityError(PBException):
     """Sometimes PKGBUILDer or one of its friends can go insane."""
-    def __init__(self, msg, *args, **kwargs):
-        DS.log.error('({0:<20}) {1}'.format(self.__qualname__, msg))
+    def __init__(self, msg, source, *args, **kwargs):
+        DS.log.error('({0:<20}) {1} (via {2})'.format(self.__qualname__, msg,
+                                                      source))
         self.msg = msg
+        self.source = source
         self.args = args
         self.kwargs = kwargs
 
     def __str__(self):
-        return _('Sanity error!  {0}').format(self.msg)
+        return _('Sanity error!  {0} (via {1})').format(self.msg, self.source)

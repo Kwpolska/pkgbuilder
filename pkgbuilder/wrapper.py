@@ -15,11 +15,13 @@
     :License: BSD (see /LICENSE).
 """
 
-from . import DS, _, PBError, __version__
+from . import DS, _,  __version__
 from .main import main
+from .exceptions import SanityError
 import pkgbuilder.utils
 import re
 import logging
+import subprocess
 import pyalpm
 import argparse
 import sys
@@ -172,7 +174,7 @@ def wrapper(source='AUTO'):
             elif i[2:] in alllong + alllongc:
                 s = i[2:]
             else:
-                raise PBError('argparse broke')
+                raise SanityError('argparse broke')
 
             if s in allcommon:
                 pacargs.append(i)
@@ -255,21 +257,28 @@ def wrapper(source='AUTO'):
                           sanitycheck)]
             DS.sudo([DS.paccommand] + pacargs + sanityargs)
     elif ('-h' in argst) or ('--help' in argst):
-        # TRANSLATORS: see pacman’s localizations
+        pacdoc = subprocess.check_output('pacman --help || true',
+                                         shell=True).decode('utf-8')
+        pacdoc = '\n'.join(pacdoc.split('\n\n')[0].split('\n')[1:])
+        pacdoc = pacdoc.replace('pacman', 'pb')
 
+        # TRANSLATORS: see pacman’s localizations
         print(_("""usage:  {0} <operation> [...]
 
 PBWrapper, a wrapper for pacman and PKGBUILDer.
+
+{1}
 
 Pacman and PKGBUILDer syntaxes apply.  Consult their manpages/help
 commands for more details.
 
 Additional options:
   -L, --unlock         unlock the pacman database""").format(
-            os.path.basename(sys.argv[0])))
+            os.path.basename(sys.argv[0]), pacdoc))
 
     elif ('-V' in argst) or ('--version' in argst):
         pacpkg = localdb.get_pkg('pacman')
+
         print("""PBWrapper   v{0}
 PKGBUILDer  v{1}
 pacman      v{2}
@@ -282,7 +291,7 @@ pyalpm      v{3}""".format(__wrapperversion__, __version__,
             pass
         else:
             print('Please don’t use the reserved UTshibboleet argument.')
-    elif ('-Q' in argst) or ('--query' in argst):
-        DS.run_command([DS.paccommand, argst])
+    elif ('-Q' in argst) or ('--query' in argst) or argst == []:
+        DS.run_command([DS.paccommand] + argst)
     else:
-        DS.sudo([DS.paccommand, argst])
+        DS.sudo([DS.paccommand] + argst)

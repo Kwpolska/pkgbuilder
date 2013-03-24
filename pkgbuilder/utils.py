@@ -14,8 +14,9 @@
     :License: BSD (see /LICENSE).
 """
 
-from . import DS, _, PBError
+from . import DS, _
 from .aur import AUR
+from pkgbuilder.exceptions import SanityError, AURError
 import pyalpm
 import os
 import subprocess
@@ -38,7 +39,7 @@ def info(pkgnames):
     elif aur_pkgs['type'] == 'error':
         # There are other cases where the "results" element is a string;
         # type = error seems to cover at least one case
-        raise PBError(aur_pkgs['results'])
+        raise AURError(aur_pkgs['results'])
     else:
         return aur_pkgs['results']
 
@@ -112,7 +113,7 @@ def print_package_info(pkgs, cachemode=False, force_utc=False):
     of ``pacman -Si``.
     """
     if pkgs == []:
-        raise PBError(_('Package not found.'))
+        raise SanityError('Didn’t pass any packages.')
     else:
         loct = os.getenv('LC_TIME')
         loc = os.getenv('LC_ALL')

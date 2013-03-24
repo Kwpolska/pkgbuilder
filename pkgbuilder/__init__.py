@@ -48,7 +48,7 @@ __version__ = '2.1.6.3'
 __author__ = 'Kwpolska'
 __license__ = '3-clause BSD'
 __docformat__ = 'restructuredtext en'
-__all__ = ['_', 'PBError', 'DS']
+__all__ = ['_', 'DS']
 
 import gettext
 
