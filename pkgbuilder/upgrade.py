@@ -14,7 +14,8 @@
     :License: BSD (see /LICENSE).
 """
 
-from . import DS, _, PBError
+from . import DS, _
+from pkgbuilder.exceptions import SanityError
 import pkgbuilder.build
 import pkgbuilder.utils
 import pyalpm
@@ -160,7 +161,7 @@ def auto_upgrade(downgrade=False, vcsup=False):
             elif 'pkgbuilder-git' in upgnames:
                 pkgbname = 'pkgbuilder-git'
             else:
-                raise PBError('SANITYERROR GOES HERE')
+                raise SanityError('if goes apeshit', 'syu-safeupgrade')
 
             if DS.pacman:
                 print('::' + _('The following packages should be upgraded '

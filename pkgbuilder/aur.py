@@ -14,7 +14,8 @@
     :License: BSD (see /LICENSE).
 """
 
-from . import _, PBError
+#from . import _
+from .exceptions import ConnectionError, HTTPError, NetworkError
 import requests
 import requests.exceptions
 import json
@@ -42,7 +43,7 @@ class AUR:
     """
 
     rpc = '{0}://aur.archlinux.org/rpc.php?type={1}&arg={2}'
-    mrpc = '{0}://aur.archlinux.org/rpc.php?type=multiinfo{2}'
+    mrpc = '{0}://aur.archlinux.org/rpc.php?type=multiinfo{1}'
 
     def jsonreq(self, rtype, arg, prot='https'):
         """Makes a request and returns plain JSON data."""
@@ -51,14 +52,13 @@ class AUR:
 
         try:
             req = requests.get(self.rpc.format(prot, rtype, arg))
+            req.raise_for_status()
         except requests.exceptions.ConnectionError as e:
-            raise PBError(_('AUR: connection error '
-                            '({0})').format(e.args[0].reason))
-
-        req.raise_for_status()
-        if req.status_code != 200:
-            raise PBError(_('AUR: HTTP Error {0}').format(
-                req.status_code))
+            raise ConnectionError(e.args[0].reason, e)
+        except requests.exceptions.HTTPError as e:
+            raise HTTPError(req, e)
+        except requests.exceptions.RequestException as e:
+            raise NetworkError(str(e), e)
 
         return req.text
 
@@ -70,14 +70,13 @@ class AUR:
         urlargs = '&arg[]=' + '&arg[]='.join(args)
         try:
             req = requests.get(self.mrpc.format(prot, urlargs))
+            req.raise_for_status()
         except requests.exceptions.ConnectionError as e:
-            raise PBError(_('AUR: connection error '
-                            '({0})').format(e.args[0].reason))
-
-        req.raise_for_status()
-        if req.status_code != 200:
-            raise PBError(_('AUR: HTTP Error {0}').format(
-                req.status_code))
+            raise ConnectionError(e.args[0].reason, e)
+        except requests.exceptions.HTTPError as e:
+            raise HTTPError(req, origexception=e)
+        except requests.exceptions.RequestException as e:
+            raise NetworkError(str(e), e)
 
         return req.text
 

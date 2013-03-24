@@ -119,7 +119,7 @@ class PBDS():
         if asonearg:
             return subprocess.call(prepend + [' '.join(args)])
         else:
-            return subprocess.call(prepend + list(args))
+            return subprocess.call(prepend + args)
 
     def sudo(self, args):
         """
