@@ -8,6 +8,7 @@
 """
     pkgbuilder.upgrade
     ~~~~~~~~~~~~~~~~~~
+
     Tools for performing upgrades of AUR packages.
 
     :Copyright: © 2011-2013, Kwpolska.

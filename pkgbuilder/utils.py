@@ -8,7 +8,8 @@
 """
     pkgbuilder.utils
     ~~~~~~~~~~~~~~~~
-    Common global utilities.  Provides useful data.
+
+    Common global utilities, used mainly for AUR data access.
 
     :Copyright: © 2011-2013, Kwpolska.
     :License: BSD (see /LICENSE).
