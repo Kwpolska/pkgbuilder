@@ -9,7 +9,8 @@
 """
     pkgbuilder.wrapper
     ~~~~~~~~~~~~~~~~~~
-    A wrapper for pacman and PKGBUILDer.  (PBWrapper/pb)
+
+    A wrapper for pacman and PKGBUILDer, also known as PBWrapper or pb.
 
     :Copyright: © 2011-2013, Kwpolska.
     :License: BSD (see /LICENSE).
