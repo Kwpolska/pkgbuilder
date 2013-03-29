@@ -17,12 +17,12 @@
 
 from . import DS, _
 from .aur import AUR
+from .package import AURPackage
 from pkgbuilder.exceptions import SanityError, AURError
 import pyalpm
 import os
 import subprocess
 import textwrap
-import datetime
 
 __all__ = ['info', 'search', 'print_package_search', 'print_package_info']
 RPC = AUR()
@@ -30,10 +30,12 @@ RPC = AUR()
 
 def info(pkgnames):
     """
-    .. versionchanged:: 2.1.4.8
+    .. versionchanged:: 3.0.0.0
 
     Returns info about packages.
     """
+    if isinstance(pkgnames, str):
+        pkgnames = [pkgnames]
     aur_pkgs = RPC.multiinfo(pkgnames, DS.protocol)
     if aur_pkgs == []:
         return []
@@ -42,21 +44,34 @@ def info(pkgnames):
         # type = error seems to cover at least one case
         raise AURError(aur_pkgs['results'])
     else:
-        return aur_pkgs['results']
+        results = []
+        for d in aur_pkgs['results']:
+            results.append(AURPackage.from_aurdict(d))
+
+        return results
 
 
 def search(pkgname):
-    """Searches for AUR packages."""
+    """
+    .. versonchanged:: 3.0.0.0
+
+    Searches for AUR packages."""
     aur_pkgs = RPC.request('search', pkgname, DS.protocol)
     if aur_pkgs == []:
         return []
     else:
-        return aur_pkgs['results']
+        results = []
+        for d in aur_pkgs['results']:
+            results.append(AURPackage.from_aurdict(d))
+
+        return results
 
 
 def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
                          prefixp=''):
     """
+    .. versionchanged:: 3.0.0.0
+
     Outputs/returns a package representation, which is close to the output
     of ``pacman -Ss``.
     """
@@ -68,13 +83,13 @@ def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
                           # meme and a cheat, too. Sorry.
 
     localdb = DS.pyc.get_localdb()
-    lpkg = localdb.get_pkg(pkg['Name'])
+    lpkg = localdb.get_pkg(pkg.name)
     category = ''
     installed = ''
     prefix2 = prefix + '    '
     prefixp2 = prefixp + '    '
     if lpkg is not None:
-        if pyalpm.vercmp(pkg['Version'], lpkg.version) != 0:
+        if pyalpm.vercmp(pkg.version, lpkg.version) != 0:
             installed = _(' [installed: {0}]').format(lpkg.version)
         else:
             installed = _(' [installed]')
@@ -82,23 +97,24 @@ def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
         installed = (installed + ' ' + DS.colors['red'] + _(
                      '[out of date]') + DS.colors['all_off'])
 
-    if pkg['CategoryID'] != 0:
-        if use_categories:
-            category = DS.categories[pkg['CategoryID']]
-        else:
-            category = 'aur'
+    if use_categories or pkg.is_abs:
+        category = pkg.repo
     else:
-        category = pkg['Category']  # ABS build cheat.
+        category = 'aur'
 
-    descl = textwrap.wrap(pkg['Description'], termwidth - len(prefixp2))
+    descl = textwrap.wrap(pkg.description, termwidth - len(prefixp2))
 
     desc = []
     for i in descl:
         desc.append(prefix2 + i)
     desc = '\n'.join(desc)
-    base = (prefix + '{0}/{1} {2} ({4} ' + _('votes') + '){5}\n' + '{3}')
-    entry = (base.format(category, pkg['Name'], pkg['Version'], desc,
-                         pkg['NumVotes'], installed))
+    if pkg.is_abs:
+        base = (prefix + '{0}/{1} {2}{3}\n{4}')
+        entry = (base.format(category, pkg.name, pkg.version, installed, desc))
+    else:
+        base = (prefix + '{0}/{1} {2} ({3} {4}){5}\n{6}')
+        entry = (base.format(category, pkg.name, pkg.version, pkg.votes,
+                             _('votes'), installed, desc))
 
     if cachemode:
         return entry
@@ -106,9 +122,9 @@ def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
         print(entry)
 
 
-def print_package_info(pkgs, cachemode=False, force_utc=False):
+def print_package_info(pkgs, cachemode=False):
     """
-    .. versionchanged:: 2.1.4.8
+    .. versionchanged:: 3.0.0.0
 
     Outputs/returns a package representation, which is close to the output
     of ``pacman -Si``.
@@ -130,18 +146,6 @@ def print_package_info(pkgs, cachemode=False, force_utc=False):
 
         fmt = '%Y-%m-%dT%H:%M:%S%Z'
 
-        class UTC(datetime.tzinfo):
-            """Universal Time, Coordinated."""
-
-            def utcoffset(dt):
-                return datetime.timedelta(0)
-
-            def tzname(dt):
-                return "Z"
-
-            def dst(dt):
-                return datetime.timedelta(0)
-
         # TRANSLATORS: space it properly.  “yes/no” below are
         # for “out of date”.
 
@@ -161,30 +165,20 @@ Description    : {dsc}
 
         to = []
         for pkg in pkgs:
-            if force_utc:
-                upd = datetime.datetime.fromtimestamp(
-                    float(pkg['LastModified']),
-                    tz=UTC()).strftime(fmt)
-                fsb = datetime.datetime.fromtimestamp(
-                    float(pkg['FirstSubmitted']),
-                    tz=UTC()).strftime(fmt)
-            else:
-                upd = datetime.datetime.fromtimestamp(
-                    float(pkg['LastModified'])).strftime(fmt)
-                fsb = datetime.datetime.fromtimestamp(
-                    float(pkg['FirstSubmitted'])).strftime(fmt)
+            upd = pkg.modified.strftime(fmt)
+            fsb = pkg.added.strftime(fmt)
 
             if pkg['OutOfDate'] > 0:
                 ood = DS.colors['red'] + _('yes') + DS.colors['all_off']
             else:
                 ood = _('no')
 
-            to.append(t.format(cat=DS.categories[pkg['CategoryID']],
-                               nme=pkg['Name'], url=pkg['URL'],
-                               ver=pkg['Version'], lic=pkg['License'],
-                               cmv=pkg['NumVotes'], ood=ood,
-                               mnt=pkg['Maintainer'], upd=upd, fsb=fsb,
-                               dsc=pkg['Description']))
+            to.append(t.format(cat=pkg.repo,
+                               nme=pkg.name, url=pkg.url,
+                               ver=pkg.version, lic=pkg.licenses,
+                               cmv=pkg.votes, ood=ood,
+                               mnt=pkg.human, upd=upd, fsb=fsb,
+                               dsc=pkg.description))
 
     if cachemode:
         return '\n'.join(to)

@@ -82,9 +82,9 @@ class AUR:
         return req.text
 
     def request(self, rtype, arg, prot='https'):
-        """Makes a request."""
+        """Makes a request and returns the AURDict."""
         return json.loads(self.jsonreq(rtype, arg, prot))
 
     def multiinfo(self, args, prot='https'):
-        """Makes a multiinfo request."""
+        """Makes a multiinfo request and returns the AURDict."""
         return json.loads(self.jsonmultiinfo(args, prot))
