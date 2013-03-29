@@ -1,82 +1,84 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 #  <kwpolska@gmail.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: PKGBUILDer\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-23 19:08+0100\n"
+"POT-Creation-Date: 2013-03-23 20:58+0100\n"
 "PO-Revision-Date: 2013-03-23 18:17+0000\n"
 "Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/pkgbuilder/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/pkgbuilder/"
+"language/pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 
 #: pkgbuilder/aur.py:55 pkgbuilder/aur.py:74 pkgbuilder/build.py:162
-msgid "AUR: connection error ({})"
-msgstr "AUR: błąd połączenia ({})"
+msgid "AUR: connection error ({0})"
+msgstr "AUR: błąd połączenia ({0})"
 
 #: pkgbuilder/aur.py:60 pkgbuilder/aur.py:79
-msgid "AUR: HTTP Error {}"
-msgstr "AUR: Błąd HTTP {}"
+msgid "AUR: HTTP Error {0}"
+msgstr "AUR: Błąd HTTP {0}"
 
 #: pkgbuilder/build.py:40
 msgid "Validating installation status..."
 msgstr "Walidowanie stanu instalacji..."
 
 #: pkgbuilder/build.py:53
-msgid "{}: not an AUR package"
-msgstr "{}: pakiet spoza AUR"
+msgid "{0}: not an AUR package"
+msgstr "{0}: pakiet spoza AUR"
 
 #: pkgbuilder/build.py:56 pkgbuilder/build.py:66
-msgid "{}: installed {}"
-msgstr "{}: zainstalowany {}"
+msgid "{0}: installed {1}"
+msgstr "{0}: zainstalowany {1}"
 
 #: pkgbuilder/build.py:60
-msgid "{}: NOT installed"
-msgstr "{}: NIE zainstalowano"
+msgid "{0}: NOT installed"
+msgstr "{0}: NIE zainstalowano"
 
 #: pkgbuilder/build.py:63
-msgid "{}: outdated {}"
-msgstr "{} nieaktualny {}"
+msgid "{0}: outdated {1}"
+msgstr "{0} nieaktualny {1}"
 
 #: pkgbuilder/build.py:72
 msgid "Installing built packages..."
 msgstr "Instalowanie zbudowanych pakietów..."
 
-#: pkgbuilder/build.py:87 pkgbuilder/build.py:265
+#: pkgbuilder/build.py:87 pkgbuilder/build.py:266
 msgid "Fetching package information..."
 msgstr "Pobieranie informacji o pakiecie..."
 
-#: pkgbuilder/build.py:91 pkgbuilder/build.py:367
+#: pkgbuilder/build.py:91 pkgbuilder/build.py:368
 msgid "Downloading the tarball..."
 msgstr "Pobieranie tarballa..."
 
-#: pkgbuilder/build.py:94 pkgbuilder/build.py:370
-msgid "{} kB downloaded"
-msgstr "pobrano {} kB"
+#: pkgbuilder/build.py:94 pkgbuilder/build.py:371
+msgid "{0} kB downloaded"
+msgstr "pobrano {0} kB"
 
-#: pkgbuilder/build.py:96 pkgbuilder/build.py:372
+#: pkgbuilder/build.py:96 pkgbuilder/build.py:373
 msgid "Extracting..."
 msgstr "Wypakowywanie..."
 
-#: pkgbuilder/build.py:97 pkgbuilder/build.py:373
-msgid "{} files extracted"
-msgstr "wypakowano {} plików"
+#: pkgbuilder/build.py:97 pkgbuilder/build.py:374
+msgid "{0} files extracted"
+msgstr "wypakowano {0} plików"
 
-#: pkgbuilder/build.py:99 pkgbuilder/build.py:352
-msgid "Building {}..."
-msgstr "Budowanie {}..."
+#: pkgbuilder/build.py:99 pkgbuilder/build.py:353
+msgid "Building {0}..."
+msgstr "Budowanie {0}..."
 
 #: pkgbuilder/build.py:101
-msgid "Build finished with return code {}."
-msgstr "Proces budowania zakończył się kodem {}."
+msgid "Build finished with return code {0}."
+msgstr "Proces budowania zakończył się kodem {0}."
 
 #: pkgbuilder/build.py:123
 msgid "The build function reported a proper build."
@@ -84,8 +86,10 @@ msgstr "Funkcja budowania paczek powiadomiła o prawidłowym zbudowaniu."
 
 #. PBxxx.
 #: pkgbuilder/build.py:125
-msgid "makepkg (or someone else) failed and returned {}."
-msgstr "tworzenie pakietu przez makepkg (lub coś innego) nie powiodło się i zwróciło {}."
+msgid "makepkg (or someone else) failed and returned {0}."
+msgstr ""
+"tworzenie pakietu przez makepkg (lub coś innego) nie powiodło się i zwróciło "
+"{0}."
 
 #. PBSUX.
 #: pkgbuilder/build.py:129
@@ -103,76 +107,93 @@ msgid "Building more AUR packages is required."
 msgstr "Należy zainstalować więcej pakietów z AUR."
 
 #: pkgbuilder/build.py:167
-msgid "download: HTTP Error {}"
-msgstr "download: Błąd HTTP {}"
+msgid "download: HTTP Error {0}"
+msgstr "download: Błąd HTTP {0}"
 
 #: pkgbuilder/build.py:170
 msgid "download: 0 bytes downloaded"
 msgstr "download: pobrano 0 bajtów"
 
-#: pkgbuilder/build.py:203
+#: pkgbuilder/build.py:204
 msgid "extract: no files extracted"
 msgstr "extract: wypakowano 0 plików"
 
-#: pkgbuilder/build.py:254
-msgid "depcheck: cannot find {} anywhere"
-msgstr "depcheck: nie można nigdzie znaleźć pakietu {}"
+#: pkgbuilder/build.py:255
+msgid "depcheck: cannot find {0} anywhere"
+msgstr "depcheck: nie można nigdzie znaleźć pakietu {0}"
 
-#: pkgbuilder/build.py:289 pkgbuilder/build.py:350
-msgid "Package {} not found."
-msgstr "Nie znaleziono pakietu {}."
+#: pkgbuilder/build.py:290 pkgbuilder/build.py:351
+#: pkgbuilder/exceptions.py:107
+msgid "Package {0} not found."
+msgstr "Nie znaleziono pakietu {0}."
 
-#: pkgbuilder/build.py:296
+#: pkgbuilder/build.py:297
 msgid ":: Retrieving packages from abs..."
 msgstr ":: Pobieranie pakietów z abs..."
 
-#: pkgbuilder/build.py:299 pkgbuilder/build.py:306
-msgid "retrieving {}"
-msgstr "pobieranie {}"
+#: pkgbuilder/build.py:300 pkgbuilder/build.py:307
+msgid "retrieving {0}"
+msgstr "pobieranie {0}"
 
-#: pkgbuilder/build.py:301
-msgid "Failed to retieve {} (from ABS)."
-msgstr "Nie udało się pobrać {} (z ABS)."
+#: pkgbuilder/build.py:302
+msgid "Failed to retieve {0} (from ABS)."
+msgstr "Nie udało się pobrać {0} (z ABS)."
 
-#: pkgbuilder/build.py:303
+#: pkgbuilder/build.py:304
 msgid ":: Retrieving packages from aur..."
 msgstr ":: Pobieranie pakietów z aur..."
 
-#: pkgbuilder/build.py:310
+#: pkgbuilder/build.py:311
 msgid "Extracting AUR packages..."
 msgstr "Wypakowywanie pakietów z AUR..."
 
-#: pkgbuilder/build.py:315
+#: pkgbuilder/build.py:316
 msgid "Successfully fetched: "
 msgstr "Pomyślnie pobrano: "
 
-#: pkgbuilder/build.py:360
+#: pkgbuilder/build.py:361
 msgid "Synchronizing the ABS tree..."
 msgstr "Synchronizowanie drzewa ABS..."
 
-#: pkgbuilder/build.py:362
+#: pkgbuilder/build.py:363
 msgid "Failed to synchronize the ABS tree."
 msgstr "Nie udało się zsynchronizować drzewa ABS."
 
-#: pkgbuilder/build.py:378
+#: pkgbuilder/build.py:379
 msgid "Checking dependencies..."
 msgstr "Sprawdzanie zależności..."
 
-#: pkgbuilder/build.py:381
+#: pkgbuilder/build.py:382
 msgid "found in system"
 msgstr "znaleziono w systemie"
 
-#: pkgbuilder/build.py:381
+#: pkgbuilder/build.py:382
 msgid "found in repos"
 msgstr "znaleziono w repozytoriach"
 
-#: pkgbuilder/build.py:382
+#: pkgbuilder/build.py:383
 msgid "found in the AUR"
 msgstr "znaleziono w AUR"
 
-#: pkgbuilder/build.py:385
+#: pkgbuilder/build.py:386
 msgid "none found"
 msgstr "brak"
+
+#: pkgbuilder/exceptions.py:62
+msgid "makepkg returned {0}."
+msgstr ""
+
+#: pkgbuilder/exceptions.py:78
+msgid "Network error: {0} (via {1})"
+msgstr ""
+
+#: pkgbuilder/exceptions.py:94
+msgid "{0} (Package: {1})"
+msgstr ""
+
+#: pkgbuilder/exceptions.py:119
+msgid "Sanity error!  {0}"
+msgstr ""
 
 #. TRANSLATORS: translate the whole sentence.
 #. Alternatively, use translation instead of locale.
@@ -204,99 +225,101 @@ msgstr "pakiety do zbudowania z AUR i ABS"
 msgid "operations"
 msgstr "operacje"
 
-#: pkgbuilder/main.py:51
+#: pkgbuilder/main.py:52
 msgid "fetch package files"
 msgstr "pobierz pliki pakietów"
 
-#: pkgbuilder/main.py:53
+#: pkgbuilder/main.py:54
 msgid "view package information"
 msgstr "wyświetla informację o pakiecie"
 
-#: pkgbuilder/main.py:55
+#: pkgbuilder/main.py:56
 msgid "search the AUR for matching strings"
 msgstr "przeszukuje AUR według pasujących ciągów"
 
-#: pkgbuilder/main.py:59
+#: pkgbuilder/main.py:60
 msgid "upgrade installed AUR packages"
 msgstr "uaktualnia zainstalowane pakiety z AUR"
 
-#: pkgbuilder/main.py:61
+#: pkgbuilder/main.py:62
 msgid "options"
 msgstr "opcje"
 
-#: pkgbuilder/main.py:63
+#: pkgbuilder/main.py:64
 msgid "clean up work files after build"
 msgstr "usuń pliki robocze po wszystkim"
 
-#: pkgbuilder/main.py:66
+#: pkgbuilder/main.py:67
 msgid "don't use colors in output"
 msgstr "nie używa kolorów na wyjściu"
 
-#: pkgbuilder/main.py:69
+#: pkgbuilder/main.py:70
 msgid "display debug messages"
 msgstr "pokazuje wiadomości debugowania"
 
-#: pkgbuilder/main.py:71
+#: pkgbuilder/main.py:72
 msgid "don't check dependencies (may break makepkg)"
 msgstr "nie sprawdza zależności (może popsuć makepkg)"
 
-#: pkgbuilder/main.py:74
+#: pkgbuilder/main.py:75
 msgid "upgrade all the VCS/date-versioned packages"
 msgstr "uaktualnia wszystkie pakiety z VCS/z wersjami będącymi datami"
 
-#: pkgbuilder/main.py:77
+#: pkgbuilder/main.py:78
 msgid "don't check if packages were installed after build"
 msgstr "nie sprawdza czy pakiety zostały zainstalowane po zbudowaniu"
 
-#: pkgbuilder/main.py:80
+#: pkgbuilder/main.py:81
 msgid "don't install packages after building"
 msgstr "nie instaluje pakietów po zbudowaniu"
 
-#: pkgbuilder/main.py:83
+#: pkgbuilder/main.py:84
 msgid "pacman-like mode"
 msgstr "tryb podobny do pacmana"
 
-#: pkgbuilder/main.py:86
+#: pkgbuilder/main.py:87
 msgid "perform a failsafe upgrade of PKGBUILDer"
 msgstr "wykonuje bezpieczną aktualizację PKGBUILDera"
 
-#: pkgbuilder/main.py:88
+#: pkgbuilder/main.py:89
 msgid "(dummy)"
 msgstr "(nic nie robi)"
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
-#: pkgbuilder/main.py:128
+#: pkgbuilder/main.py:129
 msgid "Search query too short"
 msgstr "zapytanie do wyszukiwarki zbyt krótkie"
 
-#: pkgbuilder/main.py:129
+#: pkgbuilder/main.py:130
 msgid "Searching for exact match..."
 msgstr "Szukanie dokładnego dopasowania..."
 
-#: pkgbuilder/main.py:132 INSTALL.py:65 INSTALL.py:74
+#: pkgbuilder/main.py:133 INSTALL.py:65 INSTALL.py:74
 msgid "not found"
 msgstr "nie znaleziono"
 
-#: pkgbuilder/main.py:169
+#: pkgbuilder/main.py:170
 msgid "PKGBUILDer Failsafe Upgrade"
 msgstr "Bezpieczna Aktualizacja PKGBUILDera"
 
-#: pkgbuilder/main.py:172
+#: pkgbuilder/main.py:173
 msgid "Build the git version? [y/N] "
 msgstr "Zbudować wersję z git? [y/N] "
 
-#: pkgbuilder/main.py:199
+#: pkgbuilder/main.py:200
 msgid "Running PKGBUILDer as root can break your system!"
 msgstr "Używanie PKGBUILDera jako root może popsuć twój system!"
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/main.py:225 pkgbuilder/main.py:231 pkgbuilder/main.py:237
-#: pkgbuilder/main.py:243
+#: pkgbuilder/main.py:226 pkgbuilder/main.py:232 pkgbuilder/main.py:238
+#: pkgbuilder/main.py:244
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
-msgstr "PKGBUILDer (lub bliblioteka requests) miała problemy z wypełniem żądania HTTP."
+msgstr ""
+"PKGBUILDer (lub bliblioteka requests) miała problemy z wypełniem żądania "
+"HTTP."
 
 #. TRANSLATORS: see makepkg.
 #: pkgbuilder/pbds.py:50
@@ -333,8 +356,8 @@ msgid "Starting full system upgrade..."
 msgstr "Rozpoczynanie pełnej aktualizacji systemu..."
 
 #: pkgbuilder/upgrade.py:128 pkgbuilder/upgrade.py:131
-msgid "{}: local ({}) is newer than aur ({})"
-msgstr "{}: local ({}) jest nowsze niż aur ({})"
+msgid "{0}: local ({1}) is newer than aur ({2})"
+msgstr "{0}: local ({1}) jest nowsze niż aur ({2})"
 
 #: pkgbuilder/upgrade.py:140 pkgbuilder/upgrade.py:142
 msgid "there is nothing to do"
@@ -356,11 +379,12 @@ msgstr "i zaktualizować te pakiety teraz? [Y/n] "
 msgid ""
 "Do you want to cancel the current operation and upgrade these packages now? "
 "[Y/n] "
-msgstr "Czy chcesz anulować obecną operację i zaktualizować te pakiety teraz? [Y/n] "
+msgstr ""
+"Czy chcesz anulować obecną operację i zaktualizować te pakiety teraz? [Y/n] "
 
 #: pkgbuilder/upgrade.py:191 pkgbuilder/upgrade.py:255
-msgid "Targets ({}): "
-msgstr "Cele ({}):"
+msgid "Targets ({0}): "
+msgstr "Cele ({0}):"
 
 #: pkgbuilder/upgrade.py:206
 msgid "Name"
@@ -379,8 +403,8 @@ msgid "Proceed with installation? [Y/n] "
 msgstr "Kontynuować instalację? [Y/n] "
 
 #: pkgbuilder/utils.py:76
-msgid " [installed: {}]"
-msgstr " [zainstalowano: {}]"
+msgid " [installed: {0}]"
+msgstr " [zainstalowano: {0}]"
 
 #: pkgbuilder/utils.py:78
 msgid " [installed]"
@@ -414,7 +438,19 @@ msgid ""
 "First Submitted: {fsb}\n"
 "Last Updated   : {upd}\n"
 "Description    : {dsc}\n"
-msgstr "Repozytorium   : aur\nKategoria      : {cat}\nNazwa          : {nme}\nWersja         : {ver}\nURL            : {url}\nLicencje       : {lic}\nGłosy          : {cmv}\nNieaktualny    : {ood}\nOpiekun        : {mnt}\nWysłany        : {fsb}\nOst. aktualiz. : {upd}\nOpis           : {dsc}\n"
+msgstr ""
+"Repozytorium   : aur\n"
+"Kategoria      : {cat}\n"
+"Nazwa          : {nme}\n"
+"Wersja         : {ver}\n"
+"URL            : {url}\n"
+"Licencje       : {lic}\n"
+"Głosy          : {cmv}\n"
+"Nieaktualny    : {ood}\n"
+"Opiekun        : {mnt}\n"
+"Wysłany        : {fsb}\n"
+"Ost. aktualiz. : {upd}\n"
+"Opis           : {dsc}\n"
 
 #: pkgbuilder/utils.py:176
 msgid "yes"
@@ -432,16 +468,25 @@ msgstr "%(prog)s <operacja> [...]"
 #. TRANSLATORS: see pacman’s localizations
 #: pkgbuilder/wrapper.py:260
 msgid ""
-"usage:  {} <operation> [...]\n"
+"usage:  {0} <operation> [...]\n"
 "\n"
-"{}, a wrapper for pacman and PKGBUILDer.\n"
+"PBWrapper, a wrapper for pacman and PKGBUILDer.\n"
 "\n"
 "Pacman and PKGBUILDer syntaxes apply.  Consult their manpages/help\n"
 "commands for more details.\n"
 "\n"
 "Additional options:\n"
 "  -L, --unlock         unlock the pacman database"
-msgstr "sposób użycia:  {} <operacja> [...]\n\n{}, wrapper dla pacmana i PKGBUILDera.\n\nObowiązuje składnia pacmana i PKGBUILDera.  Zajrzyj do ich stron\nw podręczniku man lub do komend pomocy, aby dowiedzieć się więcej.\n\nDodatkowe opcje:\n  -L, --unlock         odblokuj bazę danych pacmana"
+msgstr ""
+"sposób użycia:  {0} <operacja> [...]\n"
+"\n"
+"PBWrapper, wrapper dla pacmana i PKGBUILDera.\n"
+"\n"
+"Obowiązuje składnia pacmana i PKGBUILDera.  Zajrzyj do ich stron\n"
+"w podręczniku man lub do komend pomocy, aby dowiedzieć się więcej.\n"
+"\n"
+"Dodatkowe opcje:\n"
+"  -L, --unlock         odblokuj bazę danych pacmana"
 
 #: INSTALL.py:53
 msgid "Performing a dependency check..."
@@ -458,11 +503,20 @@ msgid ""
 "Something went wrong.  Please read makepkg's output and try again.\n"
 "You can also try to debug the work of this script yourself.\n"
 "All the files this script was working on are placed in\n"
-"    {}\n"
+"    {0}\n"
 "(the number is random).\n"
 "\n"
 "If I am wrong, though, congratulations!\n"
-msgstr "\n\nCoś poszło źle.  Przeczytaj wyjście makepkg i spróbuj ponownie.\nMożesz też próbować debugować pracę tego skryptu samemu.\nWszystkie pliki, nad którymi ten skrypt pracował, znajdują się w\n    {}\n(liczba jest losowa).\n\nJeśli się mylę, gratulacje!\n"
+msgstr ""
+"\n"
+"\n"
+"Coś poszło źle.  Przeczytaj wyjście makepkg i spróbuj ponownie.\n"
+"Możesz też próbować debugować pracę tego skryptu samemu.\n"
+"Wszystkie pliki, nad którymi ten skrypt pracował, znajdują się w\n"
+"    {0}\n"
+"(liczba jest losowa).\n"
+"\n"
+"Jeśli się mylę, gratulacje!\n"
 
 #: INSTALL.py:114
 msgid ""
@@ -473,7 +527,14 @@ msgid ""
 "package and install it.  If you will have problems, please download\n"
 "and compile the package manually.\n"
 "\n"
-msgstr "Cześć!\n\nPKGBUILDer jest teraz dostępny jako pakiet w AUR.  Jest to polecany\nsposób instalacji PKGBUILDer-a.  Ten skrypt pobierze pakiet z AUR i go\nzainstaluje.  Jeśli będziesz miał problemy, pobierz i skompiluj pakiet\nręcznie.\n\n"
+msgstr ""
+"Cześć!\n"
+"\n"
+"PKGBUILDer jest teraz dostępny jako pakiet w AUR.  Jest to polecany\n"
+"sposób instalacji PKGBUILDer-a.  Ten skrypt pobierze pakiet z AUR i go\n"
+"zainstaluje.  Jeśli będziesz miał problemy, pobierz i skompiluj pakiet\n"
+"ręcznie.\n"
+"\n"
 
 #: INSTALL.py:123
 msgid "Hit Enter/Return to continue. "
@@ -490,14 +551,26 @@ msgid ""
 "Read the above output.  If the script had any problems, run it\n"
 "again.  You can also try to debug the work of this script yourself.\n"
 "All the files this script was working on are placed in\n"
-"    {}\n"
+"    {0}\n"
 "(the number is random).\n"
 "\n"
 "If everything went fine, though, congratulations!  You can now use\n"
 "PKGBUILDer.  For standalone usage, type `pkgbuilder` into the prompt\n"
 "(zsh users: hash -r, other shells may need another command).  For\n"
 "python module usage, type `import pkgbuilder` into the python prompt.\n"
-msgstr "\n\nPrzeczytaj powyższe wyjście.  Jeśli skrypt miał problemy, spróbuj\njeszcze raz.  Możesz też spróbować samodzielnie debugować pracę skryptu.\nWszystkie pliki, nad którymi ten skrypt pracował, znajdują się w\n    {}\n(liczba jest losowa).\n\nJeśli wszystko się udało, gratulacje!  Teraz możesz używać PKGBUILDer-a.\nDla użycia samodzielnego, wpisz `pkgbuilder` do terminala (zsh: hash -r,\ninne powłoki mogą wymagać innej komendy).  Dla użycia jako moduł\nPythona, wpisz `import pkgbuilder` do interpretera.\n"
+msgstr ""
+"\n"
+"\n"
+"Przeczytaj powyższe wyjście.  Jeśli skrypt miał problemy, spróbuj\n"
+"jeszcze raz.  Możesz też spróbować samodzielnie debugować pracę skryptu.\n"
+"Wszystkie pliki, nad którymi ten skrypt pracował, znajdują się w\n"
+"    {0}\n"
+"(liczba jest losowa).\n"
+"\n"
+"Jeśli wszystko się udało, gratulacje!  Teraz możesz używać PKGBUILDer-a.\n"
+"Dla użycia samodzielnego, wpisz `pkgbuilder` do terminala (zsh: hash -r,\n"
+"inne powłoki mogą wymagać innej komendy).  Dla użycia jako moduł\n"
+"Pythona, wpisz `import pkgbuilder` do interpretera.\n"
 
 #: INSTALL.py:158
 msgid ""
@@ -506,18 +579,30 @@ msgid ""
 "\n"
 "If that's what you want to do, go for it.  If it isn't, run this\n"
 "script again."
-msgstr "Wygląda na to, że chcesz wyjść.  Okej, do widzenia.\nŻadne prace nie zostały jeszcze rozpoczęte.\n\nJeśli to jest to, co chcesz zrobić, proszę bardzo.  Jeśli nie,\nuruchom ten skrypt jeszcze raz."
+msgstr ""
+"Wygląda na to, że chcesz wyjść.  Okej, do widzenia.\n"
+"Żadne prace nie zostały jeszcze rozpoczęte.\n"
+"\n"
+"Jeśli to jest to, co chcesz zrobić, proszę bardzo.  Jeśli nie,\n"
+"uruchom ten skrypt jeszcze raz."
 
 #: INSTALL.py:164
 msgid ""
 "It looks like you want to quit.  Okay then, goodbye.\n"
 "All the files this script was working on are placed in\n"
-"    {}\n"
+"    {0}\n"
 "(the number is random).\n"
 "\n"
 "If that's what you want to do, go for it.  If it isn't, run this\n"
 "script again."
-msgstr "Wygląda na to, że chcesz wyjść.  Okej, do widzenia.\nWszystkie pliki, nad którymi ten skrypt pracował, znajdują się w\n    {}\n(liczba jest losowa).\n\nJeśli to jest to, co chcesz zrobić, proszę bardzo.  Jeśli nie,\nuruchom ten skrypt jeszcze raz."
+msgstr ""
+"Wygląda na to, że chcesz wyjść.  Okej, do widzenia.\n"
+"Wszystkie pliki, nad którymi ten skrypt pracował, znajdują się w\n"
+"    {0}\n"
+"(liczba jest losowa).\n"
+"\n"
+"Jeśli to jest to, co chcesz zrobić, proszę bardzo.  Jeśli nie,\n"
+"uruchom ten skrypt jeszcze raz."
 
 #. A module only for gettext locale provision.
 #: localeprovider.py:2
