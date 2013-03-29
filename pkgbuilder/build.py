@@ -347,7 +347,7 @@ def build_runner(pkgname, performdepcheck=True,
                 pass
 
         if not pkg:
-            raise PBError(_('Package {} not found.').format(pkg['Name']))
+            raise PBError(_('Package {} not found.').format(pkgname))
 
         DS.fancy_msg(_('Building {}...').format(pkg['Name']))
         pkgbuilder.utils.print_package_search(pkg,
