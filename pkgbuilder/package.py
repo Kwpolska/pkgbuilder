@@ -36,7 +36,7 @@ class Package(object):
     description = None
     repo = None
     url = None
-    licenses = None
+    licenses = []
     human = None
 
     def __init__(self, **kwargs):
@@ -60,6 +60,7 @@ class Package(object):
             return SanityError('is_abs is invalid ({0})'.format(self.is_abs),
                                'Package.__repr__()', is_abs=self.is_abs)
 
+
 class AURPackage(Package):
     """An AUR package."""
     id = None
@@ -72,11 +73,15 @@ class AURPackage(Package):
 
     @classmethod
     def from_aurdict(cls, aurdict):
-        bindings = {'Maintainer': 'human', 'ID': 'id', 'Name': 'name',
-                    'Version': 'version', 'Description': 'description',
-                    'URL': 'url', 'License': 'licenses', 'NumVotes': 'votes',
-                    'URLPath': 'urlpath'}
-        ignore = ['OutOfDate', 'CategoryID', 'FirstSubmitted', 'LastModified']
+        bindings = {'Description': 'description',
+                    'ID': 'id',
+                    'Maintainer': 'human',
+                    'Name': 'name',
+                    'NumVotes': 'votes',
+                    'URL': 'url',
+                    'URLPath': 'urlpath',
+                    'Version': 'version'}
+        ignore = ['OutOfDate', 'CategoryID', 'FirstSubmitted', 'LastModified', 'License']
 
         p = cls()
         for k, v in aurdict.items():
@@ -85,12 +90,13 @@ class AURPackage(Package):
             except KeyError:
                 if k not in ignore:
                     raise PackageError('AURDict has an unknown {0} '
-                                       'value'.format(k),
+                                       'key'.format(k),
                                        'AURPackage.from_aurdict()',
                                        aurdict=aurdict)
         # Manual overrides.
         p.is_outdated = aurdict['OutOfDate'] == 1
         p.repo = CATEGORIES[aurdict['CategoryID']]
+        p.licenses = [aurdict['License']]
 
         utc = UTC()
 
@@ -105,4 +111,49 @@ class AURPackage(Package):
 class ABSPackage(Package):
     """An ABS package."""
     is_abs = True
-    architecture = None
+    # Most of those aren’t necessary, but I am copying them over because I can.
+    arch = None
+    backup = []
+    base64_sig = None
+    builddate = None
+    conflicts = None
+    deltas = []
+    depends = []
+    download_size = None
+    filename = None
+    files = []
+    groups = []
+    has_scriptlet = None
+    installdate = None
+    isize = None
+    md5sum = None
+    optdepends = []
+    provides = []
+    reason = []
+    replaces = []
+    sha256sum = None
+    size = None
+
+    @classmethod
+    def from_pyalpm(cls, abspkg):
+        copy = ['arch', 'backup', 'base64_sig', 'conflicts', 'deltas',
+                'depends', 'download_size', 'filename', 'files', 'groups',
+                'has_scriptlet', 'isize', 'licenses', 'md5sum', 'name',
+                'optdepends', 'provides', 'reason', 'replaces', 'sha256sum',
+                'size', 'url', 'version']
+        p = cls()
+
+        for i in copy:
+            setattr(p, i, getattr(abspkg, i))
+
+        utc = UTC()
+
+        p.repo = abspkg.db.name
+        p.desc = abspkg.description
+        p.human = abspkg.packager
+        p.builddate = datetime.datetime.utcfromtimestamp(
+            abspkg.builddate).replace(tzinfo=utc)
+        p.installdate = datetime.datetime.utcfromtimestamp(
+            abspkg.installdate).replace(tzinfo=utc)
+
+        return p
