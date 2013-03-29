@@ -34,7 +34,6 @@ import datetime
 __all__ = ['validate', 'install', 'safeupgrade', 'auto_build', 'download',
            'rsync', 'extract', 'prepare_deps', 'depcheck', 'fetch_runner',
            'build_runner']
-AURURL = '{0}://aur.archlinux.org{1}'
 
 
 def validate(pkgnames):
@@ -158,10 +157,10 @@ def auto_build(pkgname, performdepcheck=True,
         return []
 
 
-def download(urlpath, filename, prot='http'):
-    """Downloads an AUR tarball (http) to the current directory."""
+def download(urlpath, filename):
+    """Downloads an AUR tarball to the current directory."""
     try:
-        r = requests.get(AURURL.format(prot, urlpath))
+        r = requests.get('https://aur.archlinux.org' + urlpath)
         r.raise_for_status()
     except requests.exceptions.ConnectionError as e:
         raise pkgbuilder.exceptions.ConnectionError(e)
