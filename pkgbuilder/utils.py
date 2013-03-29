@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.99.4.0
+# PKGBUILDer v2.99.5.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
@@ -8,14 +8,16 @@
 """
     pkgbuilder.utils
     ~~~~~~~~~~~~~~~~
-    Common global utilities.  Provides useful data.
+
+    Common global utilities, used mainly for AUR data access.
 
     :Copyright: © 2011-2013, Kwpolska.
     :License: BSD (see /LICENSE).
 """
 
-from . import DS, _, PBError
+from . import DS, _
 from .aur import AUR
+from pkgbuilder.exceptions import SanityError, AURError
 import pyalpm
 import os
 import subprocess
@@ -38,7 +40,7 @@ def info(pkgnames):
     elif aur_pkgs['type'] == 'error':
         # There are other cases where the "results" element is a string;
         # type = error seems to cover at least one case
-        raise PBError(aur_pkgs['results'])
+        raise AURError(aur_pkgs['results'])
     else:
         return aur_pkgs['results']
 
@@ -73,7 +75,7 @@ def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
     prefixp2 = prefixp + '    '
     if lpkg is not None:
         if pyalpm.vercmp(pkg['Version'], lpkg.version) != 0:
-            installed = _(' [installed: {}]').format(lpkg.version)
+            installed = _(' [installed: {0}]').format(lpkg.version)
         else:
             installed = _(' [installed]')
     if pkg['OutOfDate'] > 0:
@@ -112,7 +114,7 @@ def print_package_info(pkgs, cachemode=False, force_utc=False):
     of ``pacman -Si``.
     """
     if pkgs == []:
-        raise PBError(_('Package not found.'))
+        raise SanityError('Didn’t pass any packages.')
     else:
         loct = os.getenv('LC_TIME')
         loc = os.getenv('LC_ALL')

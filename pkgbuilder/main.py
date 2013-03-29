@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.99.4.0
+# PKGBUILDer v2.99.5.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
@@ -8,20 +8,21 @@
 """
     pkgbuilder.main
     ~~~~~~~~~~~~~~~
+
     Main routine of PKGBUILDer.
 
     :Copyright: © 2011-2013, Kwpolska.
     :License: BSD (see /LICENSE).
 """
 
-from . import DS, _, PBError, __version__
+from . import DS, _, __version__
+import pkgbuilder.exceptions
 import pkgbuilder.build
 import pkgbuilder.utils
 import pkgbuilder.upgrade
 import argparse
 import os
 import sys
-import requests
 
 __all__ = ['main']
 
@@ -47,8 +48,9 @@ def main(source='AUTO', quit=True):
                             nargs='*', help=_('AUR/ABS packages to build'))
 
         argopr = parser.add_argument_group(_('operations'))
-        argopr.add_argument('-F', '--fetch', action='store_true', default=False,
-                            dest='fetch', help=_('fetch package files'))
+        argopr.add_argument('-F', '--fetch', action='store_true',
+                            default=False, dest='fetch',
+                            help=_('fetch package files'))
         argopr.add_argument('-i', '--info', action='store_true', default=False,
                             dest='info', help=_('view package information'))
         argopr.add_argument('-s', '--search', action='store_true',
@@ -98,10 +100,10 @@ def main(source='AUTO', quit=True):
 
         if args.debug:
             DS.debugmode(nochange=True)
-            DS.log.info('*** PKGBUILDer v{}'.format(__version__))
+            DS.log.info('*** PKGBUILDer v{0}'.format(__version__))
             DS.log.debug('*** debug output on.')
 
-        DS.log.info('Arguments parsed.  {}'.format(args.__dict__))
+        DS.log.info('Arguments parsed.  {0}'.format(args.__dict__))
 
         if not args.color:
             DS.colorsoff()
@@ -160,7 +162,7 @@ def main(source='AUTO', quit=True):
         if args.pac:
             DS.log.debug('-S passed, building in /tmp/.')
             uid = os.geteuid()
-            path = '/tmp/pkgbuilder-{}'.format(str(uid))
+            path = '/tmp/pkgbuilder-{0}'.format(str(uid))
             if not os.path.exists(path):
                 os.mkdir(path)
             os.chdir(path)
@@ -195,7 +197,7 @@ def main(source='AUTO', quit=True):
         # If we didn't quit, we should build the packages.
         if pkgnames:
             if DS.uid == 0:
-                DS.log.warning('Running as root! (UID={})'.format(DS.uid))
+                DS.log.warning('Running as root! (UID={0})'.format(DS.uid))
                 DS.fancy_warning(_('Running PKGBUILDer as root can break your '
                                    'system!'))
 
@@ -205,7 +207,7 @@ def main(source='AUTO', quit=True):
             tovalidate = set(pkgnames)
 
             for pkgname in pkgnames:
-                DS.log.info('Building {}'.format(pkgname))
+                DS.log.info('Building {0}'.format(pkgname))
                 out = pkgbuilder.build.auto_build(pkgname, args.depcheck,
                                                   args.pkginst)
                 if out:
@@ -219,32 +221,14 @@ def main(source='AUTO', quit=True):
 
             if args.validate and tovalidate:
                 pkgbuilder.build.validate(tovalidate)
-    except requests.exceptions.ConnectionError as inst:
-        DS.fancy_error(str(inst))
+    except pkgbuilder.exceptions.NetworkError as e:
+        DS.fancy_error(str(e))
         # TRANSLATORS: do not translate the word 'requests'.
         DS.fancy_error(_('PKGBUILDer (or the requests library) had '
                          'problems with fulfilling an HTTP request.'))
         exit(1)
-    except requests.exceptions.HTTPError as inst:
-        DS.fancy_error(str(inst))
-        # TRANSLATORS: do not translate the word 'requests'.
-        DS.fancy_error(_('PKGBUILDer (or the requests library) had '
-                         'problems with fulfilling an HTTP request.'))
-        exit(1)
-    except requests.exceptions.Timeout as inst:
-        DS.fancy_error(str(inst))
-        # TRANSLATORS: do not translate the word 'requests'.
-        DS.fancy_error(_('PKGBUILDer (or the requests library) had '
-                         'problems with fulfilling an HTTP request.'))
-        exit(1)
-    except requests.exceptions.TooManyRedirects as inst:
-        DS.fancy_error(str(inst))
-        # TRANSLATORS: do not translate the word 'requests'.
-        DS.fancy_error(_('PKGBUILDer (or the requests library) had '
-                         'problems with fulfilling an HTTP request.'))
-        exit(1)
-    except PBError as inst:
-        DS.fancy_error(str(inst))
+    except Exception as e:
+        DS.fancy_error(str(e))
         exit(1)
 
     DS.log.info('Quitting.')

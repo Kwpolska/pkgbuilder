@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.99.4.0
+# PKGBUILDer v2.99.5.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
@@ -8,13 +8,15 @@
 """
     pkgbuilder.aur
     ~~~~~~~~~~~~~~
+
     A class for calling the AUR API.
 
     :Copyright: © 2011-2013, Kwpolska.
     :License: BSD (see /LICENSE).
 """
 
-from . import _, PBError
+#from . import _
+from .exceptions import ConnectionError, HTTPError, NetworkError
 import requests
 import requests.exceptions
 import json
@@ -41,8 +43,8 @@ class AUR:
     multiinfo is implemented in another function, :meth:`multiinfo()`.
     """
 
-    rpc = '{}://aur.archlinux.org/rpc.php?type={}&arg={}'
-    mrpc = '{}://aur.archlinux.org/rpc.php?type=multiinfo{}'
+    rpc = '{0}://aur.archlinux.org/rpc.php?type={1}&arg={2}'
+    mrpc = '{0}://aur.archlinux.org/rpc.php?type=multiinfo{1}'
 
     def jsonreq(self, rtype, arg, prot='https'):
         """Makes a request and returns plain JSON data."""
@@ -51,14 +53,13 @@ class AUR:
 
         try:
             req = requests.get(self.rpc.format(prot, rtype, arg))
+            req.raise_for_status()
         except requests.exceptions.ConnectionError as e:
-            raise PBError(_('AUR: connection error '
-                            '({})').format(e.args[0].reason))
-
-        req.raise_for_status()
-        if req.status_code != 200:
-            raise PBError(_('AUR: HTTP Error {}').format(
-                req.status_code))
+            raise ConnectionError(e.args[0].reason, e)
+        except requests.exceptions.HTTPError as e:
+            raise HTTPError(req, e)
+        except requests.exceptions.RequestException as e:
+            raise NetworkError(str(e), e)
 
         return req.text
 
@@ -70,14 +71,13 @@ class AUR:
         urlargs = '&arg[]=' + '&arg[]='.join(args)
         try:
             req = requests.get(self.mrpc.format(prot, urlargs))
+            req.raise_for_status()
         except requests.exceptions.ConnectionError as e:
-            raise PBError(_('AUR: connection error '
-                            '({})').format(e.args[0].reason))
-
-        req.raise_for_status()
-        if req.status_code != 200:
-            raise PBError(_('AUR: HTTP Error {}').format(
-                req.status_code))
+            raise ConnectionError(e.args[0].reason, e)
+        except requests.exceptions.HTTPError as e:
+            raise HTTPError(req, origexception=e)
+        except requests.exceptions.RequestException as e:
+            raise NetworkError(str(e), e)
 
         return req.text
 
