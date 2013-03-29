@@ -229,7 +229,7 @@ def wrapper(source='AUTO'):
         pbpkgnames = []
         info = pkgbuilder.utils.info(pkgnames)
 
-        names = [i['Name'] for i in info]
+        names = [i.name for i in info]
         pbpkgnames = [n for n in pkgnames if n in names]
         pacmanpkgnames = [i for i in pkgnames if i not in pbpkgnames]
 

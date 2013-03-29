@@ -42,11 +42,6 @@ class PBDS():
     depcheck = True
     pkginst = True
     protocol = 'https'
-    categories = ['ERROR', 'none', 'daemons', 'devel', 'editors',
-                  'emulators', 'games', 'gnome', 'i18n', 'kde',
-                  'lib', 'modules', 'multimedia', 'network',
-                  'office', 'science', 'system', 'x11',
-                  'xfce', 'kernels']
     # TRANSLATORS: see makepkg.
     inttext = _('Aborted by user! Exiting...')
     # TRANSLATORS: see pacman.

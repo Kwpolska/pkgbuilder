@@ -36,9 +36,9 @@ def gather_foreign_pkgs():
     aur = []
     syncdbs = DS.pyc.get_syncdbs()
     for sdb in syncdbs:
-        for pkg in installed:
-            if sdb.get_pkg(pkg.name):
-                repo.append(pkg)
+        for ipkg in installed:
+            if sdb.get_pkg(ipkg.name):
+                repo.append(ipkg)
 
     aur = set(set(installed) - set(repo))
     # Return foreign packages.
@@ -55,12 +55,12 @@ def list_upgradable(pkglist, vcsup=False):
     upgradable = []
     downgradable = []
 
-    for i in aurlist:
-        pkg = localdb.get_pkg(i['Name'])
-        if pkg is not None:
-            vc = pyalpm.vercmp(i['Version'], pkg.version)
+    for rpkg in aurlist:
+        lpkg = localdb.get_pkg(rpkg.name)
+        if lpkg is not None:
+            vc = pyalpm.vercmp(rpkg.version, lpkg.version)
             if vc > 0:
-                upgradable.append([i['Name'], pkg.version, i['Version']])
+                upgradable.append([rpkg.name, lpkg.version, rpkg.version])
             elif vc < 0:
                 # If the package version is a date or the name ends in
                 # -{git,hg,bzr,svn,cvs,darcs}, do not mark it as downgradable.
@@ -70,9 +70,9 @@ def list_upgradable(pkglist, vcsup=False):
 
                 try:
                     # For epoch packages.  Also, cheating here.
-                    v = i['Version'].split(':')[1]
+                    v = rpkg.version.split(':')[1]
                 except IndexError:
-                    v = i['Version']
+                    v = rpkg.version
 
                 try:
                     datetime.datetime.strptime(v.split('-')[0], '%Y%m%d')
@@ -82,21 +82,22 @@ def list_upgradable(pkglist, vcsup=False):
 
                 dt = datetime.date.today().strftime('%Y%m%d')
 
-                if (i['Name'].endswith(('git', 'hg', 'bzr', 'svn', 'cvs',
+                if (rpkg.name.endswith(('git', 'hg', 'bzr', 'svn', 'cvs',
                                         'darcs'))):
                     if vcsup:
-                        upgradable.append([i['Name'], pkg.version, dt])
+                        upgradable.append([rpkg.name, lpkg.version, dt])
                     else:
                         DS.log.warning('{0} is -[vcs], ignored for '
-                                       'downgrade.'.format(i['Name']))
+                                       'downgrade.'.format(rpkg.name))
                 elif datever:
                     if vcsup:
-                        upgradable.append([i['Name'], pkg.version, dt])
+                        upgradable.append([rpkg.name, lpkg.version, dt])
                     else:
                         DS.log.warning('{0} version is a date, ignored '
-                                       'for downgrade.'.format(i['Name']))
+                                       'for downgrade.'.format(rpkg.name))
                 else:
-                    downgradable.append([i['Name'], pkg.version, i['Version']])
+                    downgradable.append([rpkg.name, lpkg.version,
+                                         rpkg.version])
     return [upgradable, downgradable]
 
 
