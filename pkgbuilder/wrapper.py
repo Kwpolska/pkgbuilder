@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
 # PBWrapper v0.2.2
-# PKGBUILDer v2.99.4.0
+# PKGBUILDer v2.99.5.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
@@ -9,17 +9,20 @@
 """
     pkgbuilder.wrapper
     ~~~~~~~~~~~~~~~~~~
-    A wrapper for pacman and PKGBUILDer.  (PBWrapper/pb)
+
+    A wrapper for pacman and PKGBUILDer, also known as PBWrapper or pb.
 
     :Copyright: © 2011-2013, Kwpolska.
     :License: BSD (see /LICENSE).
 """
 
-from . import DS, _, PBError, __version__
+from . import DS, _,  __version__
 from .main import main
+from .exceptions import SanityError
 import pkgbuilder.utils
 import re
 import logging
+import subprocess
 import pyalpm
 import argparse
 import sys
@@ -44,8 +47,8 @@ def wrapper(source='AUTO'):
     if '--debug' in argst:
         DS.debugmode()
 
-    log.info('*** PBwrapper v{} (PKGBUILDer '
-             '{})'.format(__wrapperversion__, __version__))
+    log.info('*** PBwrapper v{0} (PKGBUILDer '
+             '{1})'.format(__wrapperversion__, __version__))
 
     if (('-L' in argst) or ('--unlock' in argst) or (re.search('-[a-zA-Z]*L',
                                                                ' '.join(argst))
@@ -137,7 +140,7 @@ def wrapper(source='AUTO'):
         else:
             args = parser.parse_args()
 
-        log.debug('Arguments parsed.  {}'.format(args.__dict__))
+        log.debug('Arguments parsed.  {0}'.format(args.__dict__))
 
         try:
             pkgnames = args.pkgnames
@@ -172,7 +175,7 @@ def wrapper(source='AUTO'):
             elif i[2:] in alllong + alllongc:
                 s = i[2:]
             else:
-                raise PBError('argparse broke')
+                raise SanityError('argparse broke')
 
             if s in allcommon:
                 pacargs.append(i)
@@ -255,34 +258,41 @@ def wrapper(source='AUTO'):
                           sanitycheck)]
             DS.sudo([DS.paccommand] + pacargs + sanityargs)
     elif ('-h' in argst) or ('--help' in argst):
+        pacdoc = subprocess.check_output('pacman --help || true',
+                                         shell=True).decode('utf-8')
+        pacdoc = '\n'.join(pacdoc.split('\n\n')[0].split('\n')[1:])
+        pacdoc = pacdoc.replace('pacman', 'pb')
+
         # TRANSLATORS: see pacman’s localizations
+        print(_("""usage:  {0} <operation> [...]
 
-        print(_("""usage:  {} <operation> [...]
+PBWrapper, a wrapper for pacman and PKGBUILDer.
 
-{}, a wrapper for pacman and PKGBUILDer.
+{1}
 
 Pacman and PKGBUILDer syntaxes apply.  Consult their manpages/help
 commands for more details.
 
 Additional options:
   -L, --unlock         unlock the pacman database""").format(
-            os.path.basename(sys.argv[0]), 'PBWrapper'))
+            os.path.basename(sys.argv[0]), pacdoc))
 
     elif ('-V' in argst) or ('--version' in argst):
         pacpkg = localdb.get_pkg('pacman')
-        print("""PBWrapper   v{}
-PKGBUILDer  v{}
-pacman      v{}
-pyalpm      v{}""".format(__wrapperversion__, __version__,
-                          pacpkg.version.split('-', 1)[0],
-                          pyalpm.version()))
+
+        print("""PBWrapper   v{0}
+PKGBUILDer  v{1}
+pacman      v{2}
+pyalpm      v{3}""".format(__wrapperversion__, __version__,
+                           pacpkg.version.split('-', 1)[0],
+                           pyalpm.version()))
     elif 'UTshibboleet' in argst:
         if argst[0] == 'unittests' and argst[1] == 'UTshibboleet':
             # http://xkcd.com/806/
             pass
         else:
             print('Please don’t use the reserved UTshibboleet argument.')
-    elif ('-Q' in argst) or ('--query' in argst):
-        DS.run_command([DS.paccommand, argst])
+    elif ('-Q' in argst) or ('--query' in argst) or argst == []:
+        DS.run_command([DS.paccommand] + argst)
     else:
-        DS.sudo([DS.paccommand, argst])
+        DS.sudo([DS.paccommand] + argst)

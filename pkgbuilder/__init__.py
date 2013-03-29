@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.99.4.0
+# PKGBUILDer v2.99.5.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2013, Kwpolska.
 # All rights reserved.
@@ -48,25 +48,12 @@ __version__ = '2.1.6.3'
 __author__ = 'Kwpolska'
 __license__ = '3-clause BSD'
 __docformat__ = 'restructuredtext en'
-__all__ = ['_', 'PBError', 'DS']
+__all__ = ['_', 'DS']
 
 import gettext
 
 G = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
 _ = G.gettext
-
-
-class PBError(Exception):
-    """Exceptions raised by the PKGBUILDer."""
-
-    def __init__(self, msg):
-        """PBError init."""
-        DS.log.error('(auto PBError       ) ' + msg)
-        self.msg = msg
-
-    def __str__(self):
-        """You want to see error messages, don’t you?"""
-        return self.msg
 
 from .pbds import PBDS
 DS = PBDS()
