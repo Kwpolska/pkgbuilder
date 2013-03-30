@@ -16,6 +16,11 @@ conflicts=('pkgbuilder')
 _gitroot=git://github.com/Kwpolska/pkgbuilder.git
 _gitname=pkgbuilder
 
+pkgver() {
+  cd "${srcdir}/${_gitname}"
+  git describe --always | sed 's/-/_/g;s/v//'
+}
+
 package() {
   cd "${srcdir}"
   msg "Connecting to GIT server...."
