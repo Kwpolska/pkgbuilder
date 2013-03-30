@@ -30,7 +30,7 @@ RPC = AUR()
 
 def info(pkgnames):
     """
-    .. versionchanged:: 3.0.0.0
+    .. versionchanged:: 3.0.0
 
     Returns info about packages.
     """
@@ -53,7 +53,7 @@ def info(pkgnames):
 
 def search(pkgname):
     """
-    .. versonchanged:: 3.0.0.0
+    .. versonchanged:: 3.0.0
 
     Searches for AUR packages."""
     aur_pkgs = RPC.request('search', pkgname, DS.protocol)
@@ -70,7 +70,7 @@ def search(pkgname):
 def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
                          prefixp=''):
     """
-    .. versionchanged:: 3.0.0.0
+    .. versionchanged:: 3.0.0
 
     Outputs/returns a package representation, which is close to the output
     of ``pacman -Ss``.
@@ -93,7 +93,7 @@ def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
             installed = _(' [installed: {0}]').format(lpkg.version)
         else:
             installed = _(' [installed]')
-    if pkg['OutOfDate'] > 0:
+    if pkg.is_outdated:
         installed = (installed + ' ' + DS.colors['red'] + _(
                      '[out of date]') + DS.colors['all_off'])
 
@@ -124,7 +124,7 @@ def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
 
 def print_package_info(pkgs, cachemode=False):
     """
-    .. versionchanged:: 3.0.0.0
+    .. versionchanged:: 3.0.0
 
     Outputs/returns a package representation, which is close to the output
     of ``pacman -Si``.
@@ -168,7 +168,7 @@ Description    : {dsc}
             upd = pkg.modified.strftime(fmt)
             fsb = pkg.added.strftime(fmt)
 
-            if pkg['OutOfDate'] > 0:
+            if pkg.is_outdated:
                 ood = DS.colors['red'] + _('yes') + DS.colors['all_off']
             else:
                 ood = _('no')
