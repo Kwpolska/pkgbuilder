@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.99.5.0
+# PKGBUILDer v2.99.6.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
@@ -149,7 +149,7 @@ class ABSPackage(Package):
         utc = UTC()
 
         p.repo = abspkg.db.name
-        p.desc = abspkg.description
+        p.description = abspkg.desc
         p.human = abspkg.packager
         p.builddate = datetime.datetime.utcfromtimestamp(
             abspkg.builddate).replace(tzinfo=utc)

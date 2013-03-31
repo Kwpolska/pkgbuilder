@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.99.5.0
+# PKGBUILDer v2.99.6.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
@@ -93,9 +93,12 @@ def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
             installed = _(' [installed: {0}]').format(lpkg.version)
         else:
             installed = _(' [installed]')
-    if pkg.is_outdated:
-        installed = (installed + ' ' + DS.colors['red'] + _(
-                     '[out of date]') + DS.colors['all_off'])
+    try:
+        if pkg.is_outdated:
+            installed = (installed + ' ' + DS.colors['red'] + _(
+                        '[out of date]') + DS.colors['all_off'])
+    except AttributeError:
+        pass  # for ABS packages
 
     if use_categories or pkg.is_abs:
         category = pkg.repo
@@ -130,8 +133,13 @@ def print_package_info(pkgs, cachemode=False):
     of ``pacman -Si``.
     """
     if pkgs == []:
-        raise SanityError('Didn’t pass any packages.')
+        raise SanityError(_('Didn’t pass any packages.'))
     else:
+        for i in pkgs:
+            if not isinstance(i, AURPackage):
+                raise SanityError(_('Trying to use utils.print_package_info '
+                                    'with an ABS package'),
+                                    source='utils.print_package_info')
         loct = os.getenv('LC_TIME')
         loc = os.getenv('LC_ALL')
 
@@ -172,7 +180,6 @@ Description    : {dsc}
                 ood = DS.colors['red'] + _('yes') + DS.colors['all_off']
             else:
                 ood = _('no')
-
             to.append(t.format(cat=pkg.repo,
                                nme=pkg.name, url=pkg.url,
                                ver=pkg.version, lic=pkg.licenses,

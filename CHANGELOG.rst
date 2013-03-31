@@ -6,7 +6,7 @@ Appendix C. Changelog
 :Copyright: © 2011-2013, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
 :Date: 2013-03-27
-:Version: 2.99.5.0
+:Version: 2.99.6.0
 
 .. index:: CHANGELOG
 
@@ -28,8 +28,12 @@ PKGBUILDer uses the following versioning schemes:
 Generation 3
 ============
 
-:2.99.5.0: Exceptions 2.0 fully implemented.  [testing git-only version]
-:2.99.4.0: First four stages done.  [testing git-only version]
+Testing git-only releases
+-------------------------
+
+:2.99.6.0: Package classes done.
+:2.99.5.0: Exceptions 2.0 fully implemented.
+:2.99.4.0: First four stages done.
 
 Generation 2
 ============

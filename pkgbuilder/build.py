@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.99.5.0
+# PKGBUILDer v2.99.6.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
@@ -305,17 +305,19 @@ def fetch_runner(pkgnames):
                     raise pkgbuilder.exceptions.NetworkError(
                         _('Failed to retieve {0} (from ABS/rsync).').format(
                             pkg.name), pkg=pkg, retcode=rc)
-        print(_(':: Retrieving packages from aur...'))
-        UI.pcount = len(aurpkgs)
-        for pkg in aurpkgs:
-            UI.pmsg(_('retrieving {0}').format(pkg.name), True)
-            filename = pkg.name + '.tar.gz'
-            download(pkg.urlpath, filename)
 
-        print(':: ' + _('Extracting AUR packages...'))
-        for pkg in aurpkgs:
-            filename = pkg.name + '.tar.gz'
-            extract(filename)
+        if aurpkgs:
+            print(_(':: Retrieving packages from aur...'))
+            UI.pcount = len(aurpkgs)
+            for pkg in aurpkgs:
+                UI.pmsg(_('retrieving {0}').format(pkg.name), True)
+                filename = pkg.name + '.tar.gz'
+                download(pkg.urlpath, filename)
+
+            print(':: ' + _('Extracting AUR packages...'))
+            for pkg in aurpkgs:
+                filename = pkg.name + '.tar.gz'
+                extract(filename)
 
         print(_('Successfully fetched: ') + ' '.join(pkgnames))
     except pkgbuilder.exceptions.PBException as e:
@@ -333,17 +335,15 @@ def build_runner(pkgname, performdepcheck=True,
     try:
         pkg = pkgbuilder.utils.info([pkgname])[0]
     except IndexError:
-        try:
-            DS.log.info('{0} not found in the AUR, checking in ABS'.format(
-                            pkgname))
-            syncpkgs = []
-            for j in [i.pkgcache for i in DS.pyc.get_syncdbs()]:
-                syncpkgs.append(j)
-            syncpkgs = functools.reduce(lambda x, y: x + y, syncpkgs)
-            abspkg = pyalpm.find_satisfier(syncpkgs, pkgname)
+        DS.log.info('{0} not found in the AUR, checking in ABS'.format(
+            pkgname))
+        syncpkgs = []
+        for j in [i.pkgcache for i in DS.pyc.get_syncdbs()]:
+            syncpkgs.append(j)
+        syncpkgs = functools.reduce(lambda x, y: x + y, syncpkgs)
+        abspkg = pyalpm.find_satisfier(syncpkgs, pkgname)
+        if abspkg:  # abspkg can be None or a pyalpm.Package object.
             pkg = pkgbuilder.package.ABSPackage.from_pyalpm(abspkg)
-        except AttributeError:
-            pass
 
     if not pkg:
         raise pkgbuilder.exceptions.PackageNotFoundError(pkgname, 'build')
