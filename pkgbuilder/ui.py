@@ -18,6 +18,7 @@
 import sys
 import time
 import threading
+from contextlib import contextmanager
 
 __all__ = ['UI']
 
@@ -58,11 +59,18 @@ class UI(object):
             time.sleep(0.1)
             print()
 
+    @contextmanager
     def throbber(self, msg, finalthrob='*', printback=True):
         """Run the throbber in a thread."""
         self._tt = threading.Thread(target=self._throbber, args=(
             msg, finalthrob, printback))
         self._tt.start()
+        try:
+            yield
+        finally:
+            self.throb = False
+            while self.throbber_alive:
+                time.sleep(0.1)
 
     @property
     def throbber_alive(self):

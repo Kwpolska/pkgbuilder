@@ -149,7 +149,7 @@ class ABSPackage(Package):
         utc = UTC()
 
         p.repo = abspkg.db.name
-        p.desc = abspkg.description
+        p.description = abspkg.desc
         p.human = abspkg.packager
         p.builddate = datetime.datetime.utcfromtimestamp(
             abspkg.builddate).replace(tzinfo=utc)

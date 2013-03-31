@@ -16,11 +16,13 @@
 """
 
 from . import _, __version__
+import pkgbuilder.ui
 import sys
 import os
 import logging
 import subprocess
 import pycman
+import time
 
 __all__ = ['PBDS']
 
@@ -53,6 +55,7 @@ class PBDS():
     debug = False
     console = None
     _pyc = None
+    _ui = None
 
     if os.getenv('PACMAN') is None:
         paccommand = 'pacman'
@@ -96,10 +99,21 @@ class PBDS():
     log.info('*** PKGBUILDer v' + __version__)
 
     @property
+    def ui(self):
+        """Return an UI object, initializing one if necessary."""
+        if not self._ui:
+            self._ui = pkgbuilder.ui.UI()
+
+        return self._ui
+
+    @property
     def pyc(self):
         """Return a pycman handle, initializing one if necessary."""
         if not self._pyc:
-            self._pyc = pycman.config.init_with_config('/etc/pacman.conf')
+            msg = _('Initializing pacman access...')
+            with self.ui.throbber(msg, printback=False):
+                self._pyc = pycman.config.init_with_config('/etc/pacman.conf')
+            sys.stdout.write('\r' + ((len(msg) + 4) * ' '))
 
         return self._pyc
 

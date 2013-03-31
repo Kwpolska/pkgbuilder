@@ -28,8 +28,12 @@ PKGBUILDer uses the following versioning schemes:
 Generation 3
 ============
 
-:2.99.5.0: Exceptions 2.0 fully implemented.  [testing git-only version]
-:2.99.4.0: First four stages done.  [testing git-only version]
+Testing git-only releases
+-------------------------
+
+:2.99.6.0: Package classes done.
+:2.99.5.0: Exceptions 2.0 fully implemented.
+:2.99.4.0: First four stages done.
 
 Generation 2
 ============
