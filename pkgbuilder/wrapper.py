@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
 # PBWrapper v0.2.2
-# PKGBUILDer v2.99.5.0
+# PKGBUILDer v2.99.6.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
@@ -229,7 +229,7 @@ def wrapper(source='AUTO'):
         pbpkgnames = []
         info = pkgbuilder.utils.info(pkgnames)
 
-        names = [i['Name'] for i in info]
+        names = [i.name for i in info]
         pbpkgnames = [n for n in pkgnames if n in names]
         pacmanpkgnames = [i for i in pkgnames if i not in pbpkgnames]
 

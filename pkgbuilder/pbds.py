@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.99.5.0
+# PKGBUILDer v2.99.6.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
@@ -16,11 +16,13 @@
 """
 
 from . import _, __version__
+import pkgbuilder.ui
 import sys
 import os
 import logging
 import subprocess
 import pycman
+import time
 
 __all__ = ['PBDS']
 
@@ -42,11 +44,6 @@ class PBDS():
     depcheck = True
     pkginst = True
     protocol = 'https'
-    categories = ['ERROR', 'none', 'daemons', 'devel', 'editors',
-                  'emulators', 'games', 'gnome', 'i18n', 'kde',
-                  'lib', 'modules', 'multimedia', 'network',
-                  'office', 'science', 'system', 'x11',
-                  'xfce', 'kernels']
     # TRANSLATORS: see makepkg.
     inttext = _('Aborted by user! Exiting...')
     # TRANSLATORS: see pacman.
@@ -58,6 +55,7 @@ class PBDS():
     debug = False
     console = None
     _pyc = None
+    _ui = None
 
     if os.getenv('PACMAN') is None:
         paccommand = 'pacman'
@@ -101,10 +99,21 @@ class PBDS():
     log.info('*** PKGBUILDer v' + __version__)
 
     @property
+    def ui(self):
+        """Return an UI object, initializing one if necessary."""
+        if not self._ui:
+            self._ui = pkgbuilder.ui.UI()
+
+        return self._ui
+
+    @property
     def pyc(self):
         """Return a pycman handle, initializing one if necessary."""
         if not self._pyc:
-            self._pyc = pycman.config.init_with_config('/etc/pacman.conf')
+            msg = _('Initializing pacman access...')
+            with self.ui.throbber(msg, printback=False):
+                self._pyc = pycman.config.init_with_config('/etc/pacman.conf')
+            sys.stdout.write('\r' + ((len(msg) + 4) * ' '))
 
         return self._pyc
 

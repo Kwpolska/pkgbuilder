@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.99.5.0
+# PKGBUILDer v2.99.6.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
@@ -17,6 +17,7 @@
 
 from . import DS, _
 import pkgbuilder.exceptions
+import pkgbuilder.package
 import pkgbuilder.ui
 import pkgbuilder.utils
 import sys
@@ -34,7 +35,6 @@ import datetime
 __all__ = ['validate', 'install', 'safeupgrade', 'auto_build', 'download',
            'rsync', 'extract', 'prepare_deps', 'depcheck', 'fetch_runner',
            'build_runner']
-AURURL = '{0}://aur.archlinux.org{1}'
 
 
 def validate(pkgnames):
@@ -43,30 +43,30 @@ def validate(pkgnames):
     DS.log.info('Validating: ' + '; '.join(pkgnames))
     localdb = DS.pyc.get_localdb()
 
-    aurpkgs = {i['Name']: i['Version'] for i in
+    aurpkgs = {aurpkg.name: aurpkg.version for aurpkg in
                pkgbuilder.utils.info(pkgnames)}
 
     for pkgname in pkgnames:
-        pkg = localdb.get_pkg(pkgname)
+        lpkg = localdb.get_pkg(pkgname)
         try:
             aurversion = aurpkgs[pkgname]
         except KeyError:
-            if not pkg:
+            if not lpkg:
                 DS.fancy_error2(_('{0}: not an AUR package').format(
                                 pkgname))
             else:
                 DS.fancy_msg2(_('{0}: installed {1}').format(pkgname,
-                                                             pkg.version))
+                                                             lpkg.version))
         else:
-            if not pkg:
+            if not lpkg:
                 DS.fancy_error2(_('{0}: NOT installed').format(pkgname))
             else:
-                if pyalpm.vercmp(aurversion, pkg.version) > 0:
-                    DS.fancy_error2(_('{0}: outdated {1}').format(pkgname,
-                                                                  pkg.version))
+                if pyalpm.vercmp(aurversion, lpkg.version) > 0:
+                    DS.fancy_error2(_('{0}: outdated {1}').format(
+                        pkgname, lpkg.version))
                 else:
-                    DS.fancy_msg2(_('{0}: installed {1}').format(pkgname,
-                                                                 pkg.version))
+                    DS.fancy_msg2(_('{0}: installed {1}').format(
+                        pkgname, lpkg.version))
 
 
 def install(pkgpaths, sigpaths=[], uopt=''):
@@ -88,17 +88,17 @@ def safeupgrade(pkgname):
     """Perform a safe upgrade of PKGBUILDer."""
     DS.fancy_msg(_('Fetching package information...'))
     pkg = pkgbuilder.utils.info([pkgname])[0]
-    DS.fancy_msg2(' '.join((pkg['Name'], pkg['Version'])))
-    filename = pkg['Name'] + '.tar.gz'
+    DS.fancy_msg2('-'.join((pkg.name, pkg.version)))
+    filename = pkg.name + '.tar.gz'
     DS.fancy_msg(_('Downloading the tarball...'))
-    downloadbytes = download(pkg['URLPath'], filename)
+    downloadbytes = download(pkg.urlpath, filename)
     kbytes = int(downloadbytes) / 1000
     DS.fancy_msg2(_('{0} kB downloaded').format(kbytes))
 
     DS.fancy_msg(_('Extracting...'))
     DS.fancy_msg2(_('{0} files extracted').format(extract(filename)))
-    os.chdir('./{0}/'.format(pkg['Name']))
-    DS.fancy_msg(_('Building {0}...').format(pkg['Name']))
+    os.chdir('./{0}/'.format(pkg.name))
+    DS.fancy_msg(_('Building {0}...').format(pkg.name))
     mpstatus = subprocess.call('makepkg -sicf', shell=True)
     DS.fancy_msg(_('Build finished with return code {0}.').format(mpstatus))
     return mpstatus
@@ -158,10 +158,10 @@ def auto_build(pkgname, performdepcheck=True,
         return []
 
 
-def download(urlpath, filename, prot='http'):
-    """Downloads an AUR tarball (http) to the current directory."""
+def download(urlpath, filename):
+    """Downloads an AUR tarball to the current directory."""
     try:
-        r = requests.get(AURURL.format(prot, urlpath))
+        r = requests.get('https://aur.archlinux.org' + urlpath)
         r.raise_for_status()
     except requests.exceptions.ConnectionError as e:
         raise pkgbuilder.exceptions.ConnectionError(e)
@@ -189,12 +189,10 @@ def rsync(pkg, quiet=False):
         qv = '--verbose'
     return DS.run_command(('rsync', qv, '-mr', '--no-motd', '--delete-after',
                            '--no-p', '--no-o', '--no-g',
-                           '--include=/{0}'.format(pkg['Category']),
-                           '--include=/{0}/{1}'.format(pkg['Category'],
-                                                       pkg['Name']),
-                           '--exclude=/{0}/*'.format(pkg['Category']),
-                           '--exclude=/*',
-                           'rsync.archlinux.org::abs/{0}/'.format(pkg['Arch']),
+                           '--include=/{0}'.format(pkg.repo),
+                           '--include=/{0}/{1}'.format(pkg.repo, pkg.name),
+                           '--exclude=/{0}/*'.format(pkg.repo), '--exclude=/*',
+                           'rsync.archlinux.org::abs/{0}/'.format(pkg.arch),
                            '.'))
 
 
@@ -275,7 +273,6 @@ def fetch_runner(pkgnames):
             pkg = None
             try:
                 pkg = pkgbuilder.utils.info([pkgname])[0]
-                pkg['ABS'] = False
             except IndexError:
                 try:
                     DS.log.info('{0} not found in the AUR, checking in '
@@ -285,18 +282,15 @@ def fetch_runner(pkgnames):
                         syncpkgs.append(j)
                     syncpkgs = functools.reduce(lambda x, y: x + y, syncpkgs)
                     abspkg = pyalpm.find_satisfier(syncpkgs, pkgname)
-                    pkg = {'CategoryID': 0, 'Category': abspkg.db.name,
-                           'Name': abspkg.name, 'Version': abspkg.version,
-                           'Description': abspkg.desc, 'OutOfDate': 0,
-                           'NumVotes': 'n/a', 'Arch': abspkg.arch}
-                    pkg['ABS'] = True
+                    pkg = pkgbuilder.package.ABSPackage.from_pyalpm(abspkg)
+
                 except AttributeError:
                     pass
 
             if not pkg:
                 raise pkgbuilder.exceptions.PackageNotFoundError(pkgname,
                                                                  'fetch')
-            if pkg['ABS']:
+            if pkg.is_abs:
                 abspkgs.append(pkg)
             else:
                 aurpkgs.append(pkg)
@@ -305,23 +299,25 @@ def fetch_runner(pkgnames):
             print(_(':: Retrieving packages from abs...'))
             UI.pcount = len(abspkgs)
             for pkg in abspkgs:
-                UI.pmsg(_('retrieving {0}').format(pkg['Name']), True)
+                UI.pmsg(_('retrieving {0}').format(pkg.name), True)
                 rc = rsync(pkg, True)
                 if rc > 0:
                     raise pkgbuilder.exceptions.NetworkError(
                         _('Failed to retieve {0} (from ABS/rsync).').format(
-                            pkg['Name']), pkg=pkg, retcode=rc)
-        print(_(':: Retrieving packages from aur...'))
-        UI.pcount = len(aurpkgs)
-        for pkg in aurpkgs:
-            UI.pmsg(_('retrieving {0}').format(pkg['Name']), True)
-            filename = pkg['Name'] + '.tar.gz'
-            download(pkg['URLPath'], filename)
+                            pkg.name), pkg=pkg, retcode=rc)
 
-        print(':: ' + _('Extracting AUR packages...'))
-        for pkg in aurpkgs:
-            filename = pkg['Name'] + '.tar.gz'
-            extract(filename)
+        if aurpkgs:
+            print(_(':: Retrieving packages from aur...'))
+            UI.pcount = len(aurpkgs)
+            for pkg in aurpkgs:
+                UI.pmsg(_('retrieving {0}').format(pkg.name), True)
+                filename = pkg.name + '.tar.gz'
+                download(pkg.urlpath, filename)
+
+            print(':: ' + _('Extracting AUR packages...'))
+            for pkg in aurpkgs:
+                filename = pkg.name + '.tar.gz'
+                extract(filename)
 
         print(_('Successfully fetched: ') + ' '.join(pkgnames))
     except pkgbuilder.exceptions.PBException as e:
@@ -338,53 +334,46 @@ def build_runner(pkgname, performdepcheck=True,
     pkg = None
     try:
         pkg = pkgbuilder.utils.info([pkgname])[0]
-        useabs = False
     except IndexError:
-        try:
-            DS.log.info('{0} not found in the AUR, checking in ABS'.format(
-                            pkgname))
-            syncpkgs = []
-            for j in [i.pkgcache for i in DS.pyc.get_syncdbs()]:
-                syncpkgs.append(j)
-            syncpkgs = functools.reduce(lambda x, y: x + y, syncpkgs)
-            abspkg = pyalpm.find_satisfier(syncpkgs, pkgname)
-            pkg = {'CategoryID': 0, 'Category': abspkg.db.name,
-                   'Name': abspkg.name, 'Version': abspkg.version,
-                   'Description': abspkg.desc, 'OutOfDate': 0,
-                   'NumVotes': 'n/a', 'Arch': abspkg.arch}
-            useabs = True
-        except AttributeError:
-            pass
+        DS.log.info('{0} not found in the AUR, checking in ABS'.format(
+            pkgname))
+        syncpkgs = []
+        for j in [i.pkgcache for i in DS.pyc.get_syncdbs()]:
+            syncpkgs.append(j)
+        syncpkgs = functools.reduce(lambda x, y: x + y, syncpkgs)
+        abspkg = pyalpm.find_satisfier(syncpkgs, pkgname)
+        if abspkg:  # abspkg can be None or a pyalpm.Package object.
+            pkg = pkgbuilder.package.ABSPackage.from_pyalpm(abspkg)
 
     if not pkg:
         raise pkgbuilder.exceptions.PackageNotFoundError(pkgname, 'build')
 
-    DS.fancy_msg(_('Building {0}...').format(pkg['Name']))
+    DS.fancy_msg(_('Building {0}...').format(pkg.name))
     pkgbuilder.utils.print_package_search(pkg,
                                           prefix=DS.colors['blue'] +
                                           '  ->' + DS.colors['all_off'] +
                                           DS.colors['bold'] + ' ',
                                           prefixp='  -> ')
     sys.stdout.write(DS.colors['all_off'])
-    if useabs:
+    if pkg.is_abs:
         DS.fancy_msg(_('Retrieving from ABS...'))
         rc = rsync(pkg)
         if rc > 0:
             raise pkgbuilder.exceptions.NetworkError(
                 _('Failed to retieve {0} (from ABS/rsync).').format(
-                    pkg['Name']), pkg=pkg, retcode=rc)
+                    pkg.name), pkg=pkg, retcode=rc)
 
-        os.chdir('./{0}/'.format(pkg['Category']))
+        os.chdir('./{0}/'.format(pkg.repo))
     else:
-        filename = pkg['Name'] + '.tar.gz'
+        filename = pkg.name + '.tar.gz'
         DS.fancy_msg(_('Downloading the tarball...'))
-        downloadbytes = download(pkg['URLPath'], filename)
+        downloadbytes = download(pkg.urlpath, filename)
         kbytes = int(downloadbytes) / 1000
         DS.fancy_msg2(_('{0} kB downloaded').format(kbytes))
 
         DS.fancy_msg(_('Extracting...'))
         DS.fancy_msg2(_('{0} files extracted').format(extract(filename)))
-    os.chdir('./{0}/'.format(pkg['Name']))
+    os.chdir('./{0}/'.format(pkg.name))
 
     if performdepcheck:
         DS.fancy_msg(_('Checking dependencies...'))
@@ -422,11 +411,10 @@ def build_runner(pkgname, performdepcheck=True,
         # I hope nobody builds VCS packages at 23:5* local.  And if they do,
         # they will be caught by the 2nd fallback (crappy packages)
         datep = datetime.date.today().strftime('%Y%m%d')
-        att0 = set(glob.glob(pkgfilestr.format(pkg['Name'], pkg['Version'],
-                                               '*')))
-        att1 = set(glob.glob(pkgfilestr.format(pkg['Name'], datep, '')))
-        att2 = set(glob.glob(pkgfilestr.format(pkg['Name'], '*', '')))
-        sigf = set(glob.glob(pkgfilestr.format(pkg['Name'], '*', '.sig')))
+        att0 = set(glob.glob(pkgfilestr.format(pkg.name, pkg.version, '*')))
+        att1 = set(glob.glob(pkgfilestr.format(pkg.name, datep, '')))
+        att2 = set(glob.glob(pkgfilestr.format(pkg.name, '*', '')))
+        sigf = set(glob.glob(pkgfilestr.format(pkg.name, '*', '.sig')))
 
         att0 = list(att0 - sigf)
         att1 = list(att1 - sigf)
@@ -445,4 +433,4 @@ def build_runner(pkgname, performdepcheck=True,
     else:
         toinstall = [[], []]
 
-    return [mpstatus, toinstall, useabs]
+    return [mpstatus, toinstall]
