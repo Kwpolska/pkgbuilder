@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.99.5.0
+# PKGBUILDer v2.99.6.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
@@ -91,7 +91,8 @@ class NetworkError(PBException):
 
 class ConnectionError(NetworkError):
     def __str__(self):
-        return _('Connection error: {0} (via {1})').format(self.msg, self.source)
+        return _('Connection error: {0} (via {1})').format(self.msg,
+                                                           self.source)
 
 
 class HTTPError(NetworkError):
@@ -99,8 +100,8 @@ class HTTPError(NetworkError):
         DS.log.error('({0:<20}) {1} (via {2})'.format(self.__qualname__,
                                                       source.status_code,
                                                       source))
-        self.msg = _('HTTP Error {0} (via {1}').format(source.status_code,
-                                                       source)
+        self.msg = _('HTTP Error {0} (via {1})').format(source.status_code,
+                                                        source)
         self.source = source
         try:
             self.origin = origin.args[0].reason

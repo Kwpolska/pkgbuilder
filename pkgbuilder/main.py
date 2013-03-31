@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.99.5.0
+# PKGBUILDer v2.99.6.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
@@ -16,7 +16,7 @@
 """
 
 from . import DS, _, __version__
-import pkgbuilder.exceptions
+from pkgbuilder.exceptions import NetworkError, PBException
 import pkgbuilder.build
 import pkgbuilder.utils
 import pkgbuilder.upgrade
@@ -213,21 +213,19 @@ def main(source='AUTO', quit=True):
                 if out:
                     toinstall += out[1][0]
                     sigs += out[1][1]
-                    if out[2]:
-                        tovalidate = tovalidate - set([pkgname])
 
             if toinstall:
                 pkgbuilder.build.install(toinstall, sigs)
 
             if args.validate and tovalidate:
                 pkgbuilder.build.validate(tovalidate)
-    except pkgbuilder.exceptions.NetworkError as e:
+    except NetworkError as e:
         DS.fancy_error(str(e))
         # TRANSLATORS: do not translate the word 'requests'.
         DS.fancy_error(_('PKGBUILDer (or the requests library) had '
                          'problems with fulfilling an HTTP request.'))
         exit(1)
-    except Exception as e:
+    except PBException as e:
         DS.fancy_error(str(e))
         exit(1)
 

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.99.5.0
+# PKGBUILDer v2.99.6.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2013, Kwpolska.
 # All rights reserved.
@@ -48,12 +48,25 @@ __version__ = '2.1.6.3'
 __author__ = 'Kwpolska'
 __license__ = '3-clause BSD'
 __docformat__ = 'restructuredtext en'
-__all__ = ['_', 'DS']
+__all__ = ['_', 'DS', 'UTC']
 
 import gettext
+import datetime
 
 G = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
 _ = G.gettext
 
 from .pbds import PBDS
 DS = PBDS()
+
+class UTC(datetime.tzinfo):
+    """UTC"""
+
+    def utcoffset(self, dt):
+        return datetime.timedelta(0)
+
+    def tzname(self, dt):
+        return "UTC"
+
+    def dst(self, dt):
+        return datetime.timedelta(0)

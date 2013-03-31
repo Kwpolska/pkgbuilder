@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v2.99.5.0
+# PKGBUILDer v2.99.6.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
@@ -82,9 +82,9 @@ class AUR:
         return req.text
 
     def request(self, rtype, arg, prot='https'):
-        """Makes a request."""
+        """Makes a request and returns the AURDict."""
         return json.loads(self.jsonreq(rtype, arg, prot))
 
     def multiinfo(self, args, prot='https'):
-        """Makes a multiinfo request."""
+        """Makes a multiinfo request and returns the AURDict."""
         return json.loads(self.jsonmultiinfo(args, prot))
