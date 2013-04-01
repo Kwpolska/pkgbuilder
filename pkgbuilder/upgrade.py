@@ -253,7 +253,7 @@ def auto_upgrade(downgrade=False, vcsup=False):
                     print(len(targetstring) * ' ' + i)
 
             print()
-            query = _('Proceed with installation? [Y/n] ')
+            query = ':: ' + _('Proceed with installation? [Y/n] ')
         else:
             DS.fancy_msg(_('Targets ({0}): ').format(upglen))
             DS.fancy_msg2('  '.join(upgstrings))
