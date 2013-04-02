@@ -46,7 +46,7 @@ class Package(object):
 
     def __str__(self):
         """Return something nice for people wanting a string."""
-        return '-'.join(self.name, self.version)
+        return '-'.join((self.name, self.version))
 
     def __repr__(self):
         """Return something nice for people wanting a repr."""
