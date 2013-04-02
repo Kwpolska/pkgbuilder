@@ -227,7 +227,20 @@ def prepare_deps(pkgbuild_path):
     return deps
 
 
-def depcheck(depends):
+def _test_dependency(available, difference, wanted):
+    """Test a dependency requirement."""
+    if '-' in available:
+        # Stripping the pkgver.
+        available = available.split('-')[0]
+
+    vercmp = pyalpm.vercmp(available, wanted)
+
+    return (('<' in difference and vercmp == -1) or
+            ('=' in difference and vercmp == 0) or
+            ('>' in difference and vercmp == 1))
+
+
+def depcheck(depends, pkgobj=None):
     """Performs a dependency check."""
     if depends == []:
         # THANK YOU, MAINTAINER, FOR HAVING NO DEPS AND DESTROYING ME!
@@ -247,7 +260,40 @@ def depcheck(depends):
                 vpat = ('>=<|><=|=><|=<>|<>=|<=>|>=|=>|><|<>|=<|'
                         '<=|>|=|<')
                 ver_base = re.split(vpat, dep)
+                fdep = dep
                 dep = ver_base[0]
+                try:
+                    ver = ver_base[1]
+                    diff = re.match('{0}(.*){1}'.format(dep, ver),
+                                    fdep).groups()
+                except IndexError:
+                    # No version requirement, no need to bother.  We do the
+                    # actual checks later not to waste time.
+                    pass
+                else:
+                    depmatch = False
+                    lsat = pyalpm.find_satisfier(localpkgs, dep)
+                    if lsat:
+                        depmatch = _test_dependency(lsat.version, diff, ver)
+                        parseddeps[dep] = 0
+
+                    if not depmatch:
+                        ssat = pyalpm.find_satisfier(syncpkgs, dep)
+                        if ssat:
+                            depmatch = _test_dependency(ssat.version, diff, ver)
+                            parseddeps[dep] = 1
+
+                        if not depmatch:
+                            asat = pkgbuilder.utils.info([dep])
+                            if asat:
+                                depmatch = _test_dependency(asat.version, diff, ver)
+                                parseddeps[dep] = 2
+
+                            if not depmatch:
+                                raise pkgbuilder.exceptions.PackageError(
+                                    _('Failed to fulfill package dependency '
+                                      'requirement: {0}').format(fdep),
+                                    req=fdep, source=pkgobj)
 
             if pyalpm.find_satisfier(localpkgs, dep):
                 parseddeps[dep] = 0
@@ -256,9 +302,9 @@ def depcheck(depends):
             elif pkgbuilder.utils.info([dep]):
                 parseddeps[dep] = 2
             else:
-                parseddeps[dep] = -1
-                raise pkgbuilder.exceptions.PackageNotFoundError(dep,
-                                                                 'depcheck')
+                raise pkgbuilder.exceptions.PackageNotFoundError(
+                    dep, 'depcheck')
+
         return parseddeps
 
 
@@ -378,7 +424,7 @@ def build_runner(pkgname, performdepcheck=True,
     if performdepcheck:
         DS.fancy_msg(_('Checking dependencies...'))
         depends = prepare_deps(os.path.abspath('./PKGBUILD'))
-        deps = depcheck(depends)
+        deps = depcheck(depends, pkg)
         pkgtypes = [_('found in system'), _('found in repos'),
                     _('found in the AUR')]
         aurbuild = []
