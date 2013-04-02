@@ -22,7 +22,6 @@ import os
 import logging
 import subprocess
 import pycman
-import time
 
 __all__ = ['PBDS']
 
@@ -113,7 +112,8 @@ class PBDS():
             msg = _('Initializing pacman access...')
             with self.ui.throbber(msg, printback=False):
                 self._pyc = pycman.config.init_with_config('/etc/pacman.conf')
-            sys.stdout.write('\r' + ((len(msg) + 4) * ' '))
+
+            sys.stdout.write('\r' + ((len(msg) + 4) * ' ') + '\r')
 
         return self._pyc
 
