@@ -39,6 +39,7 @@ class UI(object):
                                                                 self.pcount))
         sys.stdout.write('{0:<70}'.format(msg))
         sys.stdout.write('\r')
+        sys.stdout.flush()
         if single:
             print()
         if self.pcur == self.pcount:
@@ -53,9 +54,11 @@ class UI(object):
         while self.throb:
             for i in ('|', '/', '-', '\\'):
                 sys.stdout.write('\r({0}) {1}'.format(i, msg))
+                sys.stdout.flush()
                 time.sleep(0.1)
         if not self.throb and printback:
             sys.stdout.write('\r({0}) {1}'.format(finalthrob, msg))
+            sys.stdout.flush()
             time.sleep(0.1)
             print()
 
