@@ -187,13 +187,13 @@ def rsync(pkg, quiet=False):
         qv = '--quiet'
     else:
         qv = '--verbose'
-    return DS.run_command(('rsync', qv, '-mr', '--no-motd', '--delete-after',
+    return DS.run_command(['rsync', qv, '-mr', '--no-motd', '--delete-after',
                            '--no-p', '--no-o', '--no-g',
                            '--include=/{0}'.format(pkg.repo),
                            '--include=/{0}/{1}'.format(pkg.repo, pkg.name),
                            '--exclude=/{0}/*'.format(pkg.repo), '--exclude=/*',
                            'rsync.archlinux.org::abs/{0}/'.format(pkg.arch),
-                           '.'))
+                           '.'])
 
 
 def extract(filename):
@@ -310,7 +310,6 @@ def depcheck(depends, pkgobj=None):
 
 def fetch_runner(pkgnames):
     """Run the fetch procedure."""
-    UI = pkgbuilder.ui.UI()
     abspkgs = []
     aurpkgs = []
     try:
@@ -343,9 +342,9 @@ def fetch_runner(pkgnames):
 
         if abspkgs:
             print(_(':: Retrieving packages from abs...'))
-            UI.pcount = len(abspkgs)
+            pm = pkgbuilder.ui.Progress(len(abspkgs))
             for pkg in abspkgs:
-                UI.pmsg(_('retrieving {0}').format(pkg.name), True)
+                pm.msg(_('retrieving {0}').format(pkg.name), True)
                 rc = rsync(pkg, True)
                 if rc > 0:
                     raise pkgbuilder.exceptions.NetworkError(
@@ -354,9 +353,9 @@ def fetch_runner(pkgnames):
 
         if aurpkgs:
             print(_(':: Retrieving packages from aur...'))
-            UI.pcount = len(aurpkgs)
+            pm = pkgbuilder.ui.Progress(len(aurpkgs))
             for pkg in aurpkgs:
-                UI.pmsg(_('retrieving {0}').format(pkg.name), True)
+                pm.msg(_('retrieving {0}').format(pkg.name), True)
                 filename = pkg.name + '.tar.gz'
                 download(pkg.urlpath, filename)
 

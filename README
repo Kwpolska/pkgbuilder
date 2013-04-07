@@ -15,11 +15,7 @@ Building and installing AUR packages.
 INSTALLATION
 ------------
 
-::
-
-    pip install pkgbuilder
-
-Alternatively, use the AUR.  Or, if you absolutely must, ``./INSTALL.py``.
+Get it from the AUR: https://aur.archlinux.org/packages/pkgbuilder/.
 
 NOTES
 -----

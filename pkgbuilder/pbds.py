@@ -42,7 +42,6 @@ class PBDS():
     validate = True
     depcheck = True
     pkginst = True
-    protocol = 'https'
     # TRANSLATORS: see makepkg.
     inttext = _('Aborted by user! Exiting...')
     # TRANSLATORS: see pacman.
@@ -54,7 +53,6 @@ class PBDS():
     debug = False
     console = None
     _pyc = None
-    _ui = None
 
     if os.getenv('PACMAN') is None:
         paccommand = 'pacman'
@@ -98,19 +96,11 @@ class PBDS():
     log.info('*** PKGBUILDer v' + __version__)
 
     @property
-    def ui(self):
-        """Return an UI object, initializing one if necessary."""
-        if not self._ui:
-            self._ui = pkgbuilder.ui.UI()
-
-        return self._ui
-
-    @property
     def pyc(self):
         """Return a pycman handle, initializing one if necessary."""
         if not self._pyc:
             msg = _('Initializing pacman access...')
-            with self.ui.throbber(msg, printback=False):
+            with pkgbuilder.ui.Throbber(msg, printback=False):
                 self._pyc = pycman.config.init_with_config('/etc/pacman.conf')
 
             sys.stdout.write('\r' + ((len(msg) + 4) * ' ') + '\r')
@@ -122,7 +112,8 @@ class PBDS():
         Run a command.
 
         .. note:: Accepts only one command.  ``shell=False``, for safety.
-        asonearg is for ``su -c`` and most people don’t need nor want it.
+                  asonearg is for ``su -c`` and most people don’t need nor want
+                  it.
 
         .. note:: since version 2.1.6.2, ``args`` must be a list.
         """

@@ -1,6 +1,6 @@
-==============================
-upgrade module (Upgrade class)
-==============================
+==============
+upgrade module
+==============
 
 :Author: Kwpolska
 :Copyright: © 2011-2013, Kwpolska.
@@ -8,8 +8,10 @@ upgrade module (Upgrade class)
 :Date: 2013-03-14
 :Version: 2.1.6.3
 
-.. index:: Upgrade
+.. index:: upgrade
 .. index:: Syu
 .. versionadded:: 2.1.0.0
+.. versionchanged:: 3.0.0
+    Class removed, its methods became module-level functions
 .. automodule:: pkgbuilder.upgrade
    :members:
