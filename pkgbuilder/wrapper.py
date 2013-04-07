@@ -34,8 +34,6 @@ __wrapperversion__ = '0.2.2'
 
 def wrapper(source='AUTO'):
     """A wrapper for pacman and PKGBUILDer."""
-    localdb = DS.pyc.get_localdb()
-
     # Because I need to work with -S and nothing else, I am going to use
     # regular expressions on the argument list.  Sorry.
     if source == 'AUTO':
@@ -278,6 +276,7 @@ Additional options:
             os.path.basename(sys.argv[0]), pacdoc))
 
     elif ('-V' in argst) or ('--version' in argst):
+        localdb = DS.pyc.get_localdb()
         pacpkg = localdb.get_pkg('pacman')
 
         print("""PBWrapper   v{0}
@@ -292,7 +291,9 @@ pyalpm      v{3}""".format(__wrapperversion__, __version__,
             pass
         else:
             print('Please don’t use the reserved UTshibboleet argument.')
-    elif ('-Q' in argst) or ('--query' in argst) or argst == []:
+
+    elif (('-Q' in argst) or ('--query' in argst) or (re.search(
+            '-[a-zA-Z]*Q', ''.join(argst)) is not None)):
         DS.run_command([DS.paccommand] + argst)
     else:
         DS.sudo([DS.paccommand] + argst)
