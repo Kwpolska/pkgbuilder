@@ -14,7 +14,7 @@ PKGBUILDer
 SYNOPSIS
 ========
 
-*pkgbuilder* [-hVcCdvwSy] [-P PROTOCOL] [-isu] [PACKAGE [PACKAGE ...]]
+*pkgbuilder* [-hVcCdDvwSy] [--debug] [--safeupgrade] [-Fisu] [PACKAGE [PACKAGE ...]]
 
 DESCRIPTION
 ===========
@@ -60,6 +60,12 @@ working directory (CWD).
 OPTIONS
 =======
 
+**-h, --help**
+    Shows the help message.
+
+**-v, --version**
+    Shows the version number.
+
 **-c, --clean**
     Cleans the build directory after a finished build. (*makepkg -c*)
 
@@ -83,13 +89,12 @@ OPTIONS
 **-w, --buildonly**
     Skips package installation after building.
 
-**-P PROTOCOL, --protocol PROTOCOL**
-    Chooses the protocol, http by default.
-
 **-S, --sync**
-    Originally for pacman syntax compatibility, now makes the script more
-    wrapper-friendly: builds packages in */tmp* and uses *aur* instead of
-    the category in search.
+    Builds packages in */tmp* and uses *aur* instead of the category in search.
+
+**--safeupgrade**
+    Upgrades PKGBUILDer safely.  Now obsolete, because an update for PKGBUILDer
+    forces this option anyways.
 
 **-y, --refresh**
     A dummy option for pacman syntax compatibility.
@@ -97,17 +102,27 @@ OPTIONS
 EXAMPLES
 ========
 
-pkgbuilder trashman
-    Installs the package "trashman" from the AUR.  It is being built in
+pkgbuilder hello
+    Installs the package hello from the AUR.  It is being built in
     the CWD.
 
-pkgbuilder -S trashman
-    Installs "trashman", but builds the package in /tmp/pkgbuilder-UID.
+pkgbuilder -S hello
+    Installs hello, but builds the package in /tmp/pkgbuilder-UID.
+
+pkgbuilder -F hello
+    Fetches the tarball for hello to the CWD and unpacks it.
+
+pkgbuilder -SF hello
+    Like above, but does it in /tmp/pkgbuilder-UID.
+
+pkgbuilder python
+    Python is a binary repo package, triggering a ABS download via rsync (no
+    need for ``extra/abs``).  -S and/or -F are also accepted.
 
 pkgbuilder -Syu
     Checks for updates and offers installing them.
 
-(Trashman is a trash manager by Kwpolska, which you should install ASAP.)
+hello is a package for GNU Hello: http://www.gnu.org/software/hello/
 
 SEE ALSO
 ========

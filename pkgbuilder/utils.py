@@ -24,7 +24,8 @@ import os
 import subprocess
 import textwrap
 
-__all__ = ['info', 'search', 'print_package_search', 'print_package_info']
+__all__ = ['info', 'search', 'msearch', 'print_package_search',
+           'print_package_info']
 RPC = AUR()
 
 
@@ -32,39 +33,40 @@ def info(pkgnames):
     """
     .. versionchanged:: 3.0.0
 
-    Returns info about packages.
+    Returns info about AUR packages.
     """
     if isinstance(pkgnames, str):
         pkgnames = [pkgnames]
-    aur_pkgs = RPC.multiinfo(pkgnames, DS.protocol)
-    if aur_pkgs == []:
-        return []
-    elif aur_pkgs['type'] == 'error':
-        # There are other cases where the "results" element is a string;
-        # type = error seems to cover at least one case
+
+    aur_pkgs = RPC.multiinfo(pkgnames)
+    if aur_pkgs['type'] == 'error':
         raise AURError(aur_pkgs['results'])
     else:
-        results = []
-        for d in aur_pkgs['results']:
-            results.append(AURPackage.from_aurdict(d))
-
-        return results
+        return [AURPackage.from_aurdict(d) for d in aur_pkgs['results']]
 
 
 def search(pkgname):
     """
-    .. versonchanged:: 3.0.0
+    .. versionchanged:: 3.0.0
 
     Searches for AUR packages."""
-    aur_pkgs = RPC.request('search', pkgname, DS.protocol)
-    if aur_pkgs == []:
-        return []
+    aur_pkgs = RPC.request('search', pkgname)
+    if aur_pkgs['type'] == 'error':
+        raise AURError(aur_pkgs['results'])
     else:
-        results = []
-        for d in aur_pkgs['results']:
-            results.append(AURPackage.from_aurdict(d))
+        return [AURPackage.from_aurdict(d) for d in aur_pkgs['results']]
 
-        return results
+
+def msearch(maintainer):
+    """
+    .. versionadded:: 3.0.0
+
+    Searches for AUR packages maintained by a specified user."""
+    aur_pkgs = RPC.request('msearch', maintainer)
+    if aur_pkgs['type'] == 'error':
+        raise AURError(aur_pkgs['results'])
+    else:
+        return [AURPackage.from_aurdict(d) for d in aur_pkgs['results']]
 
 
 def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
@@ -95,8 +97,8 @@ def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
             installed = _(' [installed]')
     try:
         if pkg.is_outdated:
-            installed = (installed + ' ' + DS.colors['red'] + _(
-                        '[out of date]') + DS.colors['all_off'])
+            installed = (installed + ' ' + DS.colors['red'] +
+                         _('[out of date]') + DS.colors['all_off'])
     except AttributeError:
         pass  # for ABS packages
 
@@ -139,7 +141,7 @@ def print_package_info(pkgs, cachemode=False):
             if not isinstance(i, AURPackage):
                 raise SanityError(_('Trying to use utils.print_package_info '
                                     'with an ABS package'),
-                                    source='utils.print_package_info')
+                                  source='utils.print_package_info')
         loct = os.getenv('LC_TIME')
         loc = os.getenv('LC_ALL')
 

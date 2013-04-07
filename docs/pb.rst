@@ -55,20 +55,19 @@ An additional option is **--unlock**, which unlocks the pacman database.
 EXAMPLES
 ========
 
-pb -S python trashman
+pb -S python hello
     Installs the Python interpreter from the repos (which is already on
     your system, especially if you have installed PKGBUILDer/PBWrapper)
-    and Trashman from the AUR.
+    and GNU Hello from the AUR.  Note that, if you used ``pkgbuilder`` instead
+    of ``pb``, the Python package would be fetched from the ABS (instead of the
+    repositories) and built locally.
 
-pb -Si python trashman
-    Shows information for the python and trashman packages.
+pb -Si python hello
+    Shows information for the python and hello packages.
 
 pb -Syu
     Checks for repo and AUR updates (in that order) and offers
     installing them.
-
-(Trashman is a XDG trash manager by Kwpolska.  Python is the awesome
-language both Trashman and PKGBUILDer/PBWrapper are written in.)
 
 SEE ALSO
 ========

@@ -40,19 +40,25 @@ class AUR:
     | msearch | show packages maintained by `arg` |
     +---------+-----------------------------------+
 
+    A more accurate list might be available at the AUR RPC website:
+    https://aur.archlinux.org/rpc.php
+
     multiinfo is implemented in another function, :meth:`multiinfo()`.
+
+    .. note:: Most people don’t actually want this and will prefer to use
+              ``pkgbuilder.utils.{info,search,msearch}()`` instead.
     """
 
-    rpc = '{0}://aur.archlinux.org/rpc.php?type={1}&arg={2}'
-    mrpc = '{0}://aur.archlinux.org/rpc.php?type=multiinfo{1}'
+    rpc = 'https://aur.archlinux.org/rpc.php?type={0}&arg={1}'
+    mrpc = 'https://aur.archlinux.org/rpc.php?type=multiinfo{0}'
 
-    def jsonreq(self, rtype, arg, prot='https'):
+    def jsonreq(self, rtype, arg):
         """Makes a request and returns plain JSON data."""
         if arg == []:
             return '[]'  # No need to bother, string for JSON.
 
         try:
-            req = requests.get(self.rpc.format(prot, rtype, arg))
+            req = requests.get(self.rpc.format(rtype, arg))
             req.raise_for_status()
         except requests.exceptions.ConnectionError as e:
             raise ConnectionError(e.args[0].reason, e)
@@ -63,14 +69,14 @@ class AUR:
 
         return req.text
 
-    def jsonmultiinfo(self, args, prot='https'):
+    def jsonmultiinfo(self, args):
         """Makes a multiinfo request and returns plain JSON data."""
         if args == []:
             return '[]'  # No need to bother, string for JSON.
 
         urlargs = '&arg[]=' + '&arg[]='.join(args)
         try:
-            req = requests.get(self.mrpc.format(prot, urlargs))
+            req = requests.get(self.mrpc.format(urlargs))
             req.raise_for_status()
         except requests.exceptions.ConnectionError as e:
             raise ConnectionError(e.args[0].reason, e)
@@ -81,10 +87,10 @@ class AUR:
 
         return req.text
 
-    def request(self, rtype, arg, prot='https'):
+    def request(self, rtype, arg):
         """Makes a request and returns the AURDict."""
-        return json.loads(self.jsonreq(rtype, arg, prot))
+        return json.loads(self.jsonreq(rtype, arg))
 
-    def multiinfo(self, args, prot='https'):
+    def multiinfo(self, args):
         """Makes a multiinfo request and returns the AURDict."""
-        return json.loads(self.jsonmultiinfo(args, prot))
+        return json.loads(self.jsonmultiinfo(args))
