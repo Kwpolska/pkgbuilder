@@ -166,11 +166,11 @@ def auto_upgrade(downgrade=False, vcsup=False):
                 raise SanityError('if goes apeshit', 'syu-safeupgrade')
 
             if DS.pacman:
-                print('::' + _('The following packages should be upgraded '
+                print(':: ' + _('The following packages should be upgraded '
                                'first:'))
                 print('    {0}'.format(pkgbname))
-                print('::' + _('Do you want to cancel the current operation'))
-                query = '::' + _('and upgrade these packages now? [Y/n] ')
+                print(':: ' + _('Do you want to cancel the current operation'))
+                query = ':: ' + _('and upgrade these packages now? [Y/n] ')
             else:
                 DS.fancy_warning(_('The following packages should be upgraded '
                                    'first:'))
