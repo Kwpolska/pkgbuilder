@@ -265,7 +265,7 @@ def depcheck(depends, pkgobj=None):
                 try:
                     ver = ver_base[1]
                     diff = re.match('{0}(.*){1}'.format(dep, ver),
-                                    fdep).groups()
+                                    fdep).groups()[0]
                 except IndexError:
                     # No version requirement, no need to bother.  We do the
                     # actual checks later not to waste time.
