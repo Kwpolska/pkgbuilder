@@ -54,10 +54,8 @@ if __name__ == '__main__':
     if not args.count and not args.list:
         exit(0)
 
-    upg = pkgbuilder.upgrade.Upgrade()
-
-    foreign = upg.gather_foreign_pkgs()
-    gradable = upg.list_upgradable(foreign.keys(), False)
+    foreign = pkgbuilder.upgrade.gather_foreign_pkgs()
+    gradable = pkgbuilder.upgrade.list_upgradable(foreign.keys(), False)
     upgradable = gradable[0]
     downgradable = gradable[1]
 
