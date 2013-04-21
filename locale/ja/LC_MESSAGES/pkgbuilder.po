@@ -1,6 +1,7 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# PKGBUILDer pot file.
+# Copyright © 2011-2013, Kwpolska.
+# This file is distributed under the same license as the PKGBUILDer package.
+# Kwpolska <kwpolska@kwpolska.tk>, 2011-2013.
 #
 # Translators:
 msgid ""
@@ -8,7 +9,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2013-03-23 18:08+0000\n"
+"PO-Revision-Date: 2013-04-21 17:43+0000\n"
 "Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/pkgbuilder/"
 "language/ja/)\n"
@@ -42,27 +43,27 @@ msgstr "{0}：「{1}」より要更新"
 msgid "Installing built packages..."
 msgstr "作成したパッケージをインストール中・・・"
 
-#: pkgbuilder/build.py:89 pkgbuilder/build.py:271
+#: pkgbuilder/build.py:89 pkgbuilder/build.py:316
 msgid "Fetching package information..."
 msgstr ""
 
-#: pkgbuilder/build.py:93 pkgbuilder/build.py:369
+#: pkgbuilder/build.py:93 pkgbuilder/build.py:414
 msgid "Downloading the tarball..."
 msgstr "ターボールをダウンロード中・・・"
 
-#: pkgbuilder/build.py:96 pkgbuilder/build.py:372
+#: pkgbuilder/build.py:96 pkgbuilder/build.py:417
 msgid "{0} kB downloaded"
 msgstr "{0} kBをダウンロード済み"
 
-#: pkgbuilder/build.py:98 pkgbuilder/build.py:374
+#: pkgbuilder/build.py:98 pkgbuilder/build.py:419
 msgid "Extracting..."
 msgstr "抽出中・・・"
 
-#: pkgbuilder/build.py:99 pkgbuilder/build.py:375
+#: pkgbuilder/build.py:99 pkgbuilder/build.py:420
 msgid "{0} files extracted"
 msgstr "ファイルを{0}個抽出した"
 
-#: pkgbuilder/build.py:101 pkgbuilder/build.py:351
+#: pkgbuilder/build.py:101 pkgbuilder/build.py:396
 msgid "Building {0}..."
 msgstr "「{0}」を作成中・・・"
 
@@ -83,95 +84,94 @@ msgid "makepkg (or someone else) failed and returned {0}."
 msgstr "makepkgなどが「{0}」で失敗したようだ。"
 
 #: pkgbuilder/build.py:175
-#, fuzzy
 msgid "0 bytes downloaded"
-msgstr "ダウンロード状態：1バイトもダウンロードされなかった"
+msgstr ""
 
 #: pkgbuilder/build.py:208
-#, fuzzy
 msgid "No files extracted."
-msgstr "ファイルを{0}個抽出した"
+msgstr ""
 
-#: pkgbuilder/build.py:299
+#: pkgbuilder/build.py:294
+msgid "Failed to fulfill package dependency requirement: {0}"
+msgstr ""
+
+#: pkgbuilder/build.py:344
 msgid ":: Retrieving packages from abs..."
 msgstr ""
 
-#: pkgbuilder/build.py:302 pkgbuilder/build.py:311
+#: pkgbuilder/build.py:347 pkgbuilder/build.py:358
 msgid "retrieving {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:306 pkgbuilder/build.py:363
+#: pkgbuilder/build.py:351 pkgbuilder/build.py:408
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr ""
 
-#: pkgbuilder/build.py:308
+#: pkgbuilder/build.py:355
 msgid ":: Retrieving packages from aur..."
 msgstr ""
 
-#: pkgbuilder/build.py:315
+#: pkgbuilder/build.py:362
 msgid "Extracting AUR packages..."
 msgstr ""
 
-#: pkgbuilder/build.py:320
+#: pkgbuilder/build.py:367
 msgid "Successfully fetched: "
 msgstr ""
 
-#: pkgbuilder/build.py:359
+#: pkgbuilder/build.py:404
 msgid "Retrieving from ABS..."
 msgstr ""
 
-#: pkgbuilder/build.py:379
+#: pkgbuilder/build.py:424
 msgid "Checking dependencies..."
 msgstr "従属パッケージを確認中・・・"
 
-#: pkgbuilder/build.py:382
+#: pkgbuilder/build.py:427
 msgid "found in system"
 msgstr "インストール済み"
 
-#: pkgbuilder/build.py:382
+#: pkgbuilder/build.py:427
 msgid "found in repos"
 msgstr "リポジトリに存在"
 
-#: pkgbuilder/build.py:383
+#: pkgbuilder/build.py:428
 msgid "found in the AUR"
 msgstr "AURに存在"
 
-#: pkgbuilder/build.py:386
+#: pkgbuilder/build.py:431
 msgid "none found"
 msgstr "従属パッケージなし"
 
-#: pkgbuilder/exceptions.py:51
-#, fuzzy
+#: pkgbuilder/exceptions.py:53
 msgid "AUR Error: {0}"
-msgstr "AUR: HTTPエラー発生 {0}"
+msgstr ""
 
-#: pkgbuilder/exceptions.py:66
+#: pkgbuilder/exceptions.py:69
 msgid "makepkg returned {0}."
 msgstr ""
 
-#: pkgbuilder/exceptions.py:89
+#: pkgbuilder/exceptions.py:93
 msgid "Network error: {0} (via {1})"
 msgstr ""
 
-#: pkgbuilder/exceptions.py:94
+#: pkgbuilder/exceptions.py:100
 msgid "Connection error: {0} (via {1})"
 msgstr ""
 
-#: pkgbuilder/exceptions.py:103
-#, fuzzy
+#: pkgbuilder/exceptions.py:111
 msgid "HTTP Error {0} (via {1})"
-msgstr "AUR: HTTPエラー発生 {0}"
-
-#: pkgbuilder/exceptions.py:136
-msgid "{0} (Package: {1})"
 msgstr ""
 
 #: pkgbuilder/exceptions.py:145
-#, fuzzy
-msgid "Package {0} not found. (via {1})"
-msgstr "パッケージ「{0}」は見つからなかった。"
+msgid "{0} (Package: {1})"
+msgstr ""
 
-#: pkgbuilder/exceptions.py:166
+#: pkgbuilder/exceptions.py:155
+msgid "Package {0} not found. (via {1})"
+msgstr ""
+
+#: pkgbuilder/exceptions.py:177
 msgid "Sanity error!  {0} (via {1})"
 msgstr ""
 
@@ -292,7 +292,7 @@ msgid "Running PKGBUILDer as root can break your system!"
 msgstr "管理者としてPKGBUILDerを実行すると危険性あり！"
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/main.py:227
+#: pkgbuilder/main.py:225
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
@@ -308,7 +308,7 @@ msgstr "ユーザーによる強制終了！"
 msgid "Interrupt signal received\n"
 msgstr "途中切断\n"
 
-#: pkgbuilder/pbds.py:87 pkgbuilder/pbds.py:209
+#: pkgbuilder/pbds.py:87 pkgbuilder/pbds.py:214
 msgid "ERROR:"
 msgstr "エラー："
 
@@ -316,13 +316,17 @@ msgstr "エラー："
 msgid "Cannot create the configuration directory."
 msgstr "設定ディレクトリ作れなかった。"
 
-#: pkgbuilder/pbds.py:89 pkgbuilder/pbds.py:195
+#: pkgbuilder/pbds.py:89 pkgbuilder/pbds.py:200
 msgid "WARNING:"
 msgstr "警告："
 
 #: pkgbuilder/pbds.py:89
 msgid "Logs will not be created."
 msgstr "ログは作られない。"
+
+#: pkgbuilder/pbds.py:102
+msgid "Initializing pacman access..."
+msgstr ""
 
 #: pkgbuilder/upgrade.py:112 pkgbuilder/upgrade.py:114
 msgid "Synchronizing package databases..."
@@ -378,25 +382,33 @@ msgstr ""
 msgid "Proceed with installation? [Y/n] "
 msgstr "続行？ [Y/n]"
 
-#: pkgbuilder/utils.py:93
+#: pkgbuilder/utils.py:95
 msgid " [installed: {0}]"
 msgstr "[インストール済み：{0}]"
 
-#: pkgbuilder/utils.py:95
+#: pkgbuilder/utils.py:97
 msgid " [installed]"
 msgstr "[インストール済み]"
 
-#: pkgbuilder/utils.py:98
+#: pkgbuilder/utils.py:101
 msgid "[out of date]"
 msgstr "[要更新]"
 
-#: pkgbuilder/utils.py:117
+#: pkgbuilder/utils.py:122
 msgid "votes"
 msgstr "投票数"
 
+#: pkgbuilder/utils.py:138
+msgid "Didn’t pass any packages."
+msgstr ""
+
+#: pkgbuilder/utils.py:142
+msgid "Trying to use utils.print_package_info with an ABS package"
+msgstr ""
+
 #. TRANSLATORS: space it properly.  “yes/no” below are
 #. for “out of date”.
-#: pkgbuilder/utils.py:152
+#: pkgbuilder/utils.py:162
 msgid ""
 "Repository     : aur\n"
 "Category       : {cat}\n"
@@ -424,22 +436,21 @@ msgstr ""
 "最近更新日付   : {upd}\n"
 "説明           : {dsc}\n"
 
-#: pkgbuilder/utils.py:172
+#: pkgbuilder/utils.py:182
 msgid "yes"
 msgstr "要更新"
 
-#: pkgbuilder/utils.py:174
+#: pkgbuilder/utils.py:184
 msgid "no"
 msgstr "最新"
 
-#: pkgbuilder/wrapper.py:104
+#: pkgbuilder/wrapper.py:102
 #, python-format
 msgid "%(prog)s <operation> [...]"
 msgstr "%(prog)s <選択肢> [...]"
 
 #. TRANSLATORS: see pacman’s localizations
-#: pkgbuilder/wrapper.py:267
-#, fuzzy
+#: pkgbuilder/wrapper.py:265
 msgid ""
 "usage:  {0} <operation> [...]\n"
 "\n"
@@ -453,15 +464,6 @@ msgid ""
 "Additional options:\n"
 "  -L, --unlock         unlock the pacman database"
 msgstr ""
-"使い方： {0} <引数> [...]\n"
-"\n"
-"PBWrapperはPacmanとPKGBUILDerを統一するスクリプト。\n"
-"\n"
-"PacmanとPKGBUILDer両方の引数が使える。詳しいことmanpageや、\n"
-"それぞれのhelpメッセージまで。\n"
-"\n"
-"その他の選択（引数）：\n"
-"  -L, --unlock         pacmanのデータベースを開放"
 
 #: INSTALL.py:53
 msgid "Performing a dependency check..."
@@ -483,15 +485,6 @@ msgid ""
 "\n"
 "If I am wrong, though, congratulations!\n"
 msgstr ""
-"\n"
-"\n"
-"問題が起こったようだ。makepkgの出力を読んで、もう一度やってみて下さい。\n"
-"自分でこのスクリプトの処理をデバッグする手もある。\n"
-"スクリプトが扱っていたが全て下記の場所にある：\n"
-"    {0}\n"
-"（その数字がランダムに出されたものなので気にしないこと）\n"
-"\n"
-"頑張って！\n"
 
 #: INSTALL.py:114
 msgid ""
@@ -534,18 +527,6 @@ msgid ""
 "(zsh users: hash -r, other shells may need another command).  For\n"
 "python module usage, type `import pkgbuilder` into the python prompt.\n"
 msgstr ""
-"\n"
-"\n"
-"上記の出力を読んで下さい。スクリプトに問題があったら、もう一度実行\n"
-"した方がいい。自分でこのスクリプトの処理をデバッグする手もある。\n"
-"スクリプトが扱っていたが全て下記の場所にある：\n"
-"    {0}\n"
-"（その数字がランダムに出されたものなので気にしないこと）\n"
-"\n"
-"全てが無事に終わったら、おめでとう！これでPKGBUILDerが使えるようになった。\n"
-"通常の使い方としては「pkgbuilder」を端末に打つ。（zshを使用している人は\n"
-"「hash -r」が必要になるかもしれない。pythonのモジュール利用に関しては、\n"
-"`import pkgbuilder`をいつも通り打てば使える。\n"
 
 #: INSTALL.py:158
 msgid ""
@@ -569,9 +550,6 @@ msgid ""
 "If that's what you want to do, go for it.  If it isn't, run this\n"
 "script again."
 msgstr ""
-"終わりたいようだな。じゃあ、さようなら。\n"
-"まだ何もしていないので。\n"
-"本当に終わりたいなら止めない。違ったら再度このスクリプトを実行！"
 
 #. A module only for gettext locale provision.
 #: localeprovider.py:2
@@ -589,27 +567,3 @@ msgstr "副選択肢"
 #: localeprovider.py:5
 msgid "show this help message and exit"
 msgstr "このメッセージを出力して終わる"
-
-#~ msgid "PKGBUILDer had a problem."
-#~ msgstr "PKGBUILDerに問題発生。"
-
-#~ msgid "There was an input/output error."
-#~ msgstr "入力・出力エラー発生。"
-
-#~ msgid "download: HTTP Error {0}"
-#~ msgstr "ダウンロード状態：HTTPエラー {0}"
-
-#~ msgid "extract: no files extracted"
-#~ msgstr "抽出状態：ファイルは1つも抽出されなかった"
-
-#~ msgid "depcheck: cannot find {0} anywhere"
-#~ msgstr "従属パッケージ状態：「{0}」をどこでも見つからなかった"
-
-#~ msgid "Synchronizing the ABS tree..."
-#~ msgstr "パッケージデーターベースを同期中・・・"
-
-#~ msgid "Failed to synchronize the ABS tree."
-#~ msgstr "ABSの同期は失敗した。"
-
-#~ msgid "Package not found."
-#~ msgstr "パッケージは見つからなかった。"
