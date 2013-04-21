@@ -35,7 +35,7 @@ def main(source='AUTO', quit=True):
         # Alternatively, use translation instead of locale.
         locale = _('LANG locale by AUTHOR <MAIL@IF.YOU.WANT>')
         if locale != 'LANG locale by AUTHOR <MAIL@IF.YOU.WANT>':
-            verstring = '\n'.join([verstring, locale])
+            verstring = ' — '.join([verstring, locale])
         DS.log.info('Initialized, parsing arguments.')
         parser = argparse.ArgumentParser(description=_('An AUR helper'
                                          ' (and library) in Python 3.'),
