@@ -29,7 +29,7 @@ CATEGORIES = ['ERROR', 'none', 'daemons', 'devel', 'editors',
 
 
 class Package(object):
-    """A package, one of many."""
+    """The base class for packages."""
     is_abs = None
     name = None
     version = None
@@ -73,6 +73,9 @@ class AURPackage(Package):
 
     @classmethod
     def from_aurdict(cls, aurdict):
+        """
+        Creates an instance of AURPackage using a dictionary from the AUR RPC.
+        """
         bindings = {'Description': 'description',
                     'ID': 'id',
                     'Maintainer': 'human',
@@ -136,6 +139,7 @@ class ABSPackage(Package):
 
     @classmethod
     def from_pyalpm(cls, abspkg):
+        """Transforms a pyalpm.Package into a pkgbuilder.package.ABSPackage."""
         copy = ['arch', 'backup', 'base64_sig', 'conflicts', 'deltas',
                 'depends', 'download_size', 'filename', 'files', 'groups',
                 'has_scriptlet', 'isize', 'licenses', 'md5sum', 'name',

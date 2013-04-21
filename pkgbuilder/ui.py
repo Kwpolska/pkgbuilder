@@ -19,7 +19,7 @@ import sys
 import time
 import threading
 
-__all__ = ['Progress', 'Throbber']
+__all__ = ['Progress', 'Throbber', 'ProgressThrobber']
 
 
 class Progress(object):
@@ -124,6 +124,7 @@ class ProgressThrobber(Progress, Throbber):
     Similar to Progress, but the / is animated.
 
     Usage::
+
         with ProgressThrobber('Working...', total=2) as pt:
             dostuff()
             pt.bump('Cleaning up...')
