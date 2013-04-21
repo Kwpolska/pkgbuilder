@@ -53,18 +53,16 @@ if __name__ == '__main__':
                         'packages')
     args = parser.parse_args()
 
-    upg = pkgbuilder.upgrade.Upgrade()
-    uti = pkgbuilder.utils.Utils()
-    foreign = upg.gather_foreign_pkgs().keys()
+    foreign = pkgbuilder.upgrade.gather_foreign_pkgs().keys()
     ood = []
     orphans = []
     toprint = []
-    for i in uti.info(foreign):
-        if i['Maintainer'] == None:
-            orphans.append(i['Name'])
+    for i in pkgbuilder.utils.info(foreign):
+        if not i.human:
+            orphans.append(i.name)
 
-        if i['OutOfDate'] == '1':
-            ood.append(i['Name'])
+        if i.is_outdated:
+            ood.append(i.name)
 
     if args.orphans and args.ood:
         both = list(set(ood + orphans))

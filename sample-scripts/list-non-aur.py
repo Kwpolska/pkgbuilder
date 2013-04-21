@@ -40,9 +40,7 @@ import pkgbuilder.utils
 import pkgbuilder.upgrade
 
 if __name__ == '__main__':
-    upg = pkgbuilder.upgrade.Upgrade()
-    uti = pkgbuilder.utils.Utils()
-    foreign = set(upg.gather_foreign_pkgs().keys())
-    aurinfo = set([i['Name'] for i in uti.info(foreign)])
+    foreign = set(pkgbuilder.upgrade.gather_foreign_pkgs().keys())
+    aurinfo = set([i.name for i in pkgbuilder.utils.info(foreign)])
 
     print('\n'.join(foreign - aurinfo))
