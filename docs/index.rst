@@ -32,24 +32,47 @@ For the PBWrapper (``pb``), see the :doc:`PBWrapper man page <pb>`.
 For developers using PKGBUILDer as a Python module, see the respective class
 documents.
 
-Table of Contents
------------------
+User Documentation
+------------------
+
+By reading those three documents, you will know your way around PKGBUILDer as
+an user.
 
 .. toctree::
-   :numbered:
+   :titlesonly:
 
-   PKGBUILDer (man page) <pkgbuilder>
-   PBWrapper (man page) <pb>
+   PKGBUILDer man page <pkgbuilder>
+   PBWrapper man page <pb>
    README for PKGBUILDer <README>
+
+Developer Documentation
+-----------------------
+
+Those documents will let a developer do something.  Note that most of them is
+auto-generated from the Python source and you are actually better off reading
+that.
+
+.. toctree::
+   :titlesonly:
+
    aur
    build
    main
+   package
    pbds
    ui
    upgrade
    utils
    wrapper
+   exceptions
    sample-scripts
+
+Appendices
+----------
+
+.. toctree::
+   :titlesonly:
+
    CONTRIBUTING
    LICENSE
    CHANGELOG
