@@ -154,7 +154,7 @@ def print_package_info(pkgs, cachemode=False):
         if loct == '':
             loct = loc
 
-        fmt = '%Y-%m-%dT%H:%M:%S%Z'
+        fmt = '%Y-%m-%dT%H:%M:%SZ'
 
         # TRANSLATORS: space it properly.  “yes/no” below are
         # for “out of date”.
@@ -182,12 +182,10 @@ Description    : {dsc}
                 ood = DS.colors['red'] + _('yes') + DS.colors['all_off']
             else:
                 ood = _('no')
-            to.append(t.format(cat=pkg.repo,
-                               nme=pkg.name, url=pkg.url,
-                               ver=pkg.version, lic=pkg.licenses,
-                               cmv=pkg.votes, ood=ood,
-                               mnt=pkg.human, upd=upd, fsb=fsb,
-                               dsc=pkg.description))
+            to.append(t.format(cat=pkg.repo, nme=pkg.name, url=pkg.url,
+                               ver=pkg.version, lic=', '.join(pkg.licenses),
+                               cmv=pkg.votes, ood=ood, mnt=pkg.human, upd=upd,
+                               fsb=fsb, dsc=pkg.description))
 
     if cachemode:
         return '\n'.join(to)
