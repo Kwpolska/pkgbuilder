@@ -1,15 +1,16 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# PKGBUILDer pot file.
+# Copyright © 2011-2013, Kwpolska.
+# This file is distributed under the same license as the PKGBUILDer package.
+# Kwpolska <kwpolska@kwpolska.tk>, 2011-2013.
 #
 # Translators:
-#  <kwpolska@gmail.com>, 2013.
+# Kwpolska <kwpolska@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-23 20:58+0100\n"
-"PO-Revision-Date: 2013-03-23 18:17+0000\n"
+"Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2013-04-21 18:04+0000\n"
 "Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/pkgbuilder/"
 "language/pl/)\n"
@@ -44,27 +45,27 @@ msgstr "{0} nieaktualny {1}"
 msgid "Installing built packages..."
 msgstr "Instalowanie zbudowanych pakietów..."
 
-#: pkgbuilder/build.py:89 pkgbuilder/build.py:271
+#: pkgbuilder/build.py:89 pkgbuilder/build.py:316
 msgid "Fetching package information..."
 msgstr "Pobieranie informacji o pakiecie..."
 
-#: pkgbuilder/build.py:93 pkgbuilder/build.py:369
+#: pkgbuilder/build.py:93 pkgbuilder/build.py:414
 msgid "Downloading the tarball..."
 msgstr "Pobieranie tarballa..."
 
-#: pkgbuilder/build.py:96 pkgbuilder/build.py:372
+#: pkgbuilder/build.py:96 pkgbuilder/build.py:417
 msgid "{0} kB downloaded"
 msgstr "pobrano {0} kB"
 
-#: pkgbuilder/build.py:98 pkgbuilder/build.py:374
+#: pkgbuilder/build.py:98 pkgbuilder/build.py:419
 msgid "Extracting..."
 msgstr "Wypakowywanie..."
 
-#: pkgbuilder/build.py:99 pkgbuilder/build.py:375
+#: pkgbuilder/build.py:99 pkgbuilder/build.py:420
 msgid "{0} files extracted"
 msgstr "wypakowano {0} plików"
 
-#: pkgbuilder/build.py:101 pkgbuilder/build.py:351
+#: pkgbuilder/build.py:101 pkgbuilder/build.py:396
 msgid "Building {0}..."
 msgstr "Budowanie {0}..."
 
@@ -94,83 +95,87 @@ msgstr "pobrano 0 bajtów"
 msgid "No files extracted."
 msgstr "Nic nie wypakowano."
 
-#: pkgbuilder/build.py:299
+#: pkgbuilder/build.py:294
+msgid "Failed to fulfill package dependency requirement: {0}"
+msgstr "Nie udało się wypełnić wymagań zależności pakietu: {0}"
+
+#: pkgbuilder/build.py:344
 msgid ":: Retrieving packages from abs..."
 msgstr ":: Pobieranie pakietów z abs..."
 
-#: pkgbuilder/build.py:302 pkgbuilder/build.py:311
+#: pkgbuilder/build.py:347 pkgbuilder/build.py:358
 msgid "retrieving {0}"
 msgstr "pobieranie {0}"
 
-#: pkgbuilder/build.py:306 pkgbuilder/build.py:363
+#: pkgbuilder/build.py:351 pkgbuilder/build.py:408
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr "Nie udało się pobrać {0} (z ABS/rsync)."
 
-#: pkgbuilder/build.py:308
+#: pkgbuilder/build.py:355
 msgid ":: Retrieving packages from aur..."
 msgstr ":: Pobieranie pakietów z aur..."
 
-#: pkgbuilder/build.py:315
+#: pkgbuilder/build.py:362
 msgid "Extracting AUR packages..."
 msgstr "Wypakowywanie pakietów z AUR..."
 
-#: pkgbuilder/build.py:320
+#: pkgbuilder/build.py:367
 msgid "Successfully fetched: "
 msgstr "Pomyślnie pobrano: "
 
-#: pkgbuilder/build.py:359
+#: pkgbuilder/build.py:404
 msgid "Retrieving from ABS..."
 msgstr "Pobieranie z ABS..."
 
-#: pkgbuilder/build.py:379
+#: pkgbuilder/build.py:424
 msgid "Checking dependencies..."
 msgstr "Sprawdzanie zależności..."
 
-#: pkgbuilder/build.py:382
+#: pkgbuilder/build.py:427
 msgid "found in system"
 msgstr "znaleziono w systemie"
 
-#: pkgbuilder/build.py:382
+#: pkgbuilder/build.py:427
 msgid "found in repos"
 msgstr "znaleziono w repozytoriach"
 
-#: pkgbuilder/build.py:383
+#: pkgbuilder/build.py:428
 msgid "found in the AUR"
 msgstr "znaleziono w AUR"
 
-#: pkgbuilder/build.py:386
+#: pkgbuilder/build.py:431
 msgid "none found"
 msgstr "brak"
 
-#: pkgbuilder/exceptions.py:51
+#: pkgbuilder/exceptions.py:53
 msgid "AUR Error: {0}"
 msgstr "Błąd AUR: {0}"
 
-#: pkgbuilder/exceptions.py:66
+#: pkgbuilder/exceptions.py:69
 msgid "makepkg returned {0}."
 msgstr "makepkg zwrócił {0}."
 
-#: pkgbuilder/exceptions.py:89
+#: pkgbuilder/exceptions.py:93
 msgid "Network error: {0} (via {1})"
 msgstr "Błąd sieci: {0} (via {1})"
 
-#: pkgbuilder/exceptions.py:94
+#: pkgbuilder/exceptions.py:100
 msgid "Connection error: {0} (via {1})"
 msgstr "Błąd połączenia: {0} (via {1})"
 
-#: pkgbuilder/exceptions.py:103
+#: pkgbuilder/exceptions.py:111
 msgid "HTTP Error {0} (via {1})"
 msgstr "Błąd HTTP {0} (via {1})"
 
-#: pkgbuilder/exceptions.py:136
+#: pkgbuilder/exceptions.py:145
 msgid "{0} (Package: {1})"
 msgstr "{0} (Pakiet: {1})"
 
-#: pkgbuilder/exceptions.py:145
+#: pkgbuilder/exceptions.py:155
 msgid "Package {0} not found. (via {1})"
-msgstr "Nie znaleziono pakietu {0}."
+msgstr "Nie znaleziono pakietu {0}. (via {1})"
 
-#: pkgbuilder/exceptions.py:166
+#: pkgbuilder/exceptions.py:177
 msgid "Sanity error!  {0} (via {1})"
 msgstr "Sanity test nieudany!  {0} (via {1})"
 
@@ -291,7 +296,7 @@ msgid "Running PKGBUILDer as root can break your system!"
 msgstr "Używanie PKGBUILDera jako root może popsuć twój system!"
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/main.py:227
+#: pkgbuilder/main.py:225
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
@@ -309,7 +314,7 @@ msgstr "Przerwane przez użytkownika! Kończenie..."
 msgid "Interrupt signal received\n"
 msgstr "Interrupt signal received\n"
 
-#: pkgbuilder/pbds.py:87 pkgbuilder/pbds.py:209
+#: pkgbuilder/pbds.py:87 pkgbuilder/pbds.py:214
 msgid "ERROR:"
 msgstr "BŁĄD:"
 
@@ -317,13 +322,17 @@ msgstr "BŁĄD:"
 msgid "Cannot create the configuration directory."
 msgstr "Nie można utworzyć katalogu konfiguracji."
 
-#: pkgbuilder/pbds.py:89 pkgbuilder/pbds.py:195
+#: pkgbuilder/pbds.py:89 pkgbuilder/pbds.py:200
 msgid "WARNING:"
 msgstr "UWAGA:"
 
 #: pkgbuilder/pbds.py:89
 msgid "Logs will not be created."
 msgstr "Logi nie będą tworzone."
+
+#: pkgbuilder/pbds.py:102
+msgid "Initializing pacman access..."
+msgstr "Inicjalizowanie dostępu do pacmana..."
 
 #: pkgbuilder/upgrade.py:112 pkgbuilder/upgrade.py:114
 msgid "Synchronizing package databases..."
@@ -380,25 +389,33 @@ msgstr "Nowa wersja"
 msgid "Proceed with installation? [Y/n] "
 msgstr "Kontynuować instalację? [Y/n] "
 
-#: pkgbuilder/utils.py:93
+#: pkgbuilder/utils.py:95
 msgid " [installed: {0}]"
 msgstr " [zainstalowano: {0}]"
 
-#: pkgbuilder/utils.py:95
+#: pkgbuilder/utils.py:97
 msgid " [installed]"
 msgstr " [zainstalowano]"
 
-#: pkgbuilder/utils.py:98
+#: pkgbuilder/utils.py:101
 msgid "[out of date]"
 msgstr "[nieaktualny]"
 
-#: pkgbuilder/utils.py:117
+#: pkgbuilder/utils.py:122
 msgid "votes"
 msgstr "głosów"
 
+#: pkgbuilder/utils.py:138
+msgid "Didn’t pass any packages."
+msgstr "Nie podano żadnych pakietów."
+
+#: pkgbuilder/utils.py:142
+msgid "Trying to use utils.print_package_info with an ABS package"
+msgstr "Próba użycia utils.print_package_info z pakietem z ABS"
+
 #. TRANSLATORS: space it properly.  “yes/no” below are
 #. for “out of date”.
-#: pkgbuilder/utils.py:152
+#: pkgbuilder/utils.py:162
 msgid ""
 "Repository     : aur\n"
 "Category       : {cat}\n"
@@ -426,21 +443,21 @@ msgstr ""
 "Ost. aktualiz. : {upd}\n"
 "Opis           : {dsc}\n"
 
-#: pkgbuilder/utils.py:172
+#: pkgbuilder/utils.py:182
 msgid "yes"
 msgstr "tak"
 
-#: pkgbuilder/utils.py:174
+#: pkgbuilder/utils.py:184
 msgid "no"
 msgstr "nie"
 
-#: pkgbuilder/wrapper.py:104
+#: pkgbuilder/wrapper.py:102
 #, python-format
 msgid "%(prog)s <operation> [...]"
 msgstr "%(prog)s <operacja> [...]"
 
 #. TRANSLATORS: see pacman’s localizations
-#: pkgbuilder/wrapper.py:267
+#: pkgbuilder/wrapper.py:265
 msgid ""
 "usage:  {0} <operation> [...]\n"
 "\n"
