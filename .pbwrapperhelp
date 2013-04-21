@@ -3,7 +3,6 @@ options:
   -b, --dbpath <path>  set an alternate database location
   -c, --clean          remove old packages from cache directory (-cc for all)
   -d, --nodeps         skip dependency version checks (-dd to skip all checks)
-  -f, --force          force install, overwrite conflicting files
   -g, --groups         view all members of a package group
   -i, --info           view package information
   -l, --list <repo>    view a list of packages in a repo
@@ -19,9 +18,11 @@ options:
       --asdeps         install packages as non-explicitly installed
       --asexplicit     install packages as explicitly installed
       --cachedir <dir> set an alternate package cache location
+      --color <when>   colorize the output
       --config <path>  set an alternate configuration file
       --dbonly         only modify database entries, not package files
       --debug          display debug messages
+      --force          force install, overwrite conflicting files
       --gpgdir <path>  set an alternate home directory for GnuPG
       --ignore <pkg>   ignore a package upgrade (can be used more than once)
       --ignoregroup <grp>
@@ -33,8 +34,8 @@ options:
       --noscriptlet    do not execute the install scriptlet if one exists
       --print-format <string>
                        specify how the targets should be printed
-usage: pkgbuilder [-h] [-V] [-c] [-C] [--debug] [-d] [-D] [-v] [-w] [-S]
-                  [--safeupgrade] [-y] [-i] [-s] [-u]
+usage: pkgbuilder [-h] [-V] [-F] [-i] [-s] [-u] [-c] [-C] [--debug] [-d] [-D]
+                  [-v] [-w] [-S] [--safeupgrade] [-y]
                   [PACKAGE [PACKAGE ...]]
 
 An AUR helper (and library) in Python 3.
@@ -46,6 +47,12 @@ optional arguments:
   -h, --help          show this help message and exit
   -V, --version       show version number and quit
 
+operations:
+  -F, --fetch         fetch package files
+  -i, --info          view package information
+  -s, --search        search the AUR for matching strings
+  -u, --sysupgrade    upgrade installed AUR packages
+
 options:
   -c, --clean         clean up work files after build
   -C, --nocolors      don't use colors in output
@@ -55,12 +62,7 @@ options:
   -v, --novalidation  don't check if packages were installed after build
   -w, --buildonly     don't install packages after building
   -S, --sync          pacman-like mode
-  --safeupgrade       perform a failsafe upgrade for PKGBUILDer
+  --safeupgrade       perform a failsafe upgrade of PKGBUILDer
   -y, --refresh       (dummy)
-
-operations:
-  -i, --info          view package information
-  -s, --search        search the AUR for matching strings
-  -u, --sysupgrade    upgrade installed AUR packages
 
 Also accepting ABS packages.
