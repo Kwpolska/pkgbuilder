@@ -41,37 +41,64 @@ import pkgbuilder.upgrade
 import pkgbuilder.utils
 import pkgbuilder.wrapper
 import os
-import requests
+import shutil
+import base64
+#import mock
 
 
 class TestPB(unittest.TestCase):
     maxDiff = None
+    # It’s cheaper to use existing package data.
+    fpkg = pkgbuilder.package.AURPackage.from_aurdict({
+        'CategoryID': 16,
+        'Description': 'A Python AUR helper/library.',
+        'FirstSubmitted': 1316529993,
+        'ID': 52542,
+        'LastModified': 4294967294,
+        'License': 'BSD',
+        'Maintainer': 'Kwpolska',
+        'Name': 'pkgbuilder-is-awesome',
+        'NumVotes': 8897,  # brought to you by random.org
+        'OutOfDate': 1,
+        'URL': 'https://github.com/Kwpolska/pkgbuilder',
+        'URLPath': '/packages/pk/pkgbuilder/pkgbuilder.tar.gz',
+        'Version': 'testsuite'})
+
+    def setUp(self):
+        """Start stuff."""
+        pkgbuilder.DS.pyc
+        #self.patches = [mock.patch('pkgbuilder.aur.AUR.request', self._aurinforequest)]
+        #for p in self.patches:
+            #p.start()
+
+    #def tearDown(self):
+        #for p in self.patches:
+            #p.stop()
+
     def test_aur(self):
         pkgbuilder.aur.AUR()
 
-    def test_aur_request(self):
-        aur = pkgbuilder.aur.AUR()
-        self.pbreq = aur.request('info', 'pkgbuilder', 'http')
-        self.assertEqual(self.pbreq['results']['Maintainer'], 'Kwpolska')
-        self.assertEqual(self.pbreq['results']['Name'], 'pkgbuilder')
-
-    def test_build_download(self):
-        self.assertNotEqual(pkgbuilder.build.download(
-                         '/packages/pk/pkgbuilder/pkgbuilder.tar.gz',
-                         '/dev/null'), 0)
-
     def test_build_extract(self):
         os.chdir('/tmp')
-        r = requests.get('http://kwpolska.github.com/pub/pb-testsuite.tar.gz')
-        with open('/tmp/pb-testsuite.tar.gz', 'wb') as f:
-            f.write(r.content)
 
-        req = pkgbuilder.build.extract('/tmp/pb-testsuite.tar.gz')
+        b64 = ('H4sIABklFFAAA+3RQQrCMBCF4aw9RS4gzqRJc54KXUgFi0nx+rZapIJFhBYR/2'
+               '8zIXmQgdfut7lOOXWHXO/MOqQXQximxhDvs5Tb/cioEwninNc+p8UQt2GlfZ50'
+               'KVdna01zaU/H1FRzuXfvP6qd9v84LfvHUHDp/Xz/qpP++5yG6MRYWXaN1/68f1'
+               'cWWjgvm28vAgAAAAAAAAAAAAAAAOBjV60a9/gAKAAA')
+        realfile = base64.b64decode(b64)
+        os.mkdir('./PBTESTS')
+        os.chdir('./PBTESTS/')
+        with open('./pb-testsuite.tar.gz', 'wb') as f:
+            f.write(realfile)
+
+        req = pkgbuilder.build.extract('./pb-testsuite.tar.gz')
         self.assertEqual(req, 2)
         with open('/tmp/pb-testsuite/testsuite', 'r') as f:
             sanitycheck = f.read().strip()
 
         self.assertEqual(sanitycheck, '26313240')
+        os.chdir('../')
+        shutil.rmtree('./PBTESTS')
 
     def test_pbds(self):
         pkgbuilder.pbds.PBDS()
@@ -80,66 +107,27 @@ class TestPB(unittest.TestCase):
         pbds = pkgbuilder.pbds.PBDS()
         pbds.log.debug('PB unittest/TestPB is running now on this machine.')
 
-    def test_utils_info(self):
-        self.pbpkg = pkgbuilder.utils.info(['pkgbuilder'])[0]
-        self.assertTrue(self.pbpkg.human, 'Kwpolska')
-        self.assertTrue(self.pbpkg.name, 'pkgbuilder')
-
     def test_utils_print_package_search(self):
-        # It’s cheaper to use existing package data.
-        fpkg = {'CategoryID': 16,
-                'Description': 'A Python AUR helper/library.',
-                'FirstSubmitted': 1316529993,
-                'ID': 52542,
-                'LastModified': 4294967294,
-                'License': 'BSD',
-                'Maintainer': 'Kwpolska',
-                'Name': 'pkgbuilder-is-awesome',
-                'NumVotes': 8897,  # brought to you by random.org
-                'OutOfDate': 1,
-                'URL': 'https://github.com/Kwpolska/pkgbuilder',
-                'URLPath': '/packages/pk/pkgbuilder/pkgbuilder.tar.gz',
-                'Version': 'testsuite'}
+        sample = ('system/pkgbuilder-is-awesome testsuite (8897 votes) '
+                  '\x1b[1;1m\x1b[1;31m[out of date]\x1b[1;0m\n'
+                  '    A Python AUR helper/library.')
 
-        sample = """system/pkgbuilder-is-awesome testsuite (8897 votes) \
-\x1b[1;1m\x1b[1;31m[out of date]\x1b[1;0m
-    A Python AUR helper/library."""
-
-        fpkg = pkgbuilder.package.AURPackage.from_aurdict(fpkg)
-        req = pkgbuilder.utils.print_package_search(fpkg, True, True)
+        req = pkgbuilder.utils.print_package_search(self.fpkg, True, True)
         self.assertEqual(req, sample)
 
     def test_utils_print_package_info(self):
-        # It’s cheaper to use existing package data.
-        fpkg = {'CategoryID': 16,
-                'Description': 'A Python AUR helper/library.',
-                'FirstSubmitted': 1316529993,
-                'ID': 52542,
-                'LastModified': 4294967294,
-                'License': 'BSD',
-                'Maintainer': 'Kwpolska',
-                'Name': 'pkgbuilder-is-awesome',
-                'NumVotes': 8897,  # brought to you by random.org
-                'OutOfDate': 1,
-                'URL': 'https://github.com/Kwpolska/pkgbuilder',
-                'URLPath': '/packages/pk/pkgbuilder/pkgbuilder.tar.gz',
-                'Version': 'testsuite'}
+        sample = ('Repository     : aur\nCategory       : system\n'
+                  'Name           : pkgbuilder-is-awesome\n'
+                  'Version        : testsuite\n'
+                  'URL            : https://github.com/Kwpolska/pkgbuilder\n'
+                  'Licenses       : BSD\nVotes          : 8897\n'
+                  'Out of Date    : \x1b[1;1m\x1b[1;31myes\x1b[1;0m\n'
+                  'Maintainer     : Kwpolska\nFirst Submitted: '
+                  '2011-09-20T14:46:33Z\nLast Updated   : '
+                  '2106-02-07T06:28:14Z\nDescription    : '
+                  'A Python AUR helper/library.\n')
 
-        sample = """Repository     : aur
-Category       : system
-Name           : pkgbuilder-is-awesome
-Version        : testsuite
-URL            : https://github.com/Kwpolska/pkgbuilder
-Licenses       : BSD
-Votes          : 8897
-Out of Date    : \x1b[1;1m\x1b[1;31myes\x1b[1;0m
-Maintainer     : Kwpolska
-First Submitted: 2011-09-20T14:46:33Z
-Last Updated   : 2106-02-07T06:28:14Z
-Description    : A Python AUR helper/library.
-"""
-        fpkg = pkgbuilder.package.AURPackage.from_aurdict(fpkg)
-        req = pkgbuilder.utils.print_package_info([fpkg], True)
+        req = pkgbuilder.utils.print_package_info([self.fpkg], True)
         self.assertEqual(req, sample)
 
     def test_main(self):
