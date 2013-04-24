@@ -45,13 +45,17 @@ def gather_foreign_pkgs():
     return dict([(p.name, p) for p in aur])
 
 
-def list_upgradable(pkglist, vcsup=False):
+def list_upgradable(pkglist, vcsup=False, aurcache=None):
     """Compares package versions and returns upgradable ones."""
     localdb = DS.pyc.get_localdb()
-    aurlist = pkgbuilder.utils.info(pkglist)
-    # It's THAT easy.  Oh, and by the way: it is much, MUCH faster
-    # than others.  It makes ONE multiinfo request rather than
-    # len(installed_packages) info requests.
+    if aurcache:
+        aurlist = aurcache
+    else:
+        aurlist = pkgbuilder.utils.info(pkglist)
+        # It’s THAT easy.  Oh, and by the way: it is much, MUCH faster
+        # than others.  It makes ONE multiinfo request rather than
+        # len(installed_packages) info requests.
+
     upgradable = []
     downgradable = []
 
