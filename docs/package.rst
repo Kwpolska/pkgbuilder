@@ -55,17 +55,20 @@ This class contains all the attributes of :class:`Package`, ``is_abs = False`` a
 +===================+========+=========+=============================================================================================+
 | id                | int    | None    | ID of the AUR package.                                                                      |
 +-------------------+--------+---------+---------------------------------------------------------------------------------------------+
-| is_outdated       | bool   | None    | Package flag status in the AUR.                                                             |
+| is_outdated       | bool   | None    | Package OoD flag status in the AUR.                                                         |
 +-------------------+--------+---------+---------------------------------------------------------------------------------------------+
-| added             | str    | None    | A date (``datetime.datetime()``, aware UTC) representing package addition time.             |
+| outdated_since    | date   | None    | A date (``datetime.datetime()``, aware UTC) of OoD flagging date OR ``None``.               |
 +-------------------+--------+---------+---------------------------------------------------------------------------------------------+
-| modified          | str    | None    | A date (``datetime.datetime()``, aware UTC) representing the last modification time.        |
+| added             | date   | None    | A date (``datetime.datetime()``, aware UTC) representing package addition time.             |
++-------------------+--------+---------+---------------------------------------------------------------------------------------------+
+| modified          | date   | None    | A date (``datetime.datetime()``, aware UTC) representing the last modification time.        |
 +-------------------+--------+---------+---------------------------------------------------------------------------------------------+
 | votes             | int    | None    | Count of AUR votes.                                                                         |
 +-------------------+--------+---------+---------------------------------------------------------------------------------------------+
 | urlpath           | str    | None    | The URL of the tarball, sans ``https://aur.archlinux.org``.                                 |
 +-------------------+--------+---------+---------------------------------------------------------------------------------------------+
-
+| _category_id      | int    | None    | AUR Category ID, not supposed to be used by most people (hence the underscore).             |
++-------------------+--------+---------+---------------------------------------------------------------------------------------------+
 
 .. autoclass:: pkgbuilder.package.AURPackage
    :members:
