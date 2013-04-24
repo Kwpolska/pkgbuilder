@@ -66,17 +66,20 @@ class AURPackage(Package):
     id = None
     is_abs = False
     is_outdated = None
+    outdated_since = None
     added = None
     modified = None
     votes = None
     urlpath = None
+    _categoryid = None
 
     @classmethod
     def from_aurdict(cls, aurdict):
         """
         Creates an instance of AURPackage using a dictionary from the AUR RPC.
         """
-        bindings = {'Description': 'description',
+        bindings = {'CategoryID': '_categoryid',
+                    'Description': 'description',
                     'ID': 'id',
                     'Maintainer': 'human',
                     'Name': 'name',
@@ -84,7 +87,7 @@ class AURPackage(Package):
                     'URL': 'url',
                     'URLPath': 'urlpath',
                     'Version': 'version'}
-        ignore = ['OutOfDate', 'CategoryID', 'FirstSubmitted', 'LastModified', 'License']
+        ignore = ['OutOfDate', 'FirstSubmitted', 'LastModified', 'License']
 
         p = cls()
         for k, v in aurdict.items():
@@ -97,12 +100,17 @@ class AURPackage(Package):
                                        'AURPackage.from_aurdict()',
                                        aurdict=aurdict)
         # Manual overrides.
-        p.is_outdated = aurdict['OutOfDate'] == 1
+        p.is_outdated = aurdict['OutOfDate'] > 0
         p.repo = CATEGORIES[aurdict['CategoryID']]
         p.licenses = [aurdict['License']]
 
         utc = UTC()
 
+        if p.is_outdated:
+            p.outdated_since = datetime.datetime.utcfromtimestamp(
+                aurdict['OutOfDate']).replace(tzinfo=utc)
+        else:
+            p.outdated_since = None
         p.added = datetime.datetime.utcfromtimestamp(
             aurdict['FirstSubmitted']).replace(tzinfo=utc)
         p.modified = datetime.datetime.utcfromtimestamp(
