@@ -95,15 +95,19 @@ class PBDS():
     log = logging.getLogger('pkgbuilder')
     log.info('*** PKGBUILDer v' + __version__)
 
+    def pycreload(self):
+        """Reload pycman."""
+        msg = _('Initializing pacman access...')
+        with pkgbuilder.ui.Throbber(msg, printback=False):
+            self._pyc = pycman.config.init_with_config('/etc/pacman.conf')
+
+        sys.stdout.write('\r' + ((len(msg) + 4) * ' ') + '\r')
+
     @property
     def pyc(self):
         """Return a pycman handle, initializing one if necessary."""
         if not self._pyc:
-            msg = _('Initializing pacman access...')
-            with pkgbuilder.ui.Throbber(msg, printback=False):
-                self._pyc = pycman.config.init_with_config('/etc/pacman.conf')
-
-            sys.stdout.write('\r' + ((len(msg) + 4) * ' ') + '\r')
+            self.pycreload()
 
         return self._pyc
 

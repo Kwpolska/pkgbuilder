@@ -41,6 +41,7 @@ def validate(pkgnames):
     """Check if packages were installed."""
     DS.fancy_msg(_('Validating installation status...'))
     DS.log.info('Validating: ' + '; '.join(pkgnames))
+    DS.pycreload()
     localdb = DS.pyc.get_localdb()
 
     aurpkgs = {aurpkg.name: aurpkg.version for aurpkg in
