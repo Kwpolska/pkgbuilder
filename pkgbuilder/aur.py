@@ -55,7 +55,8 @@ class AUR:
     def jsonreq(self, rtype, arg):
         """Makes a request and returns plain JSON data."""
         if arg == []:
-            return '[]'  # No need to bother, string for JSON.
+            # No need to bother.  String for JSON.
+            return '{"type": "info", "resultcount": 0, "results": []}'
 
         try:
             req = requests.get(self.rpc.format(rtype, arg))
@@ -72,7 +73,8 @@ class AUR:
     def jsonmultiinfo(self, args):
         """Makes a multiinfo request and returns plain JSON data."""
         if args == []:
-            return '[]'  # No need to bother, string for JSON.
+            # No need to bother.  String for JSON.
+            return '{"type": "info", "resultcount": 0, "results": []}'
 
         urlargs = '&arg[]=' + '&arg[]='.join(args)
         try:
