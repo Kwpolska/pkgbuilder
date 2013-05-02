@@ -84,7 +84,7 @@ def list_upgradable(pkglist, vcsup=False, aurcache=None):
                 except:
                     datever = False
 
-                dt = datetime.date.today().strftime('%Y%m%d')
+                dt = datetime.date.today().strftime('%Y%m%d-1')
 
                 if (rpkg.name.endswith(('git', 'hg', 'bzr', 'svn', 'cvs',
                                         'darcs'))):
