@@ -95,6 +95,10 @@ class PBDS():
     log = logging.getLogger('pkgbuilder')
     log.info('*** PKGBUILDer v' + __version__)
 
+    def _pycreload(self):
+        """Reload pycman, without UI fancyness."""
+        self._pyc = pycman.config.init_with_config('/etc/pacman.conf')
+
     def pycreload(self):
         """Reload pycman."""
         msg = _('Initializing pacman access...')
