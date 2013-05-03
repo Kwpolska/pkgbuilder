@@ -160,6 +160,7 @@ aurploader -a pkgbuilder*.src.tar.gz
 cd ..
 rm -rf MKPKGBUILD
 
+###: git commit
 if [[ $2 != '-c' ]]; then
     echo 'Commit message (sans the version?)'
     echo -n '> '
