@@ -165,7 +165,7 @@ def download(urlpath, filename):
         r = requests.get('https://aur.archlinux.org' + urlpath)
         r.raise_for_status()
     except requests.exceptions.ConnectionError as e:
-        raise pkgbuilder.exceptions.ConnectionError(e)
+        raise pkgbuilder.exceptions.ConnectionError(str(e), e)
     except requests.exceptions.HTTPError as e:
         raise pkgbuilder.exceptions.HTTPError(r, e)
     except requests.exceptions.RequestException as e:
