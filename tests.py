@@ -66,7 +66,7 @@ class TestPB(unittest.TestCase):
 
     def setUp(self):
         """Start stuff."""
-        pkgbuilder.DS.pyc
+        pkgbuilder.DS._pycreload()
         #self.patches = [mock.patch('pkgbuilder.aur.AUR.request', self._aurinforequest)]
         #for p in self.patches:
             #p.start()
@@ -93,7 +93,7 @@ class TestPB(unittest.TestCase):
 
         req = pkgbuilder.build.extract('./pb-testsuite.tar.gz')
         self.assertEqual(req, 2)
-        with open('/tmp/pb-testsuite/testsuite', 'r') as f:
+        with open('./pb-testsuite/testsuite', 'r') as f:
             sanitycheck = f.read().strip()
 
         self.assertEqual(sanitycheck, '26313240')
