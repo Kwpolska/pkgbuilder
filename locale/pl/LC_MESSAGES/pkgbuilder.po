@@ -7,9 +7,9 @@
 # Kwpolska <kwpolska@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.0.0\n"
+"Project-Id-Version: 3.0.l\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2013-04-21 20:43+0200\n"
+"POT-Creation-Date: 2013-05-03 16:54+0200\n"
 "PO-Revision-Date: 2013-04-21 18:04+0000\n"
 "Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/pkgbuilder/"
@@ -25,125 +25,125 @@ msgstr ""
 msgid "Validating installation status..."
 msgstr "Walidowanie stanu instalacji..."
 
-#: pkgbuilder/build.py:55
+#: pkgbuilder/build.py:56
 msgid "{0}: not an AUR package"
 msgstr "{0}: pakiet spoza AUR"
 
-#: pkgbuilder/build.py:58 pkgbuilder/build.py:68
+#: pkgbuilder/build.py:59 pkgbuilder/build.py:69
 msgid "{0}: installed {1}"
 msgstr "{0}: zainstalowany {1}"
 
-#: pkgbuilder/build.py:62
+#: pkgbuilder/build.py:63
 msgid "{0}: NOT installed"
 msgstr "{0}: NIE zainstalowano"
 
-#: pkgbuilder/build.py:65
+#: pkgbuilder/build.py:66
 msgid "{0}: outdated {1}"
 msgstr "{0} nieaktualny {1}"
 
-#: pkgbuilder/build.py:74
+#: pkgbuilder/build.py:75
 msgid "Installing built packages..."
 msgstr "Instalowanie zbudowanych pakietów..."
 
-#: pkgbuilder/build.py:89 pkgbuilder/build.py:316
+#: pkgbuilder/build.py:90 pkgbuilder/build.py:317
 msgid "Fetching package information..."
 msgstr "Pobieranie informacji o pakiecie..."
 
-#: pkgbuilder/build.py:93 pkgbuilder/build.py:414
+#: pkgbuilder/build.py:94 pkgbuilder/build.py:415
 msgid "Downloading the tarball..."
 msgstr "Pobieranie tarballa..."
 
-#: pkgbuilder/build.py:96 pkgbuilder/build.py:417
+#: pkgbuilder/build.py:97 pkgbuilder/build.py:418
 msgid "{0} kB downloaded"
 msgstr "pobrano {0} kB"
 
-#: pkgbuilder/build.py:98 pkgbuilder/build.py:419
+#: pkgbuilder/build.py:99 pkgbuilder/build.py:420
 msgid "Extracting..."
 msgstr "Wypakowywanie..."
 
-#: pkgbuilder/build.py:99 pkgbuilder/build.py:420
+#: pkgbuilder/build.py:100 pkgbuilder/build.py:421
 msgid "{0} files extracted"
 msgstr "wypakowano {0} plików"
 
-#: pkgbuilder/build.py:101 pkgbuilder/build.py:396
+#: pkgbuilder/build.py:102 pkgbuilder/build.py:397
 msgid "Building {0}..."
 msgstr "Budowanie {0}..."
 
-#: pkgbuilder/build.py:103
+#: pkgbuilder/build.py:104
 msgid "Build finished with return code {0}."
 msgstr "Proces budowania zakończył się kodem {0}."
 
-#: pkgbuilder/build.py:125
+#: pkgbuilder/build.py:126
 msgid "The build function reported a proper build."
 msgstr "Funkcja budowania paczek powiadomiła o prawidłowym zbudowaniu."
 
-#: pkgbuilder/build.py:129
+#: pkgbuilder/build.py:130
 msgid "Building more AUR packages is required."
 msgstr "Należy zainstalować więcej pakietów z AUR."
 
-#: pkgbuilder/build.py:150
+#: pkgbuilder/build.py:151
 msgid "makepkg (or someone else) failed and returned {0}."
 msgstr ""
 "tworzenie pakietu przez makepkg (lub coś innego) nie powiodło się i zwróciło "
 "{0}."
 
-#: pkgbuilder/build.py:175
+#: pkgbuilder/build.py:176
 msgid "0 bytes downloaded"
 msgstr "pobrano 0 bajtów"
 
-#: pkgbuilder/build.py:208
+#: pkgbuilder/build.py:209
 msgid "No files extracted."
 msgstr "Nic nie wypakowano."
 
-#: pkgbuilder/build.py:294
+#: pkgbuilder/build.py:295
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr "Nie udało się wypełnić wymagań zależności pakietu: {0}"
 
-#: pkgbuilder/build.py:344
+#: pkgbuilder/build.py:345
 msgid ":: Retrieving packages from abs..."
 msgstr ":: Pobieranie pakietów z abs..."
 
-#: pkgbuilder/build.py:347 pkgbuilder/build.py:358
+#: pkgbuilder/build.py:348 pkgbuilder/build.py:359
 msgid "retrieving {0}"
 msgstr "pobieranie {0}"
 
-#: pkgbuilder/build.py:351 pkgbuilder/build.py:408
+#: pkgbuilder/build.py:352 pkgbuilder/build.py:409
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr "Nie udało się pobrać {0} (z ABS/rsync)."
 
-#: pkgbuilder/build.py:355
+#: pkgbuilder/build.py:356
 msgid ":: Retrieving packages from aur..."
 msgstr ":: Pobieranie pakietów z aur..."
 
-#: pkgbuilder/build.py:362
+#: pkgbuilder/build.py:363
 msgid "Extracting AUR packages..."
 msgstr "Wypakowywanie pakietów z AUR..."
 
-#: pkgbuilder/build.py:367
+#: pkgbuilder/build.py:368
 msgid "Successfully fetched: "
 msgstr "Pomyślnie pobrano: "
 
-#: pkgbuilder/build.py:404
+#: pkgbuilder/build.py:405
 msgid "Retrieving from ABS..."
 msgstr "Pobieranie z ABS..."
 
-#: pkgbuilder/build.py:424
+#: pkgbuilder/build.py:425
 msgid "Checking dependencies..."
 msgstr "Sprawdzanie zależności..."
 
-#: pkgbuilder/build.py:427
+#: pkgbuilder/build.py:428
 msgid "found in system"
 msgstr "znaleziono w systemie"
 
-#: pkgbuilder/build.py:427
+#: pkgbuilder/build.py:428
 msgid "found in repos"
 msgstr "znaleziono w repozytoriach"
 
-#: pkgbuilder/build.py:428
+#: pkgbuilder/build.py:429
 msgid "found in the AUR"
 msgstr "znaleziono w AUR"
 
-#: pkgbuilder/build.py:431
+#: pkgbuilder/build.py:432
 msgid "none found"
 msgstr "brak"
 
@@ -314,7 +314,7 @@ msgstr "Przerwane przez użytkownika! Kończenie..."
 msgid "Interrupt signal received\n"
 msgstr "Interrupt signal received\n"
 
-#: pkgbuilder/pbds.py:87 pkgbuilder/pbds.py:214
+#: pkgbuilder/pbds.py:87 pkgbuilder/pbds.py:222
 msgid "ERROR:"
 msgstr "BŁĄD:"
 
@@ -322,7 +322,7 @@ msgstr "BŁĄD:"
 msgid "Cannot create the configuration directory."
 msgstr "Nie można utworzyć katalogu konfiguracji."
 
-#: pkgbuilder/pbds.py:89 pkgbuilder/pbds.py:200
+#: pkgbuilder/pbds.py:89 pkgbuilder/pbds.py:208
 msgid "WARNING:"
 msgstr "UWAGA:"
 
@@ -330,62 +330,62 @@ msgstr "UWAGA:"
 msgid "Logs will not be created."
 msgstr "Logi nie będą tworzone."
 
-#: pkgbuilder/pbds.py:102
+#: pkgbuilder/pbds.py:104
 msgid "Initializing pacman access..."
 msgstr "Inicjalizowanie dostępu do pacmana..."
 
-#: pkgbuilder/upgrade.py:112 pkgbuilder/upgrade.py:114
+#: pkgbuilder/upgrade.py:116 pkgbuilder/upgrade.py:118
 msgid "Synchronizing package databases..."
 msgstr "Synchronizowanie baz danych z pakietami..."
 
-#: pkgbuilder/upgrade.py:124 pkgbuilder/upgrade.py:126
+#: pkgbuilder/upgrade.py:128 pkgbuilder/upgrade.py:130
 msgid "Starting full system upgrade..."
 msgstr "Rozpoczynanie pełnej aktualizacji systemu..."
 
-#: pkgbuilder/upgrade.py:131 pkgbuilder/upgrade.py:134
+#: pkgbuilder/upgrade.py:135 pkgbuilder/upgrade.py:138
 msgid "{0}: local ({1}) is newer than aur ({2})"
 msgstr "{0}: local ({1}) jest nowsze niż aur ({2})"
 
-#: pkgbuilder/upgrade.py:143 pkgbuilder/upgrade.py:145
+#: pkgbuilder/upgrade.py:147 pkgbuilder/upgrade.py:149
 msgid "there is nothing to do"
 msgstr "nie ma nic do zrobienia"
 
-#: pkgbuilder/upgrade.py:169 pkgbuilder/upgrade.py:175
+#: pkgbuilder/upgrade.py:173 pkgbuilder/upgrade.py:179
 msgid "The following packages should be upgraded first:"
 msgstr "Następujące pakiety powinny być zaktualizowane najpierw:"
 
-#: pkgbuilder/upgrade.py:172
+#: pkgbuilder/upgrade.py:176
 msgid "Do you want to cancel the current operation"
 msgstr "Czy chcesz anulować obecną operację"
 
-#: pkgbuilder/upgrade.py:173
+#: pkgbuilder/upgrade.py:177
 msgid "and upgrade these packages now? [Y/n] "
 msgstr "i zaktualizować te pakiety teraz? [Y/n] "
 
-#: pkgbuilder/upgrade.py:180
+#: pkgbuilder/upgrade.py:184
 msgid ""
 "Do you want to cancel the current operation and upgrade these packages now? "
 "[Y/n] "
 msgstr ""
 "Czy chcesz anulować obecną operację i zaktualizować te pakiety teraz? [Y/n] "
 
-#: pkgbuilder/upgrade.py:194 pkgbuilder/upgrade.py:258
+#: pkgbuilder/upgrade.py:198 pkgbuilder/upgrade.py:262
 msgid "Targets ({0}): "
 msgstr "Cele ({0}):"
 
-#: pkgbuilder/upgrade.py:209
+#: pkgbuilder/upgrade.py:213
 msgid "Name"
 msgstr "Nazwa"
 
-#: pkgbuilder/upgrade.py:209
+#: pkgbuilder/upgrade.py:213
 msgid "Old Version"
 msgstr "Poprzednia wersja"
 
-#: pkgbuilder/upgrade.py:209
+#: pkgbuilder/upgrade.py:213
 msgid "New Version"
 msgstr "Nowa wersja"
 
-#: pkgbuilder/upgrade.py:256 pkgbuilder/upgrade.py:262
+#: pkgbuilder/upgrade.py:260 pkgbuilder/upgrade.py:266
 msgid "Proceed with installation? [Y/n] "
 msgstr "Kontynuować instalację? [Y/n] "
 

@@ -6,9 +6,9 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.0.0\n"
+"Project-Id-Version: 3.0.l\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2013-04-21 20:43+0200\n"
+"POT-Creation-Date: 2013-05-03 16:54+0200\n"
 "PO-Revision-Date: 2013-04-21 17:43+0000\n"
 "Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/pkgbuilder/"
@@ -23,123 +23,123 @@ msgstr ""
 msgid "Validating installation status..."
 msgstr "インストール無事終了確認中・・・"
 
-#: pkgbuilder/build.py:55
+#: pkgbuilder/build.py:56
 msgid "{0}: not an AUR package"
 msgstr "{0}: AURパッケージではない"
 
-#: pkgbuilder/build.py:58 pkgbuilder/build.py:68
+#: pkgbuilder/build.py:59 pkgbuilder/build.py:69
 msgid "{0}: installed {1}"
 msgstr "{0}: 「{1}」をインストール済み"
 
-#: pkgbuilder/build.py:62
+#: pkgbuilder/build.py:63
 msgid "{0}: NOT installed"
 msgstr "{0}：インストールされていない"
 
-#: pkgbuilder/build.py:65
+#: pkgbuilder/build.py:66
 msgid "{0}: outdated {1}"
 msgstr "{0}：「{1}」より要更新"
 
-#: pkgbuilder/build.py:74
+#: pkgbuilder/build.py:75
 msgid "Installing built packages..."
 msgstr "作成したパッケージをインストール中・・・"
 
-#: pkgbuilder/build.py:89 pkgbuilder/build.py:316
+#: pkgbuilder/build.py:90 pkgbuilder/build.py:317
 msgid "Fetching package information..."
 msgstr ""
 
-#: pkgbuilder/build.py:93 pkgbuilder/build.py:414
+#: pkgbuilder/build.py:94 pkgbuilder/build.py:415
 msgid "Downloading the tarball..."
 msgstr "ターボールをダウンロード中・・・"
 
-#: pkgbuilder/build.py:96 pkgbuilder/build.py:417
+#: pkgbuilder/build.py:97 pkgbuilder/build.py:418
 msgid "{0} kB downloaded"
 msgstr "{0} kBをダウンロード済み"
 
-#: pkgbuilder/build.py:98 pkgbuilder/build.py:419
+#: pkgbuilder/build.py:99 pkgbuilder/build.py:420
 msgid "Extracting..."
 msgstr "抽出中・・・"
 
-#: pkgbuilder/build.py:99 pkgbuilder/build.py:420
+#: pkgbuilder/build.py:100 pkgbuilder/build.py:421
 msgid "{0} files extracted"
 msgstr "ファイルを{0}個抽出した"
 
-#: pkgbuilder/build.py:101 pkgbuilder/build.py:396
+#: pkgbuilder/build.py:102 pkgbuilder/build.py:397
 msgid "Building {0}..."
 msgstr "「{0}」を作成中・・・"
 
-#: pkgbuilder/build.py:103
+#: pkgbuilder/build.py:104
 msgid "Build finished with return code {0}."
 msgstr ""
 
-#: pkgbuilder/build.py:125
+#: pkgbuilder/build.py:126
 msgid "The build function reported a proper build."
 msgstr "パッケージ作成成功。"
 
-#: pkgbuilder/build.py:129
+#: pkgbuilder/build.py:130
 msgid "Building more AUR packages is required."
 msgstr "AURパッケージを更に作成する必要がある。"
 
-#: pkgbuilder/build.py:150
+#: pkgbuilder/build.py:151
 msgid "makepkg (or someone else) failed and returned {0}."
 msgstr "makepkgなどが「{0}」で失敗したようだ。"
 
-#: pkgbuilder/build.py:175
+#: pkgbuilder/build.py:176
 msgid "0 bytes downloaded"
 msgstr ""
 
-#: pkgbuilder/build.py:208
+#: pkgbuilder/build.py:209
 msgid "No files extracted."
 msgstr ""
 
-#: pkgbuilder/build.py:294
+#: pkgbuilder/build.py:295
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:344
+#: pkgbuilder/build.py:345
 msgid ":: Retrieving packages from abs..."
 msgstr ""
 
-#: pkgbuilder/build.py:347 pkgbuilder/build.py:358
+#: pkgbuilder/build.py:348 pkgbuilder/build.py:359
 msgid "retrieving {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:351 pkgbuilder/build.py:408
+#: pkgbuilder/build.py:352 pkgbuilder/build.py:409
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr ""
 
-#: pkgbuilder/build.py:355
+#: pkgbuilder/build.py:356
 msgid ":: Retrieving packages from aur..."
 msgstr ""
 
-#: pkgbuilder/build.py:362
+#: pkgbuilder/build.py:363
 msgid "Extracting AUR packages..."
 msgstr ""
 
-#: pkgbuilder/build.py:367
+#: pkgbuilder/build.py:368
 msgid "Successfully fetched: "
 msgstr ""
 
-#: pkgbuilder/build.py:404
+#: pkgbuilder/build.py:405
 msgid "Retrieving from ABS..."
 msgstr ""
 
-#: pkgbuilder/build.py:424
+#: pkgbuilder/build.py:425
 msgid "Checking dependencies..."
 msgstr "従属パッケージを確認中・・・"
 
-#: pkgbuilder/build.py:427
+#: pkgbuilder/build.py:428
 msgid "found in system"
 msgstr "インストール済み"
 
-#: pkgbuilder/build.py:427
+#: pkgbuilder/build.py:428
 msgid "found in repos"
 msgstr "リポジトリに存在"
 
-#: pkgbuilder/build.py:428
+#: pkgbuilder/build.py:429
 msgid "found in the AUR"
 msgstr "AURに存在"
 
-#: pkgbuilder/build.py:431
+#: pkgbuilder/build.py:432
 msgid "none found"
 msgstr "従属パッケージなし"
 
@@ -308,7 +308,7 @@ msgstr "ユーザーによる強制終了！"
 msgid "Interrupt signal received\n"
 msgstr "途中切断\n"
 
-#: pkgbuilder/pbds.py:87 pkgbuilder/pbds.py:214
+#: pkgbuilder/pbds.py:87 pkgbuilder/pbds.py:222
 msgid "ERROR:"
 msgstr "エラー："
 
@@ -316,7 +316,7 @@ msgstr "エラー："
 msgid "Cannot create the configuration directory."
 msgstr "設定ディレクトリ作れなかった。"
 
-#: pkgbuilder/pbds.py:89 pkgbuilder/pbds.py:200
+#: pkgbuilder/pbds.py:89 pkgbuilder/pbds.py:208
 msgid "WARNING:"
 msgstr "警告："
 
@@ -324,61 +324,61 @@ msgstr "警告："
 msgid "Logs will not be created."
 msgstr "ログは作られない。"
 
-#: pkgbuilder/pbds.py:102
+#: pkgbuilder/pbds.py:104
 msgid "Initializing pacman access..."
 msgstr ""
 
-#: pkgbuilder/upgrade.py:112 pkgbuilder/upgrade.py:114
+#: pkgbuilder/upgrade.py:116 pkgbuilder/upgrade.py:118
 msgid "Synchronizing package databases..."
 msgstr "パッケージデーターベースを同期中・・・"
 
-#: pkgbuilder/upgrade.py:124 pkgbuilder/upgrade.py:126
+#: pkgbuilder/upgrade.py:128 pkgbuilder/upgrade.py:130
 msgid "Starting full system upgrade..."
 msgstr "完全アップグレードを開始・・・"
 
-#: pkgbuilder/upgrade.py:131 pkgbuilder/upgrade.py:134
+#: pkgbuilder/upgrade.py:135 pkgbuilder/upgrade.py:138
 msgid "{0}: local ({1}) is newer than aur ({2})"
 msgstr "{0}: ローカル「{1}」はAURの「{2}」より最新"
 
-#: pkgbuilder/upgrade.py:143 pkgbuilder/upgrade.py:145
+#: pkgbuilder/upgrade.py:147 pkgbuilder/upgrade.py:149
 msgid "there is nothing to do"
 msgstr "することがない"
 
-#: pkgbuilder/upgrade.py:169 pkgbuilder/upgrade.py:175
+#: pkgbuilder/upgrade.py:173 pkgbuilder/upgrade.py:179
 msgid "The following packages should be upgraded first:"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:172
+#: pkgbuilder/upgrade.py:176
 msgid "Do you want to cancel the current operation"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:173
+#: pkgbuilder/upgrade.py:177
 msgid "and upgrade these packages now? [Y/n] "
 msgstr ""
 
-#: pkgbuilder/upgrade.py:180
+#: pkgbuilder/upgrade.py:184
 msgid ""
 "Do you want to cancel the current operation and upgrade these packages now? "
 "[Y/n] "
 msgstr ""
 
-#: pkgbuilder/upgrade.py:194 pkgbuilder/upgrade.py:258
+#: pkgbuilder/upgrade.py:198 pkgbuilder/upgrade.py:262
 msgid "Targets ({0}): "
 msgstr "「{0}」の該当パッケージ："
 
-#: pkgbuilder/upgrade.py:209
+#: pkgbuilder/upgrade.py:213
 msgid "Name"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:209
+#: pkgbuilder/upgrade.py:213
 msgid "Old Version"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:209
+#: pkgbuilder/upgrade.py:213
 msgid "New Version"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:256 pkgbuilder/upgrade.py:262
+#: pkgbuilder/upgrade.py:260 pkgbuilder/upgrade.py:266
 msgid "Proceed with installation? [Y/n] "
 msgstr "続行？ [Y/n]"
 
