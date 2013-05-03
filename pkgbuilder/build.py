@@ -287,7 +287,7 @@ def depcheck(depends, pkgobj=None):
                         if not depmatch:
                             asat = pkgbuilder.utils.info([dep])
                             if asat:
-                                depmatch = _test_dependency(asat.version, diff, ver)
+                                depmatch = _test_dependency(asat[0].version, diff, ver)
                                 parseddeps[dep] = 2
 
                             if not depmatch:
