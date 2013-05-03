@@ -12,10 +12,9 @@ Appendix A. Contribution rules
 Do you want to contribute to this project?  Great!  I’d love to see some help,
 but you must comply with some rules.
 
-The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL
-NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”,  “MAY”, and
-“OPTIONAL” in this document are to be interpreted as described in
-RFC 2119.
+The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”,
+“SHOULD NOT”, “RECOMMENDED”,  “MAY”, and “OPTIONAL” in this document are to be
+interpreted as described in RFC 2119.
 
 ---------------
 Issue reporting
