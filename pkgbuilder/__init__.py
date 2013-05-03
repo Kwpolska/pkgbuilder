@@ -52,8 +52,10 @@ __all__ = ['_', 'DS', 'UTC']
 
 import gettext
 import datetime
+import sys
 
-G = gettext.translation('pkgbuilder', '/usr/share/locale', fallback='C')
+G = gettext.translation('pkgbuilder', sys.prefix + '/share/locale',
+                        fallback='C')
 _ = G.gettext
 
 from .pbds import PBDS
