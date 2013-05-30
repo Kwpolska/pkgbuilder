@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.1.0
+# PKGBUILDer v3.1.1
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
@@ -215,7 +215,7 @@ def main(source='AUTO', quit=True):
                     sigs += out[1][1]
 
             if toinstall:
-                pkgbuilder.build.install(toinstall, sigs)
+                pkgbuilder.build.install(toinstall, sigs, asdeps=False)
 
             if args.validate and tovalidate:
                 DS.log.info('Quitting peacefully.')
