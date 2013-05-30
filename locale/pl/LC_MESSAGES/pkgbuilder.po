@@ -7,9 +7,9 @@
 # Kwpolska <kwpolska@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.0.1\n"
+"Project-Id-Version: 3.1.0\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2013-05-03 18:06+0200\n"
+"POT-Creation-Date: 2013-05-30 15:08+0200\n"
 "PO-Revision-Date: 2013-04-21 18:04+0000\n"
 "Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/pkgbuilder/"
@@ -25,125 +25,129 @@ msgstr ""
 msgid "Validating installation status..."
 msgstr "Walidowanie stanu instalacji..."
 
-#: pkgbuilder/build.py:56
+#: pkgbuilder/build.py:58
 msgid "{0}: not an AUR package"
 msgstr "{0}: pakiet spoza AUR"
 
-#: pkgbuilder/build.py:59 pkgbuilder/build.py:69
+#: pkgbuilder/build.py:62 pkgbuilder/build.py:72
 msgid "{0}: installed {1}"
 msgstr "{0}: zainstalowany {1}"
 
-#: pkgbuilder/build.py:63
+#: pkgbuilder/build.py:66
 msgid "{0}: NOT installed"
 msgstr "{0}: NIE zainstalowano"
 
-#: pkgbuilder/build.py:66
+#: pkgbuilder/build.py:69
 msgid "{0}: outdated {1}"
 msgstr "{0} nieaktualny {1}"
 
-#: pkgbuilder/build.py:75
+#: pkgbuilder/build.py:80
 msgid "Installing built packages..."
 msgstr "Instalowanie zbudowanych pakietów..."
 
-#: pkgbuilder/build.py:90 pkgbuilder/build.py:317
+#: pkgbuilder/build.py:99 pkgbuilder/build.py:376
 msgid "Fetching package information..."
 msgstr "Pobieranie informacji o pakiecie..."
 
-#: pkgbuilder/build.py:94 pkgbuilder/build.py:415
+#: pkgbuilder/build.py:103 pkgbuilder/build.py:474
 msgid "Downloading the tarball..."
 msgstr "Pobieranie tarballa..."
 
-#: pkgbuilder/build.py:97 pkgbuilder/build.py:418
+#: pkgbuilder/build.py:106 pkgbuilder/build.py:477
 msgid "{0} kB downloaded"
 msgstr "pobrano {0} kB"
 
-#: pkgbuilder/build.py:99 pkgbuilder/build.py:420
+#: pkgbuilder/build.py:108 pkgbuilder/build.py:479
 msgid "Extracting..."
 msgstr "Wypakowywanie..."
 
-#: pkgbuilder/build.py:100 pkgbuilder/build.py:421
+#: pkgbuilder/build.py:109 pkgbuilder/build.py:480
 msgid "{0} files extracted"
 msgstr "wypakowano {0} plików"
 
-#: pkgbuilder/build.py:102 pkgbuilder/build.py:397
+#: pkgbuilder/build.py:111 pkgbuilder/build.py:456
 msgid "Building {0}..."
 msgstr "Budowanie {0}..."
 
-#: pkgbuilder/build.py:104
+#: pkgbuilder/build.py:113
 msgid "Build finished with return code {0}."
 msgstr "Proces budowania zakończył się kodem {0}."
 
-#: pkgbuilder/build.py:126
+#: pkgbuilder/build.py:135
 msgid "The build function reported a proper build."
 msgstr "Funkcja budowania paczek powiadomiła o prawidłowym zbudowaniu."
 
-#: pkgbuilder/build.py:130
+#: pkgbuilder/build.py:139
 msgid "Building more AUR packages is required."
 msgstr "Należy zainstalować więcej pakietów z AUR."
 
 #: pkgbuilder/build.py:151
+msgid "found an existing package for {0}"
+msgstr ""
+
+#: pkgbuilder/build.py:182
 msgid "makepkg (or someone else) failed and returned {0}."
 msgstr ""
 "tworzenie pakietu przez makepkg (lub coś innego) nie powiodło się i zwróciło "
 "{0}."
 
-#: pkgbuilder/build.py:176
+#: pkgbuilder/build.py:207
 msgid "0 bytes downloaded"
 msgstr "pobrano 0 bajtów"
 
-#: pkgbuilder/build.py:209
+#: pkgbuilder/build.py:240
 msgid "No files extracted."
 msgstr "Nic nie wypakowano."
 
-#: pkgbuilder/build.py:295
+#: pkgbuilder/build.py:326
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr "Nie udało się wypełnić wymagań zależności pakietu: {0}"
 
-#: pkgbuilder/build.py:345
+#: pkgbuilder/build.py:404
 msgid ":: Retrieving packages from abs..."
 msgstr ":: Pobieranie pakietów z abs..."
 
-#: pkgbuilder/build.py:348 pkgbuilder/build.py:359
+#: pkgbuilder/build.py:407 pkgbuilder/build.py:418
 msgid "retrieving {0}"
 msgstr "pobieranie {0}"
 
-#: pkgbuilder/build.py:352 pkgbuilder/build.py:409
+#: pkgbuilder/build.py:411 pkgbuilder/build.py:468
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr "Nie udało się pobrać {0} (z ABS/rsync)."
 
-#: pkgbuilder/build.py:356
+#: pkgbuilder/build.py:415
 msgid ":: Retrieving packages from aur..."
 msgstr ":: Pobieranie pakietów z aur..."
 
-#: pkgbuilder/build.py:363
+#: pkgbuilder/build.py:422
 msgid "Extracting AUR packages..."
 msgstr "Wypakowywanie pakietów z AUR..."
 
-#: pkgbuilder/build.py:368
+#: pkgbuilder/build.py:427
 msgid "Successfully fetched: "
 msgstr "Pomyślnie pobrano: "
 
-#: pkgbuilder/build.py:405
+#: pkgbuilder/build.py:464
 msgid "Retrieving from ABS..."
 msgstr "Pobieranie z ABS..."
 
-#: pkgbuilder/build.py:425
+#: pkgbuilder/build.py:484
 msgid "Checking dependencies..."
 msgstr "Sprawdzanie zależności..."
 
-#: pkgbuilder/build.py:428
+#: pkgbuilder/build.py:487
 msgid "found in system"
 msgstr "znaleziono w systemie"
 
-#: pkgbuilder/build.py:428
+#: pkgbuilder/build.py:487
 msgid "found in repos"
 msgstr "znaleziono w repozytoriach"
 
-#: pkgbuilder/build.py:429
+#: pkgbuilder/build.py:488
 msgid "found in the AUR"
 msgstr "znaleziono w AUR"
 
-#: pkgbuilder/build.py:432
+#: pkgbuilder/build.py:491
 msgid "none found"
 msgstr "brak"
 
@@ -296,7 +300,7 @@ msgid "Running PKGBUILDer as root can break your system!"
 msgstr "Używanie PKGBUILDera jako root może popsuć twój system!"
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/main.py:225
+#: pkgbuilder/main.py:226
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
