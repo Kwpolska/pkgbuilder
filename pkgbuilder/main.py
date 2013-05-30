@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.0.1
+# PKGBUILDer v3.1.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
@@ -209,7 +209,7 @@ def main(source='AUTO', quit=True):
             for pkgname in pkgnames:
                 DS.log.info('Building {0}'.format(pkgname))
                 out = pkgbuilder.build.auto_build(pkgname, args.depcheck,
-                                                  args.pkginst)
+                                                  args.pkginst, pkgnames)
                 if out:
                     toinstall += out[1][0]
                     sigs += out[1][1]
@@ -218,7 +218,8 @@ def main(source='AUTO', quit=True):
                 pkgbuilder.build.install(toinstall, sigs)
 
             if args.validate and tovalidate:
-                pkgbuilder.build.validate(tovalidate)
+                DS.log.info('Quitting peacefully.')
+                exit(pkgbuilder.build.validate(tovalidate))
     except NetworkError as e:
         DS.fancy_error(str(e))
         # TRANSLATORS: do not translate the word 'requests'.
@@ -229,4 +230,4 @@ def main(source='AUTO', quit=True):
         DS.fancy_error(str(e))
         exit(1)
 
-    DS.log.info('Quitting.')
+    DS.log.info('Quitting peacefully.')
