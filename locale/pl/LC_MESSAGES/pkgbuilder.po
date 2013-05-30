@@ -7,10 +7,10 @@
 # Kwpolska <kwpolska@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.1.0\n"
+"Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2013-05-30 15:08+0200\n"
-"PO-Revision-Date: 2013-04-21 18:04+0000\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2013-05-30 14:30+0000\n"
 "Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/pkgbuilder/"
 "language/pl/)\n"
@@ -83,7 +83,7 @@ msgstr "Należy zainstalować więcej pakietów z AUR."
 
 #: pkgbuilder/build.py:151
 msgid "found an existing package for {0}"
-msgstr ""
+msgstr "znaleziono istniejący pakiet {0}"
 
 #: pkgbuilder/build.py:182
 msgid "makepkg (or someone else) failed and returned {0}."

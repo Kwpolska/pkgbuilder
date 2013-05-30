@@ -48,10 +48,5 @@ for i in ./locale/*; do
         echo "WARNING: $empty empty strings in language $language."
     fi
 
-    echo "$language: [enter] to edit, [c] to continue"
-    read validatesure
-    if [[ $validatesure != 'c' ]]; then
-        $EDITOR $popath
-    fi
     msgfmt -o $podir/$project.mo $popath
 done
