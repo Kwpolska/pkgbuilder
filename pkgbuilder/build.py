@@ -69,6 +69,7 @@ def validate(pkgnames):
                     DS.fancy_error2(_('{0}: outdated {1}').format(
                         pkgname, lpkg.version))
                 else:
+                    wrong -= 1
                     DS.fancy_msg2(_('{0}: installed {1}').format(
                         pkgname, lpkg.version))
 
