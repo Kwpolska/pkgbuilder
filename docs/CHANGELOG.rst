@@ -5,8 +5,8 @@ Appendix C. Changelog
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: © 2011-2013, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2013-05-30
-:Version: 3.1.1
+:Date: 2013-06-15
+:Version: 3.1.2
 
 .. index:: CHANGELOG
 
