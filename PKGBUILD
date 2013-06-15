@@ -1,7 +1,7 @@
 # Maintainer: Kwpolska <kwpolska@kwpolska.tk>
 pkgname=pkgbuilder
 _pyname=pkgbuilder
-pkgver=3.1.1
+pkgver=3.1.2
 pkgrel=1
 pkgdesc='A Python AUR helper/library.'
 arch=('any')
