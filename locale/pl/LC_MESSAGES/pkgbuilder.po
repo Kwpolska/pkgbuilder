@@ -29,7 +29,7 @@ msgstr "Walidowanie stanu instalacji..."
 msgid "{0}: not an AUR package"
 msgstr "{0}: pakiet spoza AUR"
 
-#: pkgbuilder/build.py:62 pkgbuilder/build.py:72
+#: pkgbuilder/build.py:62 pkgbuilder/build.py:73
 msgid "{0}: installed {1}"
 msgstr "{0}: zainstalowany {1}"
 
@@ -41,113 +41,113 @@ msgstr "{0}: NIE zainstalowano"
 msgid "{0}: outdated {1}"
 msgstr "{0} nieaktualny {1}"
 
-#: pkgbuilder/build.py:80
+#: pkgbuilder/build.py:81
 msgid "Installing built packages..."
 msgstr "Instalowanie zbudowanych pakietów..."
 
-#: pkgbuilder/build.py:99 pkgbuilder/build.py:376
+#: pkgbuilder/build.py:100 pkgbuilder/build.py:377
 msgid "Fetching package information..."
 msgstr "Pobieranie informacji o pakiecie..."
 
-#: pkgbuilder/build.py:103 pkgbuilder/build.py:474
+#: pkgbuilder/build.py:104 pkgbuilder/build.py:475
 msgid "Downloading the tarball..."
 msgstr "Pobieranie tarballa..."
 
-#: pkgbuilder/build.py:106 pkgbuilder/build.py:477
+#: pkgbuilder/build.py:107 pkgbuilder/build.py:478
 msgid "{0} kB downloaded"
 msgstr "pobrano {0} kB"
 
-#: pkgbuilder/build.py:108 pkgbuilder/build.py:479
+#: pkgbuilder/build.py:109 pkgbuilder/build.py:480
 msgid "Extracting..."
 msgstr "Wypakowywanie..."
 
-#: pkgbuilder/build.py:109 pkgbuilder/build.py:480
+#: pkgbuilder/build.py:110 pkgbuilder/build.py:481
 msgid "{0} files extracted"
 msgstr "wypakowano {0} plików"
 
-#: pkgbuilder/build.py:111 pkgbuilder/build.py:456
+#: pkgbuilder/build.py:112 pkgbuilder/build.py:457
 msgid "Building {0}..."
 msgstr "Budowanie {0}..."
 
-#: pkgbuilder/build.py:113
+#: pkgbuilder/build.py:114
 msgid "Build finished with return code {0}."
 msgstr "Proces budowania zakończył się kodem {0}."
 
-#: pkgbuilder/build.py:135
+#: pkgbuilder/build.py:136
 msgid "The build function reported a proper build."
 msgstr "Funkcja budowania paczek powiadomiła o prawidłowym zbudowaniu."
 
-#: pkgbuilder/build.py:139
+#: pkgbuilder/build.py:140
 msgid "Building more AUR packages is required."
 msgstr "Należy zainstalować więcej pakietów z AUR."
 
-#: pkgbuilder/build.py:151
+#: pkgbuilder/build.py:152
 msgid "found an existing package for {0}"
 msgstr "znaleziono istniejący pakiet {0}"
 
-#: pkgbuilder/build.py:182
+#: pkgbuilder/build.py:183
 msgid "makepkg (or someone else) failed and returned {0}."
 msgstr ""
 "tworzenie pakietu przez makepkg (lub coś innego) nie powiodło się i zwróciło "
 "{0}."
 
-#: pkgbuilder/build.py:207
+#: pkgbuilder/build.py:208
 msgid "0 bytes downloaded"
 msgstr "pobrano 0 bajtów"
 
-#: pkgbuilder/build.py:240
+#: pkgbuilder/build.py:241
 msgid "No files extracted."
 msgstr "Nic nie wypakowano."
 
-#: pkgbuilder/build.py:326
+#: pkgbuilder/build.py:327
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr "Nie udało się wypełnić wymagań zależności pakietu: {0}"
 
-#: pkgbuilder/build.py:404
+#: pkgbuilder/build.py:405
 msgid ":: Retrieving packages from abs..."
 msgstr ":: Pobieranie pakietów z abs..."
 
-#: pkgbuilder/build.py:407 pkgbuilder/build.py:418
+#: pkgbuilder/build.py:408 pkgbuilder/build.py:419
 msgid "retrieving {0}"
 msgstr "pobieranie {0}"
 
-#: pkgbuilder/build.py:411 pkgbuilder/build.py:468
+#: pkgbuilder/build.py:412 pkgbuilder/build.py:469
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr "Nie udało się pobrać {0} (z ABS/rsync)."
 
-#: pkgbuilder/build.py:415
+#: pkgbuilder/build.py:416
 msgid ":: Retrieving packages from aur..."
 msgstr ":: Pobieranie pakietów z aur..."
 
-#: pkgbuilder/build.py:422
+#: pkgbuilder/build.py:423
 msgid "Extracting AUR packages..."
 msgstr "Wypakowywanie pakietów z AUR..."
 
-#: pkgbuilder/build.py:427
+#: pkgbuilder/build.py:428
 msgid "Successfully fetched: "
 msgstr "Pomyślnie pobrano: "
 
-#: pkgbuilder/build.py:464
+#: pkgbuilder/build.py:465
 msgid "Retrieving from ABS..."
 msgstr "Pobieranie z ABS..."
 
-#: pkgbuilder/build.py:484
+#: pkgbuilder/build.py:485
 msgid "Checking dependencies..."
 msgstr "Sprawdzanie zależności..."
 
-#: pkgbuilder/build.py:487
+#: pkgbuilder/build.py:488
 msgid "found in system"
 msgstr "znaleziono w systemie"
 
-#: pkgbuilder/build.py:487
+#: pkgbuilder/build.py:488
 msgid "found in repos"
 msgstr "znaleziono w repozytoriach"
 
-#: pkgbuilder/build.py:488
+#: pkgbuilder/build.py:489
 msgid "found in the AUR"
 msgstr "znaleziono w AUR"
 
-#: pkgbuilder/build.py:491
+#: pkgbuilder/build.py:492
 msgid "none found"
 msgstr "brak"
 

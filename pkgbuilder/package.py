@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.1.1
+# PKGBUILDer v3.1.2
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
@@ -26,6 +26,10 @@ CATEGORIES = ['ERROR', 'none', 'daemons', 'devel', 'editors',
               'lib', 'modules', 'multimedia', 'network',
               'office', 'science', 'system', 'x11',
               'xfce', 'kernels']
+
+
+def mktime(ts):
+    return datetime.datetime.utcfromtimestamp(ts).replace(tzinfo=UTC)
 
 
 class Package(object):
@@ -104,17 +108,12 @@ class AURPackage(Package):
         p.repo = CATEGORIES[aurdict['CategoryID']]
         p.licenses = [aurdict['License']]
 
-        utc = UTC()
-
         if p.is_outdated:
-            p.outdated_since = datetime.datetime.utcfromtimestamp(
-                aurdict['OutOfDate']).replace(tzinfo=utc)
+            p.outdated_since = mktime(aurdict['OutOfDate'])
         else:
             p.outdated_since = None
-        p.added = datetime.datetime.utcfromtimestamp(
-            aurdict['FirstSubmitted']).replace(tzinfo=utc)
-        p.modified = datetime.datetime.utcfromtimestamp(
-            aurdict['LastModified']).replace(tzinfo=utc)
+        p.added = mktime(aurdict['FirstSubmitted'])
+        p.modified = mktime(aurdict['LastModified'])
 
         return p
 
@@ -158,14 +157,10 @@ class ABSPackage(Package):
         for i in copy:
             setattr(p, i, getattr(abspkg, i))
 
-        utc = UTC()
-
         p.repo = abspkg.db.name
         p.description = abspkg.desc
         p.human = abspkg.packager
-        p.builddate = datetime.datetime.utcfromtimestamp(
-            abspkg.builddate).replace(tzinfo=utc)
-        p.installdate = datetime.datetime.utcfromtimestamp(
-            abspkg.installdate).replace(tzinfo=utc)
+        p.builddate = mktime(abspkg.builddate)
+        p.installdate = mktime(abspkg.installdate)
 
         return p
