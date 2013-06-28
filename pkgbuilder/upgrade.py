@@ -237,6 +237,9 @@ def auto_upgrade(downgrade=False, vcsup=False):
                     verbosepkglists = False
                     DS.log.warning('VerbosePkgLists disabled, terminal is '
                                    'not wide enough')
+                    # string stolen from pacman
+                    print(_('warning: insufficient columns available for '
+                            'table display'))
                 else:
                     print('\n{0}\n'.format(targetstring.strip()))
                     print(fstring.format(i=headers))
