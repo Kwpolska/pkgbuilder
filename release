@@ -140,6 +140,6 @@ else
     git commit -asm "v$version: $commitmsg"
 fi
 
-git tag -sa "v$version" -m "Version $version"
-git push
-git push --tags
+#git tag -sa "v$version" -m "Version $version"
+#git push
+#git push --tags
