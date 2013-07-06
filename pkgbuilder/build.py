@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.1.2
+# PKGBUILDer v3.1.3
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2013, Kwpolska.
 # See /LICENSE for licensing information.
@@ -112,7 +112,7 @@ def safeupgrade(pkgname):
     DS.fancy_msg(_('Building {0}...').format(pkg.name))
 
     if DS.uid == 0:
-        DS.fancy_warning(_('Performing a safeupgrade as root!'))
+        DS.fancy_warning(_('Performing a safe upgrade as root!'))
         DS.fancy_warning2(_('It is recommended to restart PKGBUILDer as a '
                             'regular user instead.'))
         asroot = ' --asroot'

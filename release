@@ -104,7 +104,9 @@ tar -czvf $project"-git-19700101-1".src.tar.gz $project"-git"
 #tar -czvf python-$project"-git-19700101-1".src.tar.gz python-$project"-git"
 #tar -czvf python2-$project"-git-19700101-1".src.tar.gz python-$project"-git"
 
-aurploader -a pkgbuilder*.src.tar.gz
+aurploader -a pkgbuilder-0.1.0-1.src.tar.gz
+aurploader -a pkgbuilder-git-19700101-1.src.tar.gz
+
 cd ..
 rm -rf MKPKGBUILD
 
