@@ -1,7 +1,7 @@
 # Maintainer: Kwpolska <kwpolska@kwpolska.tk>
 pkgname=pkgbuilder
 _pyname=pkgbuilder
-pkgver=3.1.3
+pkgver=3.1.4
 pkgrel=1
 pkgdesc='A Python AUR helper/library.'
 arch=('any')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python' 'pyalpm>=0.5.1-1' 'python-requests' 'rsync')
 options=(!emptydirs)
 source=("http://pypi.python.org/packages/source/$(echo ${_pyname} | cut -c1)/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('f96c8894dae288da8ac2be20977d6134')
+md5sums=('52e5345964a1acab71b34d4c8f53365d')
 
 package() {
   cd "${srcdir}/${_pyname}-${pkgver}"
