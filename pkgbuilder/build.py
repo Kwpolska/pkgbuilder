@@ -110,6 +110,7 @@ def safeupgrade(pkgname):
     DS.fancy_msg2(_('{0} files extracted').format(extract(filename)))
     os.chdir('./{0}/'.format(pkg.name))
     DS.fancy_msg(_('Building {0}...').format(pkg.name))
+<<<<<<< HEAD
 
     if DS.uid == 0:
         DS.fancy_warning(_('Performing a safe upgrade as root!'))
@@ -119,6 +120,9 @@ def safeupgrade(pkgname):
     else:
         asroot = ''
     mpstatus = subprocess.call('makepkg -sicf{0}'.format(asroot), shell=True)
+=======
+    mpstatus = subprocess.call('makepkg -sicf', shell=True)
+>>>>>>> e795f5da2a630f23316a463bd6867e463c9308ba
     DS.fancy_msg(_('Build finished with return code {0}.').format(mpstatus))
     return mpstatus
 
