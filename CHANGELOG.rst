@@ -39,8 +39,30 @@ Where:
  * revision
     changes that aren’t important enough to be new minor versions.
 
+GitHub holds releases, too
+==========================
+
+More information can be found on GitHub in the `releases section <https://github.com/Kwpolska/pkgbuilder/releases>`_.
+
 Generation 3
 ============
+
+3.1.2
+    Modified timestamp generation in the Package classes.
+
+3.1.1
+    A quick bugfix update.
+
+3.1.0
+    Added some magic to AUR dependency building.
+
+3.0.1
+    A lot of tiny fixes.
+
+    Also known as release *three point oh point **ell***, blame Consolas.
+
+3.0.0
+    A new major release, introducing many new wonderful features.
 
 Testing git-only releases
 -------------------------
@@ -63,7 +85,7 @@ Generation 2
     Fixing a quite important bug in the install process
 
 2.1.5.13
-    2013!
+    2013!  Oh, and the revision number is 13, too!
 
 2.1.5.11—2.1.5.12
     Fixes to the AUR v2.0 magic.
@@ -78,7 +100,7 @@ Generation 2
     for the ABS build magic?  I haven’t.  Well, the validation fix was
     partially related to the ABS magic, but it was detected during a run of
     ``pb -S`` with an inexistent package that I thought might exist.  I
-    actually revised all the changed that happened since 2.1.5.5 (a release
+    actually revised all the changes that happened since 2.1.5.5 (a release
     without those bugs) and I think I’m done with everything now.
 
 2.1.5.8
@@ -98,13 +120,13 @@ Generation 2
 
 2.1.5.3
     A bugfix for package copying and installation (signatures were passed to
-    -U) broke the installation mechanism so only one package got installed.
+    ``-U``) broke the installation mechanism so only one package got installed.
     Also, fixing a bug with a STDIN that is not a terminal (eg. ``xargs``, and
     I hope nobody is using it to search for stuff)
 
 2.1.5.2
     Fixed a bug where an error in makepkg while running an Upgrade
-         crashed PB and thrown an unhelpful traceback.
+    crashed PB and thrown an unhelpful traceback.
 
 2.1.5.1
     More tiny bugfixes.
@@ -113,7 +135,15 @@ Generation 2
     A release including the sample scripts, among other stuff.  This is a
     release which now has all the functionality I want it to have.  And it’s
     time to move onto a new project, the aurqt interface for the AUR.  Or maybe
-    something else? [Update from the future: it wasn’t all I wanted.]
+    something else? [Update from the future: it wasn’t all I wanted.  Moreover,
+    PKGBUILDer is a dependency of aurqt.]
+
+2.1.4.9
+    Some more bugfixes.
+
+2.1.4.8
+    Introducing a backwards-compatibility-breaking change of
+    .utils.Utils.info()
 
 2.1.4.7
     Quite a lot of changes.
@@ -122,7 +152,7 @@ Generation 2
     Fixes some bugs.
 
 2.1.4.4
-    The mature release, including downrades, excluding mess.
+    The mature release, including downgrades, excluding mess.
 
 2.1.4.2-2.1.4.3
      Bug fixes, thanks to fosskers (from aura, another AUR helper).
@@ -156,10 +186,8 @@ Generation 2
     The big changes begin.  Introducing requests.
 
 2.1.2.1-2.1.2.30
-    Tiny, unimportant bugfixes.  Somehow, my version numbering broke, and after
-    .5 we got .26.  There was something wrong with the thing, so I upped it to
-    be 26.  It was, of course, supposed to go further and the 2 came over from
-    the minor version.  Crazy.
+    Tiny, unimportant bugfixes.  Somehow, my version numbering broke, stuff
+    went completely apeshit, and I do not understand it.
 
 2.1.2.0
     Support for the new pyalpm.
