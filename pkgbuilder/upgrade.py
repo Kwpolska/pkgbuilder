@@ -23,7 +23,6 @@ import pyalpm
 import datetime
 import subprocess
 import textwrap
-import sys
 
 __all__ = ['gather_foreign_pkgs', 'list_upgradable', 'auto_upgrade']
 
@@ -189,15 +188,11 @@ def auto_upgrade(downgrade=False, vcsup=False):
             yesno = input(query)
 
             if yesno.lower().strip().startswith('y') or yesno.strip() == '':
-                status = pkgbuilder.build.safeupgrade(pkgbname)
-                if status > 0:
-                    DS.log.info('safe upgrade failed with {0}'.format(status))
-                    sys.exit(status)
-                else:
-                    # The return causes PKGBUILDer.main() to quit and do
-                    # nothing.  The else is unnecessary, as we drop to a
-                    # regular upgrade if the luser says “no”.
-                    return []
+                pkgbuilder.build.safeupgrade(pkgbname)
+                # The return causes PKGBUILDer.main() to quit and do nothing.
+                # The else is unnecessary, as we drop to a regular upgrade
+                # if the luser says “no”.
+                return []
 
         if DS.pacman:
             targetstring = _('Targets ({0}): ').format(upglen)
@@ -279,4 +274,4 @@ def auto_upgrade(downgrade=False, vcsup=False):
         if yesno.lower().strip().startswith('y') or yesno.strip() == '':
             return upgnames
         else:
-           return []
+            return []
