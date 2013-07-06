@@ -47,6 +47,9 @@ More information can be found on GitHub in the `releases section <https://github
 Generation 3
 ============
 
+3.1.3
+    Fixes to the safeupgrade; added Italian, Spanish and Turkish.
+
 3.1.2
     Modified timestamp generation in the Package classes.
 
