@@ -6,7 +6,7 @@ except ImportError:
     from distutils.core import setup
 
 setup(name='pkgbuilder',
-      version='3.1.4',
+      version='3.1.5',
       description='An AUR helper (and library) in Python 3.',
       keywords='arch pkgbuild',
       author='Kwpolska',
