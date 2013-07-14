@@ -47,6 +47,10 @@ More information can be found on GitHub in the `releases section <https://github
 Generation 3
 ============
 
+3.1.5
+    Added Vietnamese.
+3.1.4
+    Fixed a mess.
 3.1.3
     Fixes to the safeupgrade; added Italian, Spanish and Turkish.
 
