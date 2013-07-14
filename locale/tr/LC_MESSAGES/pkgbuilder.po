@@ -26,18 +26,22 @@ msgid "Validating installation status..."
 msgstr "Yükleme durumu hesaplanıyor..."
 
 #: pkgbuilder/build.py:58
+#, python-brace-format
 msgid "{0}: not an AUR package"
 msgstr "{0}: AUR paketi değil"
 
 #: pkgbuilder/build.py:62 pkgbuilder/build.py:73
+#, python-brace-format
 msgid "{0}: installed {1}"
 msgstr "{0}: KUurulan {1}"
 
 #: pkgbuilder/build.py:66
+#, python-brace-format
 msgid "{0}: NOT installed"
 msgstr "{0}: KURULMADI"
 
 #: pkgbuilder/build.py:69
+#, python-brace-format
 msgid "{0}: outdated {1}"
 msgstr "{0}: Günü geçmiş {1}"
 
@@ -54,6 +58,7 @@ msgid "Downloading the tarball..."
 msgstr "Tarball indiriliyor..."
 
 #: pkgbuilder/build.py:107 pkgbuilder/build.py:486
+#, python-brace-format
 msgid "{0} kB downloaded"
 msgstr "{0}: kb indirildi"
 
@@ -62,10 +67,12 @@ msgid "Extracting..."
 msgstr "Açılıyor..."
 
 #: pkgbuilder/build.py:110 pkgbuilder/build.py:489
+#, python-brace-format
 msgid "{0} files extracted"
 msgstr "{0}: dosya açıldı"
 
 #: pkgbuilder/build.py:112 pkgbuilder/build.py:465
+#, python-brace-format
 msgid "Building {0}..."
 msgstr "{0} İnşa ediliyor..."
 
@@ -78,6 +85,7 @@ msgid "It is recommended to restart PKGBUILDer as a regular user instead."
 msgstr ""
 
 #: pkgbuilder/build.py:122
+#, python-brace-format
 msgid "Build finished with return code {0}."
 msgstr "İnşa işlemi {0}geri dönüş kodu ile bitirildi."
 
@@ -90,10 +98,12 @@ msgid "Building more AUR packages is required."
 msgstr "Daha fazla AUR paketi gerekiyor."
 
 #: pkgbuilder/build.py:160
+#, python-brace-format
 msgid "found an existing package for {0}"
 msgstr "{0} için var olan bir paket bulundu"
 
 #: pkgbuilder/build.py:191
+#, python-brace-format
 msgid "makepkg (or someone else) failed and returned {0}."
 msgstr "makepkg (veya biri) durduruldu ve geri döndü {0}"
 
@@ -106,6 +116,7 @@ msgid "No files extracted."
 msgstr "Bir dosya açılmadı"
 
 #: pkgbuilder/build.py:335
+#, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr "Paket bağımlılığı şartı gerçekleştirilemedi :{0}"
 
@@ -114,10 +125,12 @@ msgid ":: Retrieving packages from abs..."
 msgstr ":: ABS den paketler geri alınıyor..."
 
 #: pkgbuilder/build.py:416 pkgbuilder/build.py:427
+#, python-brace-format
 msgid "retrieving {0}"
 msgstr "{0} geri alınıyor"
 
 #: pkgbuilder/build.py:420 pkgbuilder/build.py:477
+#, python-brace-format
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr "{0} geri yüklenmesi durdu (ABS/rsync ten)"
 
@@ -158,34 +171,42 @@ msgid "none found"
 msgstr "Bulunamadı"
 
 #: pkgbuilder/exceptions.py:53
+#, python-brace-format
 msgid "AUR Error: {0}"
 msgstr "AUR Hatası: {0}"
 
 #: pkgbuilder/exceptions.py:69
+#, python-brace-format
 msgid "makepkg returned {0}."
 msgstr "{0} makepkg geri döndü."
 
 #: pkgbuilder/exceptions.py:93
+#, python-brace-format
 msgid "Network error: {0} (via {1})"
 msgstr "{0} (via {1}) Ağ hatası"
 
 #: pkgbuilder/exceptions.py:100
+#, python-brace-format
 msgid "Connection error: {0} (via {1})"
 msgstr "Bağlantı hatası:{0} (via {1})"
 
 #: pkgbuilder/exceptions.py:111
+#, python-brace-format
 msgid "HTTP Error {0} (via {1})"
 msgstr "HTTP hatası {0} (via {1})"
 
 #: pkgbuilder/exceptions.py:145
+#, python-brace-format
 msgid "{0} (Package: {1})"
 msgstr "{0} (Paket: {1})"
 
 #: pkgbuilder/exceptions.py:155
+#, python-brace-format
 msgid "Package {0} not found. (via {1})"
 msgstr "{0} Paketi (via {1}) içinde bulunamadı"
 
 #: pkgbuilder/exceptions.py:177
+#, python-brace-format
 msgid "Sanity error!  {0} (via {1})"
 msgstr "Mantık hatası : {0} (via {1})"
 
@@ -357,6 +378,7 @@ msgid "Starting full system upgrade..."
 msgstr "Tam sistem  yükseltmesi başlatılıyor..."
 
 #: pkgbuilder/upgrade.py:136 pkgbuilder/upgrade.py:139
+#, python-brace-format
 msgid "{0}: local ({1}) is newer than aur ({2})"
 msgstr "{0}: yerel ({1}) aur daki ({2}) den daha yeni"
 
@@ -384,6 +406,7 @@ msgstr ""
 "Geçerli işlemi sonlandırıp bu paketleri yükseltmek istiyormusunuz? [E/H]"
 
 #: pkgbuilder/upgrade.py:203 pkgbuilder/upgrade.py:270
+#, python-brace-format
 msgid "Targets ({0}): "
 msgstr "Hedefler ({0}):"
 
@@ -409,6 +432,7 @@ msgid "Proceed with installation? [Y/n] "
 msgstr "Kuruluma devam edilsin mi? [E/H]"
 
 #: pkgbuilder/utils.py:95
+#, python-brace-format
 msgid " [installed: {0}]"
 msgstr "[Kurulan: {0}]"
 
@@ -435,6 +459,7 @@ msgstr "ABS paketi ile utils.print_package_info kullanılmaya çalışılıyor"
 #. TRANSLATORS: space it properly.  “yes/no” below are
 #. for “out of date”.
 #: pkgbuilder/utils.py:162
+#, python-brace-format
 msgid ""
 "Repository     : aur\n"
 "Category       : {cat}\n"
@@ -477,6 +502,7 @@ msgstr "%(prog)s <operation> [...]"
 
 #. TRANSLATORS: see pacman’s localizations
 #: pkgbuilder/wrapper.py:265
+#, python-brace-format
 msgid ""
 "usage:  {0} <operation> [...]\n"
 "\n"
@@ -511,6 +537,7 @@ msgid "found"
 msgstr "bulundu"
 
 #: INSTALL.py:96
+#, python-brace-format
 msgid ""
 "\n"
 "\n"
@@ -560,6 +587,7 @@ msgid "Installing missing AUR dependencies..."
 msgstr "Kurulum AUR bağımlılıklarını bulamıyor..."
 
 #: INSTALL.py:142
+#, python-brace-format
 msgid ""
 "\n"
 "\n"
@@ -603,6 +631,7 @@ msgstr ""
 "yeniden başlatın."
 
 #: INSTALL.py:164
+#, python-brace-format
 msgid ""
 "It looks like you want to quit.  Okay then, goodbye.\n"
 "All the files this script was working on are placed in\n"
