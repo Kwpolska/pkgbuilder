@@ -4,16 +4,17 @@
 # Kwpolska <kwpolska@kwpolska.tk>, 2011-2013.
 #
 # Translators:
+# ppanhh <ppanhh@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2013-04-21 17:43+0000\n"
-"Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
-"Language-Team: Japanese (http://www.transifex.com/projects/p/pkgbuilder/"
-"language/ja/)\n"
-"Language: ja\n"
+"PO-Revision-Date: 2013-07-09 08:10+0000\n"
+"Last-Translator: ppanhh <ppanhh@gmail.com>\n"
+"Language-Team: Vietnamese (http://www.transifex.com/projects/p/pkgbuilder/"
+"language/vi/)\n"
+"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -21,431 +22,436 @@ msgstr ""
 
 #: pkgbuilder/build.py:42
 msgid "Validating installation status..."
-msgstr "インストール無事終了確認中・・・"
+msgstr "Đang kiểm tra trạng thái cài đặt..."
 
 #: pkgbuilder/build.py:58
 #, python-brace-format
 msgid "{0}: not an AUR package"
-msgstr "{0}: AURパッケージではない"
+msgstr "{0}: không phải gói cài đặt dạng AUR"
 
 #: pkgbuilder/build.py:62 pkgbuilder/build.py:73
 #, python-brace-format
 msgid "{0}: installed {1}"
-msgstr "{0}: 「{1}」をインストール済み"
+msgstr "{0}: đã cài đặt {1}"
 
 #: pkgbuilder/build.py:66
 #, python-brace-format
 msgid "{0}: NOT installed"
-msgstr "{0}：インストールされていない"
+msgstr "{0}: CHƯA được cài đặt"
 
 #: pkgbuilder/build.py:69
 #, python-brace-format
 msgid "{0}: outdated {1}"
-msgstr "{0}：「{1}」より要更新"
+msgstr "{0}: quá hạn {1}"
 
 #: pkgbuilder/build.py:81
 msgid "Installing built packages..."
-msgstr "作成したパッケージをインストール中・・・"
+msgstr "Đang cài đặt các gói dữ liệu..."
 
 #: pkgbuilder/build.py:100 pkgbuilder/build.py:385
 msgid "Fetching package information..."
-msgstr ""
+msgstr "Đang tải về thông tin của gói cài đặt..."
 
 #: pkgbuilder/build.py:104 pkgbuilder/build.py:483
 msgid "Downloading the tarball..."
-msgstr "ターボールをダウンロード中・・・"
+msgstr "Đang tải về các tập tin tarball..."
 
 #: pkgbuilder/build.py:107 pkgbuilder/build.py:486
 #, python-brace-format
 msgid "{0} kB downloaded"
-msgstr "{0} kBをダウンロード済み"
+msgstr "{0} kB đã tải về"
 
 #: pkgbuilder/build.py:109 pkgbuilder/build.py:488
 msgid "Extracting..."
-msgstr "抽出中・・・"
+msgstr "Đang giải nén.."
 
 #: pkgbuilder/build.py:110 pkgbuilder/build.py:489
 #, python-brace-format
 msgid "{0} files extracted"
-msgstr "ファイルを{0}個抽出した"
+msgstr "{0} tập tin đã giải nén"
 
 #: pkgbuilder/build.py:112 pkgbuilder/build.py:465
 #, python-brace-format
 msgid "Building {0}..."
-msgstr "「{0}」を作成中・・・"
+msgstr "Đang xây dựng {0}..."
 
 #: pkgbuilder/build.py:115
 msgid "Performing a safe upgrade as root!"
-msgstr ""
+msgstr "Đang tiến hành việc nâng cấp an toàn dưới quyền root!"
 
 #: pkgbuilder/build.py:116
 msgid "It is recommended to restart PKGBUILDer as a regular user instead."
-msgstr ""
+msgstr "Bạn nên khởi động lại PKGBUILDer dưới dạng người dùng thông thường."
 
 #: pkgbuilder/build.py:122
 #, python-brace-format
 msgid "Build finished with return code {0}."
-msgstr ""
+msgstr "Phần xây dựng đã hoàn tất với mã trả về {0}."
 
 #: pkgbuilder/build.py:144
 msgid "The build function reported a proper build."
-msgstr "パッケージ作成成功。"
+msgstr "Hàm phát triển dữ liệu đã gửi báo cáo phần phát triển cấp cao hơn."
 
 #: pkgbuilder/build.py:148
 msgid "Building more AUR packages is required."
-msgstr "AURパッケージを更に作成する必要がある。"
+msgstr "Yêu cầu việc xây dựng thêm nhiều gói tin AUR."
 
 #: pkgbuilder/build.py:160
 #, python-brace-format
 msgid "found an existing package for {0}"
-msgstr ""
+msgstr "đã tìm thấy gói cài đặt hiện đang tồn tại cho {0}"
 
 #: pkgbuilder/build.py:191
 #, python-brace-format
 msgid "makepkg (or someone else) failed and returned {0}."
-msgstr "makepkgなどが「{0}」で失敗したようだ。"
+msgstr "makepkg (hoặc đối tượng nào đó) đã thất bại và trả về {0}."
 
 #: pkgbuilder/build.py:216
 msgid "0 bytes downloaded"
-msgstr ""
+msgstr "0 byte đã tải về"
 
 #: pkgbuilder/build.py:249
 msgid "No files extracted."
-msgstr ""
+msgstr "Vẫn chưa giải nén tập tin nào."
 
 #: pkgbuilder/build.py:335
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr ""
+"Thất bại trong việc điền vào các yêu cầu về sự phụ thuộc của gói tin: {0}"
 
 #: pkgbuilder/build.py:413
 msgid ":: Retrieving packages from abs..."
-msgstr ""
+msgstr ":: Đang nhận các gói cài đặt từ abs.."
 
 #: pkgbuilder/build.py:416 pkgbuilder/build.py:427
 #, python-brace-format
 msgid "retrieving {0}"
-msgstr ""
+msgstr "đang nhận {0}"
 
 #: pkgbuilder/build.py:420 pkgbuilder/build.py:477
 #, python-brace-format
 msgid "Failed to retieve {0} (from ABS/rsync)."
-msgstr ""
+msgstr "Thất bại khi nhận {0} (từ ABS/rsync)."
 
 #: pkgbuilder/build.py:424
 msgid ":: Retrieving packages from aur..."
-msgstr ""
+msgstr ":: Đang nhận các gói cài đặt từ aur..."
 
 #: pkgbuilder/build.py:431
 msgid "Extracting AUR packages..."
-msgstr ""
+msgstr "Đang giải nén các gói cài đặt AUR..."
 
 #: pkgbuilder/build.py:436
 msgid "Successfully fetched: "
-msgstr ""
+msgstr "Đã tải về thành công:"
 
 #: pkgbuilder/build.py:473
 msgid "Retrieving from ABS..."
-msgstr ""
+msgstr "Đang nhận từ ABS..."
 
 #: pkgbuilder/build.py:493
 msgid "Checking dependencies..."
-msgstr "従属パッケージを確認中・・・"
+msgstr "Đang kiểm tra tính độc lập..."
 
 #: pkgbuilder/build.py:496
 msgid "found in system"
-msgstr "インストール済み"
+msgstr "đã được tìm thấy trong hệ thống"
 
 #: pkgbuilder/build.py:496
 msgid "found in repos"
-msgstr "リポジトリに存在"
+msgstr "đã được tìm thấy trong repos"
 
 #: pkgbuilder/build.py:497
 msgid "found in the AUR"
-msgstr "AURに存在"
+msgstr "đã được tìm thấy trong AUR"
 
 #: pkgbuilder/build.py:500
 msgid "none found"
-msgstr "従属パッケージなし"
+msgstr "không tìm thấy"
 
 #: pkgbuilder/exceptions.py:53
 #, python-brace-format
 msgid "AUR Error: {0}"
-msgstr ""
+msgstr "Lỗi AUR: {0}"
 
 #: pkgbuilder/exceptions.py:69
 #, python-brace-format
 msgid "makepkg returned {0}."
-msgstr ""
+msgstr "makepkg trả về {0}."
 
 #: pkgbuilder/exceptions.py:93
 #, python-brace-format
 msgid "Network error: {0} (via {1})"
-msgstr ""
+msgstr "Lỗi mạng lưới: {0} (thông qua {1})"
 
 #: pkgbuilder/exceptions.py:100
 #, python-brace-format
 msgid "Connection error: {0} (via {1})"
-msgstr ""
+msgstr "Lỗi kết nối: {0} (thông qua {1})"
 
 #: pkgbuilder/exceptions.py:111
 #, python-brace-format
 msgid "HTTP Error {0} (via {1})"
-msgstr ""
+msgstr "Lỗi HTTP {0} (thông qua {1})"
 
 #: pkgbuilder/exceptions.py:145
 #, python-brace-format
 msgid "{0} (Package: {1})"
-msgstr ""
+msgstr "{0} (Gói cài đặt: {1})"
 
 #: pkgbuilder/exceptions.py:155
 #, python-brace-format
 msgid "Package {0} not found. (via {1})"
-msgstr ""
+msgstr "Gói cài đặt {0} không được tìm thấy. (thông qua {1})"
 
 #: pkgbuilder/exceptions.py:177
 #, python-brace-format
 msgid "Sanity error!  {0} (via {1})"
-msgstr ""
+msgstr "Lỗi nghiêm trọng!  {0} (thông qua {1})"
 
 #. TRANSLATORS: translate the whole sentence.
 #. Alternatively, use translation instead of locale.
 #: pkgbuilder/main.py:36
 msgid "LANG locale by AUTHOR <MAIL@IF.YOU.WANT>"
-msgstr "日本語ロカール翻訳・Colin Woodbury <colingw@gmail.com>"
+msgstr "Được chuyển ngữ bởi tác giả <MAIL@IF.YOU.WANT>"
 
 #: pkgbuilder/main.py:40
 msgid "An AUR helper (and library) in Python 3."
-msgstr "Python 3で作られたAUR Helper兼ライブラリ。"
+msgstr "Tập tin trợ giúp AUR (và thư viện) ở định dạng Pythong 3"
 
 #: pkgbuilder/main.py:42
 msgid "Also accepting ABS packages."
-msgstr "ABSパッケージも対応可能。"
+msgstr "Chấp nhaạn gói cài đặt ABS."
 
 #: pkgbuilder/main.py:46
 msgid "show version number and quit"
-msgstr "バージョンを示して終わる"
+msgstr "hiển thị số phiên bản và thoát"
 
 #: pkgbuilder/main.py:47
 msgid "PACKAGE"
-msgstr "パッケージ"
+msgstr "GÓI CÀI ĐẶT"
 
 #: pkgbuilder/main.py:48
 msgid "AUR/ABS packages to build"
-msgstr "作成するパッケージ"
+msgstr "Gói cài đặt AUR/ABS để xây dựng"
 
 #: pkgbuilder/main.py:50
 msgid "operations"
-msgstr "選択肢"
+msgstr "tiến trình"
 
 #: pkgbuilder/main.py:53
 msgid "fetch package files"
-msgstr ""
+msgstr "tải các tập tin gói cài đặt"
 
 #: pkgbuilder/main.py:55
 msgid "view package information"
-msgstr "パッケージ情報を見る"
+msgstr "xem thông tin gói cài đặt"
 
 #: pkgbuilder/main.py:57
 msgid "search the AUR for matching strings"
-msgstr "AURを検索"
+msgstr "tìm kiếm các chuỗi khớp với AUR"
 
 #: pkgbuilder/main.py:61
 msgid "upgrade installed AUR packages"
-msgstr "インストール済みのAURパッケージをアップグレード"
+msgstr "nâng cấp các gói cài đặt AUR đã cài"
 
 #: pkgbuilder/main.py:63
 msgid "options"
-msgstr "副選択肢"
+msgstr "tùy chọn"
 
 #: pkgbuilder/main.py:65
 msgid "clean up work files after build"
-msgstr "作成後、作成に必要だったファイルを削除"
+msgstr "xóa các tập tin sau khi đã xây dựng xong"
 
 #: pkgbuilder/main.py:68
 msgid "don't use colors in output"
-msgstr "出力は色付きで出されない"
+msgstr "không sử dụng chế độ hiển thị màu với dữ liệu xuất ra"
 
 #: pkgbuilder/main.py:71
 msgid "display debug messages"
-msgstr "デバッグメッセージを出力"
+msgstr "hiển thị thông tin gỡ rối"
 
 #: pkgbuilder/main.py:73
 msgid "don't check dependencies (may break makepkg)"
-msgstr "従属パッケージ確認を行わない。作成が失敗する可能性あり。"
+msgstr "không kiểm tra tính độc lập (có thể phá bỏ makepkg)"
 
 #: pkgbuilder/main.py:76
 msgid "upgrade all the VCS/date-versioned packages"
-msgstr "VCSパッケージを全て強制アップグレード"
+msgstr "nâng cấp tất cả các gói cài đặt VCS/date-versioned"
 
 #: pkgbuilder/main.py:79
 msgid "don't check if packages were installed after build"
-msgstr "作成後、パッケージ無事インストール確認を行わない"
+msgstr "không kiểm tra nếu gói cài đặt được cài đặt sau khi xây dựng"
 
 #: pkgbuilder/main.py:82
 msgid "don't install packages after building"
-msgstr "作成後、パッケージをインストールしない"
+msgstr "không cài đặt các gói cài đặt sau khi xây dựng"
 
 #: pkgbuilder/main.py:85
 msgid "pacman-like mode"
-msgstr "pacmanモード"
+msgstr "chế độ pacman-like"
 
 #: pkgbuilder/main.py:88
 msgid "perform a failsafe upgrade of PKGBUILDer"
-msgstr ""
+msgstr "thực hiện việc nâng cấp dự phòng PKGBUILDer"
 
 #: pkgbuilder/main.py:90
 msgid "(dummy)"
-msgstr "（本当は何もしない）"
+msgstr "(dummy)"
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
 #: pkgbuilder/main.py:130
 msgid "Search query too short"
-msgstr ""
+msgstr "Truy vấn tìm kiếm quá ngắn"
 
 #: pkgbuilder/main.py:131
 msgid "Searching for exact match..."
-msgstr "完全一致を検索中・・・"
+msgstr "Đang tìm kiếm dữ liệu khớp..."
 
 #: pkgbuilder/main.py:134 INSTALL.py:65 INSTALL.py:74
 msgid "not found"
-msgstr "見つからなかった"
+msgstr "không tìm thấy"
 
 #: pkgbuilder/main.py:171
 msgid "PKGBUILDer Failsafe Upgrade"
-msgstr ""
+msgstr "Nâng cấp PKGBUILDer dự phòng"
 
 #: pkgbuilder/main.py:174
 msgid "Build the git version? [y/N] "
-msgstr ""
+msgstr "Xây dựng phiên bản git? [y/N]"
 
 #: pkgbuilder/main.py:201
 msgid "Running PKGBUILDer as root can break your system!"
-msgstr "管理者としてPKGBUILDerを実行すると危険性あり！"
+msgstr "Chạy PKGBUILDer dưới dạng root có thể phá hỏng hệ thống của bạn!"
 
 #. TRANSLATORS: do not translate the word 'requests'.
 #: pkgbuilder/main.py:226
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
-msgstr "PKGBUILDerか「requests」ライブラリがHTTPリクエストを遂行できなかった。"
+msgstr ""
+"PKGBUILDer (hoặc thư viện xử lý yêu cầu) gặp trục trặc khi xử lý các yêu cầu "
+"HTTP."
 
 #. TRANSLATORS: see makepkg.
 #: pkgbuilder/pbds.py:46
 msgid "Aborted by user! Exiting..."
-msgstr "ユーザーによる強制終了！"
+msgstr "Được hủy bởi người dùng! Đang thoát..."
 
 #. TRANSLATORS: see pacman.
 #: pkgbuilder/pbds.py:48
 msgid "Interrupt signal received\n"
-msgstr "途中切断\n"
+msgstr "Đã nhận tín hiệu ngắt\n"
 
 #: pkgbuilder/pbds.py:87 pkgbuilder/pbds.py:222
 msgid "ERROR:"
-msgstr "エラー："
+msgstr "LỖI:"
 
 #: pkgbuilder/pbds.py:87
 msgid "Cannot create the configuration directory."
-msgstr "設定ディレクトリ作れなかった。"
+msgstr "Không thể tạo thư mục cấu hình."
 
 #: pkgbuilder/pbds.py:89 pkgbuilder/pbds.py:208
 msgid "WARNING:"
-msgstr "警告："
+msgstr "CẢNH BÁO:"
 
 #: pkgbuilder/pbds.py:89
 msgid "Logs will not be created."
-msgstr "ログは作られない。"
+msgstr "Nhật ký sẽ không được tạo."
 
 #: pkgbuilder/pbds.py:104
 msgid "Initializing pacman access..."
-msgstr ""
+msgstr "Đang thiết lập truy cập pacman..."
 
 #: pkgbuilder/upgrade.py:117 pkgbuilder/upgrade.py:119
 msgid "Synchronizing package databases..."
-msgstr "パッケージデーターベースを同期中・・・"
+msgstr "Đang đồng bộ hóa cơ sở dữ liệu gói cài đặt..."
 
 #: pkgbuilder/upgrade.py:129 pkgbuilder/upgrade.py:131
 msgid "Starting full system upgrade..."
-msgstr "完全アップグレードを開始・・・"
+msgstr "Đang bắt đầu cập nhật toàn bộ hệ thống..."
 
 #: pkgbuilder/upgrade.py:136 pkgbuilder/upgrade.py:139
 #, python-brace-format
 msgid "{0}: local ({1}) is newer than aur ({2})"
-msgstr "{0}: ローカル「{1}」はAURの「{2}」より最新"
+msgstr "{0}: hiện tại ({1}) mới hơn aur ({2})"
 
 #: pkgbuilder/upgrade.py:148 pkgbuilder/upgrade.py:150
 msgid "there is nothing to do"
-msgstr "することがない"
+msgstr "không có thao tác nào được thực hiện"
 
 #: pkgbuilder/upgrade.py:174 pkgbuilder/upgrade.py:180
 msgid "The following packages should be upgraded first:"
-msgstr ""
+msgstr "Các gói tin sau đây nên được nâng cấp đầu tiên:"
 
 #: pkgbuilder/upgrade.py:177
 msgid "Do you want to cancel the current operation"
-msgstr ""
+msgstr "Bạn có muốn hủy bỏ tiến trình hiện tại"
 
 #: pkgbuilder/upgrade.py:178
 msgid "and upgrade these packages now? [Y/n] "
-msgstr ""
+msgstr "và cập nhật các gói cài đặt ngay bây giờ? [Y/n]"
 
 #: pkgbuilder/upgrade.py:185
 msgid ""
 "Do you want to cancel the current operation and upgrade these packages now? "
 "[Y/n] "
 msgstr ""
+"Bạn có muốn hủy bỏ tiến trình hiện tại và cập nhật các gói cài đặt này ngay "
+"bây giờ? [Y/n]"
 
 #: pkgbuilder/upgrade.py:203 pkgbuilder/upgrade.py:270
 #, python-brace-format
 msgid "Targets ({0}): "
-msgstr "「{0}」の該当パッケージ："
+msgstr "Mục tiêu ({0}): "
 
 #: pkgbuilder/upgrade.py:218
 msgid "Name"
-msgstr ""
+msgstr "Tên"
 
 #: pkgbuilder/upgrade.py:218
 msgid "Old Version"
-msgstr ""
+msgstr "Phiên bản cũ"
 
 #: pkgbuilder/upgrade.py:218
 msgid "New Version"
-msgstr ""
+msgstr "Phiên bản mới"
 
 #. string stolen from pacman
 #: pkgbuilder/upgrade.py:241
 msgid "warning: insufficient columns available for table display"
-msgstr ""
+msgstr "cảnh báo: các cột hiển thị cho thông tin về bảng dữ liệu hiện bị lỗi"
 
 #: pkgbuilder/upgrade.py:268 pkgbuilder/upgrade.py:274
 msgid "Proceed with installation? [Y/n] "
-msgstr "続行？ [Y/n]"
+msgstr "Tiếp tục cài đặt? [Y/n]"
 
 #: pkgbuilder/utils.py:95
 #, python-brace-format
 msgid " [installed: {0}]"
-msgstr "[インストール済み：{0}]"
+msgstr " [đã cài đặt: {0}]"
 
 #: pkgbuilder/utils.py:97
 msgid " [installed]"
-msgstr "[インストール済み]"
+msgstr " [đã cài đặt]"
 
 #: pkgbuilder/utils.py:101
 msgid "[out of date]"
-msgstr "[要更新]"
+msgstr "[đã quá hạn]"
 
 #: pkgbuilder/utils.py:122
 msgid "votes"
-msgstr "投票数"
+msgstr "bình chọn"
 
 #: pkgbuilder/utils.py:138
 msgid "Didn’t pass any packages."
-msgstr ""
+msgstr "Vẫn chưa thông qua gói cài đặt nào."
 
 #: pkgbuilder/utils.py:142
 msgid "Trying to use utils.print_package_info with an ABS package"
-msgstr ""
+msgstr "Đang cố sử dụng utils.print_package_info với gói cài đặt ABS"
 
 #. TRANSLATORS: space it properly.  “yes/no” below are
 #. for “out of date”.
@@ -465,31 +471,31 @@ msgid ""
 "Last Updated   : {upd}\n"
 "Description    : {dsc}\n"
 msgstr ""
-"レポジトリ     : aur\n"
-"カテゴリ       : {cat}\n"
-"名前           : {nme}\n"
-"バージョン     : {ver}\n"
+"Người ủy thác     : aur\n"
+"Phân loại       : {cat}\n"
+"Tên           : {nme}\n"
+"Phiên bản        : {ver}\n"
 "URL            : {url}\n"
-"ライセンス     : {lic}\n"
-"投票数         : {cmv}\n"
-"AUR状態        : {ood}\n"
-"メンテナー     : {mnt}\n"
-"初提出         : {fsb}\n"
-"最近更新日付   : {upd}\n"
-"説明           : {dsc}\n"
+"Giấy phép       : {lic}\n"
+"Votes          : {cmv}\n"
+"Quá hạn    : {ood}\n"
+"Người điều hành     : {mnt}\n"
+"Phát hành lần đầu: {fsb}\n"
+"Cập nhật lần cuối   : {upd}\n"
+"Mô tả    : {dsc}\n"
 
 #: pkgbuilder/utils.py:182
 msgid "yes"
-msgstr "要更新"
+msgstr "có"
 
 #: pkgbuilder/utils.py:184
 msgid "no"
-msgstr "最新"
+msgstr "không"
 
 #: pkgbuilder/wrapper.py:102
 #, python-format
 msgid "%(prog)s <operation> [...]"
-msgstr "%(prog)s <選択肢> [...]"
+msgstr "%(prog)s <operation> [...]"
 
 #. TRANSLATORS: see pacman’s localizations
 #: pkgbuilder/wrapper.py:265
@@ -507,14 +513,26 @@ msgid ""
 "Additional options:\n"
 "  -L, --unlock         unlock the pacman database"
 msgstr ""
+"cách dùng:  {0} <tiến trình> [...]\n"
+"\n"
+"PBWrapper, là wrapper dành cho pacman và PKGBUILDer.\n"
+"\n"
+"{1}\n"
+"\n"
+"Chỉ áp dụng cho cú pháp thuộc Pacman và PKGBUILDer.  Tra cứu các văn bản/"
+"lệnh\n"
+"trợ giúp để biết thêm chi tiết.\n"
+"\n"
+"Tùy chọn bổ sung:\n"
+"  -L, --unlock         mở khóa phần cơ sở dữ liệu của pacman"
 
 #: INSTALL.py:53
 msgid "Performing a dependency check..."
-msgstr "従属パッケージ確認中・・・"
+msgstr "Đang thực hiện việc kiểm tra độc lập..."
 
 #: INSTALL.py:62 INSTALL.py:71
 msgid "found"
-msgstr "発見"
+msgstr "đã tìm thấy"
 
 #: INSTALL.py:96
 #, python-brace-format
@@ -529,6 +547,16 @@ msgid ""
 "\n"
 "If I am wrong, though, congratulations!\n"
 msgstr ""
+"\n"
+"\n"
+"Đã xảy ra lỗi.  Vùi lòng đọc dữ liệu xuất ra của makepkg và thử lại lần "
+"nữa.\n"
+"Bạn cũng có thể tự mình sửa các gỡ rối dựa vào đoạn mã lênh này theo ý bạn.\n"
+"Tất cả các tập tin mà đoạn mã lệnh này tác động tới được đặt ở\n"
+"    {0}\n"
+"(con số này là ngẫu nhiên).\n"
+"\n"
+"Nếu như lỗi này thuộc về nhà phát triển, bạn hãy liên hệ với chúng tôi!\n"
 
 #: INSTALL.py:114
 msgid ""
@@ -540,21 +568,22 @@ msgid ""
 "and compile the package manually.\n"
 "\n"
 msgstr ""
-"こんにちは！\n"
+"Xin chào!\n"
 "\n"
-"PKGBUILDerはAURパッケージとしても提供されている。AURを通して\n"
-"PKGBUILDerをインストールすることを薦める。このスクリプトはAURパッケージを\n"
-"ダウンロードしてインストールしてくれる。何か問題があったら、\n"
-"自分でコードをダウンロードしてコンパイルして見て下さい。\n"
+"PKGBUILDer hiện là gói cài đặt AUR. Đây hiện là cách cài đặt\n"
+"được khuyên dùng đối với PKGBUILDer.  Phần mã lệnh này sẽ tải về gói tin "
+"AUR\n"
+"và tiến hành cài đặt.  Nếu gặp phải trục trặc, xin vui lòng tải về\n"
+"và biên dịch các gói tin một cách tuần tự.\n"
 "\n"
 
 #: INSTALL.py:123
 msgid "Hit Enter/Return to continue. "
-msgstr "EnterやReturnを押して続行。"
+msgstr "Ấn Enter/Return để tiếp tục."
 
 #: INSTALL.py:135
 msgid "Installing missing AUR dependencies..."
-msgstr "必要な従属AURパッケージをインストール・・・"
+msgstr "Đang cài đặt các phần AUR độc lập còn thiếu..."
 
 #: INSTALL.py:142
 #, python-brace-format
@@ -572,6 +601,22 @@ msgid ""
 "(zsh users: hash -r, other shells may need another command).  For\n"
 "python module usage, type `import pkgbuilder` into the python prompt.\n"
 msgstr ""
+"\n"
+"\n"
+"Đọc phần dữ liệu được xuất ra bên trên.  Nếu các đoạn mã lệnh gặp vấn đề, "
+"hãy chạy lại các đoạn mã lệnh này một lần nữa.  Bạn cũng có thể tự mình sửa "
+"phần gỡ rối này.\n"
+"Tất cả các tập tin mà đoạn mã lệnh này tác động tới được đặt ở\n"
+"    {0}\n"
+"(con số này là ngẫu nhiên).\n"
+"\n"
+"INếu như lỗi này thuộc về nhà phát triển, bạn hãy liên hệ với chúng tôi!  "
+"Bạn hiện giờ đã có thể sử dụng\n"
+"PKGBUILDer.  Đối với kiểu dùng theo dạng tập tin tự chay, gõ `pkgbuilder` "
+"vào trong cửa sổ mã lệnh\n"
+"(người dùng zsh: hash -r, các shell khác sẽ cần thêm một dòng lệnh nữa).  "
+"Đối với cách sử dụng module Python, gõ `import pkgbuilder` vào trong cửa sổ "
+"mã lệnh của python.\n"
 
 #: INSTALL.py:158
 msgid ""
@@ -581,9 +626,11 @@ msgid ""
 "If that's what you want to do, go for it.  If it isn't, run this\n"
 "script again."
 msgstr ""
-"終わりたいようだな。じゃあ、さようなら。\n"
-"まだ何もしていないので。\n"
-"本当に終わりたいなら止めない。違ったら再度このスクリプトを実行！"
+"Có vẻ như bạn muốn thoát. Nếu thế thì, chào tạm biệt.\n"
+"Hiện các công việc vẫn chưa được thực hiện.\n"
+"\n"
+"Nếu đây là điều bạn muốn, xin cứ tiếp tục. Nếu không phải, hãy thực thi\n"
+"đoạn mã lệnh này lần nữa."
 
 #: INSTALL.py:164
 #, python-brace-format
@@ -596,20 +643,27 @@ msgid ""
 "If that's what you want to do, go for it.  If it isn't, run this\n"
 "script again."
 msgstr ""
+"Có vẻ như bạn đang muốn thoát.  Nếu vậy, xin chào tạm biệt.\n"
+"Tất cả các tập tin mà đoạn mã lệnh này tác động tới được đặt ở\n"
+"    {0}\n"
+"(con số này là ngẫu nhiên).\n"
+"\n"
+"Nếu đó là điều bạn muốn thao tác, cứ tiếp tục.  Nếu không phải, chạy lại\n"
+"đoạn mã này một lần nữa."
 
 #. A module only for gettext locale provision.
 #: localeprovider.py:2
 msgid "usage"
-msgstr "使い方"
+msgstr "cách dùng"
 
 #: localeprovider.py:3
 msgid "positional arguments"
-msgstr "選択肢"
+msgstr "vị trí đối số"
 
 #: localeprovider.py:4
 msgid "optional arguments"
-msgstr "副選択肢"
+msgstr "tùy chọn đối số"
 
 #: localeprovider.py:5
 msgid "show this help message and exit"
-msgstr "このメッセージを出力して終わる"
+msgstr "hiển thị thông điệp trợ giúp và thoát"
