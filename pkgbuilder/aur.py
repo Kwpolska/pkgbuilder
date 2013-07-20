@@ -48,8 +48,7 @@ class AUR:
               ``pkgbuilder.utils.{info,search,msearch}()`` instead.
     """
 
-    rpc = 'https://aur.archlinux.org/rpc.php?type={0}&arg={1}'
-    mrpc = 'https://aur.archlinux.org/rpc.php?type=multiinfo{0}'
+    rpc = 'https://aur.archlinux.org/rpc.php'
 
     def jsonreq(self, rtype, arg):
         """Makes a request and returns plain JSON data."""
@@ -58,7 +57,7 @@ class AUR:
             return '{"type": "info", "resultcount": 0, "results": []}'
 
         try:
-            req = requests.get(self.rpc.format(rtype, arg))
+            req = requests.get(self.rpc, params={'type': rtype, 'arg': arg})
             req.raise_for_status()
         except requests.exceptions.ConnectionError as e:
             raise ConnectionError(e.args[0].reason, e)
@@ -75,9 +74,8 @@ class AUR:
             # No need to bother.  String for JSON.
             return '{"type": "info", "resultcount": 0, "results": []}'
 
-        urlargs = '&arg[]=' + '&arg[]='.join(args)
         try:
-            req = requests.get(self.mrpc.format(urlargs))
+            req = requests.get(self.rpc, params={'type': 'multiinfo', 'arg[]': args})
             req.raise_for_status()
         except requests.exceptions.ConnectionError as e:
             raise ConnectionError(e.args[0].reason, e)
