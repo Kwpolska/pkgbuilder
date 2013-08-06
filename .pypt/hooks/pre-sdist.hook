@@ -1,0 +1,21 @@
+#!/bin/zsh
+# pbwrapper help testing
+pacman -Sh > /tmp/pbwrapperhelp
+bin/$project -h >> /tmp/pbwrapperhelp
+
+diff -u .pbwrapperhelp /tmp/pbwrapperhelp > /tmp/pbwrapperdiff
+if [[ $? = 1 ]]; then
+    echo 'pbwrapperhelp has changed.'
+    cat /tmp/pbwrapperdiff
+    echo 'Hit Enter to quit or c to copy the file over and continue.'
+    read pbwrapperhelp
+    if [[ $pbwrapperhelp = 'c' ]]; then
+        cp /tmp/pbwrapperhelp .pbwrapperhelp
+        rm /tmp/pbwrapperhelp /tmp/pbwrapperdiff
+        echo 'Continuing with release scripts.'
+    else
+        rm /tmp/pbwrapperhelp /tmp/pbwrapperdiff
+        exit 1
+    fi
+fi
+

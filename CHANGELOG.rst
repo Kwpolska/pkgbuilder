@@ -44,13 +44,18 @@ GitHub holds releases, too
 
 More information can be found on GitHub in the `releases section <https://github.com/Kwpolska/pkgbuilder/releases>`_.
 
+Version History
+===============
+
 Generation 3
-============
+------------
 
 3.1.5
     Added Vietnamese.
+
 3.1.4
     Fixed a mess.
+
 3.1.3
     Fixes to the safeupgrade; added Italian, Spanish and Turkish.
 
@@ -72,7 +77,7 @@ Generation 3
     A new major release, introducing many new wonderful features.
 
 Testing git-only releases
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 2.99.6.0
     Package classes done.
@@ -84,7 +89,7 @@ Testing git-only releases
     First four stages done.
 
 Generation 2
-============
+------------
 2.1.6.0–2.1.6.3
     VerbosePkgLists, DS.run_command() and subsequent fixes to the latter
 
@@ -229,7 +234,7 @@ Generation 2
     First release.
 
 Generation 1
-============
+------------
 
 1.1
     A more advanced version, never released publicly, and I do not even have
