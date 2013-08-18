@@ -377,30 +377,32 @@ def find_packagefile(pkg, pdir):
             return [[], []]
 
 
-def fetch_runner(pkgnames):
+def fetch_runner(pkgnames, preprocessed=False):
     """Run the fetch procedure."""
     abspkgs = []
     aurpkgs = []
     try:
-        print(':: ' + _('Fetching package information...'))
-        for pkgname in pkgnames:
-            pkg = None
-            try:
-                pkg = pkgbuilder.utils.info([pkgname])[0]
-            except IndexError:
+        if not preprocessed:
+            print(':: ' + _('Fetching package information...'))
+            for pkgname in pkgnames:
+                pkg = None
                 try:
-                    DS.log.info('{0} not found in the AUR, checking in '
-                                'ABS'.format(pkgname))
-                    syncpkgs = []
-                    for j in [i.pkgcache for i in DS.pyc.get_syncdbs()]:
-                        syncpkgs.append(j)
-                    syncpkgs = functools.reduce(lambda x, y: x + y, syncpkgs)
-                    abspkg = pyalpm.find_satisfier(syncpkgs, pkgname)
-                    pkg = pkgbuilder.package.ABSPackage.from_pyalpm(abspkg)
+                    pkg = pkgbuilder.utils.info([pkgname])[0]
+                except IndexError:
+                    try:
+                        DS.log.info('{0} not found in the AUR, checking in '
+                                    'ABS'.format(pkgname))
+                        syncpkgs = []
+                        for j in [i.pkgcache for i in DS.pyc.get_syncdbs()]:
+                            syncpkgs.append(j)
+                        syncpkgs = functools.reduce(lambda x, y: x + y, syncpkgs)
+                        abspkg = pyalpm.find_satisfier(syncpkgs, pkgname)
+                        pkg = pkgbuilder.package.ABSPackage.from_pyalpm(abspkg)
 
-                except AttributeError:
-                    pass
+                    except AttributeError:
+                        pass
 
+        for pkgname in pkgnames:
             if not pkg:
                 raise pkgbuilder.exceptions.PackageNotFoundError(pkgname,
                                                                  'fetch')
