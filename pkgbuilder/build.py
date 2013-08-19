@@ -381,8 +381,12 @@ def fetch_runner(pkgnames, preprocessed=False):
     """Run the fetch procedure."""
     abspkgs = []
     aurpkgs = []
+    allpkgs = []
     try:
-        if not preprocessed:
+        if preprocessed:
+            allpkgs = pkgnames
+            pkgnames = [p.name for p in allpkgs]
+        else:
             print(':: ' + _('Fetching package information...'))
             for pkgname in pkgnames:
                 pkg = None
@@ -401,8 +405,9 @@ def fetch_runner(pkgnames, preprocessed=False):
 
                     except AttributeError:
                         pass
+                allpkgs += pkg
 
-        for pkgname in pkgnames:
+        for pkg in allpkgs:
             if not pkg:
                 raise pkgbuilder.exceptions.PackageNotFoundError(pkgname,
                                                                  'fetch')
