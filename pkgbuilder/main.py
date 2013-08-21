@@ -18,6 +18,7 @@
 from . import DS, _, __version__
 from pkgbuilder.exceptions import NetworkError, PBException
 import pkgbuilder.build
+import pkgbuilder.exceptions
 import pkgbuilder.utils
 import pkgbuilder.upgrade
 import argparse
@@ -51,6 +52,9 @@ def main(source='AUTO', quit=True):
         argopr.add_argument('-F', '--fetch', action='store_true',
                             default=False, dest='fetch',
                             help=_('fetch package files'))
+        argopr.add_argument('--userfetch', action='append',
+                            dest='userfetch', metavar=_('USER'),
+                            help=_('fetch all package files of an user'))
         argopr.add_argument('-i', '--info', action='store_true', default=False,
                             dest='info', help=_('view package information'))
         argopr.add_argument('-s', '--search', action='store_true',
@@ -184,6 +188,7 @@ def main(source='AUTO', quit=True):
             mpstatus = pkgbuilder.build.safeupgrade(pkgname)
 
             exit(mpstatus)
+
         if args.upgrade > 0:
             DS.log.info('Starting upgrade...')
             dodowngrade = args.upgrade > 1
@@ -192,6 +197,18 @@ def main(source='AUTO', quit=True):
 
         if args.fetch:
             pkgbuilder.build.fetch_runner(pkgnames)
+            exit(0)
+
+        if args.userfetch:
+            tofetch = []
+            print(':: ' + _('Fetching package information...'))
+            for u in args.userfetch:
+                try:
+                    tofetch += pkgbuilder.utils.msearch(u)
+                except pkgbuilder.exceptions.AURError as e:
+                    print(_('Error while processing {0}: {1}').format(u, e))
+
+            pkgbuilder.build.fetch_runner(tofetch, preprocessed=True)
             exit(0)
 
         # If we didn't quit, we should build the packages.
