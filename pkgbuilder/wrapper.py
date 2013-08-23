@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PBWrapper v0.2.2
+# PBWrapper v0.2.3
 # PKGBUILDer v3.1.5
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2013, Kwpolska.
@@ -75,8 +75,8 @@ def wrapper(source='AUTO'):
                        'ignore', 'ignoregroup', 'logfile', 'print-format',
                        'root']
 
-        pbshort = ['D', 'C']
-        pblong = ['vcsupgrade', 'nocolors', 'nodepcheck', 'novalidation',
+        pbshort = ['D', 'C', 'F']
+        pblong = ['fetch', 'userfetch', 'vcsupgrade', 'nocolors', 'nodepcheck', 'novalidation',
                   'buildonly']
 
         commonshort = ['S', 'd', 'i', 's', 'v', 'w']
@@ -255,6 +255,10 @@ def wrapper(source='AUTO'):
             sanityargs = [item for item in pkgnames if (item not in
                           sanitycheck)]
             DS.sudo([DS.paccommand] + pacargs + sanityargs)
+    elif (('-F' in argst) or ('--fetch' in argst) or ('--userfetch' in argst)
+          or (re.search('-[a-zA-Z]*F', ' '.join(argst)) is not None)):
+        # pkgbuilder -F, --fetch / --userfetch.
+        main(argst)
     elif ('-h' in argst) or ('--help' in argst):
         pacdoc = subprocess.check_output('pacman --help || true',
                                          shell=True).decode('utf-8')

@@ -34,8 +34,8 @@ options:
       --noscriptlet    do not execute the install scriptlet if one exists
       --print-format <string>
                        specify how the targets should be printed
-usage: pkgbuilder [-h] [-V] [-F] [-i] [-s] [-u] [-c] [-C] [--debug] [-d] [-D]
-                  [-v] [-w] [-S] [--safeupgrade] [-y]
+usage: pkgbuilder [-h] [-V] [-F] [--userfetch USER] [-i] [-s] [-u] [-c] [-C]
+                  [--debug] [-d] [-D] [-v] [-w] [-S] [--safeupgrade] [-y]
                   [PACKAGE [PACKAGE ...]]
 
 An AUR helper (and library) in Python 3.
@@ -49,6 +49,7 @@ optional arguments:
 
 operations:
   -F, --fetch         fetch package files
+  --userfetch USER    fetch all package files of an user
   -i, --info          view package information
   -s, --search        search the AUR for matching strings
   -u, --sysupgrade    upgrade installed AUR packages
