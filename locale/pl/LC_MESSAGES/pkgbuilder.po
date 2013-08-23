@@ -7,10 +7,10 @@
 # Kwpolska <kwpolska@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: 3.1.6\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: 2013-07-06 11:40+0000\n"
+"POT-Creation-Date: 2013-08-23 18:23+0200\n"
+"PO-Revision-Date: 2013-08-23 15:59+0000\n"
 "Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/pkgbuilder/"
 "language/pl/)\n"
@@ -49,29 +49,29 @@ msgstr "{0} nieaktualny {1}"
 msgid "Installing built packages..."
 msgstr "Instalowanie zbudowanych pakietów..."
 
-#: pkgbuilder/build.py:100 pkgbuilder/build.py:385
+#: pkgbuilder/build.py:100 pkgbuilder/build.py:390 pkgbuilder/main.py:204
 msgid "Fetching package information..."
 msgstr "Pobieranie informacji o pakiecie..."
 
-#: pkgbuilder/build.py:104 pkgbuilder/build.py:483
+#: pkgbuilder/build.py:104 pkgbuilder/build.py:490
 msgid "Downloading the tarball..."
 msgstr "Pobieranie tarballa..."
 
-#: pkgbuilder/build.py:107 pkgbuilder/build.py:486
+#: pkgbuilder/build.py:107 pkgbuilder/build.py:493
 #, python-brace-format
 msgid "{0} kB downloaded"
 msgstr "pobrano {0} kB"
 
-#: pkgbuilder/build.py:109 pkgbuilder/build.py:488
+#: pkgbuilder/build.py:109 pkgbuilder/build.py:495
 msgid "Extracting..."
 msgstr "Wypakowywanie..."
 
-#: pkgbuilder/build.py:110 pkgbuilder/build.py:489
+#: pkgbuilder/build.py:110 pkgbuilder/build.py:496
 #, python-brace-format
 msgid "{0} files extracted"
 msgstr "wypakowano {0} plików"
 
-#: pkgbuilder/build.py:112 pkgbuilder/build.py:465
+#: pkgbuilder/build.py:112 pkgbuilder/build.py:472
 #, python-brace-format
 msgid "Building {0}..."
 msgstr "Budowanie {0}..."
@@ -122,53 +122,53 @@ msgstr "Nic nie wypakowano."
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr "Nie udało się wypełnić wymagań zależności pakietu: {0}"
 
-#: pkgbuilder/build.py:413
+#: pkgbuilder/build.py:420
 msgid ":: Retrieving packages from abs..."
 msgstr ":: Pobieranie pakietów z abs..."
 
-#: pkgbuilder/build.py:416 pkgbuilder/build.py:427
+#: pkgbuilder/build.py:423 pkgbuilder/build.py:434
 #, python-brace-format
 msgid "retrieving {0}"
 msgstr "pobieranie {0}"
 
-#: pkgbuilder/build.py:420 pkgbuilder/build.py:477
+#: pkgbuilder/build.py:427 pkgbuilder/build.py:484
 #, python-brace-format
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr "Nie udało się pobrać {0} (z ABS/rsync)."
 
-#: pkgbuilder/build.py:424
+#: pkgbuilder/build.py:431
 msgid ":: Retrieving packages from aur..."
 msgstr ":: Pobieranie pakietów z aur..."
 
-#: pkgbuilder/build.py:431
+#: pkgbuilder/build.py:438
 msgid "Extracting AUR packages..."
 msgstr "Wypakowywanie pakietów z AUR..."
 
-#: pkgbuilder/build.py:436
+#: pkgbuilder/build.py:443
 msgid "Successfully fetched: "
 msgstr "Pomyślnie pobrano: "
 
-#: pkgbuilder/build.py:473
+#: pkgbuilder/build.py:480
 msgid "Retrieving from ABS..."
 msgstr "Pobieranie z ABS..."
 
-#: pkgbuilder/build.py:493
+#: pkgbuilder/build.py:500
 msgid "Checking dependencies..."
 msgstr "Sprawdzanie zależności..."
 
-#: pkgbuilder/build.py:496
+#: pkgbuilder/build.py:503
 msgid "found in system"
 msgstr "znaleziono w systemie"
 
-#: pkgbuilder/build.py:496
+#: pkgbuilder/build.py:503
 msgid "found in repos"
 msgstr "znaleziono w repozytoriach"
 
-#: pkgbuilder/build.py:497
+#: pkgbuilder/build.py:504
 msgid "found in the AUR"
 msgstr "znaleziono w AUR"
 
-#: pkgbuilder/build.py:500
+#: pkgbuilder/build.py:507
 msgid "none found"
 msgstr "brak"
 
@@ -214,122 +214,135 @@ msgstr "Sanity test nieudany!  {0} (via {1})"
 
 #. TRANSLATORS: translate the whole sentence.
 #. Alternatively, use translation instead of locale.
-#: pkgbuilder/main.py:36
+#: pkgbuilder/main.py:37
 msgid "LANG locale by AUTHOR <MAIL@IF.YOU.WANT>"
 msgstr "Polskie tłumaczenie autorstwa Kwpolska <kwpolska@kwpolska.tk>"
 
-#: pkgbuilder/main.py:40
+#: pkgbuilder/main.py:41
 msgid "An AUR helper (and library) in Python 3."
 msgstr "Pomocnik AUR (i biblioteka) w Pythonie 3."
 
-#: pkgbuilder/main.py:42
+#: pkgbuilder/main.py:43
 msgid "Also accepting ABS packages."
 msgstr "Również akceptuje pakiety z ABS."
 
-#: pkgbuilder/main.py:46
+#: pkgbuilder/main.py:47
 msgid "show version number and quit"
 msgstr "pokaż numer wersji i wyjdź"
 
-#: pkgbuilder/main.py:47
+#: pkgbuilder/main.py:48
 msgid "PACKAGE"
 msgstr "PAKIET"
 
-#: pkgbuilder/main.py:48
+#: pkgbuilder/main.py:49
 msgid "AUR/ABS packages to build"
 msgstr "pakiety do zbudowania z AUR i ABS"
 
-#: pkgbuilder/main.py:50
+#: pkgbuilder/main.py:51
 msgid "operations"
 msgstr "operacje"
 
-#: pkgbuilder/main.py:53
+#: pkgbuilder/main.py:54
 msgid "fetch package files"
 msgstr "pobierz pliki pakietów"
 
-#: pkgbuilder/main.py:55
+#: pkgbuilder/main.py:56
+msgid "USER"
+msgstr "UŻYTKOWNIK"
+
+#: pkgbuilder/main.py:57
+msgid "fetch all package files of an user"
+msgstr "pobierz wszystkie pliki pakietów użytkownika"
+
+#: pkgbuilder/main.py:59
 msgid "view package information"
 msgstr "wyświetla informację o pakiecie"
 
-#: pkgbuilder/main.py:57
+#: pkgbuilder/main.py:61
 msgid "search the AUR for matching strings"
 msgstr "przeszukuje AUR według pasujących ciągów"
 
-#: pkgbuilder/main.py:61
+#: pkgbuilder/main.py:65
 msgid "upgrade installed AUR packages"
 msgstr "uaktualnia zainstalowane pakiety z AUR"
 
-#: pkgbuilder/main.py:63
+#: pkgbuilder/main.py:67
 msgid "options"
 msgstr "opcje"
 
-#: pkgbuilder/main.py:65
+#: pkgbuilder/main.py:69
 msgid "clean up work files after build"
 msgstr "usuń pliki robocze po wszystkim"
 
-#: pkgbuilder/main.py:68
+#: pkgbuilder/main.py:72
 msgid "don't use colors in output"
 msgstr "nie używa kolorów na wyjściu"
 
-#: pkgbuilder/main.py:71
+#: pkgbuilder/main.py:75
 msgid "display debug messages"
 msgstr "pokazuje wiadomości debugowania"
 
-#: pkgbuilder/main.py:73
+#: pkgbuilder/main.py:77
 msgid "don't check dependencies (may break makepkg)"
 msgstr "nie sprawdza zależności (może popsuć makepkg)"
 
-#: pkgbuilder/main.py:76
+#: pkgbuilder/main.py:80
 msgid "upgrade all the VCS/date-versioned packages"
 msgstr "uaktualnia wszystkie pakiety z VCS/z wersjami będącymi datami"
 
-#: pkgbuilder/main.py:79
+#: pkgbuilder/main.py:83
 msgid "don't check if packages were installed after build"
 msgstr "nie sprawdza czy pakiety zostały zainstalowane po zbudowaniu"
 
-#: pkgbuilder/main.py:82
+#: pkgbuilder/main.py:86
 msgid "don't install packages after building"
 msgstr "nie instaluje pakietów po zbudowaniu"
 
-#: pkgbuilder/main.py:85
+#: pkgbuilder/main.py:89
 msgid "pacman-like mode"
 msgstr "tryb podobny do pacmana"
 
-#: pkgbuilder/main.py:88
+#: pkgbuilder/main.py:92
 msgid "perform a failsafe upgrade of PKGBUILDer"
 msgstr "wykonuje bezpieczną aktualizację PKGBUILDera"
 
-#: pkgbuilder/main.py:90
+#: pkgbuilder/main.py:94
 msgid "(dummy)"
 msgstr "(nic nie robi)"
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
-#: pkgbuilder/main.py:130
+#: pkgbuilder/main.py:134
 msgid "Search query too short"
 msgstr "zapytanie do wyszukiwarki zbyt krótkie"
 
-#: pkgbuilder/main.py:131
+#: pkgbuilder/main.py:135
 msgid "Searching for exact match..."
 msgstr "Szukanie dokładnego dopasowania..."
 
-#: pkgbuilder/main.py:134 INSTALL.py:65 INSTALL.py:74
+#: pkgbuilder/main.py:138 INSTALL.py:65 INSTALL.py:74
 msgid "not found"
 msgstr "nie znaleziono"
 
-#: pkgbuilder/main.py:171
+#: pkgbuilder/main.py:175
 msgid "PKGBUILDer Failsafe Upgrade"
 msgstr "Bezpieczna Aktualizacja PKGBUILDera"
 
-#: pkgbuilder/main.py:174
+#: pkgbuilder/main.py:178
 msgid "Build the git version? [y/N] "
 msgstr "Zbudować wersję z git? [y/N] "
 
-#: pkgbuilder/main.py:201
+#: pkgbuilder/main.py:209
+#, python-brace-format
+msgid "Error while processing {0}: {1}"
+msgstr "Błąd podczas przetwarzania {0}: {1}"
+
+#: pkgbuilder/main.py:218
 msgid "Running PKGBUILDer as root can break your system!"
 msgstr "Używanie PKGBUILDera jako root może popsuć twój system!"
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/main.py:226
+#: pkgbuilder/main.py:243
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
@@ -499,7 +512,7 @@ msgid "%(prog)s <operation> [...]"
 msgstr "%(prog)s <operacja> [...]"
 
 #. TRANSLATORS: see pacman’s localizations
-#: pkgbuilder/wrapper.py:265
+#: pkgbuilder/wrapper.py:269
 #, python-brace-format
 msgid ""
 "usage:  {0} <operation> [...]\n"

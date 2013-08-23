@@ -7,11 +7,11 @@
 # ppanhh <ppanhh@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: 3.1.6\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: \n"
-"PO-Revision-Date: 2013-07-09 08:10+0000\n"
-"Last-Translator: ppanhh <ppanhh@gmail.com>\n"
+"POT-Creation-Date: 2013-08-23 18:23+0200\n"
+"PO-Revision-Date: 2013-08-23 15:58+0000\n"
+"Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/projects/p/pkgbuilder/"
 "language/vi/)\n"
 "Language: vi\n"
@@ -48,29 +48,29 @@ msgstr "{0}: quá hạn {1}"
 msgid "Installing built packages..."
 msgstr "Đang cài đặt các gói dữ liệu..."
 
-#: pkgbuilder/build.py:100 pkgbuilder/build.py:385
+#: pkgbuilder/build.py:100 pkgbuilder/build.py:390 pkgbuilder/main.py:204
 msgid "Fetching package information..."
 msgstr "Đang tải về thông tin của gói cài đặt..."
 
-#: pkgbuilder/build.py:104 pkgbuilder/build.py:483
+#: pkgbuilder/build.py:104 pkgbuilder/build.py:490
 msgid "Downloading the tarball..."
 msgstr "Đang tải về các tập tin tarball..."
 
-#: pkgbuilder/build.py:107 pkgbuilder/build.py:486
+#: pkgbuilder/build.py:107 pkgbuilder/build.py:493
 #, python-brace-format
 msgid "{0} kB downloaded"
 msgstr "{0} kB đã tải về"
 
-#: pkgbuilder/build.py:109 pkgbuilder/build.py:488
+#: pkgbuilder/build.py:109 pkgbuilder/build.py:495
 msgid "Extracting..."
 msgstr "Đang giải nén.."
 
-#: pkgbuilder/build.py:110 pkgbuilder/build.py:489
+#: pkgbuilder/build.py:110 pkgbuilder/build.py:496
 #, python-brace-format
 msgid "{0} files extracted"
 msgstr "{0} tập tin đã giải nén"
 
-#: pkgbuilder/build.py:112 pkgbuilder/build.py:465
+#: pkgbuilder/build.py:112 pkgbuilder/build.py:472
 #, python-brace-format
 msgid "Building {0}..."
 msgstr "Đang xây dựng {0}..."
@@ -120,53 +120,53 @@ msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr ""
 "Thất bại trong việc điền vào các yêu cầu về sự phụ thuộc của gói tin: {0}"
 
-#: pkgbuilder/build.py:413
+#: pkgbuilder/build.py:420
 msgid ":: Retrieving packages from abs..."
 msgstr ":: Đang nhận các gói cài đặt từ abs.."
 
-#: pkgbuilder/build.py:416 pkgbuilder/build.py:427
+#: pkgbuilder/build.py:423 pkgbuilder/build.py:434
 #, python-brace-format
 msgid "retrieving {0}"
 msgstr "đang nhận {0}"
 
-#: pkgbuilder/build.py:420 pkgbuilder/build.py:477
+#: pkgbuilder/build.py:427 pkgbuilder/build.py:484
 #, python-brace-format
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr "Thất bại khi nhận {0} (từ ABS/rsync)."
 
-#: pkgbuilder/build.py:424
+#: pkgbuilder/build.py:431
 msgid ":: Retrieving packages from aur..."
 msgstr ":: Đang nhận các gói cài đặt từ aur..."
 
-#: pkgbuilder/build.py:431
+#: pkgbuilder/build.py:438
 msgid "Extracting AUR packages..."
 msgstr "Đang giải nén các gói cài đặt AUR..."
 
-#: pkgbuilder/build.py:436
+#: pkgbuilder/build.py:443
 msgid "Successfully fetched: "
 msgstr "Đã tải về thành công:"
 
-#: pkgbuilder/build.py:473
+#: pkgbuilder/build.py:480
 msgid "Retrieving from ABS..."
 msgstr "Đang nhận từ ABS..."
 
-#: pkgbuilder/build.py:493
+#: pkgbuilder/build.py:500
 msgid "Checking dependencies..."
 msgstr "Đang kiểm tra tính độc lập..."
 
-#: pkgbuilder/build.py:496
+#: pkgbuilder/build.py:503
 msgid "found in system"
 msgstr "đã được tìm thấy trong hệ thống"
 
-#: pkgbuilder/build.py:496
+#: pkgbuilder/build.py:503
 msgid "found in repos"
 msgstr "đã được tìm thấy trong repos"
 
-#: pkgbuilder/build.py:497
+#: pkgbuilder/build.py:504
 msgid "found in the AUR"
 msgstr "đã được tìm thấy trong AUR"
 
-#: pkgbuilder/build.py:500
+#: pkgbuilder/build.py:507
 msgid "none found"
 msgstr "không tìm thấy"
 
@@ -212,122 +212,135 @@ msgstr "Lỗi nghiêm trọng!  {0} (thông qua {1})"
 
 #. TRANSLATORS: translate the whole sentence.
 #. Alternatively, use translation instead of locale.
-#: pkgbuilder/main.py:36
+#: pkgbuilder/main.py:37
 msgid "LANG locale by AUTHOR <MAIL@IF.YOU.WANT>"
 msgstr "Được chuyển ngữ bởi tác giả <MAIL@IF.YOU.WANT>"
 
-#: pkgbuilder/main.py:40
+#: pkgbuilder/main.py:41
 msgid "An AUR helper (and library) in Python 3."
 msgstr "Tập tin trợ giúp AUR (và thư viện) ở định dạng Pythong 3"
 
-#: pkgbuilder/main.py:42
+#: pkgbuilder/main.py:43
 msgid "Also accepting ABS packages."
 msgstr "Chấp nhaạn gói cài đặt ABS."
 
-#: pkgbuilder/main.py:46
+#: pkgbuilder/main.py:47
 msgid "show version number and quit"
 msgstr "hiển thị số phiên bản và thoát"
 
-#: pkgbuilder/main.py:47
+#: pkgbuilder/main.py:48
 msgid "PACKAGE"
 msgstr "GÓI CÀI ĐẶT"
 
-#: pkgbuilder/main.py:48
+#: pkgbuilder/main.py:49
 msgid "AUR/ABS packages to build"
 msgstr "Gói cài đặt AUR/ABS để xây dựng"
 
-#: pkgbuilder/main.py:50
+#: pkgbuilder/main.py:51
 msgid "operations"
 msgstr "tiến trình"
 
-#: pkgbuilder/main.py:53
+#: pkgbuilder/main.py:54
 msgid "fetch package files"
 msgstr "tải các tập tin gói cài đặt"
 
-#: pkgbuilder/main.py:55
+#: pkgbuilder/main.py:56
+msgid "USER"
+msgstr ""
+
+#: pkgbuilder/main.py:57
+msgid "fetch all package files of an user"
+msgstr ""
+
+#: pkgbuilder/main.py:59
 msgid "view package information"
 msgstr "xem thông tin gói cài đặt"
 
-#: pkgbuilder/main.py:57
+#: pkgbuilder/main.py:61
 msgid "search the AUR for matching strings"
 msgstr "tìm kiếm các chuỗi khớp với AUR"
 
-#: pkgbuilder/main.py:61
+#: pkgbuilder/main.py:65
 msgid "upgrade installed AUR packages"
 msgstr "nâng cấp các gói cài đặt AUR đã cài"
 
-#: pkgbuilder/main.py:63
+#: pkgbuilder/main.py:67
 msgid "options"
 msgstr "tùy chọn"
 
-#: pkgbuilder/main.py:65
+#: pkgbuilder/main.py:69
 msgid "clean up work files after build"
 msgstr "xóa các tập tin sau khi đã xây dựng xong"
 
-#: pkgbuilder/main.py:68
+#: pkgbuilder/main.py:72
 msgid "don't use colors in output"
 msgstr "không sử dụng chế độ hiển thị màu với dữ liệu xuất ra"
 
-#: pkgbuilder/main.py:71
+#: pkgbuilder/main.py:75
 msgid "display debug messages"
 msgstr "hiển thị thông tin gỡ rối"
 
-#: pkgbuilder/main.py:73
+#: pkgbuilder/main.py:77
 msgid "don't check dependencies (may break makepkg)"
 msgstr "không kiểm tra tính độc lập (có thể phá bỏ makepkg)"
 
-#: pkgbuilder/main.py:76
+#: pkgbuilder/main.py:80
 msgid "upgrade all the VCS/date-versioned packages"
 msgstr "nâng cấp tất cả các gói cài đặt VCS/date-versioned"
 
-#: pkgbuilder/main.py:79
+#: pkgbuilder/main.py:83
 msgid "don't check if packages were installed after build"
 msgstr "không kiểm tra nếu gói cài đặt được cài đặt sau khi xây dựng"
 
-#: pkgbuilder/main.py:82
+#: pkgbuilder/main.py:86
 msgid "don't install packages after building"
 msgstr "không cài đặt các gói cài đặt sau khi xây dựng"
 
-#: pkgbuilder/main.py:85
+#: pkgbuilder/main.py:89
 msgid "pacman-like mode"
 msgstr "chế độ pacman-like"
 
-#: pkgbuilder/main.py:88
+#: pkgbuilder/main.py:92
 msgid "perform a failsafe upgrade of PKGBUILDer"
 msgstr "thực hiện việc nâng cấp dự phòng PKGBUILDer"
 
-#: pkgbuilder/main.py:90
+#: pkgbuilder/main.py:94
 msgid "(dummy)"
 msgstr "(dummy)"
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
-#: pkgbuilder/main.py:130
+#: pkgbuilder/main.py:134
 msgid "Search query too short"
 msgstr "Truy vấn tìm kiếm quá ngắn"
 
-#: pkgbuilder/main.py:131
+#: pkgbuilder/main.py:135
 msgid "Searching for exact match..."
 msgstr "Đang tìm kiếm dữ liệu khớp..."
 
-#: pkgbuilder/main.py:134 INSTALL.py:65 INSTALL.py:74
+#: pkgbuilder/main.py:138 INSTALL.py:65 INSTALL.py:74
 msgid "not found"
 msgstr "không tìm thấy"
 
-#: pkgbuilder/main.py:171
+#: pkgbuilder/main.py:175
 msgid "PKGBUILDer Failsafe Upgrade"
 msgstr "Nâng cấp PKGBUILDer dự phòng"
 
-#: pkgbuilder/main.py:174
+#: pkgbuilder/main.py:178
 msgid "Build the git version? [y/N] "
 msgstr "Xây dựng phiên bản git? [y/N]"
 
-#: pkgbuilder/main.py:201
+#: pkgbuilder/main.py:209
+#, python-brace-format
+msgid "Error while processing {0}: {1}"
+msgstr ""
+
+#: pkgbuilder/main.py:218
 msgid "Running PKGBUILDer as root can break your system!"
 msgstr "Chạy PKGBUILDer dưới dạng root có thể phá hỏng hệ thống của bạn!"
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/main.py:226
+#: pkgbuilder/main.py:243
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
@@ -498,7 +511,7 @@ msgid "%(prog)s <operation> [...]"
 msgstr "%(prog)s <operation> [...]"
 
 #. TRANSLATORS: see pacman’s localizations
-#: pkgbuilder/wrapper.py:265
+#: pkgbuilder/wrapper.py:269
 #, python-brace-format
 msgid ""
 "usage:  {0} <operation> [...]\n"
