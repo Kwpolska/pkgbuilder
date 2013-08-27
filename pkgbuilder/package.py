@@ -25,7 +25,7 @@ CATEGORIES = ['ERROR', 'none', 'daemons', 'devel', 'editors',
               'emulators', 'games', 'gnome', 'i18n', 'kde',
               'lib', 'modules', 'multimedia', 'network',
               'office', 'science', 'system', 'x11',
-              'xfce', 'kernels']
+              'xfce', 'kernels', 'fonts']
 
 
 def mktime(ts):
