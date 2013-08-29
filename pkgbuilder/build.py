@@ -336,15 +336,16 @@ def depcheck(depends, pkgobj=None):
                                       'requirement: {0}').format(fdep),
                                     req=fdep, source=pkgobj)
 
-            if pyalpm.find_satisfier(localpkgs, dep):
-                parseddeps[dep] = 0
-            elif pyalpm.find_satisfier(syncpkgs, dep):
-                parseddeps[dep] = 1
-            elif pkgbuilder.utils.info([dep]):
-                parseddeps[dep] = 2
-            else:
-                raise pkgbuilder.exceptions.PackageNotFoundError(
-                    dep, 'depcheck')
+            if dep not in parseddeps:
+                if pyalpm.find_satisfier(localpkgs, dep):
+                    parseddeps[dep] = 0
+                elif pyalpm.find_satisfier(syncpkgs, dep):
+                    parseddeps[dep] = 1
+                elif pkgbuilder.utils.info([dep]):
+                    parseddeps[dep] = 2
+                else:
+                    raise pkgbuilder.exceptions.PackageNotFoundError(
+                        dep, 'depcheck')
 
         return parseddeps
 
