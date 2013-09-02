@@ -7,9 +7,9 @@
 # ppanhh <ppanhh@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.1.6\n"
+"Project-Id-Version: 3.1.7\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2013-08-23 18:23+0200\n"
+"POT-Creation-Date: 2013-09-02 14:22+0200\n"
 "PO-Revision-Date: 2013-08-23 15:58+0000\n"
 "Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/projects/p/pkgbuilder/"
@@ -48,29 +48,29 @@ msgstr "{0}: quá hạn {1}"
 msgid "Installing built packages..."
 msgstr "Đang cài đặt các gói dữ liệu..."
 
-#: pkgbuilder/build.py:100 pkgbuilder/build.py:390 pkgbuilder/main.py:204
+#: pkgbuilder/build.py:100 pkgbuilder/build.py:391 pkgbuilder/main.py:204
 msgid "Fetching package information..."
 msgstr "Đang tải về thông tin của gói cài đặt..."
 
-#: pkgbuilder/build.py:104 pkgbuilder/build.py:490
+#: pkgbuilder/build.py:104 pkgbuilder/build.py:491
 msgid "Downloading the tarball..."
 msgstr "Đang tải về các tập tin tarball..."
 
-#: pkgbuilder/build.py:107 pkgbuilder/build.py:493
+#: pkgbuilder/build.py:107 pkgbuilder/build.py:494
 #, python-brace-format
 msgid "{0} kB downloaded"
 msgstr "{0} kB đã tải về"
 
-#: pkgbuilder/build.py:109 pkgbuilder/build.py:495
+#: pkgbuilder/build.py:109 pkgbuilder/build.py:496
 msgid "Extracting..."
 msgstr "Đang giải nén.."
 
-#: pkgbuilder/build.py:110 pkgbuilder/build.py:496
+#: pkgbuilder/build.py:110 pkgbuilder/build.py:497
 #, python-brace-format
 msgid "{0} files extracted"
 msgstr "{0} tập tin đã giải nén"
 
-#: pkgbuilder/build.py:112 pkgbuilder/build.py:472
+#: pkgbuilder/build.py:112 pkgbuilder/build.py:473
 #, python-brace-format
 msgid "Building {0}..."
 msgstr "Đang xây dựng {0}..."
@@ -120,53 +120,53 @@ msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr ""
 "Thất bại trong việc điền vào các yêu cầu về sự phụ thuộc của gói tin: {0}"
 
-#: pkgbuilder/build.py:420
+#: pkgbuilder/build.py:421
 msgid ":: Retrieving packages from abs..."
 msgstr ":: Đang nhận các gói cài đặt từ abs.."
 
-#: pkgbuilder/build.py:423 pkgbuilder/build.py:434
+#: pkgbuilder/build.py:424 pkgbuilder/build.py:435
 #, python-brace-format
 msgid "retrieving {0}"
 msgstr "đang nhận {0}"
 
-#: pkgbuilder/build.py:427 pkgbuilder/build.py:484
+#: pkgbuilder/build.py:428 pkgbuilder/build.py:485
 #, python-brace-format
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr "Thất bại khi nhận {0} (từ ABS/rsync)."
 
-#: pkgbuilder/build.py:431
+#: pkgbuilder/build.py:432
 msgid ":: Retrieving packages from aur..."
 msgstr ":: Đang nhận các gói cài đặt từ aur..."
 
-#: pkgbuilder/build.py:438
+#: pkgbuilder/build.py:439
 msgid "Extracting AUR packages..."
 msgstr "Đang giải nén các gói cài đặt AUR..."
 
-#: pkgbuilder/build.py:443
+#: pkgbuilder/build.py:444
 msgid "Successfully fetched: "
 msgstr "Đã tải về thành công:"
 
-#: pkgbuilder/build.py:480
+#: pkgbuilder/build.py:481
 msgid "Retrieving from ABS..."
 msgstr "Đang nhận từ ABS..."
 
-#: pkgbuilder/build.py:500
+#: pkgbuilder/build.py:501
 msgid "Checking dependencies..."
 msgstr "Đang kiểm tra tính độc lập..."
 
-#: pkgbuilder/build.py:503
+#: pkgbuilder/build.py:504
 msgid "found in system"
 msgstr "đã được tìm thấy trong hệ thống"
 
-#: pkgbuilder/build.py:503
+#: pkgbuilder/build.py:504
 msgid "found in repos"
 msgstr "đã được tìm thấy trong repos"
 
-#: pkgbuilder/build.py:504
+#: pkgbuilder/build.py:505
 msgid "found in the AUR"
 msgstr "đã được tìm thấy trong AUR"
 
-#: pkgbuilder/build.py:507
+#: pkgbuilder/build.py:508
 msgid "none found"
 msgstr "không tìm thấy"
 
