@@ -76,8 +76,8 @@ def wrapper(source='AUTO'):
                        'root']
 
         pbshort = ['D', 'C', 'F']
-        pblong = ['fetch', 'userfetch', 'vcsupgrade', 'nocolors', 'nodepcheck', 'novalidation',
-                  'buildonly']
+        pblong = ['fetch', 'userfetch', 'vcsupgrade', 'nocolors', 'nodepcheck',
+                  'novalidation', 'buildonly']
 
         commonshort = ['S', 'd', 'i', 's', 'v', 'w']
         commonlong = ['debug', 'info', 'search', 'sync']

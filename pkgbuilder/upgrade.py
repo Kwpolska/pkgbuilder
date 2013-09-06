@@ -172,7 +172,7 @@ def auto_upgrade(downgrade=False, vcsup=False):
 
             if DS.pacman:
                 print(':: ' + _('The following packages should be upgraded '
-                               'first:'))
+                                'first:'))
                 print('    {0}'.format(pkgbname))
                 print(':: ' + _('Do you want to cancel the current operation'))
                 query = ':: ' + _('and upgrade these packages now? [Y/n] ')
@@ -279,4 +279,4 @@ def auto_upgrade(downgrade=False, vcsup=False):
         if yesno.lower().strip().startswith('y') or yesno.strip() == '':
             return upgnames
         else:
-           return []
+            return []

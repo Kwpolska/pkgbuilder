@@ -24,6 +24,7 @@ __all__ = ['PBException', 'AURError', 'MakepkgError', 'NetworkError',
 class PBException(Exception):
     """Base exception for PKGBUILDer."""
     qualname = 'PBException'
+
     def __init__(self, msg, source, *args, **kwargs):
         """Throw an error to the log and take the arguments."""
         DS.log.error('({0:<20}) {1}'.format(self.qualname, msg))
@@ -40,6 +41,7 @@ class PBException(Exception):
 class AURError(PBException):
     """AUR-related errors."""
     qualname = 'AURError'
+
     def __init__(self, msg, *args, **kwargs):
         """Throw an error to the log and take the arguments."""
         DS.log.error('({0:<20}) {1}'.format(self.qualname, msg))
@@ -56,6 +58,7 @@ class AURError(PBException):
 class MakepkgError(PBException):
     """makepkg errors (return codes)"""
     qualname = 'MakepkgError'
+
     def __init__(self, retcode, *args, **kwargs):
         """Throw an error to the log and take the arguments."""
         DS.log.error('({0:<20}) {1}'.format(self.qualname, retcode))
@@ -72,6 +75,7 @@ class MakepkgError(PBException):
 class NetworkError(PBException):
     """Network-related errors."""
     qualname = 'NetworkError'
+
     def __init__(self, msg, source, *args, **kwargs):
         """Throw an error to the log and take the arguments."""
         DS.log.error('({0:<20}) {1} (via {2})'.format(self.qualname, msg,
@@ -96,6 +100,7 @@ class NetworkError(PBException):
 class ConnectionError(NetworkError):
     """A connection error."""
     qualname = 'ConnectionError'
+
     def __str__(self):
         return _('Connection error: {0} (via {1})').format(self.msg,
                                                            self.source)
@@ -104,6 +109,7 @@ class ConnectionError(NetworkError):
 class HTTPError(NetworkError):
     """An HTTP error."""
     qualname = 'HTTPError'
+
     def __init__(self, source, origin, *args, **kwargs):
         DS.log.error('({0:<20}) {1} (via {2})'.format(self.qualname,
                                                       source.status_code,
@@ -131,6 +137,7 @@ class HTTPError(NetworkError):
 class PackageError(PBException):
     """Package-related errors."""
     qualname = 'PackageError'
+
     def __init__(self, msg, source, *args, **kwargs):
         """Throw an error to the log and take the arguments."""
         DS.log.error('({0:<20}) {1} (from {2})'.format(self.qualname, msg,
@@ -147,6 +154,7 @@ class PackageError(PBException):
 
 class PackageNotFoundError(PackageError):
     qualname = 'PackageNotFoundError'
+
     def __init__(self, name, source, *args, **kwargs):
         """Throw an error to the log and take the arguments."""
         DS.log.error('({0:<20}) {1} (via {2})'.format(self.qualname, name,
@@ -165,6 +173,7 @@ class PackageNotFoundError(PackageError):
 class SanityError(PBException):
     """Sometimes PKGBUILDer or one of its friends can go insane."""
     qualname = 'SanityError'
+
     def __init__(self, msg, source, *args, **kwargs):
         DS.log.error('({0:<20}) {1} (via {2})'.format(self.qualname, msg,
                                                       source))

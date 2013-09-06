@@ -30,7 +30,6 @@ import tarfile
 import subprocess
 import functools
 import glob
-import datetime
 
 __all__ = ['validate', 'install', 'safeupgrade', 'auto_build', 'download',
            'rsync', 'extract', 'prepare_deps', 'depcheck', 'fetch_runner',
@@ -81,7 +80,8 @@ def install(pkgpaths, sigpaths, asdeps, uopt=''):
     DS.fancy_msg(_('Installing built packages...'))
 
     DS.log.info('pkgs={0}; sigs={1}'.format(pkgpaths, sigpaths))
-    DS.log.debug('cp {0} {1} /var/cache/pacman/pkg/'.format(pkgpaths, sigpaths))
+    DS.log.debug('cp {0} {1} /var/cache/pacman/pkg/'.format(pkgpaths,
+                                                            sigpaths))
     DS.sudo(['cp'] + pkgpaths + sigpaths + ['/var/cache/pacman/pkg/'])
 
     if asdeps:
@@ -151,7 +151,8 @@ def auto_build(pkgname, performdepcheck=True,
             for pkgname2 in build_result[1]:
                 toinstall = []
                 if pkgname2 in completelist:
-                    if completelist.index(pkgname2) < completelist.index(pkgname):
+                    if (completelist.index(pkgname2) <
+                            completelist.index(pkgname)):
                         # Already built the package.
                         toinstall, sigs = find_packagefile(
                             os.path.join(os.getcwd(), pkgname2))
@@ -251,16 +252,41 @@ def extract(filename):
 
 def prepare_deps(pkgbuild_path):
     """Gets (make)depends from a PKGBUILD and returns them."""
-    # I decided to use a subprocess instead of pyparsing magic.  Less
-    # dependencies for us and no fuckups EVER.  And if the PKGBUILD is
-    # malicious, we speed up the destroying of the user system by about 10
-    # seconds, so it makes no sense not to do this.  And it takes only 7 lines
-    # instead of about 40 in the pyparsing implementation.
+    # Back in the  day,  there  was  a  comment  praising  replacing  pyparsing
+    # with shell magic.   It  claimed  that  we  will  have  no  fuckups  ever.
+    #  OF  COURSE  WE  DID.   SPLIT  PACKAGES.   PKGBUILDer  crashed  when   it
+    # encountered one.  Here comes the output from sh:
+    #
+    #  PKGBUILD: line  XX: `package_package-name': not a valid identifier
+    #
+    # shell=True with subprocess.check_output() uses  /bin/sh,  which  is  more
+    # strict than /bin/bash used by makepkg.
+    #
+    # So, I replaced it  by  a  call  to  /usr/bin/bash  (which  is  equivalent
+    # to /bin/bash on Arch Linux).
+    #
+    # And if the PKGBUILD is malicious, we speed up the destroying of the  user
+    # system by about 10 seconds,  so  it  makes  no  sense  not  to  do  this.
+    # Moreover, it takes only 7 lines instead of  about  40  in  the  pyparsing
+    # implementation.
+    #
+    # PS.  I am amazed that `bash -c`  ignores  !events.   That  saved  me  one
+    #      replace.  I am also amazed that it ignored \a and \n.
+    #
+    # FULL DISCLOSURE:  the  following  path  was  used  to  test  the  current
+    #                   implementation.    I    may    have    not    noticed
+    #                   something  else  that  is   not   accounted   for   by
+    #                   this  very  path,   so   if   you   know   that   some
+    #                   breakage  occurs,  tell me.
+    #
+    # I am an "idiot"/no, 'really'/exclamation!mark, seriously/backsl\ash/a\n
 
-    deps = subprocess.check_output('source ' + pkgbuild_path + '; for i in '
-                                   '${depends[*]}; do echo $i; done; for '
-                                   'i in ${makedepends[*]}; do echo $i; '
-                                   'done', shell=True)
+    ppath = pkgbuild_path.replace('"', r'\"').join(('"', '"'))
+
+    deps = subprocess.check_output(('/usr/bin/bash', '-c', 'source ' +
+                                    ppath + ';for i in ${depends[*]};'
+                                    'do echo $i;done;for i in '
+                                    '${makedepends[*]};do echo $i; done'))
     deps = deps.decode('utf-8')
     deps = deps.split('\n')
 
@@ -320,13 +346,15 @@ def depcheck(depends, pkgobj=None):
                     if not depmatch:
                         ssat = pyalpm.find_satisfier(syncpkgs, dep)
                         if ssat:
-                            depmatch = _test_dependency(ssat.version, diff, ver)
+                            depmatch = _test_dependency(ssat.version, diff,
+                                                        ver)
                             parseddeps[dep] = 1
 
                         if not depmatch:
                             asat = pkgbuilder.utils.info([dep])
                             if asat:
-                                depmatch = _test_dependency(asat[0].version, diff, ver)
+                                depmatch = _test_dependency(asat[0].version,
+                                                            diff, ver)
                                 parseddeps[dep] = 2
 
                             if not depmatch:
@@ -402,7 +430,8 @@ def fetch_runner(pkgnames, preprocessed=False):
                         syncpkgs = []
                         for j in [i.pkgcache for i in DS.pyc.get_syncdbs()]:
                             syncpkgs.append(j)
-                        syncpkgs = functools.reduce(lambda x, y: x + y, syncpkgs)
+                        syncpkgs = functools.reduce(lambda x, y: x + y,
+                                                    syncpkgs)
                         abspkg = pyalpm.find_satisfier(syncpkgs, pkgname)
                         pkg = pkgbuilder.package.ABSPackage.from_pyalpm(abspkg)
 

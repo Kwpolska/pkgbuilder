@@ -38,60 +38,70 @@ def main(source='AUTO', quit=True):
         if locale != 'LANG locale by AUTHOR <MAIL@IF.YOU.WANT>':
             verstring = ' — '.join([verstring, locale])
         DS.log.info('Initialized, parsing arguments.')
-        parser = argparse.ArgumentParser(description=_('An AUR helper'
-                                         ' (and library) in Python 3.'),
-                                         epilog=_('Also accepting ABS '
-                                         'packages.'))
-        parser.add_argument('-V', '--version', action='version',
-                            version=verstring,
-                            help=_('show version number and quit'))
-        parser.add_argument('pkgnames', metavar=_('PACKAGE'), action='store',
-                            nargs='*', help=_('AUR/ABS packages to build'))
+        parser = argparse.ArgumentParser(
+            description=_('An AUR helper (and library) in Python 3.'),
+            epilog=_('Also accepting ABS packages.'))
+        parser.add_argument(
+            '-V', '--version', action='version', version=verstring,
+            help=_('show version number and quit'))
+        parser.add_argument(
+            'pkgnames', metavar=_('PACKAGE'), action='store', nargs='*',
+            help=_('AUR/ABS packages to build'))
 
         argopr = parser.add_argument_group(_('operations'))
-        argopr.add_argument('-F', '--fetch', action='store_true',
-                            default=False, dest='fetch',
-                            help=_('fetch package files'))
-        argopr.add_argument('--userfetch', action='append',
-                            dest='userfetch', metavar=_('USER'),
-                            help=_('fetch all package files of an user'))
+        argopr.add_argument(
+            '-F', '--fetch', action='store_true', default=False, dest='fetch',
+            help=_('fetch package files'))
+        argopr.add_argument(
+            '--userfetch', action='append', dest='userfetch',
+            metavar=_('USER'), help=_('fetch all package files of an user'))
         argopr.add_argument('-i', '--info', action='store_true', default=False,
                             dest='info', help=_('view package information'))
-        argopr.add_argument('-s', '--search', action='store_true',
-                            default=False, dest='search', help=_('search the '
-                            'AUR for matching strings'))
-        argopr.add_argument('-u', '--sysupgrade', action='count',
-                            default=False, dest='upgrade',
-                            help=_('upgrade installed AUR packages'))
+        argopr.add_argument(
+            '-s', '--search', action='store_true',
+            default=False, dest='search', help=_('search the AUR for '
+                                                 'matching strings'))
+        argopr.add_argument(
+            '-u', '--sysupgrade', action='count', default=False,
+            dest='upgrade', help=_('upgrade installed AUR packages'))
 
         argopt = parser.add_argument_group(_('options'))
-        argopt.add_argument('-c', '--clean', action='store_true',
-                            default=False, dest='cleanup', help=_('clean up '
-                            'work files after build'))
-        argopt.add_argument('-C', '--nocolors', action='store_false',
-                            default=True, dest='color', help=_('don\'t use '
-                            'colors in output'))
-        argopt.add_argument('--debug', action='store_true', default=False,
-                            dest='debug', help=_('display debug messages'))
-        argopt.add_argument('-d', '--nodepcheck', action='store_false',
-                            default=True, dest='depcheck', help=_('don\'t '
-                            'check dependencies (may break makepkg)'))
-        argopt.add_argument('-D', '--vcsupgrade', action='store_true',
-                            default=False, dest='vcsup', help=_('upgrade '
-                            'all the VCS/date-versioned packages'))
-        argopt.add_argument('-v', '--novalidation', action='store_false',
-                            default=True, dest='validate', help=_('don\'t '
-                            'check if packages were installed after build'))
-        argopt.add_argument('-w', '--buildonly', action='store_false',
-                            default=True, dest='pkginst', help=_('don\'t '
-                            'install packages after building'))
-        argopt.add_argument('-S', '--sync', action='store_true', default=False,
-                            dest='pac', help=_('pacman-like mode'))
-        argopt.add_argument('--safeupgrade', action='store_true',
-                            default=False, dest='safeupgrade', help=_(
-                                'perform a failsafe upgrade of PKGBUILDer'))
-        argopt.add_argument('-y', '--refresh', action='store_true',
-                            default=False, dest='pacupd', help=_('(dummy)'))
+        argopt.add_argument(
+            '-c', '--clean', action='store_true',
+            default=False, dest='cleanup', help=_('clean up work files after '
+                                                  'build'))
+        argopt.add_argument(
+            '-C', '--nocolors', action='store_false',
+            default=True, dest='color', help=_('don\'t use colors in output'))
+        argopt.add_argument(
+            '--debug', action='store_true', default=False,
+            dest='debug', help=_('display debug messages'))
+        argopt.add_argument(
+            '-d', '--nodepcheck', action='store_false',
+            default=True, dest='depcheck', help=_('don\'t check dependencies '
+                                                  '(may break makepkg)'))
+        argopt.add_argument(
+            '-D', '--vcsupgrade', action='store_true',
+            default=False, dest='vcsup', help=_('upgrade all the VCS/'
+                                                'date-versioned packages'))
+        argopt.add_argument(
+            '-v', '--novalidation', action='store_false',
+            default=True, dest='validate',
+            help=_('don\'t check if packages were installed after build'))
+        argopt.add_argument(
+            '-w', '--buildonly', action='store_false',
+            default=True, dest='pkginst', help=_('don\'t  install packages '
+                                                 'after building'))
+        argopt.add_argument(
+            '-S', '--sync', action='store_true', default=False, dest='pac',
+            help=_('pacman-like mode'))
+        argopt.add_argument(
+            '--safeupgrade', action='store_true', default=False,
+            dest='safeupgrade', help=_('perform a failsafe upgrade of '
+                                       'PKGBUILDer'))
+        argopt.add_argument(
+            '-y', '--refresh', action='store_true', default=False,
+            dest='pacupd', help=_('(dummy)'))
 
         if source != 'AUTO':
             args = parser.parse_args(source)
