@@ -153,9 +153,8 @@ def auto_build(pkgname, performdepcheck=True,
                 if pkgname2 in completelist:
                     if completelist.index(pkgname2) < completelist.index(pkgname):
                         # Already built the package.
-                        pkg2 = pkgbuilder.utils.info([pkgname2])[0]
                         toinstall, sigs = find_packagefile(
-                            pkg2, os.path.join(os.getcwd(), pkgname2))
+                            os.path.join(os.getcwd(), pkgname2))
                         if toinstall:
                             DS.fancy_msg2(_('found an existing package for '
                                             '{0}').format(pkgname2))
@@ -350,32 +349,35 @@ def depcheck(depends, pkgobj=None):
         return parseddeps
 
 
-def find_packagefile(pkg, pdir):
+def find_packagefile(pdir):
         """Find a package file (*.pkg.tar.xz) and signatures, if any."""
         # .pkg.tar.xz FTW, but some people change that.
-        pkgfilestr = os.path.abspath(os.path.join(pdir, '{0}-{1}-*.pkg.*{2}'))
-        # I hope nobody builds VCS packages at 23:5* local.  And if they do,
-        # they will be caught by the 2nd fallback (crappy packages)
-        datep = datetime.date.today().strftime('%Y%m%d')
-        att0 = set(glob.glob(pkgfilestr.format(pkg.name, pkg.version, '*')))
-        att1 = set(glob.glob(pkgfilestr.format(pkg.name, datep, '')))
-        att2 = set(glob.glob(pkgfilestr.format(pkg.name, '*', '')))
-        sigf = set(glob.glob(pkgfilestr.format(pkg.name, '*', '.sig')))
+        # (note that PKGBUILDs can do it, too!)
+        # Moreover, dumb PKGBUILDs can remove that `.pkg.tar` part.  `makepkg`s
+        # `case` switch for PKGEXT uses: *tar *tar.xz *tar.gz *.tar.bz2
+        #                                *tar.lrz *tar.lzo *.tar.Z
+        # …and a catch-all that shows a warning and makes a .tar anyways.
+        # I decided to leave it in, because we would catch e.g. source tarballs
+        # or ANYTHING, REALLY if I did not.
+        pkgfilestr = os.path.abspath(os.path.join(pdir, '*-*-*.pkg.tar*{0}'))
 
-        att0 = list(att0 - sigf)
-        att1 = list(att1 - sigf)
-        att2 = list(att2 - sigf)
-        if att0:
-            # Standard run, for humans.
-            return [att0, list(sigf)]
-        elif att1:
-            # Fallback #1, for VCS packages.
-            return [att1, list(sigf)]
-        elif att2:
-            # Fallback #2, for crappy packages.
-            return [att2, list(sigf)]
-        else:
-            return [[], []]
+        # We use sets so we can do stuff easier down there.
+        #
+        # Originally, this code was much longer, completely ignored
+        # split packages and other shenanigans.  Moreover, the first two
+        # asterisk wildcards in the pkgfilestr were format-tokens.  Three tests
+        # occurred:
+        #
+        # 1. pkg.name; pkg.version; ''
+        # 2. pkg.name; date in yyyymmdd format (old practice); ''
+        # 3. pkg.name; *; * [called “crappy packages”]
+        #
+        # To add insult to injury: if-elif-elif.
+
+        pkgs = set(glob.glob(pkgfilestr.format('')))
+        sigs = set(glob.glob(pkgfilestr.format('.sig')))
+
+        return list(pkgs - sigs), list(sigs)
 
 
 def fetch_runner(pkgnames, preprocessed=False):
@@ -527,9 +529,9 @@ def build_runner(pkgname, performdepcheck=True,
                                shell=True)
 
     if pkginstall:
-        toinstall = find_packagefile(pkg, os.getcwd())
+        toinstall = find_packagefile(os.getcwd())
     else:
-        toinstall = [[], []]
+        toinstall = ([], [])
 
     if pkg.is_abs:
         os.chdir('../')
