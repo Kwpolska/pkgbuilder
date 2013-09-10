@@ -75,7 +75,8 @@ class AUR:
             return '{"type": "info", "resultcount": 0, "results": []}'
 
         try:
-            req = requests.get(self.rpc, params={'type': 'multiinfo', 'arg[]': args})
+            req = requests.get(self.rpc, params={'type': 'multiinfo', 'arg[]':
+                                                 args})
             req.raise_for_status()
         except requests.exceptions.ConnectionError as e:
             raise ConnectionError(e.args[0].reason, e)
