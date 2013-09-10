@@ -8,9 +8,9 @@
 # yfdogan <yfdogan@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.1.7\n"
+"Project-Id-Version: 3.1.8\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2013-09-02 14:22+0200\n"
+"POT-Creation-Date: 2013-09-10 16:16+0200\n"
 "PO-Revision-Date: 2013-08-23 15:58+0000\n"
 "Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/pkgbuilder/"
@@ -21,57 +21,57 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: pkgbuilder/build.py:42
+#: pkgbuilder/build.py:41
 msgid "Validating installation status..."
 msgstr "Yükleme durumu hesaplanıyor..."
 
-#: pkgbuilder/build.py:58
+#: pkgbuilder/build.py:57
 #, python-brace-format
 msgid "{0}: not an AUR package"
 msgstr "{0}: AUR paketi değil"
 
-#: pkgbuilder/build.py:62 pkgbuilder/build.py:73
+#: pkgbuilder/build.py:61 pkgbuilder/build.py:72
 #, python-brace-format
 msgid "{0}: installed {1}"
 msgstr "{0}: KUurulan {1}"
 
-#: pkgbuilder/build.py:66
+#: pkgbuilder/build.py:65
 #, python-brace-format
 msgid "{0}: NOT installed"
 msgstr "{0}: KURULMADI"
 
-#: pkgbuilder/build.py:69
+#: pkgbuilder/build.py:68
 #, python-brace-format
 msgid "{0}: outdated {1}"
 msgstr "{0}: Günü geçmiş {1}"
 
-#: pkgbuilder/build.py:81
+#: pkgbuilder/build.py:80
 msgid "Installing built packages..."
 msgstr "İnşa paketleri kuruluyor..."
 
-#: pkgbuilder/build.py:100 pkgbuilder/build.py:391 pkgbuilder/main.py:204
+#: pkgbuilder/build.py:100 pkgbuilder/build.py:421 pkgbuilder/main.py:214
 msgid "Fetching package information..."
 msgstr "Paket bilgisi alınıyor..."
 
-#: pkgbuilder/build.py:104 pkgbuilder/build.py:491
+#: pkgbuilder/build.py:104 pkgbuilder/build.py:522
 msgid "Downloading the tarball..."
 msgstr "Tarball indiriliyor..."
 
-#: pkgbuilder/build.py:107 pkgbuilder/build.py:494
+#: pkgbuilder/build.py:107 pkgbuilder/build.py:525
 #, python-brace-format
 msgid "{0} kB downloaded"
 msgstr "{0}: kb indirildi"
 
-#: pkgbuilder/build.py:109 pkgbuilder/build.py:496
+#: pkgbuilder/build.py:109 pkgbuilder/build.py:527
 msgid "Extracting..."
 msgstr "Açılıyor..."
 
-#: pkgbuilder/build.py:110 pkgbuilder/build.py:497
+#: pkgbuilder/build.py:110 pkgbuilder/build.py:528
 #, python-brace-format
 msgid "{0} files extracted"
 msgstr "{0}: dosya açıldı"
 
-#: pkgbuilder/build.py:112 pkgbuilder/build.py:473
+#: pkgbuilder/build.py:112 pkgbuilder/build.py:504
 #, python-brace-format
 msgid "Building {0}..."
 msgstr "{0} İnşa ediliyor..."
@@ -115,97 +115,97 @@ msgstr "o byte indirildi"
 msgid "No files extracted."
 msgstr "Bir dosya açılmadı"
 
-#: pkgbuilder/build.py:335
+#: pkgbuilder/build.py:362
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr "Paket bağımlılığı şartı gerçekleştirilemedi :{0}"
 
-#: pkgbuilder/build.py:421
+#: pkgbuilder/build.py:452
 msgid ":: Retrieving packages from abs..."
 msgstr ":: ABS den paketler geri alınıyor..."
 
-#: pkgbuilder/build.py:424 pkgbuilder/build.py:435
+#: pkgbuilder/build.py:455 pkgbuilder/build.py:466
 #, python-brace-format
 msgid "retrieving {0}"
 msgstr "{0} geri alınıyor"
 
-#: pkgbuilder/build.py:428 pkgbuilder/build.py:485
+#: pkgbuilder/build.py:459 pkgbuilder/build.py:516
 #, python-brace-format
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr "{0} geri yüklenmesi durdu (ABS/rsync ten)"
 
-#: pkgbuilder/build.py:432
+#: pkgbuilder/build.py:463
 msgid ":: Retrieving packages from aur..."
 msgstr ":: AUR dan paketler geri alınıyor..."
 
-#: pkgbuilder/build.py:439
+#: pkgbuilder/build.py:470
 msgid "Extracting AUR packages..."
 msgstr "AUR paketleri açılıyor..."
 
-#: pkgbuilder/build.py:444
+#: pkgbuilder/build.py:475
 msgid "Successfully fetched: "
 msgstr "Başarıyla çekildi:"
 
-#: pkgbuilder/build.py:481
+#: pkgbuilder/build.py:512
 msgid "Retrieving from ABS..."
 msgstr "ABS den geri alınıyor..."
 
-#: pkgbuilder/build.py:501
+#: pkgbuilder/build.py:532
 msgid "Checking dependencies..."
 msgstr "Bağımlılıklara bakılıyor..."
 
-#: pkgbuilder/build.py:504
+#: pkgbuilder/build.py:535
 msgid "found in system"
 msgstr "Sistemde bulundu"
 
-#: pkgbuilder/build.py:504
+#: pkgbuilder/build.py:535
 msgid "found in repos"
 msgstr "Depolarda bulundu"
 
-#: pkgbuilder/build.py:505
+#: pkgbuilder/build.py:536
 msgid "found in the AUR"
 msgstr "AUR da bulundu"
 
-#: pkgbuilder/build.py:508
+#: pkgbuilder/build.py:539
 msgid "none found"
 msgstr "Bulunamadı"
 
-#: pkgbuilder/exceptions.py:53
+#: pkgbuilder/exceptions.py:55
 #, python-brace-format
 msgid "AUR Error: {0}"
 msgstr "AUR Hatası: {0}"
 
-#: pkgbuilder/exceptions.py:69
+#: pkgbuilder/exceptions.py:72
 #, python-brace-format
 msgid "makepkg returned {0}."
 msgstr "{0} makepkg geri döndü."
 
-#: pkgbuilder/exceptions.py:93
+#: pkgbuilder/exceptions.py:97
 #, python-brace-format
 msgid "Network error: {0} (via {1})"
 msgstr "{0} (via {1}) Ağ hatası"
 
-#: pkgbuilder/exceptions.py:100
+#: pkgbuilder/exceptions.py:105
 #, python-brace-format
 msgid "Connection error: {0} (via {1})"
 msgstr "Bağlantı hatası:{0} (via {1})"
 
-#: pkgbuilder/exceptions.py:111
+#: pkgbuilder/exceptions.py:117
 #, python-brace-format
 msgid "HTTP Error {0} (via {1})"
 msgstr "HTTP hatası {0} (via {1})"
 
-#: pkgbuilder/exceptions.py:145
+#: pkgbuilder/exceptions.py:152
 #, python-brace-format
 msgid "{0} (Package: {1})"
 msgstr "{0} (Paket: {1})"
 
-#: pkgbuilder/exceptions.py:155
+#: pkgbuilder/exceptions.py:163
 #, python-brace-format
 msgid "Package {0} not found. (via {1})"
 msgstr "{0} Paketi (via {1}) içinde bulunamadı"
 
-#: pkgbuilder/exceptions.py:177
+#: pkgbuilder/exceptions.py:186
 #, python-brace-format
 msgid "Sanity error!  {0} (via {1})"
 msgstr "Mantık hatası : {0} (via {1})"
@@ -216,7 +216,7 @@ msgstr "Mantık hatası : {0} (via {1})"
 msgid "LANG locale by AUTHOR <MAIL@IF.YOU.WANT>"
 msgstr "Dil yerelleştirmesini yapan yfdogan@gmail.com"
 
-#: pkgbuilder/main.py:41
+#: pkgbuilder/main.py:42
 msgid "An AUR helper (and library) in Python 3."
 msgstr "Python 3 içinde bir AUR yardımcısı (ve kütüphanesi)."
 
@@ -224,7 +224,7 @@ msgstr "Python 3 içinde bir AUR yardımcısı (ve kütüphanesi)."
 msgid "Also accepting ABS packages."
 msgstr "Ayrıca ABS paketi kabul ediliyor."
 
-#: pkgbuilder/main.py:47
+#: pkgbuilder/main.py:46
 msgid "show version number and quit"
 msgstr "Sürüm numarasını göster ve çık."
 
@@ -244,7 +244,7 @@ msgstr "İşlemler"
 msgid "fetch package files"
 msgstr "Paket dosyaları çekiliyor"
 
-#: pkgbuilder/main.py:56
+#: pkgbuilder/main.py:57
 msgid "USER"
 msgstr ""
 
@@ -256,93 +256,94 @@ msgstr ""
 msgid "view package information"
 msgstr "Paket bilgisini göster"
 
-#: pkgbuilder/main.py:61
+#: pkgbuilder/main.py:62
 msgid "search the AUR for matching strings"
 msgstr "Eşleşmeler için AUR u tara"
 
-#: pkgbuilder/main.py:65
+#: pkgbuilder/main.py:66
 msgid "upgrade installed AUR packages"
 msgstr "Yüklenmiş AUR paketlerini yükselt"
 
-#: pkgbuilder/main.py:67
+#: pkgbuilder/main.py:68
 msgid "options"
 msgstr "Seçenekler"
 
-#: pkgbuilder/main.py:69
+#: pkgbuilder/main.py:71
 msgid "clean up work files after build"
 msgstr "İnşa işleminden sonra çalışma dosyalarını temizle"
 
-#: pkgbuilder/main.py:72
+#: pkgbuilder/main.py:75
 msgid "don't use colors in output"
 msgstr "Çıktı içinde renk kullanma"
 
-#: pkgbuilder/main.py:75
+#: pkgbuilder/main.py:78
 msgid "display debug messages"
 msgstr "Hata iletilerini göster"
 
-#: pkgbuilder/main.py:77
+#: pkgbuilder/main.py:81
 msgid "don't check dependencies (may break makepkg)"
 msgstr "Bağımlılıkları kontrol etme (makepkg işlemini kırabilir)"
 
-#: pkgbuilder/main.py:80
+#: pkgbuilder/main.py:85
 msgid "upgrade all the VCS/date-versioned packages"
 msgstr "Bütün VCS/tarih-sürümlü paketleri yükselt"
 
-#: pkgbuilder/main.py:83
+#: pkgbuilder/main.py:90
 msgid "don't check if packages were installed after build"
 msgstr "Paketler inşa işleminden sonra kurulduysa kontrol etme"
 
-#: pkgbuilder/main.py:86
-msgid "don't install packages after building"
+#: pkgbuilder/main.py:93
+#, fuzzy
+msgid "don't  install packages after building"
 msgstr "İnşa işleminden sonra paketleri yükleme"
 
-#: pkgbuilder/main.py:89
+#: pkgbuilder/main.py:97
 msgid "pacman-like mode"
 msgstr "pacman-like modu"
 
-#: pkgbuilder/main.py:92
+#: pkgbuilder/main.py:100
 msgid "perform a failsafe upgrade of PKGBUILDer"
 msgstr "PKGBUILD yapıcı için güvenli yükseltme yapın"
 
-#: pkgbuilder/main.py:94
+#: pkgbuilder/main.py:104
 msgid "(dummy)"
 msgstr "(sahte)"
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
-#: pkgbuilder/main.py:134
+#: pkgbuilder/main.py:144
 msgid "Search query too short"
 msgstr "Arama sorgusu çok kısa"
 
-#: pkgbuilder/main.py:135
+#: pkgbuilder/main.py:145
 msgid "Searching for exact match..."
 msgstr "Tam eşleşme için taranıyor..."
 
-#: pkgbuilder/main.py:138 INSTALL.py:65 INSTALL.py:74
+#: pkgbuilder/main.py:148 INSTALL.py:65 INSTALL.py:74
 msgid "not found"
 msgstr "Bulunamadı"
 
-#: pkgbuilder/main.py:175
+#: pkgbuilder/main.py:185
 msgid "PKGBUILDer Failsafe Upgrade"
 msgstr "PKGBUILD yapıcı güvenli yükseltme"
 
-#: pkgbuilder/main.py:178
+#: pkgbuilder/main.py:188
 msgid "Build the git version? [y/N] "
 msgstr "Git sürümü inşa edilsin mi? (E/H)"
 
-#: pkgbuilder/main.py:209
+#: pkgbuilder/main.py:219
 #, python-brace-format
 msgid "Error while processing {0}: {1}"
 msgstr ""
 
-#: pkgbuilder/main.py:218
+#: pkgbuilder/main.py:228
 msgid "Running PKGBUILDer as root can break your system!"
 msgstr ""
 "PKGBUILD yapıcı yı yetkili kullanıcı hakları ile çalıştırmak sisteminizi "
 "bozabilir!"
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/main.py:243
+#: pkgbuilder/main.py:253
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."

@@ -4,8 +4,8 @@ PBWrapper
 :Author: Kwpolska
 :Copyright: © 2011-2013, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2013-09-02
-:Version: 3.1.7
+:Date: 2013-09-10
+:Version: 3.1.8
 :PBWrapper Version: 0.2.3
 
 .. index:: wrapper
