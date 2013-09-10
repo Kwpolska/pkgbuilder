@@ -406,7 +406,7 @@ def fetch_runner(pkgnames, preprocessed=False):
 
                     except AttributeError:
                         pass
-                allpkgs += pkg
+                allpkgs.append(pkg)
 
         for pkg in allpkgs:
             if not pkg:

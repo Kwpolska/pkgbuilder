@@ -150,9 +150,9 @@ sed "s/__version__ = .*/__version__ = '$version'/g" $PROJECTLC/__init__.py -i
 sed "s/:Date: .*/:Date: $date/g" docs/*.rst -i
 
 [[ -e PKGBUILD ]] && sed "s/pkgver=.*/pkgver=$version/g" PKGBUILD -i
-[[ -e PKGBUILD-git ]] && sed "s/pkgver=.*/pkgver=$datep/g" PKGBUILD-git -i
+[[ -e PKGBUILD-git ]] && sed "s/pkgver=.*/pkgver=$version/g" PKGBUILD-git -i
 [[ -e PKGBUILD-2 ]] && sed "s/pkgver=.*/pkgver=$version/g" PKGBUILD-2 -i
-[[ -e PKGBUILD-2-git ]] && sed "s/pkgver=.*/pkgver=$datep/g" PKGBUILD-2-git -i
+[[ -e PKGBUILD-2-git ]] && sed "s/pkgver=.*/pkgver=$version/g" PKGBUILD-2-git -i
 
 cp docs/README.rst docs/CHANGELOG.rst docs/CONTRIBUTING.rst .
 cp docs/README.rst README
