@@ -6,9 +6,9 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.1.7\n"
+"Project-Id-Version: 3.1.8\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2013-09-02 14:22+0200\n"
+"POT-Creation-Date: 2013-09-10 16:16+0200\n"
 "PO-Revision-Date: 2013-08-23 15:58+0000\n"
 "Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/pkgbuilder/"
@@ -19,57 +19,57 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: pkgbuilder/build.py:42
+#: pkgbuilder/build.py:41
 msgid "Validating installation status..."
 msgstr "インストール無事終了確認中・・・"
 
-#: pkgbuilder/build.py:58
+#: pkgbuilder/build.py:57
 #, python-brace-format
 msgid "{0}: not an AUR package"
 msgstr "{0}: AURパッケージではない"
 
-#: pkgbuilder/build.py:62 pkgbuilder/build.py:73
+#: pkgbuilder/build.py:61 pkgbuilder/build.py:72
 #, python-brace-format
 msgid "{0}: installed {1}"
 msgstr "{0}: 「{1}」をインストール済み"
 
-#: pkgbuilder/build.py:66
+#: pkgbuilder/build.py:65
 #, python-brace-format
 msgid "{0}: NOT installed"
 msgstr "{0}：インストールされていない"
 
-#: pkgbuilder/build.py:69
+#: pkgbuilder/build.py:68
 #, python-brace-format
 msgid "{0}: outdated {1}"
 msgstr "{0}：「{1}」より要更新"
 
-#: pkgbuilder/build.py:81
+#: pkgbuilder/build.py:80
 msgid "Installing built packages..."
 msgstr "作成したパッケージをインストール中・・・"
 
-#: pkgbuilder/build.py:100 pkgbuilder/build.py:391 pkgbuilder/main.py:204
+#: pkgbuilder/build.py:100 pkgbuilder/build.py:421 pkgbuilder/main.py:214
 msgid "Fetching package information..."
 msgstr ""
 
-#: pkgbuilder/build.py:104 pkgbuilder/build.py:491
+#: pkgbuilder/build.py:104 pkgbuilder/build.py:522
 msgid "Downloading the tarball..."
 msgstr "ターボールをダウンロード中・・・"
 
-#: pkgbuilder/build.py:107 pkgbuilder/build.py:494
+#: pkgbuilder/build.py:107 pkgbuilder/build.py:525
 #, python-brace-format
 msgid "{0} kB downloaded"
 msgstr "{0} kBをダウンロード済み"
 
-#: pkgbuilder/build.py:109 pkgbuilder/build.py:496
+#: pkgbuilder/build.py:109 pkgbuilder/build.py:527
 msgid "Extracting..."
 msgstr "抽出中・・・"
 
-#: pkgbuilder/build.py:110 pkgbuilder/build.py:497
+#: pkgbuilder/build.py:110 pkgbuilder/build.py:528
 #, python-brace-format
 msgid "{0} files extracted"
 msgstr "ファイルを{0}個抽出した"
 
-#: pkgbuilder/build.py:112 pkgbuilder/build.py:473
+#: pkgbuilder/build.py:112 pkgbuilder/build.py:504
 #, python-brace-format
 msgid "Building {0}..."
 msgstr "「{0}」を作成中・・・"
@@ -113,97 +113,97 @@ msgstr ""
 msgid "No files extracted."
 msgstr ""
 
-#: pkgbuilder/build.py:335
+#: pkgbuilder/build.py:362
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:421
+#: pkgbuilder/build.py:452
 msgid ":: Retrieving packages from abs..."
 msgstr ""
 
-#: pkgbuilder/build.py:424 pkgbuilder/build.py:435
+#: pkgbuilder/build.py:455 pkgbuilder/build.py:466
 #, python-brace-format
 msgid "retrieving {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:428 pkgbuilder/build.py:485
+#: pkgbuilder/build.py:459 pkgbuilder/build.py:516
 #, python-brace-format
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr ""
 
-#: pkgbuilder/build.py:432
+#: pkgbuilder/build.py:463
 msgid ":: Retrieving packages from aur..."
 msgstr ""
 
-#: pkgbuilder/build.py:439
+#: pkgbuilder/build.py:470
 msgid "Extracting AUR packages..."
 msgstr ""
 
-#: pkgbuilder/build.py:444
+#: pkgbuilder/build.py:475
 msgid "Successfully fetched: "
 msgstr ""
 
-#: pkgbuilder/build.py:481
+#: pkgbuilder/build.py:512
 msgid "Retrieving from ABS..."
 msgstr ""
 
-#: pkgbuilder/build.py:501
+#: pkgbuilder/build.py:532
 msgid "Checking dependencies..."
 msgstr "従属パッケージを確認中・・・"
 
-#: pkgbuilder/build.py:504
+#: pkgbuilder/build.py:535
 msgid "found in system"
 msgstr "インストール済み"
 
-#: pkgbuilder/build.py:504
+#: pkgbuilder/build.py:535
 msgid "found in repos"
 msgstr "リポジトリに存在"
 
-#: pkgbuilder/build.py:505
+#: pkgbuilder/build.py:536
 msgid "found in the AUR"
 msgstr "AURに存在"
 
-#: pkgbuilder/build.py:508
+#: pkgbuilder/build.py:539
 msgid "none found"
 msgstr "従属パッケージなし"
 
-#: pkgbuilder/exceptions.py:53
+#: pkgbuilder/exceptions.py:55
 #, python-brace-format
 msgid "AUR Error: {0}"
 msgstr ""
 
-#: pkgbuilder/exceptions.py:69
+#: pkgbuilder/exceptions.py:72
 #, python-brace-format
 msgid "makepkg returned {0}."
 msgstr ""
 
-#: pkgbuilder/exceptions.py:93
+#: pkgbuilder/exceptions.py:97
 #, python-brace-format
 msgid "Network error: {0} (via {1})"
 msgstr ""
 
-#: pkgbuilder/exceptions.py:100
+#: pkgbuilder/exceptions.py:105
 #, python-brace-format
 msgid "Connection error: {0} (via {1})"
 msgstr ""
 
-#: pkgbuilder/exceptions.py:111
+#: pkgbuilder/exceptions.py:117
 #, python-brace-format
 msgid "HTTP Error {0} (via {1})"
 msgstr ""
 
-#: pkgbuilder/exceptions.py:145
+#: pkgbuilder/exceptions.py:152
 #, python-brace-format
 msgid "{0} (Package: {1})"
 msgstr ""
 
-#: pkgbuilder/exceptions.py:155
+#: pkgbuilder/exceptions.py:163
 #, python-brace-format
 msgid "Package {0} not found. (via {1})"
 msgstr ""
 
-#: pkgbuilder/exceptions.py:177
+#: pkgbuilder/exceptions.py:186
 #, python-brace-format
 msgid "Sanity error!  {0} (via {1})"
 msgstr ""
@@ -214,7 +214,7 @@ msgstr ""
 msgid "LANG locale by AUTHOR <MAIL@IF.YOU.WANT>"
 msgstr "日本語ロカール翻訳・Colin Woodbury <colingw@gmail.com>"
 
-#: pkgbuilder/main.py:41
+#: pkgbuilder/main.py:42
 msgid "An AUR helper (and library) in Python 3."
 msgstr "Python 3で作られたAUR Helper兼ライブラリ。"
 
@@ -222,7 +222,7 @@ msgstr "Python 3で作られたAUR Helper兼ライブラリ。"
 msgid "Also accepting ABS packages."
 msgstr "ABSパッケージも対応可能。"
 
-#: pkgbuilder/main.py:47
+#: pkgbuilder/main.py:46
 msgid "show version number and quit"
 msgstr "バージョンを示して終わる"
 
@@ -242,7 +242,7 @@ msgstr "選択肢"
 msgid "fetch package files"
 msgstr ""
 
-#: pkgbuilder/main.py:56
+#: pkgbuilder/main.py:57
 msgid "USER"
 msgstr ""
 
@@ -254,91 +254,92 @@ msgstr ""
 msgid "view package information"
 msgstr "パッケージ情報を見る"
 
-#: pkgbuilder/main.py:61
+#: pkgbuilder/main.py:62
 msgid "search the AUR for matching strings"
 msgstr "AURを検索"
 
-#: pkgbuilder/main.py:65
+#: pkgbuilder/main.py:66
 msgid "upgrade installed AUR packages"
 msgstr "インストール済みのAURパッケージをアップグレード"
 
-#: pkgbuilder/main.py:67
+#: pkgbuilder/main.py:68
 msgid "options"
 msgstr "副選択肢"
 
-#: pkgbuilder/main.py:69
+#: pkgbuilder/main.py:71
 msgid "clean up work files after build"
 msgstr "作成後、作成に必要だったファイルを削除"
 
-#: pkgbuilder/main.py:72
+#: pkgbuilder/main.py:75
 msgid "don't use colors in output"
 msgstr "出力は色付きで出されない"
 
-#: pkgbuilder/main.py:75
+#: pkgbuilder/main.py:78
 msgid "display debug messages"
 msgstr "デバッグメッセージを出力"
 
-#: pkgbuilder/main.py:77
+#: pkgbuilder/main.py:81
 msgid "don't check dependencies (may break makepkg)"
 msgstr "従属パッケージ確認を行わない。作成が失敗する可能性あり。"
 
-#: pkgbuilder/main.py:80
+#: pkgbuilder/main.py:85
 msgid "upgrade all the VCS/date-versioned packages"
 msgstr "VCSパッケージを全て強制アップグレード"
 
-#: pkgbuilder/main.py:83
+#: pkgbuilder/main.py:90
 msgid "don't check if packages were installed after build"
 msgstr "作成後、パッケージ無事インストール確認を行わない"
 
-#: pkgbuilder/main.py:86
-msgid "don't install packages after building"
+#: pkgbuilder/main.py:93
+#, fuzzy
+msgid "don't  install packages after building"
 msgstr "作成後、パッケージをインストールしない"
 
-#: pkgbuilder/main.py:89
+#: pkgbuilder/main.py:97
 msgid "pacman-like mode"
 msgstr "pacmanモード"
 
-#: pkgbuilder/main.py:92
+#: pkgbuilder/main.py:100
 msgid "perform a failsafe upgrade of PKGBUILDer"
 msgstr ""
 
-#: pkgbuilder/main.py:94
+#: pkgbuilder/main.py:104
 msgid "(dummy)"
 msgstr "（本当は何もしない）"
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
-#: pkgbuilder/main.py:134
+#: pkgbuilder/main.py:144
 msgid "Search query too short"
 msgstr ""
 
-#: pkgbuilder/main.py:135
+#: pkgbuilder/main.py:145
 msgid "Searching for exact match..."
 msgstr "完全一致を検索中・・・"
 
-#: pkgbuilder/main.py:138 INSTALL.py:65 INSTALL.py:74
+#: pkgbuilder/main.py:148 INSTALL.py:65 INSTALL.py:74
 msgid "not found"
 msgstr "見つからなかった"
 
-#: pkgbuilder/main.py:175
+#: pkgbuilder/main.py:185
 msgid "PKGBUILDer Failsafe Upgrade"
 msgstr ""
 
-#: pkgbuilder/main.py:178
+#: pkgbuilder/main.py:188
 msgid "Build the git version? [y/N] "
 msgstr ""
 
-#: pkgbuilder/main.py:209
+#: pkgbuilder/main.py:219
 #, python-brace-format
 msgid "Error while processing {0}: {1}"
 msgstr ""
 
-#: pkgbuilder/main.py:218
+#: pkgbuilder/main.py:228
 msgid "Running PKGBUILDer as root can break your system!"
 msgstr "管理者としてPKGBUILDerを実行すると危険性あり！"
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/main.py:243
+#: pkgbuilder/main.py:253
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."

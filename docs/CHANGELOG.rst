@@ -5,8 +5,8 @@ Appendix C. Changelog
 :Author: Kwpolska <kwpolska@kwpolska.tk>
 :Copyright: © 2011-2013, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2013-09-02
-:Version: 3.1.7
+:Date: 2013-09-10
+:Version: 3.1.8
 
 .. index:: CHANGELOG
 
@@ -50,11 +50,8 @@ Version History
 Generation 3
 ------------
 
-3.1.7
-    AUR v2.3.0 compatiblity (fonts category)
-
-3.1.6
-    Added --userfetch.
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
 
 3.1.7
     AUR v2.3.0 compatiblity (fonts category)
@@ -62,17 +59,8 @@ Generation 3
 3.1.6
     Added --userfetch.
 
-3.1.7
-    AUR v2.3.0 compatiblity (fonts category)
-
-3.1.6
-    Added --userfetch.
-
-3.1.7
-    AUR v2.3.0 compatiblity (fonts category)
-
-3.1.6
-
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
 
 3.1.7
     AUR v2.3.0 compatiblity (fonts category)
@@ -80,11 +68,8 @@ Generation 3
 3.1.6
     Added --userfetch.
 
-3.1.7
-    AUR v2.3.0 compatiblity (fonts category)
-
-3.1.6
-    Added --userfetch.
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
 
 3.1.7
     AUR v2.3.0 compatiblity (fonts category)
@@ -92,23 +77,17 @@ Generation 3
 3.1.6
     Added --userfetch.
 
-3.1.7
-    AUR v2.3.0 compatiblity (fonts category)
-
-3.1.6
-
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
 
 3.1.7
     AUR v2.3.0 compatiblity (fonts category)
 
 3.1.6
-    Added --userfetch.
 
-3.1.7
-    AUR v2.3.0 compatiblity (fonts category)
 
-3.1.6
-    Added --userfetch.
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
 
 3.1.7
     AUR v2.3.0 compatiblity (fonts category)
@@ -116,11 +95,8 @@ Generation 3
 3.1.6
     Added --userfetch.
 
-3.1.7
-    AUR v2.3.0 compatiblity (fonts category)
-
-3.1.6
-
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
 
 3.1.7
     AUR v2.3.0 compatiblity (fonts category)
@@ -128,11 +104,8 @@ Generation 3
 3.1.6
     Added --userfetch.
 
-3.1.7
-    AUR v2.3.0 compatiblity (fonts category)
-
-3.1.6
-    Added --userfetch.
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
 
 3.1.7
     AUR v2.3.0 compatiblity (fonts category)
@@ -140,23 +113,17 @@ Generation 3
 3.1.6
     Added --userfetch.
 
-3.1.7
-    AUR v2.3.0 compatiblity (fonts category)
-
-3.1.6
-
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
 
 3.1.7
     AUR v2.3.0 compatiblity (fonts category)
 
 3.1.6
-    Added --userfetch.
 
-3.1.7
-    AUR v2.3.0 compatiblity (fonts category)
 
-3.1.6
-    Added --userfetch.
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
 
 3.1.7
     AUR v2.3.0 compatiblity (fonts category)
@@ -164,11 +131,8 @@ Generation 3
 3.1.6
     Added --userfetch.
 
-3.1.7
-    AUR v2.3.0 compatiblity (fonts category)
-
-3.1.6
-
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
 
 3.1.7
     AUR v2.3.0 compatiblity (fonts category)
@@ -176,11 +140,8 @@ Generation 3
 3.1.6
     Added --userfetch.
 
-3.1.7
-    AUR v2.3.0 compatiblity (fonts category)
-
-3.1.6
-    Added --userfetch.
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
 
 3.1.7
     AUR v2.3.0 compatiblity (fonts category)
@@ -188,23 +149,17 @@ Generation 3
 3.1.6
     Added --userfetch.
 
-3.1.7
-    AUR v2.3.0 compatiblity (fonts category)
-
-3.1.6
-
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
 
 3.1.7
     AUR v2.3.0 compatiblity (fonts category)
 
 3.1.6
-    Added --userfetch.
 
-3.1.7
-    AUR v2.3.0 compatiblity (fonts category)
 
-3.1.6
-    Added --userfetch.
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
 
 3.1.7
     AUR v2.3.0 compatiblity (fonts category)
@@ -212,11 +167,8 @@ Generation 3
 3.1.6
     Added --userfetch.
 
-3.1.7
-    AUR v2.3.0 compatiblity (fonts category)
-
-3.1.6
-
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
 
 3.1.7
     AUR v2.3.0 compatiblity (fonts category)
@@ -224,17 +176,161 @@ Generation 3
 3.1.6
     Added --userfetch.
 
-3.1.7
-    AUR v2.3.0 compatiblity (fonts category)
-
-3.1.6
-    Added --userfetch.
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
 
 3.1.7
     AUR v2.3.0 compatiblity (fonts category)
 
 3.1.6
     Added --userfetch.
+
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
+
+3.1.7
+    AUR v2.3.0 compatiblity (fonts category)
+
+3.1.6
+
+
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
+
+3.1.7
+    AUR v2.3.0 compatiblity (fonts category)
+
+3.1.6
+    Added --userfetch.
+
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
+
+3.1.7
+    AUR v2.3.0 compatiblity (fonts category)
+
+3.1.6
+    Added --userfetch.
+
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
+
+3.1.7
+    AUR v2.3.0 compatiblity (fonts category)
+
+3.1.6
+    Added --userfetch.
+
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
+
+3.1.7
+    AUR v2.3.0 compatiblity (fonts category)
+
+3.1.6
+
+
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
+
+3.1.7
+    AUR v2.3.0 compatiblity (fonts category)
+
+3.1.6
+    Added --userfetch.
+
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
+
+3.1.7
+    AUR v2.3.0 compatiblity (fonts category)
+
+3.1.6
+    Added --userfetch.
+
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
+
+3.1.7
+    AUR v2.3.0 compatiblity (fonts category)
+
+3.1.6
+    Added --userfetch.
+
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
+
+3.1.7
+    AUR v2.3.0 compatiblity (fonts category)
+
+3.1.6
+
+
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
+
+3.1.7
+    AUR v2.3.0 compatiblity (fonts category)
+
+3.1.6
+    Added --userfetch.
+
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
+
+3.1.7
+    AUR v2.3.0 compatiblity (fonts category)
+
+3.1.6
+    Added --userfetch.
+
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
+
+3.1.7
+    AUR v2.3.0 compatiblity (fonts category)
+
+3.1.6
+    Added --userfetch.
+
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
+
+3.1.7
+    AUR v2.3.0 compatiblity (fonts category)
+
+3.1.6
+
+
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
+
+3.1.7
+    AUR v2.3.0 compatiblity (fonts category)
+
+3.1.6
+    Added --userfetch.
+
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
+
+3.1.7
+    AUR v2.3.0 compatiblity (fonts category)
+
+3.1.6
+    Added --userfetch.
+
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
+
+3.1.7
+    AUR v2.3.0 compatiblity (fonts category)
+
+3.1.6
+    Added --userfetch.
+
+3.1.8
+    Fixed pkgbuilder -F (broken one version ago)
 
 3.1.7
     AUR v2.3.0 compatiblity (fonts category)
