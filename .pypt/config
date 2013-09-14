@@ -22,7 +22,7 @@ PYTHON3=1
 # none      Do not create nor upload AUR packages.
 # python    Create python{,2}-$PROJECTLC{,-git} packages (4 in total)
 # app       Create $AURNAME{,-git} packages with Python 3
-AURMODE="app"
+AURTYPE="app"
 
 # AUR package name.  Defaults to $PROJECTLC.  Ignored by `python`.
 # WARNING: you still need to edit the PKGBUILDs.
