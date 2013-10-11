@@ -125,11 +125,19 @@ def main(source='AUTO', quit=True):
 
         if args.info:
             DS.log.debug('Showing info...')
-            pkgbuilder.utils.print_package_info(
-                pkgbuilder.utils.info(pkgnames))
 
+            pkgs = pkgbuilder.utils.info(pkgnames)
+            foundnames = [i.name for i in pkgs]
+            if pkgs:
+                pkgbuilder.utils.print_package_info(pkgs)
+                qs = 0
+            else:
+            for i in pkgnames:
+                if i not in foundnames:
+                    print(_("error: package '{0}' was not found").format(i))
+                    qs = 1
             if quit:
-                exit(0)
+                exit(qs)
 
         if args.search:
             if not pkgnames:
