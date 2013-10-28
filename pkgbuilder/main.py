@@ -132,12 +132,12 @@ def main(source='AUTO', quit=True):
                 pkgbuilder.utils.print_package_info(pkgs)
                 qs = 0
             else:
-            for i in pkgnames:
-                if i not in foundnames:
-                    print(_("error: package '{0}' was not found").format(i))
-                    qs = 1
-            if quit:
-                exit(qs)
+                for i in pkgnames:
+                    if i not in foundnames:
+                        print(_("error: package '{0}' was not found").format(i))
+                        qs = 1
+                if quit:
+                    exit(qs)
 
         if args.search:
             if not pkgnames:

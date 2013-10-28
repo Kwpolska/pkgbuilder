@@ -168,9 +168,13 @@ def auto_build(pkgname, performdepcheck=True,
                         completelist.remove(pkgname2)
 
                 if not toinstall:
-                    toinstall, sigs = auto_build(
-                        pkgname2, performdepcheck, pkginstall,
-                        build_result[1])[1]
+                    try:
+                        br = auto_build(
+                            pkgname2, performdepcheck, pkginstall,
+                            build_result[1])
+                        toinstall, sigs = br[1]
+                    except IndexError:
+                        return br
 
                 toinstall2 += toinstall
                 sigs2 += sigs
