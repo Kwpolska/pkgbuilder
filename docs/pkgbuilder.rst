@@ -3,7 +3,7 @@ PKGBUILDer
 ==========
 
 :Subtitle: An AUR helper (and library) in Python 3.
-:Author: Kwpolska <kwpolska@kwpolska.tk>
+:Author: Chris “Kwpolska” Warrick <kwpolska@kwpolska.tk>
 :Copyright: © 2011-2013, Kwpolska.
 :License: BSD (see /LICENSE or Appendix B.)
 :Date: 2013-09-14
