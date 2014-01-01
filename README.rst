@@ -3,7 +3,7 @@ PKGBUILDer.  An AUR helper (and library) in Python 3.
 =====================================================
 :Info: This is the README file for PKGBUILDer.
 :Author: Chris “Kwpolska” Warrick <kwpolska@kwpolska.tk>
-:Date: 2013-09-14
+:Date: 2014-01-01
 :Version: 3.1.9
 
 .. index: README
@@ -23,7 +23,7 @@ For more info, refer to the pkgbuilder(8) man page or the documentation.
 
 COPYRIGHT
 ---------
-Copyright © 2011-2013, Chris “Kwpolska” Warrick.
+Copyright © 2011-2014, Chris “Kwpolska” Warrick.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

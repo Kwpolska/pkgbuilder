@@ -3,9 +3,9 @@ Appendix C. Changelog
 =====================
 :Info: This is the changelog for PKGBUILDer.
 :Author: Chris “Kwpolska” Warrick <kwpolska@kwpolska.tk>
-:Copyright: © 2011-2013, Kwpolska.
+:Copyright: © 2011-2014, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2013-09-15
+:Date: 2014-01-01
 :Version: 3.1.9
 
 .. index:: CHANGELOG

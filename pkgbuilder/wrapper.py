@@ -3,7 +3,7 @@
 # PBWrapper v0.2.3
 # PKGBUILDer v3.1.5
 # An AUR helper (and library) in Python 3.
-# Copyright © 2011-2013, Kwpolska.
+# Copyright © 2011-2014, Kwpolska.
 # See /LICENSE for licensing information.
 
 """
@@ -12,7 +12,7 @@
 
     A wrapper for pacman and PKGBUILDer, also known as PBWrapper or pb.
 
-    :Copyright: © 2011-2013, Kwpolska.
+    :Copyright: © 2011-2014, Kwpolska.
     :License: BSD (see /LICENSE).
 """
 

@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 # Upgrade Counter and Lister
 # Part of PKGBUILDer Sample Scripts
-# Copyright © 2011-2013, Kwpolska.
+# Copyright © 2011-2014, Kwpolska.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without

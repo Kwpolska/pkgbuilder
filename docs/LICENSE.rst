@@ -3,12 +3,12 @@ Appendix B. License for PKGBUILDer
 ==================================
 :Info: This is the license for PKGBUILDer.
 :Author: Chris “Kwpolska” Warrick <kwpolska@kwpolska.tk>
-:Date: 2013-09-14
+:Date: 2014-01-01
 :Version: 3.1.9
 
 .. index:: LICENSE
 
-Copyright © 2011-2013, Chris “Kwpolska” Warrick.
+Copyright © 2011-2014, Chris “Kwpolska” Warrick.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

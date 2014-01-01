@@ -2,8 +2,10 @@
 Python Project Template.  INSERT TAGLINE HERE.™
 ===============================================
 :Info: This is the README file for the Python Project Template.
-:Author: Kwpolska <kwpolska@kwpolska.tk>
-:Date: 2013-01-20
+:Author: Chris “Kwpolska” Warrick <kwpolska@kwpolska.tk>
+:Copyright: © 2014, Chris “Kwpolska” Warrick.
+:License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
+:Date: 2014-01-01
 :Version: 0.1.0
 
 .. index: README
@@ -15,18 +17,17 @@ USING THE TEMPLATE
 Requirements
 ============
 
-* ``zsh`` installed (``/release`` and ``/.pypt/localegen`` scripts)
-* Python with ``requests`` installed (``/.pypt/{commitlog,aursend}``)
-* `git-flow extensions by nvie <https://github.com/nvie/gitflow>`_ (you need
-  to manually alter the ``/release`` script, and that is much harder than
+* ``zsh`` installed (required by ``/release`` and ``/.pypt/localegen`` scripts)
+* Python with ``requests`` installed (required by ``/.pypt/{commitlog,aursend}``)
+* `git-flow extensions by nvie <https://github.com/nvie/gitflow>`_ (alternatively yo can manually alter the ``/release`` script, and that is much harder than
   installing the extensions)
 * A git repository.  The PyPT is ready to go if you use GitHub.  If you do not
   want GitHub, edit the ``/PKGBUILD{,-2}{,-git}`` files and any other places
   where GitHub is mentioned, including this document which you should edit
   mentally.
 
-Recommended possesions
-======================
+Recommended possessions
+=======================
 
 * Travis CI account (if you do not want Travis CI, remove ``/.travis.yml``)
 * AUR account (if you do not want AUR uploads, remove the
@@ -62,7 +63,7 @@ The template contains the following files to get you started:
   * locale generation (via the ``.pypt/localegen`` script)
   * running ``import $project`` and the testsuite
   * creating and uploading AUR packages
-  * commiting into git, finishing the ``git flow`` release
+  * committing into git, finishing the ``git flow`` release
 
 
 Getting up to speed in 15 easy steps
@@ -87,7 +88,7 @@ Getting up to speed in 15 easy steps
    3. ``python-project-template`` with the GitHub repo name
    4. ``INSERT TAGLINE HERE.`` with a tagline of your choice
    5. ``kwpolska@.*`` with your e-mail address
-   6. ``Kwpolska`` with your name (affects mostly copyright notices)
+   6. ``Kwpolska`` and/or ``Chris “Kwpolska” Warrick`` with your name (affects mostly copyright notices)
 
    Not excluding dotfiles results in changing BSD-licensed files of the PyPT,
    doing so is not allowed.
@@ -161,7 +162,7 @@ commercial (a.k.a. proprietary) license, you must contact me first.
 
 **This README file MAY NOT be relicensed.**
 
-Copyright © 2013, Kwpolska.
+Copyright © 2014, Chris “Kwpolska” Warrick.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
