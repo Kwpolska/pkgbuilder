@@ -8,9 +8,9 @@
 # yfdogan <yfdogan@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.1.9\n"
+"Project-Id-Version: 3.1.10\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2013-09-14 20:41+0200\n"
+"POT-Creation-Date: 2014-01-22 15:53+0100\n"
 "PO-Revision-Date: 2013-08-23 15:58+0000\n"
 "Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/pkgbuilder/"
@@ -49,29 +49,29 @@ msgstr "{0}: Günü geçmiş {1}"
 msgid "Installing built packages..."
 msgstr "İnşa paketleri kuruluyor..."
 
-#: pkgbuilder/build.py:100 pkgbuilder/build.py:421 pkgbuilder/main.py:214
+#: pkgbuilder/build.py:100 pkgbuilder/build.py:429 pkgbuilder/main.py:222
 msgid "Fetching package information..."
 msgstr "Paket bilgisi alınıyor..."
 
-#: pkgbuilder/build.py:104 pkgbuilder/build.py:522
+#: pkgbuilder/build.py:104 pkgbuilder/build.py:531
 msgid "Downloading the tarball..."
 msgstr "Tarball indiriliyor..."
 
-#: pkgbuilder/build.py:107 pkgbuilder/build.py:525
+#: pkgbuilder/build.py:107 pkgbuilder/build.py:534
 #, python-brace-format
 msgid "{0} kB downloaded"
 msgstr "{0}: kb indirildi"
 
-#: pkgbuilder/build.py:109 pkgbuilder/build.py:527
+#: pkgbuilder/build.py:109 pkgbuilder/build.py:536
 msgid "Extracting..."
 msgstr "Açılıyor..."
 
-#: pkgbuilder/build.py:110 pkgbuilder/build.py:528
+#: pkgbuilder/build.py:110 pkgbuilder/build.py:537
 #, python-brace-format
 msgid "{0} files extracted"
 msgstr "{0}: dosya açıldı"
 
-#: pkgbuilder/build.py:112 pkgbuilder/build.py:504
+#: pkgbuilder/build.py:112 pkgbuilder/build.py:513
 #, python-brace-format
 msgid "Building {0}..."
 msgstr "{0} İnşa ediliyor..."
@@ -89,84 +89,84 @@ msgstr ""
 msgid "Build finished with return code {0}."
 msgstr "İnşa işlemi {0}geri dönüş kodu ile bitirildi."
 
-#: pkgbuilder/build.py:144
+#: pkgbuilder/build.py:145
 msgid "The build function reported a proper build."
 msgstr "İnşa işlemi uygun bir inşa bildirdi."
 
-#: pkgbuilder/build.py:148
+#: pkgbuilder/build.py:149
 msgid "Building more AUR packages is required."
 msgstr "Daha fazla AUR paketi gerekiyor."
 
-#: pkgbuilder/build.py:160
+#: pkgbuilder/build.py:161
 #, python-brace-format
 msgid "found an existing package for {0}"
 msgstr "{0} için var olan bir paket bulundu"
 
-#: pkgbuilder/build.py:191
+#: pkgbuilder/build.py:196
 #, python-brace-format
 msgid "makepkg (or someone else) failed and returned {0}."
 msgstr "makepkg (veya biri) durduruldu ve geri döndü {0}"
 
-#: pkgbuilder/build.py:216
+#: pkgbuilder/build.py:221
 msgid "0 bytes downloaded"
 msgstr "o byte indirildi"
 
-#: pkgbuilder/build.py:249
+#: pkgbuilder/build.py:254
 msgid "No files extracted."
 msgstr "Bir dosya açılmadı"
 
-#: pkgbuilder/build.py:362
+#: pkgbuilder/build.py:370
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr "Paket bağımlılığı şartı gerçekleştirilemedi :{0}"
 
-#: pkgbuilder/build.py:452
+#: pkgbuilder/build.py:460
 msgid ":: Retrieving packages from abs..."
 msgstr ":: ABS den paketler geri alınıyor..."
 
-#: pkgbuilder/build.py:455 pkgbuilder/build.py:466
+#: pkgbuilder/build.py:463 pkgbuilder/build.py:474
 #, python-brace-format
 msgid "retrieving {0}"
 msgstr "{0} geri alınıyor"
 
-#: pkgbuilder/build.py:459 pkgbuilder/build.py:516
+#: pkgbuilder/build.py:467 pkgbuilder/build.py:525
 #, python-brace-format
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr "{0} geri yüklenmesi durdu (ABS/rsync ten)"
 
-#: pkgbuilder/build.py:463
+#: pkgbuilder/build.py:471
 msgid ":: Retrieving packages from aur..."
 msgstr ":: AUR dan paketler geri alınıyor..."
 
-#: pkgbuilder/build.py:470
+#: pkgbuilder/build.py:478
 msgid "Extracting AUR packages..."
 msgstr "AUR paketleri açılıyor..."
 
-#: pkgbuilder/build.py:475
+#: pkgbuilder/build.py:483
 msgid "Successfully fetched: "
 msgstr "Başarıyla çekildi:"
 
-#: pkgbuilder/build.py:512
+#: pkgbuilder/build.py:521
 msgid "Retrieving from ABS..."
 msgstr "ABS den geri alınıyor..."
 
-#: pkgbuilder/build.py:532
+#: pkgbuilder/build.py:541
 msgid "Checking dependencies..."
 msgstr "Bağımlılıklara bakılıyor..."
 
-#: pkgbuilder/build.py:535
+#: pkgbuilder/build.py:544
 msgid "found in system"
 msgstr "Sistemde bulundu"
 
-#: pkgbuilder/build.py:535
+#: pkgbuilder/build.py:544
 msgid "found in repos"
 msgstr "Depolarda bulundu"
 
-#: pkgbuilder/build.py:536
+#: pkgbuilder/build.py:545
 msgid "found in the AUR"
 msgstr "AUR da bulundu"
 
-#: pkgbuilder/build.py:539
+#: pkgbuilder/build.py:548
 msgid "none found"
 msgstr "Bulunamadı"
 
@@ -309,41 +309,46 @@ msgstr "PKGBUILD yapıcı için güvenli yükseltme yapın"
 msgid "(dummy)"
 msgstr "(sahte)"
 
+#: pkgbuilder/main.py:137
+#, fuzzy, python-brace-format
+msgid "error: package '{0}' was not found"
+msgstr "{0} Paketi (via {1}) içinde bulunamadı"
+
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
-#: pkgbuilder/main.py:144
+#: pkgbuilder/main.py:152
 msgid "Search query too short"
 msgstr "Arama sorgusu çok kısa"
 
-#: pkgbuilder/main.py:145
+#: pkgbuilder/main.py:153
 msgid "Searching for exact match..."
 msgstr "Tam eşleşme için taranıyor..."
 
-#: pkgbuilder/main.py:148 INSTALL.py:65 INSTALL.py:74
+#: pkgbuilder/main.py:156 INSTALL.py:65 INSTALL.py:74
 msgid "not found"
 msgstr "Bulunamadı"
 
-#: pkgbuilder/main.py:185
+#: pkgbuilder/main.py:193
 msgid "PKGBUILDer Failsafe Upgrade"
 msgstr "PKGBUILD yapıcı güvenli yükseltme"
 
-#: pkgbuilder/main.py:188
+#: pkgbuilder/main.py:196
 msgid "Build the git version? [y/N] "
 msgstr "Git sürümü inşa edilsin mi? (E/H)"
 
-#: pkgbuilder/main.py:219
+#: pkgbuilder/main.py:227
 #, python-brace-format
 msgid "Error while processing {0}: {1}"
 msgstr ""
 
-#: pkgbuilder/main.py:228
+#: pkgbuilder/main.py:236
 msgid "Running PKGBUILDer as root can break your system!"
 msgstr ""
 "PKGBUILD yapıcı yı yetkili kullanıcı hakları ile çalıştırmak sisteminizi "
 "bozabilir!"
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/main.py:253
+#: pkgbuilder/main.py:261
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."

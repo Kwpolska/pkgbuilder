@@ -5,8 +5,8 @@ Appendix C. Changelog
 :Author: Chris “Kwpolska” Warrick <kwpolska@kwpolska.tk>
 :Copyright: © 2011-2014, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2014-01-01
-:Version: 3.1.9
+:Date: 2014-01-22
+:Version: 3.1.10
 
 .. index:: CHANGELOG
 
@@ -49,6 +49,12 @@ Version History
 
 Generation 3
 ------------
+
+3.1.10
+    * Inexistent packages don’t crash badly anymore
+    * AUR-dependency-builds do not crash everything either
+    * -Syu can work without ``stty size`` working
+    * $CARCH is defined for dependency checks (Issue #28)
 
 3.1.9
     Something went wrong last release, and it did not fix what it was supposed to…
