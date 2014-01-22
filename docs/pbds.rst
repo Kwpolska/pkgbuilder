@@ -5,8 +5,8 @@ pbds module (PBDS class)
 :Author: Chris “Kwpolska” Warrick <kwpolska@kwpolska.tk>
 :Copyright: © 2011-2014, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2014-01-01
-:Version: 3.1.9
+:Date: 2014-01-22
+:Version: 3.1.10
 
 .. module: pbds
 
