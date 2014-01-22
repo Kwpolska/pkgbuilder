@@ -202,10 +202,10 @@ def auto_upgrade(downgrade=False, vcsup=False):
         if DS.pacman:
             targetstring = _('Targets ({0}): ').format(upglen)
 
-            size = subprocess.check_output(['stty', 'size'])
             try:
+                size = subprocess.check_output(['stty', 'size'])
                 termwidth = int(size.split()[1])
-            except IndexError:
+            except (IndexError, subprocess.CalledProcessError):
                 if verbosepkglists:
                     # Pacman doesn’t allow tables if the terminal is too small.
                     # And since we don’t know the size, better safe than sorry.

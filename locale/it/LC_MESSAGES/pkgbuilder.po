@@ -8,9 +8,9 @@
 # Kwpolska <kwpolska@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.1.9\n"
+"Project-Id-Version: 3.1.10\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2013-09-14 20:41+0200\n"
+"POT-Creation-Date: 2014-01-22 15:53+0100\n"
 "PO-Revision-Date: 2013-08-23 15:58+0000\n"
 "Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/pkgbuilder/"
@@ -49,29 +49,29 @@ msgstr "{0}: obsoleto {1}"
 msgid "Installing built packages..."
 msgstr "Installazione di pacchetti costruiti..."
 
-#: pkgbuilder/build.py:100 pkgbuilder/build.py:421 pkgbuilder/main.py:214
+#: pkgbuilder/build.py:100 pkgbuilder/build.py:429 pkgbuilder/main.py:222
 msgid "Fetching package information..."
 msgstr "Recupero informazioni del pacchetto..."
 
-#: pkgbuilder/build.py:104 pkgbuilder/build.py:522
+#: pkgbuilder/build.py:104 pkgbuilder/build.py:531
 msgid "Downloading the tarball..."
 msgstr "Scaricamento dell tarball..."
 
-#: pkgbuilder/build.py:107 pkgbuilder/build.py:525
+#: pkgbuilder/build.py:107 pkgbuilder/build.py:534
 #, python-brace-format
 msgid "{0} kB downloaded"
 msgstr "{0} kB scaricato"
 
-#: pkgbuilder/build.py:109 pkgbuilder/build.py:527
+#: pkgbuilder/build.py:109 pkgbuilder/build.py:536
 msgid "Extracting..."
 msgstr "Estrazione..."
 
-#: pkgbuilder/build.py:110 pkgbuilder/build.py:528
+#: pkgbuilder/build.py:110 pkgbuilder/build.py:537
 #, python-brace-format
 msgid "{0} files extracted"
 msgstr "{0} file estratti"
 
-#: pkgbuilder/build.py:112 pkgbuilder/build.py:504
+#: pkgbuilder/build.py:112 pkgbuilder/build.py:513
 #, python-brace-format
 msgid "Building {0}..."
 msgstr "Costruzione {0}..."
@@ -89,84 +89,84 @@ msgstr ""
 msgid "Build finished with return code {0}."
 msgstr "Compilazione terminata con restituzione codice {0}."
 
-#: pkgbuilder/build.py:144
+#: pkgbuilder/build.py:145
 msgid "The build function reported a proper build."
 msgstr "La funzione di compilazione ha riportato una corretta compilazione."
 
-#: pkgbuilder/build.py:148
+#: pkgbuilder/build.py:149
 msgid "Building more AUR packages is required."
 msgstr "La costruzione di altri pacchetti di AUR è richiesta."
 
-#: pkgbuilder/build.py:160
+#: pkgbuilder/build.py:161
 #, python-brace-format
 msgid "found an existing package for {0}"
 msgstr "trovato un pacchetto esistente per {0}"
 
-#: pkgbuilder/build.py:191
+#: pkgbuilder/build.py:196
 #, python-brace-format
 msgid "makepkg (or someone else) failed and returned {0}."
 msgstr "makepkg (o qualcun altro) non è riuscito e ha restituito {0}."
 
-#: pkgbuilder/build.py:216
+#: pkgbuilder/build.py:221
 msgid "0 bytes downloaded"
 msgstr "0 bytes scaricati"
 
-#: pkgbuilder/build.py:249
+#: pkgbuilder/build.py:254
 msgid "No files extracted."
 msgstr "Nessun file estratti."
 
-#: pkgbuilder/build.py:362
+#: pkgbuilder/build.py:370
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr "Impossibile soddisfare le dipendenze richieste dal pacchetto: {0}"
 
-#: pkgbuilder/build.py:452
+#: pkgbuilder/build.py:460
 msgid ":: Retrieving packages from abs..."
 msgstr ":: Recùpero dei pacchetti da abs..."
 
-#: pkgbuilder/build.py:455 pkgbuilder/build.py:466
+#: pkgbuilder/build.py:463 pkgbuilder/build.py:474
 #, python-brace-format
 msgid "retrieving {0}"
 msgstr "recupero {0}"
 
-#: pkgbuilder/build.py:459 pkgbuilder/build.py:516
+#: pkgbuilder/build.py:467 pkgbuilder/build.py:525
 #, python-brace-format
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr "Impossibile recuperare {0} (da ABS/rsync)."
 
-#: pkgbuilder/build.py:463
+#: pkgbuilder/build.py:471
 msgid ":: Retrieving packages from aur..."
 msgstr ":: Recùpero dei pacchetti da aur..."
 
-#: pkgbuilder/build.py:470
+#: pkgbuilder/build.py:478
 msgid "Extracting AUR packages..."
 msgstr "Estrazione pacchetti AUR..."
 
-#: pkgbuilder/build.py:475
+#: pkgbuilder/build.py:483
 msgid "Successfully fetched: "
 msgstr "Recuperati con successo:"
 
-#: pkgbuilder/build.py:512
+#: pkgbuilder/build.py:521
 msgid "Retrieving from ABS..."
 msgstr "Recupero da ABS..."
 
-#: pkgbuilder/build.py:532
+#: pkgbuilder/build.py:541
 msgid "Checking dependencies..."
 msgstr "Controllo dipendenze..."
 
-#: pkgbuilder/build.py:535
+#: pkgbuilder/build.py:544
 msgid "found in system"
 msgstr "trovato nel sistema"
 
-#: pkgbuilder/build.py:535
+#: pkgbuilder/build.py:544
 msgid "found in repos"
 msgstr "trovato in repos"
 
-#: pkgbuilder/build.py:536
+#: pkgbuilder/build.py:545
 msgid "found in the AUR"
 msgstr "trovato in AUR"
 
-#: pkgbuilder/build.py:539
+#: pkgbuilder/build.py:548
 msgid "none found"
 msgstr "nulla è stato trovato"
 
@@ -310,39 +310,44 @@ msgstr "eseguire un aggiornamento sicuro di  PKGBUILDer"
 msgid "(dummy)"
 msgstr "(innocuo)"
 
+#: pkgbuilder/main.py:137
+#, fuzzy, python-brace-format
+msgid "error: package '{0}' was not found"
+msgstr "Pacchetto {0} non trovato. (via {1})"
+
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
-#: pkgbuilder/main.py:144
+#: pkgbuilder/main.py:152
 msgid "Search query too short"
 msgstr "Tèrmino di ricerca troppo corto"
 
-#: pkgbuilder/main.py:145
+#: pkgbuilder/main.py:153
 msgid "Searching for exact match..."
 msgstr "Ricerca di corrispondenza esatta"
 
-#: pkgbuilder/main.py:148 INSTALL.py:65 INSTALL.py:74
+#: pkgbuilder/main.py:156 INSTALL.py:65 INSTALL.py:74
 msgid "not found"
 msgstr "non trovato"
 
-#: pkgbuilder/main.py:185
+#: pkgbuilder/main.py:193
 msgid "PKGBUILDer Failsafe Upgrade"
 msgstr "PKGBUILDer aggiornamento sicuro"
 
-#: pkgbuilder/main.py:188
+#: pkgbuilder/main.py:196
 msgid "Build the git version? [y/N] "
 msgstr "Costruire la versione git? [y/N] "
 
-#: pkgbuilder/main.py:219
+#: pkgbuilder/main.py:227
 #, python-brace-format
 msgid "Error while processing {0}: {1}"
 msgstr ""
 
-#: pkgbuilder/main.py:228
+#: pkgbuilder/main.py:236
 msgid "Running PKGBUILDer as root can break your system!"
 msgstr "Eseguire PKGBUILDer come root può daneggiare il sistema!"
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/main.py:253
+#: pkgbuilder/main.py:261
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."

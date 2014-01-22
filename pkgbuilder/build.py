@@ -125,8 +125,8 @@ def safeupgrade(pkgname):
 
 def auto_build(pkgname, performdepcheck=True,
                pkginstall=True, completelist=[]):
-    """
-    NOT the actual build function.
+    """A function that builds everything, that should be used by everyone.
+
     This function makes building AUR deps possible.
     If you can, use it.
 
@@ -136,6 +136,7 @@ def auto_build(pkgname, performdepcheck=True,
         This function returns a list of packages to install with pacman -U.
         Please take care of it.  Running PKGBUILDer/PBWrapper standalone or
         .main.main() will do that.
+
     """
     build_result = build_runner(pkgname, performdepcheck, pkginstall)
     os.chdir('../')
@@ -168,9 +169,13 @@ def auto_build(pkgname, performdepcheck=True,
                         completelist.remove(pkgname2)
 
                 if not toinstall:
-                    toinstall, sigs = auto_build(
-                        pkgname2, performdepcheck, pkginstall,
-                        build_result[1])[1]
+                    try:
+                        br = auto_build(
+                            pkgname2, performdepcheck, pkginstall,
+                            build_result[1])
+                        toinstall, sigs = br[1]
+                    except IndexError:
+                        return br
 
                 toinstall2 += toinstall
                 sigs2 += sigs
@@ -200,7 +205,7 @@ def auto_build(pkgname, performdepcheck=True,
 
 
 def download(urlpath, filename):
-    """Downloads an AUR tarball to the current directory."""
+    """Download an AUR tarball to the current directory."""
     try:
         r = requests.get('https://aur.archlinux.org' + urlpath)
         r.raise_for_status()
@@ -238,7 +243,7 @@ def rsync(pkg, quiet=False):
 
 
 def extract(filename):
-    """Extracts an AUR tarball."""
+    """Extract an AUR tarball."""
     thandle = tarfile.open(filename, 'r:gz')
     thandle.extractall()
     names = thandle.getnames()
@@ -251,42 +256,45 @@ def extract(filename):
 
 
 def prepare_deps(pkgbuild_path):
-    """Gets (make)depends from a PKGBUILD and returns them."""
-    # Back in the  day,  there  was  a  comment  praising  replacing  pyparsing
-    # with shell magic.   It  claimed  that  we  will  have  no  fuckups  ever.
-    #  OF  COURSE  WE  DID.   SPLIT  PACKAGES.   PKGBUILDer  crashed  when   it
-    # encountered one.  Here comes the output from sh:
+    """Get (make)depends from a PKGBUILD and returns them."""
+    # Back in the day, there was a comment praising replacing pyparsing
+    # with shell magic.  It claimed that we will have no fuckups ever.
+    # OF COURSE WE DID.  SPLIT PACKAGES.  PKGBUILDer crashed when it
+    # encountered one. Here comes the output from sh:
     #
-    #  PKGBUILD: line  XX: `package_package-name': not a valid identifier
+    # PKGBUILD: line XX: `package_package-name': not a valid identifier
     #
-    # shell=True with subprocess.check_output() uses  /bin/sh,  which  is  more
+    # shell=True with subprocess.check_output() uses /bin/sh, which is more
     # strict than /bin/bash used by makepkg.
     #
-    # So, I replaced it  by  a  call  to  /usr/bin/bash  (which  is  equivalent
+    # So, I replaced it by a call to /usr/bin/bash (which is equivalent
     # to /bin/bash on Arch Linux).
     #
-    # And if the PKGBUILD is malicious, we speed up the destroying of the  user
-    # system by about 10 seconds,  so  it  makes  no  sense  not  to  do  this.
-    # Moreover, it takes only 7 lines instead of  about  40  in  the  pyparsing
+    # And if the PKGBUILD is malicious, we speed up the destroying of the user
+    # system by about 10 seconds, so it makes no sense not to do this.
+    # Moreover, it takes only 7 lines instead of about 40 in the pyparsing
     # implementation.
     #
-    # PS.  I am amazed that `bash -c`  ignores  !events.   That  saved  me  one
-    #      replace.  I am also amazed that it ignored \a and \n.
+    # PS. I am amazed that `bash -c` ignores !events.  That saved me one
+    # replace.  I am also amazed that it ignored \a and \n.
     #
-    # FULL DISCLOSURE:  the  following  path  was  used  to  test  the  current
-    #                   implementation.    I    may    have    not    noticed
-    #                   something  else  that  is   not   accounted   for   by
-    #                   this  very  path,   so   if   you   know   that   some
-    #                   breakage  occurs,  tell me.
+    # FULL DISCLOSURE: the following path was used to test the current
+    #                  implementation.  I may have not noticed
+    #                  something else that is not accounted for by
+    #                  this very path, so if you know that some
+    #                  breakage occurs, tell me.
     #
     # I am an "idiot"/no, 'really'/exclamation!mark, seriously/backsl\ash/a\n
 
     ppath = pkgbuild_path.replace('"', r'\"').join(('"', '"'))
 
-    deps = subprocess.check_output(('/usr/bin/bash', '-c', 'source ' +
-                                    ppath + ';for i in ${depends[*]};'
-                                    'do echo $i;done;for i in '
-                                    '${makedepends[*]};do echo $i; done'))
+    carch = subprocess.check_output(('uname', '-m')).decode('utf-8').strip()
+
+    deps = subprocess.check_output(('/usr/bin/bash', '-c', 'export CARCH="' +
+                                    carch + '";source ' + ppath + '> /dev/null'
+                                    ' 2> /dev/null;for i in ${depends[*]};do '
+                                    'echo $i;done;for i in ${makedepends[*]};'
+                                    'do echo $i;done'))
     deps = deps.decode('utf-8')
     deps = deps.split('\n')
 
@@ -307,7 +315,7 @@ def _test_dependency(available, difference, wanted):
 
 
 def depcheck(depends, pkgobj=None):
-    """Performs a dependency check."""
+    """Perform a dependency check."""
     if depends == []:
         # THANK YOU, MAINTAINER, FOR HAVING NO DEPS AND DESTROYING ME!
         return {}
@@ -480,9 +488,10 @@ def fetch_runner(pkgnames, preprocessed=False):
 
 def build_runner(pkgname, performdepcheck=True,
                  pkginstall=True):
-    """
-    A build function, which actually links to others.  Do not use it
-    unless you re-implement auto_build.
+    """A build function, which actually links to others.
+
+    DO NOT use it unless you re-implement auto_build!
+
     """
     pkg = None
     try:
