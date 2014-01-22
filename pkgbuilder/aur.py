@@ -81,7 +81,7 @@ class AUR:
         except requests.exceptions.ConnectionError as e:
             raise ConnectionError(e.args[0].reason, e)
         except requests.exceptions.HTTPError as e:
-            raise HTTPError(req, origexception=e)
+            raise HTTPError(req, e)
         except requests.exceptions.RequestException as e:
             raise NetworkError(str(e), e)
 
