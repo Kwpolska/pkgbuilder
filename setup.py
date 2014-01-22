@@ -1,19 +1,20 @@
 #!/usr/bin/env python3
-
 try:
     from setuptools import setup
 except ImportError:
     from distutils.core import setup
 
+import codecs
+
 setup(name='pkgbuilder',
-      version='3.1.11',
+      version='3.1.12',
       description='An AUR helper (and library) in Python 3.',
       keywords='arch pkgbuild',
       author='Chris “Kwpolska” Warrick',
       author_email='kwpolska@kwpolska.tk',
       url='https://github.com/Kwpolska/pkgbuilder',
       license='3-clause BSD',
-      long_description=open('./docs/README.rst').read(),
+      long_description=codecs.open('./docs/README.rst', 'r', 'utf-8').read(),
       platforms='Arch Linux',
       zip_safe=False,
       test_suite='tests',

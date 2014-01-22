@@ -5,10 +5,10 @@
         #
         msgid ""
         msgstr ""
-        "Project-Id-Version: 3.1.11\n"
+        "Project-Id-Version: 3.1.12\n"
         "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-        "POT-Creation-Date: 2014-01-22 16:25+0100\n"
-        "PO-Revision-Date: 2014-01-22 16:25+0100\n"
+        "POT-Creation-Date: 2014-01-22 17:55+0100\n"
+        "PO-Revision-Date: 2014-01-22 17:55+0100\n"
         "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
         "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
         "Language: en\n"

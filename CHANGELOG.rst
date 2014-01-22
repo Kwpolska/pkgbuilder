@@ -6,7 +6,7 @@ Appendix C. Changelog
 :Copyright: © 2011-2014, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
 :Date: 2014-01-22
-:Version: 3.1.11
+:Version: 3.1.12
 
 .. index:: CHANGELOG
 
@@ -50,8 +50,17 @@ Version History
 Generation 3
 ------------
 
+3.1.12
+    Make setup.py work properly and have PKGBUILDer install.
+
 3.1.11
     * Fix AUR/HTTP exceptions reporting. (via Issue #28)
+
+3.1.12
+    Make setup.py work properly and have PKGBUILDer install.
+
+3.1.11
+    * Fix a small bug, leading to misreporting certain AUR/HTTP exceptions.
 
 3.1.10
     * Inexistent packages don’t crash badly anymore
