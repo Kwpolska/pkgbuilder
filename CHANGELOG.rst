@@ -53,9 +53,6 @@ Generation 3
 3.1.11
     * Fix AUR/HTTP exceptions reporting. (via Issue #28)
 
-3.1.11
-    * Fix a small bug, leading to misreporting certain AUR/HTTP exceptions.
-
 3.1.10
     * Inexistent packages don’t crash badly anymore
     * AUR-dependency-builds do not crash everything either
