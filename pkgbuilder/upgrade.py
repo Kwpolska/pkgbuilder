@@ -133,11 +133,21 @@ def auto_upgrade(downgrade=False, vcsup=False):
     if downlen > 0:
         for i in downgradable:
             if DS.pacman:
-                print(_('{0}: local ({1}) is newer than aur '
-                        '({2})').format(*i))
+                if downgrade:
+                    msg = _('warning: {0}: downgrading from version {1} '
+                            'to version {2}').format(**i)
+                else:
+                    msg = _('warning: {0}: local ({1}) is newer than aur '
+                            '({2})').format(**i)
+                print(msg)
             else:
-                DS.fancy_warning(_('{0}: local ({1}) is newer than aur '
-                                   '({2})').format(*i))
+                if downgrade:
+                    msg = _('{0}: downgrading from version {1} '
+                            'to version {2}').format(**i)
+                else:
+                    msg = _('{0}: local ({1}) is newer than aur '
+                            '({2})').format(**i)
+                DS.fancy_warning(msg)
 
         if downgrade:
             upglen = upglen + downlen
