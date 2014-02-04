@@ -134,7 +134,8 @@ def main(source='AUTO', quit=True):
             else:
                 for i in pkgnames:
                     if i not in foundnames:
-                        print(_("error: package '{0}' was not found").format(i))
+                        print(_("error: package '{0}' was not "
+                                "found").format(i))
                         qs = 1
             if quit:
                 exit(qs)
