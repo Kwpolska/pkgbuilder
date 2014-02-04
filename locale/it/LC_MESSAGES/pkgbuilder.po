@@ -294,7 +294,6 @@ msgstr ""
 "non controllare se i pacchetti sono stati installati dopo la costruzione"
 
 #: pkgbuilder/main.py:93
-#, fuzzy
 msgid "don't  install packages after building"
 msgstr "Non installare i pacchetti dopo la costruzione"
 
@@ -311,9 +310,9 @@ msgid "(dummy)"
 msgstr "(innocuo)"
 
 #: pkgbuilder/main.py:137
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "error: package '{0}' was not found"
-msgstr "Pacchetto {0} non trovato. (via {1})"
+msgstr "errore: pacchetto {0} non trovato"
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
@@ -401,9 +400,9 @@ msgid "warning: {0}: downgrading from version {1} to version {2}"
 msgstr ""
 
 #: pkgbuilder/upgrade.py:140
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "warning: {0}: local ({1}) is newer than aur ({2})"
-msgstr "{0}: locale ({1}) è più recente di quello in aur ({2})"
+msgstr "attenzione: {0}: locale ({1}) è più recente di quello in aur ({2})"
 
 #: pkgbuilder/upgrade.py:145
 #, python-brace-format
@@ -509,17 +508,17 @@ msgid ""
 "Last Updated   : {upd}\n"
 "Description    : {dsc}\n"
 msgstr ""
-"Repositorio     : aur\n"
-"Categoria       : {cat}\n"
+"Repositorio    : aur\n"
+"Categoria      : {cat}\n"
 "Nome           : {nme}\n"
-"Versione        : {ver}\n"
+"Versione       : {ver}\n"
 "URL            : {url}\n"
-"Licenze       : {lic}\n"
-"Voti          : {cmv}\n"
-"Obsoleto    : {ood}\n"
+"Licenze        : {lic}\n"
+"Voti           : {cmv}\n"
+"Obsoleto       : {ood}\n"
 "Maintainer     : {mnt}\n"
-"Primo invio: {fsb}\n"
-"Ultimo aggiornamento   : {upd}\n"
+"Primo invio    : {fsb}\n"
+"Ultimo aggiornamento: {upd}\n"
 "Descrizione    : {dsc}\n"
 
 #: pkgbuilder/utils.py:182

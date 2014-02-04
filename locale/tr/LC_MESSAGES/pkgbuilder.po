@@ -293,7 +293,6 @@ msgid "don't check if packages were installed after build"
 msgstr "Paketler inşa işleminden sonra kurulduysa kontrol etme"
 
 #: pkgbuilder/main.py:93
-#, fuzzy
 msgid "don't  install packages after building"
 msgstr "İnşa işleminden sonra paketleri yükleme"
 
@@ -312,7 +311,7 @@ msgstr "(sahte)"
 #: pkgbuilder/main.py:137
 #, fuzzy, python-brace-format
 msgid "error: package '{0}' was not found"
-msgstr "{0} Paketi (via {1}) içinde bulunamadı"
+msgstr "hata: {0} paketi içinde bulunamadı"
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
@@ -404,7 +403,7 @@ msgstr ""
 #: pkgbuilder/upgrade.py:140
 #, fuzzy, python-brace-format
 msgid "warning: {0}: local ({1}) is newer than aur ({2})"
-msgstr "{0}: yerel ({1}) aur daki ({2}) den daha yeni"
+msgstr "uyarı: {0}: yerel ({1}) aur daki ({2}) den daha yeni"
 
 #: pkgbuilder/upgrade.py:145
 #, python-brace-format
@@ -508,18 +507,18 @@ msgid ""
 "Last Updated   : {upd}\n"
 "Description    : {dsc}\n"
 msgstr ""
-"Depo : aur⏎\n"
-"Kategori : {cat}⏎\n"
-"İsim : {nme}⏎\n"
-"Sürüm : {ver}⏎\n"
-"URL : {url}⏎\n"
-"Lisanslar : {lic}⏎\n"
-"Oylar : {cmv}⏎\n"
-"Günü Geçmiş : {ood}⏎\n"
-"Bakıcı : {mnt}⏎\n"
-"İlk ekleyen: {fsb}⏎\n"
-"Son güncellenen : {upd}⏎\n"
-"Açıklama : {dsc}⏎\n"
+"Depo           : aur\n"
+"Kategori       : {cat}\n"
+"İsim           : {nme}\n"
+"Sürüm          : {ver}\n"
+"URL            : {url}\n"
+"Lisanslar      : {lic}\n"
+"Oylar          : {cmv}\n"
+"Günü Geçmiş    : {ood}\n"
+"Bakıcı         : {mnt}\n"
+"İlk ekleyen    : {fsb}\n"
+"Son güncellenen: {upd}\n"
+"Açıklama       : {dsc}\n"
 
 #: pkgbuilder/utils.py:182
 msgid "yes"

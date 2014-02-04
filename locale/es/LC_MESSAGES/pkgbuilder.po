@@ -24,7 +24,7 @@ msgstr ""
 
 #: pkgbuilder/build.py:41
 msgid "Validating installation status..."
-msgstr "Validando el estado de la instalación...."
+msgstr "Validando el estado de la instalación..."
 
 #: pkgbuilder/build.py:57
 #, python-brace-format
@@ -52,7 +52,7 @@ msgstr "Instalando paquetes construidos..."
 
 #: pkgbuilder/build.py:100 pkgbuilder/build.py:429 pkgbuilder/main.py:225
 msgid "Fetching package information..."
-msgstr "Obteniendo información de los paquetes ..."
+msgstr "Obteniendo información de los paquetes..."
 
 #: pkgbuilder/build.py:104 pkgbuilder/build.py:531
 msgid "Downloading the tarball..."
@@ -294,7 +294,6 @@ msgid "don't check if packages were installed after build"
 msgstr "no comprobar si los paquetes se instalaron después de construirlos"
 
 #: pkgbuilder/main.py:93
-#, fuzzy
 msgid "don't  install packages after building"
 msgstr "no instale los paquetes después de la construcción"
 
@@ -311,9 +310,9 @@ msgid "(dummy)"
 msgstr "(inocuo)"
 
 #: pkgbuilder/main.py:137
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "error: package '{0}' was not found"
-msgstr "Paquete  {0} no encontrado. (via {1})"
+msgstr "error: paquete {0} no encontrado"
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
@@ -323,7 +322,7 @@ msgstr "Consulta de búsqueda demasiado corta"
 
 #: pkgbuilder/main.py:154
 msgid "Searching for exact match..."
-msgstr "Búsqueda de coincidencia exacta ..."
+msgstr "Búsqueda de coincidencia exacta..."
 
 #: pkgbuilder/main.py:157 INSTALL.py:65 INSTALL.py:74
 msgid "not found"
@@ -358,7 +357,7 @@ msgstr ""
 #. TRANSLATORS: see makepkg.
 #: pkgbuilder/pbds.py:46
 msgid "Aborted by user! Exiting..."
-msgstr "Abortado por el usuario! Saliendo ..."
+msgstr "Abortado por el usuario! Saliendo..."
 
 #. TRANSLATORS: see pacman.
 #: pkgbuilder/pbds.py:48
@@ -383,15 +382,15 @@ msgstr "No se crearán registros."
 
 #: pkgbuilder/pbds.py:104
 msgid "Initializing pacman access..."
-msgstr "Iniciando acceso pacman ..."
+msgstr "Iniciando acceso pacman..."
 
 #: pkgbuilder/upgrade.py:117 pkgbuilder/upgrade.py:119
 msgid "Synchronizing package databases..."
-msgstr "Sincronizando bases de datos de paquetes ..."
+msgstr "Sincronizando bases de datos de paquetes..."
 
 #: pkgbuilder/upgrade.py:129 pkgbuilder/upgrade.py:131
 msgid "Starting full system upgrade..."
-msgstr "Iniciando actualización completa del sistema ..."
+msgstr "Iniciando actualización completa del sistema..."
 
 #: pkgbuilder/upgrade.py:137
 #, python-brace-format
@@ -399,9 +398,9 @@ msgid "warning: {0}: downgrading from version {1} to version {2}"
 msgstr ""
 
 #: pkgbuilder/upgrade.py:140
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "warning: {0}: local ({1}) is newer than aur ({2})"
-msgstr "{0}: local ({1}) es más reciente que el aur ({2})"
+msgstr "atención: {0}: local ({1}) es más reciente que el aur ({2})"
 
 #: pkgbuilder/upgrade.py:145
 #, python-brace-format
@@ -505,18 +504,18 @@ msgid ""
 "Last Updated   : {upd}\n"
 "Description    : {dsc}\n"
 msgstr ""
-"Repositorio: aur ⏎\n"
-"Categoría: {cat} ⏎\n"
-"Nombre: {NME} ⏎\n"
-"Versión: {ver} ⏎\n"
-"URL: {url} ⏎\n"
-"Licencias: {lic} ⏎\n"
-"Votos: {CMV} ⏎\n"
-"Obsoletos: {ood} (s/n) ⏎\n"
-"Mantenedor: {MNT} ⏎\n"
-"Primera presentación: {fsb} ⏎\n"
-"Última actualización: {UPD} ⏎\n"
-"Descripción: {dsc} ⏎\n"
+"Repositorio    : aur\n"
+"Categoría      : {cat}\n"
+"Nombre         : {nme}\n"
+"Versión        : {ver}\n"
+"URL            : {url}\n"
+"Licencias      : {lic}\n"
+"Votos          : {cmv}\n"
+"Obsoletos      : {ood}\n"
+"Mantenedor     : {mnt}\n"
+"Primera presentación: {fsb}\n"
+"Última actualización: {upd}\n"
+"Descripción    : {dsc}\n"
 "\n"
 "\n"
 "\n"
@@ -565,7 +564,7 @@ msgstr ""
 
 #: INSTALL.py:53
 msgid "Performing a dependency check..."
-msgstr "Realizando una comprobación de dependencias ..."
+msgstr "Realizando una comprobación de dependencias..."
 
 #: INSTALL.py:62 INSTALL.py:71
 msgid "found"
@@ -618,7 +617,7 @@ msgstr "Pulsa Enter/Return para continuar."
 
 #: INSTALL.py:135
 msgid "Installing missing AUR dependencies..."
-msgstr "Instalando las dependencias que  faltan de AUR ..."
+msgstr "Instalando las dependencias que faltan de AUR..."
 
 #: INSTALL.py:142
 #, python-brace-format
@@ -688,9 +687,7 @@ msgstr ""
 #. A module only for gettext locale provision.
 #: localeprovider.py:2
 msgid "usage"
-msgstr ""
-"\t\n"
-"manejo"
+msgstr "manejo"
 
 #: localeprovider.py:3
 msgid "positional arguments"
