@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 3.1.12\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2014-01-22 17:55+0100\n"
+"POT-Creation-Date: 2014-02-04 16:54+0100\n"
 "PO-Revision-Date: 2013-08-23 15:58+0000\n"
 "Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/pkgbuilder/"
@@ -49,7 +49,7 @@ msgstr "{0}: Günü geçmiş {1}"
 msgid "Installing built packages..."
 msgstr "İnşa paketleri kuruluyor..."
 
-#: pkgbuilder/build.py:100 pkgbuilder/build.py:429 pkgbuilder/main.py:222
+#: pkgbuilder/build.py:100 pkgbuilder/build.py:429 pkgbuilder/main.py:225
 msgid "Fetching package information..."
 msgstr "Paket bilgisi alınıyor..."
 
@@ -316,39 +316,39 @@ msgstr "{0} Paketi (via {1}) içinde bulunamadı"
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
-#: pkgbuilder/main.py:152
+#: pkgbuilder/main.py:153
 msgid "Search query too short"
 msgstr "Arama sorgusu çok kısa"
 
-#: pkgbuilder/main.py:153
+#: pkgbuilder/main.py:154
 msgid "Searching for exact match..."
 msgstr "Tam eşleşme için taranıyor..."
 
-#: pkgbuilder/main.py:156 INSTALL.py:65 INSTALL.py:74
+#: pkgbuilder/main.py:157 INSTALL.py:65 INSTALL.py:74
 msgid "not found"
 msgstr "Bulunamadı"
 
-#: pkgbuilder/main.py:193
+#: pkgbuilder/main.py:194
 msgid "PKGBUILDer Failsafe Upgrade"
 msgstr "PKGBUILD yapıcı güvenli yükseltme"
 
-#: pkgbuilder/main.py:196
+#: pkgbuilder/main.py:197
 msgid "Build the git version? [y/N] "
 msgstr "Git sürümü inşa edilsin mi? (E/H)"
 
-#: pkgbuilder/main.py:227
+#: pkgbuilder/main.py:230
 #, python-brace-format
 msgid "Error while processing {0}: {1}"
 msgstr ""
 
-#: pkgbuilder/main.py:236
+#: pkgbuilder/main.py:240
 msgid "Running PKGBUILDer as root can break your system!"
 msgstr ""
 "PKGBUILD yapıcı yı yetkili kullanıcı hakları ile çalıştırmak sisteminizi "
 "bozabilir!"
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/main.py:261
+#: pkgbuilder/main.py:268
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
@@ -396,57 +396,72 @@ msgstr "Paket veritabanları eşleştiriliyor..."
 msgid "Starting full system upgrade..."
 msgstr "Tam sistem  yükseltmesi başlatılıyor..."
 
-#: pkgbuilder/upgrade.py:136 pkgbuilder/upgrade.py:139
+#: pkgbuilder/upgrade.py:137
+#, python-brace-format
+msgid "warning: {0}: downgrading from version {1} to version {2}"
+msgstr ""
+
+#: pkgbuilder/upgrade.py:140
+#, fuzzy, python-brace-format
+msgid "warning: {0}: local ({1}) is newer than aur ({2})"
+msgstr "{0}: yerel ({1}) aur daki ({2}) den daha yeni"
+
+#: pkgbuilder/upgrade.py:145
+#, python-brace-format
+msgid "{0}: downgrading from version {1} to version {2}"
+msgstr ""
+
+#: pkgbuilder/upgrade.py:148
 #, python-brace-format
 msgid "{0}: local ({1}) is newer than aur ({2})"
 msgstr "{0}: yerel ({1}) aur daki ({2}) den daha yeni"
 
-#: pkgbuilder/upgrade.py:148 pkgbuilder/upgrade.py:150
+#: pkgbuilder/upgrade.py:158 pkgbuilder/upgrade.py:160
 msgid "there is nothing to do"
 msgstr "Yapılacak bir şey yok"
 
-#: pkgbuilder/upgrade.py:174 pkgbuilder/upgrade.py:180
+#: pkgbuilder/upgrade.py:184 pkgbuilder/upgrade.py:190
 msgid "The following packages should be upgraded first:"
 msgstr "Şu paketler önce yükseltilecek:"
 
-#: pkgbuilder/upgrade.py:177
+#: pkgbuilder/upgrade.py:187
 msgid "Do you want to cancel the current operation"
 msgstr "Geçerli işlemi iptal etmek istiyormusunuz"
 
-#: pkgbuilder/upgrade.py:178
+#: pkgbuilder/upgrade.py:188
 msgid "and upgrade these packages now? [Y/n] "
 msgstr "ve bu paketler şimdi yükseltilsin mi? [E/H]"
 
-#: pkgbuilder/upgrade.py:185
+#: pkgbuilder/upgrade.py:195
 msgid ""
 "Do you want to cancel the current operation and upgrade these packages now? "
 "[Y/n] "
 msgstr ""
 "Geçerli işlemi sonlandırıp bu paketleri yükseltmek istiyormusunuz? [E/H]"
 
-#: pkgbuilder/upgrade.py:203 pkgbuilder/upgrade.py:270
+#: pkgbuilder/upgrade.py:213 pkgbuilder/upgrade.py:280
 #, python-brace-format
 msgid "Targets ({0}): "
 msgstr "Hedefler ({0}):"
 
-#: pkgbuilder/upgrade.py:218
+#: pkgbuilder/upgrade.py:228
 msgid "Name"
 msgstr "İsim"
 
-#: pkgbuilder/upgrade.py:218
+#: pkgbuilder/upgrade.py:228
 msgid "Old Version"
 msgstr "Eski sürüm"
 
-#: pkgbuilder/upgrade.py:218
+#: pkgbuilder/upgrade.py:228
 msgid "New Version"
 msgstr "Yeni sürüm"
 
 #. string stolen from pacman
-#: pkgbuilder/upgrade.py:241
+#: pkgbuilder/upgrade.py:251
 msgid "warning: insufficient columns available for table display"
 msgstr "uyarı: tablo görünümü için yetersiz sütunlar var"
 
-#: pkgbuilder/upgrade.py:268 pkgbuilder/upgrade.py:274
+#: pkgbuilder/upgrade.py:278 pkgbuilder/upgrade.py:284
 msgid "Proceed with installation? [Y/n] "
 msgstr "Kuruluma devam edilsin mi? [E/H]"
 

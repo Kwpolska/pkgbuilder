@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 3.1.12\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2014-01-22 17:55+0100\n"
+"POT-Creation-Date: 2014-02-04 16:54+0100\n"
 "PO-Revision-Date: 2013-08-23 15:58+0000\n"
 "Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/pkgbuilder/"
@@ -50,7 +50,7 @@ msgstr "{0}: obsoleto {1}"
 msgid "Installing built packages..."
 msgstr "Instalando paquetes construidos..."
 
-#: pkgbuilder/build.py:100 pkgbuilder/build.py:429 pkgbuilder/main.py:222
+#: pkgbuilder/build.py:100 pkgbuilder/build.py:429 pkgbuilder/main.py:225
 msgid "Fetching package information..."
 msgstr "Obteniendo información de los paquetes ..."
 
@@ -317,37 +317,37 @@ msgstr "Paquete  {0} no encontrado. (via {1})"
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
-#: pkgbuilder/main.py:152
+#: pkgbuilder/main.py:153
 msgid "Search query too short"
 msgstr "Consulta de búsqueda demasiado corta"
 
-#: pkgbuilder/main.py:153
+#: pkgbuilder/main.py:154
 msgid "Searching for exact match..."
 msgstr "Búsqueda de coincidencia exacta ..."
 
-#: pkgbuilder/main.py:156 INSTALL.py:65 INSTALL.py:74
+#: pkgbuilder/main.py:157 INSTALL.py:65 INSTALL.py:74
 msgid "not found"
 msgstr "no encontrado"
 
-#: pkgbuilder/main.py:193
+#: pkgbuilder/main.py:194
 msgid "PKGBUILDer Failsafe Upgrade"
 msgstr "PKGBUILDer Actualización a prueba de fallos"
 
-#: pkgbuilder/main.py:196
+#: pkgbuilder/main.py:197
 msgid "Build the git version? [y/N] "
 msgstr "Construir la versión git? [s/N]"
 
-#: pkgbuilder/main.py:227
+#: pkgbuilder/main.py:230
 #, python-brace-format
 msgid "Error while processing {0}: {1}"
 msgstr ""
 
-#: pkgbuilder/main.py:236
+#: pkgbuilder/main.py:240
 msgid "Running PKGBUILDer as root can break your system!"
 msgstr "Ejecutar PKGBUILDer como root puede romper su sistema!"
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/main.py:261
+#: pkgbuilder/main.py:268
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
@@ -393,57 +393,72 @@ msgstr "Sincronizando bases de datos de paquetes ..."
 msgid "Starting full system upgrade..."
 msgstr "Iniciando actualización completa del sistema ..."
 
-#: pkgbuilder/upgrade.py:136 pkgbuilder/upgrade.py:139
+#: pkgbuilder/upgrade.py:137
+#, python-brace-format
+msgid "warning: {0}: downgrading from version {1} to version {2}"
+msgstr ""
+
+#: pkgbuilder/upgrade.py:140
+#, fuzzy, python-brace-format
+msgid "warning: {0}: local ({1}) is newer than aur ({2})"
+msgstr "{0}: local ({1}) es más reciente que el aur ({2})"
+
+#: pkgbuilder/upgrade.py:145
+#, python-brace-format
+msgid "{0}: downgrading from version {1} to version {2}"
+msgstr ""
+
+#: pkgbuilder/upgrade.py:148
 #, python-brace-format
 msgid "{0}: local ({1}) is newer than aur ({2})"
 msgstr "{0}: local ({1}) es más reciente que el aur ({2})"
 
-#: pkgbuilder/upgrade.py:148 pkgbuilder/upgrade.py:150
+#: pkgbuilder/upgrade.py:158 pkgbuilder/upgrade.py:160
 msgid "there is nothing to do"
 msgstr "no hay nada que hacer"
 
-#: pkgbuilder/upgrade.py:174 pkgbuilder/upgrade.py:180
+#: pkgbuilder/upgrade.py:184 pkgbuilder/upgrade.py:190
 msgid "The following packages should be upgraded first:"
 msgstr "Los siguientes paquetes deben ser actualizados en primer lugar:"
 
-#: pkgbuilder/upgrade.py:177
+#: pkgbuilder/upgrade.py:187
 msgid "Do you want to cancel the current operation"
 msgstr "Deseas cancelar la operación actual"
 
-#: pkgbuilder/upgrade.py:178
+#: pkgbuilder/upgrade.py:188
 msgid "and upgrade these packages now? [Y/n] "
 msgstr "y actualizar estos paquetes ahora? [S/n]"
 
-#: pkgbuilder/upgrade.py:185
+#: pkgbuilder/upgrade.py:195
 msgid ""
 "Do you want to cancel the current operation and upgrade these packages now? "
 "[Y/n] "
 msgstr ""
 "Deseas cancelar la operación actual y actualizar estos paquetes ahora? [S/n]"
 
-#: pkgbuilder/upgrade.py:203 pkgbuilder/upgrade.py:270
+#: pkgbuilder/upgrade.py:213 pkgbuilder/upgrade.py:280
 #, python-brace-format
 msgid "Targets ({0}): "
 msgstr "Objetivos ({0}):"
 
-#: pkgbuilder/upgrade.py:218
+#: pkgbuilder/upgrade.py:228
 msgid "Name"
 msgstr "Nombre"
 
-#: pkgbuilder/upgrade.py:218
+#: pkgbuilder/upgrade.py:228
 msgid "Old Version"
 msgstr "Versión Vieja"
 
-#: pkgbuilder/upgrade.py:218
+#: pkgbuilder/upgrade.py:228
 msgid "New Version"
 msgstr "Versión Nueva"
 
 #. string stolen from pacman
-#: pkgbuilder/upgrade.py:241
+#: pkgbuilder/upgrade.py:251
 msgid "warning: insufficient columns available for table display"
 msgstr "atención: no hay columnas suficientes para mostrar la tabla"
 
-#: pkgbuilder/upgrade.py:268 pkgbuilder/upgrade.py:274
+#: pkgbuilder/upgrade.py:278 pkgbuilder/upgrade.py:284
 msgid "Proceed with installation? [Y/n] "
 msgstr "Proceder con la instalación? [S/n]"
 
