@@ -136,8 +136,8 @@ def main(source='AUTO', quit=True):
                     if i not in foundnames:
                         print(_("error: package '{0}' was not found").format(i))
                         qs = 1
-                if quit:
-                    exit(qs)
+            if quit:
+                exit(qs)
 
         if args.search:
             if not pkgnames:
