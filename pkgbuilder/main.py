@@ -206,7 +206,8 @@ def main(source='AUTO', quit=True):
 
             mpstatus = pkgbuilder.build.safeupgrade(pkgname)
 
-            exit(mpstatus)
+            if quit:
+                exit(mpstatus)
 
         if args.upgrade > 0:
             DS.log.info('Starting upgrade...')
@@ -216,7 +217,8 @@ def main(source='AUTO', quit=True):
 
         if args.fetch:
             pkgbuilder.build.fetch_runner(pkgnames)
-            exit(0)
+            if quit:
+                exit(0)
 
         if args.userfetch:
             tofetch = []
@@ -228,7 +230,8 @@ def main(source='AUTO', quit=True):
                     print(_('Error while processing {0}: {1}').format(u, e))
 
             pkgbuilder.build.fetch_runner(tofetch, preprocessed=True)
-            exit(0)
+            if quit:
+                exit(0)
 
         # If we didn't quit, we should build the packages.
         if pkgnames:
@@ -254,8 +257,11 @@ def main(source='AUTO', quit=True):
                 pkgbuilder.build.install(toinstall, sigs, asdeps=False)
 
             if args.validate and tovalidate:
-                DS.log.info('Quitting peacefully.')
-                exit(pkgbuilder.build.validate(tovalidate))
+                qs = pkgbuilder.build.validate(tovalidate)
+                if quit:
+                    DS.log.info('Quitting peacefully.')
+                    exit(qs)
+
     except NetworkError as e:
         DS.fancy_error(str(e))
         # TRANSLATORS: do not translate the word 'requests'.
