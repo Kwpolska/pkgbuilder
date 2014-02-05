@@ -7,7 +7,7 @@ except ImportError:
 import codecs
 
 setup(name='pkgbuilder',
-      version='3.1.12',
+      version='3.1.13',
       description='An AUR helper (and library) in Python 3.',
       keywords='arch pkgbuild',
       author='Chris “Kwpolska” Warrick',

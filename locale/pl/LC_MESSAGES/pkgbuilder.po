@@ -2,23 +2,25 @@
 # Copyright © 2011-2014, Kwpolska.
 # This file is distributed under the same license as the PKGBUILDer package.
 # Kwpolska <kwpolska@kwpolska.tk>, 2011-2014.
-# 
+#
 # Translators:
 # Kwpolska <kwpolska@gmail.com>, 2013
 # Kwpolska <kwpolska@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: PKGBUILDer\n"
+"Project-Id-Version: 3.1.13\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2014-02-04 16:54+0100\n"
+"POT-Creation-Date: 2014-02-05 16:41+0100\n"
 "PO-Revision-Date: 2014-02-04 16:00+0000\n"
 "Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/pkgbuilder/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/pkgbuilder/"
+"language/pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 
 #: pkgbuilder/build.py:41
 msgid "Validating installation status..."
@@ -104,7 +106,9 @@ msgstr "znaleziono istniejący pakiet {0}"
 #: pkgbuilder/build.py:196
 #, python-brace-format
 msgid "makepkg (or someone else) failed and returned {0}."
-msgstr "tworzenie pakietu przez makepkg (lub coś innego) nie powiodło się i zwróciło {0}."
+msgstr ""
+"tworzenie pakietu przez makepkg (lub coś innego) nie powiodło się i zwróciło "
+"{0}."
 
 #: pkgbuilder/build.py:221
 msgid "0 bytes downloaded"
@@ -310,7 +314,7 @@ msgstr "(nic nie robi)"
 #: pkgbuilder/main.py:137
 #, python-brace-format
 msgid "error: package '{0}' was not found"
-msgstr "błąd: nie znaleziono pakietu {0}"
+msgstr "błąd: nie znaleziono pakietu '{0}'"
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
@@ -348,7 +352,9 @@ msgstr "Używanie PKGBUILDera jako root może popsuć twój system!"
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
-msgstr "PKGBUILDer (lub bliblioteka requests) miała problemy z wypełniem żądania HTTP."
+msgstr ""
+"PKGBUILDer (lub bliblioteka requests) miała problemy z wypełniem żądania "
+"HTTP."
 
 #. TRANSLATORS: see makepkg.
 #: pkgbuilder/pbds.py:46
@@ -428,7 +434,8 @@ msgstr "i zaktualizować te pakiety teraz? [Y/n] "
 msgid ""
 "Do you want to cancel the current operation and upgrade these packages now? "
 "[Y/n] "
-msgstr "Czy chcesz anulować obecną operację i zaktualizować te pakiety teraz? [Y/n] "
+msgstr ""
+"Czy chcesz anulować obecną operację i zaktualizować te pakiety teraz? [Y/n] "
 
 #: pkgbuilder/upgrade.py:213 pkgbuilder/upgrade.py:280
 #, python-brace-format
@@ -498,7 +505,19 @@ msgid ""
 "First Submitted: {fsb}\n"
 "Last Updated   : {upd}\n"
 "Description    : {dsc}\n"
-msgstr "Repozytorium   : aur\nKategoria      : {cat}\nNazwa          : {nme}\nWersja         : {ver}\nURL            : {url}\nLicencje       : {lic}\nGłosy          : {cmv}\nNieaktualny    : {ood}\nOpiekun        : {mnt}\nWysłany        : {fsb}\nOst. aktualiz. : {upd}\nOpis           : {dsc}\n"
+msgstr ""
+"Repozytorium   : aur\n"
+"Kategoria      : {cat}\n"
+"Nazwa          : {nme}\n"
+"Wersja         : {ver}\n"
+"URL            : {url}\n"
+"Licencje       : {lic}\n"
+"Głosy          : {cmv}\n"
+"Nieaktualny    : {ood}\n"
+"Opiekun        : {mnt}\n"
+"Wysłany        : {fsb}\n"
+"Ost. aktualiz. : {upd}\n"
+"Opis           : {dsc}\n"
 
 #: pkgbuilder/utils.py:182
 msgid "yes"
@@ -528,7 +547,18 @@ msgid ""
 "\n"
 "Additional options:\n"
 "  -L, --unlock         unlock the pacman database"
-msgstr "sposób użycia:  {0} <operacja> [...]\n\nPBWrapper, wrapper dla pacmana i PKGBUILDera.\n\n{1}\n\nObowiązuje składnia pacmana i PKGBUILDera.  Zajrzyj do ich stron\nw podręczniku man lub do komend pomocy, aby dowiedzieć się więcej.\n\nDodatkowe opcje:\n  -L, --unlock         odblokuj bazę danych pacmana"
+msgstr ""
+"sposób użycia:  {0} <operacja> [...]\n"
+"\n"
+"PBWrapper, wrapper dla pacmana i PKGBUILDera.\n"
+"\n"
+"{1}\n"
+"\n"
+"Obowiązuje składnia pacmana i PKGBUILDera.  Zajrzyj do ich stron\n"
+"w podręczniku man lub do komend pomocy, aby dowiedzieć się więcej.\n"
+"\n"
+"Dodatkowe opcje:\n"
+"  -L, --unlock         odblokuj bazę danych pacmana"
 
 #: INSTALL.py:53
 msgid "Performing a dependency check..."
@@ -550,7 +580,16 @@ msgid ""
 "(the number is random).\n"
 "\n"
 "If I am wrong, though, congratulations!\n"
-msgstr "\n\nCoś poszło źle.  Przeczytaj wyjście makepkg i spróbuj ponownie.\nMożesz też próbować debugować pracę tego skryptu samemu.\nWszystkie pliki, nad którymi ten skrypt pracował, znajdują się w\n    {0}\n(liczba jest losowa).\n\nJeśli się mylę, gratulacje!\n"
+msgstr ""
+"\n"
+"\n"
+"Coś poszło źle.  Przeczytaj wyjście makepkg i spróbuj ponownie.\n"
+"Możesz też próbować debugować pracę tego skryptu samemu.\n"
+"Wszystkie pliki, nad którymi ten skrypt pracował, znajdują się w\n"
+"    {0}\n"
+"(liczba jest losowa).\n"
+"\n"
+"Jeśli się mylę, gratulacje!\n"
 
 #: INSTALL.py:114
 msgid ""
@@ -561,7 +600,14 @@ msgid ""
 "package and install it.  If you will have problems, please download\n"
 "and compile the package manually.\n"
 "\n"
-msgstr "Cześć!\n\nPKGBUILDer jest teraz dostępny jako pakiet w AUR.  Jest to polecany\nsposób instalacji PKGBUILDer-a.  Ten skrypt pobierze pakiet z AUR i go\nzainstaluje.  Jeśli będziesz miał problemy, pobierz i skompiluj pakiet\nręcznie.\n\n"
+msgstr ""
+"Cześć!\n"
+"\n"
+"PKGBUILDer jest teraz dostępny jako pakiet w AUR.  Jest to polecany\n"
+"sposób instalacji PKGBUILDer-a.  Ten skrypt pobierze pakiet z AUR i go\n"
+"zainstaluje.  Jeśli będziesz miał problemy, pobierz i skompiluj pakiet\n"
+"ręcznie.\n"
+"\n"
 
 #: INSTALL.py:123
 msgid "Hit Enter/Return to continue. "
@@ -586,7 +632,19 @@ msgid ""
 "PKGBUILDer.  For standalone usage, type `pkgbuilder` into the prompt\n"
 "(zsh users: hash -r, other shells may need another command).  For\n"
 "python module usage, type `import pkgbuilder` into the python prompt.\n"
-msgstr "\n\nPrzeczytaj powyższe wyjście.  Jeśli skrypt miał problemy, spróbuj\njeszcze raz.  Możesz też spróbować samodzielnie debugować pracę skryptu.\nWszystkie pliki, nad którymi ten skrypt pracował, znajdują się w\n    {0}\n(liczba jest losowa).\n\nJeśli wszystko się udało, gratulacje!  Teraz możesz używać PKGBUILDer-a.\nDla użycia samodzielnego, wpisz `pkgbuilder` do terminala (zsh: hash -r,\ninne powłoki mogą wymagać innej komendy).  Dla użycia jako moduł\nPythona, wpisz `import pkgbuilder` do interpretera.\n"
+msgstr ""
+"\n"
+"\n"
+"Przeczytaj powyższe wyjście.  Jeśli skrypt miał problemy, spróbuj\n"
+"jeszcze raz.  Możesz też spróbować samodzielnie debugować pracę skryptu.\n"
+"Wszystkie pliki, nad którymi ten skrypt pracował, znajdują się w\n"
+"    {0}\n"
+"(liczba jest losowa).\n"
+"\n"
+"Jeśli wszystko się udało, gratulacje!  Teraz możesz używać PKGBUILDer-a.\n"
+"Dla użycia samodzielnego, wpisz `pkgbuilder` do terminala (zsh: hash -r,\n"
+"inne powłoki mogą wymagać innej komendy).  Dla użycia jako moduł\n"
+"Pythona, wpisz `import pkgbuilder` do interpretera.\n"
 
 #: INSTALL.py:158
 msgid ""
@@ -595,7 +653,12 @@ msgid ""
 "\n"
 "If that's what you want to do, go for it.  If it isn't, run this\n"
 "script again."
-msgstr "Wygląda na to, że chcesz wyjść.  Okej, do widzenia.\nŻadne prace nie zostały jeszcze rozpoczęte.\n\nJeśli to jest to, co chcesz zrobić, proszę bardzo.  Jeśli nie,\nuruchom ten skrypt jeszcze raz."
+msgstr ""
+"Wygląda na to, że chcesz wyjść.  Okej, do widzenia.\n"
+"Żadne prace nie zostały jeszcze rozpoczęte.\n"
+"\n"
+"Jeśli to jest to, co chcesz zrobić, proszę bardzo.  Jeśli nie,\n"
+"uruchom ten skrypt jeszcze raz."
 
 #: INSTALL.py:164
 #, python-brace-format
@@ -607,7 +670,14 @@ msgid ""
 "\n"
 "If that's what you want to do, go for it.  If it isn't, run this\n"
 "script again."
-msgstr "Wygląda na to, że chcesz wyjść.  Okej, do widzenia.\nWszystkie pliki, nad którymi ten skrypt pracował, znajdują się w\n    {0}\n(liczba jest losowa).\n\nJeśli to jest to, co chcesz zrobić, proszę bardzo.  Jeśli nie,\nuruchom ten skrypt jeszcze raz."
+msgstr ""
+"Wygląda na to, że chcesz wyjść.  Okej, do widzenia.\n"
+"Wszystkie pliki, nad którymi ten skrypt pracował, znajdują się w\n"
+"    {0}\n"
+"(liczba jest losowa).\n"
+"\n"
+"Jeśli to jest to, co chcesz zrobić, proszę bardzo.  Jeśli nie,\n"
+"uruchom ten skrypt jeszcze raz."
 
 #. A module only for gettext locale provision.
 #: localeprovider.py:2
