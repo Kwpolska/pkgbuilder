@@ -63,19 +63,6 @@ Generation 3
 3.1.11
     * Fix AUR/HTTP exceptions reporting. (via Issue #28)
 
-3.1.13
-    * Fix packages being built when -i was issued (Issue #29)
-    * Fix some instances where PKGBUILDer would quit, even though it shouldn’t (as
-      requested while running the main function — internal only)
-    * Modify downgrade messages to fit pacman more
-    * Update the translations
-
-3.1.12
-    Make setup.py work properly and have PKGBUILDer install.
-
-3.1.11
-    * Fix a small bug, leading to misreporting certain AUR/HTTP exceptions.
-
 3.1.10
     * Inexistent packages don’t crash badly anymore
     * AUR-dependency-builds do not crash everything either
