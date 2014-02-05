@@ -4,14 +4,15 @@
 # Kwpolska <kwpolska@kwpolska.tk>, 2011-2014.
 #
 # Translators:
-# Bernardo Miguel Savone <bmsavone@gmail.com>, 2013
+# Bersil - Bernardo M. Savone <bmsavone@gmail.com>, 2013
+# Kwpolska <kwpolska@gmail.com>, 2013
 # Kwpolska <kwpolska@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.1.12\n"
+"Project-Id-Version: 3.1.13\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2014-01-22 17:55+0100\n"
-"PO-Revision-Date: 2013-08-23 15:58+0000\n"
+"POT-Creation-Date: 2014-02-05 16:41+0100\n"
+"PO-Revision-Date: 2014-02-04 16:11+0000\n"
 "Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/pkgbuilder/"
 "language/it/)\n"
@@ -49,7 +50,7 @@ msgstr "{0}: obsoleto {1}"
 msgid "Installing built packages..."
 msgstr "Installazione di pacchetti costruiti..."
 
-#: pkgbuilder/build.py:100 pkgbuilder/build.py:429 pkgbuilder/main.py:222
+#: pkgbuilder/build.py:100 pkgbuilder/build.py:429 pkgbuilder/main.py:225
 msgid "Fetching package information..."
 msgstr "Recupero informazioni del pacchetto..."
 
@@ -78,11 +79,11 @@ msgstr "Costruzione {0}..."
 
 #: pkgbuilder/build.py:115
 msgid "Performing a safe upgrade as root!"
-msgstr ""
+msgstr "Eseguire un aggiornamento di sicurezza come root!"
 
 #: pkgbuilder/build.py:116
 msgid "It is recommended to restart PKGBUILDer as a regular user instead."
-msgstr ""
+msgstr "Si consiglia di riavviare PKGBUILDer come un utente normale."
 
 #: pkgbuilder/build.py:122
 #, python-brace-format
@@ -246,11 +247,11 @@ msgstr "recùpero i file dei pacchetti"
 
 #: pkgbuilder/main.py:57
 msgid "USER"
-msgstr ""
+msgstr "UTENTE"
 
 #: pkgbuilder/main.py:57
 msgid "fetch all package files of an user"
-msgstr ""
+msgstr "recuperare tutti i pacchetti di un utente"
 
 #: pkgbuilder/main.py:59
 msgid "view package information"
@@ -294,7 +295,6 @@ msgstr ""
 "non controllare se i pacchetti sono stati installati dopo la costruzione"
 
 #: pkgbuilder/main.py:93
-#, fuzzy
 msgid "don't  install packages after building"
 msgstr "Non installare i pacchetti dopo la costruzione"
 
@@ -311,43 +311,43 @@ msgid "(dummy)"
 msgstr "(innocuo)"
 
 #: pkgbuilder/main.py:137
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "error: package '{0}' was not found"
-msgstr "Pacchetto {0} non trovato. (via {1})"
+msgstr "errore: pacchetto {0} non trovato"
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
-#: pkgbuilder/main.py:152
+#: pkgbuilder/main.py:153
 msgid "Search query too short"
 msgstr "Tèrmino di ricerca troppo corto"
 
-#: pkgbuilder/main.py:153
+#: pkgbuilder/main.py:154
 msgid "Searching for exact match..."
 msgstr "Ricerca di corrispondenza esatta"
 
-#: pkgbuilder/main.py:156 INSTALL.py:65 INSTALL.py:74
+#: pkgbuilder/main.py:157 INSTALL.py:65 INSTALL.py:74
 msgid "not found"
 msgstr "non trovato"
 
-#: pkgbuilder/main.py:193
+#: pkgbuilder/main.py:194
 msgid "PKGBUILDer Failsafe Upgrade"
 msgstr "PKGBUILDer aggiornamento sicuro"
 
-#: pkgbuilder/main.py:196
+#: pkgbuilder/main.py:197
 msgid "Build the git version? [y/N] "
 msgstr "Costruire la versione git? [y/N] "
 
-#: pkgbuilder/main.py:227
+#: pkgbuilder/main.py:230
 #, python-brace-format
 msgid "Error while processing {0}: {1}"
-msgstr ""
+msgstr "Errore durante l'elaborazione di {0}: {1}"
 
-#: pkgbuilder/main.py:236
+#: pkgbuilder/main.py:240
 msgid "Running PKGBUILDer as root can break your system!"
 msgstr "Eseguire PKGBUILDer come root può daneggiare il sistema!"
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/main.py:261
+#: pkgbuilder/main.py:268
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
@@ -395,28 +395,43 @@ msgstr "Sincronizzazione database dei pacchetti "
 msgid "Starting full system upgrade..."
 msgstr "Avvio aggiornamento completo del sistema..."
 
-#: pkgbuilder/upgrade.py:136 pkgbuilder/upgrade.py:139
+#: pkgbuilder/upgrade.py:137
+#, python-brace-format
+msgid "warning: {0}: downgrading from version {1} to version {2}"
+msgstr ""
+
+#: pkgbuilder/upgrade.py:140
+#, python-brace-format
+msgid "warning: {0}: local ({1}) is newer than aur ({2})"
+msgstr "attenzione: {0}: locale ({1}) è più recente di quello in aur ({2})"
+
+#: pkgbuilder/upgrade.py:145
+#, python-brace-format
+msgid "{0}: downgrading from version {1} to version {2}"
+msgstr ""
+
+#: pkgbuilder/upgrade.py:148
 #, python-brace-format
 msgid "{0}: local ({1}) is newer than aur ({2})"
 msgstr "{0}: locale ({1}) è più recente di quello in aur ({2})"
 
-#: pkgbuilder/upgrade.py:148 pkgbuilder/upgrade.py:150
+#: pkgbuilder/upgrade.py:158 pkgbuilder/upgrade.py:160
 msgid "there is nothing to do"
 msgstr "niente da fare"
 
-#: pkgbuilder/upgrade.py:174 pkgbuilder/upgrade.py:180
+#: pkgbuilder/upgrade.py:184 pkgbuilder/upgrade.py:190
 msgid "The following packages should be upgraded first:"
 msgstr "I seguenti pacchetti dovrebbero essere aggiornati prima:"
 
-#: pkgbuilder/upgrade.py:177
+#: pkgbuilder/upgrade.py:187
 msgid "Do you want to cancel the current operation"
 msgstr "Vuoi annullare l'operazione corrente"
 
-#: pkgbuilder/upgrade.py:178
+#: pkgbuilder/upgrade.py:188
 msgid "and upgrade these packages now? [Y/n] "
 msgstr "e aggiornare questi pacchetti ora? [Y/n] "
 
-#: pkgbuilder/upgrade.py:185
+#: pkgbuilder/upgrade.py:195
 msgid ""
 "Do you want to cancel the current operation and upgrade these packages now? "
 "[Y/n] "
@@ -424,30 +439,30 @@ msgstr ""
 "Vuoi annullare l'operazione corrente e aggiornare questi pacchetti ora? [Y/"
 "n] "
 
-#: pkgbuilder/upgrade.py:203 pkgbuilder/upgrade.py:270
+#: pkgbuilder/upgrade.py:213 pkgbuilder/upgrade.py:280
 #, python-brace-format
 msgid "Targets ({0}): "
 msgstr "Targets ({0}): "
 
-#: pkgbuilder/upgrade.py:218
+#: pkgbuilder/upgrade.py:228
 msgid "Name"
 msgstr "Nome"
 
-#: pkgbuilder/upgrade.py:218
+#: pkgbuilder/upgrade.py:228
 msgid "Old Version"
 msgstr "Vecchia versione"
 
-#: pkgbuilder/upgrade.py:218
+#: pkgbuilder/upgrade.py:228
 msgid "New Version"
 msgstr "Nuova versione"
 
 #. string stolen from pacman
-#: pkgbuilder/upgrade.py:241
+#: pkgbuilder/upgrade.py:251
 msgid "warning: insufficient columns available for table display"
 msgstr ""
 "attenzione: colonne disponibili insufficienti per visualizzare la tabella"
 
-#: pkgbuilder/upgrade.py:268 pkgbuilder/upgrade.py:274
+#: pkgbuilder/upgrade.py:278 pkgbuilder/upgrade.py:284
 msgid "Proceed with installation? [Y/n] "
 msgstr "Procedere con l'installazione? [Y/n] "
 
@@ -494,17 +509,17 @@ msgid ""
 "Last Updated   : {upd}\n"
 "Description    : {dsc}\n"
 msgstr ""
-"Repositorio     : aur\n"
-"Categoria       : {cat}\n"
+"Repositorio    : aur\n"
+"Categoria      : {cat}\n"
 "Nome           : {nme}\n"
-"Versione        : {ver}\n"
+"Versione       : {ver}\n"
 "URL            : {url}\n"
-"Licenze       : {lic}\n"
-"Voti          : {cmv}\n"
-"Obsoleto    : {ood}\n"
+"Licenze        : {lic}\n"
+"Voti           : {cmv}\n"
+"Obsoleto       : {ood}\n"
 "Maintainer     : {mnt}\n"
-"Primo invio: {fsb}\n"
-"Ultimo aggiornamento   : {upd}\n"
+"Primo invio    : {fsb}\n"
+"Ultimo aggiornamento: {upd}\n"
 "Descrizione    : {dsc}\n"
 
 #: pkgbuilder/utils.py:182

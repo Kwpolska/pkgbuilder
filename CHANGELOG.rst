@@ -5,8 +5,8 @@ Appendix C. Changelog
 :Author: Chris “Kwpolska” Warrick <kwpolska@kwpolska.tk>
 :Copyright: © 2011-2014, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2014-01-22
-:Version: 3.1.12
+:Date: 2014-02-05
+:Version: 3.1.13
 
 .. index:: CHANGELOG
 
@@ -49,6 +49,13 @@ Version History
 
 Generation 3
 ------------
+
+3.1.13
+    * Fix packages being built when -i was issued (Issue #29)
+    * Fix some instances where PKGBUILDer would quit, even though it shouldn’t (as
+      requested while running the main function — internal only)
+    * Modify downgrade messages to fit pacman more
+    * Update the translations
 
 3.1.12
     Make setup.py work properly and have PKGBUILDer install.

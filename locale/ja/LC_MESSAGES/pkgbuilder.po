@@ -6,10 +6,10 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.1.12\n"
+"Project-Id-Version: 3.1.13\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2014-01-22 17:55+0100\n"
-"PO-Revision-Date: 2013-08-23 15:58+0000\n"
+"POT-Creation-Date: 2014-02-05 16:41+0100\n"
+"PO-Revision-Date: 2014-02-04 15:55+0000\n"
 "Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/pkgbuilder/"
 "language/ja/)\n"
@@ -47,7 +47,7 @@ msgstr "{0}：「{1}」より要更新"
 msgid "Installing built packages..."
 msgstr "作成したパッケージをインストール中・・・"
 
-#: pkgbuilder/build.py:100 pkgbuilder/build.py:429 pkgbuilder/main.py:222
+#: pkgbuilder/build.py:100 pkgbuilder/build.py:429 pkgbuilder/main.py:225
 msgid "Fetching package information..."
 msgstr ""
 
@@ -291,9 +291,8 @@ msgid "don't check if packages were installed after build"
 msgstr "作成後、パッケージ無事インストール確認を行わない"
 
 #: pkgbuilder/main.py:93
-#, fuzzy
 msgid "don't  install packages after building"
-msgstr "作成後、パッケージをインストールしない"
+msgstr ""
 
 #: pkgbuilder/main.py:97
 msgid "pacman-like mode"
@@ -314,37 +313,37 @@ msgstr ""
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
-#: pkgbuilder/main.py:152
+#: pkgbuilder/main.py:153
 msgid "Search query too short"
 msgstr ""
 
-#: pkgbuilder/main.py:153
+#: pkgbuilder/main.py:154
 msgid "Searching for exact match..."
 msgstr "完全一致を検索中・・・"
 
-#: pkgbuilder/main.py:156 INSTALL.py:65 INSTALL.py:74
+#: pkgbuilder/main.py:157 INSTALL.py:65 INSTALL.py:74
 msgid "not found"
 msgstr "見つからなかった"
 
-#: pkgbuilder/main.py:193
+#: pkgbuilder/main.py:194
 msgid "PKGBUILDer Failsafe Upgrade"
 msgstr ""
 
-#: pkgbuilder/main.py:196
+#: pkgbuilder/main.py:197
 msgid "Build the git version? [y/N] "
 msgstr ""
 
-#: pkgbuilder/main.py:227
+#: pkgbuilder/main.py:230
 #, python-brace-format
 msgid "Error while processing {0}: {1}"
 msgstr ""
 
-#: pkgbuilder/main.py:236
+#: pkgbuilder/main.py:240
 msgid "Running PKGBUILDer as root can break your system!"
 msgstr "管理者としてPKGBUILDerを実行すると危険性あり！"
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/main.py:261
+#: pkgbuilder/main.py:268
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
@@ -388,56 +387,71 @@ msgstr "パッケージデーターベースを同期中・・・"
 msgid "Starting full system upgrade..."
 msgstr "完全アップグレードを開始・・・"
 
-#: pkgbuilder/upgrade.py:136 pkgbuilder/upgrade.py:139
+#: pkgbuilder/upgrade.py:137
+#, python-brace-format
+msgid "warning: {0}: downgrading from version {1} to version {2}"
+msgstr ""
+
+#: pkgbuilder/upgrade.py:140
+#, python-brace-format
+msgid "warning: {0}: local ({1}) is newer than aur ({2})"
+msgstr ""
+
+#: pkgbuilder/upgrade.py:145
+#, python-brace-format
+msgid "{0}: downgrading from version {1} to version {2}"
+msgstr ""
+
+#: pkgbuilder/upgrade.py:148
 #, python-brace-format
 msgid "{0}: local ({1}) is newer than aur ({2})"
 msgstr "{0}: ローカル「{1}」はAURの「{2}」より最新"
 
-#: pkgbuilder/upgrade.py:148 pkgbuilder/upgrade.py:150
+#: pkgbuilder/upgrade.py:158 pkgbuilder/upgrade.py:160
 msgid "there is nothing to do"
 msgstr "することがない"
 
-#: pkgbuilder/upgrade.py:174 pkgbuilder/upgrade.py:180
+#: pkgbuilder/upgrade.py:184 pkgbuilder/upgrade.py:190
 msgid "The following packages should be upgraded first:"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:177
+#: pkgbuilder/upgrade.py:187
 msgid "Do you want to cancel the current operation"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:178
+#: pkgbuilder/upgrade.py:188
 msgid "and upgrade these packages now? [Y/n] "
 msgstr ""
 
-#: pkgbuilder/upgrade.py:185
+#: pkgbuilder/upgrade.py:195
 msgid ""
 "Do you want to cancel the current operation and upgrade these packages now? "
 "[Y/n] "
 msgstr ""
 
-#: pkgbuilder/upgrade.py:203 pkgbuilder/upgrade.py:270
+#: pkgbuilder/upgrade.py:213 pkgbuilder/upgrade.py:280
 #, python-brace-format
 msgid "Targets ({0}): "
 msgstr "「{0}」の該当パッケージ："
 
-#: pkgbuilder/upgrade.py:218
+#: pkgbuilder/upgrade.py:228
 msgid "Name"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:218
+#: pkgbuilder/upgrade.py:228
 msgid "Old Version"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:218
+#: pkgbuilder/upgrade.py:228
 msgid "New Version"
 msgstr ""
 
 #. string stolen from pacman
-#: pkgbuilder/upgrade.py:241
+#: pkgbuilder/upgrade.py:251
 msgid "warning: insufficient columns available for table display"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:268 pkgbuilder/upgrade.py:274
+#: pkgbuilder/upgrade.py:278 pkgbuilder/upgrade.py:284
 msgid "Proceed with installation? [Y/n] "
 msgstr "続行？ [Y/n]"
 
