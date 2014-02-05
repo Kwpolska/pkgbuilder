@@ -4,14 +4,15 @@
 # Kwpolska <kwpolska@kwpolska.tk>, 2011-2014.
 #
 # Translators:
-# Bernardo Miguel Savone <bmsavone@gmail.com>, 2013
+# Bersil - Bernardo M. Savone <bmsavone@gmail.com>, 2013
+# Kwpolska <kwpolska@gmail.com>, 2013
 # Kwpolska <kwpolska@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.1.12\n"
+"Project-Id-Version: 3.1.13\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2014-02-04 16:54+0100\n"
-"PO-Revision-Date: 2013-08-23 15:58+0000\n"
+"POT-Creation-Date: 2014-02-05 16:41+0100\n"
+"PO-Revision-Date: 2014-02-04 16:11+0000\n"
 "Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/pkgbuilder/"
 "language/it/)\n"
@@ -78,11 +79,11 @@ msgstr "Costruzione {0}..."
 
 #: pkgbuilder/build.py:115
 msgid "Performing a safe upgrade as root!"
-msgstr ""
+msgstr "Eseguire un aggiornamento di sicurezza come root!"
 
 #: pkgbuilder/build.py:116
 msgid "It is recommended to restart PKGBUILDer as a regular user instead."
-msgstr ""
+msgstr "Si consiglia di riavviare PKGBUILDer come un utente normale."
 
 #: pkgbuilder/build.py:122
 #, python-brace-format
@@ -246,11 +247,11 @@ msgstr "recùpero i file dei pacchetti"
 
 #: pkgbuilder/main.py:57
 msgid "USER"
-msgstr ""
+msgstr "UTENTE"
 
 #: pkgbuilder/main.py:57
 msgid "fetch all package files of an user"
-msgstr ""
+msgstr "recuperare tutti i pacchetti di un utente"
 
 #: pkgbuilder/main.py:59
 msgid "view package information"
@@ -294,7 +295,6 @@ msgstr ""
 "non controllare se i pacchetti sono stati installati dopo la costruzione"
 
 #: pkgbuilder/main.py:93
-#, fuzzy
 msgid "don't  install packages after building"
 msgstr "Non installare i pacchetti dopo la costruzione"
 
@@ -311,9 +311,9 @@ msgid "(dummy)"
 msgstr "(innocuo)"
 
 #: pkgbuilder/main.py:137
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "error: package '{0}' was not found"
-msgstr "Pacchetto {0} non trovato. (via {1})"
+msgstr "errore: pacchetto {0} non trovato"
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
@@ -340,7 +340,7 @@ msgstr "Costruire la versione git? [y/N] "
 #: pkgbuilder/main.py:230
 #, python-brace-format
 msgid "Error while processing {0}: {1}"
-msgstr ""
+msgstr "Errore durante l'elaborazione di {0}: {1}"
 
 #: pkgbuilder/main.py:240
 msgid "Running PKGBUILDer as root can break your system!"
@@ -401,9 +401,9 @@ msgid "warning: {0}: downgrading from version {1} to version {2}"
 msgstr ""
 
 #: pkgbuilder/upgrade.py:140
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "warning: {0}: local ({1}) is newer than aur ({2})"
-msgstr "{0}: locale ({1}) è più recente di quello in aur ({2})"
+msgstr "attenzione: {0}: locale ({1}) è più recente di quello in aur ({2})"
 
 #: pkgbuilder/upgrade.py:145
 #, python-brace-format
@@ -509,17 +509,17 @@ msgid ""
 "Last Updated   : {upd}\n"
 "Description    : {dsc}\n"
 msgstr ""
-"Repositorio     : aur\n"
-"Categoria       : {cat}\n"
+"Repositorio    : aur\n"
+"Categoria      : {cat}\n"
 "Nome           : {nme}\n"
-"Versione        : {ver}\n"
+"Versione       : {ver}\n"
 "URL            : {url}\n"
-"Licenze       : {lic}\n"
-"Voti          : {cmv}\n"
-"Obsoleto    : {ood}\n"
+"Licenze        : {lic}\n"
+"Voti           : {cmv}\n"
+"Obsoleto       : {ood}\n"
 "Maintainer     : {mnt}\n"
-"Primo invio: {fsb}\n"
-"Ultimo aggiornamento   : {upd}\n"
+"Primo invio    : {fsb}\n"
+"Ultimo aggiornamento: {upd}\n"
 "Descrizione    : {dsc}\n"
 
 #: pkgbuilder/utils.py:182

@@ -4,15 +4,17 @@
 # Kwpolska <kwpolska@kwpolska.tk>, 2011-2014.
 #
 # Translators:
-# Bernardo Miguel Savone <bmsavone@gmail.com>, 2013
+# Bersil - Bernardo M. Savone <bmsavone@gmail.com>, 2013
 # Kwpolska <kwpolska@gmail.com>, 2013
+# Kwpolska <kwpolska@gmail.com>, 2013
+# tufadorin <quinato66@gmail.com>, 2013
 # tufadorin <quinato66@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.1.12\n"
+"Project-Id-Version: 3.1.13\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2014-02-04 16:54+0100\n"
-"PO-Revision-Date: 2013-08-23 15:58+0000\n"
+"POT-Creation-Date: 2014-02-05 16:41+0100\n"
+"PO-Revision-Date: 2014-02-04 16:11+0000\n"
 "Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/pkgbuilder/"
 "language/es/)\n"
@@ -24,7 +26,7 @@ msgstr ""
 
 #: pkgbuilder/build.py:41
 msgid "Validating installation status..."
-msgstr "Validando el estado de la instalación...."
+msgstr "Validando el estado de la instalación..."
 
 #: pkgbuilder/build.py:57
 #, python-brace-format
@@ -52,7 +54,7 @@ msgstr "Instalando paquetes construidos..."
 
 #: pkgbuilder/build.py:100 pkgbuilder/build.py:429 pkgbuilder/main.py:225
 msgid "Fetching package information..."
-msgstr "Obteniendo información de los paquetes ..."
+msgstr "Obteniendo información de los paquetes..."
 
 #: pkgbuilder/build.py:104 pkgbuilder/build.py:531
 msgid "Downloading the tarball..."
@@ -79,11 +81,11 @@ msgstr "Construyendo {0}..."
 
 #: pkgbuilder/build.py:115
 msgid "Performing a safe upgrade as root!"
-msgstr ""
+msgstr "Ejecución de una actualización de seguridad como root!"
 
 #: pkgbuilder/build.py:116
 msgid "It is recommended to restart PKGBUILDer as a regular user instead."
-msgstr ""
+msgstr "Se recomienda reiniciar PKGBUILDer como un usuario normal."
 
 #: pkgbuilder/build.py:122
 #, python-brace-format
@@ -247,11 +249,11 @@ msgstr "obtener los ficheros de los paquetes"
 
 #: pkgbuilder/main.py:57
 msgid "USER"
-msgstr ""
+msgstr "USUARIO"
 
 #: pkgbuilder/main.py:57
 msgid "fetch all package files of an user"
-msgstr ""
+msgstr "obtener todos los archivos del paquete de un usuario"
 
 #: pkgbuilder/main.py:59
 msgid "view package information"
@@ -294,7 +296,6 @@ msgid "don't check if packages were installed after build"
 msgstr "no comprobar si los paquetes se instalaron después de construirlos"
 
 #: pkgbuilder/main.py:93
-#, fuzzy
 msgid "don't  install packages after building"
 msgstr "no instale los paquetes después de la construcción"
 
@@ -311,9 +312,9 @@ msgid "(dummy)"
 msgstr "(inocuo)"
 
 #: pkgbuilder/main.py:137
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "error: package '{0}' was not found"
-msgstr "Paquete  {0} no encontrado. (via {1})"
+msgstr "error: paquete {0} no encontrado"
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
@@ -323,7 +324,7 @@ msgstr "Consulta de búsqueda demasiado corta"
 
 #: pkgbuilder/main.py:154
 msgid "Searching for exact match..."
-msgstr "Búsqueda de coincidencia exacta ..."
+msgstr "Búsqueda de coincidencia exacta..."
 
 #: pkgbuilder/main.py:157 INSTALL.py:65 INSTALL.py:74
 msgid "not found"
@@ -340,7 +341,7 @@ msgstr "Construir la versión git? [s/N]"
 #: pkgbuilder/main.py:230
 #, python-brace-format
 msgid "Error while processing {0}: {1}"
-msgstr ""
+msgstr "Error al procesar {0}: {1}"
 
 #: pkgbuilder/main.py:240
 msgid "Running PKGBUILDer as root can break your system!"
@@ -358,12 +359,12 @@ msgstr ""
 #. TRANSLATORS: see makepkg.
 #: pkgbuilder/pbds.py:46
 msgid "Aborted by user! Exiting..."
-msgstr "Abortado por el usuario! Saliendo ..."
+msgstr "Abortado por el usuario! Saliendo..."
 
 #. TRANSLATORS: see pacman.
 #: pkgbuilder/pbds.py:48
 msgid "Interrupt signal received\n"
-msgstr "Señal de interrupción recibida⏎\n"
+msgstr "Señal de interrupción recibida\n"
 
 #: pkgbuilder/pbds.py:87 pkgbuilder/pbds.py:222
 msgid "ERROR:"
@@ -383,15 +384,15 @@ msgstr "No se crearán registros."
 
 #: pkgbuilder/pbds.py:104
 msgid "Initializing pacman access..."
-msgstr "Iniciando acceso pacman ..."
+msgstr "Iniciando acceso pacman..."
 
 #: pkgbuilder/upgrade.py:117 pkgbuilder/upgrade.py:119
 msgid "Synchronizing package databases..."
-msgstr "Sincronizando bases de datos de paquetes ..."
+msgstr "Sincronizando bases de datos de paquetes..."
 
 #: pkgbuilder/upgrade.py:129 pkgbuilder/upgrade.py:131
 msgid "Starting full system upgrade..."
-msgstr "Iniciando actualización completa del sistema ..."
+msgstr "Iniciando actualización completa del sistema..."
 
 #: pkgbuilder/upgrade.py:137
 #, python-brace-format
@@ -399,9 +400,9 @@ msgid "warning: {0}: downgrading from version {1} to version {2}"
 msgstr ""
 
 #: pkgbuilder/upgrade.py:140
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "warning: {0}: local ({1}) is newer than aur ({2})"
-msgstr "{0}: local ({1}) es más reciente que el aur ({2})"
+msgstr "atención: {0}: local ({1}) es más reciente que el aur ({2})"
 
 #: pkgbuilder/upgrade.py:145
 #, python-brace-format
@@ -505,21 +506,18 @@ msgid ""
 "Last Updated   : {upd}\n"
 "Description    : {dsc}\n"
 msgstr ""
-"Repositorio: aur ⏎\n"
-"Categoría: {cat} ⏎\n"
-"Nombre: {NME} ⏎\n"
-"Versión: {ver} ⏎\n"
-"URL: {url} ⏎\n"
-"Licencias: {lic} ⏎\n"
-"Votos: {CMV} ⏎\n"
-"Obsoletos: {ood} (s/n) ⏎\n"
-"Mantenedor: {MNT} ⏎\n"
-"Primera presentación: {fsb} ⏎\n"
-"Última actualización: {UPD} ⏎\n"
-"Descripción: {dsc} ⏎\n"
-"\n"
-"\n"
-"\n"
+"Repositorio    : aur\n"
+"Categoría      : {cat}\n"
+"Nombre         : {nme}\n"
+"Versión        : {ver}\n"
+"URL            : {url}\n"
+"Licencias      : {lic}\n"
+"Votos          : {cmv}\n"
+"Obsoletos      : {ood}\n"
+"Mantenedor     : {mnt}\n"
+"Primera presentación: {fsb}\n"
+"Última actualización: {upd}\n"
+"Descripción    : {dsc}\n"
 
 #: pkgbuilder/utils.py:182
 msgid "yes"
@@ -565,7 +563,7 @@ msgstr ""
 
 #: INSTALL.py:53
 msgid "Performing a dependency check..."
-msgstr "Realizando una comprobación de dependencias ..."
+msgstr "Realizando una comprobación de dependencias..."
 
 #: INSTALL.py:62 INSTALL.py:71
 msgid "found"
@@ -604,13 +602,12 @@ msgid ""
 "and compile the package manually.\n"
 "\n"
 msgstr ""
-"Hola! ⏎\n"
-"⏎\n"
-"PKGBUILDer ya está disponible como un paquete de AUR. Es la forma sugerida "
-"⏎\n"
-" de instalar PKGBUILDer. Este script descarga el paquete⏎\n"
-"de AUR y lo instala. Si va a tener problemas, por favor descarga ⏎\n"
-"y compila el paquete manualmente. ⏎\n"
+"Hola!\n"
+"\n"
+"PKGBUILDer ya está disponible como un paquete de AUR. Es la forma sugerida\n"
+" de instalar PKGBUILDer. Este script descarga el paquete\n"
+"de AUR y lo instala. Si va a tener problemas, por favor descarga\n"
+"y compila el paquete manualmente.\n"
 
 #: INSTALL.py:123
 msgid "Hit Enter/Return to continue. "
@@ -618,7 +615,7 @@ msgstr "Pulsa Enter/Return para continuar."
 
 #: INSTALL.py:135
 msgid "Installing missing AUR dependencies..."
-msgstr "Instalando las dependencias que  faltan de AUR ..."
+msgstr "Instalando las dependencias que faltan de AUR..."
 
 #: INSTALL.py:142
 #, python-brace-format
@@ -659,11 +656,10 @@ msgid ""
 "If that's what you want to do, go for it.  If it isn't, run this\n"
 "script again."
 msgstr ""
-"Parece que quieres salir. Está bien, entonces, adiós. ⏎\n"
-"No se han iniciado aún. ⏎\n"
-"⏎\n"
-"Si eso es lo que quieres hacer, vete a por ello. Si no es así, ejecute este "
-"⏎\n"
+"Parece que quieres salir. Está bien, entonces, adiós.\n"
+"No se han iniciado aún.\n"
+"\n"
+"Si eso es lo que quieres hacer, vete a por ello. Si no es así, ejecute este\n"
 "script de nuevo."
 
 #: INSTALL.py:164
@@ -688,9 +684,7 @@ msgstr ""
 #. A module only for gettext locale provision.
 #: localeprovider.py:2
 msgid "usage"
-msgstr ""
-"\t\n"
-"manejo"
+msgstr "manejo"
 
 #: localeprovider.py:3
 msgid "positional arguments"

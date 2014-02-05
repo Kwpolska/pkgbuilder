@@ -6,10 +6,10 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.1.12\n"
+"Project-Id-Version: 3.1.13\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2014-02-04 16:54+0100\n"
-"PO-Revision-Date: 2013-08-23 15:58+0000\n"
+"POT-Creation-Date: 2014-02-05 16:41+0100\n"
+"PO-Revision-Date: 2014-02-04 15:55+0000\n"
 "Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/pkgbuilder/"
 "language/ja/)\n"
@@ -291,9 +291,8 @@ msgid "don't check if packages were installed after build"
 msgstr "作成後、パッケージ無事インストール確認を行わない"
 
 #: pkgbuilder/main.py:93
-#, fuzzy
 msgid "don't  install packages after building"
-msgstr "作成後、パッケージをインストールしない"
+msgstr ""
 
 #: pkgbuilder/main.py:97
 msgid "pacman-like mode"
@@ -394,9 +393,9 @@ msgid "warning: {0}: downgrading from version {1} to version {2}"
 msgstr ""
 
 #: pkgbuilder/upgrade.py:140
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "warning: {0}: local ({1}) is newer than aur ({2})"
-msgstr "{0}: ローカル「{1}」はAURの「{2}」より最新"
+msgstr ""
 
 #: pkgbuilder/upgrade.py:145
 #, python-brace-format

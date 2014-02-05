@@ -4,13 +4,14 @@
 # Kwpolska <kwpolska@kwpolska.tk>, 2011-2014.
 #
 # Translators:
+# ppanhh <vietnamesel10n@gmail.com>, 2013
 # ppanhh <ppanhh@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.1.12\n"
+"Project-Id-Version: 3.1.13\n"
 "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-"POT-Creation-Date: 2014-02-04 16:54+0100\n"
-"PO-Revision-Date: 2013-08-23 15:58+0000\n"
+"POT-Creation-Date: 2014-02-05 16:41+0100\n"
+"PO-Revision-Date: 2014-02-04 16:11+0000\n"
 "Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/projects/p/pkgbuilder/"
 "language/vi/)\n"
@@ -293,9 +294,8 @@ msgid "don't check if packages were installed after build"
 msgstr "không kiểm tra nếu gói cài đặt được cài đặt sau khi xây dựng"
 
 #: pkgbuilder/main.py:93
-#, fuzzy
 msgid "don't  install packages after building"
-msgstr "không cài đặt các gói cài đặt sau khi xây dựng"
+msgstr ""
 
 #: pkgbuilder/main.py:97
 msgid "pacman-like mode"
@@ -310,9 +310,9 @@ msgid "(dummy)"
 msgstr "(dummy)"
 
 #: pkgbuilder/main.py:137
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "error: package '{0}' was not found"
-msgstr "Gói cài đặt {0} không được tìm thấy. (thông qua {1})"
+msgstr ""
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
@@ -398,9 +398,9 @@ msgid "warning: {0}: downgrading from version {1} to version {2}"
 msgstr ""
 
 #: pkgbuilder/upgrade.py:140
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "warning: {0}: local ({1}) is newer than aur ({2})"
-msgstr "{0}: hiện tại ({1}) mới hơn aur ({2})"
+msgstr ""
 
 #: pkgbuilder/upgrade.py:145
 #, python-brace-format
@@ -505,18 +505,18 @@ msgid ""
 "Last Updated   : {upd}\n"
 "Description    : {dsc}\n"
 msgstr ""
-"Người ủy thác     : aur\n"
-"Phân loại       : {cat}\n"
-"Tên           : {nme}\n"
-"Phiên bản        : {ver}\n"
+"Người ủy thác  : aur\n"
+"Phân loại      : {cat}\n"
+"Tên            : {nme}\n"
+"Phiên bản      : {ver}\n"
 "URL            : {url}\n"
-"Giấy phép       : {lic}\n"
+"Giấy phép      : {lic}\n"
 "Votes          : {cmv}\n"
-"Quá hạn    : {ood}\n"
-"Người điều hành     : {mnt}\n"
+"Quá hạn        : {ood}\n"
+"Người điều hành: {mnt}\n"
 "Phát hành lần đầu: {fsb}\n"
-"Cập nhật lần cuối   : {upd}\n"
-"Mô tả    : {dsc}\n"
+"Cập nhật lần cuối: {upd}\n"
+"Mô tả          : {dsc}\n"
 
 #: pkgbuilder/utils.py:182
 msgid "yes"
