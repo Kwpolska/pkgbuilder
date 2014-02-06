@@ -86,6 +86,7 @@ def install(pkgpaths, sigpaths, asdeps, uopt=''):
     DS.log.info('pkgs={0}; sigs={1}'.format(pkgpaths, sigpaths))
     DS.log.debug('mv {0} {1} /var/cache/pacman/pkg/'.format(pkgpaths,
                                                             sigpaths))
+    DS.fancy_msg2('Moving to /var/cache/pacan/pkg/...')
     DS.sudo(['mv'] + pkgpaths + sigpaths + ['/var/cache/pacman/pkg/'])
 
     npkgpaths = ['/var/cache/pacman/pkg/' + os.path.basename(i)
@@ -94,6 +95,7 @@ def install(pkgpaths, sigpaths, asdeps, uopt=''):
     if asdeps:
         uopt = (uopt + ' --asdeps').strip()
 
+    DS.fancy_msg2('Installing with pacman -U...')
     if uopt:
         DS.log.debug('$PACMAN -U {0} {1}'.format(uopt, npkgpaths))
         DS.sudo([DS.paccommand, '-U', uopt] + npkgpaths)
