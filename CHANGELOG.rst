@@ -5,8 +5,8 @@ Appendix C. Changelog
 :Author: Chris “Kwpolska” Warrick <kwpolska@kwpolska.tk>
 :Copyright: © 2011-2014, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2014-02-05
-:Version: 3.1.13
+:Date: 2014-03-25
+:Version: 3.2.0
 
 .. index:: CHANGELOG
 
@@ -50,6 +50,11 @@ Version History
 Generation 3
 ------------
 
+3.2.0
+    * Downgrade listings have been fixed (Issue #31)
+    * Packages are now moved to /var/cache/pacman/pkg/ and installed from
+      there (previously, they were copied and installed from /tmp)
+
 3.1.13
     * Fix packages being built when -i was issued (Issue #29)
     * Fix some instances where PKGBUILDer would quit, even though it shouldn’t (as
@@ -62,6 +67,24 @@ Generation 3
 
 3.1.11
     * Fix AUR/HTTP exceptions reporting. (via Issue #28)
+
+3.2.0
+    * Downgrade listings have been fixed (Issue #31)
+    * Packages are now moved to /var/cache/pacman/pkg/ and installed from
+      there (previously, they were copied and installed from /tmp)
+
+3.1.13
+    * Fix packages being built when -i was issued (Issue #29)
+    * Fix some instances where PKGBUILDer would quit, even though it shouldn’t (as
+      requested while running the main function — internal only)
+    * Modify downgrade messages to fit pacman more
+    * Update the translations
+
+3.1.12
+    Make setup.py work properly and have PKGBUILDer install.
+
+3.1.11
+    * Fix a small bug, leading to misreporting certain AUR/HTTP exceptions.
 
 3.1.10
     * Inexistent packages don’t crash badly anymore

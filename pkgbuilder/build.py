@@ -79,20 +79,29 @@ def install(pkgpaths, sigpaths, asdeps, uopt=''):
     """Install packages through ``pacman -U``."""
     DS.fancy_msg(_('Installing built packages...'))
 
+    # Remove duplicates.
+    pkgpaths = list(set(pkgpaths))
+    sigpaths = list(set(sigpaths))
+
     DS.log.info('pkgs={0}; sigs={1}'.format(pkgpaths, sigpaths))
-    DS.log.debug('cp {0} {1} /var/cache/pacman/pkg/'.format(pkgpaths,
+    DS.log.debug('mv {0} {1} /var/cache/pacman/pkg/'.format(pkgpaths,
                                                             sigpaths))
-    DS.sudo(['cp'] + pkgpaths + sigpaths + ['/var/cache/pacman/pkg/'])
+    DS.fancy_msg2('Moving to /var/cache/pacan/pkg/...')
+    DS.sudo(['mv'] + pkgpaths + sigpaths + ['/var/cache/pacman/pkg/'])
+
+    npkgpaths = ['/var/cache/pacman/pkg/' + os.path.basename(i)
+                 for i in pkgpaths]
 
     if asdeps:
         uopt = (uopt + ' --asdeps').strip()
 
+    DS.fancy_msg2('Installing with pacman -U...')
     if uopt:
-        DS.log.debug('$PACMAN -U {0} {1}'.format(uopt, pkgpaths))
-        DS.sudo([DS.paccommand, '-U', uopt] + pkgpaths)
+        DS.log.debug('$PACMAN -U {0} {1}'.format(uopt, npkgpaths))
+        DS.sudo([DS.paccommand, '-U', uopt] + npkgpaths)
     else:
-        DS.log.debug('$PACMAN -U {0}'.format(pkgpaths))
-        DS.sudo([DS.paccommand, '-U'] + pkgpaths)
+        DS.log.debug('$PACMAN -U {0}'.format(npkgpaths))
+        DS.sudo([DS.paccommand, '-U'] + npkgpaths)
 
 
 def safeupgrade(pkgname):

@@ -214,9 +214,7 @@ if [[ $AURTYPE != "none" ]]; then
         ;;
         *) warning 'incorrect $AURTYPE value.'
     esac
-    if [[ -e *.src.tar.gz ]]; then
-        ./.pypt/aursend *.src.tar.gz
-    fi
+    ./.pypt/aursend *.src.tar.gz
     cd ..
     rm -rf MKPKGBUILD
 fi

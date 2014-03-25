@@ -5,10 +5,10 @@
         #
         msgid ""
         msgstr ""
-        "Project-Id-Version: 3.1.13\n"
+        "Project-Id-Version: 3.2.0\n"
         "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-        "POT-Creation-Date: 2014-02-05 16:41+0100\n"
-        "PO-Revision-Date: 2014-02-05 16:41+0100\n"
+        "POT-Creation-Date: 2014-03-25 15:23+0100\n"
+        "PO-Revision-Date: 2014-03-25 15:23+0100\n"
         "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
         "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
         "Language: en\n"
@@ -44,124 +44,124 @@ msgstr ""
 msgid "Installing built packages..."
 msgstr ""
 
-#: pkgbuilder/build.py:100 pkgbuilder/build.py:429 pkgbuilder/main.py:225
+#: pkgbuilder/build.py:109 pkgbuilder/build.py:438 pkgbuilder/main.py:225
 msgid "Fetching package information..."
 msgstr ""
 
-#: pkgbuilder/build.py:104 pkgbuilder/build.py:531
+#: pkgbuilder/build.py:113 pkgbuilder/build.py:540
 msgid "Downloading the tarball..."
 msgstr ""
 
-#: pkgbuilder/build.py:107 pkgbuilder/build.py:534
+#: pkgbuilder/build.py:116 pkgbuilder/build.py:543
 #, python-brace-format
 msgid "{0} kB downloaded"
 msgstr ""
 
-#: pkgbuilder/build.py:109 pkgbuilder/build.py:536
+#: pkgbuilder/build.py:118 pkgbuilder/build.py:545
 msgid "Extracting..."
 msgstr ""
 
-#: pkgbuilder/build.py:110 pkgbuilder/build.py:537
+#: pkgbuilder/build.py:119 pkgbuilder/build.py:546
 #, python-brace-format
 msgid "{0} files extracted"
 msgstr ""
 
-#: pkgbuilder/build.py:112 pkgbuilder/build.py:513
+#: pkgbuilder/build.py:121 pkgbuilder/build.py:522
 #, python-brace-format
 msgid "Building {0}..."
 msgstr ""
 
-#: pkgbuilder/build.py:115
+#: pkgbuilder/build.py:124
 msgid "Performing a safe upgrade as root!"
 msgstr ""
 
-#: pkgbuilder/build.py:116
+#: pkgbuilder/build.py:125
 msgid "It is recommended to restart PKGBUILDer as a regular user instead."
 msgstr ""
 
-#: pkgbuilder/build.py:122
+#: pkgbuilder/build.py:131
 #, python-brace-format
 msgid "Build finished with return code {0}."
 msgstr ""
 
-#: pkgbuilder/build.py:145
+#: pkgbuilder/build.py:154
 msgid "The build function reported a proper build."
 msgstr ""
 
-#: pkgbuilder/build.py:149
+#: pkgbuilder/build.py:158
 msgid "Building more AUR packages is required."
 msgstr ""
 
-#: pkgbuilder/build.py:161
+#: pkgbuilder/build.py:170
 #, python-brace-format
 msgid "found an existing package for {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:196
+#: pkgbuilder/build.py:205
 #, python-brace-format
 msgid "makepkg (or someone else) failed and returned {0}."
 msgstr ""
 
-#: pkgbuilder/build.py:221
+#: pkgbuilder/build.py:230
 msgid "0 bytes downloaded"
 msgstr ""
 
-#: pkgbuilder/build.py:254
+#: pkgbuilder/build.py:263
 msgid "No files extracted."
 msgstr ""
 
-#: pkgbuilder/build.py:370
+#: pkgbuilder/build.py:379
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:460
+#: pkgbuilder/build.py:469
 msgid ":: Retrieving packages from abs..."
 msgstr ""
 
-#: pkgbuilder/build.py:463 pkgbuilder/build.py:474
+#: pkgbuilder/build.py:472 pkgbuilder/build.py:483
 #, python-brace-format
 msgid "retrieving {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:467 pkgbuilder/build.py:525
+#: pkgbuilder/build.py:476 pkgbuilder/build.py:534
 #, python-brace-format
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr ""
 
-#: pkgbuilder/build.py:471
+#: pkgbuilder/build.py:480
 msgid ":: Retrieving packages from aur..."
 msgstr ""
 
-#: pkgbuilder/build.py:478
+#: pkgbuilder/build.py:487
 msgid "Extracting AUR packages..."
 msgstr ""
 
-#: pkgbuilder/build.py:483
+#: pkgbuilder/build.py:492
 msgid "Successfully fetched: "
 msgstr ""
 
-#: pkgbuilder/build.py:521
+#: pkgbuilder/build.py:530
 msgid "Retrieving from ABS..."
 msgstr ""
 
-#: pkgbuilder/build.py:541
+#: pkgbuilder/build.py:550
 msgid "Checking dependencies..."
 msgstr ""
 
-#: pkgbuilder/build.py:544
+#: pkgbuilder/build.py:553
 msgid "found in system"
 msgstr ""
 
-#: pkgbuilder/build.py:544
+#: pkgbuilder/build.py:553
 msgid "found in repos"
 msgstr ""
 
-#: pkgbuilder/build.py:545
+#: pkgbuilder/build.py:554
 msgid "found in the AUR"
 msgstr ""
 
-#: pkgbuilder/build.py:548
+#: pkgbuilder/build.py:557
 msgid "none found"
 msgstr ""
 
