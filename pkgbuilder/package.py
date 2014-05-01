@@ -46,6 +46,8 @@ class Package(object):
     optdepends = []
     conflicts = []
     provides = []
+    replaces = []
+    groups = []
 
     def __init__(self, **kwargs):
         """Initialize the class."""
@@ -73,6 +75,8 @@ class AURPackage(Package):
     """An AUR package."""
     id = None
     packagebase = None
+    makedepends = []
+    checkdepends = []
     is_abs = False
     is_outdated = None
     outdated_since = None
@@ -98,10 +102,15 @@ class AURPackage(Package):
                     'Version': 'version',
                     'PackageBase': 'packagebase',
                     'Depends': 'depends',
+                    'MakeDepends': 'makedepends',
+                    'CheckDepends': 'checkdepends',
                     'OptDepends': 'optdepends',
                     'Conflicts': 'conflicts',
                     'Provides': 'provides',
-                    'License': 'licenses'}
+                    'Replaces': 'replaces',
+                    'Groups': 'groups',
+                    'License': 'licenses',
+                    }
         ignore = ['OutOfDate', 'FirstSubmitted', 'LastModified']
 
         p = cls()
@@ -140,13 +149,11 @@ class ABSPackage(Package):
     download_size = None
     filename = None
     files = []
-    groups = []
     has_scriptlet = None
     installdate = None
     isize = None
     md5sum = None
     reason = []
-    replaces = []
     sha256sum = None
     size = None
 

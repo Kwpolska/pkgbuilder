@@ -231,10 +231,14 @@ Package Base   : {bse}
 Version        : {ver}
 URL            : {url}
 Licenses       : {lic}
+Groups         : {grp}
 Provides       : {prv}
 Depends On     : {dep}
+Make Deps      : {mkd}
+Check Deps     : {ckd}
 Optional Deps  : {opt}
 Conflicts With : {cnf}
+Replaces       : {rpl}
 Votes          : {cmv}
 Out of Date    : {ood}
 Maintainer     : {mnt}
@@ -262,12 +266,16 @@ Description    : {dsc}
                                url=pkg.url,
                                ver=pkg.version,
                                lic=mlist(pkg.licenses, termwidth=termwidth),
+                               grp=mlist(pkg.groups, termwidth=termwidth),
                                prv=mlist(pkg.provides, termwidth=termwidth),
                                dep=mlist(pkg.depends, termwidth=termwidth),
+                               mkd=mlist(pkg.makedepends, termwidth=termwidth),
+                               ckd=mlist(pkg.checkdepends, termwidth=termwidth),
                                opt=mlist(pkg.optdepends, sep='\n',
                                          change_spaces=False,
                                          termwidth=termwidth),
                                cnf=mlist(pkg.conflicts, termwidth=termwidth),
+                               rpl=mlist(pkg.replaces, termwidth=termwidth),
                                cmv=pkg.votes,
                                ood=ood,
                                mnt=pkg.human,
