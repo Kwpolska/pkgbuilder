@@ -252,6 +252,9 @@ Description    : {dsc}
             else:
                 ood = _('no')
             termwidth = get_termwidth()
+            if termwidth is None:
+                termwidth = 9001  # Auto-wrap by terminal.
+
             to.append(t.format(cat=pkg.repo,
                                nme=pkg.name,
                                url=pkg.url,
