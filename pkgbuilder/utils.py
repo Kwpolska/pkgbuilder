@@ -71,6 +71,49 @@ def msearch(maintainer):
         return [AURPackage.from_aurdict(d) for d in aur_pkgs['results']]
 
 
+def hanging_indent(text, intro, termwidth=80, change_spaces=True,
+                   introwidth=None):
+    """Produce text with a hanging indent.
+
+    .. versionadded:: 4.0.0
+
+    """
+    if introwidth is None:
+        introwidth = len(intro)
+    nowrap = intro + text
+    if intro:
+        wrapv = textwrap.wrap(nowrap, termwidth,
+                              break_on_hyphens=False)
+    else:
+        wrapv = textwrap.wrap(nowrap, termwidth - introwidth,
+                              break_on_hyphens=False)
+    wrap0 = wrapv[0]
+    wraprest = textwrap.wrap('\n'.join(wrapv[1:]), termwidth -
+                             introwidth,
+                             break_on_hyphens=False)
+    if change_spaces:
+        wraprest = [i.replace('  ', ' ').replace(' ', '  ') for i
+                    in wraprest]
+    buf = wrap0
+    for i in wraprest:
+        buf += '\n' + introwidth * ' ' + i
+
+    return buf
+
+
+def get_termwidth():
+    """Get the width of this terminal.
+
+    .. versionadded:: 4.0.0
+
+    """
+    try:
+        size = subprocess.check_output(['stty', 'size'])
+        return int(size.split()[1])
+    except (IndexError, subprocess.CalledProcessError):
+        return None
+
+
 def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
                          prefixp=''):
     """Output/return a package representation.
