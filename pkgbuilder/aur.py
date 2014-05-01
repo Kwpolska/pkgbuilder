@@ -15,7 +15,8 @@
     :License: BSD (see /LICENSE).
 """
 
-from .exceptions import ConnectionError, HTTPError, NetworkError
+import pkgbuilder
+from pkgbuilder.exceptions import ConnectionError, HTTPError, NetworkError
 import requests
 import requests.exceptions
 import json
@@ -50,6 +51,7 @@ class AUR:
 
     rpc = 'https://aur-dev.archlinux.org/rpc.php?v=2'
     emptystr = '{"version":2,"type":"%s","resultcount":0,"results":[]}'
+    ua = 'PKGBUILDer/' + pkgbuilder.__version__
 
     def jsonreq(self, rtype, arg):
         """Makes a request and returns plain JSON data."""
@@ -58,7 +60,7 @@ class AUR:
             return self.emptystr % rtype
 
         try:
-            req = requests.get(self.rpc, params={'type': rtype, 'arg': arg})
+            req = requests.get(self.rpc, params={'type': rtype, 'arg': arg}, headers={'User-Agent': self.ua})
             req.raise_for_status()
         except requests.exceptions.ConnectionError as e:
             raise ConnectionError(e.args[0].reason, e)
@@ -77,7 +79,7 @@ class AUR:
 
         try:
             req = requests.get(self.rpc, params={'type': 'multiinfo', 'arg[]':
-                                                 args})
+                                                 args}, headers={'User-Agent': self.ua})
             req.raise_for_status()
         except requests.exceptions.ConnectionError as e:
             raise ConnectionError(e.args[0].reason, e)
