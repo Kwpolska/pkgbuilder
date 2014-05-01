@@ -227,6 +227,7 @@ def print_package_info(pkgs, cachemode=False):
         t = _("""Repository     : aur
 Category       : {cat}
 Name           : {nme}
+Package Base   : {bse}
 Version        : {ver}
 URL            : {url}
 Licenses       : {lic}
@@ -257,6 +258,7 @@ Description    : {dsc}
 
             to.append(t.format(cat=pkg.repo,
                                nme=pkg.name,
+                               bse=pkg.packagebase,
                                url=pkg.url,
                                ver=pkg.version,
                                lic=mlist(pkg.licenses, termwidth=termwidth),
