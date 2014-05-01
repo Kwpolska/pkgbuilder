@@ -30,10 +30,10 @@ RPC = AUR()
 
 
 def info(pkgnames):
-    """
+    """Return info about AUR packages.
+
     .. versionchanged:: 3.0.0
 
-    Returns info about AUR packages.
     """
     if isinstance(pkgnames, str):
         pkgnames = [pkgnames]
@@ -46,10 +46,11 @@ def info(pkgnames):
 
 
 def search(pkgname):
-    """
+    """Search for AUR packages.
+
     .. versionchanged:: 3.0.0
 
-    Searches for AUR packages."""
+    """
     aur_pkgs = RPC.request('search', pkgname)
     if aur_pkgs['type'] == 'error':
         raise AURError(aur_pkgs['results'])
@@ -58,10 +59,11 @@ def search(pkgname):
 
 
 def msearch(maintainer):
-    """
+    """Search for AUR packages maintained by a specified user.
+
     .. versionadded:: 3.0.0
 
-    Searches for AUR packages maintained by a specified user."""
+    """
     aur_pkgs = RPC.request('msearch', maintainer)
     if aur_pkgs['type'] == 'error':
         raise AURError(aur_pkgs['results'])
@@ -71,11 +73,12 @@ def msearch(maintainer):
 
 def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
                          prefixp=''):
-    """
+    """Output/return a package representation.
+
+    Based on `pacman -Ss`.
+
     .. versionchanged:: 3.0.0
 
-    Outputs/returns a package representation, which is close to the output
-    of ``pacman -Ss``.
     """
     size = subprocess.check_output(['stty', 'size'])
     try:
