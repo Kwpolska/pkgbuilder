@@ -173,12 +173,34 @@ def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
         print(entry)
 
 
-def print_package_info(pkgs, cachemode=False):
-    """
-    .. versionchanged:: 3.0.0
+def mlist(items, sep='  ', change_spaces=True, termwidth=80, indentwidth=17):
+    """Output a list of strings, complete with a hanging indent.
 
-    Outputs/returns a package representation, which is close to the output
-    of ``pacman -Si``.
+    .. versionadded:: 4.0.0
+
+    """
+    if items:
+        if sep == '\n':
+            buf = [hanging_indent(items[0], '', termwidth, change_spaces,
+                                  indentwidth)]
+            for i in items[1:]:
+                buf.append(hanging_indent(i, indentwidth * ' ', termwidth,
+                                          change_spaces))
+            return '\n'.join(buf)
+        else:
+            return hanging_indent(sep.join(items), '', termwidth,
+                                  change_spaces, indentwidth)
+    else:
+        return 'None'
+
+
+def print_package_info(pkgs, cachemode=False):
+    """Output/return a package representation.
+
+    Based on `pacman -Ss`.
+
+    .. versionchanged:: 4.0.0
+
     """
     if pkgs == []:
         raise SanityError(_('Didn’t pass any packages.'))
@@ -211,6 +233,10 @@ Name           : {nme}
 Version        : {ver}
 URL            : {url}
 Licenses       : {lic}
+Provides       : {prv}
+Depends On     : {dep}
+Optional Deps  : {opt}
+Conflicts With : {cnf}
 Votes          : {cmv}
 Out of Date    : {ood}
 Maintainer     : {mnt}
@@ -228,10 +254,27 @@ Description    : {dsc}
                 ood = DS.colors['red'] + _('yes') + DS.colors['all_off']
             else:
                 ood = _('no')
-            to.append(t.format(cat=pkg.repo, nme=pkg.name, url=pkg.url,
-                               ver=pkg.version, lic=', '.join(pkg.licenses),
-                               cmv=pkg.votes, ood=ood, mnt=pkg.human, upd=upd,
-                               fsb=fsb, dsc=pkg.description))
+            termwidth = get_termwidth()
+            to.append(t.format(cat=pkg.repo,
+                               nme=pkg.name,
+                               url=pkg.url,
+                               ver=pkg.version,
+                               lic=mlist(pkg.licenses, termwidth=termwidth),
+                               prv=mlist(pkg.provides, termwidth=termwidth),
+                               dep=mlist(pkg.depends, termwidth=termwidth),
+                               opt=mlist(pkg.optdepends, sep='\n',
+                                         change_spaces=False,
+                                         termwidth=termwidth),
+                               cnf=mlist(pkg.conflicts, termwidth=termwidth),
+                               cmv=pkg.votes,
+                               ood=ood,
+                               mnt=pkg.human,
+                               upd=upd,
+                               fsb=fsb,
+                               dsc=hanging_indent(pkg.description, '',
+                                                  termwidth, False, 17)
+                               )
+                      )
 
     if cachemode:
         return '\n'.join(to)
