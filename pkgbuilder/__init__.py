@@ -44,7 +44,7 @@
 """
 
 __title__ = 'PKGBUILDer'
-__version__ = '3.3.0-alpha'
+__version__ = '4.0.0-alpha'
 __author__ = 'Kwpolska'
 __license__ = '3-clause BSD'
 __docformat__ = 'restructuredtext en'

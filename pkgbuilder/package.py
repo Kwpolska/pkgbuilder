@@ -42,6 +42,10 @@ class Package(object):
     url = None
     licenses = []
     human = None
+    depends = []
+    optdepends = []
+    conflicts = []
+    provides = []
 
     def __init__(self, **kwargs):
         """Initialize the class."""
@@ -68,6 +72,7 @@ class Package(object):
 class AURPackage(Package):
     """An AUR package."""
     id = None
+    packagebase = None
     is_abs = False
     is_outdated = None
     outdated_since = None
@@ -90,8 +95,14 @@ class AURPackage(Package):
                     'NumVotes': 'votes',
                     'URL': 'url',
                     'URLPath': 'urlpath',
-                    'Version': 'version'}
-        ignore = ['OutOfDate', 'FirstSubmitted', 'LastModified', 'License']
+                    'Version': 'version',
+                    'PackageBase': 'packagebase',
+                    'Depends': 'depends',
+                    'OptDepends': 'optdepends',
+                    'Conflicts': 'conflicts',
+                    'Provides': 'provides',
+                    'License': 'licenses'}
+        ignore = ['OutOfDate', 'FirstSubmitted', 'LastModified']
 
         p = cls()
         for k, v in aurdict.items():
@@ -106,7 +117,6 @@ class AURPackage(Package):
         # Manual overrides.
         p.is_outdated = aurdict['OutOfDate'] > 0
         p.repo = CATEGORIES[aurdict['CategoryID']]
-        p.licenses = [aurdict['License']]
 
         if p.is_outdated:
             p.outdated_since = mktime(aurdict['OutOfDate'])
@@ -126,9 +136,7 @@ class ABSPackage(Package):
     backup = []
     base64_sig = None
     builddate = None
-    conflicts = None
     deltas = []
-    depends = []
     download_size = None
     filename = None
     files = []
@@ -137,8 +145,6 @@ class ABSPackage(Package):
     installdate = None
     isize = None
     md5sum = None
-    optdepends = []
-    provides = []
     reason = []
     replaces = []
     sha256sum = None
