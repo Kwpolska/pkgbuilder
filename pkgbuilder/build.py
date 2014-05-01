@@ -117,7 +117,7 @@ def safeupgrade(pkgname):
 
     DS.fancy_msg(_('Extracting...'))
     DS.fancy_msg2(_('{0} files extracted').format(extract(filename)))
-    os.chdir('./{0}/'.format(pkg.name))
+    os.chdir('./{0}/'.format(pkg.packagebase))
     DS.fancy_msg(_('Building {0}...').format(pkg.name))
 
     if DS.uid == 0:
@@ -534,7 +534,7 @@ def build_runner(pkgname, performdepcheck=True,
                 _('Failed to retieve {0} (from ABS/rsync).').format(
                     pkg.name), pkg=pkg, retcode=rc)
 
-        os.chdir('./{0}/'.format(pkg.repo))
+        os.chdir('./{0}/{1}'.format(pkg.repo, pkg.packagebase))
     else:
         filename = pkg.name + '.tar.gz'
         DS.fancy_msg(_('Downloading the tarball...'))
@@ -544,7 +544,7 @@ def build_runner(pkgname, performdepcheck=True,
 
         DS.fancy_msg(_('Extracting...'))
         DS.fancy_msg2(_('{0} files extracted').format(extract(filename)))
-    os.chdir('./{0}/'.format(pkg.name))
+        os.chdir('./{0}/'.format(pkg.packagebase))
 
     if performdepcheck:
         DS.fancy_msg(_('Checking dependencies...'))
