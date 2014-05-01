@@ -48,13 +48,14 @@ class AUR:
               ``pkgbuilder.utils.{info,search,msearch}()`` instead.
     """
 
-    rpc = 'https://aur.archlinux.org/rpc.php'
+    rpc = 'https://aur-dev.archlinux.org/rpc.php?v=2'
+    emptystr = '{"version":2,"type":"%s","resultcount":0,"results":[]}'
 
     def jsonreq(self, rtype, arg):
         """Makes a request and returns plain JSON data."""
         if arg == []:
-            # No need to bother.  String for JSON.
-            return '{"type": "info", "resultcount": 0, "results": []}'
+            # No need to bother.
+            return self.emptystr % rtype
 
         try:
             req = requests.get(self.rpc, params={'type': rtype, 'arg': arg})
@@ -71,8 +72,8 @@ class AUR:
     def jsonmultiinfo(self, args):
         """Makes a multiinfo request and returns plain JSON data."""
         if args == []:
-            # No need to bother.  String for JSON.
-            return '{"type": "info", "resultcount": 0, "results": []}'
+            # No need to bother.
+            return self.emptystr % 'multiinfo'
 
         try:
             req = requests.get(self.rpc, params={'type': 'multiinfo', 'arg[]':
