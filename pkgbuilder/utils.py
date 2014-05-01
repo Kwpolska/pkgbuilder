@@ -123,12 +123,9 @@ def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
     .. versionchanged:: 3.0.0
 
     """
-    size = subprocess.check_output(['stty', 'size'])
-    try:
-        termwidth = int(size.split()[1])
-    except IndexError:
-        termwidth = 9001  # Auto-wrap by terminal.  A reference to an old
-                          # meme and a cheat, too. Sorry.
+    termwidth = get_termwidth()
+    if termwidth is None:
+        termwidth = 9001  # Auto-wrap by terminal.
 
     localdb = DS.pyc.get_localdb()
     lpkg = localdb.get_pkg(pkg.name)
