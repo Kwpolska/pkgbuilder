@@ -14,7 +14,7 @@ Versioning scheme
 =================
 PKGBUILDer uses the following versioning schemes:
 
-3.0.0
+3.x.x onwards
     major.minor.revision
 
 2.99.x.x
@@ -31,7 +31,7 @@ PKGBUILDer uses the following versioning schemes:
 
 Where:
  * generation
-    1 is the first Perl version, 2 is the Python version (dropped for 3.0.0).
+    1 is the first Perl version, 2 is the Python version (dropped for 3.x.x).
  * major
     basic release number.
  * minor
@@ -46,6 +46,12 @@ More information can be found on GitHub in the `releases section <https://github
 
 Version History
 ===============
+
+Generation 4
+------------
+
+4.0.0-alpha
+    * support for AUR v3.0.0’s RPC v2
 
 Generation 3
 ------------
