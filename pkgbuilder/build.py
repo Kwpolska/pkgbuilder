@@ -98,7 +98,7 @@ def install(pkgpaths, sigpaths, asdeps, uopt=''):
     DS.fancy_msg2('Installing with pacman -U...')
     if uopt:
         DS.log.debug('$PACMAN -U {0} {1}'.format(uopt, npkgpaths))
-        DS.sudo([DS.paccommand, '-U', uopt] + npkgpaths)
+        DS.sudo([DS.paccommand, '-U'] + uopt.split(' ') + npkgpaths)
     else:
         DS.log.debug('$PACMAN -U {0}'.format(npkgpaths))
         DS.sudo([DS.paccommand, '-U'] + npkgpaths)
