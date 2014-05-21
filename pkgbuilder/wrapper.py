@@ -29,7 +29,7 @@ import sys
 import os
 
 __all__ = ['wrapper']
-__wrapperversion__ = '0.2.2'
+__wrapperversion__ = '0.2.3'
 
 
 def wrapper(source='AUTO'):
