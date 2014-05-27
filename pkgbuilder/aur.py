@@ -49,7 +49,7 @@ class AUR:
               ``pkgbuilder.utils.{info,search,msearch}()`` instead.
     """
 
-    rpc = 'https://aur-dev.archlinux.org/rpc.php?v=2'
+    rpc = 'https://aur.archlinux.org/rpc.php?v=2'
     emptystr = '{"version":2,"type":"%s","resultcount":0,"results":[]}'
     ua = 'PKGBUILDer/' + pkgbuilder.__version__
 
