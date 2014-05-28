@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.2.0
+# PKGBUILDer v3.3.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2014, Kwpolska.
 # See /LICENSE for licensing information.
@@ -39,6 +39,7 @@ def main(source='AUTO', quit=True):
             verstring = ' — '.join([verstring, locale])
         DS.log.info('Initialized, parsing arguments.')
         parser = argparse.ArgumentParser(
+            prog='pkgbuilder',
             description=_('An AUR helper (and library) in Python 3.'),
             epilog=_('Also accepting ABS packages.'))
         parser.add_argument(

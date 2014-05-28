@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.2.0
+# PKGBUILDer v3.3.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2014, Kwpolska.
 # See /LICENSE for licensing information.
@@ -83,10 +83,10 @@ def install(pkgpaths, sigpaths, asdeps, uopt=''):
     pkgpaths = list(set(pkgpaths))
     sigpaths = list(set(sigpaths))
 
+    DS.fancy_msg2(_('Moving to /var/cache/pacman/pkg/...'))
     DS.log.info('pkgs={0}; sigs={1}'.format(pkgpaths, sigpaths))
     DS.log.debug('mv {0} {1} /var/cache/pacman/pkg/'.format(pkgpaths,
                                                             sigpaths))
-    DS.fancy_msg2('Moving to /var/cache/pacman/pkg/...')
     mvexit = 256
     while mvexit != 0:
         mvexit = DS.sudo(['mv'] + pkgpaths + sigpaths +
@@ -98,7 +98,7 @@ def install(pkgpaths, sigpaths, asdeps, uopt=''):
     if asdeps:
         uopt = (uopt + ' --asdeps').strip()
 
-    DS.fancy_msg2('Installing with pacman -U...')
+    DS.fancy_msg2(_('Installing with pacman -U...'))
     if uopt:
         DS.log.debug('$PACMAN -U {0} {1}'.format(uopt, npkgpaths))
         DS.sudo([DS.paccommand, '-U'] + uopt.split(' ') + npkgpaths)

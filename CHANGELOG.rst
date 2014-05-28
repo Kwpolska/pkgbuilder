@@ -5,8 +5,8 @@ Appendix C. Changelog
 :Author: Chris “Kwpolska” Warrick <kwpolska@kwpolska.tk>
 :Copyright: © 2011-2014, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2014-03-25
-:Version: 3.2.0
+:Date: 2014-05-28
+:Version: 3.3.0
 
 .. index:: CHANGELOG
 
@@ -14,7 +14,7 @@ Versioning scheme
 =================
 PKGBUILDer uses the following versioning schemes:
 
-3.x.x onwards
+3.0.0
     major.minor.revision
 
 2.99.x.x
@@ -31,7 +31,7 @@ PKGBUILDer uses the following versioning schemes:
 
 Where:
  * generation
-    1 is the first Perl version, 2 is the Python version (dropped for 3.x.x).
+    1 is the first Perl version, 2 is the Python version (dropped for 3.0.0).
  * major
     basic release number.
  * minor
@@ -47,14 +47,21 @@ More information can be found on GitHub in the `releases section <https://github
 Version History
 ===============
 
-Generation 4
-------------
-
-4.0.0-alpha
-    * support for AUR v3.0.0’s RPC v2
-
 Generation 3
 ------------
+
+3.3.0
+    Added preliminary AURv3 support.
+
+3.3.0
+    Added perliminary AURv3 support.
+
+3.3.0
+    Added preliminary AURv3 support.
+
+3.3.0
+    PKGBUILDer is now compatible with AURv3.  Note this is perliminary support, and
+    as such, there might still be bugs.
 
 3.2.0
     * Downgrade listings have been fixed (Issue #31)
@@ -73,6 +80,19 @@ Generation 3
 
 3.1.11
     * Fix AUR/HTTP exceptions reporting. (via Issue #28)
+
+3.3.0
+    Added preliminary AURv3 support.
+
+3.3.0
+    Added perliminary AURv3 support.
+
+3.3.0
+    Added preliminary AURv3 support.
+
+3.3.0
+    PKGBUILDer is now compatible with AURv3.  Note this is perliminary support, and
+    as such, there might still be bugs.
 
 3.2.0
     * Downgrade listings have been fixed (Issue #31)

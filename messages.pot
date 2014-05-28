@@ -5,10 +5,10 @@
         #
         msgid ""
         msgstr ""
-        "Project-Id-Version: 3.2.0\n"
+        "Project-Id-Version: 3.3.0\n"
         "Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
-        "POT-Creation-Date: 2014-03-25 15:23+0100\n"
-        "PO-Revision-Date: 2014-03-25 15:23+0100\n"
+        "POT-Creation-Date: 2014-05-28 14:49+0200\n"
+        "PO-Revision-Date: 2014-05-28 14:49+0200\n"
         "Last-Translator: Kwpolska <kwpolska@kwpolska.tk>\n"
         "Language-Team: Kwpolska <kwpolska@kwpolska.tk>\n"
         "Language: en\n"
@@ -44,124 +44,132 @@ msgstr ""
 msgid "Installing built packages..."
 msgstr ""
 
-#: pkgbuilder/build.py:109 pkgbuilder/build.py:438 pkgbuilder/main.py:225
+#: pkgbuilder/build.py:86
+msgid "Moving to /var/cache/pacman/pkg/..."
+msgstr ""
+
+#: pkgbuilder/build.py:101
+msgid "Installing with pacman -U..."
+msgstr ""
+
+#: pkgbuilder/build.py:112 pkgbuilder/build.py:441 pkgbuilder/main.py:234
 msgid "Fetching package information..."
 msgstr ""
 
-#: pkgbuilder/build.py:113 pkgbuilder/build.py:540
-msgid "Downloading the tarball..."
-msgstr ""
-
 #: pkgbuilder/build.py:116 pkgbuilder/build.py:543
-#, python-brace-format
-msgid "{0} kB downloaded"
-msgstr ""
-
-#: pkgbuilder/build.py:118 pkgbuilder/build.py:545
-msgid "Extracting..."
+msgid "Downloading the tarball..."
 msgstr ""
 
 #: pkgbuilder/build.py:119 pkgbuilder/build.py:546
 #, python-brace-format
+msgid "{0} kB downloaded"
+msgstr ""
+
+#: pkgbuilder/build.py:121 pkgbuilder/build.py:548
+msgid "Extracting..."
+msgstr ""
+
+#: pkgbuilder/build.py:122 pkgbuilder/build.py:549
+#, python-brace-format
 msgid "{0} files extracted"
 msgstr ""
 
-#: pkgbuilder/build.py:121 pkgbuilder/build.py:522
+#: pkgbuilder/build.py:124 pkgbuilder/build.py:525
 #, python-brace-format
 msgid "Building {0}..."
 msgstr ""
 
-#: pkgbuilder/build.py:124
+#: pkgbuilder/build.py:127
 msgid "Performing a safe upgrade as root!"
 msgstr ""
 
-#: pkgbuilder/build.py:125
+#: pkgbuilder/build.py:128
 msgid "It is recommended to restart PKGBUILDer as a regular user instead."
 msgstr ""
 
-#: pkgbuilder/build.py:131
+#: pkgbuilder/build.py:134
 #, python-brace-format
 msgid "Build finished with return code {0}."
 msgstr ""
 
-#: pkgbuilder/build.py:154
+#: pkgbuilder/build.py:157
 msgid "The build function reported a proper build."
 msgstr ""
 
-#: pkgbuilder/build.py:158
+#: pkgbuilder/build.py:161
 msgid "Building more AUR packages is required."
 msgstr ""
 
-#: pkgbuilder/build.py:170
+#: pkgbuilder/build.py:173
 #, python-brace-format
 msgid "found an existing package for {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:205
+#: pkgbuilder/build.py:208
 #, python-brace-format
 msgid "makepkg (or someone else) failed and returned {0}."
 msgstr ""
 
-#: pkgbuilder/build.py:230
+#: pkgbuilder/build.py:233
 msgid "0 bytes downloaded"
 msgstr ""
 
-#: pkgbuilder/build.py:263
+#: pkgbuilder/build.py:266
 msgid "No files extracted."
 msgstr ""
 
-#: pkgbuilder/build.py:379
+#: pkgbuilder/build.py:382
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:469
+#: pkgbuilder/build.py:472
 msgid ":: Retrieving packages from abs..."
 msgstr ""
 
-#: pkgbuilder/build.py:472 pkgbuilder/build.py:483
+#: pkgbuilder/build.py:475 pkgbuilder/build.py:486
 #, python-brace-format
 msgid "retrieving {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:476 pkgbuilder/build.py:534
+#: pkgbuilder/build.py:479 pkgbuilder/build.py:537
 #, python-brace-format
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr ""
 
-#: pkgbuilder/build.py:480
+#: pkgbuilder/build.py:483
 msgid ":: Retrieving packages from aur..."
 msgstr ""
 
-#: pkgbuilder/build.py:487
+#: pkgbuilder/build.py:490
 msgid "Extracting AUR packages..."
 msgstr ""
 
-#: pkgbuilder/build.py:492
+#: pkgbuilder/build.py:495
 msgid "Successfully fetched: "
 msgstr ""
 
-#: pkgbuilder/build.py:530
+#: pkgbuilder/build.py:533
 msgid "Retrieving from ABS..."
 msgstr ""
 
-#: pkgbuilder/build.py:550
+#: pkgbuilder/build.py:553
 msgid "Checking dependencies..."
 msgstr ""
 
-#: pkgbuilder/build.py:553
+#: pkgbuilder/build.py:556
 msgid "found in system"
 msgstr ""
 
-#: pkgbuilder/build.py:553
+#: pkgbuilder/build.py:556
 msgid "found in repos"
 msgstr ""
 
-#: pkgbuilder/build.py:554
+#: pkgbuilder/build.py:557
 msgid "found in the AUR"
 msgstr ""
 
-#: pkgbuilder/build.py:557
+#: pkgbuilder/build.py:560
 msgid "none found"
 msgstr ""
 
@@ -211,136 +219,140 @@ msgstr ""
 msgid "LANG locale by AUTHOR <MAIL@IF.YOU.WANT>"
 msgstr ""
 
-#: pkgbuilder/main.py:42
+#: pkgbuilder/main.py:43
 msgid "An AUR helper (and library) in Python 3."
 msgstr ""
 
-#: pkgbuilder/main.py:43
+#: pkgbuilder/main.py:44
 msgid "Also accepting ABS packages."
 msgstr ""
 
-#: pkgbuilder/main.py:46
+#: pkgbuilder/main.py:47
 msgid "show version number and quit"
 msgstr ""
 
-#: pkgbuilder/main.py:48
+#: pkgbuilder/main.py:49
 msgid "PACKAGE"
 msgstr ""
 
-#: pkgbuilder/main.py:49
+#: pkgbuilder/main.py:50
 msgid "AUR/ABS packages to build"
 msgstr ""
 
-#: pkgbuilder/main.py:51
+#: pkgbuilder/main.py:52
 msgid "operations"
 msgstr ""
 
-#: pkgbuilder/main.py:54
+#: pkgbuilder/main.py:55
 msgid "fetch package files"
 msgstr ""
 
-#: pkgbuilder/main.py:57
+#: pkgbuilder/main.py:58
 msgid "USER"
 msgstr ""
 
-#: pkgbuilder/main.py:57
+#: pkgbuilder/main.py:58
 msgid "fetch all package files of an user"
 msgstr ""
 
-#: pkgbuilder/main.py:59
+#: pkgbuilder/main.py:60
 msgid "view package information"
 msgstr ""
 
-#: pkgbuilder/main.py:62
+#: pkgbuilder/main.py:63
 msgid "search the AUR for matching strings"
 msgstr ""
 
-#: pkgbuilder/main.py:66
+#: pkgbuilder/main.py:67
 msgid "upgrade installed AUR packages"
 msgstr ""
 
-#: pkgbuilder/main.py:68
-msgid "options"
-msgstr ""
-
-#: pkgbuilder/main.py:71
-msgid "clean up work files after build"
-msgstr ""
-
-#: pkgbuilder/main.py:75
-msgid "don't use colors in output"
-msgstr ""
-
-#: pkgbuilder/main.py:78
-msgid "display debug messages"
-msgstr ""
-
-#: pkgbuilder/main.py:81
-msgid "don't check dependencies (may break makepkg)"
-msgstr ""
-
-#: pkgbuilder/main.py:85
-msgid "upgrade all the VCS/date-versioned packages"
-msgstr ""
-
-#: pkgbuilder/main.py:90
-msgid "don't check if packages were installed after build"
-msgstr ""
-
-#: pkgbuilder/main.py:93
-msgid "don't  install packages after building"
-msgstr ""
-
-#: pkgbuilder/main.py:97
-msgid "pacman-like mode"
-msgstr ""
-
-#: pkgbuilder/main.py:100
+#: pkgbuilder/main.py:70
 msgid "perform a failsafe upgrade of PKGBUILDer"
 msgstr ""
 
-#: pkgbuilder/main.py:104
+#: pkgbuilder/main.py:74
+msgid "copy package files to pacman cache and install them"
+msgstr ""
+
+#: pkgbuilder/main.py:76
+msgid "options"
+msgstr ""
+
+#: pkgbuilder/main.py:79
+msgid "clean up work files after build"
+msgstr ""
+
+#: pkgbuilder/main.py:83
+msgid "don't use colors in output"
+msgstr ""
+
+#: pkgbuilder/main.py:86
+msgid "display debug messages"
+msgstr ""
+
+#: pkgbuilder/main.py:89
+msgid "don't check dependencies (may break makepkg)"
+msgstr ""
+
+#: pkgbuilder/main.py:93
+msgid "upgrade all the VCS/date-versioned packages"
+msgstr ""
+
+#: pkgbuilder/main.py:98
+msgid "don't check if packages were installed after build"
+msgstr ""
+
+#: pkgbuilder/main.py:101
+msgid "don't  install packages after building"
+msgstr ""
+
+#: pkgbuilder/main.py:105
+msgid "pacman-like mode"
+msgstr ""
+
+#: pkgbuilder/main.py:108
 msgid "(dummy)"
 msgstr ""
 
-#: pkgbuilder/main.py:137
+#: pkgbuilder/main.py:141
 #, python-brace-format
 msgid "error: package '{0}' was not found"
 msgstr ""
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
-#: pkgbuilder/main.py:153
+#: pkgbuilder/main.py:157
 msgid "Search query too short"
 msgstr ""
 
-#: pkgbuilder/main.py:154
+#: pkgbuilder/main.py:158
 msgid "Searching for exact match..."
 msgstr ""
 
-#: pkgbuilder/main.py:157 INSTALL.py:65 INSTALL.py:74
+#: pkgbuilder/main.py:161 INSTALL.py:65 INSTALL.py:74
 msgid "not found"
 msgstr ""
 
-#: pkgbuilder/main.py:194
+#: pkgbuilder/main.py:203
 msgid "PKGBUILDer Failsafe Upgrade"
 msgstr ""
 
-#: pkgbuilder/main.py:197
+#: pkgbuilder/main.py:206
 msgid "Build the git version? [y/N] "
 msgstr ""
 
-#: pkgbuilder/main.py:230
+#: pkgbuilder/main.py:239
 #, python-brace-format
 msgid "Error while processing {0}: {1}"
 msgstr ""
 
-#: pkgbuilder/main.py:240
+#: pkgbuilder/main.py:249
 msgid "Running PKGBUILDer as root can break your system!"
 msgstr ""
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/main.py:268
+#: pkgbuilder/main.py:277
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
@@ -408,86 +420,95 @@ msgstr ""
 msgid "there is nothing to do"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:184 pkgbuilder/upgrade.py:190
+#: pkgbuilder/upgrade.py:182 pkgbuilder/upgrade.py:188
 msgid "The following packages should be upgraded first:"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:187
+#: pkgbuilder/upgrade.py:185
 msgid "Do you want to cancel the current operation"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:188
+#: pkgbuilder/upgrade.py:186
 msgid "and upgrade these packages now? [Y/n] "
 msgstr ""
 
-#: pkgbuilder/upgrade.py:195
+#: pkgbuilder/upgrade.py:193
 msgid ""
 "Do you want to cancel the current operation and upgrade these packages now? "
 "[Y/n] "
 msgstr ""
 
-#: pkgbuilder/upgrade.py:213 pkgbuilder/upgrade.py:280
+#: pkgbuilder/upgrade.py:211 pkgbuilder/upgrade.py:267
 #, python-brace-format
 msgid "Targets ({0}): "
 msgstr ""
 
-#: pkgbuilder/upgrade.py:228
+#: pkgbuilder/upgrade.py:225
 msgid "Name"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:228
+#: pkgbuilder/upgrade.py:225
 msgid "Old Version"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:228
+#: pkgbuilder/upgrade.py:225
 msgid "New Version"
 msgstr ""
 
 #. string stolen from pacman
-#: pkgbuilder/upgrade.py:251
+#: pkgbuilder/upgrade.py:248
 msgid "warning: insufficient columns available for table display"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:278 pkgbuilder/upgrade.py:284
+#: pkgbuilder/upgrade.py:265 pkgbuilder/upgrade.py:271
 msgid "Proceed with installation? [Y/n] "
 msgstr ""
 
-#: pkgbuilder/utils.py:95
+#: pkgbuilder/utils.py:138
 #, python-brace-format
 msgid " [installed: {0}]"
 msgstr ""
 
-#: pkgbuilder/utils.py:97
+#: pkgbuilder/utils.py:140
 msgid " [installed]"
 msgstr ""
 
-#: pkgbuilder/utils.py:101
+#: pkgbuilder/utils.py:144
 msgid "[out of date]"
 msgstr ""
 
-#: pkgbuilder/utils.py:122
+#: pkgbuilder/utils.py:165
 msgid "votes"
 msgstr ""
 
-#: pkgbuilder/utils.py:138
+#: pkgbuilder/utils.py:203
 msgid "Didn’t pass any packages."
 msgstr ""
 
-#: pkgbuilder/utils.py:142
+#: pkgbuilder/utils.py:207
 msgid "Trying to use utils.print_package_info with an ABS package"
 msgstr ""
 
 #. TRANSLATORS: space it properly.  “yes/no” below are
 #. for “out of date”.
-#: pkgbuilder/utils.py:162
+#: pkgbuilder/utils.py:227
 #, python-brace-format
 msgid ""
 "Repository     : aur\n"
 "Category       : {cat}\n"
 "Name           : {nme}\n"
+"Package Base   : {bse}\n"
 "Version        : {ver}\n"
 "URL            : {url}\n"
 "Licenses       : {lic}\n"
+"Groups         : {grp}\n"
+"Provides       : {prv}\n"
+"Depends On     : {dep}\n"
+"Make Deps      : {mkd}\n"
+"Check Deps     : {ckd}\n"
+"Optional Deps  : {opt}\n"
+"Conflicts With : {cnf}\n"
+"Replaces       : {rpl}\n"
 "Votes          : {cmv}\n"
 "Out of Date    : {ood}\n"
 "Maintainer     : {mnt}\n"
@@ -496,11 +517,11 @@ msgid ""
 "Description    : {dsc}\n"
 msgstr ""
 
-#: pkgbuilder/utils.py:182
+#: pkgbuilder/utils.py:256
 msgid "yes"
 msgstr ""
 
-#: pkgbuilder/utils.py:184
+#: pkgbuilder/utils.py:258
 msgid "no"
 msgstr ""
 
