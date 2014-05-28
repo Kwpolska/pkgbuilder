@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.1.5
+# PKGBUILDer v3.3.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2014, Kwpolska.
 # See /LICENSE for licensing information.
@@ -30,10 +30,10 @@ RPC = AUR()
 
 
 def info(pkgnames):
-    """
+    """Return info about AUR packages.
+
     .. versionchanged:: 3.0.0
 
-    Returns info about AUR packages.
     """
     if isinstance(pkgnames, str):
         pkgnames = [pkgnames]
@@ -46,10 +46,11 @@ def info(pkgnames):
 
 
 def search(pkgname):
-    """
+    """Search for AUR packages.
+
     .. versionchanged:: 3.0.0
 
-    Searches for AUR packages."""
+    """
     aur_pkgs = RPC.request('search', pkgname)
     if aur_pkgs['type'] == 'error':
         raise AURError(aur_pkgs['results'])
@@ -58,10 +59,11 @@ def search(pkgname):
 
 
 def msearch(maintainer):
-    """
+    """Search for AUR packages maintained by a specified user.
+
     .. versionadded:: 3.0.0
 
-    Searches for AUR packages maintained by a specified user."""
+    """
     aur_pkgs = RPC.request('msearch', maintainer)
     if aur_pkgs['type'] == 'error':
         raise AURError(aur_pkgs['results'])
@@ -69,20 +71,61 @@ def msearch(maintainer):
         return [AURPackage.from_aurdict(d) for d in aur_pkgs['results']]
 
 
+def hanging_indent(text, intro, termwidth=80, change_spaces=True,
+                   introwidth=None):
+    """Produce text with a hanging indent.
+
+    .. versionadded:: 4.0.0
+
+    """
+    if introwidth is None:
+        introwidth = len(intro)
+    nowrap = intro + text
+    if intro:
+        wrapv = textwrap.wrap(nowrap, termwidth,
+                              break_on_hyphens=False)
+    else:
+        wrapv = textwrap.wrap(nowrap, termwidth - introwidth,
+                              break_on_hyphens=False)
+    wrap0 = wrapv[0]
+    wraprest = textwrap.wrap('\n'.join(wrapv[1:]), termwidth -
+                             introwidth,
+                             break_on_hyphens=False)
+    if change_spaces:
+        wraprest = [i.replace('  ', ' ').replace(' ', '  ') for i
+                    in wraprest]
+    buf = wrap0
+    for i in wraprest:
+        buf += '\n' + introwidth * ' ' + i
+
+    return buf
+
+
+def get_termwidth():
+    """Get the width of this terminal.
+
+    .. versionadded:: 4.0.0
+
+    """
+    try:
+        size = subprocess.check_output(['stty', 'size'])
+        return int(size.split()[1])
+    except (IndexError, subprocess.CalledProcessError):
+        return None
+
+
 def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
                          prefixp=''):
-    """
+    """Output/return a package representation.
+
+    Based on `pacman -Ss`.
+
     .. versionchanged:: 3.0.0
 
-    Outputs/returns a package representation, which is close to the output
-    of ``pacman -Ss``.
     """
-    size = subprocess.check_output(['stty', 'size'])
-    try:
-        termwidth = int(size.split()[1])
-    except IndexError:
-        termwidth = 9001  # Auto-wrap by terminal.  A reference to an old
-                          # meme and a cheat, too. Sorry.
+    termwidth = get_termwidth()
+    if termwidth is None:
+        termwidth = 9001  # Auto-wrap by terminal.
 
     localdb = DS.pyc.get_localdb()
     lpkg = localdb.get_pkg(pkg.name)
@@ -127,12 +170,34 @@ def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
         print(entry)
 
 
-def print_package_info(pkgs, cachemode=False):
-    """
-    .. versionchanged:: 3.0.0
+def mlist(items, sep='  ', change_spaces=True, termwidth=80, indentwidth=17):
+    """Output a list of strings, complete with a hanging indent.
 
-    Outputs/returns a package representation, which is close to the output
-    of ``pacman -Si``.
+    .. versionadded:: 4.0.0
+
+    """
+    if items:
+        if sep == '\n':
+            buf = [hanging_indent(items[0], '', termwidth, change_spaces,
+                                  indentwidth)]
+            for i in items[1:]:
+                buf.append(hanging_indent(i, indentwidth * ' ', termwidth,
+                                          change_spaces))
+            return '\n'.join(buf)
+        else:
+            return hanging_indent(sep.join(items), '', termwidth,
+                                  change_spaces, indentwidth)
+    else:
+        return 'None'
+
+
+def print_package_info(pkgs, cachemode=False):
+    """Output/return a package representation.
+
+    Based on `pacman -Ss`.
+
+    .. versionchanged:: 4.0.0
+
     """
     if pkgs == []:
         raise SanityError(_('Didn’t pass any packages.'))
@@ -162,9 +227,18 @@ def print_package_info(pkgs, cachemode=False):
         t = _("""Repository     : aur
 Category       : {cat}
 Name           : {nme}
+Package Base   : {bse}
 Version        : {ver}
 URL            : {url}
 Licenses       : {lic}
+Groups         : {grp}
+Provides       : {prv}
+Depends On     : {dep}
+Make Deps      : {mkd}
+Check Deps     : {ckd}
+Optional Deps  : {opt}
+Conflicts With : {cnf}
+Replaces       : {rpl}
 Votes          : {cmv}
 Out of Date    : {ood}
 Maintainer     : {mnt}
@@ -182,10 +256,35 @@ Description    : {dsc}
                 ood = DS.colors['red'] + _('yes') + DS.colors['all_off']
             else:
                 ood = _('no')
-            to.append(t.format(cat=pkg.repo, nme=pkg.name, url=pkg.url,
-                               ver=pkg.version, lic=', '.join(pkg.licenses),
-                               cmv=pkg.votes, ood=ood, mnt=pkg.human, upd=upd,
-                               fsb=fsb, dsc=pkg.description))
+            termwidth = get_termwidth()
+            if termwidth is None:
+                termwidth = 9001  # Auto-wrap by terminal.
+
+            to.append(t.format(cat=pkg.repo,
+                               nme=pkg.name,
+                               bse=pkg.packagebase,
+                               url=pkg.url,
+                               ver=pkg.version,
+                               lic=mlist(pkg.licenses, termwidth=termwidth),
+                               grp=mlist(pkg.groups, termwidth=termwidth),
+                               prv=mlist(pkg.provides, termwidth=termwidth),
+                               dep=mlist(pkg.depends, termwidth=termwidth),
+                               mkd=mlist(pkg.makedepends, termwidth=termwidth),
+                               ckd=mlist(pkg.checkdepends, termwidth=termwidth),
+                               opt=mlist(pkg.optdepends, sep='\n',
+                                         change_spaces=False,
+                                         termwidth=termwidth),
+                               cnf=mlist(pkg.conflicts, termwidth=termwidth),
+                               rpl=mlist(pkg.replaces, termwidth=termwidth),
+                               cmv=pkg.votes,
+                               ood=ood,
+                               mnt=pkg.human,
+                               upd=upd,
+                               fsb=fsb,
+                               dsc=hanging_indent(pkg.description, '',
+                                                  termwidth, False, 17)
+                               )
+                      )
 
     if cachemode:
         return '\n'.join(to)

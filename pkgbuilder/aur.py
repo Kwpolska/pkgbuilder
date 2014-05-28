@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.1.5
+# PKGBUILDer v3.3.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2014, Kwpolska.
 # See /LICENSE for licensing information.
@@ -15,7 +15,8 @@
     :License: BSD (see /LICENSE).
 """
 
-from .exceptions import ConnectionError, HTTPError, NetworkError
+import pkgbuilder
+from pkgbuilder.exceptions import ConnectionError, HTTPError, NetworkError
 import requests
 import requests.exceptions
 import json
@@ -48,16 +49,18 @@ class AUR:
               ``pkgbuilder.utils.{info,search,msearch}()`` instead.
     """
 
-    rpc = 'https://aur.archlinux.org/rpc.php'
+    rpc = 'https://aur.archlinux.org/rpc.php?v=2'
+    emptystr = '{"version":2,"type":"%s","resultcount":0,"results":[]}'
+    ua = 'PKGBUILDer/' + pkgbuilder.__version__
 
     def jsonreq(self, rtype, arg):
         """Makes a request and returns plain JSON data."""
         if arg == []:
-            # No need to bother.  String for JSON.
-            return '{"type": "info", "resultcount": 0, "results": []}'
+            # No need to bother.
+            return self.emptystr % rtype
 
         try:
-            req = requests.get(self.rpc, params={'type': rtype, 'arg': arg})
+            req = requests.get(self.rpc, params={'type': rtype, 'arg': arg}, headers={'User-Agent': self.ua})
             req.raise_for_status()
         except requests.exceptions.ConnectionError as e:
             raise ConnectionError(e.args[0].reason, e)
@@ -71,12 +74,12 @@ class AUR:
     def jsonmultiinfo(self, args):
         """Makes a multiinfo request and returns plain JSON data."""
         if args == []:
-            # No need to bother.  String for JSON.
-            return '{"type": "info", "resultcount": 0, "results": []}'
+            # No need to bother.
+            return self.emptystr % 'multiinfo'
 
         try:
             req = requests.get(self.rpc, params={'type': 'multiinfo', 'arg[]':
-                                                 args})
+                                                 args}, headers={'User-Agent': self.ua})
             req.raise_for_status()
         except requests.exceptions.ConnectionError as e:
             raise ConnectionError(e.args[0].reason, e)

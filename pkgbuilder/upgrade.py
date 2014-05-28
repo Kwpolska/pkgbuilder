@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.1.5
+# PKGBUILDer v3.3.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2014, Kwpolska.
 # See /LICENSE for licensing information.
@@ -177,8 +177,6 @@ def auto_upgrade(downgrade=False, vcsup=False):
                 pkgbname = 'pkgbuilder'
             elif 'pkgbuilder-git' in upgnames:
                 pkgbname = 'pkgbuilder-git'
-            else:
-                raise SanityError('if goes apeshit', 'syu-safeupgrade')
 
             if DS.pacman:
                 print(':: ' + _('The following packages should be upgraded '
@@ -212,18 +210,17 @@ def auto_upgrade(downgrade=False, vcsup=False):
         if DS.pacman:
             targetstring = _('Targets ({0}): ').format(upglen)
 
-            try:
-                size = subprocess.check_output(['stty', 'size'])
-                termwidth = int(size.split()[1])
-            except (IndexError, subprocess.CalledProcessError):
+            termwidth = pkgbuilder.utils.get_termwidth()
+            if termwidth is None:
+                termwidth = 9001  # Auto-wrap by terminal.
+
                 if verbosepkglists:
                     # Pacman doesn’t allow tables if the terminal is too small.
                     # And since we don’t know the size, better safe than sorry.
                     verbosepkglists = False
                     DS.log.warning('VerbosePkgLists disabled, cannot '
                                    'determine terminal width')
-                else:
-                    termwidth = 9001  # Auto-wrap by terminal.
+
             if verbosepkglists:
                 headers = [_('Name'), _('Old Version'), _('New Version')]
                 items = upgradable  # Magical.
@@ -261,18 +258,8 @@ def auto_upgrade(downgrade=False, vcsup=False):
             # Not using else because there is a fallback if the terminal
             # is too small.
             if not verbosepkglists:
-                nowrap = targetstring + '  '.join(upgstrings)
-                wrapv = textwrap.wrap(nowrap, termwidth,
-                                      break_on_hyphens=False)
-                wrap0 = wrapv[0]
-                wraprest = textwrap.wrap('\n'.join(wrapv[1:]), termwidth -
-                                         len(targetstring),
-                                         break_on_hyphens=False)
-                wraprest = [i.replace('  ', ' ').replace(' ', '  ') for i
-                            in wraprest]
-                print(wrap0)
-                for i in wraprest:
-                    print(len(targetstring) * ' ' + i)
+                print(pkgbuilder.utils.hanging_indent('  '.join(upgstrings),
+                                                      targetstring, termwidth, True))
 
             print()
             query = ':: ' + _('Proceed with installation? [Y/n] ')

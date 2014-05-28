@@ -5,8 +5,8 @@ Appendix C. Changelog
 :Author: Chris “Kwpolska” Warrick <kwpolska@kwpolska.tk>
 :Copyright: © 2011-2014, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2014-03-25
-:Version: 3.2.0
+:Date: 2014-05-28
+:Version: 3.3.0
 
 .. index:: CHANGELOG
 
@@ -50,6 +50,19 @@ Version History
 Generation 3
 ------------
 
+3.3.0
+    Added preliminary AURv3 support.
+
+3.3.0
+    Added perliminary AURv3 support.
+
+3.3.0
+    Added preliminary AURv3 support.
+
+3.3.0
+    PKGBUILDer is now compatible with AURv3.  Note this is perliminary support, and
+    as such, there might still be bugs.
+
 3.2.0
     * Downgrade listings have been fixed (Issue #31)
     * Packages are now moved to /var/cache/pacman/pkg/ and installed from
@@ -67,6 +80,19 @@ Generation 3
 
 3.1.11
     * Fix AUR/HTTP exceptions reporting. (via Issue #28)
+
+3.3.0
+    Added preliminary AURv3 support.
+
+3.3.0
+    Added perliminary AURv3 support.
+
+3.3.0
+    Added preliminary AURv3 support.
+
+3.3.0
+    PKGBUILDer is now compatible with AURv3.  Note this is perliminary support, and
+    as such, there might still be bugs.
 
 3.2.0
     * Downgrade listings have been fixed (Issue #31)

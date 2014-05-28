@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
 # PBWrapper v0.2.3
-# PKGBUILDer v3.1.5
+# PKGBUILDer v3.3.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2014, Kwpolska.
 # See /LICENSE for licensing information.
@@ -29,7 +29,7 @@ import sys
 import os
 
 __all__ = ['wrapper']
-__wrapperversion__ = '0.2.2'
+__wrapperversion__ = '0.2.3'
 
 
 def wrapper(source='AUTO'):

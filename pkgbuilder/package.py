@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.1.5
+# PKGBUILDer v3.3.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2014, Kwpolska.
 # See /LICENSE for licensing information.
@@ -42,6 +42,12 @@ class Package(object):
     url = None
     licenses = []
     human = None
+    depends = []
+    optdepends = []
+    conflicts = []
+    provides = []
+    replaces = []
+    groups = []
 
     def __init__(self, **kwargs):
         """Initialize the class."""
@@ -68,6 +74,9 @@ class Package(object):
 class AURPackage(Package):
     """An AUR package."""
     id = None
+    packagebase = None
+    makedepends = []
+    checkdepends = []
     is_abs = False
     is_outdated = None
     outdated_since = None
@@ -90,8 +99,19 @@ class AURPackage(Package):
                     'NumVotes': 'votes',
                     'URL': 'url',
                     'URLPath': 'urlpath',
-                    'Version': 'version'}
-        ignore = ['OutOfDate', 'FirstSubmitted', 'LastModified', 'License']
+                    'Version': 'version',
+                    'PackageBase': 'packagebase',
+                    'Depends': 'depends',
+                    'MakeDepends': 'makedepends',
+                    'CheckDepends': 'checkdepends',
+                    'OptDepends': 'optdepends',
+                    'Conflicts': 'conflicts',
+                    'Provides': 'provides',
+                    'Replaces': 'replaces',
+                    'Groups': 'groups',
+                    'License': 'licenses',
+                    }
+        ignore = ['OutOfDate', 'FirstSubmitted', 'LastModified']
 
         p = cls()
         for k, v in aurdict.items():
@@ -106,7 +126,6 @@ class AURPackage(Package):
         # Manual overrides.
         p.is_outdated = aurdict['OutOfDate'] > 0
         p.repo = CATEGORIES[aurdict['CategoryID']]
-        p.licenses = [aurdict['License']]
 
         if p.is_outdated:
             p.outdated_since = mktime(aurdict['OutOfDate'])
@@ -126,21 +145,15 @@ class ABSPackage(Package):
     backup = []
     base64_sig = None
     builddate = None
-    conflicts = None
     deltas = []
-    depends = []
     download_size = None
     filename = None
     files = []
-    groups = []
     has_scriptlet = None
     installdate = None
     isize = None
     md5sum = None
-    optdepends = []
-    provides = []
     reason = []
-    replaces = []
     sha256sum = None
     size = None
 

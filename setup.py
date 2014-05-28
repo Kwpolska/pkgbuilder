@@ -7,7 +7,7 @@ except ImportError:
 import codecs
 
 setup(name='pkgbuilder',
-      version='3.2.0',
+      version='3.3.0',
       description='An AUR helper (and library) in Python 3.',
       keywords='arch pkgbuild',
       author='Chris “Kwpolska” Warrick',
@@ -35,10 +35,16 @@ setup(name='pkgbuilder',
                    'Topic :: Utilities'],
       packages=['pkgbuilder'],
       requires=['pyalpm', 'requests'],
-      scripts=['bin/pkgbuilder', 'bin/pb'],
       data_files=[('share/man/man8', ['docs/pkgbuilder.8.gz']),
                   ('share/man/man8', ['docs/pb.8.gz']),
                   ('share/locale/pl/LC_MESSAGES', ['locale/pl/LC_MESSAGES/'
                                                    'pkgbuilder.mo']),
                   ('share/locale/ja/LC_MESSAGES', ['locale/ja/LC_MESSAGES/'
-                                                   'pkgbuilder.mo'])])
+                                                   'pkgbuilder.mo'])],
+      entry_points = {
+          'console_scripts': [
+              'pkgbuilder = pkgbuilder.__main__:pkgbuildermain',
+              'pb = pkgbuilder.__main__:pbwrappermain'
+          ]
+      },
+)

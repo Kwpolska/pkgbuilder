@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.1.5
+# PKGBUILDer v3.3.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2014, Kwpolska.
 # See /LICENSE for licensing information.
@@ -39,6 +39,7 @@ def main(source='AUTO', quit=True):
             verstring = ' — '.join([verstring, locale])
         DS.log.info('Initialized, parsing arguments.')
         parser = argparse.ArgumentParser(
+            prog='pkgbuilder',
             description=_('An AUR helper (and library) in Python 3.'),
             epilog=_('Also accepting ABS packages.'))
         parser.add_argument(
@@ -64,6 +65,13 @@ def main(source='AUTO', quit=True):
         argopr.add_argument(
             '-u', '--sysupgrade', action='count', default=False,
             dest='upgrade', help=_('upgrade installed AUR packages'))
+        argopr.add_argument(
+            '--safeupgrade', action='store_true', default=False,
+            dest='safeupgrade', help=_('perform a failsafe upgrade of '
+                                       'PKGBUILDer'))
+        argopr.add_argument(
+            '-U', '--upgrade', action='store_true', default=False, dest='finst',
+            help=_('copy package files to pacman cache and install them'))
 
         argopt = parser.add_argument_group(_('options'))
         argopt.add_argument(
@@ -95,10 +103,6 @@ def main(source='AUTO', quit=True):
         argopt.add_argument(
             '-S', '--sync', action='store_true', default=False, dest='pac',
             help=_('pacman-like mode'))
-        argopt.add_argument(
-            '--safeupgrade', action='store_true', default=False,
-            dest='safeupgrade', help=_('perform a failsafe upgrade of '
-                                       'PKGBUILDer'))
         argopt.add_argument(
             '-y', '--refresh', action='store_true', default=False,
             dest='pacupd', help=_('(dummy)'))
@@ -179,6 +183,11 @@ def main(source='AUTO', quit=True):
                         pkg, True, True) + '\n'
             if output != '':
                 print(output.rstrip())
+            if quit:
+                exit(0)
+
+        if args.finst:
+            pkgbuilder.build.install(pkgnames, [], False)
             if quit:
                 exit(0)
 

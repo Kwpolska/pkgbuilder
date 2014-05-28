@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.1.5
+# PKGBUILDer v3.3.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2014, Kwpolska.
 # See /LICENSE for licensing information.
@@ -83,11 +83,14 @@ def install(pkgpaths, sigpaths, asdeps, uopt=''):
     pkgpaths = list(set(pkgpaths))
     sigpaths = list(set(sigpaths))
 
+    DS.fancy_msg2(_('Moving to /var/cache/pacman/pkg/...'))
     DS.log.info('pkgs={0}; sigs={1}'.format(pkgpaths, sigpaths))
     DS.log.debug('mv {0} {1} /var/cache/pacman/pkg/'.format(pkgpaths,
                                                             sigpaths))
-    DS.fancy_msg2('Moving to /var/cache/pacan/pkg/...')
-    DS.sudo(['mv'] + pkgpaths + sigpaths + ['/var/cache/pacman/pkg/'])
+    mvexit = 256
+    while mvexit != 0:
+        mvexit = DS.sudo(['mv'] + pkgpaths + sigpaths +
+                         ['/var/cache/pacman/pkg/'])
 
     npkgpaths = ['/var/cache/pacman/pkg/' + os.path.basename(i)
                  for i in pkgpaths]
@@ -95,10 +98,10 @@ def install(pkgpaths, sigpaths, asdeps, uopt=''):
     if asdeps:
         uopt = (uopt + ' --asdeps').strip()
 
-    DS.fancy_msg2('Installing with pacman -U...')
+    DS.fancy_msg2(_('Installing with pacman -U...'))
     if uopt:
         DS.log.debug('$PACMAN -U {0} {1}'.format(uopt, npkgpaths))
-        DS.sudo([DS.paccommand, '-U', uopt] + npkgpaths)
+        DS.sudo([DS.paccommand, '-U'] + uopt.split(' ') + npkgpaths)
     else:
         DS.log.debug('$PACMAN -U {0}'.format(npkgpaths))
         DS.sudo([DS.paccommand, '-U'] + npkgpaths)
@@ -117,7 +120,7 @@ def safeupgrade(pkgname):
 
     DS.fancy_msg(_('Extracting...'))
     DS.fancy_msg2(_('{0} files extracted').format(extract(filename)))
-    os.chdir('./{0}/'.format(pkg.name))
+    os.chdir('./{0}/'.format(pkg.packagebase))
     DS.fancy_msg(_('Building {0}...').format(pkg.name))
 
     if DS.uid == 0:
@@ -534,7 +537,7 @@ def build_runner(pkgname, performdepcheck=True,
                 _('Failed to retieve {0} (from ABS/rsync).').format(
                     pkg.name), pkg=pkg, retcode=rc)
 
-        os.chdir('./{0}/'.format(pkg.repo))
+        os.chdir('./{0}/{1}'.format(pkg.repo, pkg.packagebase))
     else:
         filename = pkg.name + '.tar.gz'
         DS.fancy_msg(_('Downloading the tarball...'))
@@ -544,7 +547,7 @@ def build_runner(pkgname, performdepcheck=True,
 
         DS.fancy_msg(_('Extracting...'))
         DS.fancy_msg2(_('{0} files extracted').format(extract(filename)))
-    os.chdir('./{0}/'.format(pkg.name))
+        os.chdir('./{0}/'.format(pkg.packagebase))
 
     if performdepcheck:
         DS.fancy_msg(_('Checking dependencies...'))
