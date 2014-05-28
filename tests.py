@@ -50,19 +50,14 @@ class TestPB(unittest.TestCase):
     maxDiff = None
     # It’s cheaper to use existing package data.
     fpkg = pkgbuilder.package.AURPackage.from_aurdict({
-        'CategoryID': 16,
-        'Description': 'A Python AUR helper/library.',
-        'FirstSubmitted': 1316529993,
-        'ID': 52542,
-        'LastModified': 4294967294,
-        'License': 'BSD',
-        'Maintainer': 'Kwpolska',
-        'Name': 'pkgbuilder-is-awesome',
-        'NumVotes': 8897,  # brought to you by random.org
-        'OutOfDate': 1,
-        'URL': 'https://github.com/Kwpolska/pkgbuilder',
-        'URLPath': '/packages/pk/pkgbuilder/pkgbuilder.tar.gz',
-        'Version': 'testsuite'})
+        'Description': 'A Python AUR helper/library.', 'CategoryID': 16, 'ID':
+        52542, 'Maintainer': 'Kwpolska',
+        'Depends': ['python', 'pyalpm>=0.5.1-1', 'python-requests', 'rsync'],
+        'URLPath': '/packages/pk/pkgbuilder/pkgbuilder.tar.gz', 'Version':
+        '3.2.0-1', 'PackageBase': 'pkgbuilder', 'FirstSubmitted': 1316529993,
+        'OutOfDate': 1000, 'NumVotes': 19, 'Name': 'pkgbuilderts', 'LastModified':
+        1395757472, 'URL': 'https://github.com/Kwpolska/pkgbuilder', 'License':
+        ['BSD']})
 
     def setUp(self):
         """Start stuff."""
@@ -108,7 +103,7 @@ class TestPB(unittest.TestCase):
         pbds.log.debug('PB unittest/TestPB is running now on this machine.')
 
     def test_utils_print_package_search(self):
-        sample = ('system/pkgbuilder-is-awesome testsuite (8897 votes) '
+        sample = ('system/pkgbuilderts 3.2.0-1 (19 votes) '
                   '\x1b[1;1m\x1b[1;31m[out of date]\x1b[1;0m\n'
                   '    A Python AUR helper/library.')
 
@@ -117,14 +112,24 @@ class TestPB(unittest.TestCase):
 
     def test_utils_print_package_info(self):
         sample = ('Repository     : aur\nCategory       : system\n'
-                  'Name           : pkgbuilder-is-awesome\n'
-                  'Version        : testsuite\n'
+                  'Name           : pkgbuilderts\n'
+                  'Package Base   : pkgbuilder\n'
+                  'Version        : 3.2.0-1\n'
                   'URL            : https://github.com/Kwpolska/pkgbuilder\n'
-                  'Licenses       : BSD\nVotes          : 8897\n'
+                  'Licenses       : BSD\n'
+                  'Groups         : None\n'
+                  'Provides       : None\n'
+                  'Depends On     : python  pyalpm>=0.5.1-1  python-requests  rsync\n'
+                  'Make Deps      : None\n'
+                  'Check Deps     : None\n'
+                  'Optional Deps  : None\n'
+                  'Conflicts With : None\n'
+                  'Replaces       : None\n'
+                  'Votes          : 19\n'
                   'Out of Date    : \x1b[1;1m\x1b[1;31myes\x1b[1;0m\n'
                   'Maintainer     : Kwpolska\nFirst Submitted: '
                   '2011-09-20T14:46:33Z\nLast Updated   : '
-                  '2106-02-07T06:28:14Z\nDescription    : '
+                  '2014-03-25T14:24:32Z\nDescription    : '
                   'A Python AUR helper/library.\n')
 
         req = pkgbuilder.utils.print_package_info([self.fpkg], True)
