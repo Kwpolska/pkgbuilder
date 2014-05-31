@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.3.0
+# PKGBUILDer v3.3.1
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2014, Kwpolska.
 # See /LICENSE for licensing information.
@@ -75,7 +75,7 @@ def hanging_indent(text, intro, termwidth=80, change_spaces=True,
                    introwidth=None):
     """Produce text with a hanging indent.
 
-    .. versionadded:: 4.0.0
+    .. versionadded:: 3.3.0
 
     """
     if introwidth is None:
@@ -104,7 +104,7 @@ def hanging_indent(text, intro, termwidth=80, change_spaces=True,
 def get_termwidth():
     """Get the width of this terminal.
 
-    .. versionadded:: 4.0.0
+    .. versionadded:: 3.3.0
 
     """
     try:
@@ -173,7 +173,7 @@ def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
 def mlist(items, sep='  ', change_spaces=True, termwidth=80, indentwidth=17):
     """Output a list of strings, complete with a hanging indent.
 
-    .. versionadded:: 4.0.0
+    .. versionadded:: 3.3.0
 
     """
     if items:
@@ -196,7 +196,7 @@ def print_package_info(pkgs, cachemode=False):
 
     Based on `pacman -Ss`.
 
-    .. versionchanged:: 4.0.0
+    .. versionchanged:: 3.3.0
 
     """
     if pkgs == []:

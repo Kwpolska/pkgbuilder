@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.3.0
+# PKGBUILDer v3.3.1
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2014, Kwpolska.
 # See /LICENSE for licensing information.
@@ -15,8 +15,8 @@
     :License: BSD (see /LICENSE).
 """
 
-from . import UTC
-from .exceptions import PackageError, SanityError
+from . import UTC, DS
+from .exceptions import SanityError
 import datetime
 
 __all__ = ['CATEGORIES', 'Package', 'AURPackage', 'ABSPackage']
@@ -75,6 +75,7 @@ class AURPackage(Package):
     """An AUR package."""
     id = None
     packagebase = None
+    packagebaseid = None
     makedepends = []
     checkdepends = []
     is_abs = False
@@ -101,6 +102,7 @@ class AURPackage(Package):
                     'URLPath': 'urlpath',
                     'Version': 'version',
                     'PackageBase': 'packagebase',
+                    'PackageBaseID': 'packagebaseid',
                     'Depends': 'depends',
                     'MakeDepends': 'makedepends',
                     'CheckDepends': 'checkdepends',
@@ -119,10 +121,8 @@ class AURPackage(Package):
                 setattr(p, bindings[k], v)
             except KeyError:
                 if k not in ignore:
-                    raise PackageError('AURDict has an unknown {0} '
-                                       'key'.format(k),
-                                       'AURPackage.from_aurdict()',
-                                       aurdict=aurdict)
+                    DS.log.warn('AURDict has an unknown {0} key: {1}'.format(
+                        k, aurdict))
         # Manual overrides.
         p.is_outdated = aurdict['OutOfDate'] > 0
         p.repo = CATEGORIES[aurdict['CategoryID']]
