@@ -537,7 +537,14 @@ def build_runner(pkgname, performdepcheck=True,
                 _('Failed to retieve {0} (from ABS/rsync).').format(
                     pkg.name), pkg=pkg, retcode=rc)
 
-        os.chdir('./{0}/{1}'.format(pkg.repo, pkg.packagebase))
+        try:
+            os.chdir('./{0}/{1}'.format(pkg.repo, pkg.name))
+        except FileNotFoundError:
+            raise pkgbuilder.exceptions.PBException(
+                'The package download failed.\n           This package might '
+                'be generated from a split PKGBUILD.  Please find out the '
+                'name of the “main” package (eg. python- instead of python2-) '
+                'and try again.', '/'.join((pkg.repo, pkg.name)), exit=False)
     else:
         filename = pkg.name + '.tar.gz'
         DS.fancy_msg(_('Downloading the tarball...'))
