@@ -1,10 +1,22 @@
 #!/usr/bin/env python3
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
-
+# -*- encoding: utf-8 -*-
+import sys
 import codecs
+from setuptools import setup
+from setuptools.command.test import test as TestCommand
+
+
+class PyTest(TestCommand):
+    def finalize_options(self):
+        TestCommand.finalize_options(self)
+        self.test_args = ['tests.py']
+        self.test_suite = True
+
+    def run_tests(self):
+        # import here, cause outside the eggs aren't loaded
+        import pytest
+        errno = pytest.main(self.test_args)
+        sys.exit(errno)
 
 setup(name='pkgbuilder',
       version='3.3.1',
@@ -17,7 +29,7 @@ setup(name='pkgbuilder',
       long_description=codecs.open('./docs/README.rst', 'r', 'utf-8').read(),
       platforms='Arch Linux',
       zip_safe=False,
-      test_suite='tests',
+      cmdclass={'test': PyTest},
       classifiers=['Development Status :: 6 - Mature',
                    'Environment :: Console',
                    'Intended Audience :: End Users/Desktop',
@@ -41,10 +53,10 @@ setup(name='pkgbuilder',
                                                    'pkgbuilder.mo']),
                   ('share/locale/ja/LC_MESSAGES', ['locale/ja/LC_MESSAGES/'
                                                    'pkgbuilder.mo'])],
-      entry_points = {
+      entry_points={
           'console_scripts': [
               'pkgbuilder = pkgbuilder.__main__:pkgbuildermain',
               'pb = pkgbuilder.__main__:pbwrappermain'
           ]
       },
-)
+      )
