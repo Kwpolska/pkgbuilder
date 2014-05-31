@@ -198,8 +198,12 @@ if [[ $AURTYPE != "none" ]]; then
             mkdir $AURNAME{,-git}
             cp ../PKGBUILD ./$AURNAME
             cp ../PKGBUILD-git ./$AURNAME"-git/PKGBUILD"
-            tar -czf $AURNAME"-"$version"-1".src.tar.gz $AURNAME
-            tar -czf $AURNAME"-git-"$version"-1".src.tar.gz $AURNAME"-git"
+            for d in $AURNAME $AURNAME"-git"; do
+                cd $d
+                mkaurball
+                mv *.src.tar.gz ..
+                cd ..
+            done
         ;;
         "python")
             mkdir python{,2}'-'$PROJECTLC{,-git}
@@ -207,14 +211,16 @@ if [[ $AURTYPE != "none" ]]; then
             cp ../PKGBUILD-git ./python-$PROJECTLC"-git/PKGBUILD"
             cp ../PKGBUILD-2 ./python2-$PROJECTLC/PKGBUILD
             cp ../PKGBUILD-2-git ./python2-$PROJECTLC"-git/PKGBUILD"
-            tar -czf python-$PROJECTLC"-"$version"-1".src.tar.gz python-$PROJECTLC
-            tar -czf python2-$PROJECTLC"-"$version"-1".src.tar.gz python-$PROJECTLC
-            tar -czf python-$PROJECTLC"-git-"$version"-1".src.tar.gz python-$PROJECTLC"-git"
-            tar -czf python2-$PROJECTLC"-git-"$version"-1".src.tar.gz python-$PROJECTLC"-git"
+            for d in python-$PROJECTLC python-$PROJECTLC"-git" python2-$PROJECTLC python2-$PROJECTLC"-git"; do
+                cd $d
+                mkaurball
+                mv *.src.tar.gz ..
+                cd ..
+            done
         ;;
         *) warning 'incorrect $AURTYPE value.'
     esac
-    ../.pypt/aursend *.src.tar.gz
+    ./.pypt/aursend *.src.tar.gz
     cd ..
     rm -rf MKPKGBUILD
 fi
