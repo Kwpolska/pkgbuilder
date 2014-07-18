@@ -16,13 +16,10 @@
 """
 
 from . import DS, _
-from pkgbuilder.exceptions import SanityError
 import pkgbuilder.build
 import pkgbuilder.utils
 import pyalpm
 import datetime
-import subprocess
-import textwrap
 import sys
 
 __all__ = ['gather_foreign_pkgs', 'list_upgradable', 'auto_upgrade']
