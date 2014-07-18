@@ -54,10 +54,7 @@ class PBDS():
     console = None
     _pyc = None
 
-    if os.getenv('PACMAN') is None:
-        paccommand = 'pacman'
-    else:
-        paccommand = os.getenv('PACMAN')
+    paccommand = os.getenv('PACMAN', 'pacman')
 
     if os.path.exists('/usr/bin/sudo'):
         hassudo = True
@@ -67,9 +64,7 @@ class PBDS():
     uid = os.geteuid()
 
     # Creating the configuration/log stuff...
-    confhome = os.getenv('XDG_CONFIG_HOME')
-    if confhome is None:
-        confhome = os.path.expanduser('~/.config/')
+    confhome = os.getenv('XDG_CONFIG_HOME', os.path.expanduser('~/.config/'))
 
     kwdir = os.path.join(confhome, 'kwpolska')
     confdir = os.path.join(kwdir, 'pkgbuilder')

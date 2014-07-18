@@ -11,6 +11,7 @@ import pkgbuilder
 import pkgbuilder.main
 import pkgbuilder.wrapper
 
+
 def pkgbuildermain():
     try:
         pkgbuilder.main.main()
@@ -18,11 +19,12 @@ def pkgbuildermain():
         pkgbuilder.DS.fancy_error(pkgbuilder.DS.inttext)
         exit(0)
 
+
 def pbwrappermain():
     try:
         pkgbuilder.wrapper.wrapper()
     except KeyboardInterrupt:
-        print(pkgbuilder.DS.wrapperinttext + '\n') # for safety.
+        print(pkgbuilder.DS.wrapperinttext + '\n')  # for safety.
         exit(0)
 
 if __name__ == '__main__':
