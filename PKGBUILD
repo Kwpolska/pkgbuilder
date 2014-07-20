@@ -1,4 +1,4 @@
-# Maintainer: Kwpolska <kwpolska@kwpolska.tk>
+# Maintainer: Kwpolska <chris@chriswarrick.com>
 pkgname=pkgbuilder
 _pyname=pkgbuilder
 pkgver=3.3.1

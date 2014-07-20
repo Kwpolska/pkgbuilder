@@ -1,13 +1,13 @@
 # PKGBUILDer pot file.
 # Copyright © 2011-2014, Kwpolska.
 # This file is distributed under the same license as the PKGBUILDer package.
-# Kwpolska <kwpolska@kwpolska.tk>, 2011-2014.
+# Kwpolska <chris@chriswarrick.com>, 2011-2014.
 #
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: 3.3.1\n"
-"Report-Msgid-Bugs-To: Kwpolska <kwpolska@kwpolska.tk>\n"
+"Report-Msgid-Bugs-To: Kwpolska <chris@chriswarrick.com>\n"
 "POT-Creation-Date: 2014-05-31 12:42+0200\n"
 "PO-Revision-Date: 2014-02-04 15:55+0000\n"
 "Last-Translator: Kwpolska <kwpolska@gmail.com>\n"

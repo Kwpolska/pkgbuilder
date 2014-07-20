@@ -1,4 +1,4 @@
-# Maintainer: Kwpolska <kwpolska@kwpolska.tk>
+# Maintainer: Kwpolska <chris@chriswarrick.com>
 pkgname=pkgbuilder-git
 _pyname=pkgbuilder
 _gitname=pkgbuilder
