@@ -1,4 +1,4 @@
-# Maintainer: Kwpolska <chris@chriswarrick.com>
+# Maintainer: Chris “Kwpolska” Warrick <chris@chriswarrick.com>
 pkgname=pkgbuilder
 _pyname=pkgbuilder
 pkgver=3.3.1
@@ -7,7 +7,7 @@ pkgdesc='A Python AUR helper/library.'
 arch=('any')
 url='https://github.com/Kwpolska/pkgbuilder'
 license=('BSD')
-depends=('python' 'pyalpm>=0.5.1-1' 'python-requests' 'rsync')
+depends=('python' 'python-setuptools' 'pyalpm>=0.5.1-1' 'python-requests' 'rsync')
 options=(!emptydirs)
 source=("http://pypi.python.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('e43666b7aa959b4073b190b93e7679f7')

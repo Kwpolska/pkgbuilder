@@ -1,4 +1,4 @@
-# Maintainer: Kwpolska <chris@chriswarrick.com>
+# Maintainer: Chris “Kwpolska” Warrick <chris@chriswarrick.com>
 pkgname=pkgbuilder-git
 _pyname=pkgbuilder
 _gitname=pkgbuilder
@@ -8,7 +8,7 @@ pkgdesc='A Python AUR helper/library.  (git version)'
 arch=('any')
 url='https://github.com/Kwpolska/pkgbuilder'
 license=('BSD')
-depends=('python' 'pyalpm>=0.5.1-1' 'python-requests' 'rsync')
+depends=('python' 'python-setuptools' 'pyalpm>=0.5.1-1' 'python-requests' 'rsync')
 makedepends=('git')
 options=(!emptydirs)
 provides=('pkgbuilder')
