@@ -6,9 +6,9 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.3.1\n"
+"Project-Id-Version: 3.3.2\n"
 "Report-Msgid-Bugs-To: Kwpolska <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2014-05-31 12:42+0200\n"
+"POT-Creation-Date: 2014-08-10 17:59+0200\n"
 "PO-Revision-Date: 2014-02-04 15:55+0000\n"
 "Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/pkgbuilder/"
@@ -60,20 +60,20 @@ msgstr "作成したパッケージをインストール中・・・"
 msgid "Fetching package information..."
 msgstr ""
 
-#: pkgbuilder/build.py:116 pkgbuilder/build.py:543
+#: pkgbuilder/build.py:116 pkgbuilder/build.py:550
 msgid "Downloading the tarball..."
 msgstr "ターボールをダウンロード中・・・"
 
-#: pkgbuilder/build.py:119 pkgbuilder/build.py:546
+#: pkgbuilder/build.py:119 pkgbuilder/build.py:553
 #, python-brace-format
 msgid "{0} kB downloaded"
 msgstr "{0} kBをダウンロード済み"
 
-#: pkgbuilder/build.py:121 pkgbuilder/build.py:548
+#: pkgbuilder/build.py:121 pkgbuilder/build.py:555
 msgid "Extracting..."
 msgstr "抽出中・・・"
 
-#: pkgbuilder/build.py:122 pkgbuilder/build.py:549
+#: pkgbuilder/build.py:122 pkgbuilder/build.py:556
 #, python-brace-format
 msgid "{0} files extracted"
 msgstr "ファイルを{0}個抽出した"
@@ -157,62 +157,62 @@ msgstr ""
 msgid "Retrieving from ABS..."
 msgstr ""
 
-#: pkgbuilder/build.py:553
+#: pkgbuilder/build.py:560
 msgid "Checking dependencies..."
 msgstr "従属パッケージを確認中・・・"
 
-#: pkgbuilder/build.py:556
+#: pkgbuilder/build.py:563
 msgid "found in system"
 msgstr "インストール済み"
 
-#: pkgbuilder/build.py:556
+#: pkgbuilder/build.py:563
 msgid "found in repos"
 msgstr "リポジトリに存在"
 
-#: pkgbuilder/build.py:557
+#: pkgbuilder/build.py:564
 msgid "found in the AUR"
 msgstr "AURに存在"
 
-#: pkgbuilder/build.py:560
+#: pkgbuilder/build.py:567
 msgid "none found"
 msgstr "従属パッケージなし"
 
-#: pkgbuilder/exceptions.py:55
+#: pkgbuilder/exceptions.py:57
 #, python-brace-format
 msgid "AUR Error: {0}"
 msgstr ""
 
-#: pkgbuilder/exceptions.py:72
+#: pkgbuilder/exceptions.py:75
 #, python-brace-format
 msgid "makepkg returned {0}."
 msgstr ""
 
-#: pkgbuilder/exceptions.py:97
+#: pkgbuilder/exceptions.py:101
 #, python-brace-format
 msgid "Network error: {0} (via {1})"
 msgstr ""
 
-#: pkgbuilder/exceptions.py:105
+#: pkgbuilder/exceptions.py:109
 #, python-brace-format
 msgid "Connection error: {0} (via {1})"
 msgstr ""
 
-#: pkgbuilder/exceptions.py:117
+#: pkgbuilder/exceptions.py:121
 #, python-brace-format
 msgid "HTTP Error {0} (via {1})"
 msgstr ""
 
-#: pkgbuilder/exceptions.py:152
+#: pkgbuilder/exceptions.py:158
 #, python-brace-format
 msgid "{0} (Package: {1})"
 msgstr ""
 
-#: pkgbuilder/exceptions.py:163
+#: pkgbuilder/exceptions.py:169
 #, python-brace-format
 msgid "Package {0} not found. (via {1})"
 msgstr ""
 
-#: pkgbuilder/exceptions.py:186
+#: pkgbuilder/exceptions.py:194
 #, python-brace-format
 msgid "Sanity error!  {0} (via {1})"
 msgstr ""
@@ -356,7 +356,7 @@ msgid "Running PKGBUILDer as root can break your system!"
 msgstr "管理者としてPKGBUILDerを実行すると危険性あり！"
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/main.py:277
+#: pkgbuilder/main.py:282
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
