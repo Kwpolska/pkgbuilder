@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.3.1
+# PKGBUILDer v3.3.2
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2014, Kwpolska.
 # See /LICENSE for licensing information.
@@ -40,7 +40,7 @@ def info(pkgnames):
 
     aur_pkgs = RPC.multiinfo(pkgnames)
     if aur_pkgs['type'] == 'error':
-        raise AURError(aur_pkgs['results'])
+        raise AURError(aur_pkgs['error'])
     else:
         return [AURPackage.from_aurdict(d) for d in aur_pkgs['results']]
 
@@ -53,7 +53,7 @@ def search(pkgname):
     """
     aur_pkgs = RPC.request('search', pkgname)
     if aur_pkgs['type'] == 'error':
-        raise AURError(aur_pkgs['results'])
+        raise AURError(aur_pkgs['error'])
     else:
         return [AURPackage.from_aurdict(d) for d in aur_pkgs['results']]
 
@@ -66,7 +66,7 @@ def msearch(maintainer):
     """
     aur_pkgs = RPC.request('msearch', maintainer)
     if aur_pkgs['type'] == 'error':
-        raise AURError(aur_pkgs['results'])
+        raise AURError(aur_pkgs['error'])
     else:
         return [AURPackage.from_aurdict(d) for d in aur_pkgs['results']]
 

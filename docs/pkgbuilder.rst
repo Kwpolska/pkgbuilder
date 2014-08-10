@@ -3,11 +3,11 @@ PKGBUILDer
 ==========
 
 :Subtitle: An AUR helper (and library) in Python 3.
-:Author: Chris “Kwpolska” Warrick <kwpolska@kwpolska.tk>
+:Author: Chris “Kwpolska” Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2014, Kwpolska.
 :License: BSD (see /LICENSE or Appendix B.)
-:Date: 2014-05-31
-:Version: 3.3.1
+:Date: 2014-08-10
+:Version: 3.3.2
 :Manual section: 8
 :Manual group: PKGBUILDer manual
 
@@ -138,4 +138,4 @@ BUGS
 ====
 Bugs should be reported at the GitHub page
 (<https://github.com/Kwpolska/pkgbuilder/issues>).  You can also
-send mail to <kwpolska@kwpolska.tk>.
+send mail to <chris@chriswarrick.com>.

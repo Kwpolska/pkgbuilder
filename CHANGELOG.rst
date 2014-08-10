@@ -2,11 +2,11 @@
 Appendix C. Changelog
 =====================
 :Info: This is the changelog for PKGBUILDer.
-:Author: Chris “Kwpolska” Warrick <kwpolska@kwpolska.tk>
+:Author: Chris “Kwpolska” Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2014, Kwpolska.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2014-05-31
-:Version: 3.3.1
+:Date: 2014-08-10
+:Version: 3.3.2
 
 .. index:: CHANGELOG
 
@@ -57,6 +57,12 @@ Generation 3
 3.3.0
     Added preliminary AURv3 support.
 
+3.3.2
+    Various minor fixes.
+
+3.3.2
+    Various minor fixes.
+
 3.3.1
     * Don’t crash on new RPC fields
     * Add PackageBaseID field (in AUR v3.0.0+1)
@@ -64,12 +70,24 @@ Generation 3
 3.3.0
     Added perliminary AURv3 support.
 
+3.3.2
+    Various minor fixes.
+
+3.3.2
+    Various minor fixes.
+
 3.3.1
     * Don’t crash on new RPC fields
     * Add PackageBaseID field (in AUR v3.0.0+1)
 
 3.3.0
     Added preliminary AURv3 support.
+
+3.3.2
+    Various minor fixes.
+
+3.3.2
+    Various minor fixes.
 
 3.3.1
     * Don’t crash on new RPC fields
@@ -97,12 +115,24 @@ Generation 3
 3.1.11
     * Fix AUR/HTTP exceptions reporting. (via Issue #28)
 
+3.3.2
+    Various minor fixes.
+
+3.3.2
+    Various minor fixes.
+
 3.3.1
     * Don’t crash on new RPC fields
     * Add PackageBaseID field (in AUR v3.0.0+1)
 
 3.3.0
     Added preliminary AURv3 support.
+
+3.3.2
+    Various minor fixes.
+
+3.3.2
+    Various minor fixes.
 
 3.3.1
     * Don’t crash on new RPC fields
@@ -111,12 +141,24 @@ Generation 3
 3.3.0
     Added perliminary AURv3 support.
 
+3.3.2
+    Various minor fixes.
+
+3.3.2
+    Various minor fixes.
+
 3.3.1
     * Don’t crash on new RPC fields
     * Add PackageBaseID field (in AUR v3.0.0+1)
 
 3.3.0
     Added preliminary AURv3 support.
+
+3.3.2
+    Various minor fixes.
+
+3.3.2
+    Various minor fixes.
 
 3.3.1
     * Don’t crash on new RPC fields

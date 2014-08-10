@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.3.1
+# PKGBUILDer v3.3.2
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2014, Kwpolska.
 # See /LICENSE for licensing information.
@@ -255,12 +255,17 @@ def main(source='AUTO', quit=True):
             tovalidate = set(pkgnames)
 
             for pkgname in pkgnames:
-                DS.log.info('Building {0}'.format(pkgname))
-                out = pkgbuilder.build.auto_build(pkgname, args.depcheck,
-                                                  args.pkginst, pkgnames)
-                if out:
-                    toinstall += out[1][0]
-                    sigs += out[1][1]
+                try:
+                    DS.log.info('Building {0}'.format(pkgname))
+                    out = pkgbuilder.build.auto_build(pkgname, args.depcheck,
+                                                      args.pkginst, pkgnames)
+                    if out:
+                        toinstall += out[1][0]
+                        sigs += out[1][1]
+                except PBException as e:
+                    DS.fancy_error(str(e))
+                    if e.exit:
+                        exit(1)
 
             if toinstall:
                 pkgbuilder.build.install(toinstall, sigs, asdeps=False)
@@ -276,9 +281,11 @@ def main(source='AUTO', quit=True):
         # TRANSLATORS: do not translate the word 'requests'.
         DS.fancy_error(_('PKGBUILDer (or the requests library) had '
                          'problems with fulfilling an HTTP request.'))
-        exit(1)
+        if e.exit:
+            exit(1)
     except PBException as e:
         DS.fancy_error(str(e))
-        exit(1)
+        if e.exit:
+            exit(1)
 
     DS.log.info('Quitting peacefully.')
