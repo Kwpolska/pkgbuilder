@@ -87,10 +87,10 @@ def install(pkgname):
     THANDLE.extractall()
     os.chdir('./' + pkgname + '/')
 
-    ASROOT = ''
     if os.geteuid() == 0:
-        ASROOT = ' --asroot'
-    MPKG = subprocess.call('/usr/bin/makepkg -si' + ASROOT, shell=True)
+        print(_("Cannot run as root.  Aborting."))
+        sys.exit(1)
+    MPKG = subprocess.call('/usr/bin/makepkg -si', shell=True)
 
     if MPKG == 1:
         print(_("""

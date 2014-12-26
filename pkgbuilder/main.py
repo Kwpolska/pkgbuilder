@@ -193,8 +193,7 @@ def main(source='AUTO', quit=True):
 
         if args.pac:
             DS.log.debug('-S passed, building in /tmp/.')
-            uid = os.geteuid()
-            path = '/tmp/pkgbuilder-{0}'.format(str(uid))
+            path = '/tmp/pkgbuilder-{0}'.format(str(DS.uid))
             if not os.path.exists(path):
                 os.mkdir(path)
             os.chdir(path)
@@ -219,6 +218,7 @@ def main(source='AUTO', quit=True):
                 exit(mpstatus)
 
         if args.upgrade > 0:
+            DS.root_crash()
             DS.log.info('Starting upgrade...')
             dodowngrade = args.upgrade > 1
             upnames = pkgbuilder.upgrade.auto_upgrade(dodowngrade, args.vcsup)
@@ -244,10 +244,7 @@ def main(source='AUTO', quit=True):
 
         # If we didn't quit, we should build the packages.
         if pkgnames:
-            if DS.uid == 0:
-                DS.log.warning('Running as root! (UID={0})'.format(DS.uid))
-                DS.fancy_warning(_('Running PKGBUILDer as root can break your '
-                                   'system!'))
+            DS.root_crash()
 
             DS.log.info('Starting build...')
             toinstall = []

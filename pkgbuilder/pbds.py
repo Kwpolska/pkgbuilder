@@ -146,6 +146,13 @@ class PBDS(object):
         else:
             return self.run_command(args)
 
+    def root_crash(self):
+        if self.uid == 0:
+            self.log.error('running as root, crashing')
+            self.fancy_error(_('Running as root is not allowed as it can cause catastrophic damage to your system!'))
+            self.fancy_error(_('Please restart PKGBUILDer as a regular user.'))
+            sys.exit(255)
+
     def debugmode(self, nochange=False):
         """Print all the logged messages to stderr."""
         if not self.debug:
