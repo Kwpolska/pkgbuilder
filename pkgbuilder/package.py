@@ -21,11 +21,11 @@ import datetime
 
 __all__ = ['CATEGORIES', 'Package', 'AURPackage', 'ABSPackage']
 
-CATEGORIES = ['ERROR', 'none', 'daemons', 'devel', 'editors',
+CATEGORIES = ['none', 'none', 'daemons', 'devel', 'editors',
               'emulators', 'games', 'gnome', 'i18n', 'kde',
               'lib', 'modules', 'multimedia', 'network',
               'office', 'science', 'system', 'x11',
-              'xfce', 'kernels', 'fonts']
+              'xfce', 'kernels', 'fonts', 'wayland']
 
 
 def mktime(ts):
