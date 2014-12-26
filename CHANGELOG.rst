@@ -50,42 +50,6 @@ Version History
 Generation 3
 ------------
 
-3.3.1
-    * Don’t crash on new RPC fields
-    * Add PackageBaseID field (in AUR v3.0.0+1)
-
-3.3.0
-    Added preliminary AURv3 support.
-
-3.3.2
-    Various minor fixes.
-
-3.3.2
-    Various minor fixes.
-
-3.3.1
-    * Don’t crash on new RPC fields
-    * Add PackageBaseID field (in AUR v3.0.0+1)
-
-3.3.0
-    Added perliminary AURv3 support.
-
-3.3.2
-    Various minor fixes.
-
-3.3.2
-    Various minor fixes.
-
-3.3.1
-    * Don’t crash on new RPC fields
-    * Add PackageBaseID field (in AUR v3.0.0+1)
-
-3.3.0
-    Added preliminary AURv3 support.
-
-3.3.2
-    Various minor fixes.
-
 3.3.2
     Various minor fixes.
 
@@ -114,77 +78,6 @@ Generation 3
 
 3.1.11
     * Fix AUR/HTTP exceptions reporting. (via Issue #28)
-
-3.3.2
-    Various minor fixes.
-
-3.3.2
-    Various minor fixes.
-
-3.3.1
-    * Don’t crash on new RPC fields
-    * Add PackageBaseID field (in AUR v3.0.0+1)
-
-3.3.0
-    Added preliminary AURv3 support.
-
-3.3.2
-    Various minor fixes.
-
-3.3.2
-    Various minor fixes.
-
-3.3.1
-    * Don’t crash on new RPC fields
-    * Add PackageBaseID field (in AUR v3.0.0+1)
-
-3.3.0
-    Added perliminary AURv3 support.
-
-3.3.2
-    Various minor fixes.
-
-3.3.2
-    Various minor fixes.
-
-3.3.1
-    * Don’t crash on new RPC fields
-    * Add PackageBaseID field (in AUR v3.0.0+1)
-
-3.3.0
-    Added preliminary AURv3 support.
-
-3.3.2
-    Various minor fixes.
-
-3.3.2
-    Various minor fixes.
-
-3.3.1
-    * Don’t crash on new RPC fields
-    * Add PackageBaseID field (in AUR v3.0.0+1)
-
-3.3.0
-    PKGBUILDer is now compatible with AURv3.  Note this is perliminary support, and
-    as such, there might still be bugs.
-
-3.2.0
-    * Downgrade listings have been fixed (Issue #31)
-    * Packages are now moved to /var/cache/pacman/pkg/ and installed from
-      there (previously, they were copied and installed from /tmp)
-
-3.1.13
-    * Fix packages being built when -i was issued (Issue #29)
-    * Fix some instances where PKGBUILDer would quit, even though it shouldn’t (as
-      requested while running the main function — internal only)
-    * Modify downgrade messages to fit pacman more
-    * Update the translations
-
-3.1.12
-    Make setup.py work properly and have PKGBUILDer install.
-
-3.1.11
-    * Fix a small bug, leading to misreporting certain AUR/HTTP exceptions.
 
 3.1.10
     * Inexistent packages don’t crash badly anymore
