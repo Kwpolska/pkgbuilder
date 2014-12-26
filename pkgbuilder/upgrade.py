@@ -172,41 +172,6 @@ def auto_upgrade(downgrade=False, vcsup=False):
                 break
 
     if upglen > 0:
-        if 'pkgbuilder' in upgnames or 'pkgbuilder-git' in upgnames:
-            if 'pkgbuilder' in upgnames:
-                pkgbname = 'pkgbuilder'
-            elif 'pkgbuilder-git' in upgnames:
-                pkgbname = 'pkgbuilder-git'
-
-            if DS.pacman:
-                print(':: ' + _('The following packages should be upgraded '
-                                'first:'))
-                print('    {0}'.format(pkgbname))
-                print(':: ' + _('Do you want to cancel the current operation'))
-                query = ':: ' + _('and upgrade these packages now? [Y/n] ')
-            else:
-                DS.fancy_warning(_('The following packages should be upgraded '
-                                   'first:'))
-                DS.fancy_msg2(pkgbname)
-                query = (DS.colors['green'] + '==>' + DS.colors['all_off'] +
-                         DS.colors['bold'] + ' ' +
-                         _('Do you want to cancel the current operation and '
-                           'upgrade these packages now? [Y/n] ') +
-                         DS.colors['all_off'])
-
-            yesno = input(query)
-
-            if yesno.lower().strip().startswith('y') or yesno.strip() == '':
-                status = pkgbuilder.build.safeupgrade(pkgbname)
-                if status > 0:
-                    DS.log.info('safe upgrade failed with {0}'.format(status))
-                    sys.exit(status)
-                else:
-                    # The return causes PKGBUILDer.main() to quit and do
-                    # nothing.  The else is unnecessary, as we drop to a
-                    # regular upgrade if the luser says “no”.
-                    return []
-
         if DS.pacman:
             targetstring = _('Targets ({0}): ').format(upglen)
 

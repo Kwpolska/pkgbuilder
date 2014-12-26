@@ -66,10 +66,6 @@ def main(source='AUTO', quit=True):
             '-u', '--sysupgrade', action='count', default=False,
             dest='upgrade', help=_('upgrade installed AUR packages'))
         argopr.add_argument(
-            '--safeupgrade', action='store_true', default=False,
-            dest='safeupgrade', help=_('perform a failsafe upgrade of '
-                                       'PKGBUILDer'))
-        argopr.add_argument(
             '-U', '--upgrade', action='store_true', default=False, dest='finst',
             help=_('copy package files to pacman cache and install them'))
 
@@ -197,25 +193,6 @@ def main(source='AUTO', quit=True):
             if not os.path.exists(path):
                 os.mkdir(path)
             os.chdir(path)
-
-        if args.safeupgrade:
-            DS.fancy_msg(_('PKGBUILDer Failsafe Upgrade'))
-            query = (DS.colors['green'] + '==>' +
-                     DS.colors['all_off'] + DS.colors['bold'] + ' ' +
-                     _('Build the git version? [y/N] ') +
-                     DS.colors['all_off'])
-
-            yesno = input(query)
-
-            if yesno.lower().strip().startswith('y'):
-                pkgname = 'pkgbuilder-git'
-            else:
-                pkgname = 'pkgbuilder'
-
-            mpstatus = pkgbuilder.build.safeupgrade(pkgname)
-
-            if quit:
-                exit(mpstatus)
 
         if args.upgrade > 0:
             DS.root_crash()

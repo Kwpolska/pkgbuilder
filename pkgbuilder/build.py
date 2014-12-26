@@ -31,9 +31,8 @@ import subprocess
 import functools
 import glob
 
-__all__ = ['validate', 'install', 'safeupgrade', 'auto_build', 'download',
-           'rsync', 'extract', 'prepare_deps', 'depcheck', 'fetch_runner',
-           'build_runner']
+__all__ = ['validate', 'install', 'auto_build', 'download', 'rsync', 'extract',
+           'prepare_deps', 'depcheck', 'fetch_runner', 'build_runner']
 
 
 def validate(pkgnames):
@@ -105,34 +104,6 @@ def install(pkgpaths, sigpaths, asdeps, uopt=''):
     else:
         DS.log.debug('$PACMAN -U {0}'.format(npkgpaths))
         DS.sudo([DS.paccommand, '-U'] + npkgpaths)
-
-
-def safeupgrade(pkgname):
-    """Perform a safe upgrade of PKGBUILDer."""
-    DS.fancy_msg(_('Fetching package information...'))
-    pkg = pkgbuilder.utils.info([pkgname])[0]
-    DS.fancy_msg2('-'.join((pkg.name, pkg.version)))
-    filename = pkg.name + '.tar.gz'
-    DS.fancy_msg(_('Downloading the tarball...'))
-    downloadbytes = download(pkg.urlpath, filename)
-    kbytes = int(downloadbytes) / 1000
-    DS.fancy_msg2(_('{0} kB downloaded').format(kbytes))
-
-    DS.fancy_msg(_('Extracting...'))
-    DS.fancy_msg2(_('{0} files extracted').format(extract(filename)))
-    os.chdir('./{0}/'.format(pkg.packagebase))
-    DS.fancy_msg(_('Building {0}...').format(pkg.name))
-
-    if DS.uid == 0:
-        DS.fancy_warning(_('Performing a safe upgrade as root!'))
-        DS.fancy_warning2(_('It is recommended to restart PKGBUILDer as a '
-                            'regular user instead.'))
-        asroot = ' --asroot'
-    else:
-        asroot = ''
-    mpstatus = subprocess.call('makepkg -sicf{0}'.format(asroot), shell=True)
-    DS.fancy_msg(_('Build finished with return code {0}.').format(mpstatus))
-    return mpstatus
 
 
 def auto_build(pkgname, performdepcheck=True,
