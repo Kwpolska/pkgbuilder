@@ -26,7 +26,7 @@ import pycman
 __all__ = ['PBDS']
 
 
-class PBDS():
+class PBDS(object):
     """PKGBUILDer Data Storage."""
     # For fancy-schmancy messages stolen from makepkg.
     colors = {

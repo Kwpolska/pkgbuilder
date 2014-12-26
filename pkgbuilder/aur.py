@@ -24,7 +24,7 @@ import json
 __all__ = ['AUR']
 
 
-class AUR:
+class AUR(object):
     """A class for calling the AUR API.
 
     Valid request types for :meth:`request()` (and
