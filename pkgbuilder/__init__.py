@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 # PKGBUILDer v3.3.2
 # An AUR helper (and library) in Python 3.
-# Copyright © 2011-2014, Kwpolska.
+# Copyright © 2011-2015, Chris Warrick.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -39,13 +39,13 @@
 
     An AUR helper (and library) in Python 3.
 
-    :Copyright: © 2011-2014, Kwpolska.
+    :Copyright: © 2011-2015, Chris Warrick.
     :License: BSD (see /LICENSE).
 """
 
 __title__ = 'PKGBUILDer'
 __version__ = '3.3.2'
-__author__ = 'Kwpolska'
+__author__ = 'Chris Warrick'
 __license__ = '3-clause BSD'
 __docformat__ = 'restructuredtext en'
 __all__ = ['_', 'DS', 'UTC']

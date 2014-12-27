@@ -41,7 +41,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'PKGBUILDer'
-copyright = u'2011-2014, Kwpolska'
+copyright = u'2011-2015, Chris Warrick'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -184,7 +184,7 @@ latex_elements = {
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
   ('index', 'PKGBUILDer.tex', u'PKGBUILDer Documentation',
-   u'Kwpolska', 'manual'),
+   u'Chris Warrick', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
