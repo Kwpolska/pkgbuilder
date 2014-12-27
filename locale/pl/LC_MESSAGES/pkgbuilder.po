@@ -1,7 +1,6 @@
 # PKGBUILDer pot file.
-# Copyright © 2011-2014, Kwpolska.
+# Copyright © 2015, Chris Warrick.
 # This file is distributed under the same license as the PKGBUILDer package.
-# Kwpolska <chris@chriswarrick.com>, 2011-2014.
 # 
 # Translators:
 # Chris Warrick <kwpolska@gmail.com>, 2014
@@ -10,9 +9,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PKGBUILDer\n"
-"Report-Msgid-Bugs-To: Kwpolska <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2014-12-26 20:51+0100\n"
-"PO-Revision-Date: 2014-12-26 19:56+0000\n"
+"Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
+"POT-Creation-Date: 2014-12-27 11:56+0100\n"
+"PO-Revision-Date: 2014-12-27 10:56+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/pkgbuilder/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -209,7 +208,7 @@ msgstr "Sanity test nieudany!  {0} (via {1})"
 #. Alternatively, use translation instead of locale.
 #: pkgbuilder/main.py:37
 msgid "LANG locale by AUTHOR <MAIL@IF.YOU.WANT>"
-msgstr "Polskie tłumaczenie autorstwa Kwpolska <kwpolska@kwpolska.tk>"
+msgstr "Polskie tłumaczenie autorstwa Chris Warrick <chris@chriswarrick.com>"
 
 #: pkgbuilder/main.py:43
 msgid "An AUR helper (and library) in Python 3."
@@ -493,13 +492,13 @@ msgstr "tak"
 msgid "no"
 msgstr "nie"
 
-#: pkgbuilder/wrapper.py:102
+#: pkgbuilder/wrapper.py:101
 #, python-format
 msgid "%(prog)s <operation> [...]"
 msgstr "%(prog)s <operacja> [...]"
 
 #. TRANSLATORS: see pacman’s localizations
-#: pkgbuilder/wrapper.py:269
+#: pkgbuilder/wrapper.py:268
 #, python-brace-format
 msgid ""
 "usage:  {0} <operation> [...]\n"

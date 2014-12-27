@@ -1,24 +1,23 @@
 # PKGBUILDer pot file.
-# Copyright © 2011-2014, Kwpolska.
+# Copyright © 2015, Chris Warrick.
 # This file is distributed under the same license as the PKGBUILDer package.
-# Kwpolska <chris@chriswarrick.com>, 2011-2014.
-#
+# 
 # Translators:
-# ppanhh <vietnamesel10n@gmail.com>, 2013
+# Anh Phan <vietnamesel10n@gmail.com>, 2013
 # ppanhh <ppanhh@gmail.com>, 2013
+# Anh Phan <vietnamesel10n@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.3.2\n"
-"Report-Msgid-Bugs-To: Kwpolska <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2014-12-26 20:51+0100\n"
-"PO-Revision-Date: 2014-02-04 16:11+0000\n"
-"Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
-"Language-Team: Vietnamese (http://www.transifex.com/projects/p/pkgbuilder/"
-"language/vi/)\n"
-"Language: vi\n"
+"Project-Id-Version: PKGBUILDer\n"
+"Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
+"POT-Creation-Date: 2014-12-27 11:56+0100\n"
+"PO-Revision-Date: 2014-12-26 19:51+0000\n"
+"Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
+"Language-Team: Vietnamese (http://www.transifex.com/projects/p/pkgbuilder/language/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: pkgbuilder/build.py:40
@@ -54,9 +53,8 @@ msgid "Moving to /var/cache/pacman/pkg/..."
 msgstr ""
 
 #: pkgbuilder/build.py:100
-#, fuzzy
 msgid "Installing with pacman -U..."
-msgstr "Đang cài đặt các gói dữ liệu..."
+msgstr ""
 
 #: pkgbuilder/build.py:128
 msgid "The build function reported a proper build."
@@ -87,8 +85,7 @@ msgstr "Vẫn chưa giải nén tập tin nào."
 #: pkgbuilder/build.py:353
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
-msgstr ""
-"Thất bại trong việc điền vào các yêu cầu về sự phụ thuộc của gói tin: {0}"
+msgstr "Thất bại trong việc điền vào các yêu cầu về sự phụ thuộc của gói tin: {0}"
 
 #: pkgbuilder/build.py:412 pkgbuilder/main.py:211
 msgid "Fetching package information..."
@@ -334,9 +331,7 @@ msgstr ""
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
-msgstr ""
-"PKGBUILDer (hoặc thư viện xử lý yêu cầu) gặp trục trặc khi xử lý các yêu cầu "
-"HTTP."
+msgstr "PKGBUILDer (hoặc thư viện xử lý yêu cầu) gặp trục trặc khi xử lý các yêu cầu HTTP."
 
 #. TRANSLATORS: see makepkg.
 #: pkgbuilder/pbds.py:46
@@ -375,9 +370,8 @@ msgid ""
 msgstr ""
 
 #: pkgbuilder/pbds.py:153
-#, fuzzy
 msgid "Please restart PKGBUILDer as a regular user."
-msgstr "Bạn nên khởi động lại PKGBUILDer dưới dạng người dùng thông thường."
+msgstr ""
 
 #: pkgbuilder/upgrade.py:117 pkgbuilder/upgrade.py:119
 msgid "Synchronizing package databases..."
@@ -465,7 +459,7 @@ msgstr "Đang cố sử dụng utils.print_package_info với gói cài đặt A
 #. TRANSLATORS: space it properly.  “yes/no” below are
 #. for “out of date”.
 #: pkgbuilder/utils.py:227
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid ""
 "Repository     : aur\n"
 "Category       : {cat}\n"
@@ -489,18 +483,6 @@ msgid ""
 "Last Updated   : {upd}\n"
 "Description    : {dsc}\n"
 msgstr ""
-"Người ủy thác  : aur\n"
-"Phân loại      : {cat}\n"
-"Tên            : {nme}\n"
-"Phiên bản      : {ver}\n"
-"URL            : {url}\n"
-"Giấy phép      : {lic}\n"
-"Votes          : {cmv}\n"
-"Quá hạn        : {ood}\n"
-"Người điều hành: {mnt}\n"
-"Phát hành lần đầu: {fsb}\n"
-"Cập nhật lần cuối: {upd}\n"
-"Mô tả          : {dsc}\n"
 
 #: pkgbuilder/utils.py:256
 msgid "yes"
@@ -510,13 +492,13 @@ msgstr "có"
 msgid "no"
 msgstr "không"
 
-#: pkgbuilder/wrapper.py:102
+#: pkgbuilder/wrapper.py:101
 #, python-format
 msgid "%(prog)s <operation> [...]"
 msgstr "%(prog)s <operation> [...]"
 
 #. TRANSLATORS: see pacman’s localizations
-#: pkgbuilder/wrapper.py:269
+#: pkgbuilder/wrapper.py:268
 #, python-brace-format
 msgid ""
 "usage:  {0} <operation> [...]\n"
@@ -530,19 +512,7 @@ msgid ""
 "\n"
 "Additional options:\n"
 "  -L, --unlock         unlock the pacman database"
-msgstr ""
-"cách dùng:  {0} <tiến trình> [...]\n"
-"\n"
-"PBWrapper, là wrapper dành cho pacman và PKGBUILDer.\n"
-"\n"
-"{1}\n"
-"\n"
-"Chỉ áp dụng cho cú pháp thuộc Pacman và PKGBUILDer.  Tra cứu các văn bản/"
-"lệnh\n"
-"trợ giúp để biết thêm chi tiết.\n"
-"\n"
-"Tùy chọn bổ sung:\n"
-"  -L, --unlock         mở khóa phần cơ sở dữ liệu của pacman"
+msgstr "cách dùng:  {0} <tiến trình> [...]\n\nPBWrapper, là wrapper dành cho pacman và PKGBUILDer.\n\n{1}\n\nChỉ áp dụng cho cú pháp thuộc Pacman và PKGBUILDer.  Tra cứu các văn bản/lệnh\ntrợ giúp để biết thêm chi tiết.\n\nTùy chọn bổ sung:\n  -L, --unlock         mở khóa phần cơ sở dữ liệu của pacman"
 
 #: INSTALL.py:53
 msgid "Performing a dependency check..."
@@ -568,17 +538,7 @@ msgid ""
 "(the number is random).\n"
 "\n"
 "If I am wrong, though, congratulations!\n"
-msgstr ""
-"\n"
-"\n"
-"Đã xảy ra lỗi.  Vùi lòng đọc dữ liệu xuất ra của makepkg và thử lại lần "
-"nữa.\n"
-"Bạn cũng có thể tự mình sửa các gỡ rối dựa vào đoạn mã lênh này theo ý bạn.\n"
-"Tất cả các tập tin mà đoạn mã lệnh này tác động tới được đặt ở\n"
-"    {0}\n"
-"(con số này là ngẫu nhiên).\n"
-"\n"
-"Nếu như lỗi này thuộc về nhà phát triển, bạn hãy liên hệ với chúng tôi!\n"
+msgstr "\n\nĐã xảy ra lỗi.  Vùi lòng đọc dữ liệu xuất ra của makepkg và thử lại lần nữa.\nBạn cũng có thể tự mình sửa các gỡ rối dựa vào đoạn mã lênh này theo ý bạn.\nTất cả các tập tin mà đoạn mã lệnh này tác động tới được đặt ở\n    {0}\n(con số này là ngẫu nhiên).\n\nNếu như lỗi này thuộc về nhà phát triển, bạn hãy liên hệ với chúng tôi!\n"
 
 #: INSTALL.py:114
 msgid ""
@@ -589,15 +549,7 @@ msgid ""
 "package and install it.  If you will have problems, please download\n"
 "and compile the package manually.\n"
 "\n"
-msgstr ""
-"Xin chào!\n"
-"\n"
-"PKGBUILDer hiện là gói cài đặt AUR. Đây hiện là cách cài đặt\n"
-"được khuyên dùng đối với PKGBUILDer.  Phần mã lệnh này sẽ tải về gói tin "
-"AUR\n"
-"và tiến hành cài đặt.  Nếu gặp phải trục trặc, xin vui lòng tải về\n"
-"và biên dịch các gói tin một cách tuần tự.\n"
-"\n"
+msgstr "Xin chào!\n\nPKGBUILDer hiện là gói cài đặt AUR. Đây hiện là cách cài đặt\nđược khuyên dùng đối với PKGBUILDer.  Phần mã lệnh này sẽ tải về gói tin AUR\nvà tiến hành cài đặt.  Nếu gặp phải trục trặc, xin vui lòng tải về\nvà biên dịch các gói tin một cách tuần tự.\n\n"
 
 #: INSTALL.py:123
 msgid "Hit Enter/Return to continue. "
@@ -622,23 +574,7 @@ msgid ""
 "PKGBUILDer.  For standalone usage, type `pkgbuilder` into the prompt\n"
 "(zsh users: hash -r, other shells may need another command).  For\n"
 "python module usage, type `import pkgbuilder` into the python prompt.\n"
-msgstr ""
-"\n"
-"\n"
-"Đọc phần dữ liệu được xuất ra bên trên.  Nếu các đoạn mã lệnh gặp vấn đề, "
-"hãy chạy lại các đoạn mã lệnh này một lần nữa.  Bạn cũng có thể tự mình sửa "
-"phần gỡ rối này.\n"
-"Tất cả các tập tin mà đoạn mã lệnh này tác động tới được đặt ở\n"
-"    {0}\n"
-"(con số này là ngẫu nhiên).\n"
-"\n"
-"INếu như lỗi này thuộc về nhà phát triển, bạn hãy liên hệ với chúng tôi!  "
-"Bạn hiện giờ đã có thể sử dụng\n"
-"PKGBUILDer.  Đối với kiểu dùng theo dạng tập tin tự chay, gõ `pkgbuilder` "
-"vào trong cửa sổ mã lệnh\n"
-"(người dùng zsh: hash -r, các shell khác sẽ cần thêm một dòng lệnh nữa).  "
-"Đối với cách sử dụng module Python, gõ `import pkgbuilder` vào trong cửa sổ "
-"mã lệnh của python.\n"
+msgstr "\n\nĐọc phần dữ liệu được xuất ra bên trên.  Nếu các đoạn mã lệnh gặp vấn đề, hãy chạy lại các đoạn mã lệnh này một lần nữa.  Bạn cũng có thể tự mình sửa phần gỡ rối này.\nTất cả các tập tin mà đoạn mã lệnh này tác động tới được đặt ở\n    {0}\n(con số này là ngẫu nhiên).\n\nINếu như lỗi này thuộc về nhà phát triển, bạn hãy liên hệ với chúng tôi!  Bạn hiện giờ đã có thể sử dụng\nPKGBUILDer.  Đối với kiểu dùng theo dạng tập tin tự chay, gõ `pkgbuilder` vào trong cửa sổ mã lệnh\n(người dùng zsh: hash -r, các shell khác sẽ cần thêm một dòng lệnh nữa).  Đối với cách sử dụng module Python, gõ `import pkgbuilder` vào trong cửa sổ mã lệnh của python.\n"
 
 #: INSTALL.py:158
 msgid ""
@@ -647,12 +583,7 @@ msgid ""
 "\n"
 "If that's what you want to do, go for it.  If it isn't, run this\n"
 "script again."
-msgstr ""
-"Có vẻ như bạn muốn thoát. Nếu thế thì, chào tạm biệt.\n"
-"Hiện các công việc vẫn chưa được thực hiện.\n"
-"\n"
-"Nếu đây là điều bạn muốn, xin cứ tiếp tục. Nếu không phải, hãy thực thi\n"
-"đoạn mã lệnh này lần nữa."
+msgstr "Có vẻ như bạn muốn thoát. Nếu thế thì, chào tạm biệt.\nHiện các công việc vẫn chưa được thực hiện.\n\nNếu đây là điều bạn muốn, xin cứ tiếp tục. Nếu không phải, hãy thực thi\nđoạn mã lệnh này lần nữa."
 
 #: INSTALL.py:164
 #, python-brace-format
@@ -664,14 +595,7 @@ msgid ""
 "\n"
 "If that's what you want to do, go for it.  If it isn't, run this\n"
 "script again."
-msgstr ""
-"Có vẻ như bạn đang muốn thoát.  Nếu vậy, xin chào tạm biệt.\n"
-"Tất cả các tập tin mà đoạn mã lệnh này tác động tới được đặt ở\n"
-"    {0}\n"
-"(con số này là ngẫu nhiên).\n"
-"\n"
-"Nếu đó là điều bạn muốn thao tác, cứ tiếp tục.  Nếu không phải, chạy lại\n"
-"đoạn mã này một lần nữa."
+msgstr "Có vẻ như bạn đang muốn thoát.  Nếu vậy, xin chào tạm biệt.\nTất cả các tập tin mà đoạn mã lệnh này tác động tới được đặt ở\n    {0}\n(con số này là ngẫu nhiên).\n\nNếu đó là điều bạn muốn thao tác, cứ tiếp tục.  Nếu không phải, chạy lại\nđoạn mã này một lần nữa."
 
 #. A module only for gettext locale provision.
 #: localeprovider.py:2
@@ -689,37 +613,3 @@ msgstr "tùy chọn đối số"
 #: localeprovider.py:5
 msgid "show this help message and exit"
 msgstr "hiển thị thông điệp trợ giúp và thoát"
-
-#~ msgid "Performing a safe upgrade as root!"
-#~ msgstr "Đang tiến hành việc nâng cấp an toàn dưới quyền root!"
-
-#~ msgid "Build finished with return code {0}."
-#~ msgstr "Phần xây dựng đã hoàn tất với mã trả về {0}."
-
-#~ msgid "perform a failsafe upgrade of PKGBUILDer"
-#~ msgstr "thực hiện việc nâng cấp dự phòng PKGBUILDer"
-
-#~ msgid "PKGBUILDer Failsafe Upgrade"
-#~ msgstr "Nâng cấp PKGBUILDer dự phòng"
-
-#~ msgid "Build the git version? [y/N] "
-#~ msgstr "Xây dựng phiên bản git? [y/N]"
-
-#~ msgid "Running PKGBUILDer as root can break your system!"
-#~ msgstr "Chạy PKGBUILDer dưới dạng root có thể phá hỏng hệ thống của bạn!"
-
-#~ msgid "The following packages should be upgraded first:"
-#~ msgstr "Các gói tin sau đây nên được nâng cấp đầu tiên:"
-
-#~ msgid "Do you want to cancel the current operation"
-#~ msgstr "Bạn có muốn hủy bỏ tiến trình hiện tại"
-
-#~ msgid "and upgrade these packages now? [Y/n] "
-#~ msgstr "và cập nhật các gói cài đặt ngay bây giờ? [Y/n]"
-
-#~ msgid ""
-#~ "Do you want to cancel the current operation and upgrade these packages "
-#~ "now? [Y/n] "
-#~ msgstr ""
-#~ "Bạn có muốn hủy bỏ tiến trình hiện tại và cập nhật các gói cài đặt này "
-#~ "ngay bây giờ? [Y/n]"

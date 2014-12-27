@@ -1,4 +1,4 @@
-# Maintainer: Chris “Kwpolska” Warrick <chris@chriswarrick.com>
+# Maintainer: Chris Warrick <chris@chriswarrick.com>
 pkgname=pkgbuilder
 _pyname=pkgbuilder
 pkgver=3.3.2
