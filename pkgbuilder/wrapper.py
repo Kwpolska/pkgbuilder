@@ -29,7 +29,7 @@ import sys
 import os
 
 __all__ = ['wrapper']
-__wrapperversion__ = '0.2.3'
+__wrapperversion__ = '0.3.0'
 
 
 def wrapper(source='AUTO'):
@@ -69,11 +69,11 @@ def wrapper(source='AUTO'):
         pacmanlong = ['asdeps', 'asexplicit', 'dbonly', 'downloadonly',
                       'force', 'groups', 'list',  'needed', 'noconfirm',
                       'nodeps', 'noprogressbar', 'noscriptlet', 'print',
-                      'quiet', 'verbose']
+                      'quiet', 'verbose', 'confirm']
         pacmanshorta = ['b', 'r']
         pacmanlonga = ['arch', 'cachedir', 'config', 'dbpath', 'gpgdir',
                        'ignore', 'ignoregroup', 'logfile', 'print-format',
-                       'root']
+                       'root', 'assume-installed']
 
         pbshort = ['D', 'C', 'F']
         pblong = ['fetch', 'userfetch', 'vcsupgrade', 'nocolors', 'nodepcheck',
@@ -90,7 +90,6 @@ def wrapper(source='AUTO'):
         allpacman = pacmanshort + pacmanlong + pacmanshorta + pacmanlonga
         allpb = pbshort + pblong  # + pbshorta + pblonga
         allcommon = commonshort + commonlong + commonshortc + commonlongc
-        # allcmd = allpacman + allpb + allcommon (unused)
 
         allshort = pacmanshort + pbshort + commonshort
         alllong = pacmanlong + pblong + commonlong

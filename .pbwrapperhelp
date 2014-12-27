@@ -4,22 +4,27 @@ options:
   -c, --clean          remove old packages from cache directory (-cc for all)
   -d, --nodeps         skip dependency version checks (-dd to skip all checks)
   -g, --groups         view all members of a package group
-  -i, --info           view package information
+                       (-gg to view all groups and members)
+  -i, --info           view package information (-ii for extended information)
   -l, --list <repo>    view a list of packages in a repo
   -p, --print          print the targets instead of performing the operation
   -q, --quiet          show less information for query and search
   -r, --root <path>    set an alternate installation root
   -s, --search <regex> search remote repositories for matching strings
-  -u, --sysupgrade     upgrade installed packages (-uu allows downgrade)
+  -u, --sysupgrade     upgrade installed packages (-uu enables downgrades)
   -v, --verbose        be verbose
   -w, --downloadonly   download packages but do not install/upgrade anything
   -y, --refresh        download fresh package databases from the server
+                       (-yy to force a refresh even if up to date)
       --arch <arch>    set an alternate architecture
       --asdeps         install packages as non-explicitly installed
       --asexplicit     install packages as explicitly installed
+      --assume-installed <package=version>
+                       add a virtual package to satisfy dependencies
       --cachedir <dir> set an alternate package cache location
       --color <when>   colorize the output
       --config <path>  set an alternate configuration file
+      --confirm        always ask for confirmation
       --dbonly         only modify database entries, not package files
       --debug          display debug messages
       --force          force install, overwrite conflicting files
