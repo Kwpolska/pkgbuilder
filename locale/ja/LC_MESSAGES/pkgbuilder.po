@@ -1,20 +1,21 @@
 # PKGBUILDer pot file.
 # Copyright © 2015, Chris Warrick.
 # This file is distributed under the same license as the PKGBUILDer package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: PKGBUILDer\n"
+"Project-Id-Version: 3.4.0\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2014-12-27 11:56+0100\n"
+"POT-Creation-Date: 2015-01-01 11:49+0100\n"
 "PO-Revision-Date: 2014-12-26 19:51+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
-"Language-Team: Japanese (http://www.transifex.com/projects/p/pkgbuilder/language/ja/)\n"
+"Language-Team: Japanese (http://www.transifex.com/projects/p/pkgbuilder/"
+"language/ja/)\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: pkgbuilder/build.py:40
@@ -314,7 +315,7 @@ msgstr ""
 msgid "Searching for exact match..."
 msgstr "完全一致を検索中・・・"
 
-#: pkgbuilder/main.py:157 INSTALL.py:65 INSTALL.py:74
+#: pkgbuilder/main.py:157 INSTALL.py:64 INSTALL.py:73
 msgid "not found"
 msgstr "見つからなかった"
 
@@ -515,15 +516,15 @@ msgstr ""
 msgid "Performing a dependency check..."
 msgstr "従属パッケージ確認中・・・"
 
-#: INSTALL.py:62 INSTALL.py:71
+#: INSTALL.py:61 INSTALL.py:70
 msgid "found"
 msgstr "発見"
 
-#: INSTALL.py:91
+#: INSTALL.py:90
 msgid "Cannot run as root.  Aborting."
 msgstr ""
 
-#: INSTALL.py:96
+#: INSTALL.py:95
 #, python-brace-format
 msgid ""
 "\n"
@@ -537,7 +538,7 @@ msgid ""
 "If I am wrong, though, congratulations!\n"
 msgstr ""
 
-#: INSTALL.py:114
+#: INSTALL.py:113
 msgid ""
 "Hello!\n"
 "\n"
@@ -546,17 +547,24 @@ msgid ""
 "package and install it.  If you will have problems, please download\n"
 "and compile the package manually.\n"
 "\n"
-msgstr "こんにちは！\n\nPKGBUILDerはAURパッケージとしても提供されている。AURを通して\nPKGBUILDerをインストールすることを薦める。このスクリプトはAURパッケージを\nダウンロードしてインストールしてくれる。何か問題があったら、\n自分でコードをダウンロードしてコンパイルして見て下さい。\n\n"
+msgstr ""
+"こんにちは！\n"
+"\n"
+"PKGBUILDerはAURパッケージとしても提供されている。AURを通して\n"
+"PKGBUILDerをインストールすることを薦める。このスクリプトはAURパッケージを\n"
+"ダウンロードしてインストールしてくれる。何か問題があったら、\n"
+"自分でコードをダウンロードしてコンパイルして見て下さい。\n"
+"\n"
 
-#: INSTALL.py:123
+#: INSTALL.py:122
 msgid "Hit Enter/Return to continue. "
 msgstr "EnterやReturnを押して続行。"
 
-#: INSTALL.py:135
+#: INSTALL.py:134
 msgid "Installing missing AUR dependencies..."
 msgstr "必要な従属AURパッケージをインストール・・・"
 
-#: INSTALL.py:142
+#: INSTALL.py:141
 #, python-brace-format
 msgid ""
 "\n"
@@ -573,16 +581,19 @@ msgid ""
 "python module usage, type `import pkgbuilder` into the python prompt.\n"
 msgstr ""
 
-#: INSTALL.py:158
+#: INSTALL.py:157
 msgid ""
 "It looks like you want to quit.  Okay then, goodbye.\n"
 "No work has been started yet.\n"
 "\n"
 "If that's what you want to do, go for it.  If it isn't, run this\n"
 "script again."
-msgstr "終わりたいようだな。じゃあ、さようなら。\nまだ何もしていないので。\n本当に終わりたいなら止めない。違ったら再度このスクリプトを実行！"
+msgstr ""
+"終わりたいようだな。じゃあ、さようなら。\n"
+"まだ何もしていないので。\n"
+"本当に終わりたいなら止めない。違ったら再度このスクリプトを実行！"
 
-#: INSTALL.py:164
+#: INSTALL.py:163
 #, python-brace-format
 msgid ""
 "It looks like you want to quit.  Okay then, goodbye.\n"

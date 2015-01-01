@@ -1,21 +1,23 @@
 # PKGBUILDer pot file.
 # Copyright © 2015, Chris Warrick.
 # This file is distributed under the same license as the PKGBUILDer package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: PKGBUILDer\n"
+"Project-Id-Version: 3.4.0\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2014-12-27 11:56+0100\n"
+"POT-Creation-Date: 2015-01-01 11:49+0100\n"
 "PO-Revision-Date: 2014-12-26 19:51+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
-"Language-Team: Arabic (http://www.transifex.com/projects/p/pkgbuilder/language/ar/)\n"
+"Language-Team: Arabic (http://www.transifex.com/projects/p/pkgbuilder/"
+"language/ar/)\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ar\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: pkgbuilder/build.py:40
 msgid "Validating installation status..."
@@ -314,7 +316,7 @@ msgstr ""
 msgid "Searching for exact match..."
 msgstr ""
 
-#: pkgbuilder/main.py:157 INSTALL.py:65 INSTALL.py:74
+#: pkgbuilder/main.py:157 INSTALL.py:64 INSTALL.py:73
 msgid "not found"
 msgstr ""
 
@@ -515,15 +517,15 @@ msgstr ""
 msgid "Performing a dependency check..."
 msgstr ""
 
-#: INSTALL.py:62 INSTALL.py:71
+#: INSTALL.py:61 INSTALL.py:70
 msgid "found"
 msgstr ""
 
-#: INSTALL.py:91
+#: INSTALL.py:90
 msgid "Cannot run as root.  Aborting."
 msgstr ""
 
-#: INSTALL.py:96
+#: INSTALL.py:95
 #, python-brace-format
 msgid ""
 "\n"
@@ -537,7 +539,7 @@ msgid ""
 "If I am wrong, though, congratulations!\n"
 msgstr ""
 
-#: INSTALL.py:114
+#: INSTALL.py:113
 msgid ""
 "Hello!\n"
 "\n"
@@ -548,15 +550,15 @@ msgid ""
 "\n"
 msgstr ""
 
-#: INSTALL.py:123
+#: INSTALL.py:122
 msgid "Hit Enter/Return to continue. "
 msgstr ""
 
-#: INSTALL.py:135
+#: INSTALL.py:134
 msgid "Installing missing AUR dependencies..."
 msgstr ""
 
-#: INSTALL.py:142
+#: INSTALL.py:141
 #, python-brace-format
 msgid ""
 "\n"
@@ -573,7 +575,7 @@ msgid ""
 "python module usage, type `import pkgbuilder` into the python prompt.\n"
 msgstr ""
 
-#: INSTALL.py:158
+#: INSTALL.py:157
 msgid ""
 "It looks like you want to quit.  Okay then, goodbye.\n"
 "No work has been started yet.\n"
@@ -582,7 +584,7 @@ msgid ""
 "script again."
 msgstr ""
 
-#: INSTALL.py:164
+#: INSTALL.py:163
 #, python-brace-format
 msgid ""
 "It looks like you want to quit.  Okay then, goodbye.\n"

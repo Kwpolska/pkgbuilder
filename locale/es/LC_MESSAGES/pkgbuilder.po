@@ -1,7 +1,7 @@
 # PKGBUILDer pot file.
 # Copyright © 2015, Chris Warrick.
 # This file is distributed under the same license as the PKGBUILDer package.
-# 
+#
 # Translators:
 # Bernardo Miguel Savone <bmsavone@gmail.com>, 2013-2014
 # Bernardo Miguel Savone <bmsavone@gmail.com>, 2013
@@ -11,16 +11,17 @@
 # tufadorin <quinato66@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: PKGBUILDer\n"
+"Project-Id-Version: 3.4.0\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2014-12-27 11:56+0100\n"
+"POT-Creation-Date: 2015-01-01 11:49+0100\n"
 "PO-Revision-Date: 2014-12-26 19:51+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/pkgbuilder/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/pkgbuilder/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: pkgbuilder/build.py:40
@@ -320,7 +321,7 @@ msgstr "Consulta de búsqueda demasiado corta"
 msgid "Searching for exact match..."
 msgstr "Búsqueda de coincidencia exacta ..."
 
-#: pkgbuilder/main.py:157 INSTALL.py:65 INSTALL.py:74
+#: pkgbuilder/main.py:157 INSTALL.py:64 INSTALL.py:73
 msgid "not found"
 msgstr "no encontrado"
 
@@ -334,7 +335,9 @@ msgstr "Error al procesar {0}: {1}"
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
-msgstr "PKGBUILDer (o las requests de librerías) tuvo problemas con el cumplimiento de una solicitud HTTP."
+msgstr ""
+"PKGBUILDer (o las requests de librerías) tuvo problemas con el cumplimiento "
+"de una solicitud HTTP."
 
 #. TRANSLATORS: see makepkg.
 #: pkgbuilder/pbds.py:46
@@ -485,7 +488,28 @@ msgid ""
 "First Submitted: {fsb}\n"
 "Last Updated   : {upd}\n"
 "Description    : {dsc}\n"
-msgstr "Repository     : aur\nCategory       : {cat}\nName           : {nme}\nPackage Base   : {bse}\nVersion        : {ver}\nURL            : {url}\nLicenses       : {lic}\nGroups         : {grp}\nProvides       : {prv}\nDepends On     : {dep}\nMake Deps      : {mkd}\nCheck Deps     : {ckd}\nOptional Deps  : {opt}\nConflicts With : {cnf}\nReplaces       : {rpl}\nVotes          : {cmv}\nOut of Date    : {ood}\nMaintainer     : {mnt}\nFirst Submitted: {fsb}\nLast Updated   : {upd}\nDescription    : {dsc}\n"
+msgstr ""
+"Repository     : aur\n"
+"Category       : {cat}\n"
+"Name           : {nme}\n"
+"Package Base   : {bse}\n"
+"Version        : {ver}\n"
+"URL            : {url}\n"
+"Licenses       : {lic}\n"
+"Groups         : {grp}\n"
+"Provides       : {prv}\n"
+"Depends On     : {dep}\n"
+"Make Deps      : {mkd}\n"
+"Check Deps     : {ckd}\n"
+"Optional Deps  : {opt}\n"
+"Conflicts With : {cnf}\n"
+"Replaces       : {rpl}\n"
+"Votes          : {cmv}\n"
+"Out of Date    : {ood}\n"
+"Maintainer     : {mnt}\n"
+"First Submitted: {fsb}\n"
+"Last Updated   : {upd}\n"
+"Description    : {dsc}\n"
 
 #: pkgbuilder/utils.py:256
 msgid "yes"
@@ -515,21 +539,33 @@ msgid ""
 "\n"
 "Additional options:\n"
 "  -L, --unlock         unlock the pacman database"
-msgstr "uso:  {0} <operación> [...]\n\nPBWrapper, un wrapper para pacman y PKGBUILDer.\n\n{1}\n\nSe aplicara la sintaxis de Pacman y PKGBUILDer.  Consulta los comandos manpages/help\npara más detalles.\n\nOpciones adicionales:\n  -L, --unlock         desbloquea la base de datos de pacman"
+msgstr ""
+"uso:  {0} <operación> [...]\n"
+"\n"
+"PBWrapper, un wrapper para pacman y PKGBUILDer.\n"
+"\n"
+"{1}\n"
+"\n"
+"Se aplicara la sintaxis de Pacman y PKGBUILDer.  Consulta los comandos "
+"manpages/help\n"
+"para más detalles.\n"
+"\n"
+"Opciones adicionales:\n"
+"  -L, --unlock         desbloquea la base de datos de pacman"
 
 #: INSTALL.py:53
 msgid "Performing a dependency check..."
 msgstr "Realizando una comprobación de dependencias ..."
 
-#: INSTALL.py:62 INSTALL.py:71
+#: INSTALL.py:61 INSTALL.py:70
 msgid "found"
 msgstr "encontrado"
 
-#: INSTALL.py:91
+#: INSTALL.py:90
 msgid "Cannot run as root.  Aborting."
 msgstr ""
 
-#: INSTALL.py:96
+#: INSTALL.py:95
 #, python-brace-format
 msgid ""
 "\n"
@@ -541,9 +577,18 @@ msgid ""
 "(the number is random).\n"
 "\n"
 "If I am wrong, though, congratulations!\n"
-msgstr "\n\nAlgo salió mal.  Por favor, lea la salida de makepkg y vuelva a intentarlo.\nTambién puede tratar de depurar el trabajo de este script usted mismo.\nTodos los archivos en que el script estaba trabajando estan en\n    {0}\n(el número es al azar).\n\nSi estoy equivocado, sin embargo, felicitaciones!\n"
+msgstr ""
+"\n"
+"\n"
+"Algo salió mal.  Por favor, lea la salida de makepkg y vuelva a intentarlo.\n"
+"También puede tratar de depurar el trabajo de este script usted mismo.\n"
+"Todos los archivos en que el script estaba trabajando estan en\n"
+"    {0}\n"
+"(el número es al azar).\n"
+"\n"
+"Si estoy equivocado, sin embargo, felicitaciones!\n"
 
-#: INSTALL.py:114
+#: INSTALL.py:113
 msgid ""
 "Hello!\n"
 "\n"
@@ -552,17 +597,24 @@ msgid ""
 "package and install it.  If you will have problems, please download\n"
 "and compile the package manually.\n"
 "\n"
-msgstr "Hola! ⏎\n⏎\nPKGBUILDer ya está disponible como un paquete de AUR. Es la forma sugerida ⏎\n de instalar PKGBUILDer. Este script descarga el paquete⏎\nde AUR y lo instala. Si va a tener problemas, por favor descarga ⏎\ny compila el paquete manualmente. ⏎\n"
+msgstr ""
+"Hola! ⏎\n"
+"⏎\n"
+"PKGBUILDer ya está disponible como un paquete de AUR. Es la forma sugerida "
+"⏎\n"
+" de instalar PKGBUILDer. Este script descarga el paquete⏎\n"
+"de AUR y lo instala. Si va a tener problemas, por favor descarga ⏎\n"
+"y compila el paquete manualmente. ⏎\n"
 
-#: INSTALL.py:123
+#: INSTALL.py:122
 msgid "Hit Enter/Return to continue. "
 msgstr "Pulsa Enter/Return para continuar."
 
-#: INSTALL.py:135
+#: INSTALL.py:134
 msgid "Installing missing AUR dependencies..."
 msgstr "Instalando las dependencias que  faltan de AUR ..."
 
-#: INSTALL.py:142
+#: INSTALL.py:141
 #, python-brace-format
 msgid ""
 "\n"
@@ -577,18 +629,38 @@ msgid ""
 "PKGBUILDer.  For standalone usage, type `pkgbuilder` into the prompt\n"
 "(zsh users: hash -r, other shells may need another command).  For\n"
 "python module usage, type `import pkgbuilder` into the python prompt.\n"
-msgstr "\n\nLea el output anterior.  Si el guión tenía problemas, ejecutarlo\nde nuevo.  También puede tratar de depurar el trabajo de este script usted mismo.\nTodos los archivos en que el script estaba trabajando estan en\n    {0}\n(el número es al azar).\n\nSi todo ha ido bien, sin embargo, felicitaciones!  Ahora puedes usar\nPKGBUILDer.  Para uso independiente, digitar `pkgbuilder` en el prompt\n(usuarios zsh: hash -r, otras shells pueden necesitar diferentess comandos).  Para\nusar el modulo python, digitar `import pkgbuilder` en el python prompt.\n"
+msgstr ""
+"\n"
+"\n"
+"Lea el output anterior.  Si el guión tenía problemas, ejecutarlo\n"
+"de nuevo.  También puede tratar de depurar el trabajo de este script usted "
+"mismo.\n"
+"Todos los archivos en que el script estaba trabajando estan en\n"
+"    {0}\n"
+"(el número es al azar).\n"
+"\n"
+"Si todo ha ido bien, sin embargo, felicitaciones!  Ahora puedes usar\n"
+"PKGBUILDer.  Para uso independiente, digitar `pkgbuilder` en el prompt\n"
+"(usuarios zsh: hash -r, otras shells pueden necesitar diferentess "
+"comandos).  Para\n"
+"usar el modulo python, digitar `import pkgbuilder` en el python prompt.\n"
 
-#: INSTALL.py:158
+#: INSTALL.py:157
 msgid ""
 "It looks like you want to quit.  Okay then, goodbye.\n"
 "No work has been started yet.\n"
 "\n"
 "If that's what you want to do, go for it.  If it isn't, run this\n"
 "script again."
-msgstr "Parece que quieres salir. Está bien, entonces, adiós. ⏎\nNo se han iniciado aún. ⏎\n⏎\nSi eso es lo que quieres hacer, vete a por ello. Si no es así, ejecute este ⏎\nscript de nuevo."
+msgstr ""
+"Parece que quieres salir. Está bien, entonces, adiós. ⏎\n"
+"No se han iniciado aún. ⏎\n"
+"⏎\n"
+"Si eso es lo que quieres hacer, vete a por ello. Si no es así, ejecute este "
+"⏎\n"
+"script de nuevo."
 
-#: INSTALL.py:164
+#: INSTALL.py:163
 #, python-brace-format
 msgid ""
 "It looks like you want to quit.  Okay then, goodbye.\n"
@@ -598,12 +670,21 @@ msgid ""
 "\n"
 "If that's what you want to do, go for it.  If it isn't, run this\n"
 "script again."
-msgstr "Parece que desea salir.  Ok, entonces, adiós.\nTodos los archivos en que el script estaba trabajando estan en\n    {0}\n(el número es al azar).\n\nSi es lo que quieres hacer, hazlo.  Si no lo es, ejecutar este\nscript de nuevo."
+msgstr ""
+"Parece que desea salir.  Ok, entonces, adiós.\n"
+"Todos los archivos en que el script estaba trabajando estan en\n"
+"    {0}\n"
+"(el número es al azar).\n"
+"\n"
+"Si es lo que quieres hacer, hazlo.  Si no lo es, ejecutar este\n"
+"script de nuevo."
 
 #. A module only for gettext locale provision.
 #: localeprovider.py:2
 msgid "usage"
-msgstr "\t\nmanejo"
+msgstr ""
+"\t\n"
+"manejo"
 
 #: localeprovider.py:3
 msgid "positional arguments"
