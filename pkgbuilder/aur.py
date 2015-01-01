@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.3.2
+# PKGBUILDer v3.4.0
 # An AUR helper (and library) in Python 3.
-# Copyright © 2011-2014, Kwpolska.
+# Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
 
 """
@@ -11,7 +11,7 @@
 
     A class for calling the AUR API.
 
-    :Copyright: © 2011-2014, Kwpolska.
+    :Copyright: © 2011-2015, Chris Warrick.
     :License: BSD (see /LICENSE).
 """
 
@@ -24,7 +24,7 @@ import json
 __all__ = ['AUR']
 
 
-class AUR:
+class AUR(object):
     """A class for calling the AUR API.
 
     Valid request types for :meth:`request()` (and

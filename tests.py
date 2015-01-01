@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
 # PKGBUILDer test suite
-# Copyright (C) 2012, Kwpolska.
+# Copyright © 2012-2015, Chris Warrick.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without

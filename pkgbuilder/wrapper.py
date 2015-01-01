@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
 # PBWrapper v0.2.3
-# PKGBUILDer v3.3.2
+# PKGBUILDer v3.4.0
 # An AUR helper (and library) in Python 3.
-# Copyright © 2011-2014, Kwpolska.
+# Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
 
 """
@@ -12,7 +12,7 @@
 
     A wrapper for pacman and PKGBUILDer, also known as PBWrapper or pb.
 
-    :Copyright: © 2011-2014, Kwpolska.
+    :Copyright: © 2011-2015, Chris Warrick.
     :License: BSD (see /LICENSE).
 """
 
@@ -29,7 +29,7 @@ import sys
 import os
 
 __all__ = ['wrapper']
-__wrapperversion__ = '0.2.3'
+__wrapperversion__ = '0.3.0'
 
 
 def wrapper(source='AUTO'):
@@ -69,11 +69,11 @@ def wrapper(source='AUTO'):
         pacmanlong = ['asdeps', 'asexplicit', 'dbonly', 'downloadonly',
                       'force', 'groups', 'list',  'needed', 'noconfirm',
                       'nodeps', 'noprogressbar', 'noscriptlet', 'print',
-                      'quiet', 'verbose']
+                      'quiet', 'verbose', 'confirm']
         pacmanshorta = ['b', 'r']
         pacmanlonga = ['arch', 'cachedir', 'config', 'dbpath', 'gpgdir',
                        'ignore', 'ignoregroup', 'logfile', 'print-format',
-                       'root']
+                       'root', 'assume-installed']
 
         pbshort = ['D', 'C', 'F']
         pblong = ['fetch', 'userfetch', 'vcsupgrade', 'nocolors', 'nodepcheck',
@@ -90,7 +90,6 @@ def wrapper(source='AUTO'):
         allpacman = pacmanshort + pacmanlong + pacmanshorta + pacmanlonga
         allpb = pbshort + pblong  # + pbshorta + pblonga
         allcommon = commonshort + commonlong + commonshortc + commonlongc
-        # allcmd = allpacman + allpb + allcommon (unused)
 
         allshort = pacmanshort + pbshort + commonshort
         alllong = pacmanlong + pblong + commonlong

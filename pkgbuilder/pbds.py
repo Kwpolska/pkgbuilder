@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.3.2
+# PKGBUILDer v3.4.0
 # An AUR helper (and library) in Python 3.
-# Copyright © 2011-2014, Kwpolska.
+# Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
 
 """
@@ -11,7 +11,7 @@
 
     PKGBUILDer Data Storage.
 
-    :Copyright: © 2011-2014, Kwpolska.
+    :Copyright: © 2011-2015, Chris Warrick.
     :License: BSD (see /LICENSE).
 """
 
@@ -26,7 +26,7 @@ import pycman
 __all__ = ['PBDS']
 
 
-class PBDS():
+class PBDS(object):
     """PKGBUILDer Data Storage."""
     # For fancy-schmancy messages stolen from makepkg.
     colors = {
@@ -145,6 +145,13 @@ class PBDS():
                                         asonearg=True)
         else:
             return self.run_command(args)
+
+    def root_crash(self):
+        if self.uid == 0:
+            self.log.error('running as root, crashing')
+            self.fancy_error(_('Running as root is not allowed as it can cause catastrophic damage to your system!'))
+            self.fancy_error(_('Please restart PKGBUILDer as a regular user.'))
+            sys.exit(255)
 
     def debugmode(self, nochange=False):
         """Print all the logged messages to stderr."""

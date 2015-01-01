@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.3.2
+# PKGBUILDer v3.4.0
 # An AUR helper (and library) in Python 3.
-# Copyright © 2011-2014, Kwpolska.
+# Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
 
 """
@@ -11,7 +11,7 @@
 
     Main routine of PKGBUILDer.
 
-    :Copyright: © 2011-2014, Kwpolska.
+    :Copyright: © 2011-2015, Chris Warrick.
     :License: BSD (see /LICENSE).
 """
 
@@ -65,10 +65,6 @@ def main(source='AUTO', quit=True):
         argopr.add_argument(
             '-u', '--sysupgrade', action='count', default=False,
             dest='upgrade', help=_('upgrade installed AUR packages'))
-        argopr.add_argument(
-            '--safeupgrade', action='store_true', default=False,
-            dest='safeupgrade', help=_('perform a failsafe upgrade of '
-                                       'PKGBUILDer'))
         argopr.add_argument(
             '-U', '--upgrade', action='store_true', default=False, dest='finst',
             help=_('copy package files to pacman cache and install them'))
@@ -193,32 +189,13 @@ def main(source='AUTO', quit=True):
 
         if args.pac:
             DS.log.debug('-S passed, building in /tmp/.')
-            uid = os.geteuid()
-            path = '/tmp/pkgbuilder-{0}'.format(str(uid))
+            path = '/tmp/pkgbuilder-{0}'.format(str(DS.uid))
             if not os.path.exists(path):
                 os.mkdir(path)
             os.chdir(path)
 
-        if args.safeupgrade:
-            DS.fancy_msg(_('PKGBUILDer Failsafe Upgrade'))
-            query = (DS.colors['green'] + '==>' +
-                     DS.colors['all_off'] + DS.colors['bold'] + ' ' +
-                     _('Build the git version? [y/N] ') +
-                     DS.colors['all_off'])
-
-            yesno = input(query)
-
-            if yesno.lower().strip().startswith('y'):
-                pkgname = 'pkgbuilder-git'
-            else:
-                pkgname = 'pkgbuilder'
-
-            mpstatus = pkgbuilder.build.safeupgrade(pkgname)
-
-            if quit:
-                exit(mpstatus)
-
         if args.upgrade > 0:
+            DS.root_crash()
             DS.log.info('Starting upgrade...')
             dodowngrade = args.upgrade > 1
             upnames = pkgbuilder.upgrade.auto_upgrade(dodowngrade, args.vcsup)
@@ -244,10 +221,7 @@ def main(source='AUTO', quit=True):
 
         # If we didn't quit, we should build the packages.
         if pkgnames:
-            if DS.uid == 0:
-                DS.log.warning('Running as root! (UID={0})'.format(DS.uid))
-                DS.fancy_warning(_('Running PKGBUILDer as root can break your '
-                                   'system!'))
+            DS.root_crash()
 
             DS.log.info('Starting build...')
             toinstall = []

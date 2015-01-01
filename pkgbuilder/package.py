@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.3.2
+# PKGBUILDer v3.4.0
 # An AUR helper (and library) in Python 3.
-# Copyright © 2011-2014, Kwpolska.
+# Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
 
 """
@@ -11,7 +11,7 @@
 
     The Package class, the most important class in PKGBUILDer.
 
-    :Copyright: © 2011-2014, Kwpolska.
+    :Copyright: © 2011-2015, Chris Warrick.
     :License: BSD (see /LICENSE).
 """
 
@@ -21,11 +21,11 @@ import datetime
 
 __all__ = ['CATEGORIES', 'Package', 'AURPackage', 'ABSPackage']
 
-CATEGORIES = ['ERROR', 'none', 'daemons', 'devel', 'editors',
+CATEGORIES = ['none', 'none', 'daemons', 'devel', 'editors',
               'emulators', 'games', 'gnome', 'i18n', 'kde',
               'lib', 'modules', 'multimedia', 'network',
               'office', 'science', 'system', 'x11',
-              'xfce', 'kernels', 'fonts']
+              'xfce', 'kernels', 'fonts', 'wayland']
 
 
 def mktime(ts):

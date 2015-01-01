@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
 # PKGBUILDer installer
-# Copyright (C) 2011-2012, Kwpolska.
+# Copyright (C) 2011-2015, Chris Warrick.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -52,8 +52,7 @@ def depcheck():
 
     print(_("""Performing a dependency check..."""))
 
-    deps = {'pyalpm': None,
-            'certifi': None, 'requests': None}
+    deps = {'pyalpm': None, 'requests': None}
 
     print("""pyalpm    | extra     | """, end='')
     try:
@@ -87,10 +86,10 @@ def install(pkgname):
     THANDLE.extractall()
     os.chdir('./' + pkgname + '/')
 
-    ASROOT = ''
     if os.geteuid() == 0:
-        ASROOT = ' --asroot'
-    MPKG = subprocess.call('/usr/bin/makepkg -si' + ASROOT, shell=True)
+        print(_("Cannot run as root.  Aborting."))
+        sys.exit(1)
+    MPKG = subprocess.call('/usr/bin/makepkg -si', shell=True)
 
     if MPKG == 1:
         print(_("""
