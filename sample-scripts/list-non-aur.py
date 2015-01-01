@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 # List non-AUR Foreigners
 # Part of PKGBUILDer Sample Scripts
-# Copyright © 2011-2014, Kwpolska.
+# Copyright © 2011-2015, Chris Warrick.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without

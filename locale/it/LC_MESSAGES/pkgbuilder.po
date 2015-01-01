@@ -1,19 +1,19 @@
 # PKGBUILDer pot file.
-# Copyright © 2011-2014, Kwpolska.
+# Copyright © 2015, Chris Warrick.
 # This file is distributed under the same license as the PKGBUILDer package.
-# Kwpolska <chris@chriswarrick.com>, 2011-2014.
 #
 # Translators:
-# Bersil - Bernardo M. Savone <bmsavone@gmail.com>, 2013
-# Kwpolska <kwpolska@gmail.com>, 2013
-# Kwpolska <kwpolska@gmail.com>, 2013
+# Bernardo Miguel Savone <bmsavone@gmail.com>, 2013-2014
+# Bernardo Miguel Savone <bmsavone@gmail.com>, 2013
+# Chris Warrick <kwpolska@gmail.com>, 2013
+# Chris Warrick <kwpolska@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.3.2\n"
-"Report-Msgid-Bugs-To: Kwpolska <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2014-12-26 20:51+0100\n"
-"PO-Revision-Date: 2014-02-04 16:11+0000\n"
-"Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
+"Project-Id-Version: 3.4.0\n"
+"Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
+"POT-Creation-Date: 2015-01-01 11:49+0100\n"
+"PO-Revision-Date: 2014-12-26 19:51+0000\n"
+"Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/pkgbuilder/"
 "language/it/)\n"
 "Language: it\n"
@@ -55,9 +55,8 @@ msgid "Moving to /var/cache/pacman/pkg/..."
 msgstr ""
 
 #: pkgbuilder/build.py:100
-#, fuzzy
 msgid "Installing with pacman -U..."
-msgstr "Installazione di pacchetti costruiti..."
+msgstr ""
 
 #: pkgbuilder/build.py:128
 msgid "The build function reported a proper build."
@@ -321,7 +320,7 @@ msgstr "Tèrmino di ricerca troppo corto"
 msgid "Searching for exact match..."
 msgstr "Ricerca di corrispondenza esatta"
 
-#: pkgbuilder/main.py:157 INSTALL.py:65 INSTALL.py:74
+#: pkgbuilder/main.py:157 INSTALL.py:64 INSTALL.py:73
 msgid "not found"
 msgstr "non trovato"
 
@@ -378,9 +377,8 @@ msgid ""
 msgstr ""
 
 #: pkgbuilder/pbds.py:153
-#, fuzzy
 msgid "Please restart PKGBUILDer as a regular user."
-msgstr "Si consiglia di riavviare PKGBUILDer come un utente normale."
+msgstr ""
 
 #: pkgbuilder/upgrade.py:117 pkgbuilder/upgrade.py:119
 msgid "Synchronizing package databases..."
@@ -393,7 +391,7 @@ msgstr "Avvio aggiornamento completo del sistema..."
 #: pkgbuilder/upgrade.py:137
 #, python-brace-format
 msgid "warning: {0}: downgrading from version {1} to version {2}"
-msgstr ""
+msgstr "avvertimento: {0}: retrocessione da versione {1} a versione {2}"
 
 #: pkgbuilder/upgrade.py:140
 #, python-brace-format
@@ -403,7 +401,7 @@ msgstr "attenzione: {0}: locale ({1}) è più recente di quello in aur ({2})"
 #: pkgbuilder/upgrade.py:145
 #, python-brace-format
 msgid "{0}: downgrading from version {1} to version {2}"
-msgstr ""
+msgstr "{0}: retrocessione da versione {1} a versione {2}"
 
 #: pkgbuilder/upgrade.py:148
 #, python-brace-format
@@ -469,7 +467,7 @@ msgstr "Tentativo di utilizzare utils.print_package_info con un pacchetto ABS"
 #. TRANSLATORS: space it properly.  “yes/no” below are
 #. for “out of date”.
 #: pkgbuilder/utils.py:227
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid ""
 "Repository     : aur\n"
 "Category       : {cat}\n"
@@ -493,18 +491,6 @@ msgid ""
 "Last Updated   : {upd}\n"
 "Description    : {dsc}\n"
 msgstr ""
-"Repositorio    : aur\n"
-"Categoria      : {cat}\n"
-"Nome           : {nme}\n"
-"Versione       : {ver}\n"
-"URL            : {url}\n"
-"Licenze        : {lic}\n"
-"Voti           : {cmv}\n"
-"Obsoleto       : {ood}\n"
-"Maintainer     : {mnt}\n"
-"Primo invio    : {fsb}\n"
-"Ultimo aggiornamento: {upd}\n"
-"Descrizione    : {dsc}\n"
 
 #: pkgbuilder/utils.py:256
 msgid "yes"
@@ -514,13 +500,13 @@ msgstr "sì"
 msgid "no"
 msgstr "no"
 
-#: pkgbuilder/wrapper.py:102
+#: pkgbuilder/wrapper.py:101
 #, python-format
 msgid "%(prog)s <operation> [...]"
 msgstr "%(prog)s <operazione> [...]"
 
 #. TRANSLATORS: see pacman’s localizations
-#: pkgbuilder/wrapper.py:269
+#: pkgbuilder/wrapper.py:268
 #, python-brace-format
 msgid ""
 "usage:  {0} <operation> [...]\n"
@@ -552,15 +538,15 @@ msgstr ""
 msgid "Performing a dependency check..."
 msgstr "Esecuzione di un controllo delle dipendenze..."
 
-#: INSTALL.py:62 INSTALL.py:71
+#: INSTALL.py:61 INSTALL.py:70
 msgid "found"
 msgstr "trovato"
 
-#: INSTALL.py:91
+#: INSTALL.py:90
 msgid "Cannot run as root.  Aborting."
 msgstr ""
 
-#: INSTALL.py:96
+#: INSTALL.py:95
 #, python-brace-format
 msgid ""
 "\n"
@@ -584,7 +570,7 @@ msgstr ""
 "\n"
 "Se ho torto, comunque, congratulazioni!\n"
 
-#: INSTALL.py:114
+#: INSTALL.py:113
 msgid ""
 "Hello!\n"
 "\n"
@@ -602,15 +588,15 @@ msgstr ""
 "e compilare il pacchetto manualmente.\n"
 "\n"
 
-#: INSTALL.py:123
+#: INSTALL.py:122
 msgid "Hit Enter/Return to continue. "
 msgstr "Premere Enter/Return per continuare. "
 
-#: INSTALL.py:135
+#: INSTALL.py:134
 msgid "Installing missing AUR dependencies..."
 msgstr "installazione delle dipendenze mancanti da AUR..."
 
-#: INSTALL.py:142
+#: INSTALL.py:141
 #, python-brace-format
 msgid ""
 "\n"
@@ -641,7 +627,7 @@ msgstr ""
 "l'utilizzo del modulo python, digitare `import pkgbuilder` nel python "
 "prompt.\n"
 
-#: INSTALL.py:158
+#: INSTALL.py:157
 msgid ""
 "It looks like you want to quit.  Okay then, goodbye.\n"
 "No work has been started yet.\n"
@@ -655,7 +641,7 @@ msgstr ""
 "Se è quello che vuoi, avanti.  Se non lo è, esegui questo\n"
 "script nuovamente."
 
-#: INSTALL.py:164
+#: INSTALL.py:163
 #, python-brace-format
 msgid ""
 "It looks like you want to quit.  Okay then, goodbye.\n"
@@ -690,37 +676,3 @@ msgstr "argomenti opzionali"
 #: localeprovider.py:5
 msgid "show this help message and exit"
 msgstr "mostra questo messaggio di aiuto ed esce"
-
-#~ msgid "Performing a safe upgrade as root!"
-#~ msgstr "Eseguire un aggiornamento di sicurezza come root!"
-
-#~ msgid "Build finished with return code {0}."
-#~ msgstr "Compilazione terminata con restituzione codice {0}."
-
-#~ msgid "perform a failsafe upgrade of PKGBUILDer"
-#~ msgstr "eseguire un aggiornamento sicuro di  PKGBUILDer"
-
-#~ msgid "PKGBUILDer Failsafe Upgrade"
-#~ msgstr "PKGBUILDer aggiornamento sicuro"
-
-#~ msgid "Build the git version? [y/N] "
-#~ msgstr "Costruire la versione git? [y/N] "
-
-#~ msgid "Running PKGBUILDer as root can break your system!"
-#~ msgstr "Eseguire PKGBUILDer come root può daneggiare il sistema!"
-
-#~ msgid "The following packages should be upgraded first:"
-#~ msgstr "I seguenti pacchetti dovrebbero essere aggiornati prima:"
-
-#~ msgid "Do you want to cancel the current operation"
-#~ msgstr "Vuoi annullare l'operazione corrente"
-
-#~ msgid "and upgrade these packages now? [Y/n] "
-#~ msgstr "e aggiornare questi pacchetti ora? [Y/n] "
-
-#~ msgid ""
-#~ "Do you want to cancel the current operation and upgrade these packages "
-#~ "now? [Y/n] "
-#~ msgstr ""
-#~ "Vuoi annullare l'operazione corrente e aggiornare questi pacchetti ora? "
-#~ "[Y/n] "

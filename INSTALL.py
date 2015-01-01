@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
 # PKGBUILDer installer
-# Copyright (C) 2011-2012, Kwpolska.
+# Copyright (C) 2011-2015, Chris Warrick.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -52,8 +52,7 @@ def depcheck():
 
     print(_("""Performing a dependency check..."""))
 
-    deps = {'pyalpm': None,
-            'certifi': None, 'requests': None}
+    deps = {'pyalpm': None, 'requests': None}
 
     print("""pyalpm    | extra     | """, end='')
     try:

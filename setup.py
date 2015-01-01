@@ -19,10 +19,10 @@ class PyTest(TestCommand):
         sys.exit(errno)
 
 setup(name='pkgbuilder',
-      version='3.3.2',
+      version='3.4.0',
       description='An AUR helper (and library) in Python 3.',
       keywords='arch pkgbuild',
-      author='Chris “Kwpolska” Warrick',
+      author='Chris Warrick',
       author_email='chris@chriswarrick.com',
       url='https://github.com/Kwpolska/pkgbuilder',
       license='3-clause BSD',

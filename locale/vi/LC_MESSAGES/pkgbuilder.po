@@ -1,18 +1,18 @@
 # PKGBUILDer pot file.
-# Copyright © 2011-2014, Kwpolska.
+# Copyright © 2015, Chris Warrick.
 # This file is distributed under the same license as the PKGBUILDer package.
-# Kwpolska <chris@chriswarrick.com>, 2011-2014.
 #
 # Translators:
-# ppanhh <vietnamesel10n@gmail.com>, 2013
+# Anh Phan <vietnamesel10n@gmail.com>, 2013
 # ppanhh <ppanhh@gmail.com>, 2013
+# Anh Phan <vietnamesel10n@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.3.2\n"
-"Report-Msgid-Bugs-To: Kwpolska <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2014-12-26 20:51+0100\n"
-"PO-Revision-Date: 2014-02-04 16:11+0000\n"
-"Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
+"Project-Id-Version: 3.4.0\n"
+"Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
+"POT-Creation-Date: 2015-01-01 11:49+0100\n"
+"PO-Revision-Date: 2014-12-26 19:51+0000\n"
+"Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/projects/p/pkgbuilder/"
 "language/vi/)\n"
 "Language: vi\n"
@@ -54,9 +54,8 @@ msgid "Moving to /var/cache/pacman/pkg/..."
 msgstr ""
 
 #: pkgbuilder/build.py:100
-#, fuzzy
 msgid "Installing with pacman -U..."
-msgstr "Đang cài đặt các gói dữ liệu..."
+msgstr ""
 
 #: pkgbuilder/build.py:128
 msgid "The build function reported a proper build."
@@ -320,7 +319,7 @@ msgstr "Truy vấn tìm kiếm quá ngắn"
 msgid "Searching for exact match..."
 msgstr "Đang tìm kiếm dữ liệu khớp..."
 
-#: pkgbuilder/main.py:157 INSTALL.py:65 INSTALL.py:74
+#: pkgbuilder/main.py:157 INSTALL.py:64 INSTALL.py:73
 msgid "not found"
 msgstr "không tìm thấy"
 
@@ -375,9 +374,8 @@ msgid ""
 msgstr ""
 
 #: pkgbuilder/pbds.py:153
-#, fuzzy
 msgid "Please restart PKGBUILDer as a regular user."
-msgstr "Bạn nên khởi động lại PKGBUILDer dưới dạng người dùng thông thường."
+msgstr ""
 
 #: pkgbuilder/upgrade.py:117 pkgbuilder/upgrade.py:119
 msgid "Synchronizing package databases..."
@@ -465,7 +463,7 @@ msgstr "Đang cố sử dụng utils.print_package_info với gói cài đặt A
 #. TRANSLATORS: space it properly.  “yes/no” below are
 #. for “out of date”.
 #: pkgbuilder/utils.py:227
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid ""
 "Repository     : aur\n"
 "Category       : {cat}\n"
@@ -489,18 +487,6 @@ msgid ""
 "Last Updated   : {upd}\n"
 "Description    : {dsc}\n"
 msgstr ""
-"Người ủy thác  : aur\n"
-"Phân loại      : {cat}\n"
-"Tên            : {nme}\n"
-"Phiên bản      : {ver}\n"
-"URL            : {url}\n"
-"Giấy phép      : {lic}\n"
-"Votes          : {cmv}\n"
-"Quá hạn        : {ood}\n"
-"Người điều hành: {mnt}\n"
-"Phát hành lần đầu: {fsb}\n"
-"Cập nhật lần cuối: {upd}\n"
-"Mô tả          : {dsc}\n"
 
 #: pkgbuilder/utils.py:256
 msgid "yes"
@@ -510,13 +496,13 @@ msgstr "có"
 msgid "no"
 msgstr "không"
 
-#: pkgbuilder/wrapper.py:102
+#: pkgbuilder/wrapper.py:101
 #, python-format
 msgid "%(prog)s <operation> [...]"
 msgstr "%(prog)s <operation> [...]"
 
 #. TRANSLATORS: see pacman’s localizations
-#: pkgbuilder/wrapper.py:269
+#: pkgbuilder/wrapper.py:268
 #, python-brace-format
 msgid ""
 "usage:  {0} <operation> [...]\n"
@@ -548,15 +534,15 @@ msgstr ""
 msgid "Performing a dependency check..."
 msgstr "Đang thực hiện việc kiểm tra độc lập..."
 
-#: INSTALL.py:62 INSTALL.py:71
+#: INSTALL.py:61 INSTALL.py:70
 msgid "found"
 msgstr "đã tìm thấy"
 
-#: INSTALL.py:91
+#: INSTALL.py:90
 msgid "Cannot run as root.  Aborting."
 msgstr ""
 
-#: INSTALL.py:96
+#: INSTALL.py:95
 #, python-brace-format
 msgid ""
 "\n"
@@ -580,7 +566,7 @@ msgstr ""
 "\n"
 "Nếu như lỗi này thuộc về nhà phát triển, bạn hãy liên hệ với chúng tôi!\n"
 
-#: INSTALL.py:114
+#: INSTALL.py:113
 msgid ""
 "Hello!\n"
 "\n"
@@ -599,15 +585,15 @@ msgstr ""
 "và biên dịch các gói tin một cách tuần tự.\n"
 "\n"
 
-#: INSTALL.py:123
+#: INSTALL.py:122
 msgid "Hit Enter/Return to continue. "
 msgstr "Ấn Enter/Return để tiếp tục."
 
-#: INSTALL.py:135
+#: INSTALL.py:134
 msgid "Installing missing AUR dependencies..."
 msgstr "Đang cài đặt các phần AUR độc lập còn thiếu..."
 
-#: INSTALL.py:142
+#: INSTALL.py:141
 #, python-brace-format
 msgid ""
 "\n"
@@ -640,7 +626,7 @@ msgstr ""
 "Đối với cách sử dụng module Python, gõ `import pkgbuilder` vào trong cửa sổ "
 "mã lệnh của python.\n"
 
-#: INSTALL.py:158
+#: INSTALL.py:157
 msgid ""
 "It looks like you want to quit.  Okay then, goodbye.\n"
 "No work has been started yet.\n"
@@ -654,7 +640,7 @@ msgstr ""
 "Nếu đây là điều bạn muốn, xin cứ tiếp tục. Nếu không phải, hãy thực thi\n"
 "đoạn mã lệnh này lần nữa."
 
-#: INSTALL.py:164
+#: INSTALL.py:163
 #, python-brace-format
 msgid ""
 "It looks like you want to quit.  Okay then, goodbye.\n"
@@ -689,37 +675,3 @@ msgstr "tùy chọn đối số"
 #: localeprovider.py:5
 msgid "show this help message and exit"
 msgstr "hiển thị thông điệp trợ giúp và thoát"
-
-#~ msgid "Performing a safe upgrade as root!"
-#~ msgstr "Đang tiến hành việc nâng cấp an toàn dưới quyền root!"
-
-#~ msgid "Build finished with return code {0}."
-#~ msgstr "Phần xây dựng đã hoàn tất với mã trả về {0}."
-
-#~ msgid "perform a failsafe upgrade of PKGBUILDer"
-#~ msgstr "thực hiện việc nâng cấp dự phòng PKGBUILDer"
-
-#~ msgid "PKGBUILDer Failsafe Upgrade"
-#~ msgstr "Nâng cấp PKGBUILDer dự phòng"
-
-#~ msgid "Build the git version? [y/N] "
-#~ msgstr "Xây dựng phiên bản git? [y/N]"
-
-#~ msgid "Running PKGBUILDer as root can break your system!"
-#~ msgstr "Chạy PKGBUILDer dưới dạng root có thể phá hỏng hệ thống của bạn!"
-
-#~ msgid "The following packages should be upgraded first:"
-#~ msgstr "Các gói tin sau đây nên được nâng cấp đầu tiên:"
-
-#~ msgid "Do you want to cancel the current operation"
-#~ msgstr "Bạn có muốn hủy bỏ tiến trình hiện tại"
-
-#~ msgid "and upgrade these packages now? [Y/n] "
-#~ msgstr "và cập nhật các gói cài đặt ngay bây giờ? [Y/n]"
-
-#~ msgid ""
-#~ "Do you want to cancel the current operation and upgrade these packages "
-#~ "now? [Y/n] "
-#~ msgstr ""
-#~ "Bạn có muốn hủy bỏ tiến trình hiện tại và cập nhật các gói cài đặt này "
-#~ "ngay bây giờ? [Y/n]"

@@ -1,20 +1,19 @@
 # PKGBUILDer pot file.
-# Copyright © 2011-2014, Kwpolska.
+# Copyright © 2015, Chris Warrick.
 # This file is distributed under the same license as the PKGBUILDer package.
-# Kwpolska <chris@chriswarrick.com>, 2011-2014.
 #
 # Translators:
-# Kwpolska <kwpolska@gmail.com>, 2013
-# Kwpolska <kwpolska@gmail.com>, 2013
-# yfdogan <yfdogan@gmail.com>, 2013
-# yfdogan <yfdogan@gmail.com>, 2013
+# Chris Warrick <kwpolska@gmail.com>, 2013
+# Chris Warrick <kwpolska@gmail.com>, 2013
+# Yusuf Faruk DOĞAN <yfdogan@gmail.com>, 2013
+# Yusuf Faruk DOĞAN <yfdogan@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.3.2\n"
-"Report-Msgid-Bugs-To: Kwpolska <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2014-12-26 20:51+0100\n"
-"PO-Revision-Date: 2014-02-04 16:11+0000\n"
-"Last-Translator: Kwpolska <kwpolska@gmail.com>\n"
+"Project-Id-Version: 3.4.0\n"
+"Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
+"POT-Creation-Date: 2015-01-01 11:49+0100\n"
+"PO-Revision-Date: 2014-12-26 19:51+0000\n"
+"Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/pkgbuilder/"
 "language/tr/)\n"
 "Language: tr\n"
@@ -56,9 +55,8 @@ msgid "Moving to /var/cache/pacman/pkg/..."
 msgstr ""
 
 #: pkgbuilder/build.py:100
-#, fuzzy
 msgid "Installing with pacman -U..."
-msgstr "İnşa paketleri kuruluyor..."
+msgstr ""
 
 #: pkgbuilder/build.py:128
 msgid "The build function reported a proper build."
@@ -321,7 +319,7 @@ msgstr "Arama sorgusu çok kısa"
 msgid "Searching for exact match..."
 msgstr "Tam eşleşme için taranıyor..."
 
-#: pkgbuilder/main.py:157 INSTALL.py:65 INSTALL.py:74
+#: pkgbuilder/main.py:157 INSTALL.py:64 INSTALL.py:73
 msgid "not found"
 msgstr "Bulunamadı"
 
@@ -467,7 +465,7 @@ msgstr "ABS paketi ile utils.print_package_info kullanılmaya çalışılıyor"
 #. TRANSLATORS: space it properly.  “yes/no” below are
 #. for “out of date”.
 #: pkgbuilder/utils.py:227
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid ""
 "Repository     : aur\n"
 "Category       : {cat}\n"
@@ -491,18 +489,6 @@ msgid ""
 "Last Updated   : {upd}\n"
 "Description    : {dsc}\n"
 msgstr ""
-"Depo           : aur\n"
-"Kategori       : {cat}\n"
-"İsim           : {nme}\n"
-"Sürüm          : {ver}\n"
-"URL            : {url}\n"
-"Lisanslar      : {lic}\n"
-"Oylar          : {cmv}\n"
-"Günü Geçmiş    : {ood}\n"
-"Bakıcı         : {mnt}\n"
-"İlk ekleyen    : {fsb}\n"
-"Son güncellenen: {upd}\n"
-"Açıklama       : {dsc}\n"
 
 #: pkgbuilder/utils.py:256
 msgid "yes"
@@ -512,13 +498,13 @@ msgstr "evet"
 msgid "no"
 msgstr "hayır"
 
-#: pkgbuilder/wrapper.py:102
+#: pkgbuilder/wrapper.py:101
 #, python-format
 msgid "%(prog)s <operation> [...]"
 msgstr "%(prog)s <operation> [...]"
 
 #. TRANSLATORS: see pacman’s localizations
-#: pkgbuilder/wrapper.py:269
+#: pkgbuilder/wrapper.py:268
 #, python-brace-format
 msgid ""
 "usage:  {0} <operation> [...]\n"
@@ -549,15 +535,15 @@ msgstr ""
 msgid "Performing a dependency check..."
 msgstr "Bağımlılık kontrolü yapılyor..."
 
-#: INSTALL.py:62 INSTALL.py:71
+#: INSTALL.py:61 INSTALL.py:70
 msgid "found"
 msgstr "bulundu"
 
-#: INSTALL.py:91
+#: INSTALL.py:90
 msgid "Cannot run as root.  Aborting."
 msgstr ""
 
-#: INSTALL.py:96
+#: INSTALL.py:95
 #, python-brace-format
 msgid ""
 "\n"
@@ -581,7 +567,7 @@ msgstr ""
 "⏎\n"
 "Eğer hatalıysam, yine de tebrikler!⏎\n"
 
-#: INSTALL.py:114
+#: INSTALL.py:113
 msgid ""
 "Hello!\n"
 "\n"
@@ -599,15 +585,15 @@ msgstr ""
 "Eğer sorun yaşarsanız lütfen paketi indirin ve kendiniz derleyin⏎\n"
 "⏎\n"
 
-#: INSTALL.py:123
+#: INSTALL.py:122
 msgid "Hit Enter/Return to continue. "
 msgstr "Geri dönmek için Enter/Dön tuşlayın."
 
-#: INSTALL.py:135
+#: INSTALL.py:134
 msgid "Installing missing AUR dependencies..."
 msgstr "Kurulum AUR bağımlılıklarını bulamıyor..."
 
-#: INSTALL.py:142
+#: INSTALL.py:141
 #, python-brace-format
 msgid ""
 "\n"
@@ -637,7 +623,7 @@ msgstr ""
 "Python modülü için python uçbirimine ⏎\n"
 "`import pkgbuilder` yazın.⏎\n"
 
-#: INSTALL.py:158
+#: INSTALL.py:157
 msgid ""
 "It looks like you want to quit.  Okay then, goodbye.\n"
 "No work has been started yet.\n"
@@ -651,7 +637,7 @@ msgstr ""
 "İstediğiniz bu ise devam edin. Değilse bu scrpt i⏎\n"
 "yeniden başlatın."
 
-#: INSTALL.py:164
+#: INSTALL.py:163
 #, python-brace-format
 msgid ""
 "It looks like you want to quit.  Okay then, goodbye.\n"
@@ -682,35 +668,3 @@ msgstr "seçimli argümanlar"
 #: localeprovider.py:5
 msgid "show this help message and exit"
 msgstr "yardım mesajını göster ve çık"
-
-#~ msgid "Build finished with return code {0}."
-#~ msgstr "İnşa işlemi {0}geri dönüş kodu ile bitirildi."
-
-#~ msgid "perform a failsafe upgrade of PKGBUILDer"
-#~ msgstr "PKGBUILD yapıcı için güvenli yükseltme yapın"
-
-#~ msgid "PKGBUILDer Failsafe Upgrade"
-#~ msgstr "PKGBUILD yapıcı güvenli yükseltme"
-
-#~ msgid "Build the git version? [y/N] "
-#~ msgstr "Git sürümü inşa edilsin mi? (E/H)"
-
-#~ msgid "Running PKGBUILDer as root can break your system!"
-#~ msgstr ""
-#~ "PKGBUILD yapıcı yı yetkili kullanıcı hakları ile çalıştırmak sisteminizi "
-#~ "bozabilir!"
-
-#~ msgid "The following packages should be upgraded first:"
-#~ msgstr "Şu paketler önce yükseltilecek:"
-
-#~ msgid "Do you want to cancel the current operation"
-#~ msgstr "Geçerli işlemi iptal etmek istiyormusunuz"
-
-#~ msgid "and upgrade these packages now? [Y/n] "
-#~ msgstr "ve bu paketler şimdi yükseltilsin mi? [E/H]"
-
-#~ msgid ""
-#~ "Do you want to cancel the current operation and upgrade these packages "
-#~ "now? [Y/n] "
-#~ msgstr ""
-#~ "Geçerli işlemi sonlandırıp bu paketleri yükseltmek istiyormusunuz? [E/H]"
