@@ -63,7 +63,7 @@ class AUR(object):
             req = requests.get(self.rpc, params={'type': rtype, 'arg': arg}, headers={'User-Agent': self.ua})
             req.raise_for_status()
         except requests.exceptions.ConnectionError as e:
-            raise ConnectionError(e.args[0].reason, e)
+            raise ConnectionError(e.args[0].args[0], e)
         except requests.exceptions.HTTPError as e:
             raise HTTPError(req, e)
         except requests.exceptions.RequestException as e:
@@ -82,7 +82,7 @@ class AUR(object):
                                                  args}, headers={'User-Agent': self.ua})
             req.raise_for_status()
         except requests.exceptions.ConnectionError as e:
-            raise ConnectionError(e.args[0].reason, e)
+            raise ConnectionError(e.args[0].args[0], e)
         except requests.exceptions.HTTPError as e:
             raise HTTPError(req, e)
         except requests.exceptions.RequestException as e:

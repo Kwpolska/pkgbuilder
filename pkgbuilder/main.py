@@ -119,6 +119,11 @@ def main(source='AUTO', quit=True):
 
         DS.log.info('Arguments parsed.  {0}'.format(args.__dict__))
 
+        if 'VIRTUAL_ENV' in os.environ:
+            DS.log.error("virtualenv detected, exiting.")
+            DS.fancy_error(_("PKGBUILDer cannot work in a virtualenv, exiting."))
+            exit(83)
+
         if not args.color:
             DS.colorsoff()
             DS.log.debug('Colors turned off.')
