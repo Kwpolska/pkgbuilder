@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
 # PBWrapper v0.2.3
-# PKGBUILDer v3.4.0
+# PKGBUILDer v3.5.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -29,7 +29,7 @@ import sys
 import os
 
 __all__ = ['wrapper']
-__wrapperversion__ = '0.3.0'
+__wrapperversion__ = '0.3.1'
 
 
 def wrapper(source='AUTO'):
@@ -75,9 +75,9 @@ def wrapper(source='AUTO'):
                        'ignore', 'ignoregroup', 'logfile', 'print-format',
                        'root', 'assume-installed']
 
-        pbshort = ['D', 'C', 'F']
+        pbshort = ['D', 'C', 'F', '4']
         pblong = ['fetch', 'userfetch', 'vcsupgrade', 'nocolors', 'nodepcheck',
-                  'novalidation', 'buildonly']
+                  'novalidation', 'buildonly', 'aur4']
 
         commonshort = ['S', 'd', 'i', 's', 'v', 'w']
         commonlong = ['debug', 'info', 'search', 'sync']
@@ -254,8 +254,9 @@ def wrapper(source='AUTO'):
             sanityargs = [item for item in pkgnames if (item not in
                           sanitycheck)]
             DS.sudo([DS.paccommand] + pacargs + sanityargs)
-    elif (('-F' in argst) or ('--fetch' in argst) or ('--userfetch' in argst)
-          or (re.search('-[a-zA-Z]*F', ' '.join(argst)) is not None)):
+    elif (('-F' in argst) or ('--fetch' in argst) or
+          ('--userfetch' in argst) or
+          (re.search('-[a-zA-Z]*F', ' '.join(argst)) is not None)):
         # pkgbuilder -F, --fetch / --userfetch.
         main(argst)
     elif ('-h' in argst) or ('--help' in argst):

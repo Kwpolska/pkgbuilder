@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.4.0
+# PKGBUILDer v3.5.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -17,6 +17,7 @@
 
 from . import DS, _, __version__
 from pkgbuilder.exceptions import NetworkError, PBException
+import pkgbuilder.aur
 import pkgbuilder.build
 import pkgbuilder.exceptions
 import pkgbuilder.utils
@@ -66,10 +67,14 @@ def main(source='AUTO', quit=True):
             '-u', '--sysupgrade', action='count', default=False,
             dest='upgrade', help=_('upgrade installed AUR packages'))
         argopr.add_argument(
-            '-U', '--upgrade', action='store_true', default=False, dest='finst',
+            '-U', '--upgrade', action='store_true', default=False,
+            dest='finst',
             help=_('copy package files to pacman cache and install them'))
 
         argopt = parser.add_argument_group(_('options'))
+        argopt.add_argument(
+            '-4', '--aur4', action='store_true',
+            default=False, dest='aur4', help=_('use aur4.archlinux.org'))
         argopt.add_argument(
             '-c', '--clean', action='store_true',
             default=False, dest='cleanup', help=_('clean up work files after '
@@ -112,6 +117,9 @@ def main(source='AUTO', quit=True):
         DS.cleanup = args.cleanup
         pkgnames = args.pkgnames
 
+        if args.aur4:
+            pkgbuilder.aur.AUR.rpc = 'https://aur4.archlinux.org/rpc.php?v=3'
+
         if args.debug:
             DS.debugmode(nochange=True)
             DS.log.info('*** PKGBUILDer v{0}'.format(__version__))
@@ -121,7 +129,8 @@ def main(source='AUTO', quit=True):
 
         if 'VIRTUAL_ENV' in os.environ:
             DS.log.error("virtualenv detected, exiting.")
-            DS.fancy_error(_("PKGBUILDer cannot work in a virtualenv, exiting."))
+            DS.fancy_error(_("PKGBUILDer cannot work in a virtualenv, "
+                             "exiting."))
             exit(83)
 
         if not args.color:

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.4.0
+# PKGBUILDer v3.5.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -47,7 +47,7 @@ class PBDS(object):
     # TRANSLATORS: see pacman.
     wrapperinttext = _('Interrupt signal received\n')
 
-    ### STUFF NOT TO BE CHANGED BY HUMAN BEINGS.  EVER.
+    # STUFF NOT TO BE CHANGED BY HUMAN BEINGS.  EVER.
     mp1 = '=='
     mp2 = '  '
     debug = False
@@ -149,7 +149,8 @@ class PBDS(object):
     def root_crash(self):
         if self.uid == 0:
             self.log.error('running as root, crashing')
-            self.fancy_error(_('Running as root is not allowed as it can cause catastrophic damage to your system!'))
+            self.fancy_error(_('Running as root is not allowed as it can '
+                               'cause catastrophic damage to your system!'))
             self.fancy_error(_('Please restart PKGBUILDer as a regular user.'))
             sys.exit(255)
 

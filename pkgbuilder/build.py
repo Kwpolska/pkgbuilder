@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.4.0
+# PKGBUILDer v3.5.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -187,10 +187,15 @@ def auto_build(pkgname, performdepcheck=True,
         return []
 
 
-def download(urlpath, filename):
+def download(urlpath, filename, pkgname=None):
     """Download an AUR tarball to the current directory."""
     try:
-        r = requests.get('https://aur.archlinux.org' + urlpath)
+        if urlpath is not None:
+            r = requests.get('https://aur.archlinux.org' + urlpath)
+        else:
+            # AURv4 dropped URLPath
+            r = requests.get('https://aur4.archlinux.org/cgit/'
+                             'aur.git/snapshot/{0}.tar.gz'.format(pkgname))
         r.raise_for_status()
     except requests.exceptions.ConnectionError as e:
         raise pkgbuilder.exceptions.ConnectionError(str(e), e)
@@ -199,15 +204,10 @@ def download(urlpath, filename):
     except requests.exceptions.RequestException as e:
         raise pkgbuilder.exceptions.NetworkError(str(e), e)
 
-    # Sanity check.
-    if r.headers['content-length'] == '0':
-        raise pkgbuilder.exceptions.SanityError(_('0 bytes downloaded'),
-                                                source=r)
-
     f = open(filename, 'wb')
     f.write(r.content)
     f.close()
-    return r.headers['content-length']
+    return len(r.content)
 
 
 def rsync(pkg, quiet=False):
@@ -456,7 +456,7 @@ def fetch_runner(pkgnames, preprocessed=False):
             for pkg in aurpkgs:
                 pm.msg(_('retrieving {0}').format(pkg.name), True)
                 filename = pkg.name + '.tar.gz'
-                download(pkg.urlpath, filename)
+                download(pkg.urlpath, filename, pkg.name)
 
             print(':: ' + _('Extracting AUR packages...'))
             for pkg in aurpkgs:
@@ -519,7 +519,7 @@ def build_runner(pkgname, performdepcheck=True,
     else:
         filename = pkg.name + '.tar.gz'
         DS.fancy_msg(_('Downloading the tarball...'))
-        downloadbytes = download(pkg.urlpath, filename)
+        downloadbytes = download(pkg.urlpath, filename, pkg.name)
         kbytes = int(downloadbytes) / 1000
         DS.fancy_msg2(_('{0} kB downloaded').format(kbytes))
 

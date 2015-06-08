@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.4.0
+# PKGBUILDer v3.5.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -270,7 +270,8 @@ Description    : {dsc}
                                prv=mlist(pkg.provides, termwidth=termwidth),
                                dep=mlist(pkg.depends, termwidth=termwidth),
                                mkd=mlist(pkg.makedepends, termwidth=termwidth),
-                               ckd=mlist(pkg.checkdepends, termwidth=termwidth),
+                               ckd=mlist(pkg.checkdepends,
+                                         termwidth=termwidth),
                                opt=mlist(pkg.optdepends, sep='\n',
                                          change_spaces=False,
                                          termwidth=termwidth),
