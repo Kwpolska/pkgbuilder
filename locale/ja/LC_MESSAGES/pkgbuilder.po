@@ -5,9 +5,9 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.4.0\n"
+"Project-Id-Version: 3.5.0\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2015-01-01 11:49+0100\n"
+"POT-Creation-Date: 2015-06-08 17:17+0200\n"
 "PO-Revision-Date: 2014-12-26 19:51+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/pkgbuilder/"
@@ -72,10 +72,6 @@ msgstr ""
 msgid "makepkg (or someone else) failed and returned {0}."
 msgstr "makepkgなどが「{0}」で失敗したようだ。"
 
-#: pkgbuilder/build.py:204
-msgid "0 bytes downloaded"
-msgstr ""
-
 #: pkgbuilder/build.py:237
 msgid "No files extracted."
 msgstr ""
@@ -85,7 +81,7 @@ msgstr ""
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:412 pkgbuilder/main.py:211
+#: pkgbuilder/build.py:412 pkgbuilder/main.py:225
 msgid "Fetching package information..."
 msgstr ""
 
@@ -204,128 +200,136 @@ msgstr ""
 
 #. TRANSLATORS: translate the whole sentence.
 #. Alternatively, use translation instead of locale.
-#: pkgbuilder/main.py:37
+#: pkgbuilder/main.py:38
 msgid "LANG locale by AUTHOR <MAIL@IF.YOU.WANT>"
 msgstr "日本語ロカール翻訳・Colin Woodbury <colingw@gmail.com>"
 
-#: pkgbuilder/main.py:43
+#: pkgbuilder/main.py:44
 msgid "An AUR helper (and library) in Python 3."
 msgstr "Python 3で作られたAUR Helper兼ライブラリ。"
 
-#: pkgbuilder/main.py:44
+#: pkgbuilder/main.py:45
 msgid "Also accepting ABS packages."
 msgstr "ABSパッケージも対応可能。"
 
-#: pkgbuilder/main.py:47
+#: pkgbuilder/main.py:48
 msgid "show version number and quit"
 msgstr "バージョンを示して終わる"
 
-#: pkgbuilder/main.py:49
+#: pkgbuilder/main.py:50
 msgid "PACKAGE"
 msgstr "パッケージ"
 
-#: pkgbuilder/main.py:50
+#: pkgbuilder/main.py:51
 msgid "AUR/ABS packages to build"
 msgstr "作成するパッケージ"
 
-#: pkgbuilder/main.py:52
+#: pkgbuilder/main.py:53
 msgid "operations"
 msgstr "選択肢"
 
-#: pkgbuilder/main.py:55
+#: pkgbuilder/main.py:56
 msgid "fetch package files"
 msgstr ""
 
-#: pkgbuilder/main.py:58
+#: pkgbuilder/main.py:59
 msgid "USER"
 msgstr ""
 
-#: pkgbuilder/main.py:58
+#: pkgbuilder/main.py:59
 msgid "fetch all package files of an user"
 msgstr ""
 
-#: pkgbuilder/main.py:60
+#: pkgbuilder/main.py:61
 msgid "view package information"
 msgstr "パッケージ情報を見る"
 
-#: pkgbuilder/main.py:63
+#: pkgbuilder/main.py:64
 msgid "search the AUR for matching strings"
 msgstr "AURを検索"
 
-#: pkgbuilder/main.py:67
+#: pkgbuilder/main.py:68
 msgid "upgrade installed AUR packages"
 msgstr "インストール済みのAURパッケージをアップグレード"
 
-#: pkgbuilder/main.py:70
+#: pkgbuilder/main.py:72
 msgid "copy package files to pacman cache and install them"
 msgstr ""
 
-#: pkgbuilder/main.py:72
+#: pkgbuilder/main.py:74
 msgid "options"
 msgstr "副選択肢"
 
-#: pkgbuilder/main.py:75
+#: pkgbuilder/main.py:77
+msgid "use aur4.archlinux.org"
+msgstr ""
+
+#: pkgbuilder/main.py:80
 msgid "clean up work files after build"
 msgstr "作成後、作成に必要だったファイルを削除"
 
-#: pkgbuilder/main.py:79
+#: pkgbuilder/main.py:84
 msgid "don't use colors in output"
 msgstr "出力は色付きで出されない"
 
-#: pkgbuilder/main.py:82
+#: pkgbuilder/main.py:87
 msgid "display debug messages"
 msgstr "デバッグメッセージを出力"
 
-#: pkgbuilder/main.py:85
+#: pkgbuilder/main.py:90
 msgid "don't check dependencies (may break makepkg)"
 msgstr "従属パッケージ確認を行わない。作成が失敗する可能性あり。"
 
-#: pkgbuilder/main.py:89
+#: pkgbuilder/main.py:94
 msgid "upgrade all the VCS/date-versioned packages"
 msgstr "VCSパッケージを全て強制アップグレード"
 
-#: pkgbuilder/main.py:94
+#: pkgbuilder/main.py:99
 msgid "don't check if packages were installed after build"
 msgstr "作成後、パッケージ無事インストール確認を行わない"
 
-#: pkgbuilder/main.py:97
+#: pkgbuilder/main.py:102
 msgid "don't  install packages after building"
 msgstr ""
 
-#: pkgbuilder/main.py:101
+#: pkgbuilder/main.py:106
 msgid "pacman-like mode"
 msgstr "pacmanモード"
 
-#: pkgbuilder/main.py:104
+#: pkgbuilder/main.py:109
 msgid "(dummy)"
 msgstr "（本当は何もしない）"
 
-#: pkgbuilder/main.py:137
+#: pkgbuilder/main.py:132
+msgid "PKGBUILDer cannot work in a virtualenv, exiting."
+msgstr ""
+
+#: pkgbuilder/main.py:151
 #, python-brace-format
 msgid "error: package '{0}' was not found"
 msgstr ""
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
-#: pkgbuilder/main.py:153
+#: pkgbuilder/main.py:167
 msgid "Search query too short"
 msgstr ""
 
-#: pkgbuilder/main.py:154
+#: pkgbuilder/main.py:168
 msgid "Searching for exact match..."
 msgstr "完全一致を検索中・・・"
 
-#: pkgbuilder/main.py:157 INSTALL.py:64 INSTALL.py:73
+#: pkgbuilder/main.py:171
 msgid "not found"
 msgstr "見つからなかった"
 
-#: pkgbuilder/main.py:216
+#: pkgbuilder/main.py:230
 #, python-brace-format
 msgid "Error while processing {0}: {1}"
 msgstr ""
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/main.py:256
+#: pkgbuilder/main.py:270
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
@@ -341,7 +345,7 @@ msgstr "ユーザーによる強制終了！"
 msgid "Interrupt signal received\n"
 msgstr "途中切断\n"
 
-#: pkgbuilder/pbds.py:87 pkgbuilder/pbds.py:229
+#: pkgbuilder/pbds.py:87 pkgbuilder/pbds.py:230
 msgid "ERROR:"
 msgstr "エラー："
 
@@ -349,7 +353,7 @@ msgstr "エラー："
 msgid "Cannot create the configuration directory."
 msgstr "設定ディレクトリ作れなかった。"
 
-#: pkgbuilder/pbds.py:89 pkgbuilder/pbds.py:215
+#: pkgbuilder/pbds.py:89 pkgbuilder/pbds.py:216
 msgid "WARNING:"
 msgstr "警告："
 
@@ -367,65 +371,65 @@ msgid ""
 "system!"
 msgstr ""
 
-#: pkgbuilder/pbds.py:153
+#: pkgbuilder/pbds.py:154
 msgid "Please restart PKGBUILDer as a regular user."
 msgstr ""
 
-#: pkgbuilder/upgrade.py:117 pkgbuilder/upgrade.py:119
+#: pkgbuilder/upgrade.py:113 pkgbuilder/upgrade.py:115
 msgid "Synchronizing package databases..."
 msgstr "パッケージデーターベースを同期中・・・"
 
-#: pkgbuilder/upgrade.py:129 pkgbuilder/upgrade.py:131
+#: pkgbuilder/upgrade.py:125 pkgbuilder/upgrade.py:127
 msgid "Starting full system upgrade..."
 msgstr "完全アップグレードを開始・・・"
 
-#: pkgbuilder/upgrade.py:137
+#: pkgbuilder/upgrade.py:133
 #, python-brace-format
 msgid "warning: {0}: downgrading from version {1} to version {2}"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:140
+#: pkgbuilder/upgrade.py:136
 #, python-brace-format
 msgid "warning: {0}: local ({1}) is newer than aur ({2})"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:145
+#: pkgbuilder/upgrade.py:141
 #, python-brace-format
 msgid "{0}: downgrading from version {1} to version {2}"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:148
+#: pkgbuilder/upgrade.py:144
 #, python-brace-format
 msgid "{0}: local ({1}) is newer than aur ({2})"
 msgstr "{0}: ローカル「{1}」はAURの「{2}」より最新"
 
-#: pkgbuilder/upgrade.py:158 pkgbuilder/upgrade.py:160
+#: pkgbuilder/upgrade.py:154 pkgbuilder/upgrade.py:156
 msgid "there is nothing to do"
 msgstr "することがない"
 
-#: pkgbuilder/upgrade.py:176 pkgbuilder/upgrade.py:232
+#: pkgbuilder/upgrade.py:172 pkgbuilder/upgrade.py:228
 #, python-brace-format
 msgid "Targets ({0}): "
 msgstr "「{0}」の該当パッケージ："
 
-#: pkgbuilder/upgrade.py:190
+#: pkgbuilder/upgrade.py:186
 msgid "Name"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:190
+#: pkgbuilder/upgrade.py:186
 msgid "Old Version"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:190
+#: pkgbuilder/upgrade.py:186
 msgid "New Version"
 msgstr ""
 
 #. string stolen from pacman
-#: pkgbuilder/upgrade.py:213
+#: pkgbuilder/upgrade.py:209
 msgid "warning: insufficient columns available for table display"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:230 pkgbuilder/upgrade.py:236
+#: pkgbuilder/upgrade.py:226 pkgbuilder/upgrade.py:232
 msgid "Proceed with installation? [Y/n] "
 msgstr "続行？ [Y/n]"
 
@@ -496,7 +500,7 @@ msgid "%(prog)s <operation> [...]"
 msgstr "%(prog)s <選択肢> [...]"
 
 #. TRANSLATORS: see pacman’s localizations
-#: pkgbuilder/wrapper.py:268
+#: pkgbuilder/wrapper.py:269
 #, python-brace-format
 msgid ""
 "usage:  {0} <operation> [...]\n"
@@ -510,99 +514,6 @@ msgid ""
 "\n"
 "Additional options:\n"
 "  -L, --unlock         unlock the pacman database"
-msgstr ""
-
-#: INSTALL.py:53
-msgid "Performing a dependency check..."
-msgstr "従属パッケージ確認中・・・"
-
-#: INSTALL.py:61 INSTALL.py:70
-msgid "found"
-msgstr "発見"
-
-#: INSTALL.py:90
-msgid "Cannot run as root.  Aborting."
-msgstr ""
-
-#: INSTALL.py:95
-#, python-brace-format
-msgid ""
-"\n"
-"\n"
-"Something went wrong.  Please read makepkg's output and try again.\n"
-"You can also try to debug the work of this script yourself.\n"
-"All the files this script was working on are placed in\n"
-"    {0}\n"
-"(the number is random).\n"
-"\n"
-"If I am wrong, though, congratulations!\n"
-msgstr ""
-
-#: INSTALL.py:113
-msgid ""
-"Hello!\n"
-"\n"
-"PKGBUILDer is now available as an AUR package.  It is the suggested\n"
-"way of installing PKGBUILDer.  This script will download the AUR\n"
-"package and install it.  If you will have problems, please download\n"
-"and compile the package manually.\n"
-"\n"
-msgstr ""
-"こんにちは！\n"
-"\n"
-"PKGBUILDerはAURパッケージとしても提供されている。AURを通して\n"
-"PKGBUILDerをインストールすることを薦める。このスクリプトはAURパッケージを\n"
-"ダウンロードしてインストールしてくれる。何か問題があったら、\n"
-"自分でコードをダウンロードしてコンパイルして見て下さい。\n"
-"\n"
-
-#: INSTALL.py:122
-msgid "Hit Enter/Return to continue. "
-msgstr "EnterやReturnを押して続行。"
-
-#: INSTALL.py:134
-msgid "Installing missing AUR dependencies..."
-msgstr "必要な従属AURパッケージをインストール・・・"
-
-#: INSTALL.py:141
-#, python-brace-format
-msgid ""
-"\n"
-"\n"
-"Read the above output.  If the script had any problems, run it\n"
-"again.  You can also try to debug the work of this script yourself.\n"
-"All the files this script was working on are placed in\n"
-"    {0}\n"
-"(the number is random).\n"
-"\n"
-"If everything went fine, though, congratulations!  You can now use\n"
-"PKGBUILDer.  For standalone usage, type `pkgbuilder` into the prompt\n"
-"(zsh users: hash -r, other shells may need another command).  For\n"
-"python module usage, type `import pkgbuilder` into the python prompt.\n"
-msgstr ""
-
-#: INSTALL.py:157
-msgid ""
-"It looks like you want to quit.  Okay then, goodbye.\n"
-"No work has been started yet.\n"
-"\n"
-"If that's what you want to do, go for it.  If it isn't, run this\n"
-"script again."
-msgstr ""
-"終わりたいようだな。じゃあ、さようなら。\n"
-"まだ何もしていないので。\n"
-"本当に終わりたいなら止めない。違ったら再度このスクリプトを実行！"
-
-#: INSTALL.py:163
-#, python-brace-format
-msgid ""
-"It looks like you want to quit.  Okay then, goodbye.\n"
-"All the files this script was working on are placed in\n"
-"    {0}\n"
-"(the number is random).\n"
-"\n"
-"If that's what you want to do, go for it.  If it isn't, run this\n"
-"script again."
 msgstr ""
 
 #. A module only for gettext locale provision.
@@ -621,3 +532,44 @@ msgstr "副選択肢"
 #: localeprovider.py:5
 msgid "show this help message and exit"
 msgstr "このメッセージを出力して終わる"
+
+#~ msgid "Performing a dependency check..."
+#~ msgstr "従属パッケージ確認中・・・"
+
+#~ msgid "found"
+#~ msgstr "発見"
+
+#~ msgid ""
+#~ "Hello!\n"
+#~ "\n"
+#~ "PKGBUILDer is now available as an AUR package.  It is the suggested\n"
+#~ "way of installing PKGBUILDer.  This script will download the AUR\n"
+#~ "package and install it.  If you will have problems, please download\n"
+#~ "and compile the package manually.\n"
+#~ "\n"
+#~ msgstr ""
+#~ "こんにちは！\n"
+#~ "\n"
+#~ "PKGBUILDerはAURパッケージとしても提供されている。AURを通して\n"
+#~ "PKGBUILDerをインストールすることを薦める。このスクリプトはAURパッケージ"
+#~ "を\n"
+#~ "ダウンロードしてインストールしてくれる。何か問題があったら、\n"
+#~ "自分でコードをダウンロードしてコンパイルして見て下さい。\n"
+#~ "\n"
+
+#~ msgid "Hit Enter/Return to continue. "
+#~ msgstr "EnterやReturnを押して続行。"
+
+#~ msgid "Installing missing AUR dependencies..."
+#~ msgstr "必要な従属AURパッケージをインストール・・・"
+
+#~ msgid ""
+#~ "It looks like you want to quit.  Okay then, goodbye.\n"
+#~ "No work has been started yet.\n"
+#~ "\n"
+#~ "If that's what you want to do, go for it.  If it isn't, run this\n"
+#~ "script again."
+#~ msgstr ""
+#~ "終わりたいようだな。じゃあ、さようなら。\n"
+#~ "まだ何もしていないので。\n"
+#~ "本当に終わりたいなら止めない。違ったら再度このスクリプトを実行！"

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.4.0
+# PKGBUILDer v3.5.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -50,7 +50,7 @@ class AUR(object):
     """
 
     rpc = 'https://aur.archlinux.org/rpc.php?v=3'
-    emptystr = '{"version":2,"type":"%s","resultcount":0,"results":[]}'
+    emptystr = '{"version":3,"type":"%s","resultcount":0,"results":[]}'
     ua = 'PKGBUILDer/' + pkgbuilder.__version__
 
     def jsonreq(self, rtype, arg):
@@ -60,10 +60,11 @@ class AUR(object):
             return self.emptystr % rtype
 
         try:
-            req = requests.get(self.rpc, params={'type': rtype, 'arg': arg}, headers={'User-Agent': self.ua})
+            req = requests.get(self.rpc, params={'type': rtype, 'arg': arg},
+                               headers={'User-Agent': self.ua})
             req.raise_for_status()
         except requests.exceptions.ConnectionError as e:
-            raise ConnectionError(e.args[0].reason, e)
+            raise ConnectionError(e.args[0].args[0], e)
         except requests.exceptions.HTTPError as e:
             raise HTTPError(req, e)
         except requests.exceptions.RequestException as e:
@@ -78,11 +79,12 @@ class AUR(object):
             return self.emptystr % 'multiinfo'
 
         try:
-            req = requests.get(self.rpc, params={'type': 'multiinfo', 'arg[]':
-                                                 args}, headers={'User-Agent': self.ua})
+            req = requests.get(self.rpc,
+                               params={'type': 'multiinfo', 'arg[]': args},
+                               headers={'User-Agent': self.ua})
             req.raise_for_status()
         except requests.exceptions.ConnectionError as e:
-            raise ConnectionError(e.args[0].reason, e)
+            raise ConnectionError(e.args[0].args[0], e)
         except requests.exceptions.HTTPError as e:
             raise HTTPError(req, e)
         except requests.exceptions.RequestException as e:

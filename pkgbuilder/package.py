@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.4.0
+# PKGBUILDer v3.5.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -99,7 +99,6 @@ class AURPackage(Package):
                     'Name': 'name',
                     'NumVotes': 'votes',
                     'URL': 'url',
-                    'URLPath': 'urlpath',
                     'Version': 'version',
                     'PackageBase': 'packagebase',
                     'PackageBaseID': 'packagebaseid',
@@ -113,7 +112,7 @@ class AURPackage(Package):
                     'Groups': 'groups',
                     'License': 'licenses',
                     }
-        ignore = ['OutOfDate', 'FirstSubmitted', 'LastModified']
+        ignore = ['OutOfDate', 'FirstSubmitted', 'LastModified', 'URLPath']
 
         p = cls()
         for k, v in aurdict.items():
@@ -133,6 +132,9 @@ class AURPackage(Package):
             p.outdated_since = None
         p.added = mktime(aurdict['FirstSubmitted'])
         p.modified = mktime(aurdict['LastModified'])
+
+        # AURv4 dropped URLPath
+        p.urlpath = aurdict.get('URLPath', None)
 
         return p
 

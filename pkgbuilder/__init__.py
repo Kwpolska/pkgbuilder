@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.4.0
+# PKGBUILDer v3.5.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # All rights reserved.
@@ -43,22 +43,23 @@
     :License: BSD (see /LICENSE).
 """
 
+import gettext
+import datetime
+import sys
+
+
 __title__ = 'PKGBUILDer'
-__version__ = '3.4.0'
+__version__ = '3.5.0'
 __author__ = 'Chris Warrick'
 __license__ = '3-clause BSD'
 __docformat__ = 'restructuredtext en'
 __all__ = ['_', 'DS', 'UTC']
 
-import gettext
-import datetime
-import sys
-
 G = gettext.translation('pkgbuilder', sys.prefix + '/share/locale',
                         fallback='C')
 _ = G.gettext
 
-from .pbds import PBDS
+from .pbds import PBDS  # NOQA
 DS = PBDS()
 
 

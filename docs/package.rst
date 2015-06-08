@@ -5,8 +5,8 @@ package module (Package, AURPackage, ABSPackage classes)
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2015, Chris Warrick.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2015-01-01
-:Version: 3.4.0
+:Date: 2015-06-08
+:Version: 3.5.0
 
 .. index:: Package
 .. index:: AURPackage
@@ -65,7 +65,7 @@ This class contains all the attributes of :class:`Package`, ``is_abs = False`` a
 +-------------------+--------+---------+---------------------------------------------------------------------------------------------+
 | votes             | int    | None    | Count of AUR votes.                                                                         |
 +-------------------+--------+---------+---------------------------------------------------------------------------------------------+
-| urlpath           | str    | None    | The URL of the tarball, sans ``https://aur.archlinux.org``.                                 |
+| urlpath           | str    | None    | The URL of the tarball, sans ``https://aur.archlinux.org``. Not used in AURv4.              |
 +-------------------+--------+---------+---------------------------------------------------------------------------------------------+
 | _category_id      | int    | None    | AUR Category ID, not supposed to be used by most people (hence the underscore).             |
 +-------------------+--------+---------+---------------------------------------------------------------------------------------------+
