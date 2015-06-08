@@ -50,6 +50,12 @@ Version History
 Generation 3
 ------------
 
+3.5.0
+    AURv4 compatibility and minor bugfixes.
+
+3.4.0
+    Pacman v4.2.0 compatibility.
+
 3.3.2
     Various minor fixes.
 
