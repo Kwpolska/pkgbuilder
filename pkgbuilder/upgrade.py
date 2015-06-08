@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.4.0
+# PKGBUILDer v3.5.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -16,14 +16,10 @@
 """
 
 from . import DS, _
-from pkgbuilder.exceptions import SanityError
 import pkgbuilder.build
 import pkgbuilder.utils
 import pyalpm
 import datetime
-import subprocess
-import textwrap
-import sys
 
 __all__ = ['gather_foreign_pkgs', 'list_upgradable', 'auto_upgrade']
 
@@ -223,8 +219,8 @@ def auto_upgrade(downgrade=False, vcsup=False):
             # Not using else because there is a fallback if the terminal
             # is too small.
             if not verbosepkglists:
-                print(pkgbuilder.utils.hanging_indent('  '.join(upgstrings),
-                                                      targetstring, termwidth, True))
+                print(pkgbuilder.utils.hanging_indent(
+                    '  '.join(upgstrings), targetstring, termwidth, True))
 
             print()
             query = ':: ' + _('Proceed with installation? [Y/n] ')

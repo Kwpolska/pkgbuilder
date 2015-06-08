@@ -8,9 +8,9 @@
 # Anh Phan <vietnamesel10n@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.4.0\n"
+"Project-Id-Version: 3.5.0\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2015-01-01 11:49+0100\n"
+"POT-Creation-Date: 2015-06-08 17:17+0200\n"
 "PO-Revision-Date: 2014-12-26 19:51+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/projects/p/pkgbuilder/"
@@ -75,10 +75,6 @@ msgstr "đã tìm thấy gói cài đặt hiện đang tồn tại cho {0}"
 msgid "makepkg (or someone else) failed and returned {0}."
 msgstr "makepkg (hoặc đối tượng nào đó) đã thất bại và trả về {0}."
 
-#: pkgbuilder/build.py:204
-msgid "0 bytes downloaded"
-msgstr "0 byte đã tải về"
-
 #: pkgbuilder/build.py:237
 msgid "No files extracted."
 msgstr "Vẫn chưa giải nén tập tin nào."
@@ -89,7 +85,7 @@ msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr ""
 "Thất bại trong việc điền vào các yêu cầu về sự phụ thuộc của gói tin: {0}"
 
-#: pkgbuilder/build.py:412 pkgbuilder/main.py:211
+#: pkgbuilder/build.py:412 pkgbuilder/main.py:225
 msgid "Fetching package information..."
 msgstr "Đang tải về thông tin của gói cài đặt..."
 
@@ -208,128 +204,136 @@ msgstr "Lỗi nghiêm trọng!  {0} (thông qua {1})"
 
 #. TRANSLATORS: translate the whole sentence.
 #. Alternatively, use translation instead of locale.
-#: pkgbuilder/main.py:37
+#: pkgbuilder/main.py:38
 msgid "LANG locale by AUTHOR <MAIL@IF.YOU.WANT>"
 msgstr "Được chuyển ngữ bởi tác giả <MAIL@IF.YOU.WANT>"
 
-#: pkgbuilder/main.py:43
+#: pkgbuilder/main.py:44
 msgid "An AUR helper (and library) in Python 3."
 msgstr "Tập tin trợ giúp AUR (và thư viện) ở định dạng Pythong 3"
 
-#: pkgbuilder/main.py:44
+#: pkgbuilder/main.py:45
 msgid "Also accepting ABS packages."
 msgstr "Chấp nhaạn gói cài đặt ABS."
 
-#: pkgbuilder/main.py:47
+#: pkgbuilder/main.py:48
 msgid "show version number and quit"
 msgstr "hiển thị số phiên bản và thoát"
 
-#: pkgbuilder/main.py:49
+#: pkgbuilder/main.py:50
 msgid "PACKAGE"
 msgstr "GÓI CÀI ĐẶT"
 
-#: pkgbuilder/main.py:50
+#: pkgbuilder/main.py:51
 msgid "AUR/ABS packages to build"
 msgstr "Gói cài đặt AUR/ABS để xây dựng"
 
-#: pkgbuilder/main.py:52
+#: pkgbuilder/main.py:53
 msgid "operations"
 msgstr "tiến trình"
 
-#: pkgbuilder/main.py:55
+#: pkgbuilder/main.py:56
 msgid "fetch package files"
 msgstr "tải các tập tin gói cài đặt"
 
-#: pkgbuilder/main.py:58
+#: pkgbuilder/main.py:59
 msgid "USER"
 msgstr ""
 
-#: pkgbuilder/main.py:58
+#: pkgbuilder/main.py:59
 msgid "fetch all package files of an user"
 msgstr ""
 
-#: pkgbuilder/main.py:60
+#: pkgbuilder/main.py:61
 msgid "view package information"
 msgstr "xem thông tin gói cài đặt"
 
-#: pkgbuilder/main.py:63
+#: pkgbuilder/main.py:64
 msgid "search the AUR for matching strings"
 msgstr "tìm kiếm các chuỗi khớp với AUR"
 
-#: pkgbuilder/main.py:67
+#: pkgbuilder/main.py:68
 msgid "upgrade installed AUR packages"
 msgstr "nâng cấp các gói cài đặt AUR đã cài"
 
-#: pkgbuilder/main.py:70
+#: pkgbuilder/main.py:72
 msgid "copy package files to pacman cache and install them"
 msgstr ""
 
-#: pkgbuilder/main.py:72
+#: pkgbuilder/main.py:74
 msgid "options"
 msgstr "tùy chọn"
 
-#: pkgbuilder/main.py:75
+#: pkgbuilder/main.py:77
+msgid "use aur4.archlinux.org"
+msgstr ""
+
+#: pkgbuilder/main.py:80
 msgid "clean up work files after build"
 msgstr "xóa các tập tin sau khi đã xây dựng xong"
 
-#: pkgbuilder/main.py:79
+#: pkgbuilder/main.py:84
 msgid "don't use colors in output"
 msgstr "không sử dụng chế độ hiển thị màu với dữ liệu xuất ra"
 
-#: pkgbuilder/main.py:82
+#: pkgbuilder/main.py:87
 msgid "display debug messages"
 msgstr "hiển thị thông tin gỡ rối"
 
-#: pkgbuilder/main.py:85
+#: pkgbuilder/main.py:90
 msgid "don't check dependencies (may break makepkg)"
 msgstr "không kiểm tra tính độc lập (có thể phá bỏ makepkg)"
 
-#: pkgbuilder/main.py:89
+#: pkgbuilder/main.py:94
 msgid "upgrade all the VCS/date-versioned packages"
 msgstr "nâng cấp tất cả các gói cài đặt VCS/date-versioned"
 
-#: pkgbuilder/main.py:94
+#: pkgbuilder/main.py:99
 msgid "don't check if packages were installed after build"
 msgstr "không kiểm tra nếu gói cài đặt được cài đặt sau khi xây dựng"
 
-#: pkgbuilder/main.py:97
+#: pkgbuilder/main.py:102
 msgid "don't  install packages after building"
 msgstr ""
 
-#: pkgbuilder/main.py:101
+#: pkgbuilder/main.py:106
 msgid "pacman-like mode"
 msgstr "chế độ pacman-like"
 
-#: pkgbuilder/main.py:104
+#: pkgbuilder/main.py:109
 msgid "(dummy)"
 msgstr "(dummy)"
 
-#: pkgbuilder/main.py:137
+#: pkgbuilder/main.py:132
+msgid "PKGBUILDer cannot work in a virtualenv, exiting."
+msgstr ""
+
+#: pkgbuilder/main.py:151
 #, python-brace-format
 msgid "error: package '{0}' was not found"
 msgstr ""
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
-#: pkgbuilder/main.py:153
+#: pkgbuilder/main.py:167
 msgid "Search query too short"
 msgstr "Truy vấn tìm kiếm quá ngắn"
 
-#: pkgbuilder/main.py:154
+#: pkgbuilder/main.py:168
 msgid "Searching for exact match..."
 msgstr "Đang tìm kiếm dữ liệu khớp..."
 
-#: pkgbuilder/main.py:157 INSTALL.py:64 INSTALL.py:73
+#: pkgbuilder/main.py:171
 msgid "not found"
 msgstr "không tìm thấy"
 
-#: pkgbuilder/main.py:216
+#: pkgbuilder/main.py:230
 #, python-brace-format
 msgid "Error while processing {0}: {1}"
 msgstr ""
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/main.py:256
+#: pkgbuilder/main.py:270
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
@@ -347,7 +351,7 @@ msgstr "Được hủy bởi người dùng! Đang thoát..."
 msgid "Interrupt signal received\n"
 msgstr "Đã nhận tín hiệu ngắt\n"
 
-#: pkgbuilder/pbds.py:87 pkgbuilder/pbds.py:229
+#: pkgbuilder/pbds.py:87 pkgbuilder/pbds.py:230
 msgid "ERROR:"
 msgstr "LỖI:"
 
@@ -355,7 +359,7 @@ msgstr "LỖI:"
 msgid "Cannot create the configuration directory."
 msgstr "Không thể tạo thư mục cấu hình."
 
-#: pkgbuilder/pbds.py:89 pkgbuilder/pbds.py:215
+#: pkgbuilder/pbds.py:89 pkgbuilder/pbds.py:216
 msgid "WARNING:"
 msgstr "CẢNH BÁO:"
 
@@ -373,65 +377,65 @@ msgid ""
 "system!"
 msgstr ""
 
-#: pkgbuilder/pbds.py:153
+#: pkgbuilder/pbds.py:154
 msgid "Please restart PKGBUILDer as a regular user."
 msgstr ""
 
-#: pkgbuilder/upgrade.py:117 pkgbuilder/upgrade.py:119
+#: pkgbuilder/upgrade.py:113 pkgbuilder/upgrade.py:115
 msgid "Synchronizing package databases..."
 msgstr "Đang đồng bộ hóa cơ sở dữ liệu gói cài đặt..."
 
-#: pkgbuilder/upgrade.py:129 pkgbuilder/upgrade.py:131
+#: pkgbuilder/upgrade.py:125 pkgbuilder/upgrade.py:127
 msgid "Starting full system upgrade..."
 msgstr "Đang bắt đầu cập nhật toàn bộ hệ thống..."
 
-#: pkgbuilder/upgrade.py:137
+#: pkgbuilder/upgrade.py:133
 #, python-brace-format
 msgid "warning: {0}: downgrading from version {1} to version {2}"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:140
+#: pkgbuilder/upgrade.py:136
 #, python-brace-format
 msgid "warning: {0}: local ({1}) is newer than aur ({2})"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:145
+#: pkgbuilder/upgrade.py:141
 #, python-brace-format
 msgid "{0}: downgrading from version {1} to version {2}"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:148
+#: pkgbuilder/upgrade.py:144
 #, python-brace-format
 msgid "{0}: local ({1}) is newer than aur ({2})"
 msgstr "{0}: hiện tại ({1}) mới hơn aur ({2})"
 
-#: pkgbuilder/upgrade.py:158 pkgbuilder/upgrade.py:160
+#: pkgbuilder/upgrade.py:154 pkgbuilder/upgrade.py:156
 msgid "there is nothing to do"
 msgstr "không có thao tác nào được thực hiện"
 
-#: pkgbuilder/upgrade.py:176 pkgbuilder/upgrade.py:232
+#: pkgbuilder/upgrade.py:172 pkgbuilder/upgrade.py:228
 #, python-brace-format
 msgid "Targets ({0}): "
 msgstr "Mục tiêu ({0}): "
 
-#: pkgbuilder/upgrade.py:190
+#: pkgbuilder/upgrade.py:186
 msgid "Name"
 msgstr "Tên"
 
-#: pkgbuilder/upgrade.py:190
+#: pkgbuilder/upgrade.py:186
 msgid "Old Version"
 msgstr "Phiên bản cũ"
 
-#: pkgbuilder/upgrade.py:190
+#: pkgbuilder/upgrade.py:186
 msgid "New Version"
 msgstr "Phiên bản mới"
 
 #. string stolen from pacman
-#: pkgbuilder/upgrade.py:213
+#: pkgbuilder/upgrade.py:209
 msgid "warning: insufficient columns available for table display"
 msgstr "cảnh báo: các cột hiển thị cho thông tin về bảng dữ liệu hiện bị lỗi"
 
-#: pkgbuilder/upgrade.py:230 pkgbuilder/upgrade.py:236
+#: pkgbuilder/upgrade.py:226 pkgbuilder/upgrade.py:232
 msgid "Proceed with installation? [Y/n] "
 msgstr "Tiếp tục cài đặt? [Y/n]"
 
@@ -502,7 +506,7 @@ msgid "%(prog)s <operation> [...]"
 msgstr "%(prog)s <operation> [...]"
 
 #. TRANSLATORS: see pacman’s localizations
-#: pkgbuilder/wrapper.py:268
+#: pkgbuilder/wrapper.py:269
 #, python-brace-format
 msgid ""
 "usage:  {0} <operation> [...]\n"
@@ -530,135 +534,6 @@ msgstr ""
 "Tùy chọn bổ sung:\n"
 "  -L, --unlock         mở khóa phần cơ sở dữ liệu của pacman"
 
-#: INSTALL.py:53
-msgid "Performing a dependency check..."
-msgstr "Đang thực hiện việc kiểm tra độc lập..."
-
-#: INSTALL.py:61 INSTALL.py:70
-msgid "found"
-msgstr "đã tìm thấy"
-
-#: INSTALL.py:90
-msgid "Cannot run as root.  Aborting."
-msgstr ""
-
-#: INSTALL.py:95
-#, python-brace-format
-msgid ""
-"\n"
-"\n"
-"Something went wrong.  Please read makepkg's output and try again.\n"
-"You can also try to debug the work of this script yourself.\n"
-"All the files this script was working on are placed in\n"
-"    {0}\n"
-"(the number is random).\n"
-"\n"
-"If I am wrong, though, congratulations!\n"
-msgstr ""
-"\n"
-"\n"
-"Đã xảy ra lỗi.  Vùi lòng đọc dữ liệu xuất ra của makepkg và thử lại lần "
-"nữa.\n"
-"Bạn cũng có thể tự mình sửa các gỡ rối dựa vào đoạn mã lênh này theo ý bạn.\n"
-"Tất cả các tập tin mà đoạn mã lệnh này tác động tới được đặt ở\n"
-"    {0}\n"
-"(con số này là ngẫu nhiên).\n"
-"\n"
-"Nếu như lỗi này thuộc về nhà phát triển, bạn hãy liên hệ với chúng tôi!\n"
-
-#: INSTALL.py:113
-msgid ""
-"Hello!\n"
-"\n"
-"PKGBUILDer is now available as an AUR package.  It is the suggested\n"
-"way of installing PKGBUILDer.  This script will download the AUR\n"
-"package and install it.  If you will have problems, please download\n"
-"and compile the package manually.\n"
-"\n"
-msgstr ""
-"Xin chào!\n"
-"\n"
-"PKGBUILDer hiện là gói cài đặt AUR. Đây hiện là cách cài đặt\n"
-"được khuyên dùng đối với PKGBUILDer.  Phần mã lệnh này sẽ tải về gói tin "
-"AUR\n"
-"và tiến hành cài đặt.  Nếu gặp phải trục trặc, xin vui lòng tải về\n"
-"và biên dịch các gói tin một cách tuần tự.\n"
-"\n"
-
-#: INSTALL.py:122
-msgid "Hit Enter/Return to continue. "
-msgstr "Ấn Enter/Return để tiếp tục."
-
-#: INSTALL.py:134
-msgid "Installing missing AUR dependencies..."
-msgstr "Đang cài đặt các phần AUR độc lập còn thiếu..."
-
-#: INSTALL.py:141
-#, python-brace-format
-msgid ""
-"\n"
-"\n"
-"Read the above output.  If the script had any problems, run it\n"
-"again.  You can also try to debug the work of this script yourself.\n"
-"All the files this script was working on are placed in\n"
-"    {0}\n"
-"(the number is random).\n"
-"\n"
-"If everything went fine, though, congratulations!  You can now use\n"
-"PKGBUILDer.  For standalone usage, type `pkgbuilder` into the prompt\n"
-"(zsh users: hash -r, other shells may need another command).  For\n"
-"python module usage, type `import pkgbuilder` into the python prompt.\n"
-msgstr ""
-"\n"
-"\n"
-"Đọc phần dữ liệu được xuất ra bên trên.  Nếu các đoạn mã lệnh gặp vấn đề, "
-"hãy chạy lại các đoạn mã lệnh này một lần nữa.  Bạn cũng có thể tự mình sửa "
-"phần gỡ rối này.\n"
-"Tất cả các tập tin mà đoạn mã lệnh này tác động tới được đặt ở\n"
-"    {0}\n"
-"(con số này là ngẫu nhiên).\n"
-"\n"
-"INếu như lỗi này thuộc về nhà phát triển, bạn hãy liên hệ với chúng tôi!  "
-"Bạn hiện giờ đã có thể sử dụng\n"
-"PKGBUILDer.  Đối với kiểu dùng theo dạng tập tin tự chay, gõ `pkgbuilder` "
-"vào trong cửa sổ mã lệnh\n"
-"(người dùng zsh: hash -r, các shell khác sẽ cần thêm một dòng lệnh nữa).  "
-"Đối với cách sử dụng module Python, gõ `import pkgbuilder` vào trong cửa sổ "
-"mã lệnh của python.\n"
-
-#: INSTALL.py:157
-msgid ""
-"It looks like you want to quit.  Okay then, goodbye.\n"
-"No work has been started yet.\n"
-"\n"
-"If that's what you want to do, go for it.  If it isn't, run this\n"
-"script again."
-msgstr ""
-"Có vẻ như bạn muốn thoát. Nếu thế thì, chào tạm biệt.\n"
-"Hiện các công việc vẫn chưa được thực hiện.\n"
-"\n"
-"Nếu đây là điều bạn muốn, xin cứ tiếp tục. Nếu không phải, hãy thực thi\n"
-"đoạn mã lệnh này lần nữa."
-
-#: INSTALL.py:163
-#, python-brace-format
-msgid ""
-"It looks like you want to quit.  Okay then, goodbye.\n"
-"All the files this script was working on are placed in\n"
-"    {0}\n"
-"(the number is random).\n"
-"\n"
-"If that's what you want to do, go for it.  If it isn't, run this\n"
-"script again."
-msgstr ""
-"Có vẻ như bạn đang muốn thoát.  Nếu vậy, xin chào tạm biệt.\n"
-"Tất cả các tập tin mà đoạn mã lệnh này tác động tới được đặt ở\n"
-"    {0}\n"
-"(con số này là ngẫu nhiên).\n"
-"\n"
-"Nếu đó là điều bạn muốn thao tác, cứ tiếp tục.  Nếu không phải, chạy lại\n"
-"đoạn mã này một lần nữa."
-
 #. A module only for gettext locale provision.
 #: localeprovider.py:2
 msgid "usage"
@@ -675,3 +550,120 @@ msgstr "tùy chọn đối số"
 #: localeprovider.py:5
 msgid "show this help message and exit"
 msgstr "hiển thị thông điệp trợ giúp và thoát"
+
+#~ msgid "0 bytes downloaded"
+#~ msgstr "0 byte đã tải về"
+
+#~ msgid "Performing a dependency check..."
+#~ msgstr "Đang thực hiện việc kiểm tra độc lập..."
+
+#~ msgid "found"
+#~ msgstr "đã tìm thấy"
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Something went wrong.  Please read makepkg's output and try again.\n"
+#~ "You can also try to debug the work of this script yourself.\n"
+#~ "All the files this script was working on are placed in\n"
+#~ "    {0}\n"
+#~ "(the number is random).\n"
+#~ "\n"
+#~ "If I am wrong, though, congratulations!\n"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "Đã xảy ra lỗi.  Vùi lòng đọc dữ liệu xuất ra của makepkg và thử lại lần "
+#~ "nữa.\n"
+#~ "Bạn cũng có thể tự mình sửa các gỡ rối dựa vào đoạn mã lênh này theo ý "
+#~ "bạn.\n"
+#~ "Tất cả các tập tin mà đoạn mã lệnh này tác động tới được đặt ở\n"
+#~ "    {0}\n"
+#~ "(con số này là ngẫu nhiên).\n"
+#~ "\n"
+#~ "Nếu như lỗi này thuộc về nhà phát triển, bạn hãy liên hệ với chúng tôi!\n"
+
+#~ msgid ""
+#~ "Hello!\n"
+#~ "\n"
+#~ "PKGBUILDer is now available as an AUR package.  It is the suggested\n"
+#~ "way of installing PKGBUILDer.  This script will download the AUR\n"
+#~ "package and install it.  If you will have problems, please download\n"
+#~ "and compile the package manually.\n"
+#~ "\n"
+#~ msgstr ""
+#~ "Xin chào!\n"
+#~ "\n"
+#~ "PKGBUILDer hiện là gói cài đặt AUR. Đây hiện là cách cài đặt\n"
+#~ "được khuyên dùng đối với PKGBUILDer.  Phần mã lệnh này sẽ tải về gói tin "
+#~ "AUR\n"
+#~ "và tiến hành cài đặt.  Nếu gặp phải trục trặc, xin vui lòng tải về\n"
+#~ "và biên dịch các gói tin một cách tuần tự.\n"
+#~ "\n"
+
+#~ msgid "Hit Enter/Return to continue. "
+#~ msgstr "Ấn Enter/Return để tiếp tục."
+
+#~ msgid "Installing missing AUR dependencies..."
+#~ msgstr "Đang cài đặt các phần AUR độc lập còn thiếu..."
+
+#~ msgid ""
+#~ "\n"
+#~ "\n"
+#~ "Read the above output.  If the script had any problems, run it\n"
+#~ "again.  You can also try to debug the work of this script yourself.\n"
+#~ "All the files this script was working on are placed in\n"
+#~ "    {0}\n"
+#~ "(the number is random).\n"
+#~ "\n"
+#~ "If everything went fine, though, congratulations!  You can now use\n"
+#~ "PKGBUILDer.  For standalone usage, type `pkgbuilder` into the prompt\n"
+#~ "(zsh users: hash -r, other shells may need another command).  For\n"
+#~ "python module usage, type `import pkgbuilder` into the python prompt.\n"
+#~ msgstr ""
+#~ "\n"
+#~ "\n"
+#~ "Đọc phần dữ liệu được xuất ra bên trên.  Nếu các đoạn mã lệnh gặp vấn đề, "
+#~ "hãy chạy lại các đoạn mã lệnh này một lần nữa.  Bạn cũng có thể tự mình "
+#~ "sửa phần gỡ rối này.\n"
+#~ "Tất cả các tập tin mà đoạn mã lệnh này tác động tới được đặt ở\n"
+#~ "    {0}\n"
+#~ "(con số này là ngẫu nhiên).\n"
+#~ "\n"
+#~ "INếu như lỗi này thuộc về nhà phát triển, bạn hãy liên hệ với chúng tôi!  "
+#~ "Bạn hiện giờ đã có thể sử dụng\n"
+#~ "PKGBUILDer.  Đối với kiểu dùng theo dạng tập tin tự chay, gõ `pkgbuilder` "
+#~ "vào trong cửa sổ mã lệnh\n"
+#~ "(người dùng zsh: hash -r, các shell khác sẽ cần thêm một dòng lệnh nữa).  "
+#~ "Đối với cách sử dụng module Python, gõ `import pkgbuilder` vào trong cửa "
+#~ "sổ mã lệnh của python.\n"
+
+#~ msgid ""
+#~ "It looks like you want to quit.  Okay then, goodbye.\n"
+#~ "No work has been started yet.\n"
+#~ "\n"
+#~ "If that's what you want to do, go for it.  If it isn't, run this\n"
+#~ "script again."
+#~ msgstr ""
+#~ "Có vẻ như bạn muốn thoát. Nếu thế thì, chào tạm biệt.\n"
+#~ "Hiện các công việc vẫn chưa được thực hiện.\n"
+#~ "\n"
+#~ "Nếu đây là điều bạn muốn, xin cứ tiếp tục. Nếu không phải, hãy thực thi\n"
+#~ "đoạn mã lệnh này lần nữa."
+
+#~ msgid ""
+#~ "It looks like you want to quit.  Okay then, goodbye.\n"
+#~ "All the files this script was working on are placed in\n"
+#~ "    {0}\n"
+#~ "(the number is random).\n"
+#~ "\n"
+#~ "If that's what you want to do, go for it.  If it isn't, run this\n"
+#~ "script again."
+#~ msgstr ""
+#~ "Có vẻ như bạn đang muốn thoát.  Nếu vậy, xin chào tạm biệt.\n"
+#~ "Tất cả các tập tin mà đoạn mã lệnh này tác động tới được đặt ở\n"
+#~ "    {0}\n"
+#~ "(con số này là ngẫu nhiên).\n"
+#~ "\n"
+#~ "Nếu đó là điều bạn muốn thao tác, cứ tiếp tục.  Nếu không phải, chạy lại\n"
+#~ "đoạn mã này một lần nữa."
