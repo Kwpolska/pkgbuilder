@@ -24,6 +24,7 @@ import pkgbuilder.utils
 import sys
 import os
 import pyalpm
+import srcinfo.parse
 import requests
 import requests.exceptions
 import re
@@ -237,50 +238,35 @@ def extract(filename):
                                                 names)
 
 
-def prepare_deps(pkgbuild_path):
-    """Get (make)depends from a PKGBUILD and returns them."""
-    # Back in the day, there was a comment praising replacing pyparsing
-    # with shell magic.  It claimed that we will have no fuckups ever.
-    # OF COURSE WE DID.  SPLIT PACKAGES.  PKGBUILDer crashed when it
-    # encountered one. Here comes the output from sh:
-    #
-    # PKGBUILD: line XX: `package_package-name': not a valid identifier
-    #
-    # shell=True with subprocess.check_output() uses /bin/sh, which is more
-    # strict than /bin/bash used by makepkg.
-    #
-    # So, I replaced it by a call to /usr/bin/bash (which is equivalent
-    # to /bin/bash on Arch Linux).
-    #
-    # And if the PKGBUILD is malicious, we speed up the destroying of the user
-    # system by about 10 seconds, so it makes no sense not to do this.
-    # Moreover, it takes only 7 lines instead of about 40 in the pyparsing
-    # implementation.
-    #
-    # PS. I am amazed that `bash -c` ignores !events.  That saved me one
-    # replace.  I am also amazed that it ignored \a and \n.
-    #
-    # FULL DISCLOSURE: the following path was used to test the current
-    #                  implementation.  I may have not noticed
-    #                  something else that is not accounted for by
-    #                  this very path, so if you know that some
-    #                  breakage occurs, tell me.
-    #
-    # I am an "idiot"/no, 'really'/exclamation!mark, seriously/backsl\ash/a\n
+def prepare_deps(srcinfo_path, pkgname):
+    """Get (make)depends from a .SRCINFO file and returns them.
 
-    ppath = pkgbuild_path.replace('"', r'\"').join(('"', '"'))
+    .. versionchanged:: 4.0.0
 
-    carch = subprocess.check_output(('uname', '-m')).decode('utf-8').strip()
+    In the past, this function used to get data via `bash -c`.
+    """
+    with open(srcinfo_path, encoding='utf-8') as fh:
+        raw = fh.read()
 
-    deps = subprocess.check_output(('/usr/bin/bash', '-c', 'export CARCH="' +
-                                    carch + '";source ' + ppath + '> /dev/null'
-                                    ' 2> /dev/null;for i in ${depends[*]};do '
-                                    'echo $i;done;for i in ${makedepends[*]};'
-                                    'do echo $i;done'))
-    deps = deps.decode('utf-8')
-    deps = deps.split('\n')
+    data, errors = srcinfo.parse.parse_srcinfo(raw)
+    if errors:
+        raise pkgbuilder.exceptions.PackageError(
+            'malformed .SRCINFO: {0}'.format(errors), 'prepare_deps')
+    all_depends = []
+    if 'depends' in data:
+        all_depends += data['depends']
+    if 'makedepends' in data:
+        all_depends += data['makedepends']
+    if pkgname in data['packages'] and 'depends' in data['packages'][pkgname]:
+        all_depends += data['packages'][pkgname]['depends']
+    if pkgname in data['packages'] and 'makedepends' in data['packages'][pkgname]:
+        all_depends += data['packages'][pkgname]['makedepends']
 
-    return deps
+    depends = []
+    for d in all_depends:
+        if d not in depends:
+            depends.append(d)
+    return depends
 
 
 def _test_dependency(available, difference, wanted):
@@ -536,7 +522,7 @@ def build_runner(pkgname, performdepcheck=True,
 
     if performdepcheck:
         DS.fancy_msg(_('Checking dependencies...'))
-        depends = prepare_deps(os.path.abspath('./PKGBUILD'))
+        depends = prepare_deps(os.path.abspath('./.SRCINFO'), pkg.name)
         deps = depcheck(depends, pkg)
         pkgtypes = [_('found in system'), _('found in repos'),
                     _('found in the AUR')]
