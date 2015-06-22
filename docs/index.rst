@@ -8,9 +8,6 @@ PKGBUILDer.  An AUR helper (and library) in Python 3.
     The current version on your system can be checked by running
     ``pkgbuilder -v``.
 
-    Most of the documentation should be compatible with previous
-    releases of the |version| series.
-
 .. note::
     The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”,
     “SHOULD”, “SHOULD NOT”, “RECOMMENDED”,  “MAY”, and “OPTIONAL” in this

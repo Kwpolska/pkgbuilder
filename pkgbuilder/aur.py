@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.5.0
+# PKGBUILDer v3.5.1
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -49,9 +49,15 @@ class AUR(object):
               ``pkgbuilder.utils.{info,search,msearch}()`` instead.
     """
 
-    rpc = 'https://aur.archlinux.org/rpc.php?v=3'
+    base = 'https://aur.archlinux.org'
+    _rpc = '/rpc.php?v=3'
     emptystr = '{"version":3,"type":"%s","resultcount":0,"results":[]}'
     ua = 'PKGBUILDer/' + pkgbuilder.__version__
+
+    @property
+    def rpc(self):
+        """Return the RPC URL."""
+        return self.base + self._rpc
 
     def jsonreq(self, rtype, arg):
         """Makes a request and returns plain JSON data."""

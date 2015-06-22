@@ -5,8 +5,8 @@ Appendix C. Changelog
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2015, Chris Warrick.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2015-06-08
-:Version: 3.5.0
+:Date: 2015-06-22
+:Version: 3.5.1
 
 .. index:: CHANGELOG
 
@@ -49,6 +49,15 @@ Version History
 
 Generation 3
 ------------
+
+3.5.1
+    * Fix AURv4 support (use URLPath)
+
+3.5.0
+    AURv4 compatibility and minor bugfixes.
+
+3.4.0
+    Pacman v4.2.0 compatibility.
 
 3.3.2
     Various minor fixes.
