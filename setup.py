@@ -44,7 +44,7 @@ setup(name='pkgbuilder',
                    'Topic :: System :: Archiving :: Packaging',
                    'Topic :: Utilities'],
       packages=['pkgbuilder'],
-      requires=['pyalpm', 'requests'],
+      install_requires=['pyalpm', 'requests', 'srcinfo'],
       data_files=[('share/man/man8', ['docs/pkgbuilder.8.gz']),
                   ('share/man/man8', ['docs/pb.8.gz']),
                   ('share/locale/pl/LC_MESSAGES', ['locale/pl/LC_MESSAGES/'
