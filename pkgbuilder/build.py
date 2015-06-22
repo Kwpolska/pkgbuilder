@@ -129,6 +129,9 @@ def auto_build(pkgname, performdepcheck=True,
             DS.fancy_msg(_('The build function reported a proper build.'))
         elif build_result[0] >= 0 and build_result[0] < 256:
             raise pkgbuilder.exceptions.MakepkgError(build_result[0])
+        elif build_result[0] == 72336:
+            # existing package, do nothing
+            pass
         elif build_result[0] == 72337:
             DS.fancy_warning(_('Building more AUR packages is required.'))
             toinstall2 = []
@@ -513,6 +516,14 @@ def build_runner(pkgname, performdepcheck=True,
                 'name of the “main” package (eg. python- instead of python2-) '
                 'and try again.', '/'.join((pkg.repo, pkg.name)), exit=False)
     else:
+        if pkg.is_abs:
+            existing = find_packagefile(os.path.join('../..', pkg.name))
+        else:
+            existing = find_packagefile(pkg.packagebase)
+        if any(pkg.name in i for i in existing[0]):
+            DS.fancy_msg(_('Found an existing package for '
+                            '{0}').format(pkgname))
+            return [72336, existing]
         filename = pkg.name + '.tar.gz'
         DS.fancy_msg(_('Downloading the tarball...'))
         downloadbytes = download(pkg.urlpath, filename, pkg.name)
