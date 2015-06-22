@@ -17,7 +17,7 @@
 """
 
 from . import DS, _,  __version__
-from .main import main
+from .__main__ import main as pbmain
 from .exceptions import SanityError
 import pkgbuilder.utils
 import re
@@ -28,8 +28,17 @@ import argparse
 import sys
 import os
 
-__all__ = ['wrapper']
-__wrapperversion__ = '0.3.1'
+__all__ = ['main', 'wrapper']
+__wrapperversion__ = '0.4.0'
+
+
+def main():
+    """Run the PBWrapper main function."""
+    try:
+        pkgbuilder.wrapper.wrapper()
+    except KeyboardInterrupt:
+        print(pkgbuilder.DS.wrapperinttext + '\n')
+        exit(130)
 
 
 def wrapper(source='AUTO'):
@@ -200,8 +209,8 @@ def wrapper(source='AUTO'):
             if args.pkgnames:
                 log.info('Running pacman.')
                 DS.run_command([DS.paccommand] + pacargs + pkgnames)
-                log.info('Running pkgbuilder (pkgbuilder.main.main()).')
-                main(pbargs + pkgnames)
+                log.info('Running pkgbuilder (pkgbuilder.__main__.main()).')
+                pbmain(pbargs + pkgnames)
             else:
                 log.info('Nothing to do — args.pkgnames is empty.')
 
@@ -215,8 +224,8 @@ def wrapper(source='AUTO'):
             log.debug('Got -u.')
             log.info('Running pacman.')
             DS.sudo([DS.paccommand] + pacargs)
-            log.info('Running pkgbuilder (pkgbuilder.main.main()).')
-            main(pbargs, quit=False)
+            log.info('Running pkgbuilder (pkgbuilder.__main__.main()).')
+            pbmain(pbargs, quit=False)
         elif args.y or args.refresh:
             log.debug('Got -y.')
             log.info('Running pacman.')
@@ -244,7 +253,7 @@ def wrapper(source='AUTO'):
 
         if pbpkgnames != []:
             log.info('Running pkgbuilder (pkgbuilder.main.main()).')
-            main(pbargs + pbpkgnames)
+            pbmain(pbargs + pbpkgnames)
         else:
             log.info('No AUR packages in the list.')
 
@@ -258,7 +267,7 @@ def wrapper(source='AUTO'):
           ('--userfetch' in argst) or
           (re.search('-[a-zA-Z]*F', ' '.join(argst)) is not None)):
         # pkgbuilder -F, --fetch / --userfetch.
-        main(argst)
+        pbmain(argst)
     elif ('-h' in argst) or ('--help' in argst):
         pacdoc = subprocess.check_output('pacman --help || true',
                                          shell=True).decode('utf-8')

@@ -1,6 +1,6 @@
-===========
-main module
-===========
+===============
+__main__ module
+===============
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2015, Chris Warrick.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
@@ -8,6 +8,7 @@ main module
 :Version: 3.5.1
 
 .. index:: main
+.. versionchanged:: 4.0.0
 .. versionadded:: 2.1.3.0
-.. automodule:: pkgbuilder.main
+.. automodule:: pkgbuilder.__main__
     :members:
