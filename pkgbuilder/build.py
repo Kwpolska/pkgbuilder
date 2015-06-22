@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.5.0
+# PKGBUILDer v3.5.1
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -16,6 +16,7 @@
 """
 
 from . import DS, _
+import pkgbuilder.aur
 import pkgbuilder.exceptions
 import pkgbuilder.package
 import pkgbuilder.ui
@@ -190,12 +191,7 @@ def auto_build(pkgname, performdepcheck=True,
 def download(urlpath, filename, pkgname=None):
     """Download an AUR tarball to the current directory."""
     try:
-        if urlpath is not None:
-            r = requests.get('https://aur.archlinux.org' + urlpath)
-        else:
-            # AURv4 dropped URLPath
-            r = requests.get('https://aur4.archlinux.org/cgit/'
-                             'aur.git/snapshot/{0}.tar.gz'.format(pkgname))
+        r = requests.get(pkgbuilder.aur.AUR.base + urlpath)
         r.raise_for_status()
     except requests.exceptions.ConnectionError as e:
         raise pkgbuilder.exceptions.ConnectionError(str(e), e)

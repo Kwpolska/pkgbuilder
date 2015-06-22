@@ -5,9 +5,9 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.5.0\n"
+"Project-Id-Version: 3.5.1\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2015-06-08 17:17+0200\n"
+"POT-Creation-Date: 2015-06-22 18:40+0200\n"
 "PO-Revision-Date: 2014-12-26 19:51+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/pkgbuilder/"
@@ -18,143 +18,143 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: pkgbuilder/build.py:40
+#: pkgbuilder/build.py:41
 msgid "Validating installation status..."
 msgstr "インストール無事終了確認中・・・"
 
-#: pkgbuilder/build.py:56
+#: pkgbuilder/build.py:57
 #, python-brace-format
 msgid "{0}: not an AUR package"
 msgstr "{0}: AURパッケージではない"
 
-#: pkgbuilder/build.py:60 pkgbuilder/build.py:71
+#: pkgbuilder/build.py:61 pkgbuilder/build.py:72
 #, python-brace-format
 msgid "{0}: installed {1}"
 msgstr "{0}: 「{1}」をインストール済み"
 
-#: pkgbuilder/build.py:64
+#: pkgbuilder/build.py:65
 #, python-brace-format
 msgid "{0}: NOT installed"
 msgstr "{0}：インストールされていない"
 
-#: pkgbuilder/build.py:67
+#: pkgbuilder/build.py:68
 #, python-brace-format
 msgid "{0}: outdated {1}"
 msgstr "{0}：「{1}」より要更新"
 
-#: pkgbuilder/build.py:79
+#: pkgbuilder/build.py:80
 msgid "Installing built packages..."
 msgstr "作成したパッケージをインストール中・・・"
 
-#: pkgbuilder/build.py:85
+#: pkgbuilder/build.py:86
 msgid "Moving to /var/cache/pacman/pkg/..."
 msgstr ""
 
-#: pkgbuilder/build.py:100
+#: pkgbuilder/build.py:101
 msgid "Installing with pacman -U..."
 msgstr ""
 
-#: pkgbuilder/build.py:128
+#: pkgbuilder/build.py:129
 msgid "The build function reported a proper build."
 msgstr "パッケージ作成成功。"
 
-#: pkgbuilder/build.py:132
+#: pkgbuilder/build.py:133
 msgid "Building more AUR packages is required."
 msgstr "AURパッケージを更に作成する必要がある。"
 
-#: pkgbuilder/build.py:144
+#: pkgbuilder/build.py:145
 #, python-brace-format
 msgid "found an existing package for {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:179
+#: pkgbuilder/build.py:180
 #, python-brace-format
 msgid "makepkg (or someone else) failed and returned {0}."
 msgstr "makepkgなどが「{0}」で失敗したようだ。"
 
-#: pkgbuilder/build.py:237
+#: pkgbuilder/build.py:233
 msgid "No files extracted."
 msgstr ""
 
-#: pkgbuilder/build.py:353
+#: pkgbuilder/build.py:349
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:412 pkgbuilder/main.py:225
+#: pkgbuilder/build.py:408 pkgbuilder/main.py:225
 msgid "Fetching package information..."
 msgstr ""
 
-#: pkgbuilder/build.py:443
+#: pkgbuilder/build.py:439
 msgid ":: Retrieving packages from abs..."
 msgstr ""
 
-#: pkgbuilder/build.py:446 pkgbuilder/build.py:457
+#: pkgbuilder/build.py:442 pkgbuilder/build.py:453
 #, python-brace-format
 msgid "retrieving {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:450 pkgbuilder/build.py:508
+#: pkgbuilder/build.py:446 pkgbuilder/build.py:504
 #, python-brace-format
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr ""
 
-#: pkgbuilder/build.py:454
+#: pkgbuilder/build.py:450
 msgid ":: Retrieving packages from aur..."
 msgstr ""
 
-#: pkgbuilder/build.py:461
+#: pkgbuilder/build.py:457
 msgid "Extracting AUR packages..."
 msgstr ""
 
-#: pkgbuilder/build.py:466
+#: pkgbuilder/build.py:462
 msgid "Successfully fetched: "
 msgstr ""
 
-#: pkgbuilder/build.py:496
+#: pkgbuilder/build.py:492
 #, python-brace-format
 msgid "Building {0}..."
 msgstr "「{0}」を作成中・・・"
 
-#: pkgbuilder/build.py:504
+#: pkgbuilder/build.py:500
 msgid "Retrieving from ABS..."
 msgstr ""
 
-#: pkgbuilder/build.py:521
+#: pkgbuilder/build.py:517
 msgid "Downloading the tarball..."
 msgstr "ターボールをダウンロード中・・・"
 
-#: pkgbuilder/build.py:524
+#: pkgbuilder/build.py:520
 #, python-brace-format
 msgid "{0} kB downloaded"
 msgstr "{0} kBをダウンロード済み"
 
-#: pkgbuilder/build.py:526
+#: pkgbuilder/build.py:522
 msgid "Extracting..."
 msgstr "抽出中・・・"
 
-#: pkgbuilder/build.py:527
+#: pkgbuilder/build.py:523
 #, python-brace-format
 msgid "{0} files extracted"
 msgstr "ファイルを{0}個抽出した"
 
-#: pkgbuilder/build.py:531
+#: pkgbuilder/build.py:527
 msgid "Checking dependencies..."
 msgstr "従属パッケージを確認中・・・"
 
-#: pkgbuilder/build.py:534
+#: pkgbuilder/build.py:530
 msgid "found in system"
 msgstr "インストール済み"
 
-#: pkgbuilder/build.py:534
+#: pkgbuilder/build.py:530
 msgid "found in repos"
 msgstr "リポジトリに存在"
 
-#: pkgbuilder/build.py:535
+#: pkgbuilder/build.py:531
 msgid "found in the AUR"
 msgstr "AURに存在"
 
-#: pkgbuilder/build.py:538
+#: pkgbuilder/build.py:534
 msgid "none found"
 msgstr "従属パッケージなし"
 
