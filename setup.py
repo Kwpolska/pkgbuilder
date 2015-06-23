@@ -53,8 +53,8 @@ setup(name='pkgbuilder',
                                                    'pkgbuilder.mo'])],
       entry_points={
           'console_scripts': [
-              'pkgbuilder = pkgbuilder.__main__:pkgbuildermain',
-              'pb = pkgbuilder.__main__:pbwrappermain'
+              'pkgbuilder = pkgbuilder.__main__:main',
+              'pb = pkgbuilder.wrapper:main'
           ]
       },
       )

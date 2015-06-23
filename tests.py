@@ -34,6 +34,7 @@
 
 import unittest
 import pkgbuilder
+import pkgbuilder.__main__
 import pkgbuilder.aur
 import pkgbuilder.build
 import pkgbuilder.pbds
@@ -137,7 +138,7 @@ class TestPB(unittest.TestCase):
 
     def test_main(self):
         # Can’t test too much here…
-        pkgbuilder.main.main([])
+        pkgbuilder.__main__.main([])
 
     def test_wrapper(self):
         # …or there…
@@ -167,7 +168,3 @@ class TestPB(unittest.TestCase):
             pkgbuilder.wrapper.wrapper(['-Qh'])
         finally:
             pkgbuilder.DS.paccommand = pacman
-
-
-if __name__ == '__main__':
-    unittest.main()

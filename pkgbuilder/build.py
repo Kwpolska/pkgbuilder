@@ -120,7 +120,7 @@ def auto_build(pkgname, performdepcheck=True,
 
         This function returns a list of packages to install with pacman -U.
         Please take care of it.  Running PKGBUILDer/PBWrapper standalone or
-        .main.main() will do that.
+        .__main__.main() will do that.
 
     """
     build_result = build_runner(pkgname, performdepcheck, pkginstall)
