@@ -34,5 +34,8 @@ nosetests.xml
 # Backup versions of files [Kw’s scheme]
 o.*
 
+# GitHub token file
+.pypt/gh-token
+
 # release testing
 pbwrapperdiff

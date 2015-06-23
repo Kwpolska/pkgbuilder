@@ -193,12 +193,14 @@ cleanup
 
 git add -A --ignore-errors .
 
-git commit -asF $cmfn"commit"
-
-cleanup_cmfn
+git commit -asF $cmfn"-commit"
 
 git flow release finish $version
 git push
 git push --tags
+
+.pypt/ghrel $cmfn $PWD $GITUSER/$GTIREPO v$version
+
+cleanup_cmfn
 
 status "Done!"
