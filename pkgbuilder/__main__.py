@@ -6,13 +6,10 @@
 # See /LICENSE for licensing information.
 
 """
-    pkgbuilder.__main__
-    ~~~~~~~~~~~~~~~~~~~
+Main routine of PKGBUILDer.
 
-    Main routine of PKGBUILDer.
-
-    :Copyright: © 2011-2015, Chris Warrick.
-    :License: BSD (see /LICENSE).
+:Copyright: © 2011-2015, Chris Warrick.
+:License: BSD (see /LICENSE).
 """
 
 from . import DS, _, __version__
@@ -26,7 +23,7 @@ import argparse
 import os
 import sys
 
-__all__ = ['main']
+__all__ = ('main',)
 
 
 def main(source='AUTO', quit=True):

@@ -6,13 +6,10 @@
 # See /LICENSE for licensing information.
 
 """
-    pkgbuilder.pbds
-    ~~~~~~~~~~~~~~~
+PKGBUILDer Data Storage.
 
-    PKGBUILDer Data Storage.
-
-    :Copyright: © 2011-2015, Chris Warrick.
-    :License: BSD (see /LICENSE).
+:Copyright: © 2011-2015, Chris Warrick.
+:License: BSD (see /LICENSE).
 """
 
 from . import _, __version__
@@ -23,11 +20,13 @@ import logging
 import subprocess
 import pycman
 
-__all__ = ['PBDS']
+__all__ = ('PBDS',)
 
 
 class PBDS(object):
+
     """PKGBUILDer Data Storage."""
+
     # For fancy-schmancy messages stolen from makepkg.
     colors = {
         'all_off':    '\x1b[1;0m',
@@ -132,8 +131,10 @@ class PBDS(object):
 
     def sudo(self, args):
         """
-        Run as root.  ``sudo`` if present, ``su -c`` otherwise, nothing if
-        already running as root.
+        Run as root.
+
+        Uses ``sudo`` if present, ``su -c`` otherwise, nothing if already
+        running as root.
 
         .. note:: Accepts only one command.  `shell=False`, for safety.
         """
@@ -147,6 +148,7 @@ class PBDS(object):
             return self.run_command(args)
 
     def root_crash(self):
+        """Crash if running as root."""
         if self.uid == 0:
             self.log.error('running as root, crashing')
             self.fancy_error(_('Running as root is not allowed as it can '
@@ -173,7 +175,7 @@ class PBDS(object):
             self.mp2 = '  '
 
     def colorson(self):
-        """Colors on."""
+        """Enable colors."""
         self.colors = {
             'all_off':    '\x1b[1;0m',
             'bold':       '\x1b[1;1m',
@@ -184,7 +186,7 @@ class PBDS(object):
         }
 
     def colorsoff(self):
-        """Colors off."""
+        """Disable colors."""
         self.colors = {
             'all_off':    '',
             'bold':       '',
@@ -195,7 +197,7 @@ class PBDS(object):
         }
 
     def fancy_msg(self, text):
-        """makepkg's msg().  Use for main messages."""
+        """Display main messages."""
         sys.stderr.write(self.colors['green'] + self.mp1 + '>' +
                          self.colors['all_off'] +
                          self.colors['bold'] + ' ' + text +
@@ -203,7 +205,7 @@ class PBDS(object):
         self.log.info('({0:<20}) {1}'.format('fancy_msg', text))
 
     def fancy_msg2(self, text):
-        """makepkg's msg2().  Use for sub-messages."""
+        """Display sub-messages."""
         sys.stderr.write(self.colors['blue'] + self.mp2 + '->' +
                          self.colors['all_off'] +
                          self.colors['bold'] + ' ' + text +
@@ -211,7 +213,7 @@ class PBDS(object):
         self.log.info('({0:<20}) {1}'.format('fancy_msg2', text))
 
     def fancy_warning(self, text):
-        """makepkg's warning().  Use when you have problems."""
+        """Display warning messages."""
         sys.stderr.write(self.colors['yellow'] + self.mp1 + '> ' +
                          _('WARNING:') + self.colors['all_off'] +
                          self.colors['bold'] + ' ' + text +
@@ -219,21 +221,21 @@ class PBDS(object):
         self.log.warning('({0:<20}) {1}'.format('fancy_warning', text))
 
     def fancy_warning2(self, text):
-        """Like fancy_warning, but looks like a sub-message (fancy_msg2)."""
+        """Display warning sub-messages."""
         sys.stderr.write(self.colors['yellow'] + self.mp2 + '->' +
                          self.colors['all_off'] + self.colors['bold'] + ' ' +
                          text + self.colors['all_off'] + '\n')
         self.log.warning('({0:<20}) {1}'.format('fancy_warning2', text))
 
     def fancy_error(self, text):
-        """makepkg's error().  Use for errors.  Quitting is suggested."""
+        """Display error messages."""
         sys.stderr.write(self.colors['red'] + self.mp1 + '> ' + _('ERROR:') +
                          self.colors['all_off'] + self.colors['bold'] + ' ' +
                          text + self.colors['all_off'] + '\n')
         self.log.error('({0:<20}) {1}'.format('fancy_error', text))
 
     def fancy_error2(self, text):
-        """Like fancy_error, but looks like a sub-message (fancy_msg2)."""
+        """Display error sub-messages."""
         sys.stderr.write(self.colors['red'] + self.mp2 + '->' +
                          self.colors['all_off'] + self.colors['bold'] + ' ' +
                          text + self.colors['all_off'] + '\n')

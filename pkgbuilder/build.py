@@ -6,13 +6,10 @@
 # See /LICENSE for licensing information.
 
 """
-    pkgbuilder.build
-    ~~~~~~~~~~~~~~~~
+Build AUR packages.
 
-    Functions for building packages.
-
-    :Copyright: © 2011-2015, Chris Warrick.
-    :License: BSD (see /LICENSE).
+:Copyright: © 2011-2015, Chris Warrick.
+:License: BSD (see /LICENSE).
 """
 
 from . import DS, _
@@ -33,8 +30,8 @@ import subprocess
 import functools
 import glob
 
-__all__ = ['validate', 'install', 'auto_build', 'download', 'rsync', 'extract',
-           'prepare_deps', 'depcheck', 'fetch_runner', 'build_runner']
+__all__ = ('validate', 'install', 'auto_build', 'download', 'rsync', 'extract',
+           'prepare_deps', 'depcheck', 'fetch_runner', 'build_runner')
 
 
 def validate(pkgnames):
@@ -259,7 +256,8 @@ def prepare_deps(srcinfo_path, pkgname):
         all_depends += data['makedepends']
     if pkgname in data['packages'] and 'depends' in data['packages'][pkgname]:
         all_depends += data['packages'][pkgname]['depends']
-    if pkgname in data['packages'] and 'makedepends' in data['packages'][pkgname]:
+    if (pkgname in data['packages'] and
+            'makedepends' in data['packages'][pkgname]):
         all_depends += data['packages'][pkgname]['makedepends']
 
     depends = []
@@ -508,7 +506,7 @@ def build_runner(pkgname, performdepcheck=True,
             existing = find_packagefile(pkg.packagebase)
         if any(pkg.name in i for i in existing[0]):
             DS.fancy_msg(_('Found an existing package for '
-                            '{0}').format(pkgname))
+                           '{0}').format(pkgname))
             return [72336, existing]
         filename = pkg.name + '.tar.gz'
         DS.fancy_msg(_('Downloading the tarball...'))

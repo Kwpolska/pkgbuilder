@@ -34,13 +34,10 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 """
-    pkgbuilder
-    ~~~~~~~~~~
+An AUR helper (and library) in Python 3.
 
-    An AUR helper (and library) in Python 3.
-
-    :Copyright: © 2011-2015, Chris Warrick.
-    :License: BSD (see /LICENSE).
+:Copyright: © 2011-2015, Chris Warrick.
+:License: BSD (see /LICENSE).
 """
 
 import gettext
@@ -53,7 +50,8 @@ __version__ = '3.5.1'
 __author__ = 'Chris Warrick'
 __license__ = '3-clause BSD'
 __docformat__ = 'restructuredtext en'
-__all__ = ['_', 'DS', 'UTC']
+
+__all__ = ('_', 'DS', 'UTC')
 
 G = gettext.translation('pkgbuilder', sys.prefix + '/share/locale',
                         fallback='C')
@@ -64,7 +62,8 @@ DS = PBDS()
 
 
 class _UTC(datetime.tzinfo):
-    """UTC"""
+
+    """UTC timezone implementation."""
 
     def utcoffset(self, dt):
         return datetime.timedelta(0)

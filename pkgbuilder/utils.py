@@ -6,13 +6,10 @@
 # See /LICENSE for licensing information.
 
 """
-    pkgbuilder.utils
-    ~~~~~~~~~~~~~~~~
+Common global utilities, used mainly for AUR data access.
 
-    Common global utilities, used mainly for AUR data access.
-
-    :Copyright: © 2011-2015, Chris Warrick.
-    :License: BSD (see /LICENSE).
+:Copyright: © 2011-2015, Chris Warrick.
+:License: BSD (see /LICENSE).
 """
 
 from . import DS, _
@@ -24,8 +21,8 @@ import os
 import subprocess
 import textwrap
 
-__all__ = ['info', 'search', 'msearch', 'print_package_search',
-           'print_package_info']
+__all__ = ('info', 'search', 'msearch', 'print_package_search',
+           'print_package_info',)
 RPC = AUR()
 
 

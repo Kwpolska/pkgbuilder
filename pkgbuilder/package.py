@@ -6,20 +6,17 @@
 # See /LICENSE for licensing information.
 
 """
-    pkgbuilder.package
-    ~~~~~~~~~~~~~~~~~~
+The Package class, the most important class in PKGBUILDer.
 
-    The Package class, the most important class in PKGBUILDer.
-
-    :Copyright: © 2011-2015, Chris Warrick.
-    :License: BSD (see /LICENSE).
+:Copyright: © 2011-2015, Chris Warrick.
+:License: BSD (see /LICENSE).
 """
 
 from . import UTC, DS
 from .exceptions import SanityError
 import datetime
 
-__all__ = ['CATEGORIES', 'Package', 'AURPackage', 'ABSPackage']
+__all__ = ('CATEGORIES', 'Package', 'AURPackage', 'ABSPackage')
 
 CATEGORIES = ['none', 'none', 'daemons', 'devel', 'editors',
               'emulators', 'games', 'gnome', 'i18n', 'kde',
@@ -33,7 +30,9 @@ def mktime(ts):
 
 
 class Package(object):
+
     """The base class for packages."""
+
     is_abs = None
     name = None
     version = None
@@ -72,7 +71,9 @@ class Package(object):
 
 
 class AURPackage(Package):
+
     """An AUR package."""
+
     id = None
     packagebase = None
     packagebaseid = None
@@ -89,9 +90,7 @@ class AURPackage(Package):
 
     @classmethod
     def from_aurdict(cls, aurdict):
-        """
-        Creates an instance of AURPackage using a dictionary from the AUR RPC.
-        """
+        """Create an instance of AURPackage from AUR RPC data."""
         bindings = {'CategoryID': '_categoryid',
                     'Description': 'description',
                     'ID': 'id',
@@ -140,7 +139,9 @@ class AURPackage(Package):
 
 
 class ABSPackage(Package):
+
     """An ABS package."""
+
     is_abs = True
     # Most of those aren’t necessary, but I am copying them over because I can.
     arch = None
@@ -161,7 +162,7 @@ class ABSPackage(Package):
 
     @classmethod
     def from_pyalpm(cls, abspkg):
-        """Transforms a pyalpm.Package into a pkgbuilder.package.ABSPackage."""
+        """Transform a pyalpm.Package into a pkgbuilder.package.ABSPackage."""
         copy = ['arch', 'backup', 'base64_sig', 'conflicts', 'deltas',
                 'depends', 'download_size', 'filename', 'files', 'groups',
                 'has_scriptlet', 'isize', 'licenses', 'md5sum', 'name',

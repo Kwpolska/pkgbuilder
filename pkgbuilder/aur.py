@@ -6,13 +6,10 @@
 # See /LICENSE for licensing information.
 
 """
-    pkgbuilder.aur
-    ~~~~~~~~~~~~~~
+Call the AUR API.
 
-    A class for calling the AUR API.
-
-    :Copyright: © 2011-2015, Chris Warrick.
-    :License: BSD (see /LICENSE).
+:Copyright: © 2011-2015, Chris Warrick.
+:License: BSD (see /LICENSE).
 """
 
 import pkgbuilder
@@ -21,11 +18,13 @@ import requests
 import requests.exceptions
 import json
 
-__all__ = ['AUR']
+__all__ = ('AUR',)
 
 
 class AUR(object):
-    """A class for calling the AUR API.
+
+    """
+    Call the AUR API.
 
     Valid request types for :meth:`request()` (and
     :meth:`jsonrequest()`):
@@ -60,7 +59,7 @@ class AUR(object):
         return self.base + self._rpc
 
     def jsonreq(self, rtype, arg):
-        """Makes a request and returns plain JSON data."""
+        """Make a request and returns plain JSON data."""
         if arg == []:
             # No need to bother.
             return self.emptystr % rtype
@@ -79,7 +78,7 @@ class AUR(object):
         return req.text
 
     def jsonmultiinfo(self, args):
-        """Makes a multiinfo request and returns plain JSON data."""
+        """Make a multiinfo request and returns plain JSON data."""
         if args == []:
             # No need to bother.
             return self.emptystr % 'multiinfo'
@@ -99,9 +98,9 @@ class AUR(object):
         return req.text
 
     def request(self, rtype, arg):
-        """Makes a request and returns the AURDict."""
+        """Make a request and returns the AURDict."""
         return json.loads(self.jsonreq(rtype, arg))
 
     def multiinfo(self, args):
-        """Makes a multiinfo request and returns the AURDict."""
+        """Make a multiinfo request and returns the AURDict."""
         return json.loads(self.jsonmultiinfo(args))

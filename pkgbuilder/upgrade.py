@@ -6,13 +6,10 @@
 # See /LICENSE for licensing information.
 
 """
-    pkgbuilder.upgrade
-    ~~~~~~~~~~~~~~~~~~
+Tools for performing upgrades of AUR packages.
 
-    Tools for performing upgrades of AUR packages.
-
-    :Copyright: © 2011-2015, Chris Warrick.
-    :License: BSD (see /LICENSE).
+:Copyright: © 2011-2015, Chris Warrick.
+:License: BSD (see /LICENSE).
 """
 
 from . import DS, _
@@ -21,11 +18,11 @@ import pkgbuilder.utils
 import pyalpm
 import datetime
 
-__all__ = ['gather_foreign_pkgs', 'list_upgradable', 'auto_upgrade']
+__all__ = ('gather_foreign_pkgs', 'list_upgradable', 'auto_upgrade')
 
 
 def gather_foreign_pkgs():
-    """Gathers a list of all foreign packages."""
+    """Gather a list of all foreign packages."""
     localdb = DS.pyc.get_localdb()
     # Based on paconky.py.
     installed = [p for p in localdb.pkgcache]
@@ -43,7 +40,7 @@ def gather_foreign_pkgs():
 
 
 def list_upgradable(pkglist, vcsup=False, aurcache=None):
-    """Compares package versions and returns upgradable ones."""
+    """Compare package versions and returns upgradable ones."""
     localdb = DS.pyc.get_localdb()
     if aurcache:
         aurlist = aurcache

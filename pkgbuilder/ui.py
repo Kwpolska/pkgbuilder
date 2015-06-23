@@ -6,20 +6,17 @@
 # See /LICENSE for licensing information.
 
 """
-    pkgbuilder.ui
-    ~~~~~~~~~~~~~
+The User Interface.
 
-    The User Interface.
-
-    :Copyright: © 2011-2015, Chris Warrick.
-    :License: BSD (see /LICENSE).
+:Copyright: © 2011-2015, Chris Warrick.
+:License: BSD (see /LICENSE).
 """
 
 import sys
 import time
 import threading
 
-__all__ = ['Progress', 'Throbber', 'ProgressThrobber']
+__all__ = ('Progress', 'Throbber', 'ProgressThrobber')
 
 
 class Progress(object):

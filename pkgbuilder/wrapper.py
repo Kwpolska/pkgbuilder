@@ -7,13 +7,10 @@
 # See /LICENSE for licensing information.
 
 """
-    pkgbuilder.wrapper
-    ~~~~~~~~~~~~~~~~~~
+A wrapper for pacman and PKGBUILDer, also known as PBWrapper or pb.
 
-    A wrapper for pacman and PKGBUILDer, also known as PBWrapper or pb.
-
-    :Copyright: © 2011-2015, Chris Warrick.
-    :License: BSD (see /LICENSE).
+:Copyright: © 2011-2015, Chris Warrick.
+:License: BSD (see /LICENSE).
 """
 
 from . import DS, _,  __version__
@@ -28,7 +25,7 @@ import argparse
 import sys
 import os
 
-__all__ = ['main', 'wrapper']
+__all__ = ('main', 'wrapper')
 __wrapperversion__ = '0.4.0'
 
 
