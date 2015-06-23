@@ -81,14 +81,15 @@ def install(pkgpaths, sigpaths, asdeps, uopt=''):
     pkgpaths = list(set(pkgpaths))
     sigpaths = list(set(sigpaths))
 
+    trueexit = 256
+    while trueexit != 0:
+        trueexit = DS.sudo(['true'])
+
     DS.fancy_msg2(_('Moving to /var/cache/pacman/pkg/...'))
     DS.log.info('pkgs={0}; sigs={1}'.format(pkgpaths, sigpaths))
     DS.log.debug('mv {0} {1} /var/cache/pacman/pkg/'.format(pkgpaths,
                                                             sigpaths))
-    mvexit = 256
-    while mvexit != 0:
-        mvexit = DS.sudo(['mv'] + pkgpaths + sigpaths +
-                         ['/var/cache/pacman/pkg/'])
+    DS.sudo(['mv'] + pkgpaths + sigpaths + ['/var/cache/pacman/pkg/'])
 
     npkgpaths = ['/var/cache/pacman/pkg/' + os.path.basename(i)
                  for i in pkgpaths]
