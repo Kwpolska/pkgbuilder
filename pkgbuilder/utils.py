@@ -15,10 +15,10 @@ Common global utilities, used mainly for AUR data access.
 from . import DS, _
 from .aur import AUR
 from .package import AURPackage
+from .ui import get_termwidth, hanging_indent, mlist
 from pkgbuilder.exceptions import SanityError, AURError
 import pyalpm
 import os
-import subprocess
 import textwrap
 
 __all__ = ('info', 'search', 'msearch', 'print_package_search',
@@ -68,49 +68,6 @@ def msearch(maintainer):
         return [AURPackage.from_aurdict(d) for d in aur_pkgs['results']]
 
 
-def hanging_indent(text, intro, termwidth=80, change_spaces=True,
-                   introwidth=None):
-    """Produce text with a hanging indent.
-
-    .. versionadded:: 3.3.0
-
-    """
-    if introwidth is None:
-        introwidth = len(intro)
-    nowrap = intro + text
-    if intro:
-        wrapv = textwrap.wrap(nowrap, termwidth,
-                              break_on_hyphens=False)
-    else:
-        wrapv = textwrap.wrap(nowrap, termwidth - introwidth,
-                              break_on_hyphens=False)
-    wrap0 = wrapv[0]
-    wraprest = textwrap.wrap('\n'.join(wrapv[1:]), termwidth -
-                             introwidth,
-                             break_on_hyphens=False)
-    if change_spaces:
-        wraprest = [i.replace('  ', ' ').replace(' ', '  ') for i
-                    in wraprest]
-    buf = wrap0
-    for i in wraprest:
-        buf += '\n' + introwidth * ' ' + i
-
-    return buf
-
-
-def get_termwidth():
-    """Get the width of this terminal.
-
-    .. versionadded:: 3.3.0
-
-    """
-    try:
-        size = subprocess.check_output(['stty', 'size'])
-        return int(size.split()[1])
-    except (IndexError, subprocess.CalledProcessError):
-        return None
-
-
 def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
                          prefixp=''):
     """Output/return a package representation.
@@ -120,9 +77,7 @@ def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
     .. versionchanged:: 3.0.0
 
     """
-    termwidth = get_termwidth()
-    if termwidth is None:
-        termwidth = 9001  # Auto-wrap by terminal.
+    termwidth = get_termwidth() or 9001
 
     localdb = DS.pyc.get_localdb()
     lpkg = localdb.get_pkg(pkg.name)
@@ -165,27 +120,6 @@ def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
         return entry
     else:
         print(entry)
-
-
-def mlist(items, sep='  ', change_spaces=True, termwidth=80, indentwidth=17):
-    """Output a list of strings, complete with a hanging indent.
-
-    .. versionadded:: 3.3.0
-
-    """
-    if items:
-        if sep == '\n':
-            buf = [hanging_indent(items[0], '', termwidth, change_spaces,
-                                  indentwidth)]
-            for i in items[1:]:
-                buf.append(hanging_indent(i, indentwidth * ' ', termwidth,
-                                          change_spaces))
-            return '\n'.join(buf)
-        else:
-            return hanging_indent(sep.join(items), '', termwidth,
-                                  change_spaces, indentwidth)
-    else:
-        return 'None'
 
 
 def print_package_info(pkgs, cachemode=False):

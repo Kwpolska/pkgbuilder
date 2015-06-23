@@ -14,6 +14,7 @@ Tools for performing upgrades of AUR packages.
 
 from . import DS, _
 import pkgbuilder.build
+import pkgbuilder.ui
 import pkgbuilder.utils
 import pyalpm
 import datetime
@@ -168,16 +169,16 @@ def auto_upgrade(downgrade=False, vcsup=False):
         if DS.pacman:
             targetstring = _('Targets ({0}): ').format(upglen)
 
-            termwidth = pkgbuilder.utils.get_termwidth()
-            if termwidth is None:
-                termwidth = 9001  # Auto-wrap by terminal.
+            termwidth = pkgbuilder.ui.get_termwidth()
 
-                if verbosepkglists:
-                    # Pacman doesn’t allow tables if the terminal is too small.
-                    # And since we don’t know the size, better safe than sorry.
-                    verbosepkglists = False
-                    DS.log.warning('VerbosePkgLists disabled, cannot '
-                                   'determine terminal width')
+            if termwidth is None and verbosepkglists:
+                # Pacman doesn’t allow tables if the terminal is too small.
+                # And since we don’t know the size, better safe than sorry.
+                verbosepkglists = False
+                DS.log.warning('VerbosePkgLists disabled, cannot '
+                               'determine terminal width')
+
+            termwidth = termwidth or 9001
 
             if verbosepkglists:
                 headers = [_('Name'), _('Old Version'), _('New Version')]
@@ -216,7 +217,7 @@ def auto_upgrade(downgrade=False, vcsup=False):
             # Not using else because there is a fallback if the terminal
             # is too small.
             if not verbosepkglists:
-                print(pkgbuilder.utils.hanging_indent(
+                print(pkgbuilder.ui.hanging_indent(
                     '  '.join(upgstrings), targetstring, termwidth, True))
 
             print()
