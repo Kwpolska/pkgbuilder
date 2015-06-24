@@ -184,6 +184,10 @@ class PackageNotFoundError(PackageError):
         self.args = args
         self.kwargs = kwargs
 
+    def __str__(self):
+        """Return a friendly representation of the exception."""
+        return self.msg
+
 
 class SanityError(PBException):
 
