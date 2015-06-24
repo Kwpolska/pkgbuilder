@@ -122,7 +122,6 @@ def auto_build(pkgname, performdepcheck=True,
 
     """
     build_result = build_runner(pkgname, performdepcheck, pkginstall)
-    os.chdir('../')
     try:
         if build_result[0] == 0:
             DS.fancy_msg(_('The build function reported a proper build.'))
@@ -492,6 +491,11 @@ def build_runner(pkgname, performdepcheck=True,
                 _('Failed to retieve {0} (from ABS/rsync).').format(
                     pkg.name), pkg=pkg, retcode=rc)
 
+        existing = find_packagefile(pkg.name)
+        if any(pkg.name in i for i in existing[0]):
+            DS.fancy_msg(_('Found an existing package for '
+                           '{0}').format(pkgname))
+            return [72336, existing]
         try:
             os.chdir('./{0}/{1}'.format(pkg.repo, pkg.name))
         except FileNotFoundError:
@@ -501,10 +505,7 @@ def build_runner(pkgname, performdepcheck=True,
                 'name of the “main” package (eg. python- instead of python2-) '
                 'and try again.', '/'.join((pkg.repo, pkg.name)), exit=False)
     else:
-        if pkg.is_abs:
-            existing = find_packagefile(os.path.join('../..', pkg.name))
-        else:
-            existing = find_packagefile(pkg.packagebase)
+        existing = find_packagefile(pkg.packagebase)
         if any(pkg.name in i for i in existing[0]):
             DS.fancy_msg(_('Found an existing package for '
                            '{0}').format(pkgname))
@@ -535,6 +536,7 @@ def build_runner(pkgname, performdepcheck=True,
 
             DS.fancy_msg2(': '.join((dpkg, pkgtypes[pkgtype])))
         if aurbuild != []:
+            os.chdir('../')
             return [72337, aurbuild]
 
     mpparams = ''
@@ -554,6 +556,8 @@ def build_runner(pkgname, performdepcheck=True,
         toinstall = ([], [])
 
     if pkg.is_abs:
+        os.chdir('../../')
+    else:
         os.chdir('../')
 
     return [mpstatus, toinstall]
