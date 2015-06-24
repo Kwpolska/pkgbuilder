@@ -83,7 +83,7 @@ r = requests.post(
     data=json.dumps({'tag_name': TAG, 'body': message}),
     headers=HEADERS)
 
-if r.status_code == 200:
+if r.status_code == 201:
     print("GitHub Release created: {0}".format(r.json()['url']))
 else:
     print("GitHub Release failed: {0}".format(r.text))
