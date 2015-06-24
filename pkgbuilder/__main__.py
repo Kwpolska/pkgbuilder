@@ -99,6 +99,9 @@ def main(source='AUTO', quit=True):
             default=True, dest='pkginst', help=_('don\'t  install packages '
                                                  'after building'))
         argopt.add_argument(
+            '--skippgpcheck', action='store_true', default=False, dest='nopgp',
+            help=_('do not verify source files with PGP signatures'))
+        argopt.add_argument(
             '-S', '--sync', action='store_true', default=False, dest='pac',
             help=_('pacman-like mode'))
         argopt.add_argument(
@@ -112,6 +115,7 @@ def main(source='AUTO', quit=True):
 
         DS.pacman = args.pac
         DS.cleanup = args.cleanup
+        DS.nopgp = args.nopgp
         pkgnames = args.pkgnames
 
         if args.aur4:

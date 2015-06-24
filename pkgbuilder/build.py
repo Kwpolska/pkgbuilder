@@ -544,8 +544,8 @@ def build_runner(pkgname, performdepcheck=True,
     if DS.cleanup:
         mpparams += ' -c'
 
-    if DS.uid == 0:
-        mpparams += ' --asroot'
+    if DS.nopgp:
+        mpparams += ' --skippgpcheck'
 
     mpstatus = subprocess.call('makepkg -sf' + mpparams,
                                shell=True)

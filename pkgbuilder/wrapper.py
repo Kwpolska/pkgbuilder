@@ -26,7 +26,7 @@ import sys
 import os
 
 __all__ = ('main', 'wrapper')
-__wrapperversion__ = '0.4.0'
+__wrapperversion__ = '0.4.1'
 
 
 def main():
@@ -83,7 +83,7 @@ def wrapper(source='AUTO'):
 
         pbshort = ['D', 'C', 'F', '4']
         pblong = ['fetch', 'userfetch', 'vcsupgrade', 'nocolors', 'nodepcheck',
-                  'novalidation', 'buildonly', 'aur4']
+                  'novalidation', 'buildonly', 'aur4', 'skippgpcheck']
 
         commonshort = ['S', 'd', 'i', 's', 'v', 'w']
         commonlong = ['debug', 'info', 'search', 'sync']
