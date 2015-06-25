@@ -104,6 +104,7 @@ class AURPackage(Package):
                     'Replaces': 'replaces',
                     'Groups': 'groups',
                     'License': 'licenses',
+                    'URLPath': 'urlpath',
                     'Popularity': 'popularity',
                     }
         ignore = ['OutOfDate', 'FirstSubmitted', 'LastModified']
