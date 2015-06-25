@@ -58,7 +58,7 @@ class TestPB(unittest.TestCase):
         '3.2.0-1', 'PackageBase': 'pkgbuilder', 'FirstSubmitted': 1316529993,
         'OutOfDate': 1000, 'NumVotes': 19, 'Name': 'pkgbuilderts', 'LastModified':
         1395757472, 'URL': 'https://github.com/Kwpolska/pkgbuilder', 'License':
-        ['BSD']})
+        ['BSD'], 'Popularity': 7})
 
     def setUp(self):
         """Start stuff."""
@@ -104,15 +104,15 @@ class TestPB(unittest.TestCase):
         pbds.log.debug('PB unittest/TestPB is running now on this machine.')
 
     def test_utils_print_package_search(self):
-        sample = ('system/pkgbuilderts 3.2.0-1 (19 votes) '
+        sample = ('aur/pkgbuilderts 3.2.0-1 (19 votes) '
                   '\x1b[1;1m\x1b[1;31m[out of date]\x1b[1;0m\n'
                   '    A Python AUR helper/library.')
 
-        req = pkgbuilder.utils.print_package_search(self.fpkg, True, True)
+        req = pkgbuilder.utils.print_package_search(self.fpkg, True)
         self.assertEqual(req, sample)
 
     def test_utils_print_package_info(self):
-        sample = ('Repository     : aur\nCategory       : system\n'
+        sample = ('Repository     : aur\n'
                   'Name           : pkgbuilderts\n'
                   'Package Base   : pkgbuilder\n'
                   'Version        : 3.2.0-1\n'
@@ -127,6 +127,7 @@ class TestPB(unittest.TestCase):
                   'Conflicts With : None\n'
                   'Replaces       : None\n'
                   'Votes          : 19\n'
+                  'Popularity     : 7\n'
                   'Out of Date    : \x1b[1;1m\x1b[1;31myes\x1b[1;0m\n'
                   'Maintainer     : Kwpolska\nFirst Submitted: '
                   '2011-09-20T14:46:33Z\nLast Updated   : '

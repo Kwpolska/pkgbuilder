@@ -68,13 +68,12 @@ def msearch(maintainer):
         return [AURPackage.from_aurdict(d) for d in aur_pkgs['results']]
 
 
-def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
-                         prefixp=''):
+def print_package_search(pkg, cachemode=False, prefix='', prefixp=''):
     """Output/return a package representation.
 
     Based on `pacman -Ss`.
 
-    .. versionchanged:: 3.0.0
+    .. versionchanged:: 4.0.0
 
     """
     termwidth = get_termwidth() or 9001
@@ -97,10 +96,7 @@ def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
     except AttributeError:
         pass  # for ABS packages
 
-    if use_categories or pkg.is_abs:
-        category = pkg.repo
-    else:
-        category = 'aur'
+    category = pkg.repo
 
     descl = textwrap.wrap(pkg.description, termwidth - len(prefixp2))
 

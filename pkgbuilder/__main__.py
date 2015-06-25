@@ -188,12 +188,8 @@ def main(source='AUTO', quit=True):
 
             output = ''
             for pkg in search:
-                if args.pac:
-                    output = output + pkgbuilder.utils.print_package_search(
-                        pkg, False, True) + '\n'
-                else:
-                    output = output + pkgbuilder.utils.print_package_search(
-                        pkg, True, True) + '\n'
+                output = output + pkgbuilder.utils.print_package_search(
+                    pkg, True) + '\n'
             if output != '':
                 print(output.rstrip())
             if quit:
