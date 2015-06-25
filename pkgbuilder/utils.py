@@ -156,7 +156,6 @@ def print_package_info(pkgs, cachemode=False):
         # for “out of date”.
 
         t = _("""Repository     : aur
-Category       : {cat}
 Name           : {nme}
 Package Base   : {bse}
 Version        : {ver}
@@ -171,6 +170,7 @@ Optional Deps  : {opt}
 Conflicts With : {cnf}
 Replaces       : {rpl}
 Votes          : {cmv}
+Popularity     : {pop}
 Out of Date    : {ood}
 Maintainer     : {mnt}
 First Submitted: {fsb}
@@ -191,8 +191,7 @@ Description    : {dsc}
             if termwidth is None:
                 termwidth = 9001  # Auto-wrap by terminal.
 
-            to.append(t.format(cat=pkg.repo,
-                               nme=pkg.name,
+            to.append(t.format(nme=pkg.name,
                                bse=pkg.packagebase,
                                url=pkg.url,
                                ver=pkg.version,
@@ -209,6 +208,7 @@ Description    : {dsc}
                                cnf=mlist(pkg.conflicts, termwidth=termwidth),
                                rpl=mlist(pkg.replaces, termwidth=termwidth),
                                cmv=pkg.votes,
+                               pop=pkg.popularity,
                                ood=ood,
                                mnt=pkg.human,
                                upd=upd,

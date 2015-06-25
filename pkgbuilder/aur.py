@@ -48,21 +48,23 @@ class AUR(object):
               ``pkgbuilder.utils.{info,search,msearch}()`` instead.
     """
 
+    # FIXME: rpc version 4 for aurv4
     base = 'https://aur.archlinux.org'
-    _rpc = '/rpc.php?v=3'
-    emptystr = '{"version":3,"type":"%s","resultcount":0,"results":[]}'
+    rpcver = 3
+    _rpc = '/rpc.php?v='
+    emptystr = '{"version:%s,"type":"%s","resultcount":0,"results":[]}'
     ua = 'PKGBUILDer/' + pkgbuilder.__version__
 
     @property
     def rpc(self):
         """Return the RPC URL."""
-        return self.base + self._rpc
+        return self.base + self._rpc + str(self.rpcver)
 
     def jsonreq(self, rtype, arg):
         """Make a request and returns plain JSON data."""
         if arg == []:
             # No need to bother.
-            return self.emptystr % rtype
+            return self.emptystr % (self.rpcver, rtype)
 
         try:
             req = requests.get(self.rpc, params={'type': rtype, 'arg': arg},
@@ -81,7 +83,7 @@ class AUR(object):
         """Make a multiinfo request and returns plain JSON data."""
         if args == []:
             # No need to bother.
-            return self.emptystr % 'multiinfo'
+            return self.emptystr % (self.rpcver, 'multiinfo')
 
         try:
             req = requests.get(self.rpc,

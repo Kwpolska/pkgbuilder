@@ -81,6 +81,7 @@ def wrapper(source='AUTO'):
                        'ignore', 'ignoregroup', 'logfile', 'print-format',
                        'root', 'assume-installed']
 
+        # FIXME: -4, --aurv4
         pbshort = ['D', 'C', 'F', '4']
         pblong = ['fetch', 'userfetch', 'vcsupgrade', 'nocolors', 'nodepcheck',
                   'novalidation', 'buildonly', 'aur4', 'skippgpcheck']

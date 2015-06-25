@@ -16,13 +16,7 @@ from . import UTC, DS
 from .exceptions import SanityError
 import datetime
 
-__all__ = ('CATEGORIES', 'Package', 'AURPackage', 'ABSPackage')
-
-CATEGORIES = ['none', 'none', 'daemons', 'devel', 'editors',
-              'emulators', 'games', 'gnome', 'i18n', 'kde',
-              'lib', 'modules', 'multimedia', 'network',
-              'office', 'science', 'system', 'x11',
-              'xfce', 'kernels', 'fonts', 'wayland']
+__all__ = ('Package', 'AURPackage', 'ABSPackage')
 
 
 def mktime(ts):
@@ -74,6 +68,7 @@ class AURPackage(Package):
 
     """An AUR package."""
 
+    repo = 'aur'
     id = None
     packagebase = None
     packagebaseid = None
@@ -86,13 +81,12 @@ class AURPackage(Package):
     modified = None
     votes = None
     urlpath = None
-    _categoryid = None
+    popularity = None
 
     @classmethod
     def from_aurdict(cls, aurdict):
         """Create an instance of AURPackage from AUR RPC data."""
-        bindings = {'CategoryID': '_categoryid',
-                    'Description': 'description',
+        bindings = {'Description': 'description',
                     'ID': 'id',
                     'Maintainer': 'human',
                     'Name': 'name',
@@ -110,8 +104,9 @@ class AURPackage(Package):
                     'Replaces': 'replaces',
                     'Groups': 'groups',
                     'License': 'licenses',
+                    'Popularity': 'popularity',
                     }
-        ignore = ['OutOfDate', 'FirstSubmitted', 'LastModified', 'URLPath']
+        ignore = ['OutOfDate', 'FirstSubmitted', 'LastModified']
 
         p = cls()
         for k, v in aurdict.items():
@@ -121,9 +116,9 @@ class AURPackage(Package):
                 if k not in ignore:
                     DS.log.warn('AURDict has an unknown {0} key: {1}'.format(
                         k, aurdict))
+
         # Manual overrides.
         p.is_outdated = aurdict['OutOfDate'] > 0
-        p.repo = CATEGORIES[aurdict['CategoryID']]
 
         if p.is_outdated:
             p.outdated_since = mktime(aurdict['OutOfDate'])
@@ -131,9 +126,6 @@ class AURPackage(Package):
             p.outdated_since = None
         p.added = mktime(aurdict['FirstSubmitted'])
         p.modified = mktime(aurdict['LastModified'])
-
-        # AURv4 dropped URLPath
-        p.urlpath = aurdict.get('URLPath', None)
 
         return p
 

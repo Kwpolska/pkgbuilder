@@ -69,7 +69,7 @@ def main(source='AUTO', quit=True):
             help=_('copy package files to pacman cache and install them'))
 
         argopt = parser.add_argument_group(_('options'))
-        argopt.add_argument(
+        argopt.add_argument(  # FIXME: delete on AURv4
             '-4', '--aur4', action='store_true',
             default=False, dest='aur4', help=_('use aur4.archlinux.org'))
         argopt.add_argument(
@@ -118,8 +118,10 @@ def main(source='AUTO', quit=True):
         DS.nopgp = args.nopgp
         pkgnames = args.pkgnames
 
+        # FIXME: delete on AURv4
         if args.aur4:
             pkgbuilder.aur.AUR.base = 'https://aur4.archlinux.org'
+            pkgbuilder.aur.AUR.rpcver = 4
 
         if args.debug:
             DS.debugmode(nochange=True)
