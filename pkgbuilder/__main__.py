@@ -71,8 +71,8 @@ def main(source='AUTO', quit=True):
         argopt = parser.add_argument_group(_('options'))
         argopt.add_argument(
             '-c', '--clean', action='store_true',
-            default=False, dest='cleanup', help=_('clean up work files after '
-                                                  'build'))
+            default=False, dest='cleanup', help=_('clean up work files before '
+                                                  'and after build'))
         argopt.add_argument(
             '-C', '--nocolors', action='store_false',
             default=True, dest='color', help=_('don\'t use colors in output'))

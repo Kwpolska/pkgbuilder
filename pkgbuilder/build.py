@@ -20,17 +20,15 @@ import pkgbuilder.ui
 import pkgbuilder.utils
 import sys
 import os
+import shutil
 import pyalpm
 import srcinfo.parse
-import requests
-import requests.exceptions
 import re
-import tarfile
 import subprocess
 import functools
 import glob
 
-__all__ = ('validate', 'install', 'auto_build', 'download', 'rsync', 'extract',
+__all__ = ('validate', 'install', 'auto_build', 'clone', 'rsync',
            'prepare_deps', 'depcheck', 'fetch_runner', 'build_runner')
 
 
@@ -127,6 +125,9 @@ def auto_build(pkgname, performdepcheck=True,
             DS.fancy_msg(_('The build function reported a proper build.'))
         elif build_result[0] >= 0 and build_result[0] < 256:
             raise pkgbuilder.exceptions.MakepkgError(build_result[0])
+        elif build_result[0] == 72335:
+            # existing directory, skip the package
+            pass
         elif build_result[0] == 72336:
             # existing package, do nothing
             pass
@@ -189,22 +190,16 @@ def auto_build(pkgname, performdepcheck=True,
         return []
 
 
-def download(urlpath, filename, pkgname=None):
-    """Download an AUR tarball to the current directory."""
-    try:
-        r = requests.get(pkgbuilder.aur.AUR.base + urlpath)
-        r.raise_for_status()
-    except requests.exceptions.ConnectionError as e:
-        raise pkgbuilder.exceptions.ConnectionError(str(e), e)
-    except requests.exceptions.HTTPError as e:
-        raise pkgbuilder.exceptions.HTTPError(r, e)
-    except requests.exceptions.RequestException as e:
-        raise pkgbuilder.exceptions.NetworkError(str(e), e)
+def clone(pkgbase):
+    """Clone a git repo.
 
-    f = open(filename, 'wb')
-    f.write(r.content)
-    f.close()
-    return len(r.content)
+    .. versionadded:: 4.0.0
+    """
+    repo_url = pkgbuilder.aur.AUR.base + '/' + pkgbase + '.git/'
+    try:
+        subprocess.check_call(['git', 'clone', '--depth', '1', repo_url])
+    except subprocess.CalledProcessError as e:
+        raise pkgbuilder.exceptions.CloneError(e.returncode)
 
 
 def rsync(pkg, quiet=False):
@@ -220,19 +215,6 @@ def rsync(pkg, quiet=False):
                            '--exclude=/{0}/*'.format(pkg.repo), '--exclude=/*',
                            'rsync.archlinux.org::abs/{0}/'.format(pkg.arch),
                            '.'])
-
-
-def extract(filename):
-    """Extract an AUR tarball."""
-    thandle = tarfile.open(filename, 'r:gz')
-    thandle.extractall()
-    names = thandle.getnames()
-    thandle.close()
-    if names:
-        return len(names)
-    else:
-        raise pkgbuilder.exceptions.SanityError(_('No files extracted.'),
-                                                names)
 
 
 def prepare_deps(srcinfo_path, pkgname):
@@ -437,14 +419,8 @@ def fetch_runner(pkgnames, preprocessed=False):
             print(_(':: Retrieving packages from aur...'))
             pm = pkgbuilder.ui.Progress(len(aurpkgs))
             for pkg in aurpkgs:
-                pm.msg(_('retrieving {0}').format(pkg.name), True)
-                filename = pkg.name + '.tar.gz'
-                download(pkg.urlpath, filename, pkg.name)
-
-            print(':: ' + _('Extracting AUR packages...'))
-            for pkg in aurpkgs:
-                filename = pkg.name + '.tar.gz'
-                extract(filename)
+                pm.msg(_('cloning {0}').format(pkg.packagebase), True)
+                clone(pkg.packagebase)
 
         print(_('Successfully fetched: ') + ' '.join(pkgnames))
     except pkgbuilder.exceptions.PBException as e:
@@ -500,7 +476,7 @@ def build_runner(pkgname, performdepcheck=True,
             os.chdir('./{0}/{1}'.format(pkg.repo, pkg.name))
         except FileNotFoundError:
             raise pkgbuilder.exceptions.PBException(
-                'The package download failed.\n           This package might '
+                'The package download failed.\n    This package might '
                 'be generated from a split PKGBUILD.  Please find out the '
                 'name of the “main” package (eg. python- instead of python2-) '
                 'and try again.', '/'.join((pkg.repo, pkg.name)), exit=False)
@@ -510,15 +486,23 @@ def build_runner(pkgname, performdepcheck=True,
             DS.fancy_msg(_('Found an existing package for '
                            '{0}').format(pkgname))
             return [72336, existing]
-        filename = pkg.name + '.tar.gz'
-        DS.fancy_msg(_('Downloading the tarball...'))
-        downloadbytes = download(pkg.urlpath, filename, pkg.name)
-        kbytes = int(downloadbytes) / 1000
-        DS.fancy_msg2(_('{0} kB downloaded').format(kbytes))
-
-        DS.fancy_msg(_('Extracting...'))
-        DS.fancy_msg2(_('{0} files extracted').format(extract(filename)))
+        DS.fancy_msg(_('Cloning the git repository...'))
+        if os.path.exists('./{0}/'.format(pkg.packagebase)):
+            if DS.cleanup or DS.pacman:
+                DS.fancy_warning2(_('removing existing directory {0}').format(
+                    pkg.packagebase))
+                shutil.rmtree('./{0}/'.format(pkg.packagebase))
+            else:
+                DS.fancy_error(_(
+                    'Directory {0} already exists, please run with `-c` to '
+                    'remove it.').format(pkg.packagebase))
+                DS.fancy_warning2(_('skipping package {0}').format(
+                    pkg.packagebase))
+                return [72335, [[], []]]
+        clone(pkg.packagebase)
         os.chdir('./{0}/'.format(pkg.packagebase))
+        if not os.path.exists('.SRCINFO'):
+            raise pkgbuilder.exceptions.EmptyRepoError(pkg.packagebase)
 
     if performdepcheck:
         DS.fancy_msg(_('Checking dependencies...'))

@@ -15,7 +15,7 @@ Defines PKGBUILDer exceptions.
 from . import DS, _
 __all__ = ('PBException', 'AURError', 'MakepkgError', 'NetworkError',
            'ConnectionError', 'HTTPError', 'PackageError',
-           'PackageNotFoundError', 'SanityError')
+           'PackageNotFoundError', 'SanityError', 'CloneError')
 
 
 class PBException(Exception):
@@ -208,3 +208,36 @@ class SanityError(PBException):
     def __str__(self):
         """Return a friendly representation of the exception."""
         return _('Sanity error!  {0} (via {1})').format(self.msg, self.source)
+
+
+class CloneError(PBException):
+
+    """A ``git clone`` failed."""
+
+    qualname = 'CloneError'
+
+    def __init__(self, returncode, exit=True, *args, **kwargs):
+        """Initialize and log the error."""
+        DS.log.error('({0:<20}) git clone returned {1}'.format(
+            self.qualname, returncode))
+        self.returncode = returncode
+        self.msg = _('git clone returned {0}.').format(self.returncode)
+        self.exit = exit
+        self.args = args
+        self.kwargs = kwargs
+
+class EmptyRepoError(CloneError):
+
+    """Git cloned an empty repository."""
+
+    qualname = 'EmptyRepoError'
+
+    def __init__(self, pkgbase, exit=True, *args, **kwargs):
+        """Initialize and log the error."""
+        DS.log.error('({0:<20}) repository {1} is empty'.format(
+            self.qualname, pkgbase))
+        self.pkgbase = pkgbase
+        self.msg = _('Repository {0} is empty.').format(self.pkgbase)
+        self.exit = exit
+        self.args = args
+        self.kwargs = kwargs
