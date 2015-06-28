@@ -48,9 +48,9 @@ class AUR(object):
               ``pkgbuilder.utils.{info,search,msearch}()`` instead.
     """
 
-    # FIXME: rpc version 4 for aurv4
-    base = 'https://aur.archlinux.org'
-    rpcver = 3
+    # FIXME: make this 'aur.archlinux.org'
+    base = 'https://aur4.archlinux.org'
+    rpcver = 4
     _rpc = '/rpc.php?v='
     emptystr = '{"version:%s,"type":"%s","resultcount":0,"results":[]}'
     ua = 'PKGBUILDer/' + pkgbuilder.__version__
