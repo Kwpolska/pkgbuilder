@@ -1,21 +1,20 @@
 # PKGBUILDer pot file.
 # Copyright © 2015, Chris Warrick.
 # This file is distributed under the same license as the PKGBUILDer package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.5.1\n"
+"Project-Id-Version: PKGBUILDer\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
 "POT-Creation-Date: 2015-06-29 10:25+0200\n"
-"PO-Revision-Date: 2014-12-26 19:51+0000\n"
+"PO-Revision-Date: 2015-06-29 08:25+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
-"Language-Team: Japanese (http://www.transifex.com/projects/p/pkgbuilder/"
-"language/ja/)\n"
-"Language: ja\n"
+"Language-Team: Japanese (http://www.transifex.com/projects/p/pkgbuilder/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. TRANSLATORS: translate the whole sentence.
@@ -81,9 +80,8 @@ msgid "options"
 msgstr "副選択肢"
 
 #: pkgbuilder/__main__.py:74
-#, fuzzy
 msgid "clean up work files before and after build"
-msgstr "作成後、作成に必要だったファイルを削除"
+msgstr ""
 
 #: pkgbuilder/__main__.py:78
 msgid "don't use colors in output"
@@ -238,9 +236,9 @@ msgid ":: Retrieving packages from aur..."
 msgstr ""
 
 #: pkgbuilder/build.py:422
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "cloning {0}"
-msgstr "「{0}」を作成中・・・"
+msgstr ""
 
 #: pkgbuilder/build.py:425
 msgid "Successfully fetched: "
@@ -546,56 +544,3 @@ msgstr "副選択肢"
 #: localeprovider.py:5
 msgid "show this help message and exit"
 msgstr "このメッセージを出力して終わる"
-
-#~ msgid "Downloading the tarball..."
-#~ msgstr "ターボールをダウンロード中・・・"
-
-#~ msgid "{0} kB downloaded"
-#~ msgstr "{0} kBをダウンロード済み"
-
-#~ msgid "Extracting..."
-#~ msgstr "抽出中・・・"
-
-#~ msgid "{0} files extracted"
-#~ msgstr "ファイルを{0}個抽出した"
-
-#~ msgid "Performing a dependency check..."
-#~ msgstr "従属パッケージ確認中・・・"
-
-#~ msgid "found"
-#~ msgstr "発見"
-
-#~ msgid ""
-#~ "Hello!\n"
-#~ "\n"
-#~ "PKGBUILDer is now available as an AUR package.  It is the suggested\n"
-#~ "way of installing PKGBUILDer.  This script will download the AUR\n"
-#~ "package and install it.  If you will have problems, please download\n"
-#~ "and compile the package manually.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "こんにちは！\n"
-#~ "\n"
-#~ "PKGBUILDerはAURパッケージとしても提供されている。AURを通して\n"
-#~ "PKGBUILDerをインストールすることを薦める。このスクリプトはAURパッケージ"
-#~ "を\n"
-#~ "ダウンロードしてインストールしてくれる。何か問題があったら、\n"
-#~ "自分でコードをダウンロードしてコンパイルして見て下さい。\n"
-#~ "\n"
-
-#~ msgid "Hit Enter/Return to continue. "
-#~ msgstr "EnterやReturnを押して続行。"
-
-#~ msgid "Installing missing AUR dependencies..."
-#~ msgstr "必要な従属AURパッケージをインストール・・・"
-
-#~ msgid ""
-#~ "It looks like you want to quit.  Okay then, goodbye.\n"
-#~ "No work has been started yet.\n"
-#~ "\n"
-#~ "If that's what you want to do, go for it.  If it isn't, run this\n"
-#~ "script again."
-#~ msgstr ""
-#~ "終わりたいようだな。じゃあ、さようなら。\n"
-#~ "まだ何もしていないので。\n"
-#~ "本当に終わりたいなら止めない。違ったら再度このスクリプトを実行！"

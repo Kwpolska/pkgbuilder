@@ -1,26 +1,24 @@
 # PKGBUILDer pot file.
 # Copyright © 2015, Chris Warrick.
 # This file is distributed under the same license as the PKGBUILDer package.
-#
+# 
 # Translators:
 # Chris Warrick <kwpolska@gmail.com>, 2014-2015
 # Chris Warrick <kwpolska@gmail.com>, 2013
 # Chris Warrick <kwpolska@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.5.1\n"
+"Project-Id-Version: PKGBUILDer\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
 "POT-Creation-Date: 2015-06-29 10:25+0200\n"
-"PO-Revision-Date: 2015-06-24 12:15+0000\n"
+"PO-Revision-Date: 2015-06-29 08:29+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/pkgbuilder/"
-"language/pl/)\n"
-"Language: pl\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/pkgbuilder/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. TRANSLATORS: translate the whole sentence.
 #. Alternatively, use translation instead of locale.
@@ -85,9 +83,8 @@ msgid "options"
 msgstr "opcje"
 
 #: pkgbuilder/__main__.py:74
-#, fuzzy
 msgid "clean up work files before and after build"
-msgstr "usuń pliki robocze po wszystkim"
+msgstr "usuń pliki robocze przed i po pracy"
 
 #: pkgbuilder/__main__.py:78
 msgid "don't use colors in output"
@@ -162,9 +159,7 @@ msgstr "Błąd podczas przetwarzania {0}: {1}"
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
-msgstr ""
-"PKGBUILDer (lub bliblioteka requests) miała problemy z wypełniem żądania "
-"HTTP."
+msgstr "PKGBUILDer (lub bliblioteka requests) miała problemy z wypełniem żądania HTTP."
 
 #: pkgbuilder/build.py:37
 msgid "Validating installation status..."
@@ -218,9 +213,7 @@ msgstr "znaleziono istniejący pakiet {0}"
 #: pkgbuilder/build.py:182
 #, python-brace-format
 msgid "makepkg (or someone else) failed and returned {0}."
-msgstr ""
-"tworzenie pakietu przez makepkg (lub coś innego) nie powiodło się i zwróciło "
-"{0}."
+msgstr "tworzenie pakietu przez makepkg (lub coś innego) nie powiodło się i zwróciło {0}."
 
 #: pkgbuilder/build.py:318
 #, python-brace-format
@@ -246,9 +239,9 @@ msgid ":: Retrieving packages from aur..."
 msgstr ":: Pobieranie pakietów z aur..."
 
 #: pkgbuilder/build.py:422
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "cloning {0}"
-msgstr "Budowanie {0}..."
+msgstr "klonowanie {0}"
 
 #: pkgbuilder/build.py:425
 msgid "Successfully fetched: "
@@ -270,22 +263,22 @@ msgstr "Znaleziono istniejący pakiet {0}"
 
 #: pkgbuilder/build.py:489
 msgid "Cloning the git repository..."
-msgstr ""
+msgstr "Klonowanie repozytorium git..."
 
 #: pkgbuilder/build.py:492
 #, python-brace-format
 msgid "removing existing directory {0}"
-msgstr ""
+msgstr "usuwanie istniejącego folderu {0}"
 
 #: pkgbuilder/build.py:497
 #, python-brace-format
 msgid "Directory {0} already exists, please run with `-c` to remove it."
-msgstr ""
+msgstr "Folder {0} istnieje, użyj opcji `-c` by go usunąć."
 
 #: pkgbuilder/build.py:499
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "skipping package {0}"
-msgstr "znaleziono istniejący pakiet {0}"
+msgstr "pomijanie pakietu {0}"
 
 #: pkgbuilder/build.py:508
 msgid "Checking dependencies..."
@@ -348,14 +341,14 @@ msgid "Sanity error!  {0} (via {1})"
 msgstr "Sanity test nieudany!  {0} (via {1})"
 
 #: pkgbuilder/exceptions.py:224
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "git clone returned {0}."
-msgstr "makepkg zwrócił {0}."
+msgstr "git clone zwrócił {0}."
 
 #: pkgbuilder/exceptions.py:240
 #, python-brace-format
 msgid "Repository {0} is empty."
-msgstr ""
+msgstr "Repozytorium {0} jest puste."
 
 #. TRANSLATORS: see makepkg.
 #: pkgbuilder/pbds.py:47
@@ -391,9 +384,7 @@ msgstr "Inicjalizowanie dostępu do pacmana..."
 msgid ""
 "Running as root is not allowed as it can cause catastrophic damage to your "
 "system!"
-msgstr ""
-"Uruchamianie jako root nie jest dozwolone, ponieważ może to spowodować "
-"katastrofalne szkody!"
+msgstr "Uruchamianie jako root nie jest dozwolone, ponieważ może to spowodować katastrofalne szkody!"
 
 #: pkgbuilder/pbds.py:158
 msgid "Please restart PKGBUILDer as a regular user."
@@ -485,7 +476,7 @@ msgstr "Próba użycia utils.print_package_info z pakietem z ABS"
 #. TRANSLATORS: space it properly.  “yes/no” below are
 #. for “out of date”.
 #: pkgbuilder/utils.py:154
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid ""
 "Repository     : aur\n"
 "Name           : {nme}\n"
@@ -508,28 +499,7 @@ msgid ""
 "First Submitted: {fsb}\n"
 "Last Updated   : {upd}\n"
 "Description    : {dsc}\n"
-msgstr ""
-"Repozytorium   : aur\n"
-"Kategoria      : {cat}\n"
-"Nazwa          : {nme}\n"
-"Baza pakietu   : {bse}\n"
-"Wersja         : {ver}\n"
-"URL            : {url}\n"
-"Licencje       : {lic}\n"
-"Grupy          : {grp}\n"
-"Dostarcza      : {prv}\n"
-"Zależy od      : {dep}\n"
-"Zależności budowania: {mkd}\n"
-"Zależności sprawdzania: {ckd}\n"
-"Opcjonalne zależności: {opt}\n"
-"Konfliktuje z  : {cnf}\n"
-"Zastępuje      : {rpl}\n"
-"Głosy          : {cmv}\n"
-"Nieaktualny    : {ood}\n"
-"Opiekun        : {mnt}\n"
-"Wysłany        : {fsb}\n"
-"Ost. aktualiz. : {upd}\n"
-"Opis           : {dsc}\n"
+msgstr "Repozytorium   : aur\nNazwa          : {nme}\nBaza pakietu   : {bse}\nWersja         : {ver}\nURL            : {url}\nLicencje       : {lic}\nGrupy          : {grp}\nDostarcza      : {prv}\nZależy od      : {dep}\nZależności budowania: {mkd}\nZależności sprawdzania: {ckd}\nOpcjonalne zależności: {opt}\nKonfliktuje z  : {cnf}\nZastępuje      : {rpl}\nGłosy          : {cmv}\nPopularność    : {pop}\nNieaktualny    : {ood}\nOpiekun        : {mnt}\nWysłany        : {fsb}\nOst. aktualiz. : {upd}\nOpis           : {dsc}\n"
 
 #: pkgbuilder/utils.py:183
 msgid "yes"
@@ -559,18 +529,7 @@ msgid ""
 "\n"
 "Additional options:\n"
 "  -L, --unlock         unlock the pacman database"
-msgstr ""
-"sposób użycia:  {0} <operacja> [...]\n"
-"\n"
-"PBWrapper, wrapper dla pacmana i PKGBUILDera.\n"
-"\n"
-"{1}\n"
-"\n"
-"Obowiązuje składnia pacmana i PKGBUILDera.  Zajrzyj do ich stron\n"
-"w podręczniku man lub do komend pomocy, aby dowiedzieć się więcej.\n"
-"\n"
-"Dodatkowe opcje:\n"
-"  -L, --unlock         odblokuj bazę danych pacmana"
+msgstr "sposób użycia:  {0} <operacja> [...]\n\nPBWrapper, wrapper dla pacmana i PKGBUILDera.\n\n{1}\n\nObowiązuje składnia pacmana i PKGBUILDera.  Zajrzyj do ich stron\nw podręczniku man lub do komend pomocy, aby dowiedzieć się więcej.\n\nDodatkowe opcje:\n  -L, --unlock         odblokuj bazę danych pacmana"
 
 #. A module only for gettext locale provision.
 #: localeprovider.py:2
@@ -588,24 +547,3 @@ msgstr "argumenty opcjonalne"
 #: localeprovider.py:5
 msgid "show this help message and exit"
 msgstr "pokaż tą wiadomość i wyjdź"
-
-#~ msgid "use aur4.archlinux.org"
-#~ msgstr "użyj aur4.archlinux.org"
-
-#~ msgid "No files extracted."
-#~ msgstr "Nic nie wypakowano."
-
-#~ msgid "Extracting AUR packages..."
-#~ msgstr "Wypakowywanie pakietów z AUR..."
-
-#~ msgid "Downloading the tarball..."
-#~ msgstr "Pobieranie tarballa..."
-
-#~ msgid "{0} kB downloaded"
-#~ msgstr "pobrano {0} kB"
-
-#~ msgid "Extracting..."
-#~ msgstr "Wypakowywanie..."
-
-#~ msgid "{0} files extracted"
-#~ msgstr "wypakowano {0} plików"

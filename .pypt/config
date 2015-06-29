@@ -14,7 +14,7 @@ GITREPO="$PROJECTLC"
 # gettext   Use GNU gettext (gettext module).
 # pyqt4     Use the Qt locale tools (stock Qt + PyQt4).
 # pyside    Use the Qt locale tools (stock Qt + PySide).
-LOCALETYPE="gettext"
+LOCALETYPE="gettext-tx"
 
 # Python versions supported.
 PYTHON2=0

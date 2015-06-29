@@ -1,24 +1,23 @@
 # PKGBUILDer pot file.
 # Copyright © 2015, Chris Warrick.
 # This file is distributed under the same license as the PKGBUILDer package.
-#
+# 
 # Translators:
 # Anh Phan <vietnamesel10n@gmail.com>, 2013
 # ppanhh <ppanhh@gmail.com>, 2013
 # Anh Phan <vietnamesel10n@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.5.1\n"
+"Project-Id-Version: PKGBUILDer\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
 "POT-Creation-Date: 2015-06-29 10:25+0200\n"
-"PO-Revision-Date: 2014-12-26 19:51+0000\n"
+"PO-Revision-Date: 2015-06-29 08:25+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
-"Language-Team: Vietnamese (http://www.transifex.com/projects/p/pkgbuilder/"
-"language/vi/)\n"
-"Language: vi\n"
+"Language-Team: Vietnamese (http://www.transifex.com/projects/p/pkgbuilder/language/vi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. TRANSLATORS: translate the whole sentence.
@@ -84,9 +83,8 @@ msgid "options"
 msgstr "tùy chọn"
 
 #: pkgbuilder/__main__.py:74
-#, fuzzy
 msgid "clean up work files before and after build"
-msgstr "xóa các tập tin sau khi đã xây dựng xong"
+msgstr ""
 
 #: pkgbuilder/__main__.py:78
 msgid "don't use colors in output"
@@ -161,9 +159,7 @@ msgstr ""
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
-msgstr ""
-"PKGBUILDer (hoặc thư viện xử lý yêu cầu) gặp trục trặc khi xử lý các yêu cầu "
-"HTTP."
+msgstr "PKGBUILDer (hoặc thư viện xử lý yêu cầu) gặp trục trặc khi xử lý các yêu cầu HTTP."
 
 #: pkgbuilder/build.py:37
 msgid "Validating installation status..."
@@ -222,8 +218,7 @@ msgstr "makepkg (hoặc đối tượng nào đó) đã thất bại và trả v
 #: pkgbuilder/build.py:318
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
-msgstr ""
-"Thất bại trong việc điền vào các yêu cầu về sự phụ thuộc của gói tin: {0}"
+msgstr "Thất bại trong việc điền vào các yêu cầu về sự phụ thuộc của gói tin: {0}"
 
 #: pkgbuilder/build.py:408
 msgid ":: Retrieving packages from abs..."
@@ -244,9 +239,9 @@ msgid ":: Retrieving packages from aur..."
 msgstr ":: Đang nhận các gói cài đặt từ aur..."
 
 #: pkgbuilder/build.py:422
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "cloning {0}"
-msgstr "Đang xây dựng {0}..."
+msgstr ""
 
 #: pkgbuilder/build.py:425
 msgid "Successfully fetched: "
@@ -262,9 +257,9 @@ msgid "Retrieving from ABS..."
 msgstr "Đang nhận từ ABS..."
 
 #: pkgbuilder/build.py:472 pkgbuilder/build.py:486
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Found an existing package for {0}"
-msgstr "đã tìm thấy gói cài đặt hiện đang tồn tại cho {0}"
+msgstr ""
 
 #: pkgbuilder/build.py:489
 msgid "Cloning the git repository..."
@@ -281,9 +276,9 @@ msgid "Directory {0} already exists, please run with `-c` to remove it."
 msgstr ""
 
 #: pkgbuilder/build.py:499
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "skipping package {0}"
-msgstr "đã tìm thấy gói cài đặt hiện đang tồn tại cho {0}"
+msgstr ""
 
 #: pkgbuilder/build.py:508
 msgid "Checking dependencies..."
@@ -346,9 +341,9 @@ msgid "Sanity error!  {0} (via {1})"
 msgstr "Lỗi nghiêm trọng!  {0} (thông qua {1})"
 
 #: pkgbuilder/exceptions.py:224
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "git clone returned {0}."
-msgstr "makepkg trả về {0}."
+msgstr ""
 
 #: pkgbuilder/exceptions.py:240
 #, python-brace-format
@@ -534,19 +529,7 @@ msgid ""
 "\n"
 "Additional options:\n"
 "  -L, --unlock         unlock the pacman database"
-msgstr ""
-"cách dùng:  {0} <tiến trình> [...]\n"
-"\n"
-"PBWrapper, là wrapper dành cho pacman và PKGBUILDer.\n"
-"\n"
-"{1}\n"
-"\n"
-"Chỉ áp dụng cho cú pháp thuộc Pacman và PKGBUILDer.  Tra cứu các văn bản/"
-"lệnh\n"
-"trợ giúp để biết thêm chi tiết.\n"
-"\n"
-"Tùy chọn bổ sung:\n"
-"  -L, --unlock         mở khóa phần cơ sở dữ liệu của pacman"
+msgstr "cách dùng:  {0} <tiến trình> [...]\n\nPBWrapper, là wrapper dành cho pacman và PKGBUILDer.\n\n{1}\n\nChỉ áp dụng cho cú pháp thuộc Pacman và PKGBUILDer.  Tra cứu các văn bản/lệnh\ntrợ giúp để biết thêm chi tiết.\n\nTùy chọn bổ sung:\n  -L, --unlock         mở khóa phần cơ sở dữ liệu của pacman"
 
 #. A module only for gettext locale provision.
 #: localeprovider.py:2
@@ -564,138 +547,3 @@ msgstr "tùy chọn đối số"
 #: localeprovider.py:5
 msgid "show this help message and exit"
 msgstr "hiển thị thông điệp trợ giúp và thoát"
-
-#~ msgid "No files extracted."
-#~ msgstr "Vẫn chưa giải nén tập tin nào."
-
-#~ msgid "Extracting AUR packages..."
-#~ msgstr "Đang giải nén các gói cài đặt AUR..."
-
-#~ msgid "Downloading the tarball..."
-#~ msgstr "Đang tải về các tập tin tarball..."
-
-#~ msgid "{0} kB downloaded"
-#~ msgstr "{0} kB đã tải về"
-
-#~ msgid "Extracting..."
-#~ msgstr "Đang giải nén.."
-
-#~ msgid "{0} files extracted"
-#~ msgstr "{0} tập tin đã giải nén"
-
-#~ msgid "0 bytes downloaded"
-#~ msgstr "0 byte đã tải về"
-
-#~ msgid "Performing a dependency check..."
-#~ msgstr "Đang thực hiện việc kiểm tra độc lập..."
-
-#~ msgid "found"
-#~ msgstr "đã tìm thấy"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Something went wrong.  Please read makepkg's output and try again.\n"
-#~ "You can also try to debug the work of this script yourself.\n"
-#~ "All the files this script was working on are placed in\n"
-#~ "    {0}\n"
-#~ "(the number is random).\n"
-#~ "\n"
-#~ "If I am wrong, though, congratulations!\n"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Đã xảy ra lỗi.  Vùi lòng đọc dữ liệu xuất ra của makepkg và thử lại lần "
-#~ "nữa.\n"
-#~ "Bạn cũng có thể tự mình sửa các gỡ rối dựa vào đoạn mã lênh này theo ý "
-#~ "bạn.\n"
-#~ "Tất cả các tập tin mà đoạn mã lệnh này tác động tới được đặt ở\n"
-#~ "    {0}\n"
-#~ "(con số này là ngẫu nhiên).\n"
-#~ "\n"
-#~ "Nếu như lỗi này thuộc về nhà phát triển, bạn hãy liên hệ với chúng tôi!\n"
-
-#~ msgid ""
-#~ "Hello!\n"
-#~ "\n"
-#~ "PKGBUILDer is now available as an AUR package.  It is the suggested\n"
-#~ "way of installing PKGBUILDer.  This script will download the AUR\n"
-#~ "package and install it.  If you will have problems, please download\n"
-#~ "and compile the package manually.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Xin chào!\n"
-#~ "\n"
-#~ "PKGBUILDer hiện là gói cài đặt AUR. Đây hiện là cách cài đặt\n"
-#~ "được khuyên dùng đối với PKGBUILDer.  Phần mã lệnh này sẽ tải về gói tin "
-#~ "AUR\n"
-#~ "và tiến hành cài đặt.  Nếu gặp phải trục trặc, xin vui lòng tải về\n"
-#~ "và biên dịch các gói tin một cách tuần tự.\n"
-#~ "\n"
-
-#~ msgid "Hit Enter/Return to continue. "
-#~ msgstr "Ấn Enter/Return để tiếp tục."
-
-#~ msgid "Installing missing AUR dependencies..."
-#~ msgstr "Đang cài đặt các phần AUR độc lập còn thiếu..."
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Read the above output.  If the script had any problems, run it\n"
-#~ "again.  You can also try to debug the work of this script yourself.\n"
-#~ "All the files this script was working on are placed in\n"
-#~ "    {0}\n"
-#~ "(the number is random).\n"
-#~ "\n"
-#~ "If everything went fine, though, congratulations!  You can now use\n"
-#~ "PKGBUILDer.  For standalone usage, type `pkgbuilder` into the prompt\n"
-#~ "(zsh users: hash -r, other shells may need another command).  For\n"
-#~ "python module usage, type `import pkgbuilder` into the python prompt.\n"
-#~ msgstr ""
-#~ "\n"
-#~ "\n"
-#~ "Đọc phần dữ liệu được xuất ra bên trên.  Nếu các đoạn mã lệnh gặp vấn đề, "
-#~ "hãy chạy lại các đoạn mã lệnh này một lần nữa.  Bạn cũng có thể tự mình "
-#~ "sửa phần gỡ rối này.\n"
-#~ "Tất cả các tập tin mà đoạn mã lệnh này tác động tới được đặt ở\n"
-#~ "    {0}\n"
-#~ "(con số này là ngẫu nhiên).\n"
-#~ "\n"
-#~ "INếu như lỗi này thuộc về nhà phát triển, bạn hãy liên hệ với chúng tôi!  "
-#~ "Bạn hiện giờ đã có thể sử dụng\n"
-#~ "PKGBUILDer.  Đối với kiểu dùng theo dạng tập tin tự chay, gõ `pkgbuilder` "
-#~ "vào trong cửa sổ mã lệnh\n"
-#~ "(người dùng zsh: hash -r, các shell khác sẽ cần thêm một dòng lệnh nữa).  "
-#~ "Đối với cách sử dụng module Python, gõ `import pkgbuilder` vào trong cửa "
-#~ "sổ mã lệnh của python.\n"
-
-#~ msgid ""
-#~ "It looks like you want to quit.  Okay then, goodbye.\n"
-#~ "No work has been started yet.\n"
-#~ "\n"
-#~ "If that's what you want to do, go for it.  If it isn't, run this\n"
-#~ "script again."
-#~ msgstr ""
-#~ "Có vẻ như bạn muốn thoát. Nếu thế thì, chào tạm biệt.\n"
-#~ "Hiện các công việc vẫn chưa được thực hiện.\n"
-#~ "\n"
-#~ "Nếu đây là điều bạn muốn, xin cứ tiếp tục. Nếu không phải, hãy thực thi\n"
-#~ "đoạn mã lệnh này lần nữa."
-
-#~ msgid ""
-#~ "It looks like you want to quit.  Okay then, goodbye.\n"
-#~ "All the files this script was working on are placed in\n"
-#~ "    {0}\n"
-#~ "(the number is random).\n"
-#~ "\n"
-#~ "If that's what you want to do, go for it.  If it isn't, run this\n"
-#~ "script again."
-#~ msgstr ""
-#~ "Có vẻ như bạn đang muốn thoát.  Nếu vậy, xin chào tạm biệt.\n"
-#~ "Tất cả các tập tin mà đoạn mã lệnh này tác động tới được đặt ở\n"
-#~ "    {0}\n"
-#~ "(con số này là ngẫu nhiên).\n"
-#~ "\n"
-#~ "Nếu đó là điều bạn muốn thao tác, cứ tiếp tục.  Nếu không phải, chạy lại\n"
-#~ "đoạn mã này một lần nữa."
