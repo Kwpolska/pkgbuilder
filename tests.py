@@ -74,28 +74,6 @@ class TestPB(unittest.TestCase):
     def test_aur(self):
         pkgbuilder.aur.AUR()
 
-    def test_build_extract(self):
-        os.chdir('/tmp')
-
-        b64 = ('H4sIABklFFAAA+3RQQrCMBCF4aw9RS4gzqRJc54KXUgFi0nx+rZapIJFhBYR/2'
-               '8zIXmQgdfut7lOOXWHXO/MOqQXQximxhDvs5Tb/cioEwninNc+p8UQt2GlfZ50'
-               'KVdna01zaU/H1FRzuXfvP6qd9v84LfvHUHDp/Xz/qpP++5yG6MRYWXaN1/68f1'
-               'cWWjgvm28vAgAAAAAAAAAAAAAAAOBjV60a9/gAKAAA')
-        realfile = base64.b64decode(b64)
-        os.mkdir('./PBTESTS')
-        os.chdir('./PBTESTS/')
-        with open('./pb-testsuite.tar.gz', 'wb') as f:
-            f.write(realfile)
-
-        req = pkgbuilder.build.extract('./pb-testsuite.tar.gz')
-        self.assertEqual(req, 2)
-        with open('./pb-testsuite/testsuite', 'r') as f:
-            sanitycheck = f.read().strip()
-
-        self.assertEqual(sanitycheck, '26313240')
-        os.chdir('../')
-        shutil.rmtree('./PBTESTS')
-
     def test_pbds(self):
         pkgbuilder.pbds.PBDS()
 
