@@ -1,1 +1,4 @@
+setuptools
 requests
+pyalpm
+srcinfo

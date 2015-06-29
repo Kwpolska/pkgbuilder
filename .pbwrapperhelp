@@ -39,8 +39,9 @@ options:
       --noscriptlet    do not execute the install scriptlet if one exists
       --print-format <string>
                        specify how the targets should be printed
-usage: pkgbuilder [-h] [-V] [-F] [--userfetch USER] [-i] [-s] [-u] [-U] [-4]
-                  [-c] [-C] [--debug] [-d] [-D] [-v] [-w] [-S] [-y]
+usage: pkgbuilder [-h] [-V] [-F] [--userfetch USER] [-i] [-s] [-u] [-U] [-c]
+                  [-C] [--debug] [-d] [-D] [-v] [-w] [--skippgpcheck] [-S]
+                  [-y]
                   [PACKAGE [PACKAGE ...]]
 
 An AUR helper (and library) in Python 3.
@@ -61,14 +62,14 @@ operations:
   -U, --upgrade       copy package files to pacman cache and install them
 
 options:
-  -4, --aur4          use aur4.archlinux.org
-  -c, --clean         clean up work files after build
+  -c, --clean         clean up work files before and after build
   -C, --nocolors      don't use colors in output
   --debug             display debug messages
   -d, --nodepcheck    don't check dependencies (may break makepkg)
   -D, --vcsupgrade    upgrade all the VCS/date-versioned packages
   -v, --novalidation  don't check if packages were installed after build
   -w, --buildonly     don't install packages after building
+  --skippgpcheck      do not verify source files with PGP signatures
   -S, --sync          pacman-like mode
   -y, --refresh       (dummy)
 

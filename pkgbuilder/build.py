@@ -1,18 +1,15 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.5.1
+# PKGBUILDer v4.0.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
 
 """
-    pkgbuilder.build
-    ~~~~~~~~~~~~~~~~
+Build AUR packages.
 
-    Functions for building packages.
-
-    :Copyright: © 2011-2015, Chris Warrick.
-    :License: BSD (see /LICENSE).
+:Copyright: © 2011-2015, Chris Warrick.
+:License: BSD (see /LICENSE).
 """
 
 from . import DS, _
@@ -23,17 +20,16 @@ import pkgbuilder.ui
 import pkgbuilder.utils
 import sys
 import os
+import shutil
 import pyalpm
-import requests
-import requests.exceptions
+import srcinfo.parse
 import re
-import tarfile
 import subprocess
 import functools
 import glob
 
-__all__ = ['validate', 'install', 'auto_build', 'download', 'rsync', 'extract',
-           'prepare_deps', 'depcheck', 'fetch_runner', 'build_runner']
+__all__ = ('validate', 'install', 'auto_build', 'clone', 'rsync',
+           'prepare_deps', 'depcheck', 'fetch_runner', 'build_runner')
 
 
 def validate(pkgnames):
@@ -83,14 +79,15 @@ def install(pkgpaths, sigpaths, asdeps, uopt=''):
     pkgpaths = list(set(pkgpaths))
     sigpaths = list(set(sigpaths))
 
+    trueexit = 256
+    while trueexit != 0:
+        trueexit = DS.sudo(['true'])
+
     DS.fancy_msg2(_('Moving to /var/cache/pacman/pkg/...'))
     DS.log.info('pkgs={0}; sigs={1}'.format(pkgpaths, sigpaths))
     DS.log.debug('mv {0} {1} /var/cache/pacman/pkg/'.format(pkgpaths,
                                                             sigpaths))
-    mvexit = 256
-    while mvexit != 0:
-        mvexit = DS.sudo(['mv'] + pkgpaths + sigpaths +
-                         ['/var/cache/pacman/pkg/'])
+    DS.sudo(['mv'] + pkgpaths + sigpaths + ['/var/cache/pacman/pkg/'])
 
     npkgpaths = ['/var/cache/pacman/pkg/' + os.path.basename(i)
                  for i in pkgpaths]
@@ -119,16 +116,21 @@ def auto_build(pkgname, performdepcheck=True,
 
         This function returns a list of packages to install with pacman -U.
         Please take care of it.  Running PKGBUILDer/PBWrapper standalone or
-        .main.main() will do that.
+        .__main__.main() will do that.
 
     """
     build_result = build_runner(pkgname, performdepcheck, pkginstall)
-    os.chdir('../')
     try:
         if build_result[0] == 0:
             DS.fancy_msg(_('The build function reported a proper build.'))
         elif build_result[0] >= 0 and build_result[0] < 256:
             raise pkgbuilder.exceptions.MakepkgError(build_result[0])
+        elif build_result[0] == 72335:
+            # existing directory, skip the package
+            pass
+        elif build_result[0] == 72336:
+            # existing package, do nothing
+            pass
         elif build_result[0] == 72337:
             DS.fancy_warning(_('Building more AUR packages is required.'))
             toinstall2 = []
@@ -188,22 +190,16 @@ def auto_build(pkgname, performdepcheck=True,
         return []
 
 
-def download(urlpath, filename, pkgname=None):
-    """Download an AUR tarball to the current directory."""
-    try:
-        r = requests.get(pkgbuilder.aur.AUR.base + urlpath)
-        r.raise_for_status()
-    except requests.exceptions.ConnectionError as e:
-        raise pkgbuilder.exceptions.ConnectionError(str(e), e)
-    except requests.exceptions.HTTPError as e:
-        raise pkgbuilder.exceptions.HTTPError(r, e)
-    except requests.exceptions.RequestException as e:
-        raise pkgbuilder.exceptions.NetworkError(str(e), e)
+def clone(pkgbase):
+    """Clone a git repo.
 
-    f = open(filename, 'wb')
-    f.write(r.content)
-    f.close()
-    return len(r.content)
+    .. versionadded:: 4.0.0
+    """
+    repo_url = pkgbuilder.aur.AUR.base + '/' + pkgbase + '.git/'
+    try:
+        subprocess.check_call(['git', 'clone', '--depth', '1', repo_url])
+    except subprocess.CalledProcessError as e:
+        raise pkgbuilder.exceptions.CloneError(e.returncode)
 
 
 def rsync(pkg, quiet=False):
@@ -221,63 +217,36 @@ def rsync(pkg, quiet=False):
                            '.'])
 
 
-def extract(filename):
-    """Extract an AUR tarball."""
-    thandle = tarfile.open(filename, 'r:gz')
-    thandle.extractall()
-    names = thandle.getnames()
-    thandle.close()
-    if names:
-        return len(names)
-    else:
-        raise pkgbuilder.exceptions.SanityError(_('No files extracted.'),
-                                                names)
+def prepare_deps(srcinfo_path, pkgname):
+    """Get (make)depends from a .SRCINFO file and returns them.
 
+    .. versionchanged:: 4.0.0
 
-def prepare_deps(pkgbuild_path):
-    """Get (make)depends from a PKGBUILD and returns them."""
-    # Back in the day, there was a comment praising replacing pyparsing
-    # with shell magic.  It claimed that we will have no fuckups ever.
-    # OF COURSE WE DID.  SPLIT PACKAGES.  PKGBUILDer crashed when it
-    # encountered one. Here comes the output from sh:
-    #
-    # PKGBUILD: line XX: `package_package-name': not a valid identifier
-    #
-    # shell=True with subprocess.check_output() uses /bin/sh, which is more
-    # strict than /bin/bash used by makepkg.
-    #
-    # So, I replaced it by a call to /usr/bin/bash (which is equivalent
-    # to /bin/bash on Arch Linux).
-    #
-    # And if the PKGBUILD is malicious, we speed up the destroying of the user
-    # system by about 10 seconds, so it makes no sense not to do this.
-    # Moreover, it takes only 7 lines instead of about 40 in the pyparsing
-    # implementation.
-    #
-    # PS. I am amazed that `bash -c` ignores !events.  That saved me one
-    # replace.  I am also amazed that it ignored \a and \n.
-    #
-    # FULL DISCLOSURE: the following path was used to test the current
-    #                  implementation.  I may have not noticed
-    #                  something else that is not accounted for by
-    #                  this very path, so if you know that some
-    #                  breakage occurs, tell me.
-    #
-    # I am an "idiot"/no, 'really'/exclamation!mark, seriously/backsl\ash/a\n
+    In the past, this function used to get data via `bash -c`.
+    """
+    with open(srcinfo_path, encoding='utf-8') as fh:
+        raw = fh.read()
 
-    ppath = pkgbuild_path.replace('"', r'\"').join(('"', '"'))
+    data, errors = srcinfo.parse.parse_srcinfo(raw)
+    if errors:
+        raise pkgbuilder.exceptions.PackageError(
+            'malformed .SRCINFO: {0}'.format(errors), 'prepare_deps')
+    all_depends = []
+    if 'depends' in data:
+        all_depends += data['depends']
+    if 'makedepends' in data:
+        all_depends += data['makedepends']
+    if pkgname in data['packages'] and 'depends' in data['packages'][pkgname]:
+        all_depends += data['packages'][pkgname]['depends']
+    if (pkgname in data['packages'] and
+            'makedepends' in data['packages'][pkgname]):
+        all_depends += data['packages'][pkgname]['makedepends']
 
-    carch = subprocess.check_output(('uname', '-m')).decode('utf-8').strip()
-
-    deps = subprocess.check_output(('/usr/bin/bash', '-c', 'export CARCH="' +
-                                    carch + '";source ' + ppath + '> /dev/null'
-                                    ' 2> /dev/null;for i in ${depends[*]};do '
-                                    'echo $i;done;for i in ${makedepends[*]};'
-                                    'do echo $i;done'))
-    deps = deps.decode('utf-8')
-    deps = deps.split('\n')
-
-    return deps
+    depends = []
+    for d in all_depends:
+        if d not in depends:
+            depends.append(d)
+    return depends
 
 
 def _test_dependency(available, difference, wanted):
@@ -450,14 +419,8 @@ def fetch_runner(pkgnames, preprocessed=False):
             print(_(':: Retrieving packages from aur...'))
             pm = pkgbuilder.ui.Progress(len(aurpkgs))
             for pkg in aurpkgs:
-                pm.msg(_('retrieving {0}').format(pkg.name), True)
-                filename = pkg.name + '.tar.gz'
-                download(pkg.urlpath, filename, pkg.name)
-
-            print(':: ' + _('Extracting AUR packages...'))
-            for pkg in aurpkgs:
-                filename = pkg.name + '.tar.gz'
-                extract(filename)
+                pm.msg(_('cloning {0}').format(pkg.packagebase), True)
+                clone(pkg.packagebase)
 
         print(_('Successfully fetched: ') + ' '.join(pkgnames))
     except pkgbuilder.exceptions.PBException as e:
@@ -504,28 +467,46 @@ def build_runner(pkgname, performdepcheck=True,
                 _('Failed to retieve {0} (from ABS/rsync).').format(
                     pkg.name), pkg=pkg, retcode=rc)
 
+        existing = find_packagefile(pkg.name)
+        if any(pkg.name in i for i in existing[0]):
+            DS.fancy_msg(_('Found an existing package for '
+                           '{0}').format(pkgname))
+            return [72336, existing]
         try:
             os.chdir('./{0}/{1}'.format(pkg.repo, pkg.name))
         except FileNotFoundError:
             raise pkgbuilder.exceptions.PBException(
-                'The package download failed.\n           This package might '
+                'The package download failed.\n    This package might '
                 'be generated from a split PKGBUILD.  Please find out the '
                 'name of the “main” package (eg. python- instead of python2-) '
                 'and try again.', '/'.join((pkg.repo, pkg.name)), exit=False)
     else:
-        filename = pkg.name + '.tar.gz'
-        DS.fancy_msg(_('Downloading the tarball...'))
-        downloadbytes = download(pkg.urlpath, filename, pkg.name)
-        kbytes = int(downloadbytes) / 1000
-        DS.fancy_msg2(_('{0} kB downloaded').format(kbytes))
-
-        DS.fancy_msg(_('Extracting...'))
-        DS.fancy_msg2(_('{0} files extracted').format(extract(filename)))
+        existing = find_packagefile(pkg.packagebase)
+        if any(pkg.name in i for i in existing[0]):
+            DS.fancy_msg(_('Found an existing package for '
+                           '{0}').format(pkgname))
+            return [72336, existing]
+        DS.fancy_msg(_('Cloning the git repository...'))
+        if os.path.exists('./{0}/'.format(pkg.packagebase)):
+            if DS.cleanup or DS.pacman:
+                DS.fancy_warning2(_('removing existing directory {0}').format(
+                    pkg.packagebase))
+                shutil.rmtree('./{0}/'.format(pkg.packagebase))
+            else:
+                DS.fancy_error(_(
+                    'Directory {0} already exists, please run with `-c` to '
+                    'remove it.').format(pkg.packagebase))
+                DS.fancy_warning2(_('skipping package {0}').format(
+                    pkg.packagebase))
+                return [72335, [[], []]]
+        clone(pkg.packagebase)
         os.chdir('./{0}/'.format(pkg.packagebase))
+        if not os.path.exists('.SRCINFO'):
+            raise pkgbuilder.exceptions.EmptyRepoError(pkg.packagebase)
 
     if performdepcheck:
         DS.fancy_msg(_('Checking dependencies...'))
-        depends = prepare_deps(os.path.abspath('./PKGBUILD'))
+        depends = prepare_deps(os.path.abspath('./.SRCINFO'), pkg.name)
         deps = depcheck(depends, pkg)
         pkgtypes = [_('found in system'), _('found in repos'),
                     _('found in the AUR')]
@@ -539,6 +520,7 @@ def build_runner(pkgname, performdepcheck=True,
 
             DS.fancy_msg2(': '.join((dpkg, pkgtypes[pkgtype])))
         if aurbuild != []:
+            os.chdir('../')
             return [72337, aurbuild]
 
     mpparams = ''
@@ -546,8 +528,8 @@ def build_runner(pkgname, performdepcheck=True,
     if DS.cleanup:
         mpparams += ' -c'
 
-    if DS.uid == 0:
-        mpparams += ' --asroot'
+    if DS.nopgp:
+        mpparams += ' --skippgpcheck'
 
     mpstatus = subprocess.call('makepkg -sf' + mpparams,
                                shell=True)
@@ -558,6 +540,8 @@ def build_runner(pkgname, performdepcheck=True,
         toinstall = ([], [])
 
     if pkg.is_abs:
+        os.chdir('../../')
+    else:
         os.chdir('../')
 
     return [mpstatus, toinstall]

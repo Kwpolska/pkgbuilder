@@ -1,31 +1,29 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.5.1
+# PKGBUILDer v4.0.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
 
 """
-    pkgbuilder.upgrade
-    ~~~~~~~~~~~~~~~~~~
+Tools for performing upgrades of AUR packages.
 
-    Tools for performing upgrades of AUR packages.
-
-    :Copyright: © 2011-2015, Chris Warrick.
-    :License: BSD (see /LICENSE).
+:Copyright: © 2011-2015, Chris Warrick.
+:License: BSD (see /LICENSE).
 """
 
 from . import DS, _
 import pkgbuilder.build
+import pkgbuilder.ui
 import pkgbuilder.utils
 import pyalpm
 import datetime
 
-__all__ = ['gather_foreign_pkgs', 'list_upgradable', 'auto_upgrade']
+__all__ = ('gather_foreign_pkgs', 'list_upgradable', 'auto_upgrade')
 
 
 def gather_foreign_pkgs():
-    """Gathers a list of all foreign packages."""
+    """Gather a list of all foreign packages."""
     localdb = DS.pyc.get_localdb()
     # Based on paconky.py.
     installed = [p for p in localdb.pkgcache]
@@ -43,7 +41,7 @@ def gather_foreign_pkgs():
 
 
 def list_upgradable(pkglist, vcsup=False, aurcache=None):
-    """Compares package versions and returns upgradable ones."""
+    """Compare package versions and returns upgradable ones."""
     localdb = DS.pyc.get_localdb()
     if aurcache:
         aurlist = aurcache
@@ -171,16 +169,16 @@ def auto_upgrade(downgrade=False, vcsup=False):
         if DS.pacman:
             targetstring = _('Targets ({0}): ').format(upglen)
 
-            termwidth = pkgbuilder.utils.get_termwidth()
-            if termwidth is None:
-                termwidth = 9001  # Auto-wrap by terminal.
+            termwidth = pkgbuilder.ui.get_termwidth()
 
-                if verbosepkglists:
-                    # Pacman doesn’t allow tables if the terminal is too small.
-                    # And since we don’t know the size, better safe than sorry.
-                    verbosepkglists = False
-                    DS.log.warning('VerbosePkgLists disabled, cannot '
-                                   'determine terminal width')
+            if termwidth is None and verbosepkglists:
+                # Pacman doesn’t allow tables if the terminal is too small.
+                # And since we don’t know the size, better safe than sorry.
+                verbosepkglists = False
+                DS.log.warning('VerbosePkgLists disabled, cannot '
+                               'determine terminal width')
+
+            termwidth = termwidth or 9001
 
             if verbosepkglists:
                 headers = [_('Name'), _('Old Version'), _('New Version')]
@@ -219,7 +217,7 @@ def auto_upgrade(downgrade=False, vcsup=False):
             # Not using else because there is a fallback if the terminal
             # is too small.
             if not verbosepkglists:
-                print(pkgbuilder.utils.hanging_indent(
+                print(pkgbuilder.ui.hanging_indent(
                     '  '.join(upgstrings), targetstring, termwidth, True))
 
             print()

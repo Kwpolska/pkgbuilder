@@ -19,7 +19,7 @@ class PyTest(TestCommand):
         sys.exit(errno)
 
 setup(name='pkgbuilder',
-      version='3.5.1',
+      version='4.0.0',
       description='An AUR helper (and library) in Python 3.',
       keywords='arch pkgbuild',
       author='Chris Warrick',
@@ -44,7 +44,7 @@ setup(name='pkgbuilder',
                    'Topic :: System :: Archiving :: Packaging',
                    'Topic :: Utilities'],
       packages=['pkgbuilder'],
-      requires=['pyalpm', 'requests'],
+      install_requires=['pyalpm', 'requests', 'srcinfo'],
       data_files=[('share/man/man8', ['docs/pkgbuilder.8.gz']),
                   ('share/man/man8', ['docs/pb.8.gz']),
                   ('share/locale/pl/LC_MESSAGES', ['locale/pl/LC_MESSAGES/'
@@ -53,8 +53,8 @@ setup(name='pkgbuilder',
                                                    'pkgbuilder.mo'])],
       entry_points={
           'console_scripts': [
-              'pkgbuilder = pkgbuilder.__main__:pkgbuildermain',
-              'pb = pkgbuilder.__main__:pbwrappermain'
+              'pkgbuilder = pkgbuilder.__main__:main',
+              'pb = pkgbuilder.wrapper:main'
           ]
       },
       )

@@ -1,32 +1,31 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.5.1
+# PKGBUILDer v4.0.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
 
 """
-    pkgbuilder.exceptions
-    ~~~~~~~~~~~~~~~~~~~~~
+Defines PKGBUILDer exceptions.
 
-    The exceptions for use in PKGBUILDer.
-
-    :Copyright: © 2011-2015, Chris Warrick.
-    :License: BSD (see /LICENSE).
+:Copyright: © 2011-2015, Chris Warrick.
+:License: BSD (see /LICENSE).
 """
 
 from . import DS, _
-__all__ = ['PBException', 'AURError', 'MakepkgError', 'NetworkError',
+__all__ = ('PBException', 'AURError', 'MakepkgError', 'NetworkError',
            'ConnectionError', 'HTTPError', 'PackageError',
-           'PackageNotFoundError', 'SanityError']
+           'PackageNotFoundError', 'SanityError', 'CloneError')
 
 
 class PBException(Exception):
+
     """Base exception for PKGBUILDer."""
+
     qualname = 'PBException'
 
     def __init__(self, msg, source, exit=True, *args, **kwargs):
-        """Throw an error to the log and take the arguments."""
+        """Initialize and log the error."""
         DS.log.error('({0:<20}) {1}'.format(self.qualname, msg))
         self.msg = msg
         self.source = source
@@ -35,16 +34,18 @@ class PBException(Exception):
         self.kwargs = kwargs
 
     def __str__(self):
-        """You want to see error messages, don’t you?"""
+        """Return a friendly representation of the exception."""
         return self.msg
 
 
 class AURError(PBException):
+
     """AUR-related errors."""
+
     qualname = 'AURError'
 
     def __init__(self, msg, exit=True, *args, **kwargs):
-        """Throw an error to the log and take the arguments."""
+        """Initialize and log the error."""
         DS.log.error('({0:<20}) {1}'.format(self.qualname, msg))
         self.msg = msg
         self.source = 'AUR'
@@ -53,16 +54,18 @@ class AURError(PBException):
         self.kwargs = kwargs
 
     def __str__(self):
-        """Just so the user knows that it’s an AUR error."""
+        """Return a friendly representation of the exception."""
         return _('AUR Error: {0}').format(self.msg)
 
 
 class MakepkgError(PBException):
-    """makepkg errors (return codes)"""
+
+    """makepkg return codes."""
+
     qualname = 'MakepkgError'
 
     def __init__(self, retcode, exit=True, *args, **kwargs):
-        """Throw an error to the log and take the arguments."""
+        """Initialize and log the error."""
         DS.log.error('({0:<20}) {1}'.format(self.qualname, retcode))
         self.retcode = retcode
         self.source = 'makepkg'
@@ -71,16 +74,18 @@ class MakepkgError(PBException):
         self.kwargs = kwargs
 
     def __str__(self):
-        """“1” isn’t too helpful for the human."""
+        """Return a friendly representation of the exception."""
         return _('makepkg returned {0}.').format(self.retcode)
 
 
 class NetworkError(PBException):
+
     """Network-related errors."""
+
     qualname = 'NetworkError'
 
     def __init__(self, msg, source, exit=True, *args, **kwargs):
-        """Throw an error to the log and take the arguments."""
+        """Initialize and log the error."""
         DS.log.error('({0:<20}) {1} (via {2})'.format(self.qualname, msg,
                                                       source))
         self.msg = msg
@@ -97,24 +102,30 @@ class NetworkError(PBException):
         self.kwargs = kwargs
 
     def __str__(self):
-        """The msg, wherever it may come from, isn’t helpful either."""
+        """Return a friendly representation of the exception."""
         return _('Network error: {0} (via {1})').format(self.msg, self.source)
 
 
 class ConnectionError(NetworkError):
+
     """A connection error."""
+
     qualname = 'ConnectionError'
 
     def __str__(self):
+        """Return a friendly representation of the exception."""
         return _('Connection error: {0} (via {1})').format(self.msg,
                                                            self.source)
 
 
 class HTTPError(NetworkError):
+
     """An HTTP error."""
+
     qualname = 'HTTPError'
 
     def __init__(self, source, origin, exit=True, *args, **kwargs):
+        """Initialize and log the error."""
         DS.log.error('({0:<20}) {1} (via {2})'.format(self.qualname,
                                                       source.status_code,
                                                       source))
@@ -134,17 +145,15 @@ class HTTPError(NetworkError):
         self.kwargs = kwargs
         self.code = source.status_code
 
-    def __str__(self):
-        """For human-friendliness."""
-        return self.msg
-
 
 class PackageError(PBException):
+
     """Package-related errors."""
+
     qualname = 'PackageError'
 
     def __init__(self, msg, source, exit=True, *args, **kwargs):
-        """Throw an error to the log and take the arguments."""
+        """Initialize and log the error."""
         DS.log.error('({0:<20}) {1} (from {2})'.format(self.qualname, msg,
                                                        source))
         self.msg = msg
@@ -154,15 +163,18 @@ class PackageError(PBException):
         self.kwargs = kwargs
 
     def __str__(self):
-        """Would be helpful, but not enough."""
+        """Return a friendly representation of the exception."""
         return _('{0} (Package: {1})').format(self.msg, self.source)
 
 
 class PackageNotFoundError(PackageError):
+
+    """Errors raised when a package cannot be found."""
+
     qualname = 'PackageNotFoundError'
 
     def __init__(self, name, source, exit=True, *args, **kwargs):
-        """Throw an error to the log and take the arguments."""
+        """Initialize and log the error."""
         DS.log.error('({0:<20}) {1} (via {2})'.format(self.qualname, name,
                                                       source))
         self.name = name
@@ -173,15 +185,18 @@ class PackageNotFoundError(PackageError):
         self.kwargs = kwargs
 
     def __str__(self):
-        """This would be far, FAR away from being informative."""
+        """Return a friendly representation of the exception."""
         return self.msg
 
 
 class SanityError(PBException):
-    """Sometimes PKGBUILDer or one of its friends can go insane."""
+
+    """When PKGBUILDer or one of its friends goes insane."""
+
     qualname = 'SanityError'
 
     def __init__(self, msg, source, exit=True, *args, **kwargs):
+        """Initialize and log the error."""
         DS.log.error('({0:<20}) {1} (via {2})'.format(self.qualname, msg,
                                                       source))
         self.msg = msg
@@ -191,4 +206,38 @@ class SanityError(PBException):
         self.kwargs = kwargs
 
     def __str__(self):
+        """Return a friendly representation of the exception."""
         return _('Sanity error!  {0} (via {1})').format(self.msg, self.source)
+
+
+class CloneError(PBException):
+
+    """A ``git clone`` failed."""
+
+    qualname = 'CloneError'
+
+    def __init__(self, returncode, exit=True, *args, **kwargs):
+        """Initialize and log the error."""
+        DS.log.error('({0:<20}) git clone returned {1}'.format(
+            self.qualname, returncode))
+        self.returncode = returncode
+        self.msg = _('git clone returned {0}.').format(self.returncode)
+        self.exit = exit
+        self.args = args
+        self.kwargs = kwargs
+
+class EmptyRepoError(CloneError):
+
+    """Git cloned an empty repository."""
+
+    qualname = 'EmptyRepoError'
+
+    def __init__(self, pkgbase, exit=True, *args, **kwargs):
+        """Initialize and log the error."""
+        DS.log.error('({0:<20}) repository {1} is empty'.format(
+            self.qualname, pkgbase))
+        self.pkgbase = pkgbase
+        self.msg = _('Repository {0} is empty.').format(self.pkgbase)
+        self.exit = exit
+        self.args = args
+        self.kwargs = kwargs

@@ -1,7 +1,7 @@
 #!/bin/zsh
 # pbwrapper help testing
 pacman -Sh > /tmp/pbwrapperhelp
-pkgbuilder -h >> /tmp/pbwrapperhelp
+python -m pkgbuilder -h >> /tmp/pbwrapperhelp
 
 diff -u .pbwrapperhelp /tmp/pbwrapperhelp > /tmp/pbwrapperdiff
 if [[ $? = 1 ]]; then

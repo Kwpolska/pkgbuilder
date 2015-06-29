@@ -34,6 +34,7 @@
 
 import unittest
 import pkgbuilder
+import pkgbuilder.__main__
 import pkgbuilder.aur
 import pkgbuilder.build
 import pkgbuilder.pbds
@@ -57,7 +58,7 @@ class TestPB(unittest.TestCase):
         '3.2.0-1', 'PackageBase': 'pkgbuilder', 'FirstSubmitted': 1316529993,
         'OutOfDate': 1000, 'NumVotes': 19, 'Name': 'pkgbuilderts', 'LastModified':
         1395757472, 'URL': 'https://github.com/Kwpolska/pkgbuilder', 'License':
-        ['BSD']})
+        ['BSD'], 'Popularity': 7})
 
     def setUp(self):
         """Start stuff."""
@@ -73,28 +74,6 @@ class TestPB(unittest.TestCase):
     def test_aur(self):
         pkgbuilder.aur.AUR()
 
-    def test_build_extract(self):
-        os.chdir('/tmp')
-
-        b64 = ('H4sIABklFFAAA+3RQQrCMBCF4aw9RS4gzqRJc54KXUgFi0nx+rZapIJFhBYR/2'
-               '8zIXmQgdfut7lOOXWHXO/MOqQXQximxhDvs5Tb/cioEwninNc+p8UQt2GlfZ50'
-               'KVdna01zaU/H1FRzuXfvP6qd9v84LfvHUHDp/Xz/qpP++5yG6MRYWXaN1/68f1'
-               'cWWjgvm28vAgAAAAAAAAAAAAAAAOBjV60a9/gAKAAA')
-        realfile = base64.b64decode(b64)
-        os.mkdir('./PBTESTS')
-        os.chdir('./PBTESTS/')
-        with open('./pb-testsuite.tar.gz', 'wb') as f:
-            f.write(realfile)
-
-        req = pkgbuilder.build.extract('./pb-testsuite.tar.gz')
-        self.assertEqual(req, 2)
-        with open('./pb-testsuite/testsuite', 'r') as f:
-            sanitycheck = f.read().strip()
-
-        self.assertEqual(sanitycheck, '26313240')
-        os.chdir('../')
-        shutil.rmtree('./PBTESTS')
-
     def test_pbds(self):
         pkgbuilder.pbds.PBDS()
 
@@ -103,15 +82,15 @@ class TestPB(unittest.TestCase):
         pbds.log.debug('PB unittest/TestPB is running now on this machine.')
 
     def test_utils_print_package_search(self):
-        sample = ('system/pkgbuilderts 3.2.0-1 (19 votes) '
+        sample = ('aur/pkgbuilderts 3.2.0-1 (19 votes) '
                   '\x1b[1;1m\x1b[1;31m[out of date]\x1b[1;0m\n'
                   '    A Python AUR helper/library.')
 
-        req = pkgbuilder.utils.print_package_search(self.fpkg, True, True)
+        req = pkgbuilder.utils.print_package_search(self.fpkg, True)
         self.assertEqual(req, sample)
 
     def test_utils_print_package_info(self):
-        sample = ('Repository     : aur\nCategory       : system\n'
+        sample = ('Repository     : aur\n'
                   'Name           : pkgbuilderts\n'
                   'Package Base   : pkgbuilder\n'
                   'Version        : 3.2.0-1\n'
@@ -126,6 +105,7 @@ class TestPB(unittest.TestCase):
                   'Conflicts With : None\n'
                   'Replaces       : None\n'
                   'Votes          : 19\n'
+                  'Popularity     : 7\n'
                   'Out of Date    : \x1b[1;1m\x1b[1;31myes\x1b[1;0m\n'
                   'Maintainer     : Kwpolska\nFirst Submitted: '
                   '2011-09-20T14:46:33Z\nLast Updated   : '
@@ -137,7 +117,7 @@ class TestPB(unittest.TestCase):
 
     def test_main(self):
         # Can’t test too much here…
-        pkgbuilder.main.main([])
+        pkgbuilder.__main__.main([])
 
     def test_wrapper(self):
         # …or there…
@@ -167,7 +147,3 @@ class TestPB(unittest.TestCase):
             pkgbuilder.wrapper.wrapper(['-Qh'])
         finally:
             pkgbuilder.DS.paccommand = pacman
-
-
-if __name__ == '__main__':
-    unittest.main()

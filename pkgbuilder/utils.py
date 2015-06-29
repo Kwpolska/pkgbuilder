@@ -1,31 +1,28 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.5.1
+# PKGBUILDer v4.0.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
 
 """
-    pkgbuilder.utils
-    ~~~~~~~~~~~~~~~~
+Common global utilities, used mainly for AUR data access.
 
-    Common global utilities, used mainly for AUR data access.
-
-    :Copyright: © 2011-2015, Chris Warrick.
-    :License: BSD (see /LICENSE).
+:Copyright: © 2011-2015, Chris Warrick.
+:License: BSD (see /LICENSE).
 """
 
 from . import DS, _
 from .aur import AUR
 from .package import AURPackage
+from .ui import get_termwidth, hanging_indent, mlist
 from pkgbuilder.exceptions import SanityError, AURError
 import pyalpm
 import os
-import subprocess
 import textwrap
 
-__all__ = ['info', 'search', 'msearch', 'print_package_search',
-           'print_package_info']
+__all__ = ('info', 'search', 'msearch', 'print_package_search',
+           'print_package_info',)
 RPC = AUR()
 
 
@@ -71,61 +68,15 @@ def msearch(maintainer):
         return [AURPackage.from_aurdict(d) for d in aur_pkgs['results']]
 
 
-def hanging_indent(text, intro, termwidth=80, change_spaces=True,
-                   introwidth=None):
-    """Produce text with a hanging indent.
-
-    .. versionadded:: 3.3.0
-
-    """
-    if introwidth is None:
-        introwidth = len(intro)
-    nowrap = intro + text
-    if intro:
-        wrapv = textwrap.wrap(nowrap, termwidth,
-                              break_on_hyphens=False)
-    else:
-        wrapv = textwrap.wrap(nowrap, termwidth - introwidth,
-                              break_on_hyphens=False)
-    wrap0 = wrapv[0]
-    wraprest = textwrap.wrap('\n'.join(wrapv[1:]), termwidth -
-                             introwidth,
-                             break_on_hyphens=False)
-    if change_spaces:
-        wraprest = [i.replace('  ', ' ').replace(' ', '  ') for i
-                    in wraprest]
-    buf = wrap0
-    for i in wraprest:
-        buf += '\n' + introwidth * ' ' + i
-
-    return buf
-
-
-def get_termwidth():
-    """Get the width of this terminal.
-
-    .. versionadded:: 3.3.0
-
-    """
-    try:
-        size = subprocess.check_output(['stty', 'size'])
-        return int(size.split()[1])
-    except (IndexError, subprocess.CalledProcessError):
-        return None
-
-
-def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
-                         prefixp=''):
+def print_package_search(pkg, cachemode=False, prefix='', prefixp=''):
     """Output/return a package representation.
 
     Based on `pacman -Ss`.
 
-    .. versionchanged:: 3.0.0
+    .. versionchanged:: 4.0.0
 
     """
-    termwidth = get_termwidth()
-    if termwidth is None:
-        termwidth = 9001  # Auto-wrap by terminal.
+    termwidth = get_termwidth() or 9001
 
     localdb = DS.pyc.get_localdb()
     lpkg = localdb.get_pkg(pkg.name)
@@ -145,10 +96,7 @@ def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
     except AttributeError:
         pass  # for ABS packages
 
-    if use_categories or pkg.is_abs:
-        category = pkg.repo
-    else:
-        category = 'aur'
+    category = pkg.repo
 
     descl = textwrap.wrap(pkg.description, termwidth - len(prefixp2))
 
@@ -168,27 +116,6 @@ def print_package_search(pkg, use_categories=True, cachemode=False, prefix='',
         return entry
     else:
         print(entry)
-
-
-def mlist(items, sep='  ', change_spaces=True, termwidth=80, indentwidth=17):
-    """Output a list of strings, complete with a hanging indent.
-
-    .. versionadded:: 3.3.0
-
-    """
-    if items:
-        if sep == '\n':
-            buf = [hanging_indent(items[0], '', termwidth, change_spaces,
-                                  indentwidth)]
-            for i in items[1:]:
-                buf.append(hanging_indent(i, indentwidth * ' ', termwidth,
-                                          change_spaces))
-            return '\n'.join(buf)
-        else:
-            return hanging_indent(sep.join(items), '', termwidth,
-                                  change_spaces, indentwidth)
-    else:
-        return 'None'
 
 
 def print_package_info(pkgs, cachemode=False):
@@ -225,7 +152,6 @@ def print_package_info(pkgs, cachemode=False):
         # for “out of date”.
 
         t = _("""Repository     : aur
-Category       : {cat}
 Name           : {nme}
 Package Base   : {bse}
 Version        : {ver}
@@ -240,6 +166,7 @@ Optional Deps  : {opt}
 Conflicts With : {cnf}
 Replaces       : {rpl}
 Votes          : {cmv}
+Popularity     : {pop}
 Out of Date    : {ood}
 Maintainer     : {mnt}
 First Submitted: {fsb}
@@ -260,8 +187,7 @@ Description    : {dsc}
             if termwidth is None:
                 termwidth = 9001  # Auto-wrap by terminal.
 
-            to.append(t.format(cat=pkg.repo,
-                               nme=pkg.name,
+            to.append(t.format(nme=pkg.name,
                                bse=pkg.packagebase,
                                url=pkg.url,
                                ver=pkg.version,
@@ -278,6 +204,7 @@ Description    : {dsc}
                                cnf=mlist(pkg.conflicts, termwidth=termwidth),
                                rpl=mlist(pkg.replaces, termwidth=termwidth),
                                cmv=pkg.votes,
+                               pop=pkg.popularity,
                                ood=ood,
                                mnt=pkg.human,
                                upd=upd,

@@ -1,31 +1,22 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.5.1
+# PKGBUILDer v4.0.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
 
 """
-    pkgbuilder.package
-    ~~~~~~~~~~~~~~~~~~
+The Package class, the most important class in PKGBUILDer.
 
-    The Package class, the most important class in PKGBUILDer.
-
-    :Copyright: © 2011-2015, Chris Warrick.
-    :License: BSD (see /LICENSE).
+:Copyright: © 2011-2015, Chris Warrick.
+:License: BSD (see /LICENSE).
 """
 
 from . import UTC, DS
 from .exceptions import SanityError
 import datetime
 
-__all__ = ['CATEGORIES', 'Package', 'AURPackage', 'ABSPackage']
-
-CATEGORIES = ['none', 'none', 'daemons', 'devel', 'editors',
-              'emulators', 'games', 'gnome', 'i18n', 'kde',
-              'lib', 'modules', 'multimedia', 'network',
-              'office', 'science', 'system', 'x11',
-              'xfce', 'kernels', 'fonts', 'wayland']
+__all__ = ('Package', 'AURPackage', 'ABSPackage')
 
 
 def mktime(ts):
@@ -33,7 +24,9 @@ def mktime(ts):
 
 
 class Package(object):
+
     """The base class for packages."""
+
     is_abs = None
     name = None
     version = None
@@ -72,7 +65,10 @@ class Package(object):
 
 
 class AURPackage(Package):
+
     """An AUR package."""
+
+    repo = 'aur'
     id = None
     packagebase = None
     packagebaseid = None
@@ -85,15 +81,12 @@ class AURPackage(Package):
     modified = None
     votes = None
     urlpath = None
-    _categoryid = None
+    popularity = None
 
     @classmethod
     def from_aurdict(cls, aurdict):
-        """
-        Creates an instance of AURPackage using a dictionary from the AUR RPC.
-        """
-        bindings = {'CategoryID': '_categoryid',
-                    'Description': 'description',
+        """Create an instance of AURPackage from AUR RPC data."""
+        bindings = {'Description': 'description',
                     'ID': 'id',
                     'Maintainer': 'human',
                     'Name': 'name',
@@ -111,8 +104,10 @@ class AURPackage(Package):
                     'Replaces': 'replaces',
                     'Groups': 'groups',
                     'License': 'licenses',
+                    'URLPath': 'urlpath',
+                    'Popularity': 'popularity',
                     }
-        ignore = ['OutOfDate', 'FirstSubmitted', 'LastModified', 'URLPath']
+        ignore = ['OutOfDate', 'FirstSubmitted', 'LastModified']
 
         p = cls()
         for k, v in aurdict.items():
@@ -122,9 +117,9 @@ class AURPackage(Package):
                 if k not in ignore:
                     DS.log.warn('AURDict has an unknown {0} key: {1}'.format(
                         k, aurdict))
+
         # Manual overrides.
         p.is_outdated = aurdict['OutOfDate'] > 0
-        p.repo = CATEGORIES[aurdict['CategoryID']]
 
         if p.is_outdated:
             p.outdated_since = mktime(aurdict['OutOfDate'])
@@ -133,14 +128,13 @@ class AURPackage(Package):
         p.added = mktime(aurdict['FirstSubmitted'])
         p.modified = mktime(aurdict['LastModified'])
 
-        # AURv4 dropped URLPath
-        p.urlpath = aurdict.get('URLPath', None)
-
         return p
 
 
 class ABSPackage(Package):
+
     """An ABS package."""
+
     is_abs = True
     # Most of those aren’t necessary, but I am copying them over because I can.
     arch = None
@@ -161,7 +155,7 @@ class ABSPackage(Package):
 
     @classmethod
     def from_pyalpm(cls, abspkg):
-        """Transforms a pyalpm.Package into a pkgbuilder.package.ABSPackage."""
+        """Transform a pyalpm.Package into a pkgbuilder.package.ABSPackage."""
         copy = ['arch', 'backup', 'base64_sig', 'conflicts', 'deltas',
                 'depends', 'download_size', 'filename', 'files', 'groups',
                 'has_scriptlet', 'isize', 'licenses', 'md5sum', 'name',
