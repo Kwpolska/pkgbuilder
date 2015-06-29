@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 3.5.1\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2015-06-24 14:18+0200\n"
+"POT-Creation-Date: 2015-06-29 10:25+0200\n"
 "PO-Revision-Date: 2014-12-26 19:51+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/pkgbuilder/"
@@ -87,83 +87,80 @@ msgid "options"
 msgstr "opciones"
 
 #: pkgbuilder/__main__.py:74
-msgid "use aur4.archlinux.org"
-msgstr ""
-
-#: pkgbuilder/__main__.py:77
-msgid "clean up work files after build"
+#, fuzzy
+msgid "clean up work files before and after build"
 msgstr "limpiar los archivos de trabajo después de construir"
 
-#: pkgbuilder/__main__.py:81
+#: pkgbuilder/__main__.py:78
 msgid "don't use colors in output"
 msgstr "no utilizar colores en la salida"
 
-#: pkgbuilder/__main__.py:84
+#: pkgbuilder/__main__.py:81
 msgid "display debug messages"
 msgstr "mostrar mensajes de depuración"
 
-#: pkgbuilder/__main__.py:87
+#: pkgbuilder/__main__.py:84
 msgid "don't check dependencies (may break makepkg)"
 msgstr "no comprobar las dependencias (puede romper makepkg)"
 
-#: pkgbuilder/__main__.py:91
+#: pkgbuilder/__main__.py:88
 msgid "upgrade all the VCS/date-versioned packages"
 msgstr "actualizar todos los paquetes VCS/fecha-versionados"
 
-#: pkgbuilder/__main__.py:96
+#: pkgbuilder/__main__.py:93
 msgid "don't check if packages were installed after build"
 msgstr "no comprobar si los paquetes se instalaron después de construirlos"
 
-#: pkgbuilder/__main__.py:99
+#: pkgbuilder/__main__.py:96
 msgid "don't  install packages after building"
 msgstr "no instale los paquetes después de la construcción"
 
-#: pkgbuilder/__main__.py:103
+#: pkgbuilder/__main__.py:100
 msgid "do not verify source files with PGP signatures"
 msgstr ""
 
-#: pkgbuilder/__main__.py:106
+#: pkgbuilder/__main__.py:103
 msgid "pacman-like mode"
 msgstr "modo pacman-like"
 
-#: pkgbuilder/__main__.py:109
+#: pkgbuilder/__main__.py:106
 msgid "(dummy)"
 msgstr "(inocuo)"
 
-#: pkgbuilder/__main__.py:133
+#: pkgbuilder/__main__.py:127
 msgid "PKGBUILDer cannot work in a virtualenv, exiting."
 msgstr ""
 
-#: pkgbuilder/__main__.py:152
+#: pkgbuilder/__main__.py:146
 #, python-brace-format
 msgid "error: package '{0}' was not found"
 msgstr "error: paquete {0} no encontrado"
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
-#: pkgbuilder/__main__.py:168
+#: pkgbuilder/__main__.py:162
 msgid "Search query too short"
 msgstr "Consulta de búsqueda demasiado corta"
 
-#: pkgbuilder/__main__.py:169
+#: pkgbuilder/__main__.py:163
 msgid "Searching for exact match..."
 msgstr "Búsqueda de coincidencia exacta ..."
 
-#: pkgbuilder/__main__.py:172
+#: pkgbuilder/__main__.py:166
 msgid "not found"
 msgstr "no encontrado"
 
-#: pkgbuilder/__main__.py:226 pkgbuilder/build.py:395
+#: pkgbuilder/__main__.py:216 pkgbuilder/build.py:377
 msgid "Fetching package information..."
 msgstr "Obteniendo información de los paquetes ..."
 
-#: pkgbuilder/__main__.py:231
+#: pkgbuilder/__main__.py:221
 #, python-brace-format
 msgid "Error while processing {0}: {1}"
 msgstr "Error al procesar {0}: {1}"
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/__main__.py:271
+#: pkgbuilder/__main__.py:261
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
@@ -171,144 +168,142 @@ msgstr ""
 "PKGBUILDer (o las requests de librerías) tuvo problemas con el cumplimiento "
 "de una solicitud HTTP."
 
-#: pkgbuilder/build.py:39
+#: pkgbuilder/build.py:37
 msgid "Validating installation status..."
 msgstr "Validando el estado de la instalación...."
 
-#: pkgbuilder/build.py:55
+#: pkgbuilder/build.py:53
 #, python-brace-format
 msgid "{0}: not an AUR package"
 msgstr "{0}: no es un paquete de AUR"
 
-#: pkgbuilder/build.py:59 pkgbuilder/build.py:70
+#: pkgbuilder/build.py:57 pkgbuilder/build.py:68
 #, python-brace-format
 msgid "{0}: installed {1}"
 msgstr "{0}: instalado {1}"
 
-#: pkgbuilder/build.py:63
+#: pkgbuilder/build.py:61
 #, python-brace-format
 msgid "{0}: NOT installed"
 msgstr "{0}: NO instalado"
 
-#: pkgbuilder/build.py:66
+#: pkgbuilder/build.py:64
 #, python-brace-format
 msgid "{0}: outdated {1}"
 msgstr "{0}: obsoleto {1}"
 
-#: pkgbuilder/build.py:78
+#: pkgbuilder/build.py:76
 msgid "Installing built packages..."
 msgstr "Instalando paquetes construidos..."
 
-#: pkgbuilder/build.py:88
+#: pkgbuilder/build.py:86
 msgid "Moving to /var/cache/pacman/pkg/..."
 msgstr "Moviendo a /var/cache/pacman/pkg/..."
 
-#: pkgbuilder/build.py:100
+#: pkgbuilder/build.py:98
 msgid "Installing with pacman -U..."
 msgstr "Instalando con pacman -U..."
 
-#: pkgbuilder/build.py:127
+#: pkgbuilder/build.py:125
 msgid "The build function reported a proper build."
 msgstr "La función construir informó de una construcción adecuada."
 
-#: pkgbuilder/build.py:134
+#: pkgbuilder/build.py:135
 msgid "Building more AUR packages is required."
 msgstr "La construcción de más paquetes de AUR es obligatorio."
 
-#: pkgbuilder/build.py:146
+#: pkgbuilder/build.py:147
 #, python-brace-format
 msgid "found an existing package for {0}"
 msgstr "se ha encontrado un paquete existente para {0}"
 
-#: pkgbuilder/build.py:181
+#: pkgbuilder/build.py:182
 #, python-brace-format
 msgid "makepkg (or someone else) failed and returned {0}."
 msgstr "makepkg (o alguien más) fracasó y retornó {0}."
 
-#: pkgbuilder/build.py:234
-msgid "No files extracted."
-msgstr "No hay archivos extraidos"
-
-#: pkgbuilder/build.py:336
+#: pkgbuilder/build.py:318
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr "No se ha podido cumplir el requisito de dependencia del paquete: {0}"
 
-#: pkgbuilder/build.py:426
+#: pkgbuilder/build.py:408
 msgid ":: Retrieving packages from abs..."
 msgstr ":: Recuperando paquetes de abs ..."
 
-#: pkgbuilder/build.py:429 pkgbuilder/build.py:440
+#: pkgbuilder/build.py:411
 #, python-brace-format
 msgid "retrieving {0}"
 msgstr "recuperando {0}"
 
-#: pkgbuilder/build.py:433 pkgbuilder/build.py:491
+#: pkgbuilder/build.py:415 pkgbuilder/build.py:467
 #, python-brace-format
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr "No se ha podido recuperar {0} (de ABS/rsync)."
 
-#: pkgbuilder/build.py:437
+#: pkgbuilder/build.py:419
 msgid ":: Retrieving packages from aur..."
 msgstr ":: Recuperando paquetes de aur ..."
 
-#: pkgbuilder/build.py:444
-msgid "Extracting AUR packages..."
-msgstr "Extrayendo paquetes de AUR..."
+#: pkgbuilder/build.py:422
+#, fuzzy, python-brace-format
+msgid "cloning {0}"
+msgstr "Construyendo {0}..."
 
-#: pkgbuilder/build.py:449
+#: pkgbuilder/build.py:425
 msgid "Successfully fetched: "
 msgstr "Obtenido con exito:"
 
-#: pkgbuilder/build.py:479
+#: pkgbuilder/build.py:455
 #, python-brace-format
 msgid "Building {0}..."
 msgstr "Construyendo {0}..."
 
-#: pkgbuilder/build.py:487
+#: pkgbuilder/build.py:463
 msgid "Retrieving from ABS..."
 msgstr "Recuperando de ABS ..."
 
-#: pkgbuilder/build.py:496 pkgbuilder/build.py:510
+#: pkgbuilder/build.py:472 pkgbuilder/build.py:486
 #, fuzzy, python-brace-format
 msgid "Found an existing package for {0}"
 msgstr "se ha encontrado un paquete existente para {0}"
 
-#: pkgbuilder/build.py:514
-msgid "Downloading the tarball..."
-msgstr "Descargando el tarball..."
+#: pkgbuilder/build.py:489
+msgid "Cloning the git repository..."
+msgstr ""
 
-#: pkgbuilder/build.py:517
+#: pkgbuilder/build.py:492
 #, python-brace-format
-msgid "{0} kB downloaded"
-msgstr "{0} kB descargados"
+msgid "removing existing directory {0}"
+msgstr ""
 
-#: pkgbuilder/build.py:519
-msgid "Extracting..."
-msgstr "Extrayendo..."
-
-#: pkgbuilder/build.py:520
+#: pkgbuilder/build.py:497
 #, python-brace-format
-msgid "{0} files extracted"
-msgstr "{0} archivos extraidos"
+msgid "Directory {0} already exists, please run with `-c` to remove it."
+msgstr ""
 
-#: pkgbuilder/build.py:524
+#: pkgbuilder/build.py:499
+#, fuzzy, python-brace-format
+msgid "skipping package {0}"
+msgstr "se ha encontrado un paquete existente para {0}"
+
+#: pkgbuilder/build.py:508
 msgid "Checking dependencies..."
 msgstr "Comprobando dependencias..."
 
-#: pkgbuilder/build.py:527
+#: pkgbuilder/build.py:511
 msgid "found in system"
 msgstr "Encontrado en el sistema"
 
-#: pkgbuilder/build.py:527
+#: pkgbuilder/build.py:511
 msgid "found in repos"
 msgstr "Encontrado en repositorios"
 
-#: pkgbuilder/build.py:528
+#: pkgbuilder/build.py:512
 msgid "found in the AUR"
 msgstr "Encontrado en el AUR"
 
-#: pkgbuilder/build.py:531
+#: pkgbuilder/build.py:515
 msgid "none found"
 msgstr "ninguno encontrado"
 
@@ -351,6 +346,16 @@ msgstr "Paquete  {0} no encontrado. (via {1})"
 #, python-brace-format
 msgid "Sanity error!  {0} (via {1})"
 msgstr "Error de juicio! {0} (via {1}) "
+
+#: pkgbuilder/exceptions.py:224
+#, fuzzy, python-brace-format
+msgid "git clone returned {0}."
+msgstr "makepkg retornó {0}."
+
+#: pkgbuilder/exceptions.py:240
+#, python-brace-format
+msgid "Repository {0} is empty."
+msgstr ""
 
 #. TRANSLATORS: see makepkg.
 #: pkgbuilder/pbds.py:47
@@ -450,38 +455,37 @@ msgstr "atención: no hay columnas suficientes para mostrar la tabla"
 msgid "Proceed with installation? [Y/n] "
 msgstr "Proceder con la instalación? [S/n]"
 
-#: pkgbuilder/utils.py:90
+#: pkgbuilder/utils.py:89
 #, python-brace-format
 msgid " [installed: {0}]"
 msgstr "[instaldo: {0}]"
 
-#: pkgbuilder/utils.py:92
+#: pkgbuilder/utils.py:91
 msgid " [installed]"
 msgstr "[instalado]"
 
-#: pkgbuilder/utils.py:96
+#: pkgbuilder/utils.py:95
 msgid "[out of date]"
 msgstr "[obsoleto]"
 
-#: pkgbuilder/utils.py:117
+#: pkgbuilder/utils.py:113
 msgid "votes"
 msgstr "votos"
 
-#: pkgbuilder/utils.py:134
+#: pkgbuilder/utils.py:130
 msgid "Didn’t pass any packages."
 msgstr "No pasó ningún paquete."
 
-#: pkgbuilder/utils.py:138
+#: pkgbuilder/utils.py:134
 msgid "Trying to use utils.print_package_info with an ABS package"
 msgstr "Tratando de utilizar utils.print_package_info con un paquete de ABS"
 
 #. TRANSLATORS: space it properly.  “yes/no” below are
 #. for “out of date”.
-#: pkgbuilder/utils.py:158
-#, python-brace-format
+#: pkgbuilder/utils.py:154
+#, fuzzy, python-brace-format
 msgid ""
 "Repository     : aur\n"
-"Category       : {cat}\n"
 "Name           : {nme}\n"
 "Package Base   : {bse}\n"
 "Version        : {ver}\n"
@@ -496,6 +500,7 @@ msgid ""
 "Conflicts With : {cnf}\n"
 "Replaces       : {rpl}\n"
 "Votes          : {cmv}\n"
+"Popularity     : {pop}\n"
 "Out of Date    : {ood}\n"
 "Maintainer     : {mnt}\n"
 "First Submitted: {fsb}\n"
@@ -524,11 +529,11 @@ msgstr ""
 "Last Updated   : {upd}\n"
 "Description    : {dsc}\n"
 
-#: pkgbuilder/utils.py:187
+#: pkgbuilder/utils.py:183
 msgid "yes"
 msgstr "si"
 
-#: pkgbuilder/utils.py:189
+#: pkgbuilder/utils.py:185
 msgid "no"
 msgstr "no"
 
@@ -584,6 +589,24 @@ msgstr "argumentos opcionales"
 #: localeprovider.py:5
 msgid "show this help message and exit"
 msgstr "mostrar este mensaje de ayuda y terminar"
+
+#~ msgid "No files extracted."
+#~ msgstr "No hay archivos extraidos"
+
+#~ msgid "Extracting AUR packages..."
+#~ msgstr "Extrayendo paquetes de AUR..."
+
+#~ msgid "Downloading the tarball..."
+#~ msgstr "Descargando el tarball..."
+
+#~ msgid "{0} kB downloaded"
+#~ msgstr "{0} kB descargados"
+
+#~ msgid "Extracting..."
+#~ msgstr "Extrayendo..."
+
+#~ msgid "{0} files extracted"
+#~ msgstr "{0} archivos extraidos"
 
 #~ msgid "0 bytes downloaded"
 #~ msgstr "0 bytes descargados"
