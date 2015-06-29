@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v3.5.1
+# PKGBUILDer v4.0.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -48,8 +48,9 @@ class AUR(object):
               ``pkgbuilder.utils.{info,search,msearch}()`` instead.
     """
 
-    # FIXME: make this 'aur.archlinux.org'
+    # FIXME: make this 'aur.archlinux.org' on 2015-08-08
     base = 'https://aur4.archlinux.org'
+    base_changed = False  # FIXME: drop base changing framework on 2015-08-08
     rpcver = 4
     _rpc = '/rpc.php?v='
     emptystr = '{"version":%s,"type":"%s","resultcount":0,"results":[]}'
@@ -71,7 +72,17 @@ class AUR(object):
                                headers={'User-Agent': self.ua})
             req.raise_for_status()
         except requests.exceptions.ConnectionError as e:
-            raise ConnectionError(e.args[0].args[0], e)
+            # FIXME: drop base changing framework on 2015-08-08
+            if self.base_changed:
+                raise ConnectionError(e.args[0].args[0], e)
+            else:
+                self.base = 'https://aur.archlinux.org'
+                self.base_changed = True
+                o = self.jsonreq(rtype, arg)
+                print("WARNING: AUR base URL changed to aur.archlinux.org.")
+                print("         Please update PKGBUILDer or report an "
+                      "issue if there is no new version available.")
+                return o
         except requests.exceptions.HTTPError as e:
             raise HTTPError(req, e)
         except requests.exceptions.RequestException as e:
@@ -91,7 +102,17 @@ class AUR(object):
                                headers={'User-Agent': self.ua})
             req.raise_for_status()
         except requests.exceptions.ConnectionError as e:
-            raise ConnectionError(e.args[0].args[0], e)
+            # FIXME: drop base changing framework on 2015-08-08
+            if self.base_changed:
+                raise ConnectionError(e.args[0].args[0], e)
+            else:
+                self.base = 'https://aur.archlinux.org'
+                self.base_changed = True
+                o = self.jsonmultiinfo(args)
+                print("WARNING: AUR base URL changed to aur.archlinux.org.")
+                print("         Please update PKGBUILDer or report an "
+                      "issue if there is no new version available.")
+                return o
         except requests.exceptions.HTTPError as e:
             raise HTTPError(req, e)
         except requests.exceptions.RequestException as e:

@@ -6,10 +6,10 @@
 # Max Mustermann <cortuli@googlemail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.5.1\n"
+"Project-Id-Version: 4.0.0\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2015-06-29 10:25+0200\n"
-"PO-Revision-Date: 2014-12-26 19:51+0000\n"
+"POT-Creation-Date: 2015-06-29 10:52+0200\n"
+"PO-Revision-Date: 2015-06-29 08:25+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/pkgbuilder/"
 "language/de/)\n"
@@ -82,9 +82,8 @@ msgid "options"
 msgstr "Optionen"
 
 #: pkgbuilder/__main__.py:74
-#, fuzzy
 msgid "clean up work files before and after build"
-msgstr "Nach der Erstellung aufräumen"
+msgstr ""
 
 #: pkgbuilder/__main__.py:78
 msgid "don't use colors in output"
@@ -239,9 +238,9 @@ msgid ":: Retrieving packages from aur..."
 msgstr "::Erhalte Pakete aus den AUR..."
 
 #: pkgbuilder/build.py:422
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "cloning {0}"
-msgstr "Bilde{0}..."
+msgstr ""
 
 #: pkgbuilder/build.py:425
 msgid "Successfully fetched: "
@@ -547,21 +546,3 @@ msgstr "Optionale Befehle"
 #: localeprovider.py:5
 msgid "show this help message and exit"
 msgstr ""
-
-#~ msgid "Extracting AUR packages..."
-#~ msgstr "Extrahiere AUR Pakete..."
-
-#~ msgid "Downloading the tarball..."
-#~ msgstr "Lade tarball..."
-
-#~ msgid "0 bytes downloaded"
-#~ msgstr "0 bytes Runtergeladen "
-
-#~ msgid "Performing a dependency check..."
-#~ msgstr "Überprüfe auf abhängigkeiten..."
-
-#~ msgid "Hit Enter/Return to continue. "
-#~ msgstr "Drücke Enter um fortzufahren."
-
-#~ msgid "Installing missing AUR dependencies..."
-#~ msgstr "Installiere fehlende AUR abhängigkeiten..."

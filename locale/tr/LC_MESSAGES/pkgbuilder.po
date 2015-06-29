@@ -9,10 +9,10 @@
 # Yusuf Faruk DOĞAN <yfdogan@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.5.1\n"
+"Project-Id-Version: 4.0.0\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2015-06-29 10:25+0200\n"
-"PO-Revision-Date: 2014-12-26 19:51+0000\n"
+"POT-Creation-Date: 2015-06-29 10:52+0200\n"
+"PO-Revision-Date: 2015-06-29 08:25+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/pkgbuilder/"
 "language/tr/)\n"
@@ -85,9 +85,8 @@ msgid "options"
 msgstr "Seçenekler"
 
 #: pkgbuilder/__main__.py:74
-#, fuzzy
 msgid "clean up work files before and after build"
-msgstr "İnşa işleminden sonra çalışma dosyalarını temizle"
+msgstr ""
 
 #: pkgbuilder/__main__.py:78
 msgid "don't use colors in output"
@@ -244,9 +243,9 @@ msgid ":: Retrieving packages from aur..."
 msgstr ":: AUR dan paketler geri alınıyor..."
 
 #: pkgbuilder/build.py:422
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "cloning {0}"
-msgstr "{0} İnşa ediliyor..."
+msgstr ""
 
 #: pkgbuilder/build.py:425
 msgid "Successfully fetched: "
@@ -262,9 +261,9 @@ msgid "Retrieving from ABS..."
 msgstr "ABS den geri alınıyor..."
 
 #: pkgbuilder/build.py:472 pkgbuilder/build.py:486
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Found an existing package for {0}"
-msgstr "{0} için var olan bir paket bulundu"
+msgstr ""
 
 #: pkgbuilder/build.py:489
 msgid "Cloning the git repository..."
@@ -281,9 +280,9 @@ msgid "Directory {0} already exists, please run with `-c` to remove it."
 msgstr ""
 
 #: pkgbuilder/build.py:499
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "skipping package {0}"
-msgstr "{0} için var olan bir paket bulundu"
+msgstr ""
 
 #: pkgbuilder/build.py:508
 msgid "Checking dependencies..."
@@ -346,9 +345,9 @@ msgid "Sanity error!  {0} (via {1})"
 msgstr "Mantık hatası : {0} (via {1})"
 
 #: pkgbuilder/exceptions.py:224
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "git clone returned {0}."
-msgstr "{0} makepkg geri döndü."
+msgstr ""
 
 #: pkgbuilder/exceptions.py:240
 #, python-brace-format
@@ -565,131 +564,3 @@ msgstr "seçimli argümanlar"
 #: localeprovider.py:5
 msgid "show this help message and exit"
 msgstr "yardım mesajını göster ve çık"
-
-#~ msgid "No files extracted."
-#~ msgstr "Bir dosya açılmadı"
-
-#~ msgid "Extracting AUR packages..."
-#~ msgstr "AUR paketleri açılıyor..."
-
-#~ msgid "Downloading the tarball..."
-#~ msgstr "Tarball indiriliyor..."
-
-#~ msgid "{0} kB downloaded"
-#~ msgstr "{0}: kb indirildi"
-
-#~ msgid "Extracting..."
-#~ msgstr "Açılıyor..."
-
-#~ msgid "{0} files extracted"
-#~ msgstr "{0}: dosya açıldı"
-
-#~ msgid "0 bytes downloaded"
-#~ msgstr "o byte indirildi"
-
-#~ msgid "Performing a dependency check..."
-#~ msgstr "Bağımlılık kontrolü yapılyor..."
-
-#~ msgid "found"
-#~ msgstr "bulundu"
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Something went wrong.  Please read makepkg's output and try again.\n"
-#~ "You can also try to debug the work of this script yourself.\n"
-#~ "All the files this script was working on are placed in\n"
-#~ "    {0}\n"
-#~ "(the number is random).\n"
-#~ "\n"
-#~ "If I am wrong, though, congratulations!\n"
-#~ msgstr ""
-#~ "\n"
-#~ "⏎\n"
-#~ "⏎\n"
-#~ "Bir şeyler ters gitti. Lütfen makepkg çıktısını okuyun ve tekrar deneyin."
-#~ "⏎\n"
-#~ "Script çalışmasının hata onarımını kendiniz de yapabilirsiniz .⏎\n"
-#~ "Script in çalışmak için kullandığı tüm dosyalar⏎\n"
-#~ "{0} içindedir⏎\n"
-#~ "(rakam rastgeledir).⏎\n"
-#~ "⏎\n"
-#~ "Eğer hatalıysam, yine de tebrikler!⏎\n"
-
-#~ msgid ""
-#~ "Hello!\n"
-#~ "\n"
-#~ "PKGBUILDer is now available as an AUR package.  It is the suggested\n"
-#~ "way of installing PKGBUILDer.  This script will download the AUR\n"
-#~ "package and install it.  If you will have problems, please download\n"
-#~ "and compile the package manually.\n"
-#~ "\n"
-#~ msgstr ""
-#~ "Merhaba!⏎\n"
-#~ "⏎\n"
-#~ "PKGBUILD yapıcı şimdi AUR paketi olarak mevcut. Bu PKGBUILD yapıcı⏎\n"
-#~ "yüklemek için önerilen yoldur. Bu script AUR paketini indirip "
-#~ "yükleyecektir.⏎\n"
-#~ "Eğer sorun yaşarsanız lütfen paketi indirin ve kendiniz derleyin⏎\n"
-#~ "⏎\n"
-
-#~ msgid "Hit Enter/Return to continue. "
-#~ msgstr "Geri dönmek için Enter/Dön tuşlayın."
-
-#~ msgid "Installing missing AUR dependencies..."
-#~ msgstr "Kurulum AUR bağımlılıklarını bulamıyor..."
-
-#~ msgid ""
-#~ "\n"
-#~ "\n"
-#~ "Read the above output.  If the script had any problems, run it\n"
-#~ "again.  You can also try to debug the work of this script yourself.\n"
-#~ "All the files this script was working on are placed in\n"
-#~ "    {0}\n"
-#~ "(the number is random).\n"
-#~ "\n"
-#~ "If everything went fine, though, congratulations!  You can now use\n"
-#~ "PKGBUILDer.  For standalone usage, type `pkgbuilder` into the prompt\n"
-#~ "(zsh users: hash -r, other shells may need another command).  For\n"
-#~ "python module usage, type `import pkgbuilder` into the python prompt.\n"
-#~ msgstr ""
-#~ "\n"
-#~ "⏎\n"
-#~ "⏎\n"
-#~ "Yukarıdaki çıktıyı okuyun. Script hata verirse yeniden çalıştırın.⏎\n"
-#~ "Script çalışmasındaki hatayı kendiniz de giderebilirsiniz.⏎\n"
-#~ "Script in çalışması için gerekli dosyalar {0} içindedir.⏎\n"
-#~ "(the number is random).⏎\n"
-#~ "⏎\n"
-#~ "Her şey yolunda ise tebrikler! Şimdi PKGBUILD yapıcıyı kullanabilirsiniz."
-#~ "⏎\n"
-#~ "Kullanmak için uçbirime `pkgbuilder` yazın⏎\n"
-#~ "(zsh kullanıcılar: hash -r, diğer kabuklar başka komutlar isteyebilir).⏎\n"
-#~ "Python modülü için python uçbirimine ⏎\n"
-#~ "`import pkgbuilder` yazın.⏎\n"
-
-#~ msgid ""
-#~ "It looks like you want to quit.  Okay then, goodbye.\n"
-#~ "No work has been started yet.\n"
-#~ "\n"
-#~ "If that's what you want to do, go for it.  If it isn't, run this\n"
-#~ "script again."
-#~ msgstr ""
-#~ "Çıkmak istiyor gibisibiz.Pekala öyleyse hoşçakalın.⏎\n"
-#~ "Henüz herhangi bir işlem başlamadı.⏎\n"
-#~ "⏎\n"
-#~ "İstediğiniz bu ise devam edin. Değilse bu scrpt i⏎\n"
-#~ "yeniden başlatın."
-
-#~ msgid ""
-#~ "It looks like you want to quit.  Okay then, goodbye.\n"
-#~ "All the files this script was working on are placed in\n"
-#~ "    {0}\n"
-#~ "(the number is random).\n"
-#~ "\n"
-#~ "If that's what you want to do, go for it.  If it isn't, run this\n"
-#~ "script again."
-#~ msgstr ""
-#~ "Çıkmak istiyor gibisiniz. Pekala hoşçakalın. ⏎ Bu script ile çalışan tüm "
-#~ "dosyalar ⏎ {0}⏎  içinde.(numara rastgeledir). ⏎ ⏎ Eğer yapmak istediğiniz "
-#~ "bu ise devam edin. Değilse bu ⏎ script i tekrar çalıştırın."

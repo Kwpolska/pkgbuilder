@@ -8,10 +8,10 @@
 # Chris Warrick <kwpolska@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 3.5.1\n"
+"Project-Id-Version: 4.0.0\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2015-06-29 10:25+0200\n"
-"PO-Revision-Date: 2015-06-24 12:15+0000\n"
+"POT-Creation-Date: 2015-06-29 10:52+0200\n"
+"PO-Revision-Date: 2015-06-29 08:29+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/pkgbuilder/"
 "language/pl/)\n"
@@ -85,9 +85,8 @@ msgid "options"
 msgstr "opcje"
 
 #: pkgbuilder/__main__.py:74
-#, fuzzy
 msgid "clean up work files before and after build"
-msgstr "usuń pliki robocze po wszystkim"
+msgstr "usuń pliki robocze przed i po pracy"
 
 #: pkgbuilder/__main__.py:78
 msgid "don't use colors in output"
@@ -246,9 +245,9 @@ msgid ":: Retrieving packages from aur..."
 msgstr ":: Pobieranie pakietów z aur..."
 
 #: pkgbuilder/build.py:422
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "cloning {0}"
-msgstr "Budowanie {0}..."
+msgstr "klonowanie {0}"
 
 #: pkgbuilder/build.py:425
 msgid "Successfully fetched: "
@@ -270,22 +269,22 @@ msgstr "Znaleziono istniejący pakiet {0}"
 
 #: pkgbuilder/build.py:489
 msgid "Cloning the git repository..."
-msgstr ""
+msgstr "Klonowanie repozytorium git..."
 
 #: pkgbuilder/build.py:492
 #, python-brace-format
 msgid "removing existing directory {0}"
-msgstr ""
+msgstr "usuwanie istniejącego folderu {0}"
 
 #: pkgbuilder/build.py:497
 #, python-brace-format
 msgid "Directory {0} already exists, please run with `-c` to remove it."
-msgstr ""
+msgstr "Folder {0} istnieje, użyj opcji `-c` by go usunąć."
 
 #: pkgbuilder/build.py:499
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "skipping package {0}"
-msgstr "znaleziono istniejący pakiet {0}"
+msgstr "pomijanie pakietu {0}"
 
 #: pkgbuilder/build.py:508
 msgid "Checking dependencies..."
@@ -348,14 +347,14 @@ msgid "Sanity error!  {0} (via {1})"
 msgstr "Sanity test nieudany!  {0} (via {1})"
 
 #: pkgbuilder/exceptions.py:224
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "git clone returned {0}."
-msgstr "makepkg zwrócił {0}."
+msgstr "git clone zwrócił {0}."
 
 #: pkgbuilder/exceptions.py:240
 #, python-brace-format
 msgid "Repository {0} is empty."
-msgstr ""
+msgstr "Repozytorium {0} jest puste."
 
 #. TRANSLATORS: see makepkg.
 #: pkgbuilder/pbds.py:47
@@ -485,7 +484,7 @@ msgstr "Próba użycia utils.print_package_info z pakietem z ABS"
 #. TRANSLATORS: space it properly.  “yes/no” below are
 #. for “out of date”.
 #: pkgbuilder/utils.py:154
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid ""
 "Repository     : aur\n"
 "Name           : {nme}\n"
@@ -510,7 +509,6 @@ msgid ""
 "Description    : {dsc}\n"
 msgstr ""
 "Repozytorium   : aur\n"
-"Kategoria      : {cat}\n"
 "Nazwa          : {nme}\n"
 "Baza pakietu   : {bse}\n"
 "Wersja         : {ver}\n"
@@ -525,6 +523,7 @@ msgstr ""
 "Konfliktuje z  : {cnf}\n"
 "Zastępuje      : {rpl}\n"
 "Głosy          : {cmv}\n"
+"Popularność    : {pop}\n"
 "Nieaktualny    : {ood}\n"
 "Opiekun        : {mnt}\n"
 "Wysłany        : {fsb}\n"
@@ -588,24 +587,3 @@ msgstr "argumenty opcjonalne"
 #: localeprovider.py:5
 msgid "show this help message and exit"
 msgstr "pokaż tą wiadomość i wyjdź"
-
-#~ msgid "use aur4.archlinux.org"
-#~ msgstr "użyj aur4.archlinux.org"
-
-#~ msgid "No files extracted."
-#~ msgstr "Nic nie wypakowano."
-
-#~ msgid "Extracting AUR packages..."
-#~ msgstr "Wypakowywanie pakietów z AUR..."
-
-#~ msgid "Downloading the tarball..."
-#~ msgstr "Pobieranie tarballa..."
-
-#~ msgid "{0} kB downloaded"
-#~ msgstr "pobrano {0} kB"
-
-#~ msgid "Extracting..."
-#~ msgstr "Wypakowywanie..."
-
-#~ msgid "{0} files extracted"
-#~ msgstr "wypakowano {0} plików"
