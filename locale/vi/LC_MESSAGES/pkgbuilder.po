@@ -1,23 +1,24 @@
 # PKGBUILDer pot file.
 # Copyright © 2015, Chris Warrick.
 # This file is distributed under the same license as the PKGBUILDer package.
-# 
+#
 # Translators:
 # Anh Phan <vietnamesel10n@gmail.com>, 2013
 # ppanhh <ppanhh@gmail.com>, 2013
 # Anh Phan <vietnamesel10n@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: PKGBUILDer\n"
+"Project-Id-Version: 4.0.0\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2015-06-29 10:25+0200\n"
+"POT-Creation-Date: 2015-06-29 10:52+0200\n"
 "PO-Revision-Date: 2015-06-29 08:25+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
-"Language-Team: Vietnamese (http://www.transifex.com/projects/p/pkgbuilder/language/vi/)\n"
+"Language-Team: Vietnamese (http://www.transifex.com/projects/p/pkgbuilder/"
+"language/vi/)\n"
+"Language: vi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: vi\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. TRANSLATORS: translate the whole sentence.
@@ -159,7 +160,9 @@ msgstr ""
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
-msgstr "PKGBUILDer (hoặc thư viện xử lý yêu cầu) gặp trục trặc khi xử lý các yêu cầu HTTP."
+msgstr ""
+"PKGBUILDer (hoặc thư viện xử lý yêu cầu) gặp trục trặc khi xử lý các yêu cầu "
+"HTTP."
 
 #: pkgbuilder/build.py:37
 msgid "Validating installation status..."
@@ -218,7 +221,8 @@ msgstr "makepkg (hoặc đối tượng nào đó) đã thất bại và trả v
 #: pkgbuilder/build.py:318
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
-msgstr "Thất bại trong việc điền vào các yêu cầu về sự phụ thuộc của gói tin: {0}"
+msgstr ""
+"Thất bại trong việc điền vào các yêu cầu về sự phụ thuộc của gói tin: {0}"
 
 #: pkgbuilder/build.py:408
 msgid ":: Retrieving packages from abs..."
@@ -529,7 +533,19 @@ msgid ""
 "\n"
 "Additional options:\n"
 "  -L, --unlock         unlock the pacman database"
-msgstr "cách dùng:  {0} <tiến trình> [...]\n\nPBWrapper, là wrapper dành cho pacman và PKGBUILDer.\n\n{1}\n\nChỉ áp dụng cho cú pháp thuộc Pacman và PKGBUILDer.  Tra cứu các văn bản/lệnh\ntrợ giúp để biết thêm chi tiết.\n\nTùy chọn bổ sung:\n  -L, --unlock         mở khóa phần cơ sở dữ liệu của pacman"
+msgstr ""
+"cách dùng:  {0} <tiến trình> [...]\n"
+"\n"
+"PBWrapper, là wrapper dành cho pacman và PKGBUILDer.\n"
+"\n"
+"{1}\n"
+"\n"
+"Chỉ áp dụng cho cú pháp thuộc Pacman và PKGBUILDer.  Tra cứu các văn bản/"
+"lệnh\n"
+"trợ giúp để biết thêm chi tiết.\n"
+"\n"
+"Tùy chọn bổ sung:\n"
+"  -L, --unlock         mở khóa phần cơ sở dữ liệu của pacman"
 
 #. A module only for gettext locale provision.
 #: localeprovider.py:2

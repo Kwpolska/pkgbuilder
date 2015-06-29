@@ -5,8 +5,8 @@ Appendix C. Changelog
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2015, Chris Warrick.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2015-06-22
-:Version: 3.5.1
+:Date: 2015-06-29
+:Version: 4.0.0
 
 .. index:: CHANGELOG
 
@@ -46,6 +46,19 @@ More information can be found on GitHub in the `releases section <https://github
 
 Version History
 ===============
+
+4.0.0
+    * Use RPCv4
+    * Use git clones instead of source tarballs (#34)
+    * Display Popularity field
+    * Delete Category field
+    * Use ``.SRCINFO` files instead of running PKGBUILDs (via ``python-srcinfo``)
+    * Don’t build split packages twice (happened in eg. ``pkgbuilder -Syu``)
+    * Run ``sudo true`` before attempting to move files so that ``mv`` failures don’t cause an infinite loop
+    * Add ``--skippgpcheck`` option (mirrors makepkg’s)
+    * API change: use one ``__main__.py`` file instead of two different files
+    * API change: move some UI functions from ``pkgbuilder.utils`` to ``pkgbuilder.ui``
+    * API change: cd out of the directory in ``build_runner``
 
 3.5.1
     * Fix AURv4 support (use URLPath)

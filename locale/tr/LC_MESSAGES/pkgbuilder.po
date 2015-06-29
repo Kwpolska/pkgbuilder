@@ -1,7 +1,7 @@
 # PKGBUILDer pot file.
 # Copyright © 2015, Chris Warrick.
 # This file is distributed under the same license as the PKGBUILDer package.
-# 
+#
 # Translators:
 # Chris Warrick <kwpolska@gmail.com>, 2013
 # Chris Warrick <kwpolska@gmail.com>, 2013
@@ -9,16 +9,17 @@
 # Yusuf Faruk DOĞAN <yfdogan@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: PKGBUILDer\n"
+"Project-Id-Version: 4.0.0\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2015-06-29 10:25+0200\n"
+"POT-Creation-Date: 2015-06-29 10:52+0200\n"
 "PO-Revision-Date: 2015-06-29 08:25+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
-"Language-Team: Turkish (http://www.transifex.com/projects/p/pkgbuilder/language/tr/)\n"
+"Language-Team: Turkish (http://www.transifex.com/projects/p/pkgbuilder/"
+"language/tr/)\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. TRANSLATORS: translate the whole sentence.
@@ -160,7 +161,9 @@ msgstr ""
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
-msgstr "PKGBUILD yapıcı (ya da istenen kütüphane) HTTP istemcisini doldurmada başarısız oldu."
+msgstr ""
+"PKGBUILD yapıcı (ya da istenen kütüphane) HTTP istemcisini doldurmada "
+"başarısız oldu."
 
 #: pkgbuilder/build.py:37
 msgid "Validating installation status..."
@@ -359,7 +362,9 @@ msgstr "Kullanıcı tarafından iptal edildi! Çıkılıyor..."
 #. TRANSLATORS: see pacman.
 #: pkgbuilder/pbds.py:49
 msgid "Interrupt signal received\n"
-msgstr "Sinyal kesilmesi algılandı⏎\n\n"
+msgstr ""
+"Sinyal kesilmesi algılandı⏎\n"
+"\n"
 
 #: pkgbuilder/pbds.py:88 pkgbuilder/pbds.py:234
 msgid "ERROR:"
@@ -530,7 +535,18 @@ msgid ""
 "\n"
 "Additional options:\n"
 "  -L, --unlock         unlock the pacman database"
-msgstr "kullanım: {0} <işlem> [...]⏎\n⏎\nPBWrapper, PKGBUIL yapıcı ve pacman için örtü.⏎\n⏎\n{1}⏎\n⏎\nPacman and PKGBUILDer syntaxes apply. Consult their manpages/help⏎\ncommands for more details.⏎\n⏎\nAdditional options:⏎\n-L, --pacman veri tabanı kilidini aç"
+msgstr ""
+"kullanım: {0} <işlem> [...]⏎\n"
+"⏎\n"
+"PBWrapper, PKGBUIL yapıcı ve pacman için örtü.⏎\n"
+"⏎\n"
+"{1}⏎\n"
+"⏎\n"
+"Pacman and PKGBUILDer syntaxes apply. Consult their manpages/help⏎\n"
+"commands for more details.⏎\n"
+"⏎\n"
+"Additional options:⏎\n"
+"-L, --pacman veri tabanı kilidini aç"
 
 #. A module only for gettext locale provision.
 #: localeprovider.py:2
