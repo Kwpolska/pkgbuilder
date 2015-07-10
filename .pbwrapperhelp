@@ -22,7 +22,7 @@ options:
       --assume-installed <package=version>
                        add a virtual package to satisfy dependencies
       --cachedir <dir> set an alternate package cache location
-      --color <when>   colorize the output
+      --color <when>   colourise the output
       --config <path>  set an alternate configuration file
       --confirm        always ask for confirmation
       --dbonly         only modify database entries, not package files

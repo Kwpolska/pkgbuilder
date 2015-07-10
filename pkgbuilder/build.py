@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.0.0
+# PKGBUILDer v4.0.1
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -525,16 +525,15 @@ def build_runner(pkgname, performdepcheck=True,
             os.chdir('../')
             return [72337, aurbuild]
 
-    mpparams = ''
+    mpparams = ['makepkg', '-sf']
 
     if DS.cleanup:
-        mpparams += ' -c'
+        mpparams.append('-c')
 
     if DS.nopgp:
-        mpparams += ' --skippgpcheck'
+        mpparams.append('--skippgpcheck')
 
-    mpstatus = subprocess.call('makepkg -sf' + mpparams,
-                               shell=True)
+    mpstatus = subprocess.call(mpparams, shell=False)
 
     if pkginstall:
         toinstall = find_packagefile(os.getcwd())
