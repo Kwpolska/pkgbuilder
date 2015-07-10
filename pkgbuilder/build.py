@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.0.0
+# PKGBUILDer v4.0.1
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -217,10 +217,12 @@ def rsync(pkg, quiet=False):
                            '.'])
 
 
-def prepare_deps(srcinfo_path, pkgname):
+def prepare_deps(srcinfo_path, pkgname=None):
     """Get (make)depends from a .SRCINFO file and returns them.
 
-    .. versionchanged:: 4.0.0
+    (pkgname is now discarded, because it messes up one-build split packages.)
+
+    .. versionchanged:: 4.0.1
 
     In the past, this function used to get data via `bash -c`.
     """
@@ -236,11 +238,11 @@ def prepare_deps(srcinfo_path, pkgname):
         all_depends += data['depends']
     if 'makedepends' in data:
         all_depends += data['makedepends']
-    if pkgname in data['packages'] and 'depends' in data['packages'][pkgname]:
-        all_depends += data['packages'][pkgname]['depends']
-    if (pkgname in data['packages'] and
-            'makedepends' in data['packages'][pkgname]):
-        all_depends += data['packages'][pkgname]['makedepends']
+    for pkgname in data['packages']:
+        if 'depends' in data['packages'][pkgname]:
+            all_depends += data['packages'][pkgname]['depends']
+        if 'makedepends' in data['packages'][pkgname]:
+            all_depends += data['packages'][pkgname]['makedepends']
 
     depends = []
     for d in all_depends:
@@ -506,7 +508,7 @@ def build_runner(pkgname, performdepcheck=True,
 
     if performdepcheck:
         DS.fancy_msg(_('Checking dependencies...'))
-        depends = prepare_deps(os.path.abspath('./.SRCINFO'), pkg.name)
+        depends = prepare_deps(os.path.abspath('./.SRCINFO'))
         deps = depcheck(depends, pkg)
         pkgtypes = [_('found in system'), _('found in repos'),
                     _('found in the AUR')]
@@ -523,16 +525,15 @@ def build_runner(pkgname, performdepcheck=True,
             os.chdir('../')
             return [72337, aurbuild]
 
-    mpparams = ''
+    mpparams = ['makepkg', '-sf']
 
     if DS.cleanup:
-        mpparams += ' -c'
+        mpparams.append('-c')
 
     if DS.nopgp:
-        mpparams += ' --skippgpcheck'
+        mpparams.append('--skippgpcheck')
 
-    mpstatus = subprocess.call('makepkg -sf' + mpparams,
-                               shell=True)
+    mpstatus = subprocess.call(mpparams, shell=False)
 
     if pkginstall:
         toinstall = find_packagefile(os.getcwd())

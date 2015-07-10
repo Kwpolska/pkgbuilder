@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.0.1
-# An AUR helper (and library) in Python 3.
-# Copyright © 2011-2015, Chris Warrick.
+# PKGBUILDer test suite
+# Copyright © 2012-2015, Chris Warrick.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -32,46 +31,3 @@
 # THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 # (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-"""
-An AUR helper (and library) in Python 3.
-
-:Copyright: © 2011-2015, Chris Warrick.
-:License: BSD (see /LICENSE).
-"""
-
-import gettext
-import datetime
-import sys
-
-
-__title__ = 'PKGBUILDer'
-__version__ = '4.0.1'
-__author__ = 'Chris Warrick'
-__license__ = '3-clause BSD'
-__docformat__ = 'restructuredtext en'
-
-__all__ = ('_', 'DS', 'UTC')
-
-G = gettext.translation('pkgbuilder', sys.prefix + '/share/locale',
-                        fallback='C')
-_ = G.gettext
-
-from .pbds import PBDS  # NOQA
-DS = PBDS()
-
-
-class _UTC(datetime.tzinfo):
-
-    """UTC timezone implementation."""
-
-    def utcoffset(self, dt):
-        return datetime.timedelta(0)
-
-    def tzname(self, dt):
-        return "UTC"
-
-    def dst(self, dt):
-        return datetime.timedelta(0)
-
-UTC = _UTC()

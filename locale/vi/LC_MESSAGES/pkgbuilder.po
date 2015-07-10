@@ -8,9 +8,9 @@
 # Anh Phan <vietnamesel10n@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.0.0\n"
+"Project-Id-Version: 4.0.1\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2015-06-29 10:52+0200\n"
+"POT-Creation-Date: 2015-07-10 14:11+0200\n"
 "PO-Revision-Date: 2015-06-29 08:25+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/projects/p/pkgbuilder/"
@@ -20,6 +20,200 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: pkgbuilder/build.py:37
+msgid "Validating installation status..."
+msgstr "Đang kiểm tra trạng thái cài đặt..."
+
+#: pkgbuilder/build.py:53
+#, python-brace-format
+msgid "{0}: not an AUR package"
+msgstr "{0}: không phải gói cài đặt dạng AUR"
+
+#: pkgbuilder/build.py:57 pkgbuilder/build.py:68
+#, python-brace-format
+msgid "{0}: installed {1}"
+msgstr "{0}: đã cài đặt {1}"
+
+#: pkgbuilder/build.py:61
+#, python-brace-format
+msgid "{0}: NOT installed"
+msgstr "{0}: CHƯA được cài đặt"
+
+#: pkgbuilder/build.py:64
+#, python-brace-format
+msgid "{0}: outdated {1}"
+msgstr "{0}: quá hạn {1}"
+
+#: pkgbuilder/build.py:76
+msgid "Installing built packages..."
+msgstr "Đang cài đặt các gói dữ liệu..."
+
+#: pkgbuilder/build.py:86
+msgid "Moving to /var/cache/pacman/pkg/..."
+msgstr ""
+
+#: pkgbuilder/build.py:98
+msgid "Installing with pacman -U..."
+msgstr ""
+
+#: pkgbuilder/build.py:125
+msgid "The build function reported a proper build."
+msgstr "Hàm phát triển dữ liệu đã gửi báo cáo phần phát triển cấp cao hơn."
+
+#: pkgbuilder/build.py:135
+msgid "Building more AUR packages is required."
+msgstr "Yêu cầu việc xây dựng thêm nhiều gói tin AUR."
+
+#: pkgbuilder/build.py:147
+#, python-brace-format
+msgid "found an existing package for {0}"
+msgstr "đã tìm thấy gói cài đặt hiện đang tồn tại cho {0}"
+
+#: pkgbuilder/build.py:182
+#, python-brace-format
+msgid "makepkg (or someone else) failed and returned {0}."
+msgstr "makepkg (hoặc đối tượng nào đó) đã thất bại và trả về {0}."
+
+#: pkgbuilder/build.py:320
+#, python-brace-format
+msgid "Failed to fulfill package dependency requirement: {0}"
+msgstr ""
+"Thất bại trong việc điền vào các yêu cầu về sự phụ thuộc của gói tin: {0}"
+
+#: pkgbuilder/build.py:379 pkgbuilder/__main__.py:216
+msgid "Fetching package information..."
+msgstr "Đang tải về thông tin của gói cài đặt..."
+
+#: pkgbuilder/build.py:410
+msgid ":: Retrieving packages from abs..."
+msgstr ":: Đang nhận các gói cài đặt từ abs.."
+
+#: pkgbuilder/build.py:413
+#, python-brace-format
+msgid "retrieving {0}"
+msgstr "đang nhận {0}"
+
+#: pkgbuilder/build.py:417 pkgbuilder/build.py:469
+#, python-brace-format
+msgid "Failed to retieve {0} (from ABS/rsync)."
+msgstr "Thất bại khi nhận {0} (từ ABS/rsync)."
+
+#: pkgbuilder/build.py:421
+msgid ":: Retrieving packages from aur..."
+msgstr ":: Đang nhận các gói cài đặt từ aur..."
+
+#: pkgbuilder/build.py:424
+#, python-brace-format
+msgid "cloning {0}"
+msgstr ""
+
+#: pkgbuilder/build.py:427
+msgid "Successfully fetched: "
+msgstr "Đã tải về thành công:"
+
+#: pkgbuilder/build.py:457
+#, python-brace-format
+msgid "Building {0}..."
+msgstr "Đang xây dựng {0}..."
+
+#: pkgbuilder/build.py:465
+msgid "Retrieving from ABS..."
+msgstr "Đang nhận từ ABS..."
+
+#: pkgbuilder/build.py:474 pkgbuilder/build.py:488
+#, python-brace-format
+msgid "Found an existing package for {0}"
+msgstr ""
+
+#: pkgbuilder/build.py:491
+msgid "Cloning the git repository..."
+msgstr ""
+
+#: pkgbuilder/build.py:494
+#, python-brace-format
+msgid "removing existing directory {0}"
+msgstr ""
+
+#: pkgbuilder/build.py:499
+#, python-brace-format
+msgid "Directory {0} already exists, please run with `-c` to remove it."
+msgstr ""
+
+#: pkgbuilder/build.py:501
+#, python-brace-format
+msgid "skipping package {0}"
+msgstr ""
+
+#: pkgbuilder/build.py:510
+msgid "Checking dependencies..."
+msgstr "Đang kiểm tra tính độc lập..."
+
+#: pkgbuilder/build.py:513
+msgid "found in system"
+msgstr "đã được tìm thấy trong hệ thống"
+
+#: pkgbuilder/build.py:513
+msgid "found in repos"
+msgstr "đã được tìm thấy trong repos"
+
+#: pkgbuilder/build.py:514
+msgid "found in the AUR"
+msgstr "đã được tìm thấy trong AUR"
+
+#: pkgbuilder/build.py:517
+msgid "none found"
+msgstr "không tìm thấy"
+
+#: pkgbuilder/exceptions.py:58
+#, python-brace-format
+msgid "AUR Error: {0}"
+msgstr "Lỗi AUR: {0}"
+
+#: pkgbuilder/exceptions.py:78
+#, python-brace-format
+msgid "makepkg returned {0}."
+msgstr "makepkg trả về {0}."
+
+#: pkgbuilder/exceptions.py:106
+#, python-brace-format
+msgid "Network error: {0} (via {1})"
+msgstr "Lỗi mạng lưới: {0} (thông qua {1})"
+
+#: pkgbuilder/exceptions.py:117
+#, python-brace-format
+msgid "Connection error: {0} (via {1})"
+msgstr "Lỗi kết nối: {0} (thông qua {1})"
+
+#: pkgbuilder/exceptions.py:132
+#, python-brace-format
+msgid "HTTP Error {0} (via {1})"
+msgstr "Lỗi HTTP {0} (thông qua {1})"
+
+#: pkgbuilder/exceptions.py:167
+#, python-brace-format
+msgid "{0} (Package: {1})"
+msgstr "{0} (Gói cài đặt: {1})"
+
+#: pkgbuilder/exceptions.py:181
+#, python-brace-format
+msgid "Package {0} not found. (via {1})"
+msgstr "Gói cài đặt {0} không được tìm thấy. (thông qua {1})"
+
+#: pkgbuilder/exceptions.py:210
+#, python-brace-format
+msgid "Sanity error!  {0} (via {1})"
+msgstr "Lỗi nghiêm trọng!  {0} (thông qua {1})"
+
+#: pkgbuilder/exceptions.py:224
+#, python-brace-format
+msgid "git clone returned {0}."
+msgstr ""
+
+#: pkgbuilder/exceptions.py:240
+#, python-brace-format
+msgid "Repository {0} is empty."
+msgstr ""
 
 #. TRANSLATORS: translate the whole sentence.
 #. Alternatively, use translation instead of locale.
@@ -146,10 +340,6 @@ msgstr "Đang tìm kiếm dữ liệu khớp..."
 msgid "not found"
 msgstr "không tìm thấy"
 
-#: pkgbuilder/__main__.py:216 pkgbuilder/build.py:377
-msgid "Fetching package information..."
-msgstr "Đang tải về thông tin của gói cài đặt..."
-
 #: pkgbuilder/__main__.py:221
 #, python-brace-format
 msgid "Error while processing {0}: {1}"
@@ -163,196 +353,6 @@ msgid ""
 msgstr ""
 "PKGBUILDer (hoặc thư viện xử lý yêu cầu) gặp trục trặc khi xử lý các yêu cầu "
 "HTTP."
-
-#: pkgbuilder/build.py:37
-msgid "Validating installation status..."
-msgstr "Đang kiểm tra trạng thái cài đặt..."
-
-#: pkgbuilder/build.py:53
-#, python-brace-format
-msgid "{0}: not an AUR package"
-msgstr "{0}: không phải gói cài đặt dạng AUR"
-
-#: pkgbuilder/build.py:57 pkgbuilder/build.py:68
-#, python-brace-format
-msgid "{0}: installed {1}"
-msgstr "{0}: đã cài đặt {1}"
-
-#: pkgbuilder/build.py:61
-#, python-brace-format
-msgid "{0}: NOT installed"
-msgstr "{0}: CHƯA được cài đặt"
-
-#: pkgbuilder/build.py:64
-#, python-brace-format
-msgid "{0}: outdated {1}"
-msgstr "{0}: quá hạn {1}"
-
-#: pkgbuilder/build.py:76
-msgid "Installing built packages..."
-msgstr "Đang cài đặt các gói dữ liệu..."
-
-#: pkgbuilder/build.py:86
-msgid "Moving to /var/cache/pacman/pkg/..."
-msgstr ""
-
-#: pkgbuilder/build.py:98
-msgid "Installing with pacman -U..."
-msgstr ""
-
-#: pkgbuilder/build.py:125
-msgid "The build function reported a proper build."
-msgstr "Hàm phát triển dữ liệu đã gửi báo cáo phần phát triển cấp cao hơn."
-
-#: pkgbuilder/build.py:135
-msgid "Building more AUR packages is required."
-msgstr "Yêu cầu việc xây dựng thêm nhiều gói tin AUR."
-
-#: pkgbuilder/build.py:147
-#, python-brace-format
-msgid "found an existing package for {0}"
-msgstr "đã tìm thấy gói cài đặt hiện đang tồn tại cho {0}"
-
-#: pkgbuilder/build.py:182
-#, python-brace-format
-msgid "makepkg (or someone else) failed and returned {0}."
-msgstr "makepkg (hoặc đối tượng nào đó) đã thất bại và trả về {0}."
-
-#: pkgbuilder/build.py:318
-#, python-brace-format
-msgid "Failed to fulfill package dependency requirement: {0}"
-msgstr ""
-"Thất bại trong việc điền vào các yêu cầu về sự phụ thuộc của gói tin: {0}"
-
-#: pkgbuilder/build.py:408
-msgid ":: Retrieving packages from abs..."
-msgstr ":: Đang nhận các gói cài đặt từ abs.."
-
-#: pkgbuilder/build.py:411
-#, python-brace-format
-msgid "retrieving {0}"
-msgstr "đang nhận {0}"
-
-#: pkgbuilder/build.py:415 pkgbuilder/build.py:467
-#, python-brace-format
-msgid "Failed to retieve {0} (from ABS/rsync)."
-msgstr "Thất bại khi nhận {0} (từ ABS/rsync)."
-
-#: pkgbuilder/build.py:419
-msgid ":: Retrieving packages from aur..."
-msgstr ":: Đang nhận các gói cài đặt từ aur..."
-
-#: pkgbuilder/build.py:422
-#, python-brace-format
-msgid "cloning {0}"
-msgstr ""
-
-#: pkgbuilder/build.py:425
-msgid "Successfully fetched: "
-msgstr "Đã tải về thành công:"
-
-#: pkgbuilder/build.py:455
-#, python-brace-format
-msgid "Building {0}..."
-msgstr "Đang xây dựng {0}..."
-
-#: pkgbuilder/build.py:463
-msgid "Retrieving from ABS..."
-msgstr "Đang nhận từ ABS..."
-
-#: pkgbuilder/build.py:472 pkgbuilder/build.py:486
-#, python-brace-format
-msgid "Found an existing package for {0}"
-msgstr ""
-
-#: pkgbuilder/build.py:489
-msgid "Cloning the git repository..."
-msgstr ""
-
-#: pkgbuilder/build.py:492
-#, python-brace-format
-msgid "removing existing directory {0}"
-msgstr ""
-
-#: pkgbuilder/build.py:497
-#, python-brace-format
-msgid "Directory {0} already exists, please run with `-c` to remove it."
-msgstr ""
-
-#: pkgbuilder/build.py:499
-#, python-brace-format
-msgid "skipping package {0}"
-msgstr ""
-
-#: pkgbuilder/build.py:508
-msgid "Checking dependencies..."
-msgstr "Đang kiểm tra tính độc lập..."
-
-#: pkgbuilder/build.py:511
-msgid "found in system"
-msgstr "đã được tìm thấy trong hệ thống"
-
-#: pkgbuilder/build.py:511
-msgid "found in repos"
-msgstr "đã được tìm thấy trong repos"
-
-#: pkgbuilder/build.py:512
-msgid "found in the AUR"
-msgstr "đã được tìm thấy trong AUR"
-
-#: pkgbuilder/build.py:515
-msgid "none found"
-msgstr "không tìm thấy"
-
-#: pkgbuilder/exceptions.py:58
-#, python-brace-format
-msgid "AUR Error: {0}"
-msgstr "Lỗi AUR: {0}"
-
-#: pkgbuilder/exceptions.py:78
-#, python-brace-format
-msgid "makepkg returned {0}."
-msgstr "makepkg trả về {0}."
-
-#: pkgbuilder/exceptions.py:106
-#, python-brace-format
-msgid "Network error: {0} (via {1})"
-msgstr "Lỗi mạng lưới: {0} (thông qua {1})"
-
-#: pkgbuilder/exceptions.py:117
-#, python-brace-format
-msgid "Connection error: {0} (via {1})"
-msgstr "Lỗi kết nối: {0} (thông qua {1})"
-
-#: pkgbuilder/exceptions.py:132
-#, python-brace-format
-msgid "HTTP Error {0} (via {1})"
-msgstr "Lỗi HTTP {0} (thông qua {1})"
-
-#: pkgbuilder/exceptions.py:167
-#, python-brace-format
-msgid "{0} (Package: {1})"
-msgstr "{0} (Gói cài đặt: {1})"
-
-#: pkgbuilder/exceptions.py:181
-#, python-brace-format
-msgid "Package {0} not found. (via {1})"
-msgstr "Gói cài đặt {0} không được tìm thấy. (thông qua {1})"
-
-#: pkgbuilder/exceptions.py:210
-#, python-brace-format
-msgid "Sanity error!  {0} (via {1})"
-msgstr "Lỗi nghiêm trọng!  {0} (thông qua {1})"
-
-#: pkgbuilder/exceptions.py:224
-#, python-brace-format
-msgid "git clone returned {0}."
-msgstr ""
-
-#: pkgbuilder/exceptions.py:240
-#, python-brace-format
-msgid "Repository {0} is empty."
-msgstr ""
 
 #. TRANSLATORS: see makepkg.
 #: pkgbuilder/pbds.py:47

@@ -9,7 +9,7 @@ from setuptools.command.test import test as TestCommand
 class PyTest(TestCommand):
     def finalize_options(self):
         TestCommand.finalize_options(self)
-        self.test_args = ['tests.py']
+        self.test_args = ['tests/']
         self.test_suite = True
 
     def run_tests(self):
@@ -19,7 +19,7 @@ class PyTest(TestCommand):
         sys.exit(errno)
 
 setup(name='pkgbuilder',
-      version='4.0.0',
+      version='4.0.1',
       description='An AUR helper (and library) in Python 3.',
       keywords='arch pkgbuild',
       author='Chris Warrick',
