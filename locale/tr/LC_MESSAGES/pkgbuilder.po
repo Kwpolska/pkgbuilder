@@ -9,9 +9,9 @@
 # Yusuf Faruk DOĞAN <yfdogan@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.0.0\n"
+"Project-Id-Version: 4.0.1\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2015-06-29 10:52+0200\n"
+"POT-Creation-Date: 2015-07-10 14:11+0200\n"
 "PO-Revision-Date: 2015-06-29 08:25+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/pkgbuilder/"
@@ -21,6 +21,199 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: pkgbuilder/build.py:37
+msgid "Validating installation status..."
+msgstr "Yükleme durumu hesaplanıyor..."
+
+#: pkgbuilder/build.py:53
+#, python-brace-format
+msgid "{0}: not an AUR package"
+msgstr "{0}: AUR paketi değil"
+
+#: pkgbuilder/build.py:57 pkgbuilder/build.py:68
+#, python-brace-format
+msgid "{0}: installed {1}"
+msgstr "{0}: KUurulan {1}"
+
+#: pkgbuilder/build.py:61
+#, python-brace-format
+msgid "{0}: NOT installed"
+msgstr "{0}: KURULMADI"
+
+#: pkgbuilder/build.py:64
+#, python-brace-format
+msgid "{0}: outdated {1}"
+msgstr "{0}: Günü geçmiş {1}"
+
+#: pkgbuilder/build.py:76
+msgid "Installing built packages..."
+msgstr "İnşa paketleri kuruluyor..."
+
+#: pkgbuilder/build.py:86
+msgid "Moving to /var/cache/pacman/pkg/..."
+msgstr ""
+
+#: pkgbuilder/build.py:98
+msgid "Installing with pacman -U..."
+msgstr ""
+
+#: pkgbuilder/build.py:125
+msgid "The build function reported a proper build."
+msgstr "İnşa işlemi uygun bir inşa bildirdi."
+
+#: pkgbuilder/build.py:135
+msgid "Building more AUR packages is required."
+msgstr "Daha fazla AUR paketi gerekiyor."
+
+#: pkgbuilder/build.py:147
+#, python-brace-format
+msgid "found an existing package for {0}"
+msgstr "{0} için var olan bir paket bulundu"
+
+#: pkgbuilder/build.py:182
+#, python-brace-format
+msgid "makepkg (or someone else) failed and returned {0}."
+msgstr "makepkg (veya biri) durduruldu ve geri döndü {0}"
+
+#: pkgbuilder/build.py:320
+#, python-brace-format
+msgid "Failed to fulfill package dependency requirement: {0}"
+msgstr "Paket bağımlılığı şartı gerçekleştirilemedi :{0}"
+
+#: pkgbuilder/build.py:379 pkgbuilder/__main__.py:216
+msgid "Fetching package information..."
+msgstr "Paket bilgisi alınıyor..."
+
+#: pkgbuilder/build.py:410
+msgid ":: Retrieving packages from abs..."
+msgstr ":: ABS den paketler geri alınıyor..."
+
+#: pkgbuilder/build.py:413
+#, python-brace-format
+msgid "retrieving {0}"
+msgstr "{0} geri alınıyor"
+
+#: pkgbuilder/build.py:417 pkgbuilder/build.py:469
+#, python-brace-format
+msgid "Failed to retieve {0} (from ABS/rsync)."
+msgstr "{0} geri yüklenmesi durdu (ABS/rsync ten)"
+
+#: pkgbuilder/build.py:421
+msgid ":: Retrieving packages from aur..."
+msgstr ":: AUR dan paketler geri alınıyor..."
+
+#: pkgbuilder/build.py:424
+#, python-brace-format
+msgid "cloning {0}"
+msgstr ""
+
+#: pkgbuilder/build.py:427
+msgid "Successfully fetched: "
+msgstr "Başarıyla çekildi:"
+
+#: pkgbuilder/build.py:457
+#, python-brace-format
+msgid "Building {0}..."
+msgstr "{0} İnşa ediliyor..."
+
+#: pkgbuilder/build.py:465
+msgid "Retrieving from ABS..."
+msgstr "ABS den geri alınıyor..."
+
+#: pkgbuilder/build.py:474 pkgbuilder/build.py:488
+#, python-brace-format
+msgid "Found an existing package for {0}"
+msgstr ""
+
+#: pkgbuilder/build.py:491
+msgid "Cloning the git repository..."
+msgstr ""
+
+#: pkgbuilder/build.py:494
+#, python-brace-format
+msgid "removing existing directory {0}"
+msgstr ""
+
+#: pkgbuilder/build.py:499
+#, python-brace-format
+msgid "Directory {0} already exists, please run with `-c` to remove it."
+msgstr ""
+
+#: pkgbuilder/build.py:501
+#, python-brace-format
+msgid "skipping package {0}"
+msgstr ""
+
+#: pkgbuilder/build.py:510
+msgid "Checking dependencies..."
+msgstr "Bağımlılıklara bakılıyor..."
+
+#: pkgbuilder/build.py:513
+msgid "found in system"
+msgstr "Sistemde bulundu"
+
+#: pkgbuilder/build.py:513
+msgid "found in repos"
+msgstr "Depolarda bulundu"
+
+#: pkgbuilder/build.py:514
+msgid "found in the AUR"
+msgstr "AUR da bulundu"
+
+#: pkgbuilder/build.py:517
+msgid "none found"
+msgstr "Bulunamadı"
+
+#: pkgbuilder/exceptions.py:58
+#, python-brace-format
+msgid "AUR Error: {0}"
+msgstr "AUR Hatası: {0}"
+
+#: pkgbuilder/exceptions.py:78
+#, python-brace-format
+msgid "makepkg returned {0}."
+msgstr "{0} makepkg geri döndü."
+
+#: pkgbuilder/exceptions.py:106
+#, python-brace-format
+msgid "Network error: {0} (via {1})"
+msgstr "{0} (via {1}) Ağ hatası"
+
+#: pkgbuilder/exceptions.py:117
+#, python-brace-format
+msgid "Connection error: {0} (via {1})"
+msgstr "Bağlantı hatası:{0} (via {1})"
+
+#: pkgbuilder/exceptions.py:132
+#, python-brace-format
+msgid "HTTP Error {0} (via {1})"
+msgstr "HTTP hatası {0} (via {1})"
+
+#: pkgbuilder/exceptions.py:167
+#, python-brace-format
+msgid "{0} (Package: {1})"
+msgstr "{0} (Paket: {1})"
+
+#: pkgbuilder/exceptions.py:181
+#, python-brace-format
+msgid "Package {0} not found. (via {1})"
+msgstr "{0} Paketi (via {1}) içinde bulunamadı"
+
+#: pkgbuilder/exceptions.py:210
+#, python-brace-format
+msgid "Sanity error!  {0} (via {1})"
+msgstr "Mantık hatası : {0} (via {1})"
+
+#: pkgbuilder/exceptions.py:224
+#, python-brace-format
+msgid "git clone returned {0}."
+msgstr ""
+
+#: pkgbuilder/exceptions.py:240
+#, python-brace-format
+msgid "Repository {0} is empty."
+msgstr ""
 
 #. TRANSLATORS: translate the whole sentence.
 #. Alternatively, use translation instead of locale.
@@ -147,10 +340,6 @@ msgstr "Tam eşleşme için taranıyor..."
 msgid "not found"
 msgstr "Bulunamadı"
 
-#: pkgbuilder/__main__.py:216 pkgbuilder/build.py:377
-msgid "Fetching package information..."
-msgstr "Paket bilgisi alınıyor..."
-
 #: pkgbuilder/__main__.py:221
 #, python-brace-format
 msgid "Error while processing {0}: {1}"
@@ -164,195 +353,6 @@ msgid ""
 msgstr ""
 "PKGBUILD yapıcı (ya da istenen kütüphane) HTTP istemcisini doldurmada "
 "başarısız oldu."
-
-#: pkgbuilder/build.py:37
-msgid "Validating installation status..."
-msgstr "Yükleme durumu hesaplanıyor..."
-
-#: pkgbuilder/build.py:53
-#, python-brace-format
-msgid "{0}: not an AUR package"
-msgstr "{0}: AUR paketi değil"
-
-#: pkgbuilder/build.py:57 pkgbuilder/build.py:68
-#, python-brace-format
-msgid "{0}: installed {1}"
-msgstr "{0}: KUurulan {1}"
-
-#: pkgbuilder/build.py:61
-#, python-brace-format
-msgid "{0}: NOT installed"
-msgstr "{0}: KURULMADI"
-
-#: pkgbuilder/build.py:64
-#, python-brace-format
-msgid "{0}: outdated {1}"
-msgstr "{0}: Günü geçmiş {1}"
-
-#: pkgbuilder/build.py:76
-msgid "Installing built packages..."
-msgstr "İnşa paketleri kuruluyor..."
-
-#: pkgbuilder/build.py:86
-msgid "Moving to /var/cache/pacman/pkg/..."
-msgstr ""
-
-#: pkgbuilder/build.py:98
-msgid "Installing with pacman -U..."
-msgstr ""
-
-#: pkgbuilder/build.py:125
-msgid "The build function reported a proper build."
-msgstr "İnşa işlemi uygun bir inşa bildirdi."
-
-#: pkgbuilder/build.py:135
-msgid "Building more AUR packages is required."
-msgstr "Daha fazla AUR paketi gerekiyor."
-
-#: pkgbuilder/build.py:147
-#, python-brace-format
-msgid "found an existing package for {0}"
-msgstr "{0} için var olan bir paket bulundu"
-
-#: pkgbuilder/build.py:182
-#, python-brace-format
-msgid "makepkg (or someone else) failed and returned {0}."
-msgstr "makepkg (veya biri) durduruldu ve geri döndü {0}"
-
-#: pkgbuilder/build.py:318
-#, python-brace-format
-msgid "Failed to fulfill package dependency requirement: {0}"
-msgstr "Paket bağımlılığı şartı gerçekleştirilemedi :{0}"
-
-#: pkgbuilder/build.py:408
-msgid ":: Retrieving packages from abs..."
-msgstr ":: ABS den paketler geri alınıyor..."
-
-#: pkgbuilder/build.py:411
-#, python-brace-format
-msgid "retrieving {0}"
-msgstr "{0} geri alınıyor"
-
-#: pkgbuilder/build.py:415 pkgbuilder/build.py:467
-#, python-brace-format
-msgid "Failed to retieve {0} (from ABS/rsync)."
-msgstr "{0} geri yüklenmesi durdu (ABS/rsync ten)"
-
-#: pkgbuilder/build.py:419
-msgid ":: Retrieving packages from aur..."
-msgstr ":: AUR dan paketler geri alınıyor..."
-
-#: pkgbuilder/build.py:422
-#, python-brace-format
-msgid "cloning {0}"
-msgstr ""
-
-#: pkgbuilder/build.py:425
-msgid "Successfully fetched: "
-msgstr "Başarıyla çekildi:"
-
-#: pkgbuilder/build.py:455
-#, python-brace-format
-msgid "Building {0}..."
-msgstr "{0} İnşa ediliyor..."
-
-#: pkgbuilder/build.py:463
-msgid "Retrieving from ABS..."
-msgstr "ABS den geri alınıyor..."
-
-#: pkgbuilder/build.py:472 pkgbuilder/build.py:486
-#, python-brace-format
-msgid "Found an existing package for {0}"
-msgstr ""
-
-#: pkgbuilder/build.py:489
-msgid "Cloning the git repository..."
-msgstr ""
-
-#: pkgbuilder/build.py:492
-#, python-brace-format
-msgid "removing existing directory {0}"
-msgstr ""
-
-#: pkgbuilder/build.py:497
-#, python-brace-format
-msgid "Directory {0} already exists, please run with `-c` to remove it."
-msgstr ""
-
-#: pkgbuilder/build.py:499
-#, python-brace-format
-msgid "skipping package {0}"
-msgstr ""
-
-#: pkgbuilder/build.py:508
-msgid "Checking dependencies..."
-msgstr "Bağımlılıklara bakılıyor..."
-
-#: pkgbuilder/build.py:511
-msgid "found in system"
-msgstr "Sistemde bulundu"
-
-#: pkgbuilder/build.py:511
-msgid "found in repos"
-msgstr "Depolarda bulundu"
-
-#: pkgbuilder/build.py:512
-msgid "found in the AUR"
-msgstr "AUR da bulundu"
-
-#: pkgbuilder/build.py:515
-msgid "none found"
-msgstr "Bulunamadı"
-
-#: pkgbuilder/exceptions.py:58
-#, python-brace-format
-msgid "AUR Error: {0}"
-msgstr "AUR Hatası: {0}"
-
-#: pkgbuilder/exceptions.py:78
-#, python-brace-format
-msgid "makepkg returned {0}."
-msgstr "{0} makepkg geri döndü."
-
-#: pkgbuilder/exceptions.py:106
-#, python-brace-format
-msgid "Network error: {0} (via {1})"
-msgstr "{0} (via {1}) Ağ hatası"
-
-#: pkgbuilder/exceptions.py:117
-#, python-brace-format
-msgid "Connection error: {0} (via {1})"
-msgstr "Bağlantı hatası:{0} (via {1})"
-
-#: pkgbuilder/exceptions.py:132
-#, python-brace-format
-msgid "HTTP Error {0} (via {1})"
-msgstr "HTTP hatası {0} (via {1})"
-
-#: pkgbuilder/exceptions.py:167
-#, python-brace-format
-msgid "{0} (Package: {1})"
-msgstr "{0} (Paket: {1})"
-
-#: pkgbuilder/exceptions.py:181
-#, python-brace-format
-msgid "Package {0} not found. (via {1})"
-msgstr "{0} Paketi (via {1}) içinde bulunamadı"
-
-#: pkgbuilder/exceptions.py:210
-#, python-brace-format
-msgid "Sanity error!  {0} (via {1})"
-msgstr "Mantık hatası : {0} (via {1})"
-
-#: pkgbuilder/exceptions.py:224
-#, python-brace-format
-msgid "git clone returned {0}."
-msgstr ""
-
-#: pkgbuilder/exceptions.py:240
-#, python-brace-format
-msgid "Repository {0} is empty."
-msgstr ""
 
 #. TRANSLATORS: see makepkg.
 #: pkgbuilder/pbds.py:47
