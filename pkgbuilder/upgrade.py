@@ -100,17 +100,14 @@ def list_upgradable(pkglist, vcsup=False, aurcache=None):
     return [upgradable, downgradable]
 
 
-def auto_upgrade(downgrade=False, vcsup=False):
+def auto_upgrade(downgrade=False, vcsup=False, fetchonly=False):
     """
     Human friendly upgrade question and output.
 
     Returns packages — should be passed over to builder functions.
     """
     DS.log.info('Ran auto_upgrade.')
-    if DS.pacman:
-        print(':: ' + _('Synchronizing package databases...'))
-    else:
-        DS.fancy_msg(_('Synchronizing package databases...'))
+    print(':: ' + _('Synchronizing package databases...'))
 
     foreign = gather_foreign_pkgs()
     gradable = list_upgradable(foreign.keys(), vcsup)
@@ -119,39 +116,24 @@ def auto_upgrade(downgrade=False, vcsup=False):
     upglen = len(upgradable)
     downlen = len(downgradable)
 
-    if DS.pacman:
-        print(':: ' + _('Starting full system upgrade...'))
-    else:
-        DS.fancy_msg(_('Starting full system upgrade...'))
+    print(':: ' + _('Starting full system upgrade...'))
 
     if downlen > 0:
         for i in downgradable:
-            if DS.pacman:
-                if downgrade:
-                    msg = _('warning: {0}: downgrading from version {1} '
-                            'to version {2}').format(*i)
-                else:
-                    msg = _('warning: {0}: local ({1}) is newer than aur '
-                            '({2})').format(*i)
-                print(msg)
+            if downgrade:
+                msg = _('warning: {0}: downgrading from version {1} '
+                        'to version {2}').format(*i)
             else:
-                if downgrade:
-                    msg = _('{0}: downgrading from version {1} '
-                            'to version {2}').format(*i)
-                else:
-                    msg = _('{0}: local ({1}) is newer than aur '
-                            '({2})').format(*i)
-                DS.fancy_warning(msg)
+                msg = _('warning: {0}: local ({1}) is newer than aur '
+                        '({2})').format(*i)
+            print(msg)
 
         if downgrade:
             upglen = upglen + downlen
             upgradable = upgradable + downgradable
 
     if upglen == 0:
-        if DS.pacman:
-            print(' ' + _('there is nothing to do'))
-        else:
-            DS.fancy_msg2(_('there is nothing to do'))
+        print(' ' + _('there is nothing to do'))
 
         return []
 
@@ -166,69 +148,64 @@ def auto_upgrade(downgrade=False, vcsup=False):
                 break
 
     if upglen > 0:
-        if DS.pacman:
-            targetstring = _('Targets ({0}): ').format(upglen)
+        targetstring = _('Targets ({0}): ').format(upglen)
 
-            termwidth = pkgbuilder.ui.get_termwidth()
+        termwidth = pkgbuilder.ui.get_termwidth()
 
-            if termwidth is None and verbosepkglists:
-                # Pacman doesn’t allow tables if the terminal is too small.
-                # And since we don’t know the size, better safe than sorry.
+        if termwidth is None and verbosepkglists:
+            # Pacman doesn’t allow tables if the terminal is too small.
+            # And since we don’t know the size, better safe than sorry.
+            verbosepkglists = False
+            DS.log.warning('VerbosePkgLists disabled, cannot '
+                            'determine terminal width')
+
+        termwidth = termwidth or 9001
+
+        if verbosepkglists:
+            headers = [_('Name'), _('Old Version'), _('New Version')]
+            items = upgradable  # Magical.
+
+            sizes = [len(i) for i in headers]
+
+            for n, ov, nv in items:
+                if len(n) > sizes[0]:
+                    sizes[0] = len(n)
+
+                if len(ov) > sizes[1]:
+                    sizes[1] = len(ov)
+
+                if len(nv) > sizes[2]:
+                    sizes[2] = len(nv)
+
+            fstring = ('{{i[0]:<{s[0]}}}  {{i[1]:<{s[1]}}}  '
+                        '{{i[2]:<{s[2]}}}').format(s=sizes)
+
+            if len(fstring.format(i=4 * ['n'])) > termwidth:
                 verbosepkglists = False
-                DS.log.warning('VerbosePkgLists disabled, cannot '
-                               'determine terminal width')
+                DS.log.warning('VerbosePkgLists disabled, terminal is '
+                                'not wide enough')
+                # string stolen from pacman
+                print(_('warning: insufficient columns available for '
+                        'table display'))
+            else:
+                print('\n{0}\n'.format(targetstring.strip()))
+                print(fstring.format(i=headers))
+                print()
 
-            termwidth = termwidth or 9001
+                for i in items:
+                    print(fstring.format(i=i))
 
-            if verbosepkglists:
-                headers = [_('Name'), _('Old Version'), _('New Version')]
-                items = upgradable  # Magical.
+        # Not using else because there is a fallback if the terminal
+        # is too small.
+        if not verbosepkglists:
+            print(pkgbuilder.ui.hanging_indent(
+                '  '.join(upgstrings), targetstring, termwidth, True))
 
-                sizes = [len(i) for i in headers]
-
-                for n, ov, nv in items:
-                    if len(n) > sizes[0]:
-                        sizes[0] = len(n)
-
-                    if len(ov) > sizes[1]:
-                        sizes[1] = len(ov)
-
-                    if len(nv) > sizes[2]:
-                        sizes[2] = len(nv)
-
-                fstring = ('{{i[0]:<{s[0]}}}  {{i[1]:<{s[1]}}}  '
-                           '{{i[2]:<{s[2]}}}').format(s=sizes)
-
-                if len(fstring.format(i=4 * ['n'])) > termwidth:
-                    verbosepkglists = False
-                    DS.log.warning('VerbosePkgLists disabled, terminal is '
-                                   'not wide enough')
-                    # string stolen from pacman
-                    print(_('warning: insufficient columns available for '
-                            'table display'))
-                else:
-                    print('\n{0}\n'.format(targetstring.strip()))
-                    print(fstring.format(i=headers))
-                    print()
-
-                    for i in items:
-                        print(fstring.format(i=i))
-
-            # Not using else because there is a fallback if the terminal
-            # is too small.
-            if not verbosepkglists:
-                print(pkgbuilder.ui.hanging_indent(
-                    '  '.join(upgstrings), targetstring, termwidth, True))
-
-            print()
-            query = ':: ' + _('Proceed with installation? [Y/n] ')
+        print()
+        if fetchonly:
+            query = ':: ' + _('Fetch the packages? [Y/n] ')
         else:
-            DS.fancy_msg(_('Targets ({0}): ').format(upglen))
-            DS.fancy_msg2('  '.join(upgstrings))
-            query = (DS.colors['green'] + '==>' + DS.colors['all_off'] +
-                     DS.colors['bold'] + ' ' +
-                     _('Proceed with installation? [Y/n] ') +
-                     DS.colors['all_off'])
+            query = ':: ' + _('Proceed with installation? [Y/n] ')
 
         yesno = input(query)
 

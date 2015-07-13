@@ -203,10 +203,10 @@ def main(source='AUTO', quit=True):
             DS.root_crash()
             DS.log.info('Starting upgrade...')
             dodowngrade = args.upgrade > 1
-            upnames = pkgbuilder.upgrade.auto_upgrade(dodowngrade, args.vcsup)
+            upnames = pkgbuilder.upgrade.auto_upgrade(dodowngrade, args.vcsup, args.fetch)
             pkgnames = upnames + pkgnames
 
-        if args.fetch:
+        if args.fetch and pkgnames:
             pkgbuilder.build.fetch_runner(pkgnames)
             if quit:
                 exit(0)
