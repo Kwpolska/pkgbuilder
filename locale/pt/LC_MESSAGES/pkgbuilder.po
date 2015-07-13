@@ -6,13 +6,13 @@
 # Thiago Perrotta <thiagoperrotta95@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.0.1\n"
+"Project-Id-Version: 4.0.2\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2015-07-10 14:11+0200\n"
-"PO-Revision-Date: 2015-06-29 08:25+0000\n"
+"POT-Creation-Date: 2015-07-13 11:29+0200\n"
+"PO-Revision-Date: 2015-07-13 09:25+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
-"Language-Team: Portuguese (http://www.transifex.com/projects/p/pkgbuilder/"
-"language/pt/)\n"
+"Language-Team: Portuguese (http://www.transifex.com/p/pkgbuilder/language/"
+"pt/)\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -393,61 +393,55 @@ msgstr ""
 msgid "Please restart PKGBUILDer as a regular user."
 msgstr "Por favor reinicie o PKGBUILDer como um usuário regular."
 
-#: pkgbuilder/upgrade.py:111 pkgbuilder/upgrade.py:113
+#: pkgbuilder/upgrade.py:110
 msgid "Synchronizing package databases..."
 msgstr "Sincronizando bancos de dados de pacotes..."
 
-#: pkgbuilder/upgrade.py:123 pkgbuilder/upgrade.py:125
+#: pkgbuilder/upgrade.py:119
 msgid "Starting full system upgrade..."
 msgstr "Começando atualização completa do sistema..."
 
-#: pkgbuilder/upgrade.py:131
+#: pkgbuilder/upgrade.py:124
 #, python-brace-format
 msgid "warning: {0}: downgrading from version {1} to version {2}"
 msgstr "aviso: {0}: rebaixando da versão {1} para a versão {2}"
 
-#: pkgbuilder/upgrade.py:134
+#: pkgbuilder/upgrade.py:127
 #, python-brace-format
 msgid "warning: {0}: local ({1}) is newer than aur ({2})"
 msgstr "aviso: {0}: local ({1}) é mais novo do que aur ({2})"
 
-#: pkgbuilder/upgrade.py:139
-#, python-brace-format
-msgid "{0}: downgrading from version {1} to version {2}"
-msgstr "{0}: rebaixando da versão {1} para a versão {2}"
-
-#: pkgbuilder/upgrade.py:142
-#, python-brace-format
-msgid "{0}: local ({1}) is newer than aur ({2})"
-msgstr "{0}: local ({1}) é mais novo do que aur ({2})"
-
-#: pkgbuilder/upgrade.py:152 pkgbuilder/upgrade.py:154
+#: pkgbuilder/upgrade.py:136
 msgid "there is nothing to do"
 msgstr "não há nada para ser feito"
 
-#: pkgbuilder/upgrade.py:170 pkgbuilder/upgrade.py:226
+#: pkgbuilder/upgrade.py:151
 #, python-brace-format
 msgid "Targets ({0}): "
 msgstr "Alvos ({0}):"
 
-#: pkgbuilder/upgrade.py:184
+#: pkgbuilder/upgrade.py:165
 msgid "Name"
 msgstr "Nome"
 
-#: pkgbuilder/upgrade.py:184
+#: pkgbuilder/upgrade.py:165
 msgid "Old Version"
 msgstr "Versão antiga"
 
-#: pkgbuilder/upgrade.py:184
+#: pkgbuilder/upgrade.py:165
 msgid "New Version"
 msgstr "Nova Versão"
 
 #. string stolen from pacman
-#: pkgbuilder/upgrade.py:207
+#: pkgbuilder/upgrade.py:188
 msgid "warning: insufficient columns available for table display"
 msgstr "aviso: colunas disponíveis são insuficientes para display de tabela"
 
-#: pkgbuilder/upgrade.py:224 pkgbuilder/upgrade.py:230
+#: pkgbuilder/upgrade.py:206
+msgid "Fetch the packages? [Y/n] "
+msgstr ""
+
+#: pkgbuilder/upgrade.py:208
 msgid "Proceed with installation? [Y/n] "
 msgstr "Proceder com a instalação? [S/n]"
 

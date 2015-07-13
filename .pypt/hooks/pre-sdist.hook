@@ -19,3 +19,12 @@ if [[ $? = 1 ]]; then
     fi
 fi
 
+# manpage update
+echo "Updating man pages..."
+cd docs
+rm -v pb.8.gz pkgbuilder.8.gz
+rst2man -v pb.rst > pb.8
+rst2man -v pkgbuilder.rst > pkgbuilder.8
+gzip -v pb.8 pkgbuilder.8
+cd ..
+echo "Done."

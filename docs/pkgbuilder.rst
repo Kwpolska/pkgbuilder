@@ -6,15 +6,15 @@ PKGBUILDer
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2015, Chris Warrick.
 :License: BSD (see /LICENSE or Appendix B.)
-:Date: 2015-07-10
-:Version: 4.0.1
+:Date: 2015-07-13
+:Version: 4.0.2
 :Manual section: 8
 :Manual group: PKGBUILDer manual
 
 SYNOPSIS
 ========
 
-*pkgbuilder* [-hVcCdDvwSy] [--debug] [--safeupgrade] [-Fisu] [PACKAGE [PACKAGE ...]]
+*pkgbuilder* [-hVcCdDvwSy] [--debug] [--skippgpcheck] [--userfetch USER] [-FisuU] [PACKAGE [PACKAGE ...]]
 
 DESCRIPTION
 ===========
@@ -42,15 +42,25 @@ OPERATIONS
     Fetch (and don’t build) **PACKAGE**\s in a fashion similar to
     ``cower -d``.
 
+**--userfetch USER**
+    Fetch all AUR packages of an user.
+
+**-y, --refresh**
+    A dummy option for pacman syntax compatibility.
+
 **-i, --info**
-    Displays info about **PACKAGE** in a fashion similar to pacman.
+    Display info about **PACKAGE** in a fashion similar to pacman.
 
 **-s, --search**
-    Searches the AUR for packages with **PACKAGE** as the query.
+    Search the AUR for packages with **PACKAGE** as the query.
 
 **-u, --sysupgrade**
-    Checks for package updates in the AUR.  If updates are found,
-    they will be installed if the user says so.  Pass twice to downgrade.
+    Check for package updates in the AUR.  If updates are found,
+    they will be installed or fetched if the user accepts.  Pass twice to
+    downgrade.
+
+**-U, --upgrade**
+    Copy pacman packages to the cache and install them.
 
 Additionally, parameters **-S**, **--sync**, **-y** and **-refresh**
 are accepted for pacman syntax compatibility. **-S**/**--sync**
@@ -61,56 +71,52 @@ OPTIONS
 =======
 
 **-h, --help**
-    Shows the help message.
+    Show the help message.
 
-**-v, --version**
-    Shows the version number.
+**-V, --version**
+    Show the version number.
 
 **-c, --clean**
-    Cleans the build directory after a finished build. (*makepkg -c*)
+    Clean the build directory after a finished build. (*makepkg -c*)
 
 **-C, --nocolors**
-    Forces the script to ignore the ANSI color codes.
+    Force the script to ignore the ANSI color codes.
 
 **--debug**
-    Outputs debug information to stderr.
+    Output debug information to stderr.
 
 **-d, --nodepcheck**
-    Skips dependency checks.  It may (and, most likely, will)
+    Skip dependency checks.  It may (and, most likely, will)
     break makepkg.
 
 **-D, --vcsupgrade**
-    Upgrades all the VCS packages on the system.  Requires **-u**.
+    Upgrade all the VCS packages on the system.  Requires **-u**.
 
 **-v, --novalidation**
-    Skips package installation validation phase (checking
+    Skip package installation validation phase (checking
     if the package is installed).
 
 **-w, --buildonly**
-    Skips package installation after building.
+    Skip package installation after building.
+
+**--skippgpcheck**
+    Skip PGP checks.
 
 **-S, --sync**
-    Builds packages in */tmp* and uses *aur* instead of the category in search.
-
-**--safeupgrade**
-    Upgrades PKGBUILDer safely.  Now obsolete, because an update for PKGBUILDer
-    forces this option anyways.
-
-**-y, --refresh**
-    A dummy option for pacman syntax compatibility.
+    Build packages in */tmp* and uses *aur* instead of the category in search.
 
 EXAMPLES
 ========
 
 pkgbuilder hello
-    Installs the package hello from the AUR.  It is being built in
+    Install the package hello from the AUR.  It will be built in
     the CWD.
 
 pkgbuilder -S hello
-    Installs hello, but builds the package in /tmp/pkgbuilder-UID.
+    Install hello, but builds the package in /tmp/pkgbuilder-UID.
 
 pkgbuilder -F hello
-    Fetches the tarball for hello to the CWD and unpacks it.
+    Fetch the AUR git repository for hello to the CWD.
 
 pkgbuilder -SF hello
     Like above, but does it in /tmp/pkgbuilder-UID.
@@ -120,7 +126,10 @@ pkgbuilder python
     need for ``extra/abs``).  -S and/or -F are also accepted.
 
 pkgbuilder -Syu
-    Checks for updates and offers installing them.
+    Check for updates and offer installing them.
+
+pkgbuilder -uF
+    Check for updates and offer fetching them.
 
 hello is a package for GNU Hello: http://www.gnu.org/software/hello/
 
