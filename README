@@ -3,8 +3,8 @@ PKGBUILDer.  An AUR helper (and library) in Python 3.
 =====================================================
 :Info: This is the README file for PKGBUILDer.
 :Author: Chris Warrick <chris@chriswarrick.com>
-:Date: 2015-07-10
-:Version: 4.0.1
+:Date: 2015-07-13
+:Version: 4.0.2
 
 .. index: README
 
@@ -17,9 +17,23 @@ INSTALLATION
 
 Get it from the AUR: https://aur.archlinux.org/packages/pkgbuilder/.
 
-NOTES
------
-For more info, refer to the pkgbuilder(8) man page or the documentation.
+BASIC USAGE
+-----------
+
+``pkgbuilder`` is a command-line application.  It takes various options and
+package names as arguments.  The following options are needed for basic usage:
+
+* ``-S`` to work in /tmp instead of the current directory
+* ``-F`` to fetch packages instead of installing them
+* ``-s`` to search for packages in the AUR
+* ``-i`` to get info about an AUR package
+* ``-u`` to upgrade all AUR packages on your system
+
+PKGBUILDer also comes with ``pb``, a wrapper that works with both pacman and
+the AUR.
+
+For more information, refer to the ``-h`` command, the ``pkgbuilder(8)`` man
+page, or the online documentation at https://pkgbuilder.rtfd.org/.
 
 COPYRIGHT
 ---------
