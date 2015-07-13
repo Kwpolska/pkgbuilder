@@ -33,7 +33,7 @@ PKGBUILDer also comes with ``pb``, a wrapper that works with both pacman and
 the AUR.
 
 For more information, refer to the ``-h`` command, the ``pkgbuilder(8)`` man
-page, or the online documentation at https://pkgbuilder.rtfd.org/.
+page, or the online documentation at https://pkgbuilder.readthedocs.org/.
 
 COPYRIGHT
 ---------
