@@ -5,8 +5,8 @@ Appendix C. Changelog
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2015, Chris Warrick.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2015-07-10
-:Version: 4.0.1
+:Date: 2015-07-13
+:Version: 4.0.2
 
 .. index:: CHANGELOG
 
@@ -46,6 +46,12 @@ More information can be found on GitHub in the `releases section <https://github
 
 Version History
 ===============
+
+4.0.2
+    * Update documentation (man pages, README)
+    * Support upgrade-fetch (``-uF``) properly
+    * Drop fancy-style upgrade messages (use pacman-style messages only, no matter what mode of operation was used)
+    * Add ``git`` to PKGBUILD dependencies
 
 4.0.1
     * Fix ``prepare_deps`` for split PKGBUILDs (take all packages’ data, something makepkg actually does **not** do)
