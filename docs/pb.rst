@@ -8,7 +8,7 @@ PBWrapper
 :License: BSD (see /LICENSE or Appendix B.)
 :Date: 2015-07-10
 :Version: 4.0.1
-:Wrapper Version: 0.2.3
+:Wrapper Version: 0.4.1
 :Manual section: 8
 :Manual group: PKGBUILDer manual
 
