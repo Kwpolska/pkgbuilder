@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
 # PBWrapper v0.2.3
-# PKGBUILDer v4.0.2
+# PKGBUILDer v4.0.3
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -26,7 +26,7 @@ import sys
 import os
 
 __all__ = ('main', 'wrapper')
-__wrapperversion__ = '0.4.1'
+__wrapperversion__ = '0.4.2'
 
 
 def main():
@@ -83,7 +83,7 @@ def wrapper(source='AUTO'):
 
         pbshort = ['D', 'C', 'F']
         pblong = ['fetch', 'userfetch', 'vcsupgrade', 'nocolors', 'nodepcheck',
-                  'novalidation', 'buildonly', 'skippgpcheck']
+                  'novalidation', 'buildonly', 'skippgpcheck', 'deep']
 
         commonshort = ['S', 'd', 'i', 's', 'v', 'w']
         commonlong = ['debug', 'info', 'search', 'sync']

@@ -6,9 +6,9 @@ PBWrapper
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2015, Chris Warrick.
 :License: BSD (see /LICENSE or Appendix B.)
-:Date: 2015-07-13
-:Version: 4.0.2
-:Wrapper Version: 0.4.1
+:Date: 2015-07-15
+:Version: 4.0.3
+:Wrapper Version: 0.4.2
 :Manual section: 8
 :Manual group: PKGBUILDer manual
 
@@ -74,10 +74,10 @@ SEE ALSO
 **pacman(8)**, **pkgbuilder(8)**, **makepkg(8)**, **PKGBUILD(5)**
 
 You can visit the git repo at <https://github.com/Kwpolska/pkgbuilder>
+or the documentation at <https://pkgbuilder.readthedocs.org>
 for more info.
 
 BUGS
 ====
-Bugs should be reported at the GitHub page
-(<https://github.com/Kwpolska/pkgbuilder/issues>), with the PBWrapper
-label.  You can also send mail to <chris@chriswarrick.com>.
+Bugs should be reported at the GitHub page (<https://github.com/Kwpolska/pkgbuilder/issues>).
+You can also send mail to <chris@chriswarrick.com>.
