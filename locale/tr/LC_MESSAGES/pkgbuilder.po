@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 4.0.3\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2015-07-15 12:58+0200\n"
+"POT-Creation-Date: 2015-07-15 18:07+0200\n"
 "PO-Revision-Date: 2015-07-15 10:40+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/p/pkgbuilder/language/tr/)\n"
@@ -423,7 +423,7 @@ msgstr "Yapılacak bir şey yok"
 
 #: pkgbuilder/upgrade.py:151
 #, python-brace-format
-msgid "Targets ({0}): "
+msgid "Targets ({0}):"
 msgstr "Hedefler ({0}):"
 
 #: pkgbuilder/upgrade.py:165

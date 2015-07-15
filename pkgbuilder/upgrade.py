@@ -148,7 +148,7 @@ def auto_upgrade(downgrade=False, vcsup=False, fetchonly=False):
                 break
 
     if upglen > 0:
-        targetstring = _('Targets ({0}): ').format(upglen)
+        targetstring = _('Targets ({0}):').format(upglen) + ' '
 
         termwidth = pkgbuilder.ui.get_termwidth()
 
