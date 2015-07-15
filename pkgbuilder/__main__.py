@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.0.2
+# PKGBUILDer v4.0.3
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -48,6 +48,9 @@ def main(source='AUTO', quit=True):
             help=_('AUR/ABS packages to build'))
 
         argopr = parser.add_argument_group(_('operations'))
+        argopr.add_argument(
+            '-S', '--sync', action='store_true', default=False, dest='pac',
+            help=_('build in /tmp'))
         argopr.add_argument(
             '-F', '--fetch', action='store_true', default=False, dest='fetch',
             help=_('fetch package files'))
@@ -99,8 +102,8 @@ def main(source='AUTO', quit=True):
             '--skippgpcheck', action='store_true', default=False, dest='nopgp',
             help=_('do not verify source files with PGP signatures'))
         argopt.add_argument(
-            '-S', '--sync', action='store_true', default=False, dest='pac',
-            help=_('pacman-like mode'))
+            '--deep', action='store_true', default=False, dest='deepclone',
+            help=_('perform deep git clones'))
         argopt.add_argument(
             '-y', '--refresh', action='store_true', default=False,
             dest='pacupd', help=_('(dummy)'))
@@ -113,6 +116,7 @@ def main(source='AUTO', quit=True):
         DS.pacman = args.pac
         DS.cleanup = args.cleanup
         DS.nopgp = args.nopgp
+        DS.deepclone = args.deepclone
         pkgnames = args.pkgnames
 
         if args.debug:

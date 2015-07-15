@@ -6,15 +6,15 @@ PKGBUILDer
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2015, Chris Warrick.
 :License: BSD (see /LICENSE or Appendix B.)
-:Date: 2015-07-13
-:Version: 4.0.2
+:Date: 2015-07-15
+:Version: 4.0.3
 :Manual section: 8
 :Manual group: PKGBUILDer manual
 
 SYNOPSIS
 ========
 
-*pkgbuilder* [-hVcCdDvwSy] [--debug] [--skippgpcheck] [--userfetch USER] [-FisuU] [PACKAGE [PACKAGE ...]]
+*pkgbuilder* [-hVcCdDvwy] [--debug] [--skippgpcheck] [--userfetch USER] [--deep] [-SFisuU] [PACKAGE [PACKAGE ...]]
 
 DESCRIPTION
 ===========
@@ -35,11 +35,22 @@ Notice: Running PKGBUILDer and/or PBWrapper as root can deal catastrophic
 damage to your system.  Run it as a regular user, you will be prompted for
 the root password when one will be required (i.e. to run **pacman**).
 
+CONFIGURATION
+=============
+
+PKGBUILDer does not support any global configuration, and should instead be
+configured on a per-usage basis via command-line arguments.  However, the
+``VerbosePkgLists`` pacman option is also honored by PKGBUILDer (and using it
+is recommended).
+
 OPERATIONS
 ==========
 
+**-S, --sync**
+    Build packages in */tmp* instead of CWD.
+
 **-F, --fetch**
-    Fetch (and don’t build) **PACKAGE**\s in a fashion similar to
+    Fetch (and don't build) **PACKAGE**\s in a fashion similar to
     ``cower -d``.
 
 **--userfetch USER**
@@ -102,8 +113,11 @@ OPTIONS
 **--skippgpcheck**
     Skip PGP checks.
 
-**-S, --sync**
-    Build packages in */tmp* and uses *aur* instead of the category in search.
+**--deep**
+    Perform deep clones of git repositories.
+
+**-y, --refresh**
+    Dummy option for pacman compatibility.
 
 EXAMPLES
 ========
@@ -131,8 +145,6 @@ pkgbuilder -Syu
 pkgbuilder -uF
     Check for updates and offer fetching them.
 
-hello is a package for GNU Hello: http://www.gnu.org/software/hello/
-
 SEE ALSO
 ========
 **pb(8)**, a wrapper for pacman and PKGBUILDer, included with PKGBUILDer, also
@@ -141,10 +153,10 @@ known as PBWrapper.
 **pacman(8)**, **makepkg(8)**, **PKGBUILD(5)**
 
 You can visit the git repo at <https://github.com/Kwpolska/pkgbuilder>
+or the documentation at <https://pkgbuilder.readthedocs.org>
 for more info.
 
 BUGS
 ====
-Bugs should be reported at the GitHub page
-(<https://github.com/Kwpolska/pkgbuilder/issues>).  You can also
-send mail to <chris@chriswarrick.com>.
+Bugs should be reported at the GitHub page (<https://github.com/Kwpolska/pkgbuilder/issues>).
+You can also send mail to <chris@chriswarrick.com>.
