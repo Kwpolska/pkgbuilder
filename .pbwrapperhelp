@@ -39,9 +39,9 @@ options:
       --noscriptlet    do not execute the install scriptlet if one exists
       --print-format <string>
                        specify how the targets should be printed
-usage: pkgbuilder [-h] [-V] [-F] [--userfetch USER] [-i] [-s] [-u] [-U] [-c]
-                  [-C] [--debug] [-d] [-D] [-v] [-w] [--skippgpcheck] [-S]
-                  [-y]
+usage: pkgbuilder [-h] [-V] [-S] [-F] [--userfetch USER] [-i] [-s] [-u] [-U]
+                  [-c] [-C] [--debug] [-d] [-D] [-v] [-w] [--skippgpcheck]
+                  [--deep] [-y]
                   [PACKAGE [PACKAGE ...]]
 
 An AUR helper (and library) in Python 3.
@@ -54,6 +54,7 @@ optional arguments:
   -V, --version       show version number and quit
 
 operations:
+  -S, --sync          build in /tmp
   -F, --fetch         fetch package files
   --userfetch USER    fetch all package files of an user
   -i, --info          view package information
@@ -70,7 +71,7 @@ options:
   -v, --novalidation  don't check if packages were installed after build
   -w, --buildonly     don't install packages after building
   --skippgpcheck      do not verify source files with PGP signatures
-  -S, --sync          pacman-like mode
+  --deep              perform deep git clones
   -y, --refresh       (dummy)
 
 Also accepting ABS packages.

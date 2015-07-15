@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.0.2
+# PKGBUILDer v4.0.3
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -122,7 +122,7 @@ def auto_build(pkgname, performdepcheck=True,
     build_result = build_runner(pkgname, performdepcheck, pkginstall)
     try:
         if build_result[0] == 0:
-            DS.fancy_msg(_('The build function reported a proper build.'))
+            DS.fancy_msg(_('The build succeeded.'))
         elif build_result[0] >= 0 and build_result[0] < 256:
             raise pkgbuilder.exceptions.MakepkgError(build_result[0])
         elif build_result[0] == 72335:
@@ -196,8 +196,12 @@ def clone(pkgbase):
     .. versionadded:: 4.0.0
     """
     repo_url = pkgbuilder.aur.AUR.base + '/' + pkgbase + '.git/'
+    if DS.deepclone:
+        cloneargs = []
+    else:
+        cloneargs = ['--depth', '1']
     try:
-        subprocess.check_call(['git', 'clone', '--depth', '1', repo_url])
+        subprocess.check_call(['git', 'clone'] + cloneargs + [repo_url])
     except subprocess.CalledProcessError as e:
         raise pkgbuilder.exceptions.CloneError(e.returncode)
 
