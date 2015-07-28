@@ -73,7 +73,7 @@ def wrapper(source='AUTO'):
         log.debug('Got -S, preparing to parse arguments...')
         pacmanshort = ['f', 'g', 'l', 'p', 'q']
         pacmanlong = ['asdeps', 'asexplicit', 'dbonly', 'downloadonly',
-                      'force', 'groups', 'list',  'needed', 'noconfirm',
+                      'force', 'groups', 'list',  'needed',
                       'nodeps', 'noprogressbar', 'noscriptlet', 'print',
                       'quiet', 'verbose', 'confirm']
         pacmanshorta = ['b', 'r']
@@ -86,7 +86,7 @@ def wrapper(source='AUTO'):
                   'novalidation', 'buildonly', 'skippgpcheck', 'deep']
 
         commonshort = ['S', 'd', 'i', 's', 'v', 'w']
-        commonlong = ['debug', 'info', 'search', 'sync']
+        commonlong = ['debug', 'info', 'search', 'sync', 'noconfirm']
         commonshortc = ['c', 'y', 'u']
         commonlongc = ['clean', 'refresh', 'sysupgrade']
 

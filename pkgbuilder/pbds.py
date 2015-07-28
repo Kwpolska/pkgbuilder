@@ -38,12 +38,12 @@ class PBDS(object):
     }
 
     pacman = False
-    uopt = ''
     validate = True
     depcheck = True
     pkginst = True
     cleanup = False
     nopgp = False
+    noconfirm = False
     deepclone = False
     # TRANSLATORS: see makepkg.
     inttext = _('Aborted by user! Exiting...')

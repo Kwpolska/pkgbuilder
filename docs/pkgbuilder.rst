@@ -14,7 +14,7 @@ PKGBUILDer
 SYNOPSIS
 ========
 
-*pkgbuilder* [-hVcCdDvwy] [--debug] [--skippgpcheck] [--userfetch USER] [--deep] [-SFisuUX] [PACKAGE [PACKAGE ...]]
+*pkgbuilder* [-hVcCdDvwy] [--debug] [--skippgpcheck] [--noconfirm] [--deep] [--userfetch USER] [-SFisuUX] [PACKAGE [PACKAGE ...]]
 
 DESCRIPTION
 ===========
@@ -116,6 +116,9 @@ OPTIONS
 
 **--skippgpcheck**
     Skip PGP checks.
+
+**--noconfirm**
+    Do not ask for confirmation when installing packages.
 
 **--deep**
     Perform deep clones of git repositories.

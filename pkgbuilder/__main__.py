@@ -106,6 +106,9 @@ def main(source='AUTO', quit=True):
             '--skippgpcheck', action='store_true', default=False, dest='nopgp',
             help=_('do not verify source files with PGP signatures'))
         argopt.add_argument(
+            '--noconfirm', action='store_true', default=False,
+            dest='noconfirm', help=_('do not ask for any confirmation'))
+        argopt.add_argument(
             '--deep', action='store_true', default=False, dest='deepclone',
             help=_('perform deep git clones'))
         argopt.add_argument(
@@ -120,6 +123,7 @@ def main(source='AUTO', quit=True):
         DS.pacman = args.pac
         DS.cleanup = args.cleanup
         DS.nopgp = args.nopgp
+        DS.noconfirm = args.noconfirm
         DS.deepclone = args.deepclone
         DS.validate = args.validate
         pkgnames = args.pkgnames

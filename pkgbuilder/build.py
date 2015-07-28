@@ -470,6 +470,9 @@ def build_runner(pkgname, performdepcheck=True,
     if DS.nopgp:
         mpparams.append('--skippgpcheck')
 
+    if DS.noconfirm:
+        mpparams.append('--noconfirm')
+
     DS.log.info("Running makepkg: {0}".format(mpparams))
     mpstatus = subprocess.call(mpparams, shell=False)
     DS.log.info("makepkg status: {0}".format(mpstatus))

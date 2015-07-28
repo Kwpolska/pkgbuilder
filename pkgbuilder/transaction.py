@@ -318,10 +318,15 @@ class Transaction(object):
             DS.fancy_msg2(_('Installing with pacman -U...'))
 
         npkgpaths = self.pacman_pkgpaths
-        uopt = ' '.join((self.uopt, DS.uopt)).strip()
+        uopt = self.uopt.strip()
 
         if self.asdeps:
-            uopt = (uopt + ' --asdeps').strip()
+            uopt = uopt + ' --asdeps'
+
+        if DS.noconfirm:
+            uopt = uopt + ' --noconfirm'
+
+        uopt = uopt.strip()
 
         if uopt:
             DS.log.debug('$PACMAN -U {0} {1}'.format(uopt, npkgpaths))
