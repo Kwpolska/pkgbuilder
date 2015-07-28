@@ -38,6 +38,7 @@ class PBDS(object):
     }
 
     pacman = False
+    uopt = ''
     validate = True
     depcheck = True
     pkginst = True

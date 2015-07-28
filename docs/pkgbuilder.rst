@@ -14,7 +14,7 @@ PKGBUILDer
 SYNOPSIS
 ========
 
-*pkgbuilder* [-hVcCdDvwy] [--debug] [--skippgpcheck] [--userfetch USER] [--deep] [-SFisuU] [PACKAGE [PACKAGE ...]]
+*pkgbuilder* [-hVcCdDvwy] [--debug] [--skippgpcheck] [--userfetch USER] [--deep] [-SFisuUX] [PACKAGE [PACKAGE ...]]
 
 DESCRIPTION
 ===========
@@ -71,7 +71,11 @@ OPERATIONS
     downgrade.
 
 **-U, --upgrade**
-    Copy pacman packages to the cache and install them.
+    Move pacman packages to the cache and install them.
+
+**-X, --runtx**
+    Run transactions from *.tx* files.  (created as part of the install
+    process, usable to re-run an installation if it fails)
 
 Additionally, parameters **-S**, **--sync**, **-y** and **-refresh**
 are accepted for pacman syntax compatibility. **-S**/**--sync**

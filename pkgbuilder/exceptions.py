@@ -226,6 +226,7 @@ class CloneError(PBException):
         self.args = args
         self.kwargs = kwargs
 
+
 class EmptyRepoError(CloneError):
 
     """Git cloned an empty repository."""

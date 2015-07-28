@@ -157,7 +157,7 @@ def auto_upgrade(downgrade=False, vcsup=False, fetchonly=False):
             # And since we don’t know the size, better safe than sorry.
             verbosepkglists = False
             DS.log.warning('VerbosePkgLists disabled, cannot '
-                            'determine terminal width')
+                           'determine terminal width')
 
         termwidth = termwidth or 9001
 
@@ -178,12 +178,12 @@ def auto_upgrade(downgrade=False, vcsup=False, fetchonly=False):
                     sizes[2] = len(nv)
 
             fstring = ('{{i[0]:<{s[0]}}}  {{i[1]:<{s[1]}}}  '
-                        '{{i[2]:<{s[2]}}}').format(s=sizes)
+                       '{{i[2]:<{s[2]}}}').format(s=sizes)
 
             if len(fstring.format(i=4 * ['n'])) > termwidth:
                 verbosepkglists = False
                 DS.log.warning('VerbosePkgLists disabled, terminal is '
-                                'not wide enough')
+                               'not wide enough')
                 # string stolen from pacman
                 print(_('warning: insufficient columns available for '
                         'table display'))

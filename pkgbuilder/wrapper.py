@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PBWrapper v0.2.3
+# PBWrapper v0.5.0
 # PKGBUILDer v4.0.3
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
@@ -26,7 +26,7 @@ import sys
 import os
 
 __all__ = ('main', 'wrapper')
-__wrapperversion__ = '0.4.2'
+__wrapperversion__ = '0.5.0'
 
 
 def main():
@@ -262,8 +262,10 @@ def wrapper(source='AUTO'):
             DS.sudo([DS.paccommand] + pacargs + sanityargs)
     elif (('-F' in argst) or ('--fetch' in argst) or
           ('--userfetch' in argst) or
-          (re.search('-[a-zA-Z]*F', ' '.join(argst)) is not None)):
-        # pkgbuilder -F, --fetch / --userfetch.
+          ('-X' in argst) or ('--runtx' in argst) or
+          (re.search('-[a-zA-Z]*F', ' '.join(argst)) is not None) or
+          (re.search('-[a-zA-Z]*X', ' '.join(argst)) is not None)):
+        # pkgbuilder -F, --fetch / --userfetch / -X, --runtx.
         pbmain(argst)
     elif ('-h' in argst) or ('--help' in argst):
         pacdoc = subprocess.check_output('pacman --help || true',
