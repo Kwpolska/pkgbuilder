@@ -80,8 +80,8 @@ class AUR(object):
                 self.base_changed = True
                 o = self.jsonreq(rtype, arg)
                 print("WARNING: AUR base URL changed to aur.archlinux.org.")
-                print("         Please update PKGBUILDer or report an "
-                      "issue if there is no new version available.")
+                print("         Please update PKGBUILDer as soon as "
+                      "a new version is available.")
                 return o
         except requests.exceptions.HTTPError as e:
             raise HTTPError(req, e)
@@ -110,8 +110,8 @@ class AUR(object):
                 self.base_changed = True
                 o = self.jsonmultiinfo(args)
                 print("WARNING: AUR base URL changed to aur.archlinux.org.")
-                print("         Please update PKGBUILDer or report an "
-                      "issue if there is no new version available.")
+                print("         Please update PKGBUILDer as soon as "
+                      "a new version is available.")
                 return o
         except requests.exceptions.HTTPError as e:
             raise HTTPError(req, e)

@@ -3,15 +3,15 @@
 # This file is distributed under the same license as the PKGBUILDer package.
 #
 # Translators:
-# Chris Warrick <kwpolska@gmail.com>, 2014-2015
+# Chris Warrick <kwpolska@gmail.com>, 2013-2015
 # Chris Warrick <kwpolska@gmail.com>, 2013
 # Chris Warrick <kwpolska@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: 4.0.3\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2015-07-15 18:07+0200\n"
-"PO-Revision-Date: 2015-07-15 10:49+0000\n"
+"POT-Creation-Date: 2015-07-16 11:40+0200\n"
+"PO-Revision-Date: 2015-07-16 09:39+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/p/pkgbuilder/language/pl/)\n"
 "Language: pl\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: pkgbuilder/build.py:37
 msgid "Validating installation status..."
-msgstr "Sprawdzanie stanu instalacji..."
+msgstr "Sprawdzanie poprawności instalacji..."
 
 #: pkgbuilder/build.py:53
 #, python-brace-format
