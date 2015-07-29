@@ -134,7 +134,7 @@ def clone(pkgbase):
     else:
         cloneargs = ['--depth', '1']
     try:
-        subprocess.check_call(['git', 'clone'] + cloneargs + [repo_url])
+        subprocess.check_call(['git', 'clone'] + cloneargs + [repo_url, pkgbase])
     except subprocess.CalledProcessError as e:
         raise pkgbuilder.exceptions.CloneError(e.returncode)
 
