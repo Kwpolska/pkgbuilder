@@ -5,10 +5,10 @@
         #
         msgid ""
         msgstr ""
-        "Project-Id-Version: 4.0.3\n"
+        "Project-Id-Version: 4.1.0\n"
         "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-        "POT-Creation-Date: 2015-07-29 13:20+0200\n"
-        "PO-Revision-Date: 2015-07-29 13:20+0200\n"
+        "POT-Creation-Date: 2015-07-29 13:32+0200\n"
+        "PO-Revision-Date: 2015-07-29 13:32+0200\n"
         "Last-Translator: Chris Warrick <chris@chriswarrick.com>\n"
         "Language-Team: Chris Warrick <chris@chriswarrick.com>\n"
         "Language: en\n"
@@ -34,92 +34,92 @@ msgstr ""
 msgid "makepkg (or someone else) failed and returned {0}."
 msgstr ""
 
-#: pkgbuilder/build.py:257
+#: pkgbuilder/build.py:258
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:316 pkgbuilder/__main__.py:249
+#: pkgbuilder/build.py:317 pkgbuilder/__main__.py:249
 msgid "Fetching package information..."
 msgstr ""
 
-#: pkgbuilder/build.py:347
+#: pkgbuilder/build.py:348
 msgid ":: Retrieving packages from abs..."
 msgstr ""
 
-#: pkgbuilder/build.py:350
+#: pkgbuilder/build.py:351
 #, python-brace-format
 msgid "retrieving {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:354 pkgbuilder/build.py:406
+#: pkgbuilder/build.py:355 pkgbuilder/build.py:407
 #, python-brace-format
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr ""
 
-#: pkgbuilder/build.py:358
+#: pkgbuilder/build.py:359
 msgid ":: Retrieving packages from aur..."
 msgstr ""
 
-#: pkgbuilder/build.py:361
+#: pkgbuilder/build.py:362
 #, python-brace-format
 msgid "cloning {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:364
+#: pkgbuilder/build.py:365
 msgid "Successfully fetched: "
 msgstr ""
 
-#: pkgbuilder/build.py:394
+#: pkgbuilder/build.py:395
 #, python-brace-format
 msgid "Building {0}..."
 msgstr ""
 
-#: pkgbuilder/build.py:402
+#: pkgbuilder/build.py:403
 msgid "Retrieving from ABS..."
 msgstr ""
 
-#: pkgbuilder/build.py:411 pkgbuilder/build.py:425
+#: pkgbuilder/build.py:412 pkgbuilder/build.py:426
 #, python-brace-format
 msgid "Found an existing package for {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:428
+#: pkgbuilder/build.py:429
 msgid "Cloning the git repository..."
 msgstr ""
 
-#: pkgbuilder/build.py:431
+#: pkgbuilder/build.py:432
 #, python-brace-format
 msgid "removing existing directory {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:436
+#: pkgbuilder/build.py:437
 #, python-brace-format
 msgid "Directory {0} already exists, please run with `-c` to remove it."
 msgstr ""
 
-#: pkgbuilder/build.py:438
+#: pkgbuilder/build.py:439
 #, python-brace-format
 msgid "skipping package {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:447
+#: pkgbuilder/build.py:448
 msgid "Checking dependencies..."
 msgstr ""
 
-#: pkgbuilder/build.py:450
+#: pkgbuilder/build.py:451
 msgid "found in system"
 msgstr ""
 
-#: pkgbuilder/build.py:450
+#: pkgbuilder/build.py:451
 msgid "found in repos"
 msgstr ""
 
-#: pkgbuilder/build.py:451
+#: pkgbuilder/build.py:452
 msgid "found in the AUR"
 msgstr ""
 
-#: pkgbuilder/build.py:454
+#: pkgbuilder/build.py:455
 msgid "none found"
 msgstr ""
 

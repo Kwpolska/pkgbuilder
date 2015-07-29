@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.0.3
+# PKGBUILDer v4.1.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -134,7 +134,8 @@ def clone(pkgbase):
     else:
         cloneargs = ['--depth', '1']
     try:
-        subprocess.check_call(['git', 'clone'] + cloneargs + [repo_url, pkgbase])
+        subprocess.check_call(['git', 'clone'] + cloneargs + [repo_url,
+                                                              pkgbase])
     except subprocess.CalledProcessError as e:
         raise pkgbuilder.exceptions.CloneError(e.returncode)
 

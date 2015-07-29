@@ -10,9 +10,9 @@
 # Yusuf Faruk DOĞAN <yfdogan@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.0.3\n"
+"Project-Id-Version: 4.1.0\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2015-07-29 13:20+0200\n"
+"POT-Creation-Date: 2015-07-29 13:32+0200\n"
 "PO-Revision-Date: 2015-07-29 11:20+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Turkish (http://www.transifex.com/projects/p/pkgbuilder/"
@@ -41,92 +41,92 @@ msgstr "{0} için var olan bir paket bulundu"
 msgid "makepkg (or someone else) failed and returned {0}."
 msgstr "makepkg (veya biri) durduruldu ve geri döndü {0}"
 
-#: pkgbuilder/build.py:257
+#: pkgbuilder/build.py:258
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr "Paket bağımlılığı şartı gerçekleştirilemedi :{0}"
 
-#: pkgbuilder/build.py:316 pkgbuilder/__main__.py:249
+#: pkgbuilder/build.py:317 pkgbuilder/__main__.py:249
 msgid "Fetching package information..."
 msgstr "Paket bilgisi alınıyor..."
 
-#: pkgbuilder/build.py:347
+#: pkgbuilder/build.py:348
 msgid ":: Retrieving packages from abs..."
 msgstr ":: ABS den paketler geri alınıyor..."
 
-#: pkgbuilder/build.py:350
+#: pkgbuilder/build.py:351
 #, python-brace-format
 msgid "retrieving {0}"
 msgstr "{0} geri alınıyor"
 
-#: pkgbuilder/build.py:354 pkgbuilder/build.py:406
+#: pkgbuilder/build.py:355 pkgbuilder/build.py:407
 #, python-brace-format
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr "{0} geri yüklenmesi durdu (ABS/rsync ten)"
 
-#: pkgbuilder/build.py:358
+#: pkgbuilder/build.py:359
 msgid ":: Retrieving packages from aur..."
 msgstr ":: AUR dan paketler geri alınıyor..."
 
-#: pkgbuilder/build.py:361
+#: pkgbuilder/build.py:362
 #, python-brace-format
 msgid "cloning {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:364
+#: pkgbuilder/build.py:365
 msgid "Successfully fetched: "
 msgstr "Başarıyla çekildi:"
 
-#: pkgbuilder/build.py:394
+#: pkgbuilder/build.py:395
 #, python-brace-format
 msgid "Building {0}..."
 msgstr "{0} İnşa ediliyor..."
 
-#: pkgbuilder/build.py:402
+#: pkgbuilder/build.py:403
 msgid "Retrieving from ABS..."
 msgstr "ABS den geri alınıyor..."
 
-#: pkgbuilder/build.py:411 pkgbuilder/build.py:425
+#: pkgbuilder/build.py:412 pkgbuilder/build.py:426
 #, python-brace-format
 msgid "Found an existing package for {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:428
+#: pkgbuilder/build.py:429
 msgid "Cloning the git repository..."
 msgstr ""
 
-#: pkgbuilder/build.py:431
+#: pkgbuilder/build.py:432
 #, python-brace-format
 msgid "removing existing directory {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:436
+#: pkgbuilder/build.py:437
 #, python-brace-format
 msgid "Directory {0} already exists, please run with `-c` to remove it."
 msgstr ""
 
-#: pkgbuilder/build.py:438
+#: pkgbuilder/build.py:439
 #, python-brace-format
 msgid "skipping package {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:447
+#: pkgbuilder/build.py:448
 msgid "Checking dependencies..."
 msgstr "Bağımlılıklara bakılıyor..."
 
-#: pkgbuilder/build.py:450
+#: pkgbuilder/build.py:451
 msgid "found in system"
 msgstr "Sistemde bulundu"
 
-#: pkgbuilder/build.py:450
+#: pkgbuilder/build.py:451
 msgid "found in repos"
 msgstr "Depolarda bulundu"
 
-#: pkgbuilder/build.py:451
+#: pkgbuilder/build.py:452
 msgid "found in the AUR"
 msgstr "AUR da bulundu"
 
-#: pkgbuilder/build.py:454
+#: pkgbuilder/build.py:455
 msgid "none found"
 msgstr "Bulunamadı"
 

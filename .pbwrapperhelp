@@ -40,8 +40,8 @@ options:
       --print-format <string>
                        specify how the targets should be printed
 usage: pkgbuilder [-h] [-V] [-S] [-F] [--userfetch USER] [-i] [-s] [-u] [-U]
-                  [-c] [-C] [--debug] [-d] [-D] [-v] [-w] [--skippgpcheck]
-                  [--deep] [-y]
+                  [-X] [-c] [-C] [--debug] [-d] [-D] [-v] [-w]
+                  [--skippgpcheck] [--noconfirm] [--deep] [-y]
                   [PACKAGE [PACKAGE ...]]
 
 An AUR helper (and library) in Python 3.
@@ -60,7 +60,8 @@ operations:
   -i, --info          view package information
   -s, --search        search the AUR for matching strings
   -u, --sysupgrade    upgrade installed AUR packages
-  -U, --upgrade       copy package files to pacman cache and install them
+  -U, --upgrade       move package files to pacman cache and install them
+  -X, --runtx         run transactions from .tx files
 
 options:
   -c, --clean         clean up work files before and after build
@@ -71,6 +72,7 @@ options:
   -v, --novalidation  don't check if packages were installed after build
   -w, --buildonly     don't install packages after building
   --skippgpcheck      do not verify source files with PGP signatures
+  --noconfirm         do not ask for any confirmation
   --deep              perform deep git clones
   -y, --refresh       (dummy)
 
