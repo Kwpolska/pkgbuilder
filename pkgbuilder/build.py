@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.0.3
+# PKGBUILDer v4.1.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -16,6 +16,7 @@ from . import DS, _
 import pkgbuilder.aur
 import pkgbuilder.exceptions
 import pkgbuilder.package
+import pkgbuilder.transaction
 import pkgbuilder.ui
 import pkgbuilder.utils
 import sys
@@ -28,80 +29,8 @@ import subprocess
 import functools
 import glob
 
-__all__ = ('validate', 'install', 'auto_build', 'clone', 'rsync',
-           'prepare_deps', 'depcheck', 'fetch_runner', 'build_runner')
-
-
-def validate(pkgnames):
-    """Check if packages were installed."""
-    DS.fancy_msg(_('Validating installation status...'))
-    DS.log.info('Validating: ' + '; '.join(pkgnames))
-    DS.pycreload()
-    localdb = DS.pyc.get_localdb()
-
-    aurpkgs = {aurpkg.name: aurpkg.version for aurpkg in
-               pkgbuilder.utils.info(pkgnames)}
-
-    wrong = len(pkgnames)
-
-    for pkgname in pkgnames:
-        lpkg = localdb.get_pkg(pkgname)
-        try:
-            aurversion = aurpkgs[pkgname]
-        except KeyError:
-            if not lpkg:
-                DS.fancy_error2(_('{0}: not an AUR package').format(
-                                pkgname))
-            else:
-                wrong -= 1
-                DS.fancy_msg2(_('{0}: installed {1}').format(pkgname,
-                                                             lpkg.version))
-        else:
-            if not lpkg:
-                DS.fancy_error2(_('{0}: NOT installed').format(pkgname))
-            else:
-                if pyalpm.vercmp(aurversion, lpkg.version) > 0:
-                    DS.fancy_error2(_('{0}: outdated {1}').format(
-                        pkgname, lpkg.version))
-                else:
-                    wrong -= 1
-                    DS.fancy_msg2(_('{0}: installed {1}').format(
-                        pkgname, lpkg.version))
-
-    return wrong
-
-
-def install(pkgpaths, sigpaths, asdeps, uopt=''):
-    """Install packages through ``pacman -U``."""
-    DS.fancy_msg(_('Installing built packages...'))
-
-    # Remove duplicates.
-    pkgpaths = list(set(pkgpaths))
-    sigpaths = list(set(sigpaths))
-
-    trueexit = 256
-    while trueexit != 0:
-        trueexit = DS.sudo(['true'])
-
-    DS.fancy_msg2(_('Moving to /var/cache/pacman/pkg/...'))
-    DS.log.info('pkgs={0}; sigs={1}'.format(pkgpaths, sigpaths))
-    DS.log.debug('mv {0} {1} /var/cache/pacman/pkg/'.format(pkgpaths,
-                                                            sigpaths))
-    DS.sudo(['mv'] + pkgpaths + sigpaths + ['/var/cache/pacman/pkg/'])
-
-    npkgpaths = ['/var/cache/pacman/pkg/' + os.path.basename(i)
-                 for i in pkgpaths]
-
-    if asdeps:
-        uopt = (uopt + ' --asdeps').strip()
-
-    DS.fancy_msg2(_('Installing with pacman -U...'))
-    if uopt:
-        DS.log.debug('$PACMAN -U {0} {1}'.format(uopt, npkgpaths))
-        DS.sudo([DS.paccommand, '-U'] + uopt.split(' ') + npkgpaths)
-    else:
-        DS.log.debug('$PACMAN -U {0}'.format(npkgpaths))
-        DS.sudo([DS.paccommand, '-U'] + npkgpaths)
+__all__ = ('auto_build', 'clone', 'rsync', 'prepare_deps', 'depcheck',
+           'fetch_runner', 'build_runner')
 
 
 def auto_build(pkgname, performdepcheck=True,
@@ -167,10 +96,14 @@ def auto_build(pkgname, performdepcheck=True,
                 sigs2 += sigs
 
             if toinstall2:
-                install(toinstall2, sigs2, True)
-
-            if DS.validate:
-                validate(build_result[1])
+                tx = pkgbuilder.transaction.Transaction(
+                    pkgnames=build_result[1],
+                    pkgpaths=toinstall2,
+                    sigpaths=sigs2,
+                    asdeps=True,
+                    filename=pkgbuilder.transaction.generate_filename(),
+                    delete=True)
+                tx.run(standalone=False, validate=DS.validate)
 
             return auto_build(pkgname, performdepcheck, pkginstall,
                               completelist)
@@ -201,7 +134,8 @@ def clone(pkgbase):
     else:
         cloneargs = ['--depth', '1']
     try:
-        subprocess.check_call(['git', 'clone'] + cloneargs + [repo_url])
+        subprocess.check_call(['git', 'clone'] + cloneargs + [repo_url,
+                                                              pkgbase])
     except subprocess.CalledProcessError as e:
         raise pkgbuilder.exceptions.CloneError(e.returncode)
 
@@ -537,7 +471,12 @@ def build_runner(pkgname, performdepcheck=True,
     if DS.nopgp:
         mpparams.append('--skippgpcheck')
 
+    if DS.noconfirm:
+        mpparams.append('--noconfirm')
+
+    DS.log.info("Running makepkg: {0}".format(mpparams))
     mpstatus = subprocess.call(mpparams, shell=False)
+    DS.log.info("makepkg status: {0}".format(mpstatus))
 
     if pkginstall:
         toinstall = find_packagefile(os.getcwd())
@@ -548,5 +487,7 @@ def build_runner(pkgname, performdepcheck=True,
         os.chdir('../../')
     else:
         os.chdir('../')
+
+    DS.log.info("Found package files: {0}".format(toinstall))
 
     return [mpstatus, toinstall]

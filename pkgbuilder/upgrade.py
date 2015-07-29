@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.0.3
+# PKGBUILDer v4.1.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -148,7 +148,7 @@ def auto_upgrade(downgrade=False, vcsup=False, fetchonly=False):
                 break
 
     if upglen > 0:
-        targetstring = _('Targets ({0}): ').format(upglen)
+        targetstring = _('Targets ({0}):').format(upglen) + ' '
 
         termwidth = pkgbuilder.ui.get_termwidth()
 
@@ -157,7 +157,7 @@ def auto_upgrade(downgrade=False, vcsup=False, fetchonly=False):
             # And since we don’t know the size, better safe than sorry.
             verbosepkglists = False
             DS.log.warning('VerbosePkgLists disabled, cannot '
-                            'determine terminal width')
+                           'determine terminal width')
 
         termwidth = termwidth or 9001
 
@@ -178,12 +178,12 @@ def auto_upgrade(downgrade=False, vcsup=False, fetchonly=False):
                     sizes[2] = len(nv)
 
             fstring = ('{{i[0]:<{s[0]}}}  {{i[1]:<{s[1]}}}  '
-                        '{{i[2]:<{s[2]}}}').format(s=sizes)
+                       '{{i[2]:<{s[2]}}}').format(s=sizes)
 
             if len(fstring.format(i=4 * ['n'])) > termwidth:
                 verbosepkglists = False
                 DS.log.warning('VerbosePkgLists disabled, terminal is '
-                                'not wide enough')
+                               'not wide enough')
                 # string stolen from pacman
                 print(_('warning: insufficient columns available for '
                         'table display'))

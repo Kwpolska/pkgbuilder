@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.0.3
+# PKGBUILDer v4.1.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -17,6 +17,7 @@ from pkgbuilder.exceptions import NetworkError, PBException
 import pkgbuilder.aur
 import pkgbuilder.build
 import pkgbuilder.exceptions
+import pkgbuilder.transaction
 import pkgbuilder.utils
 import pkgbuilder.upgrade
 import argparse
@@ -69,7 +70,10 @@ def main(source='AUTO', quit=True):
         argopr.add_argument(
             '-U', '--upgrade', action='store_true', default=False,
             dest='finst',
-            help=_('copy package files to pacman cache and install them'))
+            help=_('move package files to pacman cache and install them'))
+        argopr.add_argument(
+            '-X', '--runtx', action='store_true', default=False, dest='runtx',
+            help=_('run transactions from .tx files'))
 
         argopt = parser.add_argument_group(_('options'))
         argopt.add_argument(
@@ -102,6 +106,9 @@ def main(source='AUTO', quit=True):
             '--skippgpcheck', action='store_true', default=False, dest='nopgp',
             help=_('do not verify source files with PGP signatures'))
         argopt.add_argument(
+            '--noconfirm', action='store_true', default=False,
+            dest='noconfirm', help=_('do not ask for any confirmation'))
+        argopt.add_argument(
             '--deep', action='store_true', default=False, dest='deepclone',
             help=_('perform deep git clones'))
         argopt.add_argument(
@@ -116,7 +123,9 @@ def main(source='AUTO', quit=True):
         DS.pacman = args.pac
         DS.cleanup = args.cleanup
         DS.nopgp = args.nopgp
+        DS.noconfirm = args.noconfirm
         DS.deepclone = args.deepclone
+        DS.validate = args.validate
         pkgnames = args.pkgnames
 
         if args.debug:
@@ -192,7 +201,26 @@ def main(source='AUTO', quit=True):
                 exit(0)
 
         if args.finst:
-            pkgbuilder.build.install(pkgnames, [], False)
+            # We do not know package names, and are unaware of signature files
+            # Also, file names are where package names would usually be
+            tx = pkgbuilder.transaction.Transaction(
+                pkgnames=[],
+                pkgpaths=pkgnames,
+                sigpaths=[],
+                filename=pkgbuilder.transaction.generate_filename(),
+                delete=True)
+            tx.run(standalone=False, validate=False)
+            if quit:
+                exit(tx.exitcode)
+
+        if args.runtx:
+            for fname in pkgnames:
+                fname = os.path.abspath(fname)
+                tx = pkgbuilder.transaction.Transaction.load(fname)
+                tx.delete = DS.cleanup
+                tx.run()
+                if quit and tx.exitcode != 0:
+                    exit(tx.exitcode)
             if quit:
                 exit(0)
 
@@ -207,7 +235,8 @@ def main(source='AUTO', quit=True):
             DS.root_crash()
             DS.log.info('Starting upgrade...')
             dodowngrade = args.upgrade > 1
-            upnames = pkgbuilder.upgrade.auto_upgrade(dodowngrade, args.vcsup, args.fetch)
+            upnames = pkgbuilder.upgrade.auto_upgrade(
+                dodowngrade, args.vcsup, args.fetch)
             pkgnames = upnames + pkgnames
 
         if args.fetch and pkgnames:
@@ -250,14 +279,21 @@ def main(source='AUTO', quit=True):
                     if e.exit:
                         exit(1)
 
-            if toinstall:
-                pkgbuilder.build.install(toinstall, sigs, asdeps=False)
+            qs = len(tovalidate)
 
-            if args.validate and tovalidate:
-                qs = pkgbuilder.build.validate(tovalidate)
-                if quit:
-                    DS.log.info('Quitting peacefully.')
-                    exit(qs)
+            if toinstall:
+                tx = pkgbuilder.transaction.Transaction(
+                    pkgnames=tovalidate,
+                    pkgpaths=toinstall,
+                    sigpaths=sigs,
+                    asdeps=False,
+                    filename=pkgbuilder.transaction.generate_filename(),
+                    delete=True)
+                tx.run(standalone=False, validate=DS.validate)
+                qs = tx.exitcode
+            if quit:
+                DS.log.info('Quitting peacefully.')
+                exit(qs)
 
     except NetworkError as e:
         DS.fancy_error(str(e))

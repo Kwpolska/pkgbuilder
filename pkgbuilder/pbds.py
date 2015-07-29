@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.0.3
+# PKGBUILDer v4.1.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -43,6 +43,7 @@ class PBDS(object):
     pkginst = True
     cleanup = False
     nopgp = False
+    noconfirm = False
     deepclone = False
     # TRANSLATORS: see makepkg.
     inttext = _('Aborted by user! Exiting...')

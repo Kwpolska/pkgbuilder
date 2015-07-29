@@ -5,8 +5,8 @@ Appendix C. Changelog
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2015, Chris Warrick.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2015-07-15
-:Version: 4.0.3
+:Date: 2015-07-29
+:Version: 4.1.0
 
 .. index:: CHANGELOG
 
@@ -46,6 +46,11 @@ More information can be found on GitHub in the `releases section <https://github
 
 Version History
 ===============
+
+4.1.0
+    * Add transactions framework — users can retry failed installs; less code duplication
+    * Add --noconfirm option
+    * Fix issue with git clones by adding explicit clone destination
 
 4.0.3
     * Add ``--deep`` option to create deep clones (especially useful for ``-F`` and ``--userfetch``)

@@ -6,15 +6,15 @@ PKGBUILDer
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2015, Chris Warrick.
 :License: BSD (see /LICENSE or Appendix B.)
-:Date: 2015-07-15
-:Version: 4.0.3
+:Date: 2015-07-29
+:Version: 4.1.0
 :Manual section: 8
 :Manual group: PKGBUILDer manual
 
 SYNOPSIS
 ========
 
-*pkgbuilder* [-hVcCdDvwy] [--debug] [--skippgpcheck] [--userfetch USER] [--deep] [-SFisuU] [PACKAGE [PACKAGE ...]]
+*pkgbuilder* [-hVcCdDvwy] [--debug] [--skippgpcheck] [--noconfirm] [--deep] [--userfetch USER] [-SFisuUX] [PACKAGE [PACKAGE ...]]
 
 DESCRIPTION
 ===========
@@ -71,7 +71,11 @@ OPERATIONS
     downgrade.
 
 **-U, --upgrade**
-    Copy pacman packages to the cache and install them.
+    Move pacman packages to the cache and install them.
+
+**-X, --runtx**
+    Run transactions from *.tx* files.  (created as part of the install
+    process, usable to re-run an installation if it fails)
 
 Additionally, parameters **-S**, **--sync**, **-y** and **-refresh**
 are accepted for pacman syntax compatibility. **-S**/**--sync**
@@ -112,6 +116,9 @@ OPTIONS
 
 **--skippgpcheck**
     Skip PGP checks.
+
+**--noconfirm**
+    Do not ask for confirmation when installing packages.
 
 **--deep**
     Perform deep clones of git repositories.
