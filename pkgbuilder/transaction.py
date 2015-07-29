@@ -169,19 +169,18 @@ class Transaction(object):
     def run(self, standalone=True, quiet=False, validate=True):
         """Run a transaction."""
         if not quiet:
-            if standalone and self.filename:
+            if not standalone:
+                DS.fancy_msg(_('Installing built packages...'))
+            if self.filename:
                 DS.fancy_msg(_('Running transaction from file {0}...'.format(
                     self.filename)))
-            elif standalone:
-                DS.fancy_msg(_('Running transaction...'))
             else:
-                DS.fancy_msg(_('Installing built packages...'))
+                DS.fancy_msg(_('Running transaction...'))
 
         DS.log.info("Running transaction {0!r}".format(self))
+
         self._test_sudo()
 
-        if self.filename and not standalone and not quiet:
-            DS.fancy_msg2(_('Transaction file: {0}').format(self.filename))
         ret = self.move(True, quiet)
         if ret != 0:
             self._print_txfail('move', quiet)
