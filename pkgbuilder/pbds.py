@@ -13,12 +13,15 @@ PKGBUILDer Data Storage.
 """
 
 from . import _, __version__
+import pkgbuilder
 import pkgbuilder.ui
 import sys
 import os
 import logging
 import subprocess
 import pycman
+import pkg_resources
+import configparser
 
 __all__ = ('PBDS',)
 
@@ -38,13 +41,17 @@ class PBDS(object):
     }
 
     pacman = False
-    validate = True
+    fetch = False
+    validation = True
     depcheck = True
     pkginst = True
-    cleanup = False
-    nopgp = False
-    noconfirm = False
+    clean = False
+    pgpcheck = True
+    confirm = True
     deepclone = False
+    depcheck = True
+    vcsupgrade = False
+    colors_status = True
     # TRANSLATORS: see makepkg.
     inttext = _('Aborted by user! Exiting...')
     # TRANSLATORS: see pacman.
@@ -76,6 +83,7 @@ class PBDS(object):
 
     kwdir = os.path.join(confhome, 'kwpolska')
     confdir = os.path.join(kwdir, 'pkgbuilder')
+    confpath = os.path.join(confdir, 'pkgbuilder.ini')
 
     if not os.path.exists(confhome):
         os.mkdir(confhome)
@@ -86,10 +94,25 @@ class PBDS(object):
     if not os.path.exists(confdir):
         os.mkdir(confdir)
 
-    if not os.path.exists(confdir):
-        print(' '.join(_('ERROR:'), _('Cannot create the configuration '
-                                      'directory.')))
-        print(' '.join(_('WARNING:'), _('Logs will not be created.')))
+    if not os.path.exists(confpath):
+        with open(confpath, 'wb') as fh:
+            fh.write(pkg_resources.resource_string(
+                'pkgbuilder', 'data/pkgbuilder.ini.skel'))
+
+    # Configuration file support
+    config = configparser.ConfigParser()
+    config.read_string(pkg_resources.resource_string(
+                'pkgbuilder', 'data/pkgbuilder.ini.skel').decode('utf-8'))
+    config.read([confpath], encoding='utf-8')
+
+    # Language changing
+    language = config.get('PKGBUILDer', 'language')
+    if language != 'auto':
+        pkgbuilder.T = pkgbuilder.gettext.translation(
+            'pkgbuilder', '/usr/share/locale', languages=[language],
+            fallback='C')
+        pkgbuilder.G = pkgbuilder.T.gettext
+
 
     logging.basicConfig(format='%(asctime)-15s [%(levelname)-7s] '
                         ':%(name)-10s: %(message)s',
@@ -98,8 +121,32 @@ class PBDS(object):
     log = logging.getLogger('pkgbuilder')
     log.info('*** PKGBUILDer v' + __version__)
 
+    def get_setting(self, name, config_section, config_option,
+                    positive, negative):
+        """Get the value of a setting, based on config file and arguments.
+
+        :param str name: name of setting, used for error on conflict
+        :param bool config_section: configuration file section
+        :param bool config_option: configuration file option
+        :param bool positive: positive argument
+        :param bool negative: negative argument
+        :return: the value requested by the user, defaults to config
+        :rtype: bool
+        """
+        config = s = self.config.getboolean(config_section, config_option)
+        if positive:
+            s = True
+        elif negative:
+            s = False
+        if positive and negative:
+            print(
+                _("warning: conflicting values for setting {0}, "
+                  "using {1}").format(name, config))
+            s = config
+        return s
+
     def _pycreload(self):
-        """Reload pycman, without UI fancyness."""
+        """Reload pycman, without UI fanciness."""
         self._pyc = pycman.config.init_with_config('/etc/pacman.conf')
 
     def pycreload(self):

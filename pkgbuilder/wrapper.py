@@ -26,7 +26,7 @@ import sys
 import os
 
 __all__ = ('main', 'wrapper')
-__wrapperversion__ = '0.5.0'
+__wrapperversion__ = '0.5.1'
 
 
 def main():
@@ -82,11 +82,13 @@ def wrapper(source='AUTO'):
                        'root', 'assume-installed']
 
         pbshort = ['D', 'C', 'F']
-        pblong = ['fetch', 'userfetch', 'vcsupgrade', 'nocolors', 'nodepcheck',
-                  'novalidation', 'buildonly', 'skippgpcheck', 'deep']
+        pblong = ['fetch', 'userfetch', 'vcsupgrade', 'novcsupgrade', 'colors',
+                  'nocolors', 'depcheck', 'nodepcheck', 'validation',
+                  'novalidation', 'install', 'buildonly', 'pgpcheck',
+                  'skippgpcheck', 'deep', 'shallow', 'noclean', 'nodebug']
 
         commonshort = ['S', 'd', 'i', 's', 'v', 'w']
-        commonlong = ['debug', 'info', 'search', 'sync', 'noconfirm']
+        commonlong = ['debug', 'info', 'search', 'sync', 'confirm', 'noconfirm']
         commonshortc = ['c', 'y', 'u']
         commonlongc = ['clean', 'refresh', 'sysupgrade']
 

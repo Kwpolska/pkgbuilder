@@ -322,7 +322,7 @@ class Transaction(object):
         if self.asdeps:
             uopt = uopt + ' --asdeps'
 
-        if DS.noconfirm:
+        if not DS.confirm:
             uopt = uopt + ' --noconfirm'
 
         uopt = uopt.strip()

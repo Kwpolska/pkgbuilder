@@ -53,9 +53,11 @@ __docformat__ = 'restructuredtext en'
 
 __all__ = ('_', 'DS', 'UTC')
 
-G = gettext.translation('pkgbuilder', sys.prefix + '/share/locale',
+T = gettext.translation('pkgbuilder', sys.prefix + '/share/locale',
                         fallback='C')
-_ = G.gettext
+G = T.gettext
+
+_ = lambda text: G(text)
 
 from .pbds import PBDS  # NOQA
 DS = PBDS()

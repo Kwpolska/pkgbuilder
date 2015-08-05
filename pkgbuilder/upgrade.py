@@ -140,12 +140,7 @@ def auto_upgrade(downgrade=False, vcsup=False, fetchonly=False):
     upgnames = [i[0] for i in upgradable]
     upgstrings = [i[0] + '-' + i[2] for i in upgradable]
 
-    verbosepkglists = False
-    with open('/etc/pacman.conf') as fh:
-        for i in fh.read().split('\n'):
-            if i.strip() == 'VerbosePkgLists':
-                verbosepkglists = True
-                break
+    verbosepkglists = DS.config.getboolean('options', 'verbosepkglists')
 
     if upglen > 0:
         targetstring = _('Targets ({0}):').format(upglen) + ' '

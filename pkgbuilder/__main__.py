@@ -40,7 +40,7 @@ def main(source='AUTO', quit=True):
         parser = argparse.ArgumentParser(
             prog='pkgbuilder',
             description=_('An AUR helper (and library) in Python 3.'),
-            epilog=_('Also accepting ABS packages.'))
+            epilog=_('Also accepts ABS packages.'))
         parser.add_argument(
             '-V', '--version', action='version', version=verstring,
             help=_('show version number and quit'))
@@ -50,85 +50,134 @@ def main(source='AUTO', quit=True):
 
         argopr = parser.add_argument_group(_('operations'))
         argopr.add_argument(
-            '-S', '--sync', action='store_true', default=False, dest='pac',
+            '-S', '--sync', action='store_true', dest='pac',
             help=_('build in /tmp'))
         argopr.add_argument(
-            '-F', '--fetch', action='store_true', default=False, dest='fetch',
+            '-F', '--fetch', action='store_true', dest='fetch',
             help=_('fetch package files'))
         argopr.add_argument(
             '--userfetch', action='append', dest='userfetch',
             metavar=_('USER'), help=_('fetch all package files of an user'))
-        argopr.add_argument('-i', '--info', action='store_true', default=False,
-                            dest='info', help=_('view package information'))
+        argopr.add_argument('-i', '--info', action='store_true', dest='info',
+                            help=_('view package information'))
         argopr.add_argument(
-            '-s', '--search', action='store_true',
-            default=False, dest='search', help=_('search the AUR for '
-                                                 'matching strings'))
+            '-s', '--search', action='store_true', dest='search',
+            help=_('search the AUR for matching strings'))
         argopr.add_argument(
             '-u', '--sysupgrade', action='count', default=False,
             dest='upgrade', help=_('upgrade installed AUR packages'))
         argopr.add_argument(
-            '-U', '--upgrade', action='store_true', default=False,
-            dest='finst',
+            '-U', '--upgrade', action='store_true', dest='finst',
             help=_('move package files to pacman cache and install them'))
         argopr.add_argument(
-            '-X', '--runtx', action='store_true', default=False, dest='runtx',
+            '-X', '--runtx', action='store_true', dest='runtx',
             help=_('run transactions from .tx files'))
 
         argopt = parser.add_argument_group(_('options'))
+
         argopt.add_argument(
-            '-c', '--clean', action='store_true',
-            default=False, dest='cleanup', help=_('clean up work files before '
-                                                  'and after build'))
+            '-c', '--clean', action='store_true', dest='clean',
+            help=_('clean up work files before and after build'))
         argopt.add_argument(
-            '-C', '--nocolors', action='store_false',
-            default=True, dest='color', help=_('don\'t use colors in output'))
+            '--noclean', action='store_true', dest='noclean',
+            help=_('don\'t clean up work files before and after build '
+                   '(default)'))
+
         argopt.add_argument(
-            '--debug', action='store_true', default=False,
-            dest='debug', help=_('display debug messages'))
+            '--colors', action='store_true', dest='colors',
+            help=_('use colors in output (default)'))
         argopt.add_argument(
-            '-d', '--nodepcheck', action='store_false',
-            default=True, dest='depcheck', help=_('don\'t check dependencies '
-                                                  '(may break makepkg)'))
+            '-C', '--nocolors', action='store_true', dest='nocolors',
+            help=_('don\'t use colors in output'))
+
         argopt.add_argument(
-            '-D', '--vcsupgrade', action='store_true',
-            default=False, dest='vcsup', help=_('upgrade all the VCS/'
-                                                'date-versioned packages'))
+            '--debug', action='store_true', dest='debug',
+            help=_('display debug messages'))
         argopt.add_argument(
-            '-v', '--novalidation', action='store_false',
-            default=True, dest='validate',
+            '--nodebug', action='store_true', dest='nodebug',
+            help=_('don\'t display debug messages (default)'))
+
+        argopt.add_argument(
+            '--depcheck', action='store_true',dest='depcheck',
+            help=_('check dependencies (default)'))
+        argopt.add_argument(
+            '-d', '--nodepcheck', action='store_true', dest='nodepcheck',
+            help=_('don\'t check dependencies (may break makepkg)'))
+
+        argopt.add_argument(
+            '-D', '--vcsupgrade', action='store_true', dest='vcsupgrade',
+            help=_('upgrade all the VCS/date-versioned packages'))
+        argopt.add_argument(
+            '--novcsupgrade', action='store_true', dest='novcsupgrade',
+            help=_('don\'t upgrade all the VCS/date-versioned packages '
+                   '(default)'))
+
+        argopt.add_argument(
+            '--validation', action='store_true', dest='validation',
+            help=_('check if packages were installed after build (default)'))
+        argopt.add_argument(
+            '-v', '--novalidation', action='store_true', dest='novalidation',
             help=_('don\'t check if packages were installed after build'))
+
         argopt.add_argument(
-            '-w', '--buildonly', action='store_false',
-            default=True, dest='pkginst', help=_('don\'t  install packages '
-                                                 'after building'))
+            '--install', action='store_true', dest='pkginst',
+            help=_('install packages after building (default)'))
         argopt.add_argument(
-            '--skippgpcheck', action='store_true', default=False, dest='nopgp',
+            '-w', '--buildonly', action='store_true', dest='nopkginst',
+            help=_('don\'t install packages after building'))
+
+        argopt.add_argument(
+            '--pgpcheck', action='store_true', dest='pgpcheck',
+            help=_('verify source files with PGP signatures (default)'))
+        argopt.add_argument(
+            '--skippgpcheck', action='store_true', dest='nopgpcheck',
             help=_('do not verify source files with PGP signatures'))
+
         argopt.add_argument(
-            '--noconfirm', action='store_true', default=False,
-            dest='noconfirm', help=_('do not ask for any confirmation'))
+            '--confirm', action='store_true', dest='confirm',
+            help=_('ask for confirmation (default)'))
         argopt.add_argument(
-            '--deep', action='store_true', default=False, dest='deepclone',
-            help=_('perform deep git clones'))
+            '--noconfirm', action='store_true', dest='noconfirm',
+            help=_('do not ask for any confirmation'))
+
         argopt.add_argument(
-            '-y', '--refresh', action='store_true', default=False,
-            dest='pacupd', help=_('(dummy)'))
+            '--shallow', action='store_true', dest='shallowclone',
+            help=_('use shallow git clones (default)'))
+        argopt.add_argument(
+            '--deep', action='store_true', dest='deepclone',
+            help=_('use deep git clones'))
+
+        argopt.add_argument(
+            '-y', '--refresh', action='store_true', dest='pacupd',
+            help=_('(dummy)'))
+
+        argneg = parser.add_argument_group(_('configuration overrides'))
+        argneg.add_argument(
+            '--notmp', action='store_true', dest='nopac',
+            help=_('don\'t build in /tmp'))
+        argneg.add_argument(
+            '--build', action='store_true', dest='nofetch',
+            help=_('build (instead of fetching)'))
 
         if source != 'AUTO':
             args = parser.parse_args(source)
         else:
             args = parser.parse_args()
 
-        DS.pacman = args.pac
-        DS.cleanup = args.cleanup
-        DS.nopgp = args.nopgp
-        DS.noconfirm = args.noconfirm
-        DS.deepclone = args.deepclone
-        DS.validate = args.validate
+        DS.pacman = DS.get_setting('-S', 'operations', 'tmpbuild', args.pac, args.nopac)
+        DS.fetch = DS.get_setting('-F', 'operations', 'fetch', args.fetch, args.nofetch)
+        DS.clean = DS.get_setting('--clean', 'options', 'clean', args.clean, args.noclean)
+        DS.depcheck = DS.get_setting('--depcheck', 'options', 'depcheck', args.depcheck, args.nodepcheck)
+        DS.vcsupgrade = DS.get_setting('--vcsupgrade', 'options', 'vcsupgrade', args.vcsupgrade, args.novcsupgrade)
+        DS.validation = DS.get_setting('--validation', 'options', 'validation', args.validation, args.novalidation)
+        DS.pkginst = DS.get_setting('--install', 'options', 'install', args.pkginst, args.nopkginst)
+        DS.pgpcheck = DS.get_setting('--pgpcheck', 'options', 'pgpcheck', args.pgpcheck, args.nopgpcheck)
+        DS.confirm = DS.get_setting('--confirm', 'options', 'confirm', args.confirm, args.noconfirm)
+        DS.deepclone = DS.get_setting('--deep', 'options', 'deepclone', args.deepclone, args.shallowclone)
+        DS.colors_status = DS.get_setting('--colors', 'options', 'colors', args.colors, args.nocolors)
         pkgnames = args.pkgnames
 
-        if args.debug:
+        if DS.get_setting('--debug', 'options', 'debug', args.debug, args.nodebug):
             DS.debugmode(nochange=True)
             DS.log.info('*** PKGBUILDer v{0}'.format(__version__))
             DS.log.debug('*** debug output on.')
@@ -141,7 +190,7 @@ def main(source='AUTO', quit=True):
                              "exiting."))
             exit(83)
 
-        if not args.color:
+        if not DS.colors_status:
             DS.colorsoff()
             DS.log.debug('Colors turned off.')
 
@@ -217,14 +266,14 @@ def main(source='AUTO', quit=True):
             for fname in pkgnames:
                 fname = os.path.abspath(fname)
                 tx = pkgbuilder.transaction.Transaction.load(fname)
-                tx.delete = DS.cleanup
+                tx.delete = DS.clean
                 tx.run()
                 if quit and tx.exitcode != 0:
                     exit(tx.exitcode)
             if quit:
                 exit(0)
 
-        if args.pac:
+        if DS.pacman:
             DS.log.debug('-S passed, building in /tmp/.')
             path = '/tmp/pkgbuilder-{0}'.format(str(DS.uid))
             if not os.path.exists(path):
@@ -236,10 +285,10 @@ def main(source='AUTO', quit=True):
             DS.log.info('Starting upgrade...')
             dodowngrade = args.upgrade > 1
             upnames = pkgbuilder.upgrade.auto_upgrade(
-                dodowngrade, args.vcsup, args.fetch)
+                dodowngrade, DS.vcsupgrade, DS.fetch)
             pkgnames = upnames + pkgnames
 
-        if args.fetch and pkgnames:
+        if DS.fetch and pkgnames:
             pkgbuilder.build.fetch_runner(pkgnames)
             if quit:
                 exit(0)
@@ -269,8 +318,8 @@ def main(source='AUTO', quit=True):
             for pkgname in pkgnames:
                 try:
                     DS.log.info('Building {0}'.format(pkgname))
-                    out = pkgbuilder.build.auto_build(pkgname, args.depcheck,
-                                                      args.pkginst, pkgnames)
+                    out = pkgbuilder.build.auto_build(pkgname, DS.depcheck,
+                                                      DS.pkginst, pkgnames)
                     if out:
                         toinstall += out[1][0]
                         sigs += out[1][1]
@@ -289,7 +338,7 @@ def main(source='AUTO', quit=True):
                     asdeps=False,
                     filename=pkgbuilder.transaction.generate_filename(),
                     delete=True)
-                tx.run(standalone=False, validate=DS.validate)
+                tx.run(standalone=False, validate=DS.validation)
                 qs = tx.exitcode
             if quit:
                 DS.log.info('Quitting peacefully.')

@@ -14,7 +14,7 @@ PKGBUILDer
 SYNOPSIS
 ========
 
-*pkgbuilder* [-hVcCdDvwy] [--debug] [--skippgpcheck] [--noconfirm] [--deep] [--userfetch USER] [-SFisuUX] [PACKAGE [PACKAGE ...]]
+*pkgbuilder* [-hVcCdDvwy] [--debug|--nodebug] [--pgpcheck|--skippgpcheck] [--confirm|--noconfirm] [--deep|--shallow] [--userfetch USER] [-SFisuUX] [PACKAGE [PACKAGE ...]]
 
 DESCRIPTION
 ===========
@@ -38,20 +38,19 @@ the root password when one will be required (i.e. to run **pacman**).
 CONFIGURATION
 =============
 
-PKGBUILDer does not support any global configuration, and should instead be
-configured on a per-usage basis via command-line arguments.  However, the
-``VerbosePkgLists`` pacman option is also honored by PKGBUILDer (and using it
-is recommended).
+PKGBUILDer supports per-user configuration, in the file
+~/.config/kwpolska/pkgbuilder/pkgbuilder.ini.  It can also be configured on a
+per-usage basis via command-line arguments.
 
 OPERATIONS
 ==========
 
 **-S, --sync**
-    Build packages in */tmp* instead of CWD.
+    Build packages in */tmp* instead of CWD.  Override with ``--notmp``.
 
 **-F, --fetch**
     Fetch (and don't build) **PACKAGE**\s in a fashion similar to
-    ``cower -d``.
+    ``cower -d``.  Override with ``--nofetch``.
 
 **--userfetch USER**
     Fetch all AUR packages of an user.
@@ -84,6 +83,9 @@ working directory (CWD).
 
 OPTIONS
 =======
+
+Most option have a negated version, to temporarily override a config setting.
+Only the non-default options are documented below.
 
 **-h, --help**
     Show the help message.
@@ -121,7 +123,7 @@ OPTIONS
     Do not ask for confirmation when installing packages.
 
 **--deep**
-    Perform deep clones of git repositories.
+    Perform deep clones of git repositories.  Override with ``--shallow``.
 
 **-y, --refresh**
     Dummy option for pacman compatibility.
