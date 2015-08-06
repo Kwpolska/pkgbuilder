@@ -328,7 +328,15 @@ def main(source='AUTO', quit=True):
                     if e.exit:
                         exit(1)
 
-            qs = len(tovalidate)
+            if DS.pkginst:
+                # If there is nothing to install, but the user asked to install
+                # something, we will exit with the amount of packages that were
+                # not installed; this behavior is similar to what transaction
+                # validation would do.
+                qs = len(tovalidate)
+            else:
+                # But otherwise (-w, --buildonly), we can just exit with zero.
+                qs = 0
 
             if toinstall:
                 tx = pkgbuilder.transaction.Transaction(
