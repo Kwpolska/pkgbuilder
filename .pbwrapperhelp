@@ -40,8 +40,10 @@ options:
       --print-format <string>
                        specify how the targets should be printed
 usage: pkgbuilder [-h] [-V] [-S] [-F] [--userfetch USER] [-i] [-s] [-u] [-U]
-                  [-X] [-c] [-C] [--debug] [-d] [-D] [-v] [-w]
-                  [--skippgpcheck] [--noconfirm] [--deep] [-y]
+                  [-X] [-c] [--noclean] [--colors] [-C] [--debug] [--nodebug]
+                  [--depcheck] [-d] [-D] [--novcsupgrade] [--validation] [-v]
+                  [--install] [-w] [--pgpcheck] [--skippgpcheck] [--confirm]
+                  [--noconfirm] [--shallow] [--deep] [-y] [--notmp] [--build]
                   [PACKAGE [PACKAGE ...]]
 
 An AUR helper (and library) in Python 3.
@@ -65,15 +67,31 @@ operations:
 
 options:
   -c, --clean         clean up work files before and after build
+  --noclean           don't clean up work files before and after build
+                      (default)
+  --colors            use colors in output (default)
   -C, --nocolors      don't use colors in output
   --debug             display debug messages
+  --nodebug           don't display debug messages (default)
+  --depcheck          check dependencies (default)
   -d, --nodepcheck    don't check dependencies (may break makepkg)
   -D, --vcsupgrade    upgrade all the VCS/date-versioned packages
+  --novcsupgrade      don't upgrade all the VCS/date-versioned packages
+                      (default)
+  --validation        check if packages were installed after build (default)
   -v, --novalidation  don't check if packages were installed after build
+  --install           install packages after building (default)
   -w, --buildonly     don't install packages after building
+  --pgpcheck          verify source files with PGP signatures (default)
   --skippgpcheck      do not verify source files with PGP signatures
+  --confirm           ask for confirmation (default)
   --noconfirm         do not ask for any confirmation
-  --deep              perform deep git clones
+  --shallow           use shallow git clones (default)
+  --deep              use deep git clones
   -y, --refresh       (dummy)
 
-Also accepting ABS packages.
+configuration overrides:
+  --notmp             don't build in /tmp
+  --build             build (instead of fetching)
+
+Also accepts ABS packages.

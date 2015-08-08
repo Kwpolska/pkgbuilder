@@ -6,9 +6,9 @@
 # Max Mustermann <cortuli@googlemail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: 4.2.0\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2015-08-05 14:12+0200\n"
+"POT-Creation-Date: 2015-08-08 13:50+0200\n"
 "PO-Revision-Date: 2015-08-05 12:12+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/kwpolska/pkgbuilder/language/"
@@ -371,7 +371,7 @@ msgid "Error while processing {0}: {1}"
 msgstr ""
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/__main__.py:350
+#: pkgbuilder/__main__.py:358
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
