@@ -19,7 +19,7 @@ class PyTest(TestCommand):
         sys.exit(errno)
 
 setup(name='pkgbuilder',
-      version='4.1.0',
+      version='4.2.0',
       description='An AUR helper (and library) in Python 3.',
       keywords='arch pkgbuild',
       author='Chris Warrick',
@@ -29,6 +29,7 @@ setup(name='pkgbuilder',
       long_description=io.open('./docs/README.rst', 'r', encoding='utf-8').read(),
       platforms='Arch Linux',
       zip_safe=False,
+      include_package_data=True,
       cmdclass={'test': PyTest},
       classifiers=['Development Status :: 6 - Mature',
                    'Environment :: Console',

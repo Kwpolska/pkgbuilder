@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.1.0
+# PKGBUILDer v4.2.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -103,7 +103,7 @@ def auto_build(pkgname, performdepcheck=True,
                     asdeps=True,
                     filename=pkgbuilder.transaction.generate_filename(),
                     delete=True)
-                tx.run(standalone=False, validate=DS.validate)
+                tx.run(standalone=False, validate=DS.validation)
 
             return auto_build(pkgname, performdepcheck, pkginstall,
                               completelist)
@@ -411,6 +411,8 @@ def build_runner(pkgname, performdepcheck=True,
         if any(pkg.name in i for i in existing[0]):
             DS.fancy_msg(_('Found an existing package for '
                            '{0}').format(pkgname))
+            if not pkginstall:
+                existing = ([], [])
             return [72336, existing]
         try:
             os.chdir('./{0}/{1}'.format(pkg.repo, pkg.name))
@@ -425,10 +427,12 @@ def build_runner(pkgname, performdepcheck=True,
         if any(pkg.name in i for i in existing[0]):
             DS.fancy_msg(_('Found an existing package for '
                            '{0}').format(pkgname))
+            if not pkginstall:
+                existing = ([], [])
             return [72336, existing]
         DS.fancy_msg(_('Cloning the git repository...'))
         if os.path.exists('./{0}/'.format(pkg.packagebase)):
-            if DS.cleanup or DS.pacman:
+            if DS.clean or DS.pacman:
                 DS.fancy_warning2(_('removing existing directory {0}').format(
                     pkg.packagebase))
                 shutil.rmtree('./{0}/'.format(pkg.packagebase))
@@ -465,14 +469,20 @@ def build_runner(pkgname, performdepcheck=True,
 
     mpparams = ['makepkg', '-sf']
 
-    if DS.cleanup:
+    if DS.clean:
         mpparams.append('-c')
 
-    if DS.nopgp:
+    if not DS.pgpcheck:
         mpparams.append('--skippgpcheck')
 
-    if DS.noconfirm:
+    if not DS.confirm:
         mpparams.append('--noconfirm')
+
+    if not DS.depcheck:
+        mpparams.append('--nodeps')
+
+    if not DS.colors_status:
+        mpparams.append('--nocolor')
 
     DS.log.info("Running makepkg: {0}".format(mpparams))
     mpstatus = subprocess.call(mpparams, shell=False)

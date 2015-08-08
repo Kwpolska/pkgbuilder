@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.1.0
+# PKGBUILDer v4.2.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -140,12 +140,7 @@ def auto_upgrade(downgrade=False, vcsup=False, fetchonly=False):
     upgnames = [i[0] for i in upgradable]
     upgstrings = [i[0] + '-' + i[2] for i in upgradable]
 
-    verbosepkglists = False
-    with open('/etc/pacman.conf') as fh:
-        for i in fh.read().split('\n'):
-            if i.strip() == 'VerbosePkgLists':
-                verbosepkglists = True
-                break
+    verbosepkglists = DS.config.getboolean('options', 'verbosepkglists')
 
     if upglen > 0:
         targetstring = _('Targets ({0}):').format(upglen) + ' '

@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.1.0
+# PKGBUILDer v4.2.0
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -322,7 +322,7 @@ class Transaction(object):
         if self.asdeps:
             uopt = uopt + ' --asdeps'
 
-        if DS.noconfirm:
+        if not DS.confirm:
             uopt = uopt + ' --noconfirm'
 
         uopt = uopt.strip()

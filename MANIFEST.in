@@ -8,5 +8,6 @@ include CHANGELOG.rst
 recursive-include docs *
 recursive-include bin *
 recursive-include pkgbuilder *.py
+recursive-include pkgbuilder/data *
 recursive-include locale *.mo
 recursive-include sample-scripts *
