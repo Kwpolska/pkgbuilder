@@ -98,7 +98,7 @@ def print_package_search(pkg, cachemode=False, prefix='', prefixp=''):
 
     category = pkg.repo
 
-    descl = textwrap.wrap(pkg.description, termwidth - len(prefixp2))
+    descl = textwrap.wrap(pkg.description or '', termwidth - len(prefixp2))
 
     desc = []
     for i in descl:
