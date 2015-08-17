@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 # -*- encoding: utf-8 -*-
 # PKGBUILDer v4.2.0
 # An AUR helper (and library) in Python 3.

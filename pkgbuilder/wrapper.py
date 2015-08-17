@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 # -*- encoding: utf-8 -*-
 # PBWrapper v0.5.0
 # PKGBUILDer v4.2.0
