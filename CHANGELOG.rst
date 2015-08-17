@@ -5,8 +5,8 @@ Appendix C. Changelog
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2015, Chris Warrick.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2015-08-08
-:Version: 4.2.0
+:Date: 2015-08-17
+:Version: 4.2.1
 
 .. index:: CHANGELOG
 
@@ -46,6 +46,10 @@ More information can be found on GitHub in the `releases section <https://github
 
 Version History
 ===============
+
+4.2.1
+    * Default to empty strings in Packages (Issue #35; thanks @mfussenegger)
+    * Fix duplicate --confirm argument in ``pb``
 
 4.2.0
     * Support for config files!

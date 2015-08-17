@@ -1,7 +1,6 @@
-#!/usr/bin/python3
 # -*- encoding: utf-8 -*-
 # PBWrapper v0.5.0
-# PKGBUILDer v4.2.0
+# PKGBUILDer v4.2.1
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -75,7 +74,7 @@ def wrapper(source='AUTO'):
         pacmanlong = ['asdeps', 'asexplicit', 'dbonly', 'downloadonly',
                       'force', 'groups', 'list',  'needed',
                       'nodeps', 'noprogressbar', 'noscriptlet', 'print',
-                      'quiet', 'verbose', 'confirm']
+                      'quiet', 'verbose']
         pacmanshorta = ['b', 'r']
         pacmanlonga = ['arch', 'cachedir', 'config', 'dbpath', 'gpgdir',
                        'ignore', 'ignoregroup', 'logfile', 'print-format',
