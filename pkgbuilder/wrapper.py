@@ -74,7 +74,7 @@ def wrapper(source='AUTO'):
         pacmanlong = ['asdeps', 'asexplicit', 'dbonly', 'downloadonly',
                       'force', 'groups', 'list',  'needed',
                       'nodeps', 'noprogressbar', 'noscriptlet', 'print',
-                      'quiet', 'verbose', 'confirm']
+                      'quiet', 'verbose']
         pacmanshorta = ['b', 'r']
         pacmanlonga = ['arch', 'cachedir', 'config', 'dbpath', 'gpgdir',
                        'ignore', 'ignoregroup', 'logfile', 'print-format',
