@@ -27,13 +27,13 @@ class Package(object):
     """The base class for packages."""
 
     is_abs = None
-    name = None
-    version = None
-    description = None
-    repo = None
-    url = None
+    name = ''
+    version = ''
+    description = ''
+    repo = ''
+    url = ''
     licenses = []
-    human = None
+    human = ''
     depends = []
     optdepends = []
     conflicts = []
@@ -69,7 +69,7 @@ class AURPackage(Package):
 
     repo = 'aur'
     id = None
-    packagebase = None
+    packagebase = ''
     packagebaseid = None
     makedepends = []
     checkdepends = []
@@ -79,7 +79,7 @@ class AURPackage(Package):
     added = None
     modified = None
     votes = None
-    urlpath = None
+    urlpath = ''
     popularity = None
 
     @classmethod
@@ -111,7 +111,8 @@ class AURPackage(Package):
         p = cls()
         for k, v in aurdict.items():
             try:
-                setattr(p, bindings[k], v)
+                if v is not None:
+                    setattr(p, bindings[k], v)
             except KeyError:
                 if k not in ignore:
                     DS.log.warn('AURDict has an unknown {0} key: {1}'.format(
@@ -136,20 +137,20 @@ class ABSPackage(Package):
 
     is_abs = True
     # Most of those aren’t necessary, but I am copying them over because I can.
-    arch = None
+    arch = ''
     backup = []
     base64_sig = None
     builddate = None
     deltas = []
     download_size = None
-    filename = None
+    filename = ''
     files = []
     has_scriptlet = None
     installdate = None
     isize = None
-    md5sum = None
+    md5sum = ''
     reason = []
-    sha256sum = None
+    sha256sum = ''
     size = None
 
     @classmethod
