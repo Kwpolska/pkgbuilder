@@ -5,10 +5,10 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.1\n"
+"Project-Id-Version: 4.2.2\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2015-08-17 14:38+0200\n"
-"PO-Revision-Date: 2015-08-05 12:12+0000\n"
+"POT-Creation-Date: 2015-08-21 20:20+0200\n"
+"PO-Revision-Date: 2015-08-21 18:03+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/kwpolska/pkgbuilder/"
 "language/ja/)\n"
@@ -41,7 +41,7 @@ msgstr "makepkgなどが「{0}」で失敗したようだ。"
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:316 pkgbuilder/__main__.py:297
+#: pkgbuilder/build.py:316 pkgbuilder/__main__.py:309
 msgid "Fetching package information..."
 msgstr ""
 
@@ -341,36 +341,36 @@ msgstr ""
 msgid "build (instead of fetching)"
 msgstr ""
 
-#: pkgbuilder/__main__.py:188
+#: pkgbuilder/__main__.py:200
 msgid "PKGBUILDer cannot work in a virtualenv, exiting."
 msgstr ""
 
-#: pkgbuilder/__main__.py:207
+#: pkgbuilder/__main__.py:219
 #, python-brace-format
 msgid "error: package '{0}' was not found"
 msgstr ""
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
-#: pkgbuilder/__main__.py:223
+#: pkgbuilder/__main__.py:235
 msgid "Search query too short"
 msgstr ""
 
-#: pkgbuilder/__main__.py:224
+#: pkgbuilder/__main__.py:236
 msgid "Searching for exact match..."
 msgstr "完全一致を検索中・・・"
 
-#: pkgbuilder/__main__.py:227
+#: pkgbuilder/__main__.py:239
 msgid "not found"
 msgstr "見つからなかった"
 
-#: pkgbuilder/__main__.py:302
+#: pkgbuilder/__main__.py:314
 #, python-brace-format
 msgid "Error while processing {0}: {1}"
 msgstr ""
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/__main__.py:357
+#: pkgbuilder/__main__.py:369
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
@@ -386,30 +386,30 @@ msgstr "ユーザーによる強制終了！"
 msgid "Interrupt signal received\n"
 msgstr "途中切断\n"
 
-#: pkgbuilder/pbds.py:142
+#: pkgbuilder/pbds.py:141
 #, python-brace-format
 msgid "warning: conflicting values for setting {0}, using {1}"
 msgstr ""
 
-#: pkgbuilder/pbds.py:153
+#: pkgbuilder/pbds.py:152
 msgid "Initializing pacman access..."
 msgstr ""
 
-#: pkgbuilder/pbds.py:204
+#: pkgbuilder/pbds.py:203
 msgid ""
 "Running as root is not allowed as it can cause catastrophic damage to your "
 "system!"
 msgstr ""
 
-#: pkgbuilder/pbds.py:206
+#: pkgbuilder/pbds.py:205
 msgid "Please restart PKGBUILDer as a regular user."
 msgstr ""
 
-#: pkgbuilder/pbds.py:268
+#: pkgbuilder/pbds.py:267
 msgid "WARNING:"
 msgstr "警告："
 
-#: pkgbuilder/pbds.py:282
+#: pkgbuilder/pbds.py:281
 msgid "ERROR:"
 msgstr "エラー："
 
@@ -435,52 +435,59 @@ msgstr ""
 msgid "Deleted transaction file {0}"
 msgstr ""
 
-#: pkgbuilder/transaction.py:212
+#. special case: retrying the transaction is not helpful, as it
+#. won't help fix the validation status.  The user should
+#. investigate by reading the build logs and acting accordingly.
+#: pkgbuilder/transaction.py:216
+msgid "Some packages failed to build."
+msgstr ""
+
+#: pkgbuilder/transaction.py:218
 msgid "Transaction failed!"
 msgstr ""
 
-#: pkgbuilder/transaction.py:215
+#: pkgbuilder/transaction.py:221
 msgid "To retry, run:"
 msgstr ""
 
-#: pkgbuilder/transaction.py:254
+#: pkgbuilder/transaction.py:260
 msgid "Moving to /var/cache/pacman/pkg/..."
 msgstr ""
 
-#: pkgbuilder/transaction.py:273
+#: pkgbuilder/transaction.py:279
 #, python-brace-format
 msgid "Package file {0} not found"
 msgstr ""
 
-#: pkgbuilder/transaction.py:291
+#: pkgbuilder/transaction.py:297
 #, python-brace-format
 msgid "Signature file {0} not found"
 msgstr ""
 
-#: pkgbuilder/transaction.py:316
+#: pkgbuilder/transaction.py:322
 msgid "Installing with pacman -U..."
 msgstr ""
 
-#: pkgbuilder/transaction.py:350
+#: pkgbuilder/transaction.py:356
 msgid "Validating installation status..."
 msgstr "インストール無事終了確認中・・・"
 
-#: pkgbuilder/transaction.py:369
+#: pkgbuilder/transaction.py:375
 #, python-brace-format
 msgid "{0}: not an AUR package"
 msgstr "{0}: AURパッケージではない"
 
-#: pkgbuilder/transaction.py:374 pkgbuilder/transaction.py:389
+#: pkgbuilder/transaction.py:380 pkgbuilder/transaction.py:395
 #, python-brace-format
 msgid "{0}: installed {1}"
 msgstr "{0}: 「{1}」をインストール済み"
 
-#: pkgbuilder/transaction.py:379
+#: pkgbuilder/transaction.py:385
 #, python-brace-format
 msgid "{0}: NOT installed"
 msgstr "{0}：インストールされていない"
 
-#: pkgbuilder/transaction.py:384
+#: pkgbuilder/transaction.py:390
 #, python-brace-format
 msgid "{0}: outdated {1}"
 msgstr "{0}：「{1}」より要更新"
@@ -598,13 +605,13 @@ msgstr "要更新"
 msgid "no"
 msgstr "最新"
 
-#: pkgbuilder/wrapper.py:108
+#: pkgbuilder/wrapper.py:109
 #, python-format
 msgid "%(prog)s <operation> [...]"
 msgstr "%(prog)s <選択肢> [...]"
 
 #. TRANSLATORS: see pacman’s localizations
-#: pkgbuilder/wrapper.py:278
+#: pkgbuilder/wrapper.py:279
 #, python-brace-format
 msgid ""
 "usage:  {0} <operation> [...]\n"

@@ -3,8 +3,8 @@ Appendix B. License for PKGBUILDer
 ==================================
 :Info: This is the license for PKGBUILDer.
 :Author: Chris Warrick <chris@chriswarrick.com>
-:Date: 2015-08-17
-:Version: 4.2.1
+:Date: 2015-08-21
+:Version: 4.2.2
 
 .. index:: LICENSE
 

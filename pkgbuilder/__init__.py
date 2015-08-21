@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.1
+# PKGBUILDer v4.2.2
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # All rights reserved.
@@ -45,7 +45,7 @@ import sys
 
 
 __title__ = 'PKGBUILDer'
-__version__ = '4.2.1'
+__version__ = '4.2.2'
 __author__ = 'Chris Warrick'
 __license__ = '3-clause BSD'
 __docformat__ = 'restructuredtext en'
@@ -56,7 +56,10 @@ T = gettext.translation('pkgbuilder', sys.prefix + '/share/locale',
                         fallback='C')
 G = T.gettext
 
-_ = lambda text: G(text)
+
+def _(text):
+    """Return the translated version of a string."""
+    return G(text)
 
 from .pbds import PBDS  # NOQA
 DS = PBDS()
