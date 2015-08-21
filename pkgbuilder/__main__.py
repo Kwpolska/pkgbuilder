@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.1
+# PKGBUILDer v4.2.2
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -97,7 +97,7 @@ def main(source='AUTO', quit=True):
             help=_('don\'t display debug messages (default)'))
 
         argopt.add_argument(
-            '--depcheck', action='store_true',dest='depcheck',
+            '--depcheck', action='store_true', dest='depcheck',
             help=_('check dependencies (default)'))
         argopt.add_argument(
             '-d', '--nodepcheck', action='store_true', dest='nodepcheck',
@@ -163,20 +163,32 @@ def main(source='AUTO', quit=True):
         else:
             args = parser.parse_args()
 
-        DS.pacman = DS.get_setting('-S', 'operations', 'tmpbuild', args.pac, args.nopac)
-        DS.fetch = DS.get_setting('-F', 'operations', 'fetch', args.fetch, args.nofetch)
-        DS.clean = DS.get_setting('--clean', 'options', 'clean', args.clean, args.noclean)
-        DS.depcheck = DS.get_setting('--depcheck', 'options', 'depcheck', args.depcheck, args.nodepcheck)
-        DS.vcsupgrade = DS.get_setting('--vcsupgrade', 'options', 'vcsupgrade', args.vcsupgrade, args.novcsupgrade)
-        DS.validation = DS.get_setting('--validation', 'options', 'validation', args.validation, args.novalidation)
-        DS.pkginst = DS.get_setting('--install', 'options', 'install', args.pkginst, args.nopkginst)
-        DS.pgpcheck = DS.get_setting('--pgpcheck', 'options', 'pgpcheck', args.pgpcheck, args.nopgpcheck)
-        DS.confirm = DS.get_setting('--confirm', 'options', 'confirm', args.confirm, args.noconfirm)
-        DS.deepclone = DS.get_setting('--deep', 'options', 'deepclone', args.deepclone, args.shallowclone)
-        DS.colors_status = DS.get_setting('--colors', 'options', 'colors', args.colors, args.nocolors)
+        DS.pacman = DS.get_setting('-S', 'operations', 'tmpbuild',
+                                   args.pac, args.nopac)
+        DS.fetch = DS.get_setting('-F', 'operations', 'fetch',
+                                  args.fetch, args.nofetch)
+        DS.clean = DS.get_setting('--clean', 'options', 'clean',
+                                  args.clean, args.noclean)
+        DS.depcheck = DS.get_setting('--depcheck', 'options', 'depcheck',
+                                     args.depcheck, args.nodepcheck)
+        DS.vcsupgrade = DS.get_setting('--vcsupgrade', 'options', 'vcsupgrade',
+                                       args.vcsupgrade, args.novcsupgrade)
+        DS.validation = DS.get_setting('--validation', 'options', 'validation',
+                                       args.validation, args.novalidation)
+        DS.pkginst = DS.get_setting('--install', 'options', 'install',
+                                    args.pkginst, args.nopkginst)
+        DS.pgpcheck = DS.get_setting('--pgpcheck', 'options', 'pgpcheck',
+                                     args.pgpcheck, args.nopgpcheck)
+        DS.confirm = DS.get_setting('--confirm', 'options', 'confirm',
+                                    args.confirm, args.noconfirm)
+        DS.deepclone = DS.get_setting('--deep', 'options', 'deepclone',
+                                      args.deepclone, args.shallowclone)
+        DS.colors_status = DS.get_setting('--colors', 'options', 'colors',
+                                          args.colors, args.nocolors)
         pkgnames = args.pkgnames
 
-        if DS.get_setting('--debug', 'options', 'debug', args.debug, args.nodebug):
+        if DS.get_setting('--debug', 'options', 'debug',
+                          args.debug, args.nodebug):
             DS.debugmode(nochange=True)
             DS.log.info('*** PKGBUILDer v{0}'.format(__version__))
             DS.log.debug('*** debug output on.')

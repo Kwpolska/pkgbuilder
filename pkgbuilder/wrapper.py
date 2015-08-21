@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 # PBWrapper v0.5.0
-# PKGBUILDer v4.2.1
+# PKGBUILDer v4.2.2
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -87,7 +87,8 @@ def wrapper(source='AUTO'):
                   'skippgpcheck', 'deep', 'shallow', 'noclean', 'nodebug']
 
         commonshort = ['S', 'd', 'i', 's', 'v', 'w']
-        commonlong = ['debug', 'info', 'search', 'sync', 'confirm', 'noconfirm']
+        commonlong = ['debug', 'info', 'search', 'sync', 'confirm',
+                      'noconfirm']
         commonshortc = ['c', 'y', 'u']
         commonlongc = ['clean', 'refresh', 'sysupgrade']
 

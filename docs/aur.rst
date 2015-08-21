@@ -4,8 +4,8 @@ aur module (AUR class)
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2015, Chris Warrick.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2015-08-17
-:Version: 4.2.1
+:Date: 2015-08-21
+:Version: 4.2.2
 
 .. index:: AUR; RPC
 .. index:: RPC

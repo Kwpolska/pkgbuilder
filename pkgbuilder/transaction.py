@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.1
+# PKGBUILDer v4.2.2
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -209,12 +209,18 @@ class Transaction(object):
         if not quiet:
             DS.log.error("Transaction {0!r} failed (stage {1})".format(
                 self, stage))
-            DS.fancy_error(_("Transaction failed!"))
-            if self.filename:
-                c = 'c' if self.delete else ''
-                DS.fancy_error2(_("To retry, run:"))
-                DS.fancy_error2("pkgbuilder -X{c} {fn}".format(
-                    c=c, fn=self.filename))
+            if self.pacmanreturn == 0 and self.invalid > 0:
+                # special case: retrying the transaction is not helpful, as it
+                # won't help fix the validation status.  The user should
+                # investigate by reading the build logs and acting accordingly.
+                DS.fancy_error(_("Some packages failed to build."))
+            else:
+                DS.fancy_error(_("Transaction failed!"))
+                if self.filename:
+                    c = 'c' if self.delete else ''
+                    DS.fancy_error2(_("To retry, run:"))
+                    DS.fancy_error2("pkgbuilder -X{c} {fn}".format(
+                        c=c, fn=self.filename))
 
     def _test_sudo(self):
         """Test if sudo works."""
