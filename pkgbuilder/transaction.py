@@ -171,8 +171,8 @@ class Transaction(object):
             if not standalone:
                 DS.fancy_msg(_('Installing built packages...'))
             if self.filename:
-                DS.fancy_msg(_('Running transaction from file {0}...'.format(
-                    self.filename)))
+                DS.fancy_msg(_('Running transaction from file {0}...').format(
+                    self.filename))
             else:
                 DS.fancy_msg(_('Running transaction...'))
 
