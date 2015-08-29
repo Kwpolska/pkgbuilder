@@ -201,9 +201,14 @@ def auto_upgrade(downgrade=False, vcsup=False, fetchonly=False):
         else:
             query = ':: ' + _('Proceed with installation? [Y/n] ')
 
-        yesno = input(query)
+        if DS.confirm:
+            yesno = input(query)
 
-        if yesno.lower().strip().startswith('y') or yesno.strip() == '':
-            return upgnames
+            if yesno.lower().strip().startswith('y') or yesno.strip() == '':
+                return upgnames
+            else:
+                return []
         else:
-            return []
+            # Print the query and then return immediately, pacman does that too.
+            print(query)
+            return upgnames
