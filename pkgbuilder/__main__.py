@@ -338,6 +338,9 @@ def main(source='AUTO', quit=True):
                     DS.fancy_error(str(e))
                     if e.exit:
                         exit(1)
+                    else:
+                        DS.fancy_error2(_("skipping package {0}").format(
+                            pkgname))
 
             if DS.pkginst:
                 # If there is nothing to install, but the user asked to install
