@@ -41,10 +41,6 @@ import pkgbuilder.pbds
 import pkgbuilder.upgrade
 import pkgbuilder.utils
 import pkgbuilder.wrapper
-import os
-import shutil
-import base64
-#import mock
 
 
 class TestPB(unittest.TestCase):

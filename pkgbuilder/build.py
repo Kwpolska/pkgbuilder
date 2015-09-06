@@ -20,7 +20,7 @@ import pkgbuilder.ui
 import pkgbuilder.utils
 import sys
 import os
-import shutil
+import platform
 import pyalpm
 import srcinfo.parse
 import re
@@ -165,6 +165,12 @@ def rsync(pkg, quiet=False):
                            '.'])
 
 
+def _check_and_append(data, field, out):
+    """Check if `field` exists in `data`, and if it does, append to `out`."""
+    if field in data:
+        out += data[field]
+
+
 def prepare_deps(srcinfo_path, pkgname=None):
     """Get (make)depends from a .SRCINFO file and returns them.
 
@@ -174,6 +180,8 @@ def prepare_deps(srcinfo_path, pkgname=None):
 
     In the past, this function used to get data via `bash -c`.
     """
+    arch = platform.machine()
+
     with open(srcinfo_path, encoding='utf-8') as fh:
         raw = fh.read()
 
@@ -182,15 +190,15 @@ def prepare_deps(srcinfo_path, pkgname=None):
         raise pkgbuilder.exceptions.PackageError(
             'malformed .SRCINFO: {0}'.format(errors), 'prepare_deps')
     all_depends = []
-    if 'depends' in data:
-        all_depends += data['depends']
-    if 'makedepends' in data:
-        all_depends += data['makedepends']
-    for pkgname in data['packages']:
-        if 'depends' in data['packages'][pkgname]:
-            all_depends += data['packages'][pkgname]['depends']
-        if 'makedepends' in data['packages'][pkgname]:
-            all_depends += data['packages'][pkgname]['makedepends']
+    _check_and_append(data, 'depends', all_depends)
+    _check_and_append(data, 'makedepends', all_depends)
+    _check_and_append(data, 'depends_' + arch, all_depends)
+    _check_and_append(data, 'makedepends_' + arch, all_depends)
+    for pdata in data['packages'].values():
+        _check_and_append(pdata, 'depends', all_depends)
+        _check_and_append(pdata, 'makedepends', all_depends)
+        _check_and_append(pdata, 'depends_' + arch, all_depends)
+        _check_and_append(pdata, 'makedepends_' + arch, all_depends)
 
     depends = []
     for d in all_depends:
