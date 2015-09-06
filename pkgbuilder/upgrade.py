@@ -209,6 +209,6 @@ def auto_upgrade(downgrade=False, vcsup=False, fetchonly=False):
             else:
                 return []
         else:
-            # Print the query and then return immediately, pacman does that too.
+            # Print the query and then return immediately, pacman does that too
             print(query)
             return upgnames

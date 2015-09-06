@@ -124,7 +124,6 @@ def clone(pkgbase):
 
     .. versionadded:: 4.0.0
     """
-
     if os.path.exists('./{0}/'.format(pkgbase)):
         if os.path.exists('./{0}/.git'.format(pkgbase)):
             # git repo, pull
