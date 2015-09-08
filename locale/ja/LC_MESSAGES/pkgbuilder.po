@@ -5,10 +5,10 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.2\n"
+"Project-Id-Version: 4.2.3\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2015-08-21 20:20+0200\n"
-"PO-Revision-Date: 2015-08-21 18:03+0000\n"
+"POT-Creation-Date: 2015-09-08 17:37+0200\n"
+"PO-Revision-Date: 2015-09-08 15:37+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/kwpolska/pkgbuilder/"
 "language/ja/)\n"
@@ -22,106 +22,91 @@ msgstr ""
 msgid "The build succeeded."
 msgstr ""
 
-#: pkgbuilder/build.py:63
+#: pkgbuilder/build.py:60
 msgid "Building more AUR packages is required."
 msgstr "AURパッケージを更に作成する必要がある。"
 
-#: pkgbuilder/build.py:75
+#: pkgbuilder/build.py:72
 #, python-brace-format
 msgid "found an existing package for {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:114
+#: pkgbuilder/build.py:111
 #, python-brace-format
 msgid "makepkg (or someone else) failed and returned {0}."
 msgstr "makepkgなどが「{0}」で失敗したようだ。"
 
-#: pkgbuilder/build.py:257
+#: pkgbuilder/build.py:275
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:316 pkgbuilder/__main__.py:309
+#: pkgbuilder/build.py:334 pkgbuilder/__main__.py:309
 msgid "Fetching package information..."
 msgstr ""
 
-#: pkgbuilder/build.py:347
+#: pkgbuilder/build.py:365
 msgid ":: Retrieving packages from abs..."
 msgstr ""
 
-#: pkgbuilder/build.py:350
+#: pkgbuilder/build.py:368
 #, python-brace-format
 msgid "retrieving {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:354 pkgbuilder/build.py:406
+#: pkgbuilder/build.py:372 pkgbuilder/build.py:424
 #, python-brace-format
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr ""
 
-#: pkgbuilder/build.py:358
+#: pkgbuilder/build.py:376
 msgid ":: Retrieving packages from aur..."
 msgstr ""
 
-#: pkgbuilder/build.py:361
+#: pkgbuilder/build.py:379
 #, python-brace-format
 msgid "cloning {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:364
+#: pkgbuilder/build.py:382
 msgid "Successfully fetched: "
 msgstr ""
 
-#: pkgbuilder/build.py:394
+#: pkgbuilder/build.py:412
 #, python-brace-format
 msgid "Building {0}..."
 msgstr "「{0}」を作成中・・・"
 
-#: pkgbuilder/build.py:402
+#: pkgbuilder/build.py:420
 msgid "Retrieving from ABS..."
 msgstr ""
 
-#: pkgbuilder/build.py:411 pkgbuilder/build.py:427
+#: pkgbuilder/build.py:429 pkgbuilder/build.py:445
 #, python-brace-format
 msgid "Found an existing package for {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:432
+#: pkgbuilder/build.py:450
 msgid "Cloning the git repository..."
 msgstr ""
 
-#: pkgbuilder/build.py:435
-#, python-brace-format
-msgid "removing existing directory {0}"
-msgstr ""
-
-#: pkgbuilder/build.py:440
-#, python-brace-format
-msgid "Directory {0} already exists, please run with `-c` to remove it."
-msgstr ""
-
-#: pkgbuilder/build.py:442
-#, python-brace-format
-msgid "skipping package {0}"
-msgstr ""
-
-#: pkgbuilder/build.py:451
+#: pkgbuilder/build.py:457
 msgid "Checking dependencies..."
 msgstr "従属パッケージを確認中・・・"
 
-#: pkgbuilder/build.py:454
+#: pkgbuilder/build.py:460
 msgid "found in system"
 msgstr "インストール済み"
 
-#: pkgbuilder/build.py:454
+#: pkgbuilder/build.py:460
 msgid "found in repos"
 msgstr "リポジトリに存在"
 
-#: pkgbuilder/build.py:455
+#: pkgbuilder/build.py:461
 msgid "found in the AUR"
 msgstr "AURに存在"
 
-#: pkgbuilder/build.py:458
+#: pkgbuilder/build.py:464
 msgid "none found"
 msgstr "従属パッケージなし"
 
@@ -170,7 +155,12 @@ msgstr ""
 msgid "git clone returned {0}."
 msgstr ""
 
-#: pkgbuilder/exceptions.py:240
+#: pkgbuilder/exceptions.py:239
+#, python-brace-format
+msgid "Directory {0} exists, but is not a git repository."
+msgstr ""
+
+#: pkgbuilder/exceptions.py:257
 #, python-brace-format
 msgid "Repository {0} is empty."
 msgstr ""
@@ -369,8 +359,13 @@ msgstr "見つからなかった"
 msgid "Error while processing {0}: {1}"
 msgstr ""
 
+#: pkgbuilder/__main__.py:342
+#, python-brace-format
+msgid "skipping package {0}"
+msgstr ""
+
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/__main__.py:369
+#: pkgbuilder/__main__.py:372
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
