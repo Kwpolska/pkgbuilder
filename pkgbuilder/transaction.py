@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.2
+# PKGBUILDer v4.2.3
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -171,8 +171,8 @@ class Transaction(object):
             if not standalone:
                 DS.fancy_msg(_('Installing built packages...'))
             if self.filename:
-                DS.fancy_msg(_('Running transaction from file {0}...'.format(
-                    self.filename)))
+                DS.fancy_msg(_('Running transaction from file {0}...').format(
+                    self.filename))
             else:
                 DS.fancy_msg(_('Running transaction...'))
 

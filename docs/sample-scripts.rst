@@ -4,8 +4,8 @@ PKGBUILDer Sample Scripts
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2015, Chris Warrick.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2015-08-21
-:Version: 4.2.2
+:Date: 2015-09-08
+:Version: 4.2.3
 
 .. index:: sample scripts
 

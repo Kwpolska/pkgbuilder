@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.2
+# PKGBUILDer v4.2.3
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -226,13 +226,30 @@ class CloneError(PBException):
         self.kwargs = kwargs
 
 
+class ClonePathExists(CloneError):
+
+    """The clone path exists and is not a git repository."""
+
+    qualname = 'ClonePathExists'
+
+    def __init__(self, pkgbase, exit=False, *args, **kwargs):
+        DS.log.error('({0:<20}) directory {1} exists, but is not a git '
+                     'repository'.format(self.qualname, pkgbase))
+        self.pkgbase = pkgbase
+        self.msg = _('Directory {0} exists, but is not a git '
+                     'repository.').format(self.pkgbase)
+        self.exit = exit
+        self.args = args
+        self.kwargs = kwargs
+
+
 class EmptyRepoError(CloneError):
 
     """Git cloned an empty repository."""
 
     qualname = 'EmptyRepoError'
 
-    def __init__(self, pkgbase, exit=True, *args, **kwargs):
+    def __init__(self, pkgbase, exit=False, *args, **kwargs):
         """Initialize and log the error."""
         DS.log.error('({0:<20}) repository {1} is empty'.format(
             self.qualname, pkgbase))

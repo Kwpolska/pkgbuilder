@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.2
+# PKGBUILDer v4.2.3
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -20,7 +20,7 @@ import pkgbuilder.ui
 import pkgbuilder.utils
 import sys
 import os
-import shutil
+import platform
 import pyalpm
 import srcinfo.parse
 import re
@@ -53,9 +53,6 @@ def auto_build(pkgname, performdepcheck=True,
             DS.fancy_msg(_('The build succeeded.'))
         elif build_result[0] >= 0 and build_result[0] < 256:
             raise pkgbuilder.exceptions.MakepkgError(build_result[0])
-        elif build_result[0] == 72335:
-            # existing directory, skip the package
-            pass
         elif build_result[0] == 72336:
             # existing package, do nothing
             pass
@@ -123,20 +120,33 @@ def auto_build(pkgname, performdepcheck=True,
 
 
 def clone(pkgbase):
-    """Clone a git repo.
+    """Clone or update a git repo.
 
     .. versionadded:: 4.0.0
     """
-    repo_url = pkgbuilder.aur.AUR.base + '/' + pkgbase + '.git/'
-    if DS.deepclone:
-        cloneargs = []
+    if os.path.exists('./{0}/'.format(pkgbase)):
+        if os.path.exists('./{0}/.git'.format(pkgbase)):
+            # git repo, pull
+            try:
+                os.chdir(pkgbase)
+                subprocess.check_call(['git', 'pull'])
+            except subprocess.CalledProcessError as e:
+                raise pkgbuilder.exceptions.CloneError(e.returncode)
+            finally:
+                os.chdir('..')
+        else:
+            raise pkgbuilder.exceptions.ClonePathExists(pkgbase)
     else:
-        cloneargs = ['--depth', '1']
-    try:
-        subprocess.check_call(['git', 'clone'] + cloneargs + [repo_url,
-                                                              pkgbase])
-    except subprocess.CalledProcessError as e:
-        raise pkgbuilder.exceptions.CloneError(e.returncode)
+        repo_url = pkgbuilder.aur.AUR.base + '/' + pkgbase + '.git'
+        if DS.deepclone:
+            cloneargs = []
+        else:
+            cloneargs = ['--depth', '1']
+        try:
+            subprocess.check_call(['git', 'clone'] + cloneargs +
+                                  [repo_url, pkgbase])
+        except subprocess.CalledProcessError as e:
+            raise pkgbuilder.exceptions.CloneError(e.returncode)
 
 
 def rsync(pkg, quiet=False):
@@ -154,6 +164,12 @@ def rsync(pkg, quiet=False):
                            '.'])
 
 
+def _check_and_append(data, field, out):
+    """Check if `field` exists in `data`, and if it does, append to `out`."""
+    if field in data:
+        out += data[field]
+
+
 def prepare_deps(srcinfo_path, pkgname=None):
     """Get (make)depends from a .SRCINFO file and returns them.
 
@@ -163,6 +179,8 @@ def prepare_deps(srcinfo_path, pkgname=None):
 
     In the past, this function used to get data via `bash -c`.
     """
+    arch = platform.machine()
+
     with open(srcinfo_path, encoding='utf-8') as fh:
         raw = fh.read()
 
@@ -171,15 +189,15 @@ def prepare_deps(srcinfo_path, pkgname=None):
         raise pkgbuilder.exceptions.PackageError(
             'malformed .SRCINFO: {0}'.format(errors), 'prepare_deps')
     all_depends = []
-    if 'depends' in data:
-        all_depends += data['depends']
-    if 'makedepends' in data:
-        all_depends += data['makedepends']
-    for pkgname in data['packages']:
-        if 'depends' in data['packages'][pkgname]:
-            all_depends += data['packages'][pkgname]['depends']
-        if 'makedepends' in data['packages'][pkgname]:
-            all_depends += data['packages'][pkgname]['makedepends']
+    _check_and_append(data, 'depends', all_depends)
+    _check_and_append(data, 'makedepends', all_depends)
+    _check_and_append(data, 'depends_' + arch, all_depends)
+    _check_and_append(data, 'makedepends_' + arch, all_depends)
+    for pdata in data['packages'].values():
+        _check_and_append(pdata, 'depends', all_depends)
+        _check_and_append(pdata, 'makedepends', all_depends)
+        _check_and_append(pdata, 'depends_' + arch, all_depends)
+        _check_and_append(pdata, 'makedepends_' + arch, all_depends)
 
     depends = []
     for d in all_depends:
@@ -430,18 +448,6 @@ def build_runner(pkgname, performdepcheck=True,
                 existing = ([], [])
             return [72336, existing]
         DS.fancy_msg(_('Cloning the git repository...'))
-        if os.path.exists('./{0}/'.format(pkg.packagebase)):
-            if DS.clean or DS.pacman:
-                DS.fancy_warning2(_('removing existing directory {0}').format(
-                    pkg.packagebase))
-                shutil.rmtree('./{0}/'.format(pkg.packagebase))
-            else:
-                DS.fancy_error(_(
-                    'Directory {0} already exists, please run with `-c` to '
-                    'remove it.').format(pkg.packagebase))
-                DS.fancy_warning2(_('skipping package {0}').format(
-                    pkg.packagebase))
-                return [72335, [[], []]]
         clone(pkg.packagebase)
         os.chdir('./{0}/'.format(pkg.packagebase))
         if not os.path.exists('.SRCINFO'):

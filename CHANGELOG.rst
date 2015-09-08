@@ -5,8 +5,8 @@ Appendix C. Changelog
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2015, Chris Warrick.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2015-08-21
-:Version: 4.2.2
+:Date: 2015-09-08
+:Version: 4.2.3
 
 .. index:: CHANGELOG
 
@@ -46,6 +46,13 @@ More information can be found on GitHub in the `releases section <https://github
 
 Version History
 ===============
+
+4.2.3
+    * Translate “Running transaction…” line correctly
+    * Support ``--noconfirm`` in -Syu
+    * Pull existing git repos instead of cloning new ones or aborting (Issue #36)
+    * Display “skipping package” message when exceptions occur
+    * Support architecture-specific dependencies (Issue #37)
 
 4.2.2
     * Display a better message if some packages fail to build.

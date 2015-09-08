@@ -13,10 +13,10 @@
 # tufadorin <inactive+tufadorin@transifex.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.2\n"
+"Project-Id-Version: 4.2.3\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2015-08-21 20:20+0200\n"
-"PO-Revision-Date: 2015-08-21 18:03+0000\n"
+"POT-Creation-Date: 2015-09-08 17:37+0200\n"
+"PO-Revision-Date: 2015-09-08 15:38+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/kwpolska/pkgbuilder/"
 "language/es/)\n"
@@ -30,106 +30,91 @@ msgstr ""
 msgid "The build succeeded."
 msgstr ""
 
-#: pkgbuilder/build.py:63
+#: pkgbuilder/build.py:60
 msgid "Building more AUR packages is required."
 msgstr "La construcción de más paquetes de AUR es obligatorio."
 
-#: pkgbuilder/build.py:75
+#: pkgbuilder/build.py:72
 #, python-brace-format
 msgid "found an existing package for {0}"
 msgstr "se ha encontrado un paquete existente para {0}"
 
-#: pkgbuilder/build.py:114
+#: pkgbuilder/build.py:111
 #, python-brace-format
 msgid "makepkg (or someone else) failed and returned {0}."
 msgstr "makepkg (o alguien más) fracasó y retornó {0}."
 
-#: pkgbuilder/build.py:257
+#: pkgbuilder/build.py:275
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr "No se ha podido cumplir el requisito de dependencia del paquete: {0}"
 
-#: pkgbuilder/build.py:316 pkgbuilder/__main__.py:309
+#: pkgbuilder/build.py:334 pkgbuilder/__main__.py:309
 msgid "Fetching package information..."
 msgstr "Obteniendo información de los paquetes ..."
 
-#: pkgbuilder/build.py:347
+#: pkgbuilder/build.py:365
 msgid ":: Retrieving packages from abs..."
 msgstr ":: Recuperando paquetes de abs ..."
 
-#: pkgbuilder/build.py:350
+#: pkgbuilder/build.py:368
 #, python-brace-format
 msgid "retrieving {0}"
 msgstr "recuperando {0}"
 
-#: pkgbuilder/build.py:354 pkgbuilder/build.py:406
+#: pkgbuilder/build.py:372 pkgbuilder/build.py:424
 #, python-brace-format
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr "No se ha podido recuperar {0} (de ABS/rsync)."
 
-#: pkgbuilder/build.py:358
+#: pkgbuilder/build.py:376
 msgid ":: Retrieving packages from aur..."
 msgstr ":: Recuperando paquetes de aur ..."
 
-#: pkgbuilder/build.py:361
+#: pkgbuilder/build.py:379
 #, python-brace-format
 msgid "cloning {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:364
+#: pkgbuilder/build.py:382
 msgid "Successfully fetched: "
 msgstr "Obtenido con exito:"
 
-#: pkgbuilder/build.py:394
+#: pkgbuilder/build.py:412
 #, python-brace-format
 msgid "Building {0}..."
 msgstr "Construyendo {0}..."
 
-#: pkgbuilder/build.py:402
+#: pkgbuilder/build.py:420
 msgid "Retrieving from ABS..."
 msgstr "Recuperando de ABS ..."
 
-#: pkgbuilder/build.py:411 pkgbuilder/build.py:427
+#: pkgbuilder/build.py:429 pkgbuilder/build.py:445
 #, python-brace-format
 msgid "Found an existing package for {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:432
+#: pkgbuilder/build.py:450
 msgid "Cloning the git repository..."
 msgstr ""
 
-#: pkgbuilder/build.py:435
-#, python-brace-format
-msgid "removing existing directory {0}"
-msgstr ""
-
-#: pkgbuilder/build.py:440
-#, python-brace-format
-msgid "Directory {0} already exists, please run with `-c` to remove it."
-msgstr ""
-
-#: pkgbuilder/build.py:442
-#, python-brace-format
-msgid "skipping package {0}"
-msgstr ""
-
-#: pkgbuilder/build.py:451
+#: pkgbuilder/build.py:457
 msgid "Checking dependencies..."
 msgstr "Comprobando dependencias..."
 
-#: pkgbuilder/build.py:454
+#: pkgbuilder/build.py:460
 msgid "found in system"
 msgstr "Encontrado en el sistema"
 
-#: pkgbuilder/build.py:454
+#: pkgbuilder/build.py:460
 msgid "found in repos"
 msgstr "Encontrado en repositorios"
 
-#: pkgbuilder/build.py:455
+#: pkgbuilder/build.py:461
 msgid "found in the AUR"
 msgstr "Encontrado en el AUR"
 
-#: pkgbuilder/build.py:458
+#: pkgbuilder/build.py:464
 msgid "none found"
 msgstr "ninguno encontrado"
 
@@ -178,7 +163,12 @@ msgstr "Error de juicio! {0} (via {1}) "
 msgid "git clone returned {0}."
 msgstr ""
 
-#: pkgbuilder/exceptions.py:240
+#: pkgbuilder/exceptions.py:239
+#, python-brace-format
+msgid "Directory {0} exists, but is not a git repository."
+msgstr ""
+
+#: pkgbuilder/exceptions.py:257
 #, python-brace-format
 msgid "Repository {0} is empty."
 msgstr ""
@@ -377,8 +367,13 @@ msgstr "no encontrado"
 msgid "Error while processing {0}: {1}"
 msgstr "Error al procesar {0}: {1}"
 
+#: pkgbuilder/__main__.py:342
+#, python-brace-format
+msgid "skipping package {0}"
+msgstr ""
+
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/__main__.py:369
+#: pkgbuilder/__main__.py:372
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
