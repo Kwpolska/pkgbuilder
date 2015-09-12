@@ -22,7 +22,7 @@ There are two ways to install PKGBUILDer:
 
 After adding the repository, you need to run::
 
-    # sudo pacman-key -r 5EAAEA16
+    # pacman-key -r 5EAAEA16
     # pacman-key --lsign 5EAAEA16
     # pacman -Syyu
 
