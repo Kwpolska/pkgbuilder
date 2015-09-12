@@ -1,0 +1,5 @@
+#!/bin/zsh
+. .pypt/config
+echo "Next steps:"
+echo " * update AUR packages"
+echo " * update [pkgbuilder] repo"
