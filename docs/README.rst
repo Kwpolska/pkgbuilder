@@ -15,7 +15,16 @@ Building and installing AUR packages.
 INSTALLATION
 ------------
 
-Get it from the AUR: https://aur.archlinux.org/packages/pkgbuilder/.
+There are two ways to install PKGBUILDer:
+
+1. Get it from the AUR: https://aur.archlinux.org/packages/pkgbuilder/
+2. Add the PKGBUILDer unofficial repository: https://wiki.archlinux.org/index.php/Unofficial_user_repositories#pkgbuilder
+
+After adding the repository, you need to run::
+
+    # sudo pacman-key -r 5EAAEA16
+    # pacman-key --lsign 5EAAEA16
+    # pacman -Syyu
 
 BASIC USAGE
 -----------
