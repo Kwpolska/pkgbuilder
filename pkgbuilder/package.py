@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.3
+# PKGBUILDer v4.2.4
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2015, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -119,7 +119,7 @@ class AURPackage(Package):
                         k, aurdict))
 
         # Manual overrides.
-        p.is_outdated = aurdict['OutOfDate'] > 0
+        p.is_outdated = aurdict['OutOfDate'] is not None
 
         if p.is_outdated:
             p.outdated_since = mktime(aurdict['OutOfDate'])
