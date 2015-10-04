@@ -5,9 +5,9 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.3\n"
+"Project-Id-Version: 4.2.4\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2015-09-08 17:37+0200\n"
+"POT-Creation-Date: 2015-10-04 10:14+0200\n"
 "PO-Revision-Date: 2015-09-08 15:37+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Swedish (http://www.transifex.com/kwpolska/pkgbuilder/"
