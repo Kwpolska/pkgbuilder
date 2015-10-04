@@ -3,8 +3,8 @@ PKGBUILDer.  An AUR helper (and library) in Python 3.
 =====================================================
 :Info: This is the README file for PKGBUILDer.
 :Author: Chris Warrick <chris@chriswarrick.com>
-:Date: 2015-09-08
-:Version: 4.2.3
+:Date: 2015-10-04
+:Version: 4.2.4
 
 .. index: README
 
@@ -22,7 +22,7 @@ There are two ways to install PKGBUILDer:
 
 After adding the repository, you need to run::
 
-    # sudo pacman-key -r 5EAAEA16
+    # pacman-key -r 5EAAEA16
     # pacman-key --lsign 5EAAEA16
     # pacman -Syyu
 
