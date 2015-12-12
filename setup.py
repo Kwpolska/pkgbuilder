@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- encoding: utf-8 -*-
 import sys
-import io
 from setuptools import setup
 from setuptools.command.test import test as TestCommand
 
@@ -26,7 +25,7 @@ setup(name='pkgbuilder',
       author_email='chris@chriswarrick.com',
       url='https://github.com/Kwpolska/pkgbuilder',
       license='3-clause BSD',
-      long_description=io.open('./docs/README.rst', 'r', encoding='utf-8').read(),
+      long_description=open('./docs/README.rst', 'r', encoding='utf-8').read(),
       platforms='Arch Linux',
       zip_safe=False,
       include_package_data=True,
@@ -50,7 +49,29 @@ setup(name='pkgbuilder',
                   ('share/man/man8', ['docs/pb.8.gz']),
                   ('share/locale/pl/LC_MESSAGES', ['locale/pl/LC_MESSAGES/'
                                                    'pkgbuilder.mo']),
+                  ('share/locale/ar/LC_MESSAGES', ['locale/ar/LC_MESSAGES/'
+                                                   'pkgbuilder.mo']),
+                  ('share/locale/cs/LC_MESSAGES', ['locale/cs/LC_MESSAGES/'
+                                                   'pkgbuilder.mo']),
+                  ('share/locale/de/LC_MESSAGES', ['locale/de/LC_MESSAGES/'
+                                                   'pkgbuilder.mo']),
+                  ('share/locale/es/LC_MESSAGES', ['locale/es/LC_MESSAGES/'
+                                                   'pkgbuilder.mo']),
+                  ('share/locale/id/LC_MESSAGES', ['locale/id/LC_MESSAGES/'
+                                                   'pkgbuilder.mo']),
+                  ('share/locale/it/LC_MESSAGES', ['locale/it/LC_MESSAGES/'
+                                                   'pkgbuilder.mo']),
                   ('share/locale/ja/LC_MESSAGES', ['locale/ja/LC_MESSAGES/'
+                                                   'pkgbuilder.mo']),
+                  ('share/locale/pt/LC_MESSAGES', ['locale/pt/LC_MESSAGES/'
+                                                   'pkgbuilder.mo']),
+                  ('share/locale/sk/LC_MESSAGES', ['locale/sk/LC_MESSAGES/'
+                                                   'pkgbuilder.mo']),
+                  ('share/locale/sv/LC_MESSAGES', ['locale/sv/LC_MESSAGES/'
+                                                   'pkgbuilder.mo']),
+                  ('share/locale/tr/LC_MESSAGES', ['locale/tr/LC_MESSAGES/'
+                                                   'pkgbuilder.mo']),
+                  ('share/locale/vi/LC_MESSAGES', ['locale/vi/LC_MESSAGES/'
                                                    'pkgbuilder.mo'])],
       entry_points={
           'console_scripts': [
