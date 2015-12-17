@@ -66,7 +66,6 @@ DS = PBDS()
 
 
 class _UTC(datetime.tzinfo):
-
     """UTC timezone implementation."""
 
     def utcoffset(self, dt):

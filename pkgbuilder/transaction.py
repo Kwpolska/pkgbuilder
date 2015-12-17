@@ -13,14 +13,14 @@ Package installation transactions.
 :License: BSD (see /LICENSE).
 """
 
-from . import DS, _, __version__
-import pkgbuilder.utils
-import pyalpm
 import os
 import os.path
+import time
 import json
 import enum
-import time
+import pkgbuilder.utils
+import pyalpm
+from . import DS, _, __version__
 
 __all__ = ('generate_filename', 'Transaction', 'TransactionStatus')
 
@@ -35,7 +35,6 @@ def generate_filename(absolute=True):
 
 
 class TransactionStatus(enum.Enum):
-
     """Transaction status."""
 
     # validate, move, install, success
@@ -49,7 +48,6 @@ class TransactionStatus(enum.Enum):
 
 
 class Transaction(object):
-
     """A package transaction."""
 
     def __init__(self, pkgnames, pkgpaths, sigpaths, asdeps=True, uopt='',

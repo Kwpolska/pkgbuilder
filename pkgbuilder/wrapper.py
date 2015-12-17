@@ -12,7 +12,7 @@ A wrapper for pacman and PKGBUILDer, also known as PBWrapper or pb.
 :License: BSD (see /LICENSE).
 """
 
-from . import DS, _,  __version__
+from . import DS, _, __version__
 from .__main__ import main as pbmain
 from .exceptions import SanityError
 import pkgbuilder.utils
@@ -72,7 +72,7 @@ def wrapper(source='AUTO'):
         log.debug('Got -S, preparing to parse arguments...')
         pacmanshort = ['f', 'g', 'l', 'p', 'q']
         pacmanlong = ['asdeps', 'asexplicit', 'dbonly', 'downloadonly',
-                      'force', 'groups', 'list',  'needed',
+                      'force', 'groups', 'list', 'needed',
                       'nodeps', 'noprogressbar', 'noscriptlet', 'print',
                       'quiet', 'verbose']
         pacmanshorta = ['b', 'r']

@@ -90,7 +90,6 @@ def mlist(items, sep='  ', change_spaces=True, termwidth=None, indentwidth=17):
 
 
 class Progress(object):
-
     """A static progress indicator with numbers.
 
     Usage::
@@ -131,7 +130,6 @@ class Progress(object):
 
 
 class Throbber(object):
-
     """A nice animated throbber.
 
     Usage::
@@ -168,14 +166,14 @@ class Throbber(object):
         self.throb = True
         i = 0
         while self.throb:
-            sys.stdout.write('\r({0}) {1}'.format(self.states[i], self.msg))
+            sys.stdout.write('\r({0}) {1}'.format(self.states[i], msg))
             sys.stdout.flush()
             time.sleep(0.1)
             i += 1
             if i == len(self.states):
                 i = 0
-        if not self.throb and self.printback:
-            sys.stdout.write('\r({0}) {1}'.format(self.finalthrob, self.msg))
+        if not self.throb and printback:
+            sys.stdout.write('\r({0}) {1}'.format(finalthrob, msg))
             sys.stdout.flush()
             time.sleep(0.1)
             print()
@@ -190,7 +188,6 @@ class Throbber(object):
 
 
 class ProgressThrobber(Progress, Throbber):
-
     """An animated progress throbber.
 
     Similar to Progress, but the / is animated.

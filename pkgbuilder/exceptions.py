@@ -18,7 +18,6 @@ __all__ = ('PBException', 'AURError', 'MakepkgError', 'NetworkError',
 
 
 class PBException(Exception):
-
     """Base exception for PKGBUILDer."""
 
     qualname = 'PBException'
@@ -38,7 +37,6 @@ class PBException(Exception):
 
 
 class AURError(PBException):
-
     """AUR-related errors."""
 
     qualname = 'AURError'
@@ -58,7 +56,6 @@ class AURError(PBException):
 
 
 class MakepkgError(PBException):
-
     """makepkg return codes."""
 
     qualname = 'MakepkgError'
@@ -78,7 +75,6 @@ class MakepkgError(PBException):
 
 
 class NetworkError(PBException):
-
     """Network-related errors."""
 
     qualname = 'NetworkError'
@@ -106,7 +102,6 @@ class NetworkError(PBException):
 
 
 class ConnectionError(NetworkError):
-
     """A connection error."""
 
     qualname = 'ConnectionError'
@@ -118,7 +113,6 @@ class ConnectionError(NetworkError):
 
 
 class HTTPError(NetworkError):
-
     """An HTTP error."""
 
     qualname = 'HTTPError'
@@ -146,7 +140,6 @@ class HTTPError(NetworkError):
 
 
 class PackageError(PBException):
-
     """Package-related errors."""
 
     qualname = 'PackageError'
@@ -167,7 +160,6 @@ class PackageError(PBException):
 
 
 class PackageNotFoundError(PackageError):
-
     """Errors raised when a package cannot be found."""
 
     qualname = 'PackageNotFoundError'
@@ -189,7 +181,6 @@ class PackageNotFoundError(PackageError):
 
 
 class SanityError(PBException):
-
     """When PKGBUILDer or one of its friends goes insane."""
 
     qualname = 'SanityError'
@@ -210,7 +201,6 @@ class SanityError(PBException):
 
 
 class CloneError(PBException):
-
     """A ``git clone`` failed."""
 
     qualname = 'CloneError'
@@ -227,7 +217,6 @@ class CloneError(PBException):
 
 
 class ClonePathExists(CloneError):
-
     """The clone path exists and is not a git repository."""
 
     qualname = 'ClonePathExists'
@@ -244,7 +233,6 @@ class ClonePathExists(CloneError):
 
 
 class EmptyRepoError(CloneError):
-
     """Git cloned an empty repository."""
 
     qualname = 'EmptyRepoError'

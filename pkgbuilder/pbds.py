@@ -26,7 +26,6 @@ __all__ = ('PBDS',)
 
 
 class PBDS(object):
-
     """PKGBUILDer Data Storage."""
 
     # For fancy-schmancy messages stolen from makepkg.
@@ -101,7 +100,7 @@ class PBDS(object):
     # Configuration file support
     config = configparser.ConfigParser()
     config.read_string(pkg_resources.resource_string(
-                'pkgbuilder', 'data/pkgbuilder.ini.skel').decode('utf-8'))
+        'pkgbuilder', 'data/pkgbuilder.ini.skel').decode('utf-8'))
     config.read([confpath], encoding='utf-8')
 
     # Language changing
@@ -163,7 +162,7 @@ class PBDS(object):
 
         return self._pyc
 
-    def run_command(self, args, prepend=[], asonearg=False):
+    def run_command(self, args, prepend=None, asonearg=False):
         """
         Run a command.
 
@@ -173,6 +172,8 @@ class PBDS(object):
 
         .. note:: since version 2.1.6.2, ``args`` must be a list.
         """
+        if prepend is None:
+            prepend = []
         if asonearg:
             return subprocess.call(prepend + [' '.join(args)])
         else:

@@ -21,7 +21,6 @@ __all__ = ('AUR',)
 
 
 class AUR(object):
-
     """
     Call the AUR API.
 
