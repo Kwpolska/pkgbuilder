@@ -41,13 +41,13 @@ def info(pkgnames):
         return [AURPackage.from_aurdict(d) for d in aur_pkgs['results']]
 
 
-def search(pkgname):
+def search(pkgname, search_by='name-desc'):
     """Search for AUR packages.
 
     .. versionchanged:: 3.0.0
 
     """
-    aur_pkgs = RPC.request('search', pkgname)
+    aur_pkgs = RPC.search(search_by, pkgname)
     if aur_pkgs['type'] == 'error':
         raise AURError(aur_pkgs['error'])
     else:
@@ -60,7 +60,7 @@ def msearch(maintainer):
     .. versionadded:: 3.0.0
 
     """
-    aur_pkgs = RPC.request('msearch', maintainer)
+    aur_pkgs = RPC.search('maintainer', maintainer)
     if aur_pkgs['type'] == 'error':
         raise AURError(aur_pkgs['error'])
     else:
