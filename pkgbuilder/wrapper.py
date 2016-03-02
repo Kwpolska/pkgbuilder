@@ -25,7 +25,7 @@ import sys
 import os
 
 __all__ = ('main', 'wrapper')
-__wrapperversion__ = '0.5.1'
+__wrapperversion__ = '0.5.2'
 
 
 def main():
@@ -72,13 +72,13 @@ def wrapper(source='AUTO'):
         log.debug('Got -S, preparing to parse arguments...')
         pacmanshort = ['f', 'g', 'l', 'p', 'q']
         pacmanlong = ['asdeps', 'asexplicit', 'dbonly', 'downloadonly',
-                      'force', 'groups', 'list', 'needed',
-                      'nodeps', 'noprogressbar', 'noscriptlet', 'print',
-                      'quiet', 'verbose']
+                      'force', 'groups', 'list', 'needed', 'nodeps',
+                      'noprogressbar', 'noscriptlet', 'print', 'quiet',
+                      'verbose']
         pacmanshorta = ['b', 'r']
         pacmanlonga = ['arch', 'cachedir', 'config', 'dbpath', 'gpgdir',
-                       'ignore', 'ignoregroup', 'logfile', 'print-format',
-                       'root', 'assume-installed']
+                       'hookdir', 'ignore', 'ignoregroup', 'logfile',
+                       'print-format', 'root', 'assume-installed']
 
         pbshort = ['D', 'C', 'F']
         pblong = ['fetch', 'userfetch', 'vcsupgrade', 'novcsupgrade', 'colors',
