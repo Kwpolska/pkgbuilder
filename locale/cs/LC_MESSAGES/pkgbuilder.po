@@ -1,13 +1,13 @@
 # PKGBUILDer pot file.
-# Copyright © 2015, Chris Warrick.
+# Copyright © 2011-2016, Chris Warrick.
 # This file is distributed under the same license as the PKGBUILDer package.
 #
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.4\n"
+"Project-Id-Version: 4.2.5\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2015-12-12 12:13+0100\n"
+"POT-Creation-Date: 2016-03-02 19:50+0100\n"
 "PO-Revision-Date: 2015-09-08 15:37+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/kwpolska/pkgbuilder/language/"
@@ -18,149 +18,149 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: pkgbuilder/build.py:53
+#: pkgbuilder/build.py:55
 msgid "The build succeeded."
 msgstr ""
 
-#: pkgbuilder/build.py:60
+#: pkgbuilder/build.py:62
 msgid "Building more AUR packages is required."
 msgstr ""
 
-#: pkgbuilder/build.py:72
+#: pkgbuilder/build.py:74
 #, python-brace-format
 msgid "found an existing package for {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:111
+#: pkgbuilder/build.py:113
 #, python-brace-format
 msgid "makepkg (or someone else) failed and returned {0}."
 msgstr ""
 
-#: pkgbuilder/build.py:275
+#: pkgbuilder/build.py:277
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:334 pkgbuilder/__main__.py:309
+#: pkgbuilder/build.py:336 pkgbuilder/__main__.py:309
 msgid "Fetching package information..."
 msgstr ""
 
-#: pkgbuilder/build.py:365
+#: pkgbuilder/build.py:367
 msgid ":: Retrieving packages from abs..."
 msgstr ""
 
-#: pkgbuilder/build.py:368
+#: pkgbuilder/build.py:370
 #, python-brace-format
 msgid "retrieving {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:372 pkgbuilder/build.py:424
+#: pkgbuilder/build.py:374 pkgbuilder/build.py:426
 #, python-brace-format
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr ""
 
-#: pkgbuilder/build.py:376
+#: pkgbuilder/build.py:378
 msgid ":: Retrieving packages from aur..."
 msgstr ""
 
-#: pkgbuilder/build.py:379
+#: pkgbuilder/build.py:381
 #, python-brace-format
 msgid "cloning {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:382
+#: pkgbuilder/build.py:384
 msgid "Successfully fetched: "
 msgstr ""
 
-#: pkgbuilder/build.py:412
+#: pkgbuilder/build.py:414
 #, python-brace-format
 msgid "Building {0}..."
 msgstr ""
 
-#: pkgbuilder/build.py:420
+#: pkgbuilder/build.py:422
 msgid "Retrieving from ABS..."
 msgstr ""
 
-#: pkgbuilder/build.py:429 pkgbuilder/build.py:445
+#: pkgbuilder/build.py:431 pkgbuilder/build.py:447
 #, python-brace-format
 msgid "Found an existing package for {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:450
+#: pkgbuilder/build.py:452
 msgid "Cloning the git repository..."
 msgstr ""
 
-#: pkgbuilder/build.py:457
+#: pkgbuilder/build.py:459
 msgid "Checking dependencies..."
 msgstr ""
 
-#: pkgbuilder/build.py:460
+#: pkgbuilder/build.py:462
 msgid "found in system"
 msgstr ""
 
-#: pkgbuilder/build.py:460
+#: pkgbuilder/build.py:462
 msgid "found in repos"
 msgstr ""
 
-#: pkgbuilder/build.py:461
+#: pkgbuilder/build.py:463
 msgid "found in the AUR"
 msgstr ""
 
-#: pkgbuilder/build.py:464
+#: pkgbuilder/build.py:466
 msgid "none found"
 msgstr ""
 
-#: pkgbuilder/exceptions.py:57
+#: pkgbuilder/exceptions.py:55
 #, python-brace-format
 msgid "AUR Error: {0}"
 msgstr ""
 
-#: pkgbuilder/exceptions.py:77
+#: pkgbuilder/exceptions.py:74
 #, python-brace-format
 msgid "makepkg returned {0}."
 msgstr ""
 
-#: pkgbuilder/exceptions.py:105
+#: pkgbuilder/exceptions.py:101
 #, python-brace-format
 msgid "Network error: {0} (via {1})"
 msgstr ""
 
-#: pkgbuilder/exceptions.py:116
+#: pkgbuilder/exceptions.py:111
 #, python-brace-format
 msgid "Connection error: {0} (via {1})"
 msgstr ""
 
-#: pkgbuilder/exceptions.py:131
+#: pkgbuilder/exceptions.py:125
 #, python-brace-format
 msgid "HTTP Error {0} (via {1})"
 msgstr ""
 
-#: pkgbuilder/exceptions.py:166
+#: pkgbuilder/exceptions.py:159
 #, python-brace-format
 msgid "{0} (Package: {1})"
 msgstr ""
 
-#: pkgbuilder/exceptions.py:180
+#: pkgbuilder/exceptions.py:172
 #, python-brace-format
 msgid "Package {0} not found. (via {1})"
 msgstr ""
 
-#: pkgbuilder/exceptions.py:209
+#: pkgbuilder/exceptions.py:200
 #, python-brace-format
 msgid "Sanity error!  {0} (via {1})"
 msgstr ""
 
-#: pkgbuilder/exceptions.py:223
+#: pkgbuilder/exceptions.py:213
 #, python-brace-format
 msgid "git clone returned {0}."
 msgstr ""
 
-#: pkgbuilder/exceptions.py:239
+#: pkgbuilder/exceptions.py:228
 #, python-brace-format
 msgid "Directory {0} exists, but is not a git repository."
 msgstr ""
 
-#: pkgbuilder/exceptions.py:257
+#: pkgbuilder/exceptions.py:245
 #, python-brace-format
 msgid "Repository {0} is empty."
 msgstr ""
@@ -372,60 +372,60 @@ msgid ""
 msgstr ""
 
 #. TRANSLATORS: see makepkg.
-#: pkgbuilder/pbds.py:55
+#: pkgbuilder/pbds.py:54
 msgid "Aborted by user! Exiting..."
 msgstr ""
 
 #. TRANSLATORS: see pacman.
-#: pkgbuilder/pbds.py:57
+#: pkgbuilder/pbds.py:56
 msgid "Interrupt signal received\n"
 msgstr ""
 
-#: pkgbuilder/pbds.py:141
+#: pkgbuilder/pbds.py:140
 #, python-brace-format
 msgid "warning: conflicting values for setting {0}, using {1}"
 msgstr ""
 
-#: pkgbuilder/pbds.py:152
+#: pkgbuilder/pbds.py:151
 msgid "Initializing pacman access..."
 msgstr ""
 
-#: pkgbuilder/pbds.py:203
+#: pkgbuilder/pbds.py:204
 msgid ""
 "Running as root is not allowed as it can cause catastrophic damage to your "
 "system!"
 msgstr ""
 
-#: pkgbuilder/pbds.py:205
+#: pkgbuilder/pbds.py:206
 msgid "Please restart PKGBUILDer as a regular user."
 msgstr ""
 
-#: pkgbuilder/pbds.py:267
+#: pkgbuilder/pbds.py:268
 msgid "WARNING:"
 msgstr ""
 
-#: pkgbuilder/pbds.py:281
+#: pkgbuilder/pbds.py:282
 msgid "ERROR:"
 msgstr ""
 
-#: pkgbuilder/transaction.py:172
+#: pkgbuilder/transaction.py:170
 msgid "Installing built packages..."
 msgstr ""
 
-#: pkgbuilder/transaction.py:174
+#: pkgbuilder/transaction.py:172
 #, python-brace-format
 msgid "Running transaction from file {0}..."
 msgstr ""
 
-#: pkgbuilder/transaction.py:177
+#: pkgbuilder/transaction.py:175
 msgid "Running transaction..."
 msgstr ""
 
-#: pkgbuilder/transaction.py:198
+#: pkgbuilder/transaction.py:196
 msgid "Transaction succeeded."
 msgstr ""
 
-#: pkgbuilder/transaction.py:202
+#: pkgbuilder/transaction.py:200
 #, python-brace-format
 msgid "Deleted transaction file {0}"
 msgstr ""
@@ -433,56 +433,56 @@ msgstr ""
 #. special case: retrying the transaction is not helpful, as it
 #. won't help fix the validation status.  The user should
 #. investigate by reading the build logs and acting accordingly.
-#: pkgbuilder/transaction.py:216
+#: pkgbuilder/transaction.py:214
 msgid "Some packages failed to build."
 msgstr ""
 
-#: pkgbuilder/transaction.py:218
+#: pkgbuilder/transaction.py:216
 msgid "Transaction failed!"
 msgstr ""
 
-#: pkgbuilder/transaction.py:221
+#: pkgbuilder/transaction.py:219
 msgid "To retry, run:"
 msgstr ""
 
-#: pkgbuilder/transaction.py:260
+#: pkgbuilder/transaction.py:258
 msgid "Moving to /var/cache/pacman/pkg/..."
 msgstr ""
 
-#: pkgbuilder/transaction.py:279
+#: pkgbuilder/transaction.py:277
 #, python-brace-format
 msgid "Package file {0} not found"
 msgstr ""
 
-#: pkgbuilder/transaction.py:297
+#: pkgbuilder/transaction.py:295
 #, python-brace-format
 msgid "Signature file {0} not found"
 msgstr ""
 
-#: pkgbuilder/transaction.py:322
+#: pkgbuilder/transaction.py:320
 msgid "Installing with pacman -U..."
 msgstr ""
 
-#: pkgbuilder/transaction.py:356
+#: pkgbuilder/transaction.py:354
 msgid "Validating installation status..."
 msgstr ""
 
-#: pkgbuilder/transaction.py:375
+#: pkgbuilder/transaction.py:373
 #, python-brace-format
 msgid "{0}: not an AUR package"
 msgstr ""
 
-#: pkgbuilder/transaction.py:380 pkgbuilder/transaction.py:395
+#: pkgbuilder/transaction.py:378 pkgbuilder/transaction.py:393
 #, python-brace-format
 msgid "{0}: installed {1}"
 msgstr ""
 
-#: pkgbuilder/transaction.py:385
+#: pkgbuilder/transaction.py:383
 #, python-brace-format
 msgid "{0}: NOT installed"
 msgstr ""
 
-#: pkgbuilder/transaction.py:390
+#: pkgbuilder/transaction.py:388
 #, python-brace-format
 msgid "{0}: outdated {1}"
 msgstr ""
@@ -560,13 +560,13 @@ msgstr ""
 msgid "Didn’t pass any packages."
 msgstr ""
 
-#: pkgbuilder/utils.py:133
+#: pkgbuilder/utils.py:134
 msgid "Trying to use utils.print_package_info with an ABS package"
 msgstr ""
 
 #. TRANSLATORS: space it properly.  “yes/no” below are
 #. for “out of date”.
-#: pkgbuilder/utils.py:153
+#: pkgbuilder/utils.py:154
 #, python-brace-format
 msgid ""
 "Repository     : aur\n"
@@ -592,11 +592,11 @@ msgid ""
 "Description    : {dsc}\n"
 msgstr ""
 
-#: pkgbuilder/utils.py:182
+#: pkgbuilder/utils.py:183
 msgid "yes"
 msgstr ""
 
-#: pkgbuilder/utils.py:184
+#: pkgbuilder/utils.py:185
 msgid "no"
 msgstr ""
 
