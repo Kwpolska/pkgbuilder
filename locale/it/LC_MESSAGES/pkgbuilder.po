@@ -1,7 +1,7 @@
 # PKGBUILDer pot file.
 # Copyright © 2011-2016, Chris Warrick.
 # This file is distributed under the same license as the PKGBUILDer package.
-# 
+#
 # Translators:
 # Bernardo Miguel Savone <bmsavone@gmail.com>, 2013-2014
 # Bernardo Miguel Savone <bmsavone@gmail.com>, 2013
@@ -10,16 +10,17 @@
 # Chris Warrick <kwpolska@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: PKGBUILDer\n"
+"Project-Id-Version: 4.2.5\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2016-03-02 19:46+0100\n"
+"POT-Creation-Date: 2016-03-02 19:50+0100\n"
 "PO-Revision-Date: 2015-09-08 15:38+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
-"Language-Team: Italian (http://www.transifex.com/kwpolska/pkgbuilder/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/kwpolska/pkgbuilder/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: pkgbuilder/build.py:55
@@ -285,7 +286,8 @@ msgstr ""
 
 #: pkgbuilder/__main__.py:119
 msgid "don't check if packages were installed after build"
-msgstr "non controllare se i pacchetti sono stati installati dopo la costruzione"
+msgstr ""
+"non controllare se i pacchetti sono stati installati dopo la costruzione"
 
 #: pkgbuilder/__main__.py:123
 msgid "install packages after building (default)"
@@ -373,7 +375,9 @@ msgstr ""
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
-msgstr "PKGBUILDer (o la libreria richiesta) ha avuto problemi nell' soddisfare a una richiesta HTTP."
+msgstr ""
+"PKGBUILDer (o la libreria richiesta) ha avuto problemi nell' soddisfare a "
+"una richiesta HTTP."
 
 #. TRANSLATORS: see makepkg.
 #: pkgbuilder/pbds.py:54
@@ -383,7 +387,9 @@ msgstr "Annullato dall'utente! Uscita..."
 #. TRANSLATORS: see pacman.
 #: pkgbuilder/pbds.py:56
 msgid "Interrupt signal received\n"
-msgstr "interrompere ssegnale ricevuto\n\n"
+msgstr ""
+"interrompere ssegnale ricevuto\n"
+"\n"
 
 #: pkgbuilder/pbds.py:140
 #, python-brace-format
@@ -533,7 +539,8 @@ msgstr "Nuova versione"
 #. string stolen from pacman
 #: pkgbuilder/upgrade.py:182
 msgid "warning: insufficient columns available for table display"
-msgstr "attenzione: colonne disponibili insufficienti per visualizzare la tabella"
+msgstr ""
+"attenzione: colonne disponibili insufficienti per visualizzare la tabella"
 
 #: pkgbuilder/upgrade.py:200
 msgid "Fetch the packages? [Y/n] "
@@ -624,7 +631,19 @@ msgid ""
 "\n"
 "Additional options:\n"
 "  -L, --unlock         unlock the pacman database"
-msgstr "utilizzo:  {0} <operazione> [...]\n\nPBWrapper, un wrapper per pacman e PKGBUILDer.\n\n{1}\n\nSi applicano le sintassi di Pacman e PKGBUILDer.  Consultare i loro comandi manpages/help\nper maggiori dettagli.\n\nOpzioni addizionali:\n  -L, --unlock         sblocca il database di pacman"
+msgstr ""
+"utilizzo:  {0} <operazione> [...]\n"
+"\n"
+"PBWrapper, un wrapper per pacman e PKGBUILDer.\n"
+"\n"
+"{1}\n"
+"\n"
+"Si applicano le sintassi di Pacman e PKGBUILDer.  Consultare i loro comandi "
+"manpages/help\n"
+"per maggiori dettagli.\n"
+"\n"
+"Opzioni addizionali:\n"
+"  -L, --unlock         sblocca il database di pacman"
 
 #. A module only for gettext locale provision.
 #: localeprovider.py:2
