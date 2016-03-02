@@ -65,6 +65,8 @@ setup(name='pkgbuilder',
                                                    'pkgbuilder.mo']),
                   ('share/locale/pt/LC_MESSAGES', ['locale/pt/LC_MESSAGES/'
                                                    'pkgbuilder.mo']),
+                  #('share/locale/pt_BR/LC_MESSAGES',
+                   #['locale/pt_BR/LC_MESSAGES/pkgbuilder.mo']),
                   ('share/locale/sk/LC_MESSAGES', ['locale/sk/LC_MESSAGES/'
                                                    'pkgbuilder.mo']),
                   ('share/locale/sv/LC_MESSAGES', ['locale/sv/LC_MESSAGES/'
