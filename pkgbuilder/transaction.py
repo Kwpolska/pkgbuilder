@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.4
+# PKGBUILDer v4.2.5
 # An AUR helper (and library) in Python 3.
-# Copyright © 2011-2015, Chris Warrick.
+# Copyright © 2011-2016, Chris Warrick.
 # See /LICENSE for licensing information.
 
 """
@@ -9,18 +9,18 @@ Package installation transactions.
 
 .. versionadded:: 4.1.0
 
-:Copyright: © 2011-2015, Chris Warrick.
+:Copyright: © 2011-2016, Chris Warrick.
 :License: BSD (see /LICENSE).
 """
 
-from . import DS, _, __version__
-import pkgbuilder.utils
-import pyalpm
 import os
 import os.path
+import time
 import json
 import enum
-import time
+import pkgbuilder.utils
+import pyalpm
+from . import DS, _, __version__
 
 __all__ = ('generate_filename', 'Transaction', 'TransactionStatus')
 
@@ -35,7 +35,6 @@ def generate_filename(absolute=True):
 
 
 class TransactionStatus(enum.Enum):
-
     """Transaction status."""
 
     # validate, move, install, success
@@ -49,7 +48,6 @@ class TransactionStatus(enum.Enum):
 
 
 class Transaction(object):
-
     """A package transaction."""
 
     def __init__(self, pkgnames, pkgpaths, sigpaths, asdeps=True, uopt='',

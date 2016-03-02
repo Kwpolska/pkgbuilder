@@ -1,13 +1,13 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.4
+# PKGBUILDer v4.2.5
 # An AUR helper (and library) in Python 3.
-# Copyright © 2011-2015, Chris Warrick.
+# Copyright © 2011-2016, Chris Warrick.
 # See /LICENSE for licensing information.
 
 """
 Call the AUR API.
 
-:Copyright: © 2011-2015, Chris Warrick.
+:Copyright: © 2011-2016, Chris Warrick.
 :License: BSD (see /LICENSE).
 """
 
@@ -21,7 +21,6 @@ __all__ = ('AUR',)
 
 
 class AUR(object):
-
     """
     Call the AUR API.
 
@@ -48,8 +47,8 @@ class AUR(object):
     """
 
     base = 'https://aur.archlinux.org'
-    rpcver = 4
-    _rpc = '/rpc.php?v='
+    rpcver = 5
+    _rpc = '/rpc/?v='
     emptystr = '{"version":%s,"type":"%s","resultcount":0,"results":[]}'
     ua = 'PKGBUILDer/' + pkgbuilder.__version__
 
@@ -58,14 +57,17 @@ class AUR(object):
         """Return the RPC URL."""
         return self.base + self._rpc + str(self.rpcver)
 
-    def jsonreq(self, rtype, arg):
-        """Make a request and returns plain JSON data."""
+    def jsonreq(self, rtype, arg, search_by=None):
+        """Make a request and return plain JSON data."""
         if arg == []:
             # No need to bother.
             return self.emptystr % (self.rpcver, rtype)
 
+        params = {'type': rtype, 'arg': arg}
+        if search_by is not None:
+            params['search_by'] = search_by
         try:
-            req = requests.get(self.rpc, params={'type': rtype, 'arg': arg},
+            req = requests.get(self.rpc, params=params,
                                headers={'User-Agent': self.ua})
             req.raise_for_status()
         except requests.exceptions.ConnectionError as e:
@@ -78,7 +80,7 @@ class AUR(object):
         return req.text
 
     def jsonmultiinfo(self, args):
-        """Make a multiinfo request and returns plain JSON data."""
+        """Make a multiinfo request and return plain JSON data."""
         if args == []:
             # No need to bother.
             return self.emptystr % (self.rpcver, 'multiinfo')
@@ -97,10 +99,14 @@ class AUR(object):
 
         return req.text
 
-    def request(self, rtype, arg):
-        """Make a request and returns the AURDict."""
-        return json.loads(self.jsonreq(rtype, arg))
+    def request(self, rtype, arg, search_by=None):
+        """Make a request and return the AURDict."""
+        return json.loads(self.jsonreq(rtype, arg, search_by))
+
+    def search(self, search_by, arg):
+        """Search the AUR and return the AURDict."""
+        return json.loads(self.jsonreq('search', arg, search_by))
 
     def multiinfo(self, args):
-        """Make a multiinfo request and returns the AURDict."""
+        """Make a multiinfo request and return the AURDict."""
         return json.loads(self.jsonmultiinfo(args))

@@ -1,13 +1,13 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.4
+# PKGBUILDer v4.2.5
 # An AUR helper (and library) in Python 3.
-# Copyright © 2011-2015, Chris Warrick.
+# Copyright © 2011-2016, Chris Warrick.
 # See /LICENSE for licensing information.
 
 """
 Tools for performing upgrades of AUR packages.
 
-:Copyright: © 2011-2015, Chris Warrick.
+:Copyright: © 2011-2016, Chris Warrick.
 :License: BSD (see /LICENSE).
 """
 

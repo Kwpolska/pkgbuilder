@@ -1,13 +1,13 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.4
+# PKGBUILDer v4.2.5
 # An AUR helper (and library) in Python 3.
-# Copyright © 2011-2015, Chris Warrick.
+# Copyright © 2011-2016, Chris Warrick.
 # See /LICENSE for licensing information.
 
 """
 The Package class, the most important class in PKGBUILDer.
 
-:Copyright: © 2011-2015, Chris Warrick.
+:Copyright: © 2011-2016, Chris Warrick.
 :License: BSD (see /LICENSE).
 """
 
@@ -23,7 +23,6 @@ def mktime(ts):
 
 
 class Package(object):
-
     """The base class for packages."""
 
     is_abs = None
@@ -64,7 +63,6 @@ class Package(object):
 
 
 class AURPackage(Package):
-
     """An AUR package."""
 
     repo = 'aur'
@@ -115,8 +113,8 @@ class AURPackage(Package):
                     setattr(p, bindings[k], v)
             except KeyError:
                 if k not in ignore:
-                    DS.log.warn('AURDict has an unknown {0} key: {1}'.format(
-                        k, aurdict))
+                    DS.log.warning('AURDict has an unknown %s key: %s',
+                                   k, aurdict)
 
         # Manual overrides.
         p.is_outdated = aurdict['OutOfDate'] is not None
@@ -132,7 +130,6 @@ class AURPackage(Package):
 
 
 class ABSPackage(Package):
-
     """An ABS package."""
 
     is_abs = True

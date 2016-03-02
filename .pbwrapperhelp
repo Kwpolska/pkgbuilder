@@ -29,6 +29,7 @@ options:
       --debug          display debug messages
       --force          force install, overwrite conflicting files
       --gpgdir <path>  set an alternate home directory for GnuPG
+      --hookdir <dir>  set an alternate hook location
       --ignore <pkg>   ignore a package upgrade (can be used more than once)
       --ignoregroup <grp>
                        ignore a group upgrade (can be used more than once)

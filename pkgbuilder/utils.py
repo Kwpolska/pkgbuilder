@@ -1,23 +1,23 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.4
+# PKGBUILDer v4.2.5
 # An AUR helper (and library) in Python 3.
-# Copyright © 2011-2015, Chris Warrick.
+# Copyright © 2011-2016, Chris Warrick.
 # See /LICENSE for licensing information.
 
 """
 Common global utilities, used mainly for AUR data access.
 
-:Copyright: © 2011-2015, Chris Warrick.
+:Copyright: © 2011-2016, Chris Warrick.
 :License: BSD (see /LICENSE).
 """
 
+import os
 from . import DS, _
 from .aur import AUR
 from .package import AURPackage
 from .ui import get_termwidth, hanging_indent, mlist
 from pkgbuilder.exceptions import SanityError, AURError
 import pyalpm
-import os
 import textwrap
 
 __all__ = ('info', 'search', 'msearch', 'print_package_search',
@@ -41,13 +41,13 @@ def info(pkgnames):
         return [AURPackage.from_aurdict(d) for d in aur_pkgs['results']]
 
 
-def search(pkgname):
+def search(pkgname, search_by='name-desc'):
     """Search for AUR packages.
 
     .. versionchanged:: 3.0.0
 
     """
-    aur_pkgs = RPC.request('search', pkgname)
+    aur_pkgs = RPC.search(search_by, pkgname)
     if aur_pkgs['type'] == 'error':
         raise AURError(aur_pkgs['error'])
     else:
@@ -60,7 +60,7 @@ def msearch(maintainer):
     .. versionadded:: 3.0.0
 
     """
-    aur_pkgs = RPC.request('msearch', maintainer)
+    aur_pkgs = RPC.search('maintainer', maintainer)
     if aur_pkgs['type'] == 'error':
         raise AURError(aur_pkgs['error'])
     else:
@@ -99,10 +99,10 @@ def print_package_search(pkg, cachemode=False, prefix='', prefixp=''):
 
     descl = textwrap.wrap(pkg.description, termwidth - len(prefixp2))
 
-    desc = []
+    desc2 = []
     for i in descl:
-        desc.append(prefix2 + i)
-    desc = '\n'.join(desc)
+        desc2.append(prefix2 + i)
+    desc = '\n'.join(desc2)
     if pkg.is_abs:
         base = (prefix + '{0}/{1} {2}{3}\n{4}')
         entry = (base.format(category, pkg.name, pkg.version, installed, desc))
@@ -126,7 +126,8 @@ def print_package_info(pkgs, cachemode=False):
 
     """
     if pkgs == []:
-        raise SanityError(_('Didn’t pass any packages.'))
+        raise SanityError(_('Didn’t pass any packages.'),
+                          source='utils.print_package_info')
     else:
         for i in pkgs:
             if not isinstance(i, AURPackage):

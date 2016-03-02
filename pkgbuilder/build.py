@@ -1,13 +1,13 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.4
+# PKGBUILDer v4.2.5
 # An AUR helper (and library) in Python 3.
-# Copyright © 2011-2015, Chris Warrick.
+# Copyright © 2011-2016, Chris Warrick.
 # See /LICENSE for licensing information.
 
 """
 Build AUR packages.
 
-:Copyright: © 2011-2015, Chris Warrick.
+:Copyright: © 2011-2016, Chris Warrick.
 :License: BSD (see /LICENSE).
 """
 
@@ -33,7 +33,7 @@ __all__ = ('auto_build', 'clone', 'rsync', 'prepare_deps', 'depcheck',
 
 
 def auto_build(pkgname, performdepcheck=True,
-               pkginstall=True, completelist=[]):
+               pkginstall=True, completelist=None):
     """A function that builds everything, that should be used by everyone.
 
     This function makes building AUR deps possible.
@@ -47,6 +47,8 @@ def auto_build(pkgname, performdepcheck=True,
         .__main__.main() will do that.
 
     """
+    if completelist is None:
+        completelist = []
     build_result = build_runner(pkgname, performdepcheck, pkginstall)
     try:
         if build_result[0] == 0:
@@ -291,34 +293,34 @@ def depcheck(depends, pkgobj=None):
 
 
 def find_packagefile(pdir):
-        """Find a package file (*.pkg.tar.xz) and signatures, if any."""
-        # .pkg.tar.xz FTW, but some people change that.
-        # (note that PKGBUILDs can do it, too!)
-        # Moreover, dumb PKGBUILDs can remove that `.pkg.tar` part.  `makepkg`s
-        # `case` switch for PKGEXT uses: *tar *tar.xz *tar.gz *.tar.bz2
-        #                                *tar.lrz *tar.lzo *.tar.Z
-        # …and a catch-all that shows a warning and makes a .tar anyways.
-        # I decided to leave it in, because we would catch e.g. source tarballs
-        # or ANYTHING, REALLY if I did not.
-        pkgfilestr = os.path.abspath(os.path.join(pdir, '*-*-*.pkg.tar*{0}'))
+    """Find a package file (*.pkg.tar.xz) and signatures, if any."""
+    # .pkg.tar.xz FTW, but some people change that.
+    # (note that PKGBUILDs can do it, too!)
+    # Moreover, dumb PKGBUILDs can remove that `.pkg.tar` part.  `makepkg`s
+    # `case` switch for PKGEXT uses: *tar *tar.xz *tar.gz *.tar.bz2
+    #                                *tar.lrz *tar.lzo *.tar.Z
+    # …and a catch-all that shows a warning and makes a .tar anyways.
+    # I decided to leave it in, because we would catch e.g. source tarballs
+    # or ANYTHING, REALLY if I did not.
+    pkgfilestr = os.path.abspath(os.path.join(pdir, '*-*-*.pkg.tar*{0}'))
 
-        # We use sets so we can do stuff easier down there.
-        #
-        # Originally, this code was much longer, completely ignored
-        # split packages and other shenanigans.  Moreover, the first two
-        # asterisk wildcards in the pkgfilestr were format-tokens.  Three tests
-        # occurred:
-        #
-        # 1. pkg.name; pkg.version; ''
-        # 2. pkg.name; date in yyyymmdd format (old practice); ''
-        # 3. pkg.name; *; * [called “crappy packages”]
-        #
-        # To add insult to injury: if-elif-elif.
+    # We use sets so we can do stuff easier down there.
+    #
+    # Originally, this code was much longer, completely ignored
+    # split packages and other shenanigans.  Moreover, the first two
+    # asterisk wildcards in the pkgfilestr were format-tokens.  Three tests
+    # occurred:
+    #
+    # 1. pkg.name; pkg.version; ''
+    # 2. pkg.name; date in yyyymmdd format (old practice); ''
+    # 3. pkg.name; *; * [called “crappy packages”]
+    #
+    # To add insult to injury: if-elif-elif.
 
-        pkgs = set(glob.glob(pkgfilestr.format('')))
-        sigs = set(glob.glob(pkgfilestr.format('.sig')))
+    pkgs = set(glob.glob(pkgfilestr.format('')))
+    sigs = set(glob.glob(pkgfilestr.format('.sig')))
 
-        return list(pkgs - sigs), list(sigs)
+    return list(pkgs - sigs), list(sigs)
 
 
 def fetch_runner(pkgnames, preprocessed=False):
@@ -354,8 +356,8 @@ def fetch_runner(pkgnames, preprocessed=False):
 
         for pkg in allpkgs:
             if not pkg:
-                raise pkgbuilder.exceptions.PackageNotFoundError(pkgname,
-                                                                 'fetch')
+                raise pkgbuilder.exceptions.PackageNotFoundError(
+                    pkg.name, 'fetch')
             if pkg.is_abs:
                 abspkgs.append(pkg)
             else:
