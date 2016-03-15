@@ -6,9 +6,9 @@
 # Thiago Perrotta <inactive+thiagowfx@transifex.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.5\n"
+"Project-Id-Version: 4.2.6\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2016-03-02 19:50+0100\n"
+"POT-Creation-Date: 2016-03-15 18:59+0100\n"
 "PO-Revision-Date: 2015-09-08 15:38+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/kwpolska/pkgbuilder/"
@@ -37,77 +37,77 @@ msgstr "um pacote existente para {0} foi encontrado"
 msgid "makepkg (or someone else) failed and returned {0}."
 msgstr "makepkg (ou outro programa) falhou e retornou {0}."
 
-#: pkgbuilder/build.py:277
+#: pkgbuilder/build.py:291
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr "Falhou para satisfazer os requisitos de dependência do pacote: {0}"
 
-#: pkgbuilder/build.py:336 pkgbuilder/__main__.py:309
+#: pkgbuilder/build.py:350 pkgbuilder/__main__.py:309
 msgid "Fetching package information..."
 msgstr "Obtendo informações do pacote.."
 
-#: pkgbuilder/build.py:367
+#: pkgbuilder/build.py:381
 msgid ":: Retrieving packages from abs..."
 msgstr ":: Obtendo pacotes do abs..."
 
-#: pkgbuilder/build.py:370
+#: pkgbuilder/build.py:384
 #, python-brace-format
 msgid "retrieving {0}"
 msgstr "recebendo {0}"
 
-#: pkgbuilder/build.py:374 pkgbuilder/build.py:426
+#: pkgbuilder/build.py:388 pkgbuilder/build.py:440
 #, python-brace-format
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr "Falhou para obter {0} (do ABS/rsync)."
 
-#: pkgbuilder/build.py:378
+#: pkgbuilder/build.py:392
 msgid ":: Retrieving packages from aur..."
 msgstr ":: Obtendo pacotes do aur..."
 
-#: pkgbuilder/build.py:381
+#: pkgbuilder/build.py:395
 #, python-brace-format
 msgid "cloning {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:384
+#: pkgbuilder/build.py:398
 msgid "Successfully fetched: "
 msgstr "Baixou com sucesso:"
 
-#: pkgbuilder/build.py:414
+#: pkgbuilder/build.py:428
 #, python-brace-format
 msgid "Building {0}..."
 msgstr "Construindo {0}..."
 
-#: pkgbuilder/build.py:422
+#: pkgbuilder/build.py:436
 msgid "Retrieving from ABS..."
 msgstr "Recebendo do ABS..."
 
-#: pkgbuilder/build.py:431 pkgbuilder/build.py:447
+#: pkgbuilder/build.py:445 pkgbuilder/build.py:461
 #, python-brace-format
 msgid "Found an existing package for {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:452
+#: pkgbuilder/build.py:466
 msgid "Cloning the git repository..."
 msgstr ""
 
-#: pkgbuilder/build.py:459
+#: pkgbuilder/build.py:474
 msgid "Checking dependencies..."
 msgstr "Checando dependências.."
 
-#: pkgbuilder/build.py:462
+#: pkgbuilder/build.py:477
 msgid "found in system"
 msgstr "encontrado no sistema"
 
-#: pkgbuilder/build.py:462
+#: pkgbuilder/build.py:477
 msgid "found in repos"
 msgstr "encontrado nos repositórios"
 
-#: pkgbuilder/build.py:463
+#: pkgbuilder/build.py:478
 msgid "found in the AUR"
 msgstr "encontrado no AUR"
 
-#: pkgbuilder/build.py:466
+#: pkgbuilder/build.py:481
 msgid "none found"
 msgstr "nenhum encontrado"
 
