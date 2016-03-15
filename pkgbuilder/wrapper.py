@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 # PBWrapper v0.5.0
-# PKGBUILDer v4.2.5
+# PKGBUILDer v4.2.6
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2016, Chris Warrick.
 # See /LICENSE for licensing information.
