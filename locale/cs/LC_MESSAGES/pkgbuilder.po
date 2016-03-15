@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PKGBUILDer package.
 #
 # Translators:
+# Martin Kříž <liberte.czech@gmail.com>, 2016
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.5\n"
+"Project-Id-Version: 4.2.6\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2016-03-02 19:50+0100\n"
-"PO-Revision-Date: 2015-09-08 15:37+0000\n"
-"Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
+"POT-Creation-Date: 2016-03-15 18:59+0100\n"
+"PO-Revision-Date: 2016-03-12 14:33+0000\n"
+"Last-Translator: Martin Kříž <liberte.czech@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/kwpolska/pkgbuilder/language/"
 "cs/)\n"
 "Language: cs\n"
@@ -20,100 +21,100 @@ msgstr ""
 
 #: pkgbuilder/build.py:55
 msgid "The build succeeded."
-msgstr ""
+msgstr "Úspěšně sestaveno."
 
 #: pkgbuilder/build.py:62
 msgid "Building more AUR packages is required."
-msgstr ""
+msgstr "Je nutné sestavení nových AUR balíčků."
 
 #: pkgbuilder/build.py:74
 #, python-brace-format
 msgid "found an existing package for {0}"
-msgstr ""
+msgstr "nalezen existující balíček pro {0}"
 
 #: pkgbuilder/build.py:113
 #, python-brace-format
 msgid "makepkg (or someone else) failed and returned {0}."
 msgstr ""
 
-#: pkgbuilder/build.py:277
+#: pkgbuilder/build.py:291
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:336 pkgbuilder/__main__.py:309
+#: pkgbuilder/build.py:350 pkgbuilder/__main__.py:309
 msgid "Fetching package information..."
 msgstr ""
 
-#: pkgbuilder/build.py:367
+#: pkgbuilder/build.py:381
 msgid ":: Retrieving packages from abs..."
 msgstr ""
 
-#: pkgbuilder/build.py:370
+#: pkgbuilder/build.py:384
 #, python-brace-format
 msgid "retrieving {0}"
-msgstr ""
+msgstr "načítání {0}"
 
-#: pkgbuilder/build.py:374 pkgbuilder/build.py:426
+#: pkgbuilder/build.py:388 pkgbuilder/build.py:440
 #, python-brace-format
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr ""
 
-#: pkgbuilder/build.py:378
+#: pkgbuilder/build.py:392
 msgid ":: Retrieving packages from aur..."
 msgstr ""
 
-#: pkgbuilder/build.py:381
+#: pkgbuilder/build.py:395
 #, python-brace-format
 msgid "cloning {0}"
-msgstr ""
+msgstr "klonování {0}"
 
-#: pkgbuilder/build.py:384
+#: pkgbuilder/build.py:398
 msgid "Successfully fetched: "
-msgstr ""
+msgstr "Úspěšně načteno:"
 
-#: pkgbuilder/build.py:414
+#: pkgbuilder/build.py:428
 #, python-brace-format
 msgid "Building {0}..."
-msgstr ""
+msgstr "Budování {0}..."
 
-#: pkgbuilder/build.py:422
+#: pkgbuilder/build.py:436
 msgid "Retrieving from ABS..."
-msgstr ""
+msgstr "Načítání z ABS..."
 
-#: pkgbuilder/build.py:431 pkgbuilder/build.py:447
+#: pkgbuilder/build.py:445 pkgbuilder/build.py:461
 #, python-brace-format
 msgid "Found an existing package for {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:452
-msgid "Cloning the git repository..."
-msgstr ""
-
-#: pkgbuilder/build.py:459
-msgid "Checking dependencies..."
-msgstr ""
-
-#: pkgbuilder/build.py:462
-msgid "found in system"
-msgstr ""
-
-#: pkgbuilder/build.py:462
-msgid "found in repos"
-msgstr ""
-
-#: pkgbuilder/build.py:463
-msgid "found in the AUR"
-msgstr ""
-
 #: pkgbuilder/build.py:466
+msgid "Cloning the git repository..."
+msgstr "Klonování git úložiště..."
+
+#: pkgbuilder/build.py:474
+msgid "Checking dependencies..."
+msgstr "Kontrola závislostí..."
+
+#: pkgbuilder/build.py:477
+msgid "found in system"
+msgstr "nalezen v systému"
+
+#: pkgbuilder/build.py:477
+msgid "found in repos"
+msgstr "nalezen v repozitářích"
+
+#: pkgbuilder/build.py:478
+msgid "found in the AUR"
+msgstr "nalezen v AUR"
+
+#: pkgbuilder/build.py:481
 msgid "none found"
-msgstr ""
+msgstr "nenalezen"
 
 #: pkgbuilder/exceptions.py:55
 #, python-brace-format
 msgid "AUR Error: {0}"
-msgstr ""
+msgstr "AUR Chyba: {0}"
 
 #: pkgbuilder/exceptions.py:74
 #, python-brace-format
@@ -185,7 +186,7 @@ msgstr ""
 
 #: pkgbuilder/__main__.py:47
 msgid "PACKAGE"
-msgstr ""
+msgstr "BALÍČEK"
 
 #: pkgbuilder/__main__.py:48
 msgid "AUR/ABS packages to build"
@@ -193,35 +194,35 @@ msgstr ""
 
 #: pkgbuilder/__main__.py:50
 msgid "operations"
-msgstr ""
+msgstr "opearce"
 
 #: pkgbuilder/__main__.py:53
 msgid "build in /tmp"
-msgstr ""
+msgstr "postaven v /tmp"
 
 #: pkgbuilder/__main__.py:56
 msgid "fetch package files"
-msgstr ""
+msgstr "načtení souborů balíčků"
 
 #: pkgbuilder/__main__.py:59
 msgid "USER"
-msgstr ""
+msgstr "UŽIVATEL"
 
 #: pkgbuilder/__main__.py:59
 msgid "fetch all package files of an user"
-msgstr ""
+msgstr "načíst všechny soubory balíčku uživatele"
 
 #: pkgbuilder/__main__.py:61
 msgid "view package information"
-msgstr ""
+msgstr "zobrazit informace o balíčku"
 
 #: pkgbuilder/__main__.py:64
 msgid "search the AUR for matching strings"
-msgstr ""
+msgstr "vyhledávat v AUR odpovídající řetězce"
 
 #: pkgbuilder/__main__.py:67
 msgid "upgrade installed AUR packages"
-msgstr ""
+msgstr "aktualizovat nainstalované AUR balíčky"
 
 #: pkgbuilder/__main__.py:70
 msgid "move package files to pacman cache and install them"
@@ -233,7 +234,7 @@ msgstr ""
 
 #: pkgbuilder/__main__.py:75
 msgid "options"
-msgstr ""
+msgstr "možnosti"
 
 #: pkgbuilder/__main__.py:79
 msgid "clean up work files before and after build"
@@ -325,7 +326,7 @@ msgstr ""
 
 #: pkgbuilder/__main__.py:156
 msgid "don't build in /tmp"
-msgstr ""
+msgstr "nestaví v /tmp"
 
 #: pkgbuilder/__main__.py:159
 msgid "build (instead of fetching)"
@@ -344,7 +345,7 @@ msgstr ""
 #. limitation and not an idea of yours truly.
 #: pkgbuilder/__main__.py:235
 msgid "Search query too short"
-msgstr ""
+msgstr "Hledaný výraz je příliš krátký"
 
 #: pkgbuilder/__main__.py:236
 msgid "Searching for exact match..."
@@ -352,7 +353,7 @@ msgstr ""
 
 #: pkgbuilder/__main__.py:239
 msgid "not found"
-msgstr ""
+msgstr "nenalezeno"
 
 #: pkgbuilder/__main__.py:314
 #, python-brace-format
@@ -362,7 +363,7 @@ msgstr ""
 #: pkgbuilder/__main__.py:342
 #, python-brace-format
 msgid "skipping package {0}"
-msgstr ""
+msgstr "přeskočení balíčku {0}"
 
 #. TRANSLATORS: do not translate the word 'requests'.
 #: pkgbuilder/__main__.py:372
@@ -374,7 +375,7 @@ msgstr ""
 #. TRANSLATORS: see makepkg.
 #: pkgbuilder/pbds.py:54
 msgid "Aborted by user! Exiting..."
-msgstr ""
+msgstr "Zrušeno uživatelem! Ukončování..."
 
 #. TRANSLATORS: see pacman.
 #: pkgbuilder/pbds.py:56
@@ -402,44 +403,44 @@ msgstr ""
 
 #: pkgbuilder/pbds.py:268
 msgid "WARNING:"
-msgstr ""
+msgstr "VAROVÁNÍ:"
 
 #: pkgbuilder/pbds.py:282
 msgid "ERROR:"
-msgstr ""
+msgstr "CHYBA:"
 
 #: pkgbuilder/transaction.py:170
 msgid "Installing built packages..."
-msgstr ""
+msgstr "Instalace sestavených balíčků..."
 
 #: pkgbuilder/transaction.py:172
 #, python-brace-format
 msgid "Running transaction from file {0}..."
-msgstr ""
+msgstr "Je spuštěna operace ze souboru {0}..."
 
 #: pkgbuilder/transaction.py:175
 msgid "Running transaction..."
-msgstr ""
+msgstr "Je spuštěna operace..."
 
 #: pkgbuilder/transaction.py:196
 msgid "Transaction succeeded."
-msgstr ""
+msgstr "Operace dokončena."
 
 #: pkgbuilder/transaction.py:200
 #, python-brace-format
 msgid "Deleted transaction file {0}"
-msgstr ""
+msgstr "Smazaný soubor operace {0}"
 
 #. special case: retrying the transaction is not helpful, as it
 #. won't help fix the validation status.  The user should
 #. investigate by reading the build logs and acting accordingly.
 #: pkgbuilder/transaction.py:214
 msgid "Some packages failed to build."
-msgstr ""
+msgstr "Některé balíčky se nepodařilo vybudovat."
 
 #: pkgbuilder/transaction.py:216
 msgid "Transaction failed!"
-msgstr ""
+msgstr "Operace selhala!"
 
 #: pkgbuilder/transaction.py:219
 msgid "To retry, run:"
@@ -493,7 +494,7 @@ msgstr ""
 
 #: pkgbuilder/upgrade.py:118
 msgid "Starting full system upgrade..."
-msgstr ""
+msgstr "Spuštění aktualizace celého systému..."
 
 #: pkgbuilder/upgrade.py:123
 #, python-brace-format
@@ -516,49 +517,49 @@ msgstr ""
 
 #: pkgbuilder/upgrade.py:159
 msgid "Name"
-msgstr ""
+msgstr "Jméno"
 
 #: pkgbuilder/upgrade.py:159
 msgid "Old Version"
-msgstr ""
+msgstr "Stará Verze"
 
 #: pkgbuilder/upgrade.py:159
 msgid "New Version"
-msgstr ""
+msgstr "Nová Verze"
 
 #. string stolen from pacman
 #: pkgbuilder/upgrade.py:182
 msgid "warning: insufficient columns available for table display"
-msgstr ""
+msgstr "Varování: není dostatek sloupců pro zobrazení tabulky"
 
 #: pkgbuilder/upgrade.py:200
 msgid "Fetch the packages? [Y/n] "
-msgstr ""
+msgstr "Načíst balíčky? [A/n]"
 
 #: pkgbuilder/upgrade.py:202
 msgid "Proceed with installation? [Y/n] "
-msgstr ""
+msgstr "Pokračujte v instalaci? [A/n]"
 
 #: pkgbuilder/utils.py:88
 #, python-brace-format
 msgid " [installed: {0}]"
-msgstr ""
+msgstr "[nainstalováno: {0}]"
 
 #: pkgbuilder/utils.py:90
 msgid " [installed]"
-msgstr ""
+msgstr "[nainstalováno]"
 
 #: pkgbuilder/utils.py:94
 msgid "[out of date]"
-msgstr ""
+msgstr "[zastaralé]"
 
 #: pkgbuilder/utils.py:112
 msgid "votes"
-msgstr ""
+msgstr "hlasy"
 
 #: pkgbuilder/utils.py:129
 msgid "Didn’t pass any packages."
-msgstr ""
+msgstr "Některé balíky neprošly."
 
 #: pkgbuilder/utils.py:134
 msgid "Trying to use utils.print_package_info with an ABS package"
@@ -594,11 +595,11 @@ msgstr ""
 
 #: pkgbuilder/utils.py:183
 msgid "yes"
-msgstr ""
+msgstr "ano"
 
 #: pkgbuilder/utils.py:185
 msgid "no"
-msgstr ""
+msgstr "ne"
 
 #: pkgbuilder/wrapper.py:109
 #, python-format
@@ -625,7 +626,7 @@ msgstr ""
 #. A module only for gettext locale provision.
 #: localeprovider.py:2
 msgid "usage"
-msgstr ""
+msgstr "využití"
 
 #: localeprovider.py:3
 msgid "positional arguments"
@@ -637,4 +638,4 @@ msgstr ""
 
 #: localeprovider.py:5
 msgid "show this help message and exit"
-msgstr ""
+msgstr "zobrazit tuto nápovědu a ukončit"
