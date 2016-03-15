@@ -172,6 +172,20 @@ def _check_and_append(data, field, out):
         out += data[field]
 
 
+def find_subpackages(srcinfo_path, pkgname=None):
+    """Find subpackages (split packages) in a package.
+
+    .. versionadded: 4.2.6
+    """
+    with open(srcinfo_path, encoding='utf-8') as fh:
+        raw = fh.read()
+
+    data, errors = srcinfo.parse.parse_srcinfo(raw)
+    if errors:
+        raise pkgbuilder.exceptions.PackageError(
+            'malformed .SRCINFO: {0}'.format(errors), 'prepare_deps')
+    return [data['pkgbase']] + list(data['packages'].keys())
+
 def prepare_deps(srcinfo_path, pkgname=None):
     """Get (make)depends from a .SRCINFO file and returns them.
 
@@ -407,7 +421,7 @@ def build_runner(pkgname, performdepcheck=True,
         abspkg = pyalpm.find_satisfier(syncpkgs, pkgname)
         if abspkg:  # abspkg can be None or a pyalpm.Package object.
             pkg = pkgbuilder.package.ABSPackage.from_pyalpm(abspkg)
-
+            subpackages = [pkg.name]  # no way to get it
     if not pkg:
         raise pkgbuilder.exceptions.PackageNotFoundError(pkgname, 'build')
 
@@ -454,6 +468,7 @@ def build_runner(pkgname, performdepcheck=True,
         os.chdir('./{0}/'.format(pkg.packagebase))
         if not os.path.exists('.SRCINFO'):
             raise pkgbuilder.exceptions.EmptyRepoError(pkg.packagebase)
+        subpackages = find_subpackages(os.path.abspath('./.SRCINFO'))
 
     if performdepcheck:
         DS.fancy_msg(_('Checking dependencies...'))
@@ -466,8 +481,12 @@ def build_runner(pkgname, performdepcheck=True,
             DS.fancy_msg2(_('none found'))
 
         for dpkg, pkgtype in deps.items():
-            if pkgtype == 2:
+            if pkgtype == 2 and dpkg not in subpackages:
+                # If we didn’t check for subpackages, we would get an infinite
+                # loop if subpackages depended on each other
                 aurbuild.append(dpkg)
+            elif dpkg in subpackages:
+                DS.log.debug("Package depends on itself, ignoring dependency cycle")
 
             DS.fancy_msg2(': '.join((dpkg, pkgtypes[pkgtype])))
         if aurbuild != []:
