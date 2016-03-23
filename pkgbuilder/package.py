@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.6
+# PKGBUILDer v4.2.7
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2016, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -79,6 +79,7 @@ class AURPackage(Package):
     votes = None
     urlpath = ''
     popularity = None
+    keywords = []
 
     @classmethod
     def from_aurdict(cls, aurdict):
@@ -103,6 +104,7 @@ class AURPackage(Package):
                     'License': 'licenses',
                     'URLPath': 'urlpath',
                     'Popularity': 'popularity',
+                    'Keywords': 'keywords',
                     }
         ignore = ['OutOfDate', 'FirstSubmitted', 'LastModified']
 

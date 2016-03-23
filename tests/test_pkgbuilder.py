@@ -54,7 +54,7 @@ class TestPB(unittest.TestCase):
         '3.2.0-1', 'PackageBase': 'pkgbuilder', 'FirstSubmitted': 1316529993,
         'OutOfDate': 1000, 'NumVotes': 19, 'Name': 'pkgbuilderts', 'LastModified':
         1395757472, 'URL': 'https://github.com/Kwpolska/pkgbuilder', 'License':
-        ['BSD'], 'Popularity': 7})
+        ['BSD'], 'Popularity': 7, 'Keywords': ['foo', 'bar']})
 
     def setUp(self):
         """Start stuff."""
@@ -106,7 +106,8 @@ class TestPB(unittest.TestCase):
                   'Maintainer     : Kwpolska\nFirst Submitted: '
                   '2011-09-20T14:46:33Z\nLast Updated   : '
                   '2014-03-25T14:24:32Z\nDescription    : '
-                  'A Python AUR helper/library.\n')
+                  'A Python AUR helper/library.\n'
+                  'Keywords       : foo  bar\n')
 
         req = pkgbuilder.utils.print_package_info([self.fpkg], True)
         self.assertEqual(req, sample)
