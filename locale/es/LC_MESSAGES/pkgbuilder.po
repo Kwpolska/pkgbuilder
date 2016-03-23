@@ -13,9 +13,9 @@
 # tufadorin <inactive+tufadorin@transifex.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.6\n"
+"Project-Id-Version: 4.2.7\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2016-03-15 18:59+0100\n"
+"POT-Creation-Date: 2016-03-23 17:22+0100\n"
 "PO-Revision-Date: 2015-09-08 15:38+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/kwpolska/pkgbuilder/"
@@ -600,13 +600,14 @@ msgid ""
 "First Submitted: {fsb}\n"
 "Last Updated   : {upd}\n"
 "Description    : {dsc}\n"
+"Keywords       : {key}\n"
 msgstr ""
 
-#: pkgbuilder/utils.py:183
+#: pkgbuilder/utils.py:184
 msgid "yes"
 msgstr "si"
 
-#: pkgbuilder/utils.py:185
+#: pkgbuilder/utils.py:186
 msgid "no"
 msgstr "no"
 
