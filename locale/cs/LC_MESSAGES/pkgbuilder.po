@@ -6,9 +6,9 @@
 # Martin Kříž <liberte.czech@gmail.com>, 2016
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.6\n"
+"Project-Id-Version: 4.2.7\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2016-03-15 18:59+0100\n"
+"POT-Creation-Date: 2016-03-23 17:22+0100\n"
 "PO-Revision-Date: 2016-03-12 14:33+0000\n"
 "Last-Translator: Martin Kříž <liberte.czech@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/kwpolska/pkgbuilder/language/"
@@ -591,13 +591,14 @@ msgid ""
 "First Submitted: {fsb}\n"
 "Last Updated   : {upd}\n"
 "Description    : {dsc}\n"
+"Keywords       : {key}\n"
 msgstr ""
 
-#: pkgbuilder/utils.py:183
+#: pkgbuilder/utils.py:184
 msgid "yes"
 msgstr "ano"
 
-#: pkgbuilder/utils.py:185
+#: pkgbuilder/utils.py:186
 msgid "no"
 msgstr "ne"
 

@@ -39,3 +39,6 @@ o.*
 
 # release testing
 pbwrapperdiff
+
+# Transifex?
+.cache/

@@ -8,9 +8,9 @@
 # Chris Warrick <kwpolska@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.6\n"
+"Project-Id-Version: 4.2.7\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2016-03-15 18:59+0100\n"
+"POT-Creation-Date: 2016-03-23 17:22+0100\n"
 "PO-Revision-Date: 2015-09-08 15:38+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/kwpolska/pkgbuilder/language/"
@@ -579,7 +579,7 @@ msgstr "Próba użycia utils.print_package_info z pakietem z ABS"
 #. TRANSLATORS: space it properly.  “yes/no” below are
 #. for “out of date”.
 #: pkgbuilder/utils.py:154
-#, python-brace-format
+#, fuzzy, python-brace-format
 msgid ""
 "Repository     : aur\n"
 "Name           : {nme}\n"
@@ -602,6 +602,7 @@ msgid ""
 "First Submitted: {fsb}\n"
 "Last Updated   : {upd}\n"
 "Description    : {dsc}\n"
+"Keywords       : {key}\n"
 msgstr ""
 "Repozytorium   : aur\n"
 "Nazwa          : {nme}\n"
@@ -625,11 +626,11 @@ msgstr ""
 "Ost. aktualiz. : {upd}\n"
 "Opis           : {dsc}\n"
 
-#: pkgbuilder/utils.py:183
+#: pkgbuilder/utils.py:184
 msgid "yes"
 msgstr "tak"
 
-#: pkgbuilder/utils.py:185
+#: pkgbuilder/utils.py:186
 msgid "no"
 msgstr "nie"
 
