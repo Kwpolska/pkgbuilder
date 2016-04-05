@@ -25,7 +25,7 @@ import sys
 import os
 
 __all__ = ('main', 'wrapper')
-__wrapperversion__ = '0.5.2'
+__wrapperversion__ = '0.5.3'
 
 
 def main():
@@ -35,6 +35,41 @@ def main():
     except KeyboardInterrupt:
         print(pkgbuilder.DS.wrapperinttext + '\n')
         exit(130)
+
+
+def show_help():
+    """Show help for PBWrapper."""
+    pacdoc = subprocess.check_output('pacman --help || true',
+                                     shell=True).decode('utf-8')
+    pacdoc = '\n'.join(pacdoc.split('\n\n')[0].split('\n')[1:])
+    pacdoc = pacdoc.replace('pacman', 'pb')
+
+    # TRANSLATORS: see pacman’s localizations
+    print(_("""usage:  {0} <operation> [...]
+
+PBWrapper, a wrapper for pacman and PKGBUILDer.
+
+{1}
+
+Pacman and PKGBUILDer syntaxes apply.  Consult their manpages/help
+commands for more details.
+
+Additional options:
+  -L, --unlock         unlock the pacman database""").format(
+            os.path.basename(sys.argv[0]), pacdoc))
+
+
+def show_version():
+    """Show PBWrapper, PKGBUILDer, pacman and pyalpm versions."""
+    localdb = DS.pyc.get_localdb()
+    pacpkg = localdb.get_pkg('pacman')
+
+    print("""PBWrapper   v{0}
+PKGBUILDer  v{1}
+pacman      v{2}
+pyalpm      v{3}""".format(__wrapperversion__, __version__,
+                           pacpkg.version.split('-', 1)[0],
+                           pyalpm.version()))
 
 
 def wrapper(source='AUTO'):
@@ -112,7 +147,7 @@ def wrapper(source='AUTO'):
         parser.add_argument('-h', '--help', action='store_true',
                             default=False, dest='help')
         parser.add_argument('-V', '--version', action='store_true',
-                            default=False, dest='ver')
+                            default=False, dest='version')
 
         for i in allshort + ignoredshort:
             parser.add_argument('-' + i, action='store_true', default=False,
@@ -229,6 +264,12 @@ def wrapper(source='AUTO'):
             log.debug('Got -y.')
             log.info('Running pacman.')
             DS.sudo([DS.paccommand] + pacargs)
+        elif args.help:
+            show_help()
+            exit()
+        elif args.version:
+            show_version()
+            exit()
 
         log.debug('Generating AUR packages list...')
         pbpkgnames = []
@@ -270,35 +311,9 @@ def wrapper(source='AUTO'):
         # pkgbuilder -F, --fetch / --userfetch / -X, --runtx.
         pbmain(argst)
     elif ('-h' in argst) or ('--help' in argst):
-        pacdoc = subprocess.check_output('pacman --help || true',
-                                         shell=True).decode('utf-8')
-        pacdoc = '\n'.join(pacdoc.split('\n\n')[0].split('\n')[1:])
-        pacdoc = pacdoc.replace('pacman', 'pb')
-
-        # TRANSLATORS: see pacman’s localizations
-        print(_("""usage:  {0} <operation> [...]
-
-PBWrapper, a wrapper for pacman and PKGBUILDer.
-
-{1}
-
-Pacman and PKGBUILDer syntaxes apply.  Consult their manpages/help
-commands for more details.
-
-Additional options:
-  -L, --unlock         unlock the pacman database""").format(
-            os.path.basename(sys.argv[0]), pacdoc))
-
+        show_help()
     elif ('-V' in argst) or ('--version' in argst):
-        localdb = DS.pyc.get_localdb()
-        pacpkg = localdb.get_pkg('pacman')
-
-        print("""PBWrapper   v{0}
-PKGBUILDer  v{1}
-pacman      v{2}
-pyalpm      v{3}""".format(__wrapperversion__, __version__,
-                           pacpkg.version.split('-', 1)[0],
-                           pyalpm.version()))
+        show_version()
     elif 'UTshibboleet' in argst:
         if argst[0] == 'unittests' and argst[1] == 'UTshibboleet':
             # http://xkcd.com/806/
