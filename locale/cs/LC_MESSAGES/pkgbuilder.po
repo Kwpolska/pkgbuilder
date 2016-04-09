@@ -6,10 +6,10 @@
 # Martin Kříž <liberte.czech@gmail.com>, 2016
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.7\n"
+"Project-Id-Version: 4.2.8\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2016-03-23 17:22+0100\n"
-"PO-Revision-Date: 2016-03-12 14:33+0000\n"
+"POT-Creation-Date: 2016-04-09 11:45+0200\n"
+"PO-Revision-Date: 2016-04-08 19:32+0000\n"
 "Last-Translator: Martin Kříž <liberte.czech@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/kwpolska/pkgbuilder/language/"
 "cs/)\n"
@@ -35,20 +35,20 @@ msgstr "nalezen existující balíček pro {0}"
 #: pkgbuilder/build.py:113
 #, python-brace-format
 msgid "makepkg (or someone else) failed and returned {0}."
-msgstr ""
+msgstr "makepkg (nebo něco jiného) se nezdařilo, návrat {0}."
 
 #: pkgbuilder/build.py:291
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
-msgstr ""
+msgstr "Nesplnění požadavku závislostí balíčku: {0}"
 
 #: pkgbuilder/build.py:350 pkgbuilder/__main__.py:309
 msgid "Fetching package information..."
-msgstr ""
+msgstr "Načítání informací o balíku..."
 
 #: pkgbuilder/build.py:381
 msgid ":: Retrieving packages from abs..."
-msgstr ""
+msgstr ":: Získávání balíčků z abs..."
 
 #: pkgbuilder/build.py:384
 #, python-brace-format
@@ -58,11 +58,11 @@ msgstr "načítání {0}"
 #: pkgbuilder/build.py:388 pkgbuilder/build.py:440
 #, python-brace-format
 msgid "Failed to retieve {0} (from ABS/rsync)."
-msgstr ""
+msgstr "Nepodařilo se získat {0} (z ABS/rsync)."
 
 #: pkgbuilder/build.py:392
 msgid ":: Retrieving packages from aur..."
-msgstr ""
+msgstr ":: Načítání balíčků z aur..."
 
 #: pkgbuilder/build.py:395
 #, python-brace-format
@@ -85,7 +85,7 @@ msgstr "Načítání z ABS..."
 #: pkgbuilder/build.py:445 pkgbuilder/build.py:461
 #, python-brace-format
 msgid "Found an existing package for {0}"
-msgstr ""
+msgstr "Nalezen existující balíček pro {0}"
 
 #: pkgbuilder/build.py:466
 msgid "Cloning the git repository..."
@@ -174,15 +174,15 @@ msgstr ""
 
 #: pkgbuilder/__main__.py:41
 msgid "An AUR helper (and library) in Python 3."
-msgstr ""
+msgstr "AUR pomocník (a knihovna) v Pythonu 3."
 
 #: pkgbuilder/__main__.py:42
 msgid "Also accepts ABS packages."
-msgstr ""
+msgstr "Přijímá také ABS balíčky."
 
 #: pkgbuilder/__main__.py:45
 msgid "show version number and quit"
-msgstr ""
+msgstr "zobrazit číslo verze a ukončit"
 
 #: pkgbuilder/__main__.py:47
 msgid "PACKAGE"
@@ -190,7 +190,7 @@ msgstr "BALÍČEK"
 
 #: pkgbuilder/__main__.py:48
 msgid "AUR/ABS packages to build"
-msgstr ""
+msgstr "AUR/ABS balíky k sestavení"
 
 #: pkgbuilder/__main__.py:50
 msgid "operations"
@@ -226,11 +226,11 @@ msgstr "aktualizovat nainstalované AUR balíčky"
 
 #: pkgbuilder/__main__.py:70
 msgid "move package files to pacman cache and install them"
-msgstr ""
+msgstr "přesunout soubory balíčků do cache Pacmana a nainstalovat je"
 
 #: pkgbuilder/__main__.py:73
 msgid "run transactions from .tx files"
-msgstr ""
+msgstr "spouštět operace z .tx souborů"
 
 #: pkgbuilder/__main__.py:75
 msgid "options"
@@ -238,7 +238,7 @@ msgstr "možnosti"
 
 #: pkgbuilder/__main__.py:79
 msgid "clean up work files before and after build"
-msgstr ""
+msgstr "vyčistit pracovní soubory před a po sestavení"
 
 #: pkgbuilder/__main__.py:82
 msgid "don't clean up work files before and after build (default)"
@@ -330,7 +330,7 @@ msgstr "nestaví v /tmp"
 
 #: pkgbuilder/__main__.py:159
 msgid "build (instead of fetching)"
-msgstr ""
+msgstr "sestavit (namísto načítání)"
 
 #: pkgbuilder/__main__.py:200
 msgid "PKGBUILDer cannot work in a virtualenv, exiting."
@@ -339,7 +339,7 @@ msgstr ""
 #: pkgbuilder/__main__.py:219
 #, python-brace-format
 msgid "error: package '{0}' was not found"
-msgstr ""
+msgstr "Chyba: balíček '{0}' nebyl nalezen"
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
@@ -349,7 +349,7 @@ msgstr "Hledaný výraz je příliš krátký"
 
 #: pkgbuilder/__main__.py:236
 msgid "Searching for exact match..."
-msgstr ""
+msgstr "Vyhledávání přesné shody..."
 
 #: pkgbuilder/__main__.py:239
 msgid "not found"
@@ -358,7 +358,7 @@ msgstr "nenalezeno"
 #: pkgbuilder/__main__.py:314
 #, python-brace-format
 msgid "Error while processing {0}: {1}"
-msgstr ""
+msgstr "Chyba při zpracování {0}: {1}"
 
 #: pkgbuilder/__main__.py:342
 #, python-brace-format
@@ -371,6 +371,8 @@ msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
 msgstr ""
+"PKGBUILDer (nebo požadovaná knihovna) měly problémy se splněním požadavku "
+"HTTP."
 
 #. TRANSLATORS: see makepkg.
 #: pkgbuilder/pbds.py:54
@@ -380,26 +382,28 @@ msgstr "Zrušeno uživatelem! Ukončování..."
 #. TRANSLATORS: see pacman.
 #: pkgbuilder/pbds.py:56
 msgid "Interrupt signal received\n"
-msgstr ""
+msgstr "Přerušení příjmu signálu\n"
 
 #: pkgbuilder/pbds.py:140
 #, python-brace-format
 msgid "warning: conflicting values for setting {0}, using {1}"
-msgstr ""
+msgstr "varování: konfliktní hodnoty pro nastavení {0}, pomocí {1}"
 
 #: pkgbuilder/pbds.py:151
 msgid "Initializing pacman access..."
-msgstr ""
+msgstr "Inicializace pacman přístupu..."
 
 #: pkgbuilder/pbds.py:204
 msgid ""
 "Running as root is not allowed as it can cause catastrophic damage to your "
 "system!"
 msgstr ""
+"Spuštění pomocí root oprávnění není dovoleno, protože může způsobit "
+"katastrofální škody na vašem systému!"
 
 #: pkgbuilder/pbds.py:206
 msgid "Please restart PKGBUILDer as a regular user."
-msgstr ""
+msgstr "Prosím spusťte PKGBUILDer jako běžný uživatel."
 
 #: pkgbuilder/pbds.py:268
 msgid "WARNING:"
@@ -444,53 +448,53 @@ msgstr "Operace selhala!"
 
 #: pkgbuilder/transaction.py:219
 msgid "To retry, run:"
-msgstr ""
+msgstr "Chcete-li znovu spustit:"
 
 #: pkgbuilder/transaction.py:258
 msgid "Moving to /var/cache/pacman/pkg/..."
-msgstr ""
+msgstr "Přesouvání do /var/cache/pacman/pkg/..."
 
 #: pkgbuilder/transaction.py:277
 #, python-brace-format
 msgid "Package file {0} not found"
-msgstr ""
+msgstr "Soubor balíčku {0} nebyl nalezen"
 
 #: pkgbuilder/transaction.py:295
 #, python-brace-format
 msgid "Signature file {0} not found"
-msgstr ""
+msgstr "Podpis souboru {0} nebyl nalezen"
 
 #: pkgbuilder/transaction.py:320
 msgid "Installing with pacman -U..."
-msgstr ""
+msgstr "Instalace pomocí pacman -U..."
 
 #: pkgbuilder/transaction.py:354
 msgid "Validating installation status..."
-msgstr ""
+msgstr "Ověřování stavu instalace..."
 
 #: pkgbuilder/transaction.py:373
 #, python-brace-format
 msgid "{0}: not an AUR package"
-msgstr ""
+msgstr "{0}: Není AUR balíček"
 
 #: pkgbuilder/transaction.py:378 pkgbuilder/transaction.py:393
 #, python-brace-format
 msgid "{0}: installed {1}"
-msgstr ""
+msgstr "{0}: nainstalován {1}"
 
 #: pkgbuilder/transaction.py:383
 #, python-brace-format
 msgid "{0}: NOT installed"
-msgstr ""
+msgstr "{0}: Nenainstalováno"
 
 #: pkgbuilder/transaction.py:388
 #, python-brace-format
 msgid "{0}: outdated {1}"
-msgstr ""
+msgstr "{0}: zastaralý {1}"
 
 #: pkgbuilder/upgrade.py:109
 msgid "Synchronizing package databases..."
-msgstr ""
+msgstr "Synchronizace databází balíků..."
 
 #: pkgbuilder/upgrade.py:118
 msgid "Starting full system upgrade..."
@@ -499,21 +503,21 @@ msgstr "Spuštění aktualizace celého systému..."
 #: pkgbuilder/upgrade.py:123
 #, python-brace-format
 msgid "warning: {0}: downgrading from version {1} to version {2}"
-msgstr ""
+msgstr "varování: {0}: snížení z verze {1} na verzi {2}"
 
 #: pkgbuilder/upgrade.py:126
 #, python-brace-format
 msgid "warning: {0}: local ({1}) is newer than aur ({2})"
-msgstr ""
+msgstr "varování: {0}: místní ({1}) je novější než aur ({2})"
 
 #: pkgbuilder/upgrade.py:135
 msgid "there is nothing to do"
-msgstr ""
+msgstr "není nic na práci"
 
 #: pkgbuilder/upgrade.py:145
 #, python-brace-format
 msgid "Targets ({0}):"
-msgstr ""
+msgstr "Cíle ({0}):"
 
 #: pkgbuilder/upgrade.py:159
 msgid "Name"
@@ -563,7 +567,7 @@ msgstr "Některé balíky neprošly."
 
 #: pkgbuilder/utils.py:134
 msgid "Trying to use utils.print_package_info with an ABS package"
-msgstr ""
+msgstr "Pokus o použití utils.print_package_info s balíčkem ABS"
 
 #. TRANSLATORS: space it properly.  “yes/no” below are
 #. for “out of date”.
@@ -602,13 +606,8 @@ msgstr "ano"
 msgid "no"
 msgstr "ne"
 
-#: pkgbuilder/wrapper.py:109
-#, python-format
-msgid "%(prog)s <operation> [...]"
-msgstr ""
-
 #. TRANSLATORS: see pacman’s localizations
-#: pkgbuilder/wrapper.py:279
+#: pkgbuilder/wrapper.py:48
 #, python-brace-format
 msgid ""
 "usage:  {0} <operation> [...]\n"
@@ -624,6 +623,11 @@ msgid ""
 "  -L, --unlock         unlock the pacman database"
 msgstr ""
 
+#: pkgbuilder/wrapper.py:144
+#, python-format
+msgid "%(prog)s <operation> [...]"
+msgstr ""
+
 #. A module only for gettext locale provision.
 #: localeprovider.py:2
 msgid "usage"
@@ -631,11 +635,11 @@ msgstr "využití"
 
 #: localeprovider.py:3
 msgid "positional arguments"
-msgstr ""
+msgstr "polohové argumenty"
 
 #: localeprovider.py:4
 msgid "optional arguments"
-msgstr ""
+msgstr "volitelné argumenty"
 
 #: localeprovider.py:5
 msgid "show this help message and exit"
