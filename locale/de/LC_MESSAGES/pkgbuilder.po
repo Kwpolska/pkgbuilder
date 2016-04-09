@@ -6,9 +6,9 @@
 # Max Mustermann <cortuli@googlemail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.7\n"
+"Project-Id-Version: 4.2.8\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2016-03-23 17:22+0100\n"
+"POT-Creation-Date: 2016-04-09 11:45+0200\n"
 "PO-Revision-Date: 2015-09-08 15:37+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/kwpolska/pkgbuilder/language/"
@@ -602,13 +602,8 @@ msgstr "Ja"
 msgid "no"
 msgstr "Nein"
 
-#: pkgbuilder/wrapper.py:109
-#, python-format
-msgid "%(prog)s <operation> [...]"
-msgstr ""
-
 #. TRANSLATORS: see pacman’s localizations
-#: pkgbuilder/wrapper.py:279
+#: pkgbuilder/wrapper.py:48
 #, python-brace-format
 msgid ""
 "usage:  {0} <operation> [...]\n"
@@ -622,6 +617,11 @@ msgid ""
 "\n"
 "Additional options:\n"
 "  -L, --unlock         unlock the pacman database"
+msgstr ""
+
+#: pkgbuilder/wrapper.py:144
+#, python-format
+msgid "%(prog)s <operation> [...]"
 msgstr ""
 
 #. A module only for gettext locale provision.
