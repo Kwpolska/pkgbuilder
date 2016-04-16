@@ -21,17 +21,13 @@ __all__ = ('get_termwidth', 'hanging_indent', 'mlist',
            'Progress', 'Throbber', 'ProgressThrobber')
 
 
-def get_termwidth():
+def get_termwidth(default=None):
     """Get the width of this terminal.
 
     .. versionadded:: 3.3.0
-    .. versionchanged:: 4.0.0
+    .. versionchanged:: 4.2.9
     """
-    try:
-        size = subprocess.check_output(['stty', 'size'])
-        return int(size.split()[1])
-    except (IndexError, subprocess.CalledProcessError):
-        return None
+    return shutil.get_terminal_size((default, default)).columns
 
 
 def hanging_indent(text, intro, termwidth=None, change_spaces=True,
@@ -42,7 +38,7 @@ def hanging_indent(text, intro, termwidth=None, change_spaces=True,
     .. versionchanged:: 4.0.0
     """
     if termwidth is None:
-        termwidth = get_termwidth() or 9001
+        termwidth = get_termwidth(9001)
     if introwidth is None:
         introwidth = len(intro)
     nowrap = intro + text
@@ -73,7 +69,7 @@ def mlist(items, sep='  ', change_spaces=True, termwidth=None, indentwidth=17):
     .. versionchanged:: 4.0.0
     """
     if termwidth is None:
-        termwidth = get_termwidth() or 9001
+        termwidth = get_termwidth(9001)
     if items:
         if sep == '\n':
             buf = [hanging_indent(items[0], '', termwidth, change_spaces,
