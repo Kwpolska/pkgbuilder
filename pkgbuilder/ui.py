@@ -14,8 +14,8 @@ The User Interface.
 import sys
 import time
 import threading
-import subprocess
 import textwrap
+import shutil
 
 __all__ = ('get_termwidth', 'hanging_indent', 'mlist',
            'Progress', 'Throbber', 'ProgressThrobber')
