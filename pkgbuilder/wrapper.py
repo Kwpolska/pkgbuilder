@@ -56,7 +56,7 @@ commands for more details.
 
 Additional options:
   -L, --unlock         unlock the pacman database""").format(
-            os.path.basename(sys.argv[0]), pacdoc))
+          os.path.basename(sys.argv[0]), pacdoc))
 
 
 def show_version():

@@ -186,6 +186,7 @@ def find_subpackages(srcinfo_path, pkgname=None):
             'malformed .SRCINFO: {0}'.format(errors), 'prepare_deps')
     return [data['pkgbase']] + list(data['packages'].keys())
 
+
 def prepare_deps(srcinfo_path, pkgname=None):
     """Get (make)depends from a .SRCINFO file and returns them.
 
@@ -486,7 +487,7 @@ def build_runner(pkgname, performdepcheck=True,
                 # loop if subpackages depended on each other
                 aurbuild.append(dpkg)
             elif dpkg in subpackages:
-                DS.log.debug("Package depends on itself, ignoring dependency cycle")
+                DS.log.debug("Package depends on itself, ignoring")
 
             DS.fancy_msg2(': '.join((dpkg, pkgtypes[pkgtype])))
         if aurbuild != []:
