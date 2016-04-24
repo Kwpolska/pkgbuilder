@@ -284,7 +284,13 @@ def main(source='AUTO', quit=True):
             if quit:
                 exit(0)
 
-        if DS.pacman:
+        user_chdir = DS.config.get('extras', 'chdir').strip()
+
+        if user_chdir:
+            DS.log.debug('Changing directory to %s (via config)', user_chdir)
+            os.makedirs(user_chdir, exist_ok=True)
+            os.chdir(user_chdir)
+        elif DS.pacman:
             DS.log.debug('-S passed, building in /tmp/.')
             path = '/tmp/pkgbuilder-{0}'.format(str(DS.uid))
             if not os.path.exists(path):

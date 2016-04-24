@@ -17,3 +17,9 @@ pgpcheck=true
 confirm=true
 deepclone=false
 verbosepkglists=true
+
+[extras]
+; Always change directory to this before working
+; overrides -S, useful if /tmp is small
+; (default: empty/unused)
+chdir=
