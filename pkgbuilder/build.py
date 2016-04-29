@@ -456,6 +456,14 @@ def build_runner(pkgname, performdepcheck=True,
                 'be generated from a split PKGBUILD.  Please find out the '
                 'name of the “main” package (eg. python- instead of python2-) '
                 'and try again.', '/'.join((pkg.repo, pkg.name)), exit=False)
+
+        if not os.path.exists('.SRCINFO'):
+            # Create a .SRCINFO file for ABS packages.
+            # Slightly hacky, but saves us work on parsing bash.
+            DS.log.debug("Creating .SRCINFO for ABS package")
+            srcinfo = subprocess.check_output(["makepkg", "--printsrcinfo"])
+            with open(".SRCINFO", "wb") as fh:
+                fh.write(srcinfo)
     else:
         existing = find_packagefile(pkg.packagebase)
         if any(pkg.name in i for i in existing[0]):
@@ -469,7 +477,7 @@ def build_runner(pkgname, performdepcheck=True,
         os.chdir('./{0}/'.format(pkg.packagebase))
         if not os.path.exists('.SRCINFO'):
             raise pkgbuilder.exceptions.EmptyRepoError(pkg.packagebase)
-        subpackages = find_subpackages(os.path.abspath('./.SRCINFO'))
+    subpackages = find_subpackages(os.path.abspath('./.SRCINFO'))
 
     if performdepcheck:
         DS.fancy_msg(_('Checking dependencies...'))
