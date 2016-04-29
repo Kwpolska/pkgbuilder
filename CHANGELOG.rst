@@ -5,8 +5,8 @@ Appendix C. Changelog
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2016, Chris Warrick.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2016-04-09
-:Version: 4.2.8
+:Date: 2016-04-29
+:Version: 4.2.9
 
 .. index:: CHANGELOG
 
@@ -46,6 +46,13 @@ More information can be found on GitHub in the `releases section <https://github
 
 Version History
 ===============
+
+4.2.9
+    * Add an option to force chdir to a place before building (Issue #45)
+    * Support ``--ignore`` for upgrades (Issue #46)
+    * Use ``shutil.get_terminal_size() instead of ``stty size`` (Issue #47)
+    * Fix ABS package builds (Issue #48)
+    * Use new PyPI URL scheme in PKGBUILDer’s PKGBUILD
 
 4.2.8
     * Show help message for pb -Sh (Issue #44)
