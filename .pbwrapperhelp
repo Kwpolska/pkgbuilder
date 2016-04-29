@@ -44,7 +44,8 @@ usage: pkgbuilder [-h] [-V] [-S] [-F] [--userfetch USER] [-i] [-s] [-u] [-U]
                   [-X] [-c] [--noclean] [--colors] [-C] [--debug] [--nodebug]
                   [--depcheck] [-d] [-D] [--novcsupgrade] [--validation] [-v]
                   [--install] [-w] [--pgpcheck] [--skippgpcheck] [--confirm]
-                  [--noconfirm] [--shallow] [--deep] [-y] [--notmp] [--build]
+                  [--noconfirm] [--shallow] [--deep] [--ignore PACKAGE] [-y]
+                  [--notmp] [--build]
                   [PACKAGE [PACKAGE ...]]
 
 An AUR helper (and library) in Python 3.
@@ -89,6 +90,7 @@ options:
   --noconfirm         do not ask for any confirmation
   --shallow           use shallow git clones (default)
   --deep              use deep git clones
+  --ignore PACKAGE    ignore a package upgrade (can be used more than once)
   -y, --refresh       (dummy)
 
 configuration overrides:
