@@ -125,6 +125,10 @@ Only the non-default options are documented below.
 **--deep**
     Perform deep clones of git repositories.  Override with ``--shallow``.
 
+**--ignore [PACKAGE PACKAGE ...]**
+    Ignore a package upgrade (can be used more than once, or use commas --
+    follows pacman syntax)
+
 **-y, --refresh**
     Dummy option for pacman compatibility.
 

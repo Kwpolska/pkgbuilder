@@ -147,6 +147,10 @@ def main(source='AUTO', quit=True):
             help=_('use deep git clones'))
 
         argopt.add_argument(
+            '--ignore', action='append', dest='ignorelist', metavar='PACKAGE',
+            help=_('ignore a package upgrade (can be used more than once)'))
+
+        argopt.add_argument(
             '-y', '--refresh', action='store_true', dest='pacupd',
             help=_('(dummy)'))
 
@@ -297,12 +301,16 @@ def main(source='AUTO', quit=True):
                 os.mkdir(path)
             os.chdir(path)
 
-        if args.upgrade > 0:
+        if args.upgrade:
             DS.root_crash()
             DS.log.info('Starting upgrade...')
             dodowngrade = args.upgrade > 1
+            ignorelist = []
+            for i in (args.ignorelist or []):
+                # `pacman -Syu --ignore a,b --ignore c` → ignores a, b, c
+                ignorelist.extend(i.split(','))
             upnames = pkgbuilder.upgrade.auto_upgrade(
-                dodowngrade, DS.vcsupgrade, DS.fetch)
+                dodowngrade, DS.vcsupgrade, DS.fetch, ignorelist)
             pkgnames = upnames + pkgnames
 
         if DS.fetch and pkgnames:
