@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.8
+# PKGBUILDer v4.2.9
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2016, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -75,7 +75,7 @@ def print_package_search(pkg, cachemode=False, prefix='', prefixp=''):
     .. versionchanged:: 4.0.0
 
     """
-    termwidth = get_termwidth() or 9001
+    termwidth = get_termwidth(9001)
 
     localdb = DS.pyc.get_localdb()
     lpkg = localdb.get_pkg(pkg.name)

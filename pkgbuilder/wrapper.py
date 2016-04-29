@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 # PBWrapper v0.5.0
-# PKGBUILDer v4.2.8
+# PKGBUILDer v4.2.9
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2016, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -25,7 +25,7 @@ import sys
 import os
 
 __all__ = ('main', 'wrapper')
-__wrapperversion__ = '0.5.3'
+__wrapperversion__ = '0.5.4'
 
 
 def main():
@@ -56,7 +56,7 @@ commands for more details.
 
 Additional options:
   -L, --unlock         unlock the pacman database""").format(
-            os.path.basename(sys.argv[0]), pacdoc))
+          os.path.basename(sys.argv[0]), pacdoc))
 
 
 def show_version():
@@ -84,6 +84,10 @@ def wrapper(source='AUTO'):
     log = logging.getLogger('pbwrapper')
     if '--debug' in argst:
         DS.debugmode()
+    elif '--debugpb' in argst:
+        DS.debugmode()
+        argst.remove("--debugpb")
+        sys.argv.remove("--debugpb")
 
     log.info('*** PBwrapper v{0} (PKGBUILDer '
              '{1})'.format(__wrapperversion__, __version__))
@@ -112,7 +116,7 @@ def wrapper(source='AUTO'):
                       'verbose']
         pacmanshorta = ['b', 'r']
         pacmanlonga = ['arch', 'cachedir', 'config', 'dbpath', 'gpgdir',
-                       'hookdir', 'ignore', 'ignoregroup', 'logfile',
+                       'hookdir', 'ignoregroup', 'logfile',
                        'print-format', 'root', 'assume-installed']
 
         pbshort = ['D', 'C', 'F']
@@ -124,6 +128,7 @@ def wrapper(source='AUTO'):
         commonshort = ['S', 'd', 'i', 's', 'v', 'w']
         commonlong = ['debug', 'info', 'search', 'sync', 'confirm',
                       'noconfirm']
+        commonlongl = ['ignore']
         commonshortc = ['c', 'y', 'u']
         commonlongc = ['clean', 'refresh', 'sysupgrade']
 
@@ -132,7 +137,7 @@ def wrapper(source='AUTO'):
 
         allpacman = pacmanshort + pacmanlong + pacmanshorta + pacmanlonga
         allpb = pbshort + pblong  # + pbshorta + pblonga
-        allcommon = commonshort + commonlong + commonshortc + commonlongc
+        allcommon = commonshort + commonlong + commonlongl + commonshortc + commonlongc
 
         allshort = pacmanshort + pbshort + commonshort
         alllong = pacmanlong + pblong + commonlong
@@ -171,6 +176,9 @@ def wrapper(source='AUTO'):
             parser.add_argument('--' + i, action='store', nargs=1,
                                 default='NIL', dest=i)
 
+        for i in commonlongl:
+            parser.add_argument('--' + i, action='append', dest=i)
+
         parser.add_argument('pkgnames', action='store', nargs='*')
 
         # Starting actual work.
@@ -191,23 +199,23 @@ def wrapper(source='AUTO'):
         pacargs = []
         pbargs = []
 
-        for i in args.__dict__.items():
-            if i[1] is not False:
+        for k, v in args.__dict__.items():
+            if v is not False:
                 # == This argument has been provided.
-                if i[0] in allcountable:
+                if k in allcountable:
                     # == This is a countable argument.
-                    if i[0] in allshortc:
-                        for x in range(i[1]):
-                            execargs.append('-' + i[0])
-                    elif i[0] in alllongc:
-                        for x in range(i[1]):
-                            execargs.append('--' + i[0])
-                elif i[1]:
+                    if k in allshortc:
+                        for x in range(v):
+                            execargs.append('-' + k)
+                    elif k in alllongc:
+                        for x in range(v):
+                            execargs.append('--' + k)
+                elif v:
                     # == This argument doesn't have a value.
-                    if i[0] in allshort:
-                        execargs.append('-' + i[0])
-                    elif i[0] in alllong:
-                        execargs.append('--' + i[0])
+                    if k in allshort:
+                        execargs.append('-' + k)
+                    elif k in alllong:
+                        execargs.append('--' + k)
 
         for i in execargs:
             if i[1:] in allshort + allshortc:
@@ -226,15 +234,21 @@ def wrapper(source='AUTO'):
             elif s in allpb:
                 pbargs.append(i)
 
-        for i in args.__dict__.items():
-            if i[1] is not False and i[1] != 'NIL':
+        for k, v in args.__dict__.items():
+            if v is not False and v != 'NIL':
                 # == This argument can take values and has one.
-                if i[0] in pacmanshorta:
-                    pacargs.append('-' + i[0])
-                    pacargs.append(i[1][0])
-                elif i[0] in pacmanlonga:
-                    pacargs.append('--' + i[0])
-                    pacargs.append(i[1][0])
+                if k in pacmanshorta:
+                    pacargs.append('-' + k)
+                    pacargs.extend(v)
+                elif k in pacmanlonga:
+                    pacargs.append('--' + k)
+                    pacargs.extend(v)
+                elif k in commonlongl:
+                    for vi in v:
+                        pacargs.append('--' + k)
+                        pacargs.append(vi)
+                        pbargs.append('--' + k)
+                        pbargs.append(vi)
 
         log.debug('Preparing to run pacman and/or PKGBUILDer...')
 

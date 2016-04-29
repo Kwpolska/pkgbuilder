@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.8
+# PKGBUILDer v4.2.9
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2016, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -185,6 +185,7 @@ def find_subpackages(srcinfo_path, pkgname=None):
         raise pkgbuilder.exceptions.PackageError(
             'malformed .SRCINFO: {0}'.format(errors), 'prepare_deps')
     return [data['pkgbase']] + list(data['packages'].keys())
+
 
 def prepare_deps(srcinfo_path, pkgname=None):
     """Get (make)depends from a .SRCINFO file and returns them.
@@ -455,6 +456,14 @@ def build_runner(pkgname, performdepcheck=True,
                 'be generated from a split PKGBUILD.  Please find out the '
                 'name of the “main” package (eg. python- instead of python2-) '
                 'and try again.', '/'.join((pkg.repo, pkg.name)), exit=False)
+
+        if not os.path.exists('.SRCINFO'):
+            # Create a .SRCINFO file for ABS packages.
+            # Slightly hacky, but saves us work on parsing bash.
+            DS.log.debug("Creating .SRCINFO for ABS package")
+            srcinfo = subprocess.check_output(["makepkg", "--printsrcinfo"])
+            with open(".SRCINFO", "wb") as fh:
+                fh.write(srcinfo)
     else:
         existing = find_packagefile(pkg.packagebase)
         if any(pkg.name in i for i in existing[0]):
@@ -468,7 +477,7 @@ def build_runner(pkgname, performdepcheck=True,
         os.chdir('./{0}/'.format(pkg.packagebase))
         if not os.path.exists('.SRCINFO'):
             raise pkgbuilder.exceptions.EmptyRepoError(pkg.packagebase)
-        subpackages = find_subpackages(os.path.abspath('./.SRCINFO'))
+    subpackages = find_subpackages(os.path.abspath('./.SRCINFO'))
 
     if performdepcheck:
         DS.fancy_msg(_('Checking dependencies...'))
@@ -486,7 +495,7 @@ def build_runner(pkgname, performdepcheck=True,
                 # loop if subpackages depended on each other
                 aurbuild.append(dpkg)
             elif dpkg in subpackages:
-                DS.log.debug("Package depends on itself, ignoring dependency cycle")
+                DS.log.debug("Package depends on itself, ignoring")
 
             DS.fancy_msg2(': '.join((dpkg, pkgtypes[pkgtype])))
         if aurbuild != []:

@@ -6,8 +6,8 @@ PKGBUILDer
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2016, Chris Warrick.
 :License: BSD (see /LICENSE or Appendix B.)
-:Date: 2016-04-09
-:Version: 4.2.8
+:Date: 2016-04-29
+:Version: 4.2.9
 :Manual section: 8
 :Manual group: PKGBUILDer manual
 
@@ -124,6 +124,10 @@ Only the non-default options are documented below.
 
 **--deep**
     Perform deep clones of git repositories.  Override with ``--shallow``.
+
+**--ignore [PACKAGE PACKAGE ...]**
+    Ignore a package upgrade (can be used more than once, or use commas --
+    follows pacman syntax)
 
 **-y, --refresh**
     Dummy option for pacman compatibility.

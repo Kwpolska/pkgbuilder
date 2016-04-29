@@ -1,5 +1,31 @@
 #!/bin/zsh
 . .pypt/config
-echo "Next steps:"
-echo " * update AUR packages"
-echo " * update [pkgbuilder] repo"
+echo -n "Update AUR packages and the [pkgbuilder] repo? [Y/n] "
+read yn
+if [[ "$yn" != "y" && "$yn" != "Y" && "$yn" != "" ]]; then
+    exit 0
+fi
+
+echo "Updating AUR packages..."
+gitver=$(git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//g')
+
+cp PKGBUILD ~/git/aur-pkgbuilds/pkgbuilder/PKGBUILD
+cd ~/git/aur-pkgbuilds
+. ~/git/aur-pkgbuilds/aur.zsh
+
+cd pkgbuilder
+commitaur "PKGBUILDer v$version"
+
+cd pkgbuilder-git
+sed "s/pkgver=.*/pkgver=$gitver/" PKGBUILD -i
+commitaur "PKGBUILDer v$version"
+
+./UPDATE-REQUIREMENTS.py
+git commit -asm "PKGBUILDer v$version"
+git push
+
+echo "Done!"
+echo "Updating [pkgbuilder] repo..."
+cd ~/pkgbuilder-repo
+./UPDATE.zsh
+echo "Done!"

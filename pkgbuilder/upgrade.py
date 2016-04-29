@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.8
+# PKGBUILDer v4.2.9
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2016, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -39,9 +39,14 @@ def gather_foreign_pkgs():
     return dict([(p.name, p) for p in aur])
 
 
-def list_upgradable(pkglist, vcsup=False, aurcache=None):
-    """Compare package versions and returns upgradable ones."""
+def list_upgradable(pkglist, vcsup=False, aurcache=None, ignorelist=None):
+    """Compare package versions and returns upgradable ones.
+
+    .. versionchanged:: 4.2.9
+    """
     localdb = DS.pyc.get_localdb()
+    if ignorelist is None:
+        ignorelist = []
     if aurcache:
         aurlist = aurcache
     else:
@@ -52,13 +57,17 @@ def list_upgradable(pkglist, vcsup=False, aurcache=None):
 
     upgradable = []
     downgradable = []
+    ignored = []
 
     for rpkg in aurlist:
         lpkg = localdb.get_pkg(rpkg.name)
         if lpkg is not None:
             vc = pyalpm.vercmp(rpkg.version, lpkg.version)
-            if vc > 0:
+            if vc > 0 and rpkg.name not in ignorelist:
                 upgradable.append([rpkg.name, lpkg.version, rpkg.version])
+            elif vc > 0 and rpkg.name in ignorelist:
+                DS.log.warning("{0} ignored for upgrade.".format(rpkg.name))
+                ignored.append([rpkg.name, lpkg.version, rpkg.version])
             elif vc < 0:
                 # If the package version is a date or the name ends in
                 # -{git,hg,bzr,svn,cvs,darcs}, do not mark it as downgradable.
@@ -96,10 +105,11 @@ def list_upgradable(pkglist, vcsup=False, aurcache=None):
                 else:
                     downgradable.append([rpkg.name, lpkg.version,
                                          rpkg.version])
-    return [upgradable, downgradable]
+    return [upgradable, downgradable, ignored]
 
 
-def auto_upgrade(downgrade=False, vcsup=False, fetchonly=False):
+def auto_upgrade(downgrade=False, vcsup=False, fetchonly=False,
+                 ignorelist=None):
     """
     Human friendly upgrade question and output.
 
@@ -109,15 +119,16 @@ def auto_upgrade(downgrade=False, vcsup=False, fetchonly=False):
     print(':: ' + _('Synchronizing package databases...'))
 
     foreign = gather_foreign_pkgs()
-    gradable = list_upgradable(foreign.keys(), vcsup)
-    upgradable = gradable[0]
-    downgradable = gradable[1]
-    upglen = len(upgradable)
-    downlen = len(downgradable)
+    upgradable, downgradable, ignored = list_upgradable(
+        foreign.keys(), vcsup, ignorelist=ignorelist)
 
     print(':: ' + _('Starting full system upgrade...'))
 
-    if downlen > 0:
+    for i in ignored:
+        print(_("warning: {0}: ignoring package upgrade ({1} => {2})").format(
+            *i))
+
+    if downgradable:
         for i in downgradable:
             if downgrade:
                 msg = _('warning: {0}: downgrading from version {1} '
@@ -128,10 +139,9 @@ def auto_upgrade(downgrade=False, vcsup=False, fetchonly=False):
             print(msg)
 
         if downgrade:
-            upglen = upglen + downlen
             upgradable = upgradable + downgradable
 
-    if upglen == 0:
+    if not upgradable:
         print(' ' + _('there is nothing to do'))
 
         return []
@@ -141,8 +151,8 @@ def auto_upgrade(downgrade=False, vcsup=False, fetchonly=False):
 
     verbosepkglists = DS.config.getboolean('options', 'verbosepkglists')
 
-    if upglen > 0:
-        targetstring = _('Targets ({0}):').format(upglen) + ' '
+    if upgradable:
+        targetstring = _('Targets ({0}):').format(len(upgradable)) + ' '
 
         termwidth = pkgbuilder.ui.get_termwidth()
 

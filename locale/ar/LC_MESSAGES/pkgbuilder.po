@@ -5,9 +5,9 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.8\n"
+"Project-Id-Version: 4.2.9\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2016-04-09 11:45+0200\n"
+"POT-Creation-Date: 2016-04-29 16:31+0200\n"
 "PO-Revision-Date: 2015-09-08 15:37+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Arabic (http://www.transifex.com/kwpolska/pkgbuilder/language/"
@@ -37,77 +37,77 @@ msgstr ""
 msgid "makepkg (or someone else) failed and returned {0}."
 msgstr ""
 
-#: pkgbuilder/build.py:291
+#: pkgbuilder/build.py:292
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:350 pkgbuilder/__main__.py:309
+#: pkgbuilder/build.py:351 pkgbuilder/__main__.py:323
 msgid "Fetching package information..."
 msgstr ""
 
-#: pkgbuilder/build.py:381
+#: pkgbuilder/build.py:382
 msgid ":: Retrieving packages from abs..."
 msgstr ""
 
-#: pkgbuilder/build.py:384
+#: pkgbuilder/build.py:385
 #, python-brace-format
 msgid "retrieving {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:388 pkgbuilder/build.py:440
+#: pkgbuilder/build.py:389 pkgbuilder/build.py:441
 #, python-brace-format
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr ""
 
-#: pkgbuilder/build.py:392
+#: pkgbuilder/build.py:393
 msgid ":: Retrieving packages from aur..."
 msgstr ""
 
-#: pkgbuilder/build.py:395
+#: pkgbuilder/build.py:396
 #, python-brace-format
 msgid "cloning {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:398
+#: pkgbuilder/build.py:399
 msgid "Successfully fetched: "
 msgstr ""
 
-#: pkgbuilder/build.py:428
+#: pkgbuilder/build.py:429
 #, python-brace-format
 msgid "Building {0}..."
 msgstr ""
 
-#: pkgbuilder/build.py:436
+#: pkgbuilder/build.py:437
 msgid "Retrieving from ABS..."
 msgstr ""
 
-#: pkgbuilder/build.py:445 pkgbuilder/build.py:461
+#: pkgbuilder/build.py:446 pkgbuilder/build.py:470
 #, python-brace-format
 msgid "Found an existing package for {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:466
+#: pkgbuilder/build.py:475
 msgid "Cloning the git repository..."
 msgstr ""
 
-#: pkgbuilder/build.py:474
+#: pkgbuilder/build.py:483
 msgid "Checking dependencies..."
 msgstr ""
 
-#: pkgbuilder/build.py:477
+#: pkgbuilder/build.py:486
 msgid "found in system"
 msgstr ""
 
-#: pkgbuilder/build.py:477
+#: pkgbuilder/build.py:486
 msgid "found in repos"
 msgstr ""
 
-#: pkgbuilder/build.py:478
+#: pkgbuilder/build.py:487
 msgid "found in the AUR"
 msgstr ""
 
-#: pkgbuilder/build.py:481
+#: pkgbuilder/build.py:490
 msgid "none found"
 msgstr ""
 
@@ -317,56 +317,60 @@ msgid "use deep git clones"
 msgstr ""
 
 #: pkgbuilder/__main__.py:151
+msgid "ignore a package upgrade (can be used more than once)"
+msgstr ""
+
+#: pkgbuilder/__main__.py:155
 msgid "(dummy)"
 msgstr ""
 
-#: pkgbuilder/__main__.py:153
+#: pkgbuilder/__main__.py:157
 msgid "configuration overrides"
 msgstr ""
 
-#: pkgbuilder/__main__.py:156
+#: pkgbuilder/__main__.py:160
 msgid "don't build in /tmp"
 msgstr ""
 
-#: pkgbuilder/__main__.py:159
+#: pkgbuilder/__main__.py:163
 msgid "build (instead of fetching)"
 msgstr ""
 
-#: pkgbuilder/__main__.py:200
+#: pkgbuilder/__main__.py:204
 msgid "PKGBUILDer cannot work in a virtualenv, exiting."
 msgstr ""
 
-#: pkgbuilder/__main__.py:219
+#: pkgbuilder/__main__.py:223
 #, python-brace-format
 msgid "error: package '{0}' was not found"
 msgstr ""
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
-#: pkgbuilder/__main__.py:235
+#: pkgbuilder/__main__.py:239
 msgid "Search query too short"
 msgstr ""
 
-#: pkgbuilder/__main__.py:236
+#: pkgbuilder/__main__.py:240
 msgid "Searching for exact match..."
 msgstr ""
 
-#: pkgbuilder/__main__.py:239
+#: pkgbuilder/__main__.py:243
 msgid "not found"
 msgstr ""
 
-#: pkgbuilder/__main__.py:314
+#: pkgbuilder/__main__.py:328
 #, python-brace-format
 msgid "Error while processing {0}: {1}"
 msgstr ""
 
-#: pkgbuilder/__main__.py:342
+#: pkgbuilder/__main__.py:356
 #, python-brace-format
 msgid "skipping package {0}"
 msgstr ""
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/__main__.py:372
+#: pkgbuilder/__main__.py:386
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
@@ -488,55 +492,60 @@ msgstr ""
 msgid "{0}: outdated {1}"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:109
+#: pkgbuilder/upgrade.py:119
 msgid "Synchronizing package databases..."
 msgstr ""
 
-#: pkgbuilder/upgrade.py:118
+#: pkgbuilder/upgrade.py:125
 msgid "Starting full system upgrade..."
 msgstr ""
 
-#: pkgbuilder/upgrade.py:123
+#: pkgbuilder/upgrade.py:128
+#, python-brace-format
+msgid "warning: {0}: ignoring package upgrade ({1} => {2})"
+msgstr ""
+
+#: pkgbuilder/upgrade.py:134
 #, python-brace-format
 msgid "warning: {0}: downgrading from version {1} to version {2}"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:126
+#: pkgbuilder/upgrade.py:137
 #, python-brace-format
 msgid "warning: {0}: local ({1}) is newer than aur ({2})"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:135
+#: pkgbuilder/upgrade.py:145
 msgid "there is nothing to do"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:145
+#: pkgbuilder/upgrade.py:155
 #, python-brace-format
 msgid "Targets ({0}):"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:159
+#: pkgbuilder/upgrade.py:169
 msgid "Name"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:159
+#: pkgbuilder/upgrade.py:169
 msgid "Old Version"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:159
+#: pkgbuilder/upgrade.py:169
 msgid "New Version"
 msgstr ""
 
 #. string stolen from pacman
-#: pkgbuilder/upgrade.py:182
+#: pkgbuilder/upgrade.py:192
 msgid "warning: insufficient columns available for table display"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:200
+#: pkgbuilder/upgrade.py:210
 msgid "Fetch the packages? [Y/n] "
 msgstr ""
 
-#: pkgbuilder/upgrade.py:202
+#: pkgbuilder/upgrade.py:212
 msgid "Proceed with installation? [Y/n] "
 msgstr ""
 
@@ -619,7 +628,7 @@ msgid ""
 "  -L, --unlock         unlock the pacman database"
 msgstr ""
 
-#: pkgbuilder/wrapper.py:144
+#: pkgbuilder/wrapper.py:149
 #, python-format
 msgid "%(prog)s <operation> [...]"
 msgstr ""

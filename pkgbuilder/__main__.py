@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.8
+# PKGBUILDer v4.2.9
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2016, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -147,6 +147,10 @@ def main(source='AUTO', quit=True):
             help=_('use deep git clones'))
 
         argopt.add_argument(
+            '--ignore', action='append', dest='ignorelist', metavar='PACKAGE',
+            help=_('ignore a package upgrade (can be used more than once)'))
+
+        argopt.add_argument(
             '-y', '--refresh', action='store_true', dest='pacupd',
             help=_('(dummy)'))
 
@@ -284,19 +288,29 @@ def main(source='AUTO', quit=True):
             if quit:
                 exit(0)
 
-        if DS.pacman:
+        user_chdir = DS.config.get('extras', 'chdir').strip()
+
+        if user_chdir:
+            DS.log.debug('Changing directory to %s (via config)', user_chdir)
+            os.makedirs(user_chdir, exist_ok=True)
+            os.chdir(user_chdir)
+        elif DS.pacman:
             DS.log.debug('-S passed, building in /tmp/.')
             path = '/tmp/pkgbuilder-{0}'.format(str(DS.uid))
             if not os.path.exists(path):
                 os.mkdir(path)
             os.chdir(path)
 
-        if args.upgrade > 0:
+        if args.upgrade:
             DS.root_crash()
             DS.log.info('Starting upgrade...')
             dodowngrade = args.upgrade > 1
+            ignorelist = []
+            for i in (args.ignorelist or []):
+                # `pacman -Syu --ignore a,b --ignore c` → ignores a, b, c
+                ignorelist.extend(i.split(','))
             upnames = pkgbuilder.upgrade.auto_upgrade(
-                dodowngrade, DS.vcsupgrade, DS.fetch)
+                dodowngrade, DS.vcsupgrade, DS.fetch, ignorelist)
             pkgnames = upnames + pkgnames
 
         if DS.fetch and pkgnames:
