@@ -120,7 +120,6 @@ def auto_build(pkgname, performdepcheck=True,
         DS.fancy_error(str(e))
         return []
 
-
 def clone(pkgbase):
     """Clone or update a git repo.
 

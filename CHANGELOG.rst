@@ -50,7 +50,7 @@ Version History
 4.2.9
     * Add an option to force chdir to a place before building (Issue #45)
     * Support ``--ignore`` for upgrades (Issue #46)
-    * Use ``shutil.get_terminal_size() instead of ``stty size`` (Issue #47)
+    * Use ``shutil.get_terminal_size()`` instead of ``stty size`` (Issue #47)
     * Fix ABS package builds (Issue #48)
     * Use new PyPI URL scheme in PKGBUILDer’s PKGBUILD
 
