@@ -59,7 +59,7 @@ class AUR(object):
 
     def jsonreq(self, rtype, arg, search_by=None):
         """Make a request and return plain JSON data."""
-        if arg == []:
+        if not arg:
             # No need to bother.
             return self.emptystr % (self.rpcver, rtype)
 
@@ -81,7 +81,7 @@ class AUR(object):
 
     def jsonmultiinfo(self, args):
         """Make a multiinfo request and return plain JSON data."""
-        if args == []:
+        if not args:
             # No need to bother.
             return self.emptystr % (self.rpcver, 'multiinfo')
 
