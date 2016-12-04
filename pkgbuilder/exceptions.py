@@ -86,10 +86,10 @@ class NetworkError(PBException):
         self.msg = msg
         try:
             self.source = source.args[0].reason
-        except:
+        except Exception:
             try:
                 self.source = source.args[0]
-            except:
+            except Exception:
                 self.source = source
         self._source = source
         self.exit = exit

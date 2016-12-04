@@ -205,10 +205,10 @@ def wrapper(source='AUTO'):
                 if k in allcountable:
                     # == This is a countable argument.
                     if k in allshortc:
-                        for x in range(v):
+                        for _i in range(v):
                             execargs.append('-' + k)
                     elif k in alllongc:
-                        for x in range(v):
+                        for _i in range(v):
                             execargs.append('--' + k)
                 elif v:
                     # == This argument doesn't have a value.
@@ -223,7 +223,7 @@ def wrapper(source='AUTO'):
             elif i[2:] in alllong + alllongc:
                 s = i[2:]
             else:
-                raise SanityError('argparse broke')
+                raise SanityError('argparse broke', 'argparse')
 
             if s in allcommon:
                 pacargs.append(i)

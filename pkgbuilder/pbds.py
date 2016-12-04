@@ -67,10 +67,7 @@ class PBDS(object):
     else:
         paccommand = os.getenv('PACMAN')
 
-    if os.path.exists('/usr/bin/sudo'):
-        hassudo = True
-    else:
-        hassudo = False
+    hassudo = os.path.exists('/usr/bin/sudo')
 
     uid = os.geteuid()
 

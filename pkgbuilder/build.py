@@ -386,7 +386,7 @@ def fetch_runner(pkgnames, preprocessed=False):
                 if rc > 0:
                     raise pkgbuilder.exceptions.NetworkError(
                         _('Failed to retieve {0} (from ABS/rsync).').format(
-                            pkg.name), pkg=pkg, retcode=rc)
+                            pkg.name), source='rsync', pkg=pkg, retcode=rc)
 
         if aurpkgs:
             print(_(':: Retrieving packages from aur...'))
