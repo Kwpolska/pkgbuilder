@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 # Upgrade Counter and Lister
 # Part of PKGBUILDer Sample Scripts
-# Copyright © 2011-2016, Chris Warrick.
+# Copyright © 2011-2017, Chris Warrick.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
