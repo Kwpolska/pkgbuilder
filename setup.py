@@ -18,7 +18,7 @@ class PyTest(TestCommand):
         sys.exit(errno)
 
 setup(name='pkgbuilder',
-      version='4.2.9',
+      version='4.2.10',
       description='An AUR helper (and library) in Python 3.',
       keywords='arch pkgbuild',
       author='Chris Warrick',
@@ -39,7 +39,7 @@ setup(name='pkgbuilder',
                    'Operating System :: POSIX :: Linux',
                    'Programming Language :: Python',
                    'Programming Language :: Python :: 3',
-                   'Programming Language :: Python :: 3.4',
+                   'Programming Language :: Python :: 3.6',
                    'Topic :: System',
                    'Topic :: System :: Archiving :: Packaging',
                    'Topic :: Utilities'],

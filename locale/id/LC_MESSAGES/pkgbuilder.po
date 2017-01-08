@@ -5,9 +5,9 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.9\n"
+"Project-Id-Version: 4.2.10\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2016-04-29 16:31+0200\n"
+"POT-Creation-Date: 2017-01-08 17:29+0100\n"
 "PO-Revision-Date: 2015-09-08 15:37+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/kwpolska/pkgbuilder/"
@@ -26,87 +26,94 @@ msgstr ""
 msgid "Building more AUR packages is required."
 msgstr ""
 
-#: pkgbuilder/build.py:74
+#: pkgbuilder/build.py:65
+msgid ""
+"Cannot install dependencies and continue building because -w, --buildonly "
+"was specified. Please run without -w, --buildonly or install dependencies "
+"manually and try again."
+msgstr ""
+
+#: pkgbuilder/build.py:80
 #, python-brace-format
 msgid "found an existing package for {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:113
+#: pkgbuilder/build.py:119
 #, python-brace-format
 msgid "makepkg (or someone else) failed and returned {0}."
 msgstr ""
 
-#: pkgbuilder/build.py:292
+#: pkgbuilder/build.py:298
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:351 pkgbuilder/__main__.py:323
+#: pkgbuilder/build.py:357 pkgbuilder/__main__.py:323
 msgid "Fetching package information..."
 msgstr ""
 
-#: pkgbuilder/build.py:382
+#: pkgbuilder/build.py:388
 msgid ":: Retrieving packages from abs..."
 msgstr ""
 
-#: pkgbuilder/build.py:385
+#: pkgbuilder/build.py:391
 #, python-brace-format
 msgid "retrieving {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:389 pkgbuilder/build.py:441
+#: pkgbuilder/build.py:395 pkgbuilder/build.py:447
 #, python-brace-format
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr ""
 
-#: pkgbuilder/build.py:393
+#: pkgbuilder/build.py:399
 msgid ":: Retrieving packages from aur..."
 msgstr ""
 
-#: pkgbuilder/build.py:396
+#: pkgbuilder/build.py:402
 #, python-brace-format
 msgid "cloning {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:399
+#: pkgbuilder/build.py:405
 msgid "Successfully fetched: "
 msgstr ""
 
-#: pkgbuilder/build.py:429
+#: pkgbuilder/build.py:435
 #, python-brace-format
 msgid "Building {0}..."
 msgstr ""
 
-#: pkgbuilder/build.py:437
+#: pkgbuilder/build.py:443
 msgid "Retrieving from ABS..."
 msgstr ""
 
-#: pkgbuilder/build.py:446 pkgbuilder/build.py:470
+#: pkgbuilder/build.py:452 pkgbuilder/build.py:476
 #, python-brace-format
 msgid "Found an existing package for {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:475
+#: pkgbuilder/build.py:481
 msgid "Cloning the git repository..."
 msgstr ""
 
-#: pkgbuilder/build.py:483
+#: pkgbuilder/build.py:489
 msgid "Checking dependencies..."
 msgstr ""
 
-#: pkgbuilder/build.py:486
+#: pkgbuilder/build.py:492
 msgid "found in system"
 msgstr ""
 
-#: pkgbuilder/build.py:486
+#: pkgbuilder/build.py:492
 msgid "found in repos"
 msgstr ""
 
-#: pkgbuilder/build.py:487
+#: pkgbuilder/build.py:493
 msgid "found in the AUR"
 msgstr ""
 
-#: pkgbuilder/build.py:490
+#: pkgbuilder/build.py:496
 msgid "none found"
 msgstr ""
 
@@ -385,30 +392,30 @@ msgstr ""
 msgid "Interrupt signal received\n"
 msgstr ""
 
-#: pkgbuilder/pbds.py:140
+#: pkgbuilder/pbds.py:137
 #, python-brace-format
 msgid "warning: conflicting values for setting {0}, using {1}"
 msgstr ""
 
-#: pkgbuilder/pbds.py:151
+#: pkgbuilder/pbds.py:148
 msgid "Initializing pacman access..."
 msgstr ""
 
-#: pkgbuilder/pbds.py:204
+#: pkgbuilder/pbds.py:201
 msgid ""
 "Running as root is not allowed as it can cause catastrophic damage to your "
 "system!"
 msgstr ""
 
-#: pkgbuilder/pbds.py:206
+#: pkgbuilder/pbds.py:203
 msgid "Please restart PKGBUILDer as a regular user."
 msgstr ""
 
-#: pkgbuilder/pbds.py:268
+#: pkgbuilder/pbds.py:265
 msgid "WARNING:"
 msgstr ""
 
-#: pkgbuilder/pbds.py:282
+#: pkgbuilder/pbds.py:279
 msgid "ERROR:"
 msgstr ""
 

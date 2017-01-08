@@ -5,8 +5,8 @@ Appendix C. Changelog
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2017, Chris Warrick.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2016-04-29
-:Version: 4.2.9
+:Date: 2017-01-08
+:Version: 4.2.10
 
 .. index:: CHANGELOG
 
@@ -46,6 +46,10 @@ More information can be found on GitHub in the `releases section <https://github
 
 Version History
 ===============
+
+4.2.10
+    * Fix #50 -- prevent infinite loop when building with -w, --buildonly
+      (crashes early and explains why)
 
 4.2.9
     * Add an option to force chdir to a place before building (Issue #45)

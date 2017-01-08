@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.9
+# PKGBUILDer v4.2.10
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2017, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -60,6 +60,12 @@ def auto_build(pkgname, performdepcheck=True,
             pass
         elif build_result[0] == 72337:
             DS.fancy_warning(_('Building more AUR packages is required.'))
+            if not pkginstall:
+                raise pkgbuilder.exceptions.PBException(
+                    _('Cannot install dependencies and continue building because -w, --buildonly was specified. '
+                      'Please run without -w, --buildonly or install dependencies manually and try again.'),
+                    'auto_build deps')
+
             toinstall2 = []
             sigs2 = []
             for pkgname2 in build_result[1]:
@@ -119,6 +125,7 @@ def auto_build(pkgname, performdepcheck=True,
     except pkgbuilder.exceptions.PackageError as e:
         DS.fancy_error(str(e))
         return []
+
 
 def clone(pkgbase):
     """Clone or update a git repo.
