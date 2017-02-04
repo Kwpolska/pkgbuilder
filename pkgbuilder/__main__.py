@@ -217,6 +217,8 @@ def main(source='AUTO', quit=True):
             if pkgs:
                 pkgbuilder.utils.print_package_info(pkgs)
                 qs = 0
+            elif not pkgnames:
+                qs = 0
             else:
                 for i in pkgnames:
                     if i not in foundnames:
