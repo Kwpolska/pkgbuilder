@@ -374,11 +374,11 @@ def fetch_runner(pkgnames, preprocessed=False):
                     except AttributeError:
                         pass
                 allpkgs.append(pkg)
+                if not pkg:
+                    raise pkgbuilder.exceptions.PackageNotFoundError(
+                        pkgname, 'fetch')
 
         for pkg in allpkgs:
-            if not pkg:
-                raise pkgbuilder.exceptions.PackageNotFoundError(
-                    pkg.name, 'fetch')
             if pkg.is_abs:
                 abspkgs.append(pkg)
             else:
