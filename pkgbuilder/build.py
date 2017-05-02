@@ -62,8 +62,10 @@ def auto_build(pkgname, performdepcheck=True,
             DS.fancy_warning(_('Building more AUR packages is required.'))
             if not pkginstall:
                 raise pkgbuilder.exceptions.PBException(
-                    _('Cannot install dependencies and continue building because -w, --buildonly was specified. '
-                      'Please run without -w, --buildonly or install dependencies manually and try again.'),
+                    _('Cannot install dependencies and continue building '
+                      'because -w, --buildonly was specified.  Please run '
+                      'without -w, --buildonly or install dependencies '
+                      'manually and try again.'),
                     'auto_build deps')
 
             toinstall2 = []

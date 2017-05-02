@@ -137,7 +137,8 @@ def wrapper(source='AUTO'):
 
         allpacman = pacmanshort + pacmanlong + pacmanshorta + pacmanlonga
         allpb = pbshort + pblong  # + pbshorta + pblonga
-        allcommon = commonshort + commonlong + commonlongl + commonshortc + commonlongc
+        allcommon = (commonshort + commonlong + commonlongl + commonshortc +
+                     commonlongc)
 
         allshort = pacmanshort + pbshort + commonshort
         alllong = pacmanlong + pblong + commonlong

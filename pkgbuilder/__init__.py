@@ -61,6 +61,7 @@ def _(text):
     """Return the translated version of a string."""
     return G(text)
 
+
 from .pbds import PBDS  # NOQA
 DS = PBDS()
 
@@ -76,5 +77,6 @@ class _UTC(datetime.tzinfo):
 
     def dst(self, dt):
         return datetime.timedelta(0)
+
 
 UTC = _UTC()

@@ -399,5 +399,6 @@ def main(source='AUTO', quit=True):
 
     DS.log.info('Quitting peacefully.')
 
+
 if __name__ == '__main__':
     main()
