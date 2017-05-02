@@ -3,8 +3,8 @@ PKGBUILDer.  An AUR helper (and library) in Python 3.
 =====================================================
 :Info: This is the README file for PKGBUILDer.
 :Author: Chris Warrick <chris@chriswarrick.com>
-:Date: 2017-01-08
-:Version: 4.2.10
+:Date: 2017-05-02
+:Version: 4.2.11
 
 .. index: README
 

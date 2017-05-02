@@ -6,8 +6,8 @@ PBWrapper
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2017, Chris Warrick.
 :License: BSD (see /LICENSE or Appendix B.)
-:Date: 2017-01-08
-:Version: 4.2.10
+:Date: 2017-05-02
+:Version: 4.2.11
 :Wrapper Version: 0.5.3
 :Manual section: 8
 :Manual group: PKGBUILDer manual

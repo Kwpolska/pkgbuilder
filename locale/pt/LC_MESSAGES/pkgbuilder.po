@@ -6,9 +6,9 @@
 # Thiago Perrotta <inactive+thiagowfx@transifex.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.10\n"
+"Project-Id-Version: 4.2.11\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2017-01-08 17:29+0100\n"
+"POT-Creation-Date: 2017-05-02 14:42+0200\n"
 "PO-Revision-Date: 2015-09-08 15:38+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/kwpolska/pkgbuilder/"
@@ -30,91 +30,91 @@ msgstr "É necessário compilar mais pacotes do AUR."
 #: pkgbuilder/build.py:65
 msgid ""
 "Cannot install dependencies and continue building because -w, --buildonly "
-"was specified. Please run without -w, --buildonly or install dependencies "
+"was specified.  Please run without -w, --buildonly or install dependencies "
 "manually and try again."
 msgstr ""
 
-#: pkgbuilder/build.py:80
+#: pkgbuilder/build.py:82
 #, python-brace-format
 msgid "found an existing package for {0}"
 msgstr "um pacote existente para {0} foi encontrado"
 
-#: pkgbuilder/build.py:119
+#: pkgbuilder/build.py:121
 #, python-brace-format
 msgid "makepkg (or someone else) failed and returned {0}."
 msgstr "makepkg (ou outro programa) falhou e retornou {0}."
 
-#: pkgbuilder/build.py:298
+#: pkgbuilder/build.py:300
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr "Falhou para satisfazer os requisitos de dependência do pacote: {0}"
 
-#: pkgbuilder/build.py:357 pkgbuilder/__main__.py:323
+#: pkgbuilder/build.py:359 pkgbuilder/__main__.py:325
 msgid "Fetching package information..."
 msgstr "Obtendo informações do pacote.."
 
-#: pkgbuilder/build.py:388
+#: pkgbuilder/build.py:390
 msgid ":: Retrieving packages from abs..."
 msgstr ":: Obtendo pacotes do abs..."
 
-#: pkgbuilder/build.py:391
+#: pkgbuilder/build.py:393
 #, python-brace-format
 msgid "retrieving {0}"
 msgstr "recebendo {0}"
 
-#: pkgbuilder/build.py:395 pkgbuilder/build.py:447
+#: pkgbuilder/build.py:397 pkgbuilder/build.py:449
 #, python-brace-format
 msgid "Failed to retieve {0} (from ABS/rsync)."
 msgstr "Falhou para obter {0} (do ABS/rsync)."
 
-#: pkgbuilder/build.py:399
+#: pkgbuilder/build.py:401
 msgid ":: Retrieving packages from aur..."
 msgstr ":: Obtendo pacotes do aur..."
 
-#: pkgbuilder/build.py:402
+#: pkgbuilder/build.py:404
 #, python-brace-format
 msgid "cloning {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:405
+#: pkgbuilder/build.py:407
 msgid "Successfully fetched: "
 msgstr "Baixou com sucesso:"
 
-#: pkgbuilder/build.py:435
+#: pkgbuilder/build.py:437
 #, python-brace-format
 msgid "Building {0}..."
 msgstr "Construindo {0}..."
 
-#: pkgbuilder/build.py:443
+#: pkgbuilder/build.py:445
 msgid "Retrieving from ABS..."
 msgstr "Recebendo do ABS..."
 
-#: pkgbuilder/build.py:452 pkgbuilder/build.py:476
+#: pkgbuilder/build.py:454 pkgbuilder/build.py:478
 #, python-brace-format
 msgid "Found an existing package for {0}"
 msgstr ""
 
-#: pkgbuilder/build.py:481
+#: pkgbuilder/build.py:483
 msgid "Cloning the git repository..."
 msgstr ""
 
-#: pkgbuilder/build.py:489
+#: pkgbuilder/build.py:491
 msgid "Checking dependencies..."
 msgstr "Checando dependências.."
 
-#: pkgbuilder/build.py:492
+#: pkgbuilder/build.py:494
 msgid "found in system"
 msgstr "encontrado no sistema"
 
-#: pkgbuilder/build.py:492
+#: pkgbuilder/build.py:494
 msgid "found in repos"
 msgstr "encontrado nos repositórios"
 
-#: pkgbuilder/build.py:493
+#: pkgbuilder/build.py:495
 msgid "found in the AUR"
 msgstr "encontrado no AUR"
 
-#: pkgbuilder/build.py:496
+#: pkgbuilder/build.py:498
 msgid "none found"
 msgstr "nenhum encontrado"
 
@@ -347,37 +347,37 @@ msgstr ""
 msgid "PKGBUILDer cannot work in a virtualenv, exiting."
 msgstr ""
 
-#: pkgbuilder/__main__.py:223
+#: pkgbuilder/__main__.py:225
 #, python-brace-format
 msgid "error: package '{0}' was not found"
 msgstr "erro: pacote '{0}' não foi encontrado"
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
-#: pkgbuilder/__main__.py:239
+#: pkgbuilder/__main__.py:241
 msgid "Search query too short"
 msgstr "Busca muito curta"
 
-#: pkgbuilder/__main__.py:240
+#: pkgbuilder/__main__.py:242
 msgid "Searching for exact match..."
 msgstr "Procurando pela busca exata..."
 
-#: pkgbuilder/__main__.py:243
+#: pkgbuilder/__main__.py:245
 msgid "not found"
 msgstr "não encontrado"
 
-#: pkgbuilder/__main__.py:328
+#: pkgbuilder/__main__.py:330
 #, python-brace-format
 msgid "Error while processing {0}: {1}"
 msgstr "Erro enquanto processava {0}: {1}"
 
-#: pkgbuilder/__main__.py:356
+#: pkgbuilder/__main__.py:358
 #, python-brace-format
 msgid "skipping package {0}"
 msgstr ""
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/__main__.py:386
+#: pkgbuilder/__main__.py:388
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
@@ -650,7 +650,7 @@ msgstr ""
 "Opções adicionais:\n"
 "  -L, --desbloquear         desbloquear o banco de dados do pacman"
 
-#: pkgbuilder/wrapper.py:149
+#: pkgbuilder/wrapper.py:150
 #, python-format
 msgid "%(prog)s <operation> [...]"
 msgstr "%(prog)s <operação> [...]"
