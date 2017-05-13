@@ -13,9 +13,9 @@
 # tufadorin <inactive+tufadorin@transifex.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.11\n"
+"Project-Id-Version: 4.2.12\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2017-05-02 14:42+0200\n"
+"POT-Creation-Date: 2017-05-13 15:31+0200\n"
 "PO-Revision-Date: 2015-09-08 15:38+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/kwpolska/pkgbuilder/"
@@ -61,7 +61,8 @@ msgid "Fetching package information..."
 msgstr "Obteniendo información de los paquetes ..."
 
 #: pkgbuilder/build.py:390
-msgid ":: Retrieving packages from abs..."
+#, fuzzy
+msgid ":: Retrieving packages from asp..."
 msgstr ":: Recuperando paquetes de abs ..."
 
 #: pkgbuilder/build.py:393
@@ -70,8 +71,8 @@ msgid "retrieving {0}"
 msgstr "recuperando {0}"
 
 #: pkgbuilder/build.py:397 pkgbuilder/build.py:449
-#, python-brace-format
-msgid "Failed to retieve {0} (from ABS/rsync)."
+#, fuzzy, python-brace-format
+msgid "Failed to retieve {0} (from ASP)."
 msgstr "No se ha podido recuperar {0} (de ABS/rsync)."
 
 #: pkgbuilder/build.py:401
@@ -93,7 +94,8 @@ msgid "Building {0}..."
 msgstr "Construyendo {0}..."
 
 #: pkgbuilder/build.py:445
-msgid "Retrieving from ABS..."
+#, fuzzy
+msgid "Retrieving from ASP..."
 msgstr "Recuperando de ABS ..."
 
 #: pkgbuilder/build.py:454 pkgbuilder/build.py:478
@@ -191,7 +193,7 @@ msgid "An AUR helper (and library) in Python 3."
 msgstr "Un ayudante de AUR (y librerías) en Python 3."
 
 #: pkgbuilder/__main__.py:42
-msgid "Also accepts ABS packages."
+msgid "Also accepts repository packages to build from source."
 msgstr ""
 
 #: pkgbuilder/__main__.py:45
@@ -203,7 +205,8 @@ msgid "PACKAGE"
 msgstr "PAQUETE"
 
 #: pkgbuilder/__main__.py:48
-msgid "AUR/ABS packages to build"
+#, fuzzy
+msgid "AUR/repository packages to build"
 msgstr "paquetes AUR/ABS para construir"
 
 #: pkgbuilder/__main__.py:50
@@ -587,7 +590,8 @@ msgid "Didn’t pass any packages."
 msgstr "No pasó ningún paquete."
 
 #: pkgbuilder/utils.py:134
-msgid "Trying to use utils.print_package_info with an ABS package"
+#, fuzzy
+msgid "Trying to use utils.print_package_info with a repository package"
 msgstr "Tratando de utilizar utils.print_package_info con un paquete de ABS"
 
 #. TRANSLATORS: space it properly.  “yes/no” below are

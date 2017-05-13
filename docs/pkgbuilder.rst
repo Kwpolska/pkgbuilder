@@ -6,8 +6,8 @@ PKGBUILDer
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2017, Chris Warrick.
 :License: BSD (see /LICENSE or Appendix B.)
-:Date: 2017-05-02
-:Version: 4.2.11
+:Date: 2017-05-13
+:Version: 4.2.12
 :Manual section: 8
 :Manual group: PKGBUILDer manual
 
@@ -27,9 +27,9 @@ much as possible.
 Since version 2.1.0.0, PKGBUILDer provides modules that can be used in
 other scripts.
 
-Since version 2.1.5.6, PKGBUILDer also provides support for ABS packages.
-Passing an ABS package name to the ``-S`` option will result in a seamless
-detection and build process.
+Since version 2.1.5.6, PKGBUILDer also provides support for repository
+packages.  Passing a repository package name to the ``-S`` option will result
+in a seamless detection and build process.
 
 Notice: Running PKGBUILDer and/or PBWrapper as root can deal catastrophic
 damage to your system.  Run it as a regular user, you will be prompted for
@@ -149,8 +149,8 @@ pkgbuilder -SF hello
     Like above, but does it in /tmp/pkgbuilder-UID.
 
 pkgbuilder python
-    Python is a binary repo package, triggering a ABS download via rsync (no
-    need for ``extra/abs``).  -S and/or -F are also accepted.
+    Python is a binary repo package, triggering a package download from ASP.
+    -S and/or -F are also accepted.
 
 pkgbuilder -Syu
     Check for updates and offer installing them.

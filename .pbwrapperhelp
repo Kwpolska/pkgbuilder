@@ -51,7 +51,7 @@ usage: pkgbuilder [-h] [-V] [-S] [-F] [--userfetch USER] [-i] [-s] [-u] [-U]
 An AUR helper (and library) in Python 3.
 
 positional arguments:
-  PACKAGE             AUR/ABS packages to build
+  PACKAGE             AUR/repository packages to build
 
 optional arguments:
   -h, --help          show this help message and exit
@@ -97,4 +97,4 @@ configuration overrides:
   --notmp             don't build in /tmp
   --build             build (instead of fetching)
 
-Also accepts ABS packages.
+Also accepts repository packages to build from source.

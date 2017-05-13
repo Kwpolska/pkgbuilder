@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.11
+# PKGBUILDer v4.2.12
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2017, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -52,7 +52,7 @@ class Package(object):
     def __repr__(self):
         """Return something nice for people wanting a repr."""
         if self.is_abs:
-            return '<ABS Package {0}-{1}>'.format(self.name, self.version)
+            return '<Repository Package {0}-{1}>'.format(self.name, self.version)
         elif not self.is_abs:
             return '<AUR Package {0}-{1}>'.format(self.name, self.version)
         elif self.is_abs is None:
@@ -132,7 +132,7 @@ class AURPackage(Package):
 
 
 class ABSPackage(Package):
-    """An ABS package."""
+    """A repository package (formerly ABS)."""
 
     is_abs = True
     # Most of those aren’t necessary, but I am copying them over because I can.
@@ -153,7 +153,7 @@ class ABSPackage(Package):
     size = None
 
     @classmethod
-    def from_pyalpm(cls, abspkg):
+    def from_pyalpm(cls, alpmpkg):
         """Transform a pyalpm.Package into a pkgbuilder.package.ABSPackage."""
         copy = ['arch', 'backup', 'base64_sig', 'conflicts', 'deltas',
                 'depends', 'download_size', 'filename', 'files', 'groups',
@@ -163,12 +163,12 @@ class ABSPackage(Package):
         p = cls()
 
         for i in copy:
-            setattr(p, i, getattr(abspkg, i))
+            setattr(p, i, getattr(alpmpkg, i))
 
-        p.repo = abspkg.db.name
-        p.description = abspkg.desc
-        p.human = abspkg.packager
-        p.builddate = mktime(abspkg.builddate)
-        p.installdate = mktime(abspkg.installdate)
+        p.repo = alpmpkg.db.name
+        p.description = alpmpkg.desc
+        p.human = alpmpkg.packager
+        p.builddate = mktime(alpmpkg.builddate)
+        p.installdate = mktime(alpmpkg.installdate)
 
         return p

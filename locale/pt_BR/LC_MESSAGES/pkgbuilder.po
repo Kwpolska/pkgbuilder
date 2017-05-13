@@ -6,9 +6,9 @@
 # Fábio Nogueira <deb.user.ba@gmail.com>, 2016
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.11\n"
+"Project-Id-Version: 4.2.12\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2017-05-02 14:42+0200\n"
+"POT-Creation-Date: 2017-05-13 15:31+0200\n"
 "PO-Revision-Date: 2016-03-27 23:10+0000\n"
 "Last-Translator: Fábio Nogueira <deb.user.ba@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/kwpolska/"
@@ -54,7 +54,8 @@ msgid "Fetching package information..."
 msgstr "Buscando informações do pacote..."
 
 #: pkgbuilder/build.py:390
-msgid ":: Retrieving packages from abs..."
+#, fuzzy
+msgid ":: Retrieving packages from asp..."
 msgstr ":: Recuperando pacotes do abs..."
 
 #: pkgbuilder/build.py:393
@@ -64,7 +65,7 @@ msgstr "recuperando {0}"
 
 #: pkgbuilder/build.py:397 pkgbuilder/build.py:449
 #, python-brace-format
-msgid "Failed to retieve {0} (from ABS/rsync)."
+msgid "Failed to retieve {0} (from ASP)."
 msgstr ""
 
 #: pkgbuilder/build.py:401
@@ -86,7 +87,8 @@ msgid "Building {0}..."
 msgstr "Construindo {0}..."
 
 #: pkgbuilder/build.py:445
-msgid "Retrieving from ABS..."
+#, fuzzy
+msgid "Retrieving from ASP..."
 msgstr "Recuperando do ABS..."
 
 #: pkgbuilder/build.py:454 pkgbuilder/build.py:478
@@ -184,7 +186,7 @@ msgid "An AUR helper (and library) in Python 3."
 msgstr ""
 
 #: pkgbuilder/__main__.py:42
-msgid "Also accepts ABS packages."
+msgid "Also accepts repository packages to build from source."
 msgstr ""
 
 #: pkgbuilder/__main__.py:45
@@ -196,7 +198,7 @@ msgid "PACKAGE"
 msgstr "PACOTE"
 
 #: pkgbuilder/__main__.py:48
-msgid "AUR/ABS packages to build"
+msgid "AUR/repository packages to build"
 msgstr ""
 
 #: pkgbuilder/__main__.py:50
@@ -579,7 +581,7 @@ msgid "Didn’t pass any packages."
 msgstr ""
 
 #: pkgbuilder/utils.py:134
-msgid "Trying to use utils.print_package_info with an ABS package"
+msgid "Trying to use utils.print_package_info with a repository package"
 msgstr ""
 
 #. TRANSLATORS: space it properly.  “yes/no” below are

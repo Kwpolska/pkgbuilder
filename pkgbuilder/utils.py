@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.11
+# PKGBUILDer v4.2.12
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2017, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -93,7 +93,7 @@ def print_package_search(pkg, cachemode=False, prefix='', prefixp=''):
             installed = (installed + ' ' + DS.colors['red'] +
                          _('[out of date]') + DS.colors['all_off'])
     except AttributeError:
-        pass  # for ABS packages
+        pass  # for repository packages
 
     category = pkg.repo
 
@@ -132,7 +132,7 @@ def print_package_info(pkgs, cachemode=False):
         for i in pkgs:
             if not isinstance(i, AURPackage):
                 raise SanityError(_('Trying to use utils.print_package_info '
-                                    'with an ABS package'),
+                                    'with a repository package'),
                                   source='utils.print_package_info')
         loct = os.getenv('LC_TIME')
         loc = os.getenv('LC_ALL')

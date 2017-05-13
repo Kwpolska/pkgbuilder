@@ -5,8 +5,8 @@ Appendix C. Changelog
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2017, Chris Warrick.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2017-05-02
-:Version: 4.2.11
+:Date: 2017-05-13
+:Version: 4.2.12
 
 .. index:: CHANGELOG
 
@@ -46,6 +46,11 @@ More information can be found on GitHub in the `releases section <https://github
 
 Version History
 ===============
+
+4.2.12
+    * use asp instead of abs/rsync
+    * remove some references to ABS
+    * **deprecated** ``pkgbuilder.build.rsync`` — use ``pkgbuilder.build.asp_export`` instead.
 
 4.2.11
     * Report missing packages in -F properly (via Issue #52)

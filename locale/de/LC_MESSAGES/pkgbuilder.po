@@ -6,9 +6,9 @@
 # Max Mustermann <cortuli@googlemail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.11\n"
+"Project-Id-Version: 4.2.12\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2017-05-02 14:42+0200\n"
+"POT-Creation-Date: 2017-05-13 15:31+0200\n"
 "PO-Revision-Date: 2015-09-08 15:37+0000\n"
 "Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/kwpolska/pkgbuilder/language/"
@@ -54,8 +54,9 @@ msgid "Fetching package information..."
 msgstr "Sammle Paket informationen..."
 
 #: pkgbuilder/build.py:390
-msgid ":: Retrieving packages from abs..."
-msgstr ""
+#, fuzzy
+msgid ":: Retrieving packages from asp..."
+msgstr "::Erhalte Pakete aus den AUR..."
 
 #: pkgbuilder/build.py:393
 #, python-brace-format
@@ -64,7 +65,7 @@ msgstr ""
 
 #: pkgbuilder/build.py:397 pkgbuilder/build.py:449
 #, python-brace-format
-msgid "Failed to retieve {0} (from ABS/rsync)."
+msgid "Failed to retieve {0} (from ASP)."
 msgstr ""
 
 #: pkgbuilder/build.py:401
@@ -86,8 +87,9 @@ msgid "Building {0}..."
 msgstr "Bilde{0}..."
 
 #: pkgbuilder/build.py:445
-msgid "Retrieving from ABS..."
-msgstr ""
+#, fuzzy
+msgid "Retrieving from ASP..."
+msgstr "::Erhalte Pakete aus den AUR..."
 
 #: pkgbuilder/build.py:454 pkgbuilder/build.py:478
 #, python-brace-format
@@ -184,7 +186,7 @@ msgid "An AUR helper (and library) in Python 3."
 msgstr ""
 
 #: pkgbuilder/__main__.py:42
-msgid "Also accepts ABS packages."
+msgid "Also accepts repository packages to build from source."
 msgstr ""
 
 #: pkgbuilder/__main__.py:45
@@ -196,7 +198,7 @@ msgid "PACKAGE"
 msgstr "PACKAGE"
 
 #: pkgbuilder/__main__.py:48
-msgid "AUR/ABS packages to build"
+msgid "AUR/repository packages to build"
 msgstr ""
 
 #: pkgbuilder/__main__.py:50
@@ -578,7 +580,7 @@ msgid "Didn’t pass any packages."
 msgstr ""
 
 #: pkgbuilder/utils.py:134
-msgid "Trying to use utils.print_package_info with an ABS package"
+msgid "Trying to use utils.print_package_info with a repository package"
 msgstr ""
 
 #. TRANSLATORS: space it properly.  “yes/no” below are

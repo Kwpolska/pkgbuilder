@@ -6,8 +6,8 @@ PBWrapper
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2017, Chris Warrick.
 :License: BSD (see /LICENSE or Appendix B.)
-:Date: 2017-05-02
-:Version: 4.2.11
+:Date: 2017-05-13
+:Version: 4.2.12
 :Wrapper Version: 0.5.3
 :Manual section: 8
 :Manual group: PKGBUILDer manual
@@ -59,7 +59,7 @@ pb -S python hello
     Installs the Python interpreter from the repos (which is already on
     your system, especially if you have installed PKGBUILDer/PBWrapper)
     and GNU Hello from the AUR.  Note that, if you used ``pkgbuilder`` instead
-    of ``pb``, the Python package would be fetched from the ABS (instead of the
+    of ``pb``, the Python package would be fetched from ASP (instead of the
     repositories) and built locally.
 
 pb -Si python hello

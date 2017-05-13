@@ -5,8 +5,8 @@ package module (Package, AURPackage, ABSPackage classes)
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2017, Chris Warrick.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2017-05-02
-:Version: 4.2.11
+:Date: 2017-05-13
+:Version: 4.2.12
 
 .. index:: Package
 .. index:: AURPackage
@@ -16,6 +16,8 @@ package module (Package, AURPackage, ABSPackage classes)
 Added in 3.0.0, the Package family of classes is the core of PKGBUILDer.  They
 are responsible for storing package data in a consistent way.  All class
 entries are Pythonic.
+
+**Historic note:** whenever *ABS* is used, it means *repository package*. The ABS tool was deprecated in 2017 and replaced by ASP; however, PKGBUILDer uses that abbreviation to refer to packages that are in Arch repositories.
 
 .. automodule:: pkgbuilder.package
 
@@ -36,13 +38,13 @@ attributes:
 +-------------------+--------+---------+---------------------------------------------------------------------------------------------+
 | description       | str    | None    | Package description.                                                                        |
 +-------------------+--------+---------+---------------------------------------------------------------------------------------------+
-| repo              | str    | None    | The repo (ABS) or category (AUR) of the package in question.                                |
+| repo              | str    | None    | The repo or category (AUR) of the package in question.                                      |
 +-------------------+--------+---------+---------------------------------------------------------------------------------------------+
 | url               | str    | None    | The upstream URL specified in the PKGBUILD.                                                 |
 +-------------------+--------+---------+---------------------------------------------------------------------------------------------+
 | licenses          | list   | []      | Licenses specified in the PKGBUILD.                                                         |
 +-------------------+--------+---------+---------------------------------------------------------------------------------------------+
-| human             | str    | None    | The packager (ABS) or maintainer (AUR) of the package in question.                          |
+| human             | str    | None    | The packager (repo) or maintainer (AUR) of the package in question.                         |
 +-------------------+--------+---------+---------------------------------------------------------------------------------------------+
 
 .. autoclass:: pkgbuilder.package.AURPackage

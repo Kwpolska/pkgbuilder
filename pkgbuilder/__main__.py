@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.11
+# PKGBUILDer v4.2.12
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2017, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -39,13 +39,13 @@ def main(source='AUTO', quit=True):
         parser = argparse.ArgumentParser(
             prog='pkgbuilder',
             description=_('An AUR helper (and library) in Python 3.'),
-            epilog=_('Also accepts ABS packages.'))
+            epilog=_('Also accepts repository packages to build from source.'))
         parser.add_argument(
             '-V', '--version', action='version', version=verstring,
             help=_('show version number and quit'))
         parser.add_argument(
             'pkgnames', metavar=_('PACKAGE'), action='store', nargs='*',
-            help=_('AUR/ABS packages to build'))
+            help=_('AUR/repository packages to build'))
 
         argopr = parser.add_argument_group(_('operations'))
         argopr.add_argument(

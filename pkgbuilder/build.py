@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.11
+# PKGBUILDer v4.2.12
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2017, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -28,7 +28,7 @@ import subprocess
 import functools
 import glob
 
-__all__ = ('auto_build', 'clone', 'rsync', 'prepare_deps', 'depcheck',
+__all__ = ('auto_build', 'clone', 'asp_export', 'prepare_deps', 'depcheck',
            'fetch_runner', 'build_runner')
 
 
@@ -160,18 +160,18 @@ def clone(pkgbase):
 
 
 def rsync(pkg, quiet=False):
-    """Run rsync for a package."""
-    if quiet:
-        qv = '--quiet'
-    else:
-        qv = '--verbose'
-    return DS.run_command(['rsync', qv, '-mr', '--no-motd', '--delete-after',
-                           '--no-p', '--no-o', '--no-g',
-                           '--include=/{0}'.format(pkg.repo),
-                           '--include=/{0}/{1}'.format(pkg.repo, pkg.name),
-                           '--exclude=/{0}/*'.format(pkg.repo), '--exclude=/*',
-                           'rsync.archlinux.org::abs/{0}/'.format(pkg.arch),
-                           '.'])
+    """Deprecated. Use `asp_export` instead.
+
+    .. deprecated: 4.2.12"""
+    asp_export(pkg)
+
+
+def asp_export(pkg):
+    """Export a package from ASP to the current working directory.
+
+    .. versionadded: 4.2.12"""
+    subprocess.check_call(['asp', 'update', pkg.name])
+    return subprocess.call(['asp', 'export', pkg.name])
 
 
 def _check_and_append(data, field, out):
@@ -364,7 +364,7 @@ def fetch_runner(pkgnames, preprocessed=False):
                 except IndexError:
                     try:
                         DS.log.info('{0} not found in the AUR, checking in '
-                                    'ABS'.format(pkgname))
+                                    'repositories'.format(pkgname))
                         syncpkgs = []
                         for j in [i.pkgcache for i in DS.pyc.get_syncdbs()]:
                             syncpkgs.append(j)
@@ -387,15 +387,15 @@ def fetch_runner(pkgnames, preprocessed=False):
                 aurpkgs.append(pkg)
 
         if abspkgs:
-            print(_(':: Retrieving packages from abs...'))
+            print(_(':: Retrieving packages from asp...'))
             pm = pkgbuilder.ui.Progress(len(abspkgs))
             for pkg in abspkgs:
                 pm.msg(_('retrieving {0}').format(pkg.name), True)
-                rc = rsync(pkg, True)
+                rc = asp_export(pkg)
                 if rc > 0:
                     raise pkgbuilder.exceptions.NetworkError(
-                        _('Failed to retieve {0} (from ABS/rsync).').format(
-                            pkg.name), source='rsync', pkg=pkg, retcode=rc)
+                        _('Failed to retieve {0} (from ASP).').format(
+                            pkg.name), source='asp', pkg=pkg, retcode=rc)
 
         if aurpkgs:
             print(_(':: Retrieving packages from aur...'))
@@ -421,7 +421,7 @@ def build_runner(pkgname, performdepcheck=True,
     try:
         pkg = pkgbuilder.utils.info([pkgname])[0]
     except IndexError:
-        DS.log.info('{0} not found in the AUR, checking in ABS'.format(
+        DS.log.info('{0} not found in the AUR, checking in repositories'.format(
             pkgname))
         syncpkgs = []
         for j in [i.pkgcache for i in DS.pyc.get_syncdbs()]:
@@ -442,12 +442,12 @@ def build_runner(pkgname, performdepcheck=True,
                                           prefixp='  -> ')
     sys.stdout.write(DS.colors['all_off'])
     if pkg.is_abs:
-        DS.fancy_msg(_('Retrieving from ABS...'))
-        rc = rsync(pkg)
+        DS.fancy_msg(_('Retrieving from ASP...'))
+        rc = asp_export(pkg)
         if rc > 0:
             raise pkgbuilder.exceptions.NetworkError(
-                _('Failed to retieve {0} (from ABS/rsync).').format(
-                    pkg.name), pkg=pkg, retcode=rc)
+                _('Failed to retieve {0} (from ASP).').format(
+                    pkg.name), source='asp', pkg=pkg, retcode=rc)
 
         existing = find_packagefile(pkg.name)
         if any(pkg.name in i for i in existing[0]):
@@ -457,18 +457,18 @@ def build_runner(pkgname, performdepcheck=True,
                 existing = ([], [])
             return [72336, existing]
         try:
-            os.chdir('./{0}/{1}'.format(pkg.repo, pkg.name))
+            os.chdir('./{0}'.format(pkg.name))
         except FileNotFoundError:
             raise pkgbuilder.exceptions.PBException(
                 'The package download failed.\n    This package might '
                 'be generated from a split PKGBUILD.  Please find out the '
                 'name of the “main” package (eg. python- instead of python2-) '
-                'and try again.', '/'.join((pkg.repo, pkg.name)), exit=False)
+                'and try again.', pkg.name, exit=False)
 
         if not os.path.exists('.SRCINFO'):
-            # Create a .SRCINFO file for ABS packages.
+            # Create a .SRCINFO file for ASP/repo packages.
             # Slightly hacky, but saves us work on parsing bash.
-            DS.log.debug("Creating .SRCINFO for ABS package")
+            DS.log.debug("Creating .SRCINFO for repository package")
             srcinfo = subprocess.check_output(["makepkg", "--printsrcinfo"])
             with open(".SRCINFO", "wb") as fh:
                 fh.write(srcinfo)

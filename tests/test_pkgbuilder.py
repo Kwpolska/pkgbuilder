@@ -49,7 +49,7 @@ class TestPB(unittest.TestCase):
     fpkg = pkgbuilder.package.AURPackage.from_aurdict({
         'Description': 'A Python AUR helper/library.', 'CategoryID': 16, 'ID':
         52542, 'Maintainer': 'Kwpolska',
-        'Depends': ['python', 'pyalpm>=0.5.1-1', 'python-requests', 'rsync'],
+        'Depends': ['python', 'pyalpm>=0.5.1-1', 'python-requests', 'asp'],
         'URLPath': '/packages/pk/pkgbuilder/pkgbuilder.tar.gz', 'Version':
         '3.2.0-1', 'PackageBase': 'pkgbuilder', 'FirstSubmitted': 1316529993,
         'OutOfDate': 1000, 'NumVotes': 19, 'Name': 'pkgbuilderts', 'LastModified':
@@ -94,7 +94,7 @@ class TestPB(unittest.TestCase):
                   'Licenses       : BSD\n'
                   'Groups         : None\n'
                   'Provides       : None\n'
-                  'Depends On     : python  pyalpm>=0.5.1-1  python-requests  rsync\n'
+                  'Depends On     : python  pyalpm>=0.5.1-1  python-requests  asp\n'
                   'Make Deps      : None\n'
                   'Check Deps     : None\n'
                   'Optional Deps  : None\n'
