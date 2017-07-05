@@ -109,4 +109,19 @@ class AUR(object):
 
     def multiinfo(self, args):
         """Make a multiinfo request and return the AURDict."""
-        return json.loads(self.jsonmultiinfo(args))
+        MAX_SIZE = 150
+        args = list(args)
+        size = len(args)
+        results = []
+        i = 0
+        while i < size:
+            query = args[i:i + MAX_SIZE]
+            i += MAX_SIZE
+            response = json.loads(self.jsonmultiinfo(query))
+            if response['type'] == 'error':
+                return response
+            results.extend(response['results'])
+
+        response['resultcount'] = len(results)
+        response['results'] = results
+        return response
