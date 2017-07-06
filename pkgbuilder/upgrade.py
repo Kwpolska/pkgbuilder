@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.12
+# PKGBUILDer v4.2.13
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2017, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -51,9 +51,9 @@ def list_upgradable(pkglist, vcsup=False, aurcache=None, ignorelist=None):
         aurlist = aurcache
     else:
         aurlist = pkgbuilder.utils.info(pkglist)
-        # It’s THAT easy.  Oh, and by the way: it is much, MUCH faster
-        # than others.  It makes ONE multiinfo request rather than
-        # len(installed_packages) info requests.
+        # It’s THAT easy.  Oh, and by the way: it is much, MUCH faster than
+        # others.  It makes only a handful of multiinfo requests (1-2 on most
+        # systems) rather than len(installed_packages) info requests.
 
     upgradable = []
     downgradable = []

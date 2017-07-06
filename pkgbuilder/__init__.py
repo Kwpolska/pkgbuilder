@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.12
+# PKGBUILDer v4.2.13
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2017, Chris Warrick.
 # All rights reserved.
@@ -45,7 +45,7 @@ import sys
 
 
 __title__ = 'PKGBUILDer'
-__version__ = '4.2.12'
+__version__ = '4.2.13'
 __author__ = 'Chris Warrick'
 __license__ = '3-clause BSD'
 __docformat__ = 'restructuredtext en'
