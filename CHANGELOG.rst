@@ -5,8 +5,8 @@ Appendix C. Changelog
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2017, Chris Warrick.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2017-07-06
-:Version: 4.2.13
+:Date: 2017-07-13
+:Version: 4.2.14
 
 .. index:: CHANGELOG
 
@@ -46,6 +46,9 @@ More information can be found on GitHub in the `releases section <https://github
 
 Version History
 ===============
+
+4.2.14
+    * Fix multiinfo glitch if there are no packages
 
 4.2.13
     * Split multiinfo requests into batches of 150, preventing crashes when the request URL becomes too large (Issue #53)

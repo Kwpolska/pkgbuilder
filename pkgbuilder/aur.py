@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.13
+# PKGBUILDer v4.2.14
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2017, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -109,6 +109,10 @@ class AUR(object):
 
     def multiinfo(self, args):
         """Make a multiinfo request and return the AURDict."""
+        if not args:
+            # If there are 0 packages, use jsonmultiinfo’s “empty string”
+            # fallback and decode it as JSON.
+            return json.loads(self.jsonmultiinfo(args))
         MAX_SIZE = 150
         args = list(args)
         size = len(args)
