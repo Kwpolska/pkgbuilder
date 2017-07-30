@@ -19,3 +19,6 @@ LOCALETYPE="gettext-tx"
 # Python versions supported.
 PYTHON2=0
 PYTHON3=1
+
+# Whether or not to create AUR -git packages. (true/false)
+AUR_GIT_PACKAGE="true"
