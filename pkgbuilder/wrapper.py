@@ -2,13 +2,13 @@
 # PBWrapper v0.5.0
 # PKGBUILDer v4.2.14
 # An AUR helper (and library) in Python 3.
-# Copyright © 2011-2017, Chris Warrick.
+# Copyright © 2011-2018, Chris Warrick.
 # See /LICENSE for licensing information.
 
 """
 A wrapper for pacman and PKGBUILDer, also known as PBWrapper or pb.
 
-:Copyright: © 2011-2017, Chris Warrick.
+:Copyright: © 2011-2018, Chris Warrick.
 :License: BSD (see /LICENSE).
 """
 

@@ -4,7 +4,7 @@ PBWrapper
 
 :Subtitle: A wrapper for pacman and PKGBUILDer.
 :Author: Chris Warrick <chris@chriswarrick.com>
-:Copyright: © 2011-2017, Chris Warrick.
+:Copyright: © 2011-2018, Chris Warrick.
 :License: BSD (see /LICENSE or Appendix B.)
 :Date: 2017-07-13
 :Version: 4.2.14
