@@ -6,9 +6,9 @@
 # Martin Kříž <liberte.czech@gmail.com>, 2016
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.14\n"
+"Project-Id-Version: 4.2.15\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2017-07-13 12:24+0200\n"
+"POT-Creation-Date: 2018-03-18 00:07+0100\n"
 "PO-Revision-Date: 2016-04-08 19:32+0000\n"
 "Last-Translator: Martin Kříž <liberte.czech@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/kwpolska/pkgbuilder/language/"
@@ -44,79 +44,79 @@ msgstr "nalezen existující balíček pro {0}"
 msgid "makepkg (or someone else) failed and returned {0}."
 msgstr "makepkg (nebo něco jiného) se nezdařilo, návrat {0}."
 
-#: pkgbuilder/build.py:300
+#: pkgbuilder/build.py:301
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr "Nesplnění požadavku závislostí balíčku: {0}"
 
-#: pkgbuilder/build.py:359 pkgbuilder/__main__.py:325
+#: pkgbuilder/build.py:360 pkgbuilder/__main__.py:325
 msgid "Fetching package information..."
 msgstr "Načítání informací o balíku..."
 
-#: pkgbuilder/build.py:390
+#: pkgbuilder/build.py:391
 #, fuzzy
 msgid ":: Retrieving packages from asp..."
 msgstr ":: Získávání balíčků z abs..."
 
-#: pkgbuilder/build.py:393
+#: pkgbuilder/build.py:394
 #, python-brace-format
 msgid "retrieving {0}"
 msgstr "načítání {0}"
 
-#: pkgbuilder/build.py:397 pkgbuilder/build.py:449
+#: pkgbuilder/build.py:398 pkgbuilder/build.py:450
 #, fuzzy, python-brace-format
 msgid "Failed to retieve {0} (from ASP)."
 msgstr "Nepodařilo se získat {0} (z ABS/rsync)."
 
-#: pkgbuilder/build.py:401
+#: pkgbuilder/build.py:402
 msgid ":: Retrieving packages from aur..."
 msgstr ":: Načítání balíčků z aur..."
 
-#: pkgbuilder/build.py:404
+#: pkgbuilder/build.py:405
 #, python-brace-format
 msgid "cloning {0}"
 msgstr "klonování {0}"
 
-#: pkgbuilder/build.py:407
+#: pkgbuilder/build.py:408
 msgid "Successfully fetched: "
 msgstr "Úspěšně načteno:"
 
-#: pkgbuilder/build.py:437
+#: pkgbuilder/build.py:438
 #, python-brace-format
 msgid "Building {0}..."
 msgstr "Budování {0}..."
 
-#: pkgbuilder/build.py:445
+#: pkgbuilder/build.py:446
 #, fuzzy
 msgid "Retrieving from ASP..."
 msgstr "Načítání z ABS..."
 
-#: pkgbuilder/build.py:454 pkgbuilder/build.py:478
+#: pkgbuilder/build.py:455 pkgbuilder/build.py:479
 #, python-brace-format
 msgid "Found an existing package for {0}"
 msgstr "Nalezen existující balíček pro {0}"
 
-#: pkgbuilder/build.py:483
+#: pkgbuilder/build.py:484
 msgid "Cloning the git repository..."
 msgstr "Klonování git úložiště..."
 
-#: pkgbuilder/build.py:491
+#: pkgbuilder/build.py:492
 msgid "Checking dependencies..."
 msgstr "Kontrola závislostí..."
 
-#: pkgbuilder/build.py:494
+#: pkgbuilder/build.py:495
 msgid "found in system"
 msgstr "nalezen v systému"
 
-#: pkgbuilder/build.py:494
+#: pkgbuilder/build.py:495
 msgid "found in repos"
 msgstr "nalezen v repozitářích"
 
-#: pkgbuilder/build.py:495
+#: pkgbuilder/build.py:496
 msgid "found in the AUR"
 msgstr "nalezen v AUR"
 
-#: pkgbuilder/build.py:498
+#: pkgbuilder/build.py:499
 msgid "none found"
 msgstr "nenalezen"
 
