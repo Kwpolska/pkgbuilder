@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PKGBUILDer package.
 #
 # Translators:
-# Martin Kříž <liberte.czech@gmail.com>, 2016
+# LiberteCzech <liberte.czech@gmail.com>, 2016
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.15\n"
+"Project-Id-Version: 4.2.16\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2018-03-18 00:07+0100\n"
-"PO-Revision-Date: 2016-04-08 19:32+0000\n"
-"Last-Translator: Martin Kříž <liberte.czech@gmail.com>\n"
+"POT-Creation-Date: 2018-03-18 14:30+0100\n"
+"PO-Revision-Date: 2018-03-18 13:23+0000\n"
+"Last-Translator: Chris Warrick\n"
 "Language-Team: Czech (http://www.transifex.com/kwpolska/pkgbuilder/language/"
 "cs/)\n"
 "Language: cs\n"
@@ -54,9 +54,8 @@ msgid "Fetching package information..."
 msgstr "Načítání informací o balíku..."
 
 #: pkgbuilder/build.py:391
-#, fuzzy
 msgid ":: Retrieving packages from asp..."
-msgstr ":: Získávání balíčků z abs..."
+msgstr ""
 
 #: pkgbuilder/build.py:394
 #, python-brace-format
@@ -64,9 +63,9 @@ msgid "retrieving {0}"
 msgstr "načítání {0}"
 
 #: pkgbuilder/build.py:398 pkgbuilder/build.py:450
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Failed to retieve {0} (from ASP)."
-msgstr "Nepodařilo se získat {0} (z ABS/rsync)."
+msgstr ""
 
 #: pkgbuilder/build.py:402
 msgid ":: Retrieving packages from aur..."
@@ -87,9 +86,8 @@ msgid "Building {0}..."
 msgstr "Budování {0}..."
 
 #: pkgbuilder/build.py:446
-#, fuzzy
 msgid "Retrieving from ASP..."
-msgstr "Načítání z ABS..."
+msgstr ""
 
 #: pkgbuilder/build.py:455 pkgbuilder/build.py:479
 #, python-brace-format
@@ -198,9 +196,8 @@ msgid "PACKAGE"
 msgstr "BALÍČEK"
 
 #: pkgbuilder/__main__.py:48
-#, fuzzy
 msgid "AUR/repository packages to build"
-msgstr "AUR/ABS balíky k sestavení"
+msgstr ""
 
 #: pkgbuilder/__main__.py:50
 msgid "operations"
@@ -585,9 +582,8 @@ msgid "Didn’t pass any packages."
 msgstr "Některé balíky neprošly."
 
 #: pkgbuilder/utils.py:134
-#, fuzzy
 msgid "Trying to use utils.print_package_info with a repository package"
-msgstr "Pokus o použití utils.print_package_info s balíčkem ABS"
+msgstr ""
 
 #. TRANSLATORS: space it properly.  “yes/no” below are
 #. for “out of date”.
@@ -664,6 +660,3 @@ msgstr "volitelné argumenty"
 #: localeprovider.py:5
 msgid "show this help message and exit"
 msgstr "zobrazit tuto nápovědu a ukončit"
-
-#~ msgid "Also accepts ABS packages."
-#~ msgstr "Přijímá také ABS balíčky."

@@ -7,7 +7,7 @@ PKGBUILDer
 :Copyright: © 2011-2018, Chris Warrick.
 :License: BSD (see /LICENSE or Appendix B.)
 :Date: 2018-03-18
-:Version: 4.2.15
+:Version: 4.2.16
 :Manual section: 8
 :Manual group: PKGBUILDer manual
 

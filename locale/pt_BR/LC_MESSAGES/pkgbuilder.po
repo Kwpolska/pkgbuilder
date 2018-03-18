@@ -4,13 +4,14 @@
 #
 # Translators:
 # Fábio Nogueira <deb.user.ba@gmail.com>, 2016
+# Uberlan Soares <uberlan.soares@gmail.com>, 2016
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.15\n"
+"Project-Id-Version: 4.2.16\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2018-03-18 00:07+0100\n"
-"PO-Revision-Date: 2016-03-27 23:10+0000\n"
-"Last-Translator: Fábio Nogueira <deb.user.ba@gmail.com>\n"
+"POT-Creation-Date: 2018-03-18 14:30+0100\n"
+"PO-Revision-Date: 2018-03-18 13:23+0000\n"
+"Last-Translator: Chris Warrick\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/kwpolska/"
 "pkgbuilder/language/pt_BR/)\n"
 "Language: pt_BR\n"
@@ -25,7 +26,7 @@ msgstr "A compilação foi bem-sucedida."
 
 #: pkgbuilder/build.py:62
 msgid "Building more AUR packages is required."
-msgstr ""
+msgstr "Mais construção de pacotes AUR é requerida"
 
 #: pkgbuilder/build.py:65
 msgid ""
@@ -37,26 +38,25 @@ msgstr ""
 #: pkgbuilder/build.py:82
 #, python-brace-format
 msgid "found an existing package for {0}"
-msgstr ""
+msgstr "Encontrado um pacote existente para {0}"
 
 #: pkgbuilder/build.py:121
 #, python-brace-format
 msgid "makepkg (or someone else) failed and returned {0}."
-msgstr ""
+msgstr "makepkg (ou outro qualquer) falhou e retornou {0}"
 
 #: pkgbuilder/build.py:301
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
-msgstr ""
+msgstr "Falhou ao preencher dependência do pacote requerida: {0}"
 
 #: pkgbuilder/build.py:360 pkgbuilder/__main__.py:325
 msgid "Fetching package information..."
 msgstr "Buscando informações do pacote..."
 
 #: pkgbuilder/build.py:391
-#, fuzzy
 msgid ":: Retrieving packages from asp..."
-msgstr ":: Recuperando pacotes do abs..."
+msgstr ""
 
 #: pkgbuilder/build.py:394
 #, python-brace-format
@@ -87,9 +87,8 @@ msgid "Building {0}..."
 msgstr "Construindo {0}..."
 
 #: pkgbuilder/build.py:446
-#, fuzzy
 msgid "Retrieving from ASP..."
-msgstr "Recuperando do ABS..."
+msgstr ""
 
 #: pkgbuilder/build.py:455 pkgbuilder/build.py:479
 #, python-brace-format
@@ -133,7 +132,7 @@ msgstr "makepkg retornou {0}."
 #: pkgbuilder/exceptions.py:101
 #, python-brace-format
 msgid "Network error: {0} (via {1})"
-msgstr ""
+msgstr "Erro de rede: {0} (via {1})"
 
 #: pkgbuilder/exceptions.py:111
 #, python-brace-format
@@ -143,7 +142,7 @@ msgstr "Erro de conexão: {0} (via {1})"
 #: pkgbuilder/exceptions.py:125
 #, python-brace-format
 msgid "HTTP Error {0} (via {1})"
-msgstr ""
+msgstr "Erro HTTP {0} (via {1})"
 
 #: pkgbuilder/exceptions.py:159
 #, python-brace-format
@@ -191,7 +190,7 @@ msgstr ""
 
 #: pkgbuilder/__main__.py:45
 msgid "show version number and quit"
-msgstr ""
+msgstr "Mostra o número da versão e sai"
 
 #: pkgbuilder/__main__.py:47
 msgid "PACKAGE"

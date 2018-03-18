@@ -3,24 +3,25 @@
 # This file is distributed under the same license as the PKGBUILDer package.
 #
 # Translators:
-# Chris Warrick <kwpolska@gmail.com>, 2013-2016
-# Chris Warrick <kwpolska@gmail.com>, 2013
-# Chris Warrick <kwpolska@gmail.com>, 2013
+# Chris Warrick, 2013-2016,2018
+# Chris Warrick, 2013
+# Chris Warrick, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.15\n"
+"Project-Id-Version: 4.2.16\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2018-03-18 00:07+0100\n"
-"PO-Revision-Date: 2016-04-29 14:30+0000\n"
-"Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
+"POT-Creation-Date: 2018-03-18 14:30+0100\n"
+"PO-Revision-Date: 2018-03-18 13:26+0000\n"
+"Last-Translator: Chris Warrick\n"
 "Language-Team: Polish (http://www.transifex.com/kwpolska/pkgbuilder/language/"
 "pl/)\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #: pkgbuilder/build.py:55
 msgid "The build succeeded."
@@ -36,6 +37,9 @@ msgid ""
 "was specified.  Please run without -w, --buildonly or install dependencies "
 "manually and try again."
 msgstr ""
+"Nie można zainstalować zależności i kontynuować, ponieważ użyto opcji -w, --"
+"buildonly. Proszę uruchomić program bez tych opcji albo zainstalować "
+"zależności ręcznie i spróbować ponownie."
 
 #: pkgbuilder/build.py:82
 #, python-brace-format
@@ -59,9 +63,8 @@ msgid "Fetching package information..."
 msgstr "Pobieranie informacji o pakiecie..."
 
 #: pkgbuilder/build.py:391
-#, fuzzy
 msgid ":: Retrieving packages from asp..."
-msgstr ":: Pobieranie pakietów z abs..."
+msgstr ":: Pobieranie pakietów z asp..."
 
 #: pkgbuilder/build.py:394
 #, python-brace-format
@@ -69,9 +72,9 @@ msgid "retrieving {0}"
 msgstr "pobieranie {0}"
 
 #: pkgbuilder/build.py:398 pkgbuilder/build.py:450
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Failed to retieve {0} (from ASP)."
-msgstr "Nie udało się pobrać {0} (z ABS/rsync)."
+msgstr "Nie udało się pobrać {0} (z ASP)."
 
 #: pkgbuilder/build.py:402
 msgid ":: Retrieving packages from aur..."
@@ -92,9 +95,8 @@ msgid "Building {0}..."
 msgstr "Budowanie {0}..."
 
 #: pkgbuilder/build.py:446
-#, fuzzy
 msgid "Retrieving from ASP..."
-msgstr "Pobieranie z ABS..."
+msgstr "Pobieranie z ASP..."
 
 #: pkgbuilder/build.py:455 pkgbuilder/build.py:479
 #, python-brace-format
@@ -192,7 +194,7 @@ msgstr "Pomocnik AUR (i biblioteka) w Pythonie 3."
 
 #: pkgbuilder/__main__.py:42
 msgid "Also accepts repository packages to build from source."
-msgstr ""
+msgstr "Akceptuje też nazwy pakietów z repozytoriów do zbudowania ze źródeł."
 
 #: pkgbuilder/__main__.py:45
 msgid "show version number and quit"
@@ -203,9 +205,8 @@ msgid "PACKAGE"
 msgstr "PAKIET"
 
 #: pkgbuilder/__main__.py:48
-#, fuzzy
 msgid "AUR/repository packages to build"
-msgstr "pakiety do zbudowania z AUR i ABS"
+msgstr "pakiety z AUR/repozytoriów do zbudowania"
 
 #: pkgbuilder/__main__.py:50
 msgid "operations"
@@ -592,9 +593,8 @@ msgid "Didn’t pass any packages."
 msgstr "Nie podano żadnych pakietów."
 
 #: pkgbuilder/utils.py:134
-#, fuzzy
 msgid "Trying to use utils.print_package_info with a repository package"
-msgstr "Próba użycia utils.print_package_info z pakietem z ABS"
+msgstr "Próba użycia utils.print_package_info z pakietem z repozytoriów"
 
 #. TRANSLATORS: space it properly.  “yes/no” below are
 #. for “out of date”.
@@ -704,6 +704,3 @@ msgstr "argumenty opcjonalne"
 #: localeprovider.py:5
 msgid "show this help message and exit"
 msgstr "pokaż tą wiadomość i wyjdź"
-
-#~ msgid "Also accepts ABS packages."
-#~ msgstr "Również akceptuje pakiety z ABS."

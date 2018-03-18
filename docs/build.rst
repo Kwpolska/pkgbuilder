@@ -6,7 +6,7 @@ build module
 :Copyright: © 2011-2018, Chris Warrick.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
 :Date: 2018-03-18
-:Version: 4.2.15
+:Version: 4.2.16
 
 .. index:: build
 .. versionadded:: 2.1.0.0

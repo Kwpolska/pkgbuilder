@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PKGBUILDer package.
 #
 # Translators:
+# وجدي أبو سلطان, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.15\n"
+"Project-Id-Version: 4.2.16\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2018-03-18 00:07+0100\n"
-"PO-Revision-Date: 2015-09-08 15:37+0000\n"
-"Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
+"POT-Creation-Date: 2018-03-18 14:30+0100\n"
+"PO-Revision-Date: 2018-03-18 13:23+0000\n"
+"Last-Translator: Chris Warrick\n"
 "Language-Team: Arabic (http://www.transifex.com/kwpolska/pkgbuilder/language/"
 "ar/)\n"
 "Language: ar\n"
@@ -21,11 +22,11 @@ msgstr ""
 
 #: pkgbuilder/build.py:55
 msgid "The build succeeded."
-msgstr ""
+msgstr "نجح البناء."
 
 #: pkgbuilder/build.py:62
 msgid "Building more AUR packages is required."
-msgstr ""
+msgstr "مطلوب بناء المزيد من حزم أور."
 
 #: pkgbuilder/build.py:65
 msgid ""
@@ -37,21 +38,21 @@ msgstr ""
 #: pkgbuilder/build.py:82
 #, python-brace-format
 msgid "found an existing package for {0}"
-msgstr ""
+msgstr "وجدت حزمة موجودة لـ {0}"
 
 #: pkgbuilder/build.py:121
 #, python-brace-format
 msgid "makepkg (or someone else) failed and returned {0}."
-msgstr ""
+msgstr "صانع الحزم makepkg (أو شيء ما آخر) فشل وعاد بـ {0}."
 
 #: pkgbuilder/build.py:301
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
-msgstr ""
+msgstr "فشل استيفاء متطلبات تبعية الحزمة: {0}"
 
 #: pkgbuilder/build.py:360 pkgbuilder/__main__.py:325
 msgid "Fetching package information..."
-msgstr ""
+msgstr "يجلب معلومات الحزمة ..."
 
 #: pkgbuilder/build.py:391
 msgid ":: Retrieving packages from asp..."
@@ -60,7 +61,7 @@ msgstr ""
 #: pkgbuilder/build.py:394
 #, python-brace-format
 msgid "retrieving {0}"
-msgstr ""
+msgstr "استرداد {0}"
 
 #: pkgbuilder/build.py:398 pkgbuilder/build.py:450
 #, python-brace-format
@@ -69,21 +70,21 @@ msgstr ""
 
 #: pkgbuilder/build.py:402
 msgid ":: Retrieving packages from aur..."
-msgstr ""
+msgstr ":: استرداد الحزم من أور aur ..."
 
 #: pkgbuilder/build.py:405
 #, python-brace-format
 msgid "cloning {0}"
-msgstr ""
+msgstr "استنساخ {0}"
 
 #: pkgbuilder/build.py:408
 msgid "Successfully fetched: "
-msgstr ""
+msgstr "تم جلبها بنجاح:"
 
 #: pkgbuilder/build.py:438
 #, python-brace-format
 msgid "Building {0}..."
-msgstr ""
+msgstr "بناء {0} ..."
 
 #: pkgbuilder/build.py:446
 msgid "Retrieving from ASP..."
@@ -92,56 +93,56 @@ msgstr ""
 #: pkgbuilder/build.py:455 pkgbuilder/build.py:479
 #, python-brace-format
 msgid "Found an existing package for {0}"
-msgstr ""
+msgstr "وجدت حزمة موجودة لـ {0}"
 
 #: pkgbuilder/build.py:484
 msgid "Cloning the git repository..."
-msgstr ""
+msgstr "استنساخ مستودع التخزين ..."
 
 #: pkgbuilder/build.py:492
 msgid "Checking dependencies..."
-msgstr ""
+msgstr "يفحص التبعيات ..."
 
 #: pkgbuilder/build.py:495
 msgid "found in system"
-msgstr ""
+msgstr "وجدت في النظام"
 
 #: pkgbuilder/build.py:495
 msgid "found in repos"
-msgstr ""
+msgstr "وجدت في المستودعات"
 
 #: pkgbuilder/build.py:496
 msgid "found in the AUR"
-msgstr ""
+msgstr "وجدت في أور AUR"
 
 #: pkgbuilder/build.py:499
 msgid "none found"
-msgstr ""
+msgstr "لا شيء موجود"
 
 #: pkgbuilder/exceptions.py:55
 #, python-brace-format
 msgid "AUR Error: {0}"
-msgstr ""
+msgstr "خطأ أور: {0}"
 
 #: pkgbuilder/exceptions.py:74
 #, python-brace-format
 msgid "makepkg returned {0}."
-msgstr ""
+msgstr "صانع الحزم makepkg أعاد {0}."
 
 #: pkgbuilder/exceptions.py:101
 #, python-brace-format
 msgid "Network error: {0} (via {1})"
-msgstr ""
+msgstr "خطأ في الشبكة: {0} (عبر {1})"
 
 #: pkgbuilder/exceptions.py:111
 #, python-brace-format
 msgid "Connection error: {0} (via {1})"
-msgstr ""
+msgstr "خطأ في الاتصال: {0} (عبر {1})"
 
 #: pkgbuilder/exceptions.py:125
 #, python-brace-format
 msgid "HTTP Error {0} (via {1})"
-msgstr ""
+msgstr "خطأ في HTTP: {0} (عبر {1})"
 
 #: pkgbuilder/exceptions.py:159
 #, python-brace-format
@@ -189,7 +190,7 @@ msgstr ""
 
 #: pkgbuilder/__main__.py:45
 msgid "show version number and quit"
-msgstr ""
+msgstr "أعرض رقم الإصدار واخرج"
 
 #: pkgbuilder/__main__.py:47
 msgid "PACKAGE"
@@ -201,7 +202,7 @@ msgstr ""
 
 #: pkgbuilder/__main__.py:50
 msgid "operations"
-msgstr ""
+msgstr "العمليات"
 
 #: pkgbuilder/__main__.py:53
 msgid "build in /tmp"
@@ -209,7 +210,7 @@ msgstr ""
 
 #: pkgbuilder/__main__.py:56
 msgid "fetch package files"
-msgstr ""
+msgstr "اجلب ملفات الحزمة"
 
 #: pkgbuilder/__main__.py:59
 msgid "USER"
@@ -217,87 +218,87 @@ msgstr ""
 
 #: pkgbuilder/__main__.py:59
 msgid "fetch all package files of an user"
-msgstr ""
+msgstr "اجلب جميع ملفات حزمة المستخدم"
 
 #: pkgbuilder/__main__.py:61
 msgid "view package information"
-msgstr ""
+msgstr "اعرض معلومات الحزمة"
 
 #: pkgbuilder/__main__.py:64
 msgid "search the AUR for matching strings"
-msgstr ""
+msgstr "ابحث في أور عن نصوص مطابقة"
 
 #: pkgbuilder/__main__.py:67
 msgid "upgrade installed AUR packages"
-msgstr ""
+msgstr "رقّي حزم أور المثبتة"
 
 #: pkgbuilder/__main__.py:70
 msgid "move package files to pacman cache and install them"
-msgstr ""
+msgstr "انقل ملفات الحزمة إلى مخبأ باكمان وثبتهم"
 
 #: pkgbuilder/__main__.py:73
 msgid "run transactions from .tx files"
-msgstr ""
+msgstr "شغّل المعاملات من ملفات .tx"
 
 #: pkgbuilder/__main__.py:75
 msgid "options"
-msgstr ""
+msgstr "خيارات"
 
 #: pkgbuilder/__main__.py:79
 msgid "clean up work files before and after build"
-msgstr ""
+msgstr "نظّف ملفات العمل قبل وبعد البناء"
 
 #: pkgbuilder/__main__.py:82
 msgid "don't clean up work files before and after build (default)"
-msgstr ""
+msgstr "لا تنظّف ملفات العمل قبل وبعد البناء (افتراضي)"
 
 #: pkgbuilder/__main__.py:87
 msgid "use colors in output (default)"
-msgstr ""
+msgstr "استخدم الألوان في الإخراج (الافتراضي)"
 
 #: pkgbuilder/__main__.py:90
 msgid "don't use colors in output"
-msgstr ""
+msgstr "لا تستخدم الألوان في الإخراج"
 
 #: pkgbuilder/__main__.py:94
 msgid "display debug messages"
-msgstr ""
+msgstr "اعرض رسائل التنقيح"
 
 #: pkgbuilder/__main__.py:97
 msgid "don't display debug messages (default)"
-msgstr ""
+msgstr "لا تعرض رسائل التنقيح (افتراضي)"
 
 #: pkgbuilder/__main__.py:101
 msgid "check dependencies (default)"
-msgstr ""
+msgstr "افحص التبعيات (افتراضي)"
 
 #: pkgbuilder/__main__.py:104
 msgid "don't check dependencies (may break makepkg)"
-msgstr ""
+msgstr "لاتفحص التبعيات (قد يخرب صانع الحزم!)"
 
 #: pkgbuilder/__main__.py:108
 msgid "upgrade all the VCS/date-versioned packages"
-msgstr ""
+msgstr "رقّي كافة حزم VCS/date-versioned"
 
 #: pkgbuilder/__main__.py:111
 msgid "don't upgrade all the VCS/date-versioned packages (default)"
-msgstr ""
+msgstr "لا ترقّي كافة حزم VCS/date-versioned (افتراضي)"
 
 #: pkgbuilder/__main__.py:116
 msgid "check if packages were installed after build (default)"
-msgstr ""
+msgstr "تحقق من تثبيت الحزم بعد البناء (افتراضي)"
 
 #: pkgbuilder/__main__.py:119
 msgid "don't check if packages were installed after build"
-msgstr ""
+msgstr "لا تتحقق من تثبيت الحزم بعد البناء"
 
 #: pkgbuilder/__main__.py:123
 msgid "install packages after building (default)"
-msgstr ""
+msgstr "ثبّت الحزم بعد البناء (افتراضي)"
 
 #: pkgbuilder/__main__.py:126
 msgid "don't install packages after building"
-msgstr ""
+msgstr "لا تثبّت الحزم بعد البناء"
 
 #: pkgbuilder/__main__.py:130
 msgid "verify source files with PGP signatures (default)"
@@ -364,7 +365,7 @@ msgstr ""
 
 #: pkgbuilder/__main__.py:245
 msgid "not found"
-msgstr ""
+msgstr "غير موجود"
 
 #: pkgbuilder/__main__.py:330
 #, python-brace-format
@@ -414,11 +415,11 @@ msgstr ""
 
 #: pkgbuilder/pbds.py:265
 msgid "WARNING:"
-msgstr ""
+msgstr "تحذير:"
 
 #: pkgbuilder/pbds.py:279
 msgid "ERROR:"
-msgstr ""
+msgstr "خطأ:"
 
 #: pkgbuilder/transaction.py:170
 msgid "Installing built packages..."
@@ -447,7 +448,7 @@ msgstr ""
 #. investigate by reading the build logs and acting accordingly.
 #: pkgbuilder/transaction.py:214
 msgid "Some packages failed to build."
-msgstr ""
+msgstr "فشل بناء بعض الحزم."
 
 #: pkgbuilder/transaction.py:216
 msgid "Transaction failed!"
@@ -501,11 +502,11 @@ msgstr ""
 
 #: pkgbuilder/upgrade.py:119
 msgid "Synchronizing package databases..."
-msgstr ""
+msgstr "يزامن قواعد بيانات الحزمة ..."
 
 #: pkgbuilder/upgrade.py:125
 msgid "Starting full system upgrade..."
-msgstr ""
+msgstr "يبدأ ترقية النظام بالكامل ..."
 
 #: pkgbuilder/upgrade.py:128
 #, python-brace-format
@@ -524,58 +525,58 @@ msgstr ""
 
 #: pkgbuilder/upgrade.py:145
 msgid "there is nothing to do"
-msgstr ""
+msgstr "ليس هناك ما يجب القيام به"
 
 #: pkgbuilder/upgrade.py:155
 #, python-brace-format
 msgid "Targets ({0}):"
-msgstr ""
+msgstr "المقاصد ({0}):"
 
 #: pkgbuilder/upgrade.py:169
 msgid "Name"
-msgstr ""
+msgstr "الاسم"
 
 #: pkgbuilder/upgrade.py:169
 msgid "Old Version"
-msgstr ""
+msgstr "الإصدار قديم"
 
 #: pkgbuilder/upgrade.py:169
 msgid "New Version"
-msgstr ""
+msgstr "الإصدار جديد"
 
 #. string stolen from pacman
 #: pkgbuilder/upgrade.py:192
 msgid "warning: insufficient columns available for table display"
-msgstr ""
+msgstr "تحذير: توفر أعمدة غير كافية لعرض الجدول"
 
 #: pkgbuilder/upgrade.py:210
 msgid "Fetch the packages? [Y/n] "
-msgstr ""
+msgstr "جلب الحزم؟ [Y/n]"
 
 #: pkgbuilder/upgrade.py:212
 msgid "Proceed with installation? [Y/n] "
-msgstr ""
+msgstr "مواصلة التثبيت؟ [Y/n] "
 
 #: pkgbuilder/utils.py:88
 #, python-brace-format
 msgid " [installed: {0}]"
-msgstr ""
+msgstr " [مثبتة: {0}]"
 
 #: pkgbuilder/utils.py:90
 msgid " [installed]"
-msgstr ""
+msgstr " [مثبتة]"
 
 #: pkgbuilder/utils.py:94
 msgid "[out of date]"
-msgstr ""
+msgstr "[منتهية الصلاحية]"
 
 #: pkgbuilder/utils.py:112
 msgid "votes"
-msgstr ""
+msgstr "التصويت"
 
 #: pkgbuilder/utils.py:129
 msgid "Didn’t pass any packages."
-msgstr ""
+msgstr "لم تمرر أية حزم."
 
 #: pkgbuilder/utils.py:134
 msgid "Trying to use utils.print_package_info with a repository package"
@@ -609,14 +610,36 @@ msgid ""
 "Description    : {dsc}\n"
 "Keywords       : {key}\n"
 msgstr ""
+"المستودع                : أور\n"
+"الاسم                    : {nme}\n"
+"قاعدة الحزمة           : {bse}\n"
+"الإصدار                : {ver}\n"
+"الرابط                   : {url}\n"
+"التراخيص               : {lic}\n"
+"المجموعات             : {grp}\n"
+"المزود                  : {prv}\n"
+"يعتمد على              : {dep}\n"
+"عمل الاعتماديات      : {mkd}\n"
+"فحص الاعتماديات    : {ckd}\n"
+"اعتماديات اختيارية    : {opt}\n"
+"التعارضات            : {cnf}\n"
+"البدائل                  : {rpl}\n"
+"التصويت               : {cmv}\n"
+"الشيوع                 : {pop}\n"
+"تاريخ الإنتهاء          : {ood}\n"
+"متعهد الصيانة          : {mnt}\n"
+"أول نشر                : {fsb}\n"
+"آخر تحديث             : {upd}\n"
+"الوصف                : {dsc}\n"
+"الكلمات المفتاحية      : {key}\n"
 
 #: pkgbuilder/utils.py:184
 msgid "yes"
-msgstr ""
+msgstr "نعم"
 
 #: pkgbuilder/utils.py:186
 msgid "no"
-msgstr ""
+msgstr "لا"
 
 #. TRANSLATORS: see pacman’s localizations
 #: pkgbuilder/wrapper.py:48
@@ -643,7 +666,7 @@ msgstr ""
 #. A module only for gettext locale provision.
 #: localeprovider.py:2
 msgid "usage"
-msgstr ""
+msgstr "الاستخدام"
 
 #: localeprovider.py:3
 msgid "positional arguments"
@@ -655,4 +678,4 @@ msgstr ""
 
 #: localeprovider.py:5
 msgid "show this help message and exit"
-msgstr ""
+msgstr "اعرض رسالة المساعدة هذه واخرج"

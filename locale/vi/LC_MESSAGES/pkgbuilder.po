@@ -8,11 +8,11 @@
 # Anh Phan <vietnamesel10n@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.15\n"
+"Project-Id-Version: 4.2.16\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2018-03-18 00:07+0100\n"
-"PO-Revision-Date: 2015-09-08 15:37+0000\n"
-"Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
+"POT-Creation-Date: 2018-03-18 14:30+0100\n"
+"PO-Revision-Date: 2018-03-18 13:23+0000\n"
+"Last-Translator: Chris Warrick\n"
 "Language-Team: Vietnamese (http://www.transifex.com/kwpolska/pkgbuilder/"
 "language/vi/)\n"
 "Language: vi\n"
@@ -57,9 +57,8 @@ msgid "Fetching package information..."
 msgstr "Đang tải về thông tin của gói cài đặt..."
 
 #: pkgbuilder/build.py:391
-#, fuzzy
 msgid ":: Retrieving packages from asp..."
-msgstr ":: Đang nhận các gói cài đặt từ abs.."
+msgstr ""
 
 #: pkgbuilder/build.py:394
 #, python-brace-format
@@ -67,9 +66,9 @@ msgid "retrieving {0}"
 msgstr "đang nhận {0}"
 
 #: pkgbuilder/build.py:398 pkgbuilder/build.py:450
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Failed to retieve {0} (from ASP)."
-msgstr "Thất bại khi nhận {0} (từ ABS/rsync)."
+msgstr ""
 
 #: pkgbuilder/build.py:402
 msgid ":: Retrieving packages from aur..."
@@ -90,9 +89,8 @@ msgid "Building {0}..."
 msgstr "Đang xây dựng {0}..."
 
 #: pkgbuilder/build.py:446
-#, fuzzy
 msgid "Retrieving from ASP..."
-msgstr "Đang nhận từ ABS..."
+msgstr ""
 
 #: pkgbuilder/build.py:455 pkgbuilder/build.py:479
 #, python-brace-format
@@ -201,9 +199,8 @@ msgid "PACKAGE"
 msgstr "GÓI CÀI ĐẶT"
 
 #: pkgbuilder/__main__.py:48
-#, fuzzy
 msgid "AUR/repository packages to build"
-msgstr "Gói cài đặt AUR/ABS để xây dựng"
+msgstr ""
 
 #: pkgbuilder/__main__.py:50
 msgid "operations"
@@ -586,9 +583,8 @@ msgid "Didn’t pass any packages."
 msgstr "Vẫn chưa thông qua gói cài đặt nào."
 
 #: pkgbuilder/utils.py:134
-#, fuzzy
 msgid "Trying to use utils.print_package_info with a repository package"
-msgstr "Đang cố sử dụng utils.print_package_info với gói cài đặt ABS"
+msgstr ""
 
 #. TRANSLATORS: space it properly.  “yes/no” below are
 #. for “out of date”.

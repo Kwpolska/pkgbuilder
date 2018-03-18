@@ -6,7 +6,7 @@ Appendix C. Changelog
 :Copyright: © 2011-2018, Chris Warrick.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
 :Date: 2018-03-18
-:Version: 4.2.15
+:Version: 4.2.16
 
 .. index:: CHANGELOG
 
@@ -46,6 +46,9 @@ More information can be found on GitHub in the `releases section <https://github
 
 Version History
 ===============
+
+4.2.16
+    * Handle searches with spaces correctly (Issue #55)
 
 4.2.15
     * Avoid crashes if package name contains `+` signs (or other characters not allowed in regular expressions).

@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.15
+# PKGBUILDer v4.2.16
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2018, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -234,13 +234,13 @@ def main(source='AUTO', quit=True):
                     exit(1)
             else:
                 DS.log.debug('Searching...')
-                searchstring = '+'.join(pkgnames)
-                if len(searchstring) < 2:
+                search_string = ' '.join(pkgnames)
+                if len(search_string) < 2:
                     # this would be too many entries, but this is an actual API
                     # limitation and not an idea of yours truly.
                     DS.fancy_error(_('Search query too short'))
                     DS.fancy_msg(_('Searching for exact match...'))
-                    search = pkgbuilder.utils.info([searchstring])
+                    search = pkgbuilder.utils.info([search_string])
                     if search == []:
                         DS.fancy_error2(_('not found'))
                         if quit:
@@ -255,7 +255,7 @@ def main(source='AUTO', quit=True):
                         if quit:
                             exit(0)
                 else:
-                    search = pkgbuilder.utils.search(searchstring)
+                    search = pkgbuilder.utils.search(search_string)
 
             output = ''
             for pkg in search:

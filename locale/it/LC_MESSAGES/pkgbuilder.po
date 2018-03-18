@@ -5,16 +5,16 @@
 # Translators:
 # Bernardo Miguel Savone <bmsavone@gmail.com>, 2013-2014
 # Bernardo Miguel Savone <bmsavone@gmail.com>, 2013
-# Chris Warrick <kwpolska@gmail.com>, 2013
-# Chris Warrick <kwpolska@gmail.com>, 2013
-# Chris Warrick <kwpolska@gmail.com>, 2013
+# Chris Warrick, 2013
+# Chris Warrick, 2013
+# Chris Warrick, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.15\n"
+"Project-Id-Version: 4.2.16\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2018-03-18 00:07+0100\n"
-"PO-Revision-Date: 2015-09-08 15:38+0000\n"
-"Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
+"POT-Creation-Date: 2018-03-18 14:30+0100\n"
+"PO-Revision-Date: 2018-03-18 13:23+0000\n"
+"Last-Translator: Chris Warrick\n"
 "Language-Team: Italian (http://www.transifex.com/kwpolska/pkgbuilder/"
 "language/it/)\n"
 "Language: it\n"
@@ -58,9 +58,8 @@ msgid "Fetching package information..."
 msgstr "Recupero informazioni del pacchetto..."
 
 #: pkgbuilder/build.py:391
-#, fuzzy
 msgid ":: Retrieving packages from asp..."
-msgstr ":: Recùpero dei pacchetti da abs..."
+msgstr ""
 
 #: pkgbuilder/build.py:394
 #, python-brace-format
@@ -68,9 +67,9 @@ msgid "retrieving {0}"
 msgstr "recupero {0}"
 
 #: pkgbuilder/build.py:398 pkgbuilder/build.py:450
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Failed to retieve {0} (from ASP)."
-msgstr "Impossibile recuperare {0} (da ABS/rsync)."
+msgstr ""
 
 #: pkgbuilder/build.py:402
 msgid ":: Retrieving packages from aur..."
@@ -91,9 +90,8 @@ msgid "Building {0}..."
 msgstr "Costruzione {0}..."
 
 #: pkgbuilder/build.py:446
-#, fuzzy
 msgid "Retrieving from ASP..."
-msgstr "Recupero da ABS..."
+msgstr ""
 
 #: pkgbuilder/build.py:455 pkgbuilder/build.py:479
 #, python-brace-format
@@ -202,9 +200,8 @@ msgid "PACKAGE"
 msgstr "PACCHETTO"
 
 #: pkgbuilder/__main__.py:48
-#, fuzzy
 msgid "AUR/repository packages to build"
-msgstr "Pacchetti da costruire AUR/ABS"
+msgstr ""
 
 #: pkgbuilder/__main__.py:50
 msgid "operations"
@@ -591,9 +588,8 @@ msgid "Didn’t pass any packages."
 msgstr "Non ha superato tutti i pacchetti."
 
 #: pkgbuilder/utils.py:134
-#, fuzzy
 msgid "Trying to use utils.print_package_info with a repository package"
-msgstr "Tentativo di utilizzare utils.print_package_info con un pacchetto ABS"
+msgstr ""
 
 #. TRANSLATORS: space it properly.  “yes/no” below are
 #. for “out of date”.

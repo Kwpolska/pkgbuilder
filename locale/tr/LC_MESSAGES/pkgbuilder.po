@@ -3,18 +3,19 @@
 # This file is distributed under the same license as the PKGBUILDer package.
 #
 # Translators:
-# Chris Warrick <kwpolska@gmail.com>, 2013
-# Chris Warrick <kwpolska@gmail.com>, 2013
-# Chris Warrick <kwpolska@gmail.com>, 2013
+# Chris Warrick, 2013
+# Ercan PEKER <bahadiroglu33@gmail.com>, 2017
+# Chris Warrick, 2013
+# Chris Warrick, 2013
 # Yusuf Faruk DOĞAN <yfdogan@gmail.com>, 2013
 # Yusuf Faruk DOĞAN <yfdogan@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.15\n"
+"Project-Id-Version: 4.2.16\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2018-03-18 00:07+0100\n"
-"PO-Revision-Date: 2015-09-08 15:37+0000\n"
-"Last-Translator: Chris Warrick <kwpolska@gmail.com>\n"
+"POT-Creation-Date: 2018-03-18 14:30+0100\n"
+"PO-Revision-Date: 2018-03-18 13:23+0000\n"
+"Last-Translator: Chris Warrick\n"
 "Language-Team: Turkish (http://www.transifex.com/kwpolska/pkgbuilder/"
 "language/tr/)\n"
 "Language: tr\n"
@@ -25,7 +26,7 @@ msgstr ""
 
 #: pkgbuilder/build.py:55
 msgid "The build succeeded."
-msgstr ""
+msgstr "İnşaa başarılı."
 
 #: pkgbuilder/build.py:62
 msgid "Building more AUR packages is required."
@@ -58,9 +59,8 @@ msgid "Fetching package information..."
 msgstr "Paket bilgisi alınıyor..."
 
 #: pkgbuilder/build.py:391
-#, fuzzy
 msgid ":: Retrieving packages from asp..."
-msgstr ":: ABS den paketler geri alınıyor..."
+msgstr ""
 
 #: pkgbuilder/build.py:394
 #, python-brace-format
@@ -68,9 +68,9 @@ msgid "retrieving {0}"
 msgstr "{0} geri alınıyor"
 
 #: pkgbuilder/build.py:398 pkgbuilder/build.py:450
-#, fuzzy, python-brace-format
+#, python-brace-format
 msgid "Failed to retieve {0} (from ASP)."
-msgstr "{0} geri yüklenmesi durdu (ABS/rsync ten)"
+msgstr ""
 
 #: pkgbuilder/build.py:402
 msgid ":: Retrieving packages from aur..."
@@ -79,7 +79,7 @@ msgstr ":: AUR dan paketler geri alınıyor..."
 #: pkgbuilder/build.py:405
 #, python-brace-format
 msgid "cloning {0}"
-msgstr ""
+msgstr "{0} Klonlanıyor"
 
 #: pkgbuilder/build.py:408
 msgid "Successfully fetched: "
@@ -91,18 +91,17 @@ msgid "Building {0}..."
 msgstr "{0} İnşa ediliyor..."
 
 #: pkgbuilder/build.py:446
-#, fuzzy
 msgid "Retrieving from ASP..."
-msgstr "ABS den geri alınıyor..."
+msgstr ""
 
 #: pkgbuilder/build.py:455 pkgbuilder/build.py:479
 #, python-brace-format
 msgid "Found an existing package for {0}"
-msgstr ""
+msgstr "{0} için var olan bir paket bulundu"
 
 #: pkgbuilder/build.py:484
 msgid "Cloning the git repository..."
-msgstr ""
+msgstr "Git deposu klonlanıyor..."
 
 #: pkgbuilder/build.py:492
 msgid "Checking dependencies..."
@@ -110,11 +109,11 @@ msgstr "Bağımlılıklara bakılıyor..."
 
 #: pkgbuilder/build.py:495
 msgid "found in system"
-msgstr "Sistemde bulundu"
+msgstr "sistemde bulundu"
 
 #: pkgbuilder/build.py:495
 msgid "found in repos"
-msgstr "Depolarda bulundu"
+msgstr "depolarda bulundu"
 
 #: pkgbuilder/build.py:496
 msgid "found in the AUR"
@@ -122,7 +121,7 @@ msgstr "AUR da bulundu"
 
 #: pkgbuilder/build.py:499
 msgid "none found"
-msgstr "Bulunamadı"
+msgstr "bulunamadı"
 
 #: pkgbuilder/exceptions.py:55
 #, python-brace-format
@@ -167,23 +166,23 @@ msgstr "Mantık hatası : {0} (via {1})"
 #: pkgbuilder/exceptions.py:213
 #, python-brace-format
 msgid "git clone returned {0}."
-msgstr ""
+msgstr "git klonlama {0} döndürdü."
 
 #: pkgbuilder/exceptions.py:228
 #, python-brace-format
 msgid "Directory {0} exists, but is not a git repository."
-msgstr ""
+msgstr "{0} dizini var, ancak bir git deposu değil."
 
 #: pkgbuilder/exceptions.py:245
 #, python-brace-format
 msgid "Repository {0} is empty."
-msgstr ""
+msgstr "{0} deposu boş."
 
 #. TRANSLATORS: translate the whole sentence.
 #. Alternatively, use translation instead of locale.
 #: pkgbuilder/__main__.py:35
 msgid "LANG locale by AUTHOR <MAIL@IF.YOU.WANT>"
-msgstr "Dil yerelleştirmesini yapan yfdogan@gmail.com"
+msgstr "TÜRKÇE YERELLEŞTİRME  REIS33 <BAHADIROGLU33@GMAIL.COM>"
 
 #: pkgbuilder/__main__.py:41
 msgid "An AUR helper (and library) in Python 3."
@@ -202,9 +201,8 @@ msgid "PACKAGE"
 msgstr "PAKET"
 
 #: pkgbuilder/__main__.py:48
-#, fuzzy
 msgid "AUR/repository packages to build"
-msgstr " İnşa edilecek AUR/ABS paketleri"
+msgstr ""
 
 #: pkgbuilder/__main__.py:50
 msgid "operations"
@@ -212,7 +210,7 @@ msgstr "İşlemler"
 
 #: pkgbuilder/__main__.py:53
 msgid "build in /tmp"
-msgstr ""
+msgstr "/tmp içinde inşaa et"
 
 #: pkgbuilder/__main__.py:56
 msgid "fetch package files"
@@ -220,7 +218,7 @@ msgstr "Paket dosyaları çekiliyor"
 
 #: pkgbuilder/__main__.py:59
 msgid "USER"
-msgstr ""
+msgstr "KULLANICI"
 
 #: pkgbuilder/__main__.py:59
 msgid "fetch all package files of an user"
@@ -589,9 +587,8 @@ msgid "Didn’t pass any packages."
 msgstr "Hiç bir paket atlanmadı."
 
 #: pkgbuilder/utils.py:134
-#, fuzzy
 msgid "Trying to use utils.print_package_info with a repository package"
-msgstr "ABS paketi ile utils.print_package_info kullanılmaya çalışılıyor"
+msgstr ""
 
 #. TRANSLATORS: space it properly.  “yes/no” below are
 #. for “out of date”.
