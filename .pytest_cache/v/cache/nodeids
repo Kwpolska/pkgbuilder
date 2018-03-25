@@ -1,0 +1,11 @@
+[
+  "tests/test_pkgbuilder.py::TestPB::test_aur",
+  "tests/test_pkgbuilder.py::TestPB::test_call_pacman",
+  "tests/test_pkgbuilder.py::TestPB::test_main",
+  "tests/test_pkgbuilder.py::TestPB::test_pb_help",
+  "tests/test_pkgbuilder.py::TestPB::test_pbds",
+  "tests/test_pkgbuilder.py::TestPB::test_pbds_logging",
+  "tests/test_pkgbuilder.py::TestPB::test_utils_print_package_info",
+  "tests/test_pkgbuilder.py::TestPB::test_utils_print_package_search",
+  "tests/test_pkgbuilder.py::TestPB::test_wrapper"
+]

@@ -6,8 +6,8 @@ PKGBUILDer
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2018, Chris Warrick.
 :License: BSD (see /LICENSE or Appendix B.)
-:Date: 2018-03-18
-:Version: 4.2.16
+:Date: 2018-03-25
+:Version: 4.2.17
 :Manual section: 8
 :Manual group: PKGBUILDer manual
 
@@ -48,7 +48,7 @@ OPERATIONS
 **-S, --sync**
     Build packages in */tmp* instead of CWD.  Override with ``--notmp``.
 
-**-F, --fetch**
+**-F, --fetch, -G, --get**
     Fetch (and don't build) **PACKAGE**\s in a fashion similar to
     ``cower -d``.  Override with ``--nofetch``.
 
@@ -150,7 +150,7 @@ pkgbuilder -SF hello
 
 pkgbuilder python
     Python is a binary repo package, triggering a package download from ASP.
-    -S and/or -F are also accepted.
+    -S and/or -F/-G are also accepted.
 
 pkgbuilder -Syu
     Check for updates and offer installing them.

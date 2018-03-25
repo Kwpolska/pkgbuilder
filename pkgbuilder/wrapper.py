@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 # PBWrapper v0.5.0
-# PKGBUILDer v4.2.16
+# PKGBUILDer v4.2.17
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2018, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -25,7 +25,7 @@ import sys
 import os
 
 __all__ = ('main', 'wrapper')
-__wrapperversion__ = '0.5.4'
+__wrapperversion__ = '0.5.5'
 
 
 def main():
@@ -113,14 +113,14 @@ def wrapper(source='AUTO'):
         pacmanlong = ['asdeps', 'asexplicit', 'dbonly', 'downloadonly',
                       'force', 'groups', 'list', 'needed', 'nodeps',
                       'noprogressbar', 'noscriptlet', 'print', 'quiet',
-                      'verbose']
+                      'verbose', 'files']
         pacmanshorta = ['b', 'r']
         pacmanlonga = ['arch', 'cachedir', 'config', 'dbpath', 'gpgdir',
                        'hookdir', 'ignoregroup', 'logfile',
                        'print-format', 'root', 'assume-installed']
 
-        pbshort = ['D', 'C', 'F']
-        pblong = ['fetch', 'userfetch', 'vcsupgrade', 'novcsupgrade', 'colors',
+        pbshort = ['D', 'C', 'G']
+        pblong = ['fetch', 'get', 'userfetch', 'vcsupgrade', 'novcsupgrade', 'colors',
                   'nocolors', 'depcheck', 'nodepcheck', 'validation',
                   'novalidation', 'install', 'buildonly', 'pgpcheck',
                   'skippgpcheck', 'deep', 'shallow', 'noclean', 'nodebug']
@@ -318,12 +318,12 @@ def wrapper(source='AUTO'):
             sanityargs = [item for item in pkgnames if (item not in
                           sanitycheck)]
             DS.sudo([DS.paccommand] + pacargs + sanityargs)
-    elif (('-F' in argst) or ('--fetch' in argst) or
-          ('--userfetch' in argst) or
-          ('-X' in argst) or ('--runtx' in argst) or
-          (re.search('-[a-zA-Z]*F', ' '.join(argst)) is not None) or
+    elif (('-G' in argst) or ('--get' in argst) or ('--fetch' in argst) or
+          ('--userfetch' in argst) or ('-X' in argst) or ('--runtx' in argst) or
+          (re.search('-[a-zA-Z]*G', ' '.join(argst)) is not None) or
           (re.search('-[a-zA-Z]*X', ' '.join(argst)) is not None)):
-        # pkgbuilder -F, --fetch / --userfetch / -X, --runtx.
+        # pkgbuilder -G, --get, --fetch / --userfetch / -X, --runtx.
+        log.info("Running pkgbuilder command")
         pbmain(argst)
     elif ('-h' in argst) or ('--help' in argst):
         show_help()
@@ -337,7 +337,11 @@ def wrapper(source='AUTO'):
             print('Please don’t use the reserved UTshibboleet argument.')
 
     elif (('-Q' in argst) or ('--query' in argst) or (re.search(
-            '-[a-zA-Z]*Q', ''.join(argst)) is not None)):
+            '-[a-zA-Z]*Q', ''.join(argst)) is not None) or
+            ('-F' in argst) or ('--files' in argst) or (re.search(
+            '-[a-zA-Z]*F', ''.join(argst)) is not None)):
+        log.info("Running rootless pacman command")
         DS.run_command([DS.paccommand] + argst)
     else:
+        log.info("Running root pacman command")
         DS.sudo([DS.paccommand] + argst)

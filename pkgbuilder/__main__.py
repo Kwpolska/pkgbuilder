@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
-# PKGBUILDer v4.2.16
+# PKGBUILDer v4.2.17
 # An AUR helper (and library) in Python 3.
 # Copyright © 2011-2018, Chris Warrick.
 # See /LICENSE for licensing information.
@@ -52,7 +52,7 @@ def main(source='AUTO', quit=True):
             '-S', '--sync', action='store_true', dest='pac',
             help=_('build in /tmp'))
         argopr.add_argument(
-            '-F', '--fetch', action='store_true', dest='fetch',
+            '-F', '--fetch', '-G', '--get', action='store_true', dest='fetch',
             help=_('fetch package files'))
         argopr.add_argument(
             '--userfetch', action='append', dest='userfetch',
