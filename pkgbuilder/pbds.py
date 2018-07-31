@@ -62,11 +62,6 @@ class PBDS(object):
     console = None
     _pyc = None
 
-    if os.getenv('PACMAN') is None:
-        paccommand = 'pacman'
-    else:
-        paccommand = os.getenv('PACMAN')
-
     hassudo = os.path.exists('/usr/bin/sudo')
 
     uid = os.geteuid()
@@ -100,6 +95,11 @@ class PBDS(object):
         'pkgbuilder', 'data/pkgbuilder.ini.skel').decode('utf-8'))
     config.read([confpath], encoding='utf-8')
 
+    if os.getenv('PACMAN') is None:
+        paccommand = config.get('extras', 'paccommand', fallback='pacman')
+    else:
+        paccommand = os.getenv('PACMAN')
+
     # Language changing
     language = config.get('PKGBUILDer', 'language')
     if language != 'auto':
@@ -114,6 +114,8 @@ class PBDS(object):
                         level=logging.DEBUG)
     log = logging.getLogger('pkgbuilder')
     log.info('*** PKGBUILDer v' + __version__)
+
+
 
     def get_setting(self, name, config_section, config_option,
                     positive, negative):
