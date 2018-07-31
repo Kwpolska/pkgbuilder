@@ -115,8 +115,6 @@ class PBDS(object):
     log = logging.getLogger('pkgbuilder')
     log.info('*** PKGBUILDer v' + __version__)
 
-
-
     def get_setting(self, name, config_section, config_option,
                     positive, negative):
         """Get the value of a setting, based on config file and arguments.
