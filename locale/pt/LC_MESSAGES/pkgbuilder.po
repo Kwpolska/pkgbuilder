@@ -6,9 +6,9 @@
 # Thiago Perrotta <inactive+thiagowfx@transifex.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.17\n"
+"Project-Id-Version: 4.2.18\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2018-03-25 11:40+0200\n"
+"POT-Creation-Date: 2018-07-31 15:54+0200\n"
 "PO-Revision-Date: 2018-03-18 13:23+0000\n"
 "Last-Translator: Chris Warrick\n"
 "Language-Team: Portuguese (http://www.transifex.com/kwpolska/pkgbuilder/"

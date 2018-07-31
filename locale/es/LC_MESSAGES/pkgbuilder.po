@@ -14,11 +14,11 @@
 # tufadorin <inactive+tufadorin@transifex.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.17\n"
+"Project-Id-Version: 4.2.18\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2018-03-25 11:40+0200\n"
-"PO-Revision-Date: 2018-03-18 13:23+0000\n"
-"Last-Translator: Chris Warrick\n"
+"POT-Creation-Date: 2018-07-31 15:54+0200\n"
+"PO-Revision-Date: 2018-07-21 00:18+0000\n"
+"Last-Translator: Alonso Lara (AlonsoLP) <alonso.lara.plana@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/kwpolska/pkgbuilder/"
 "language/es/)\n"
 "Language: es\n"
@@ -41,6 +41,9 @@ msgid ""
 "was specified.  Please run without -w, --buildonly or install dependencies "
 "manually and try again."
 msgstr ""
+"No se pudo instalar las dependencias y continuar construyendo porque -w, --"
+"buildonly se ha especificado. Ejecute sin -w, --buildonly o instale las "
+"dependencias manualmente e inténtelo de nuevo."
 
 #: pkgbuilder/build.py:82
 #, python-brace-format
@@ -63,7 +66,7 @@ msgstr "Obteniendo información de los paquetes ..."
 
 #: pkgbuilder/build.py:391
 msgid ":: Retrieving packages from asp..."
-msgstr ""
+msgstr ":: Recuperando paquetes de asp..."
 
 #: pkgbuilder/build.py:394
 #, python-brace-format
@@ -73,7 +76,7 @@ msgstr "recuperando {0}"
 #: pkgbuilder/build.py:398 pkgbuilder/build.py:450
 #, python-brace-format
 msgid "Failed to retieve {0} (from ASP)."
-msgstr ""
+msgstr "No se pudo recuperar {0} (desde ASP)."
 
 #: pkgbuilder/build.py:402
 msgid ":: Retrieving packages from aur..."
@@ -95,7 +98,7 @@ msgstr "Construyendo {0}..."
 
 #: pkgbuilder/build.py:446
 msgid "Retrieving from ASP..."
-msgstr ""
+msgstr "Recuperando desde ASP..."
 
 #: pkgbuilder/build.py:455 pkgbuilder/build.py:479
 #, python-brace-format
@@ -193,7 +196,7 @@ msgstr "Un ayudante de AUR (y librerías) en Python 3."
 
 #: pkgbuilder/__main__.py:42
 msgid "Also accepts repository packages to build from source."
-msgstr ""
+msgstr "También acepta paquetes de repositorio para compilar desde la fuente."
 
 #: pkgbuilder/__main__.py:45
 msgid "show version number and quit"
@@ -205,7 +208,7 @@ msgstr "PAQUETE"
 
 #: pkgbuilder/__main__.py:48
 msgid "AUR/repository packages to build"
-msgstr ""
+msgstr "Paquetes AUR/repositorio para construir"
 
 #: pkgbuilder/__main__.py:50
 msgid "operations"
@@ -593,7 +596,7 @@ msgstr "No pasó ningún paquete."
 
 #: pkgbuilder/utils.py:134
 msgid "Trying to use utils.print_package_info with a repository package"
-msgstr ""
+msgstr "Intentando usar utils.print_package_info con un paquete de repositorio"
 
 #. TRANSLATORS: space it properly.  “yes/no” below are
 #. for “out of date”.
