@@ -46,7 +46,7 @@ page, or the online documentation at https://pkgbuilder.readthedocs.org/.
 
 COPYRIGHT
 ---------
-Copyright © 2011-2018, Chris Warrick.
+Copyright © 2011-2019, Chris Warrick.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

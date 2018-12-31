@@ -8,7 +8,7 @@ Appendix B. License for PKGBUILDer
 
 .. index:: LICENSE
 
-Copyright © 2011-2018, Chris Warrick.
+Copyright © 2011-2019, Chris Warrick.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

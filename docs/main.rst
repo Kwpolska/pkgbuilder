@@ -2,7 +2,7 @@
 __main__ module
 ===============
 :Author: Chris Warrick <chris@chriswarrick.com>
-:Copyright: © 2011-2018, Chris Warrick.
+:Copyright: © 2011-2019, Chris Warrick.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
 :Date: 2018-07-31
 :Version: 4.2.18

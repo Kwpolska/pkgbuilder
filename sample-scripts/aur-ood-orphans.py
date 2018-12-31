@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 # List AUR OOD Packages/Orphans Installed
 # Part of PKGBUILDer Sample Scripts
-# Copyright © 2011-2018, Chris Warrick.
+# Copyright © 2011-2019, Chris Warrick.
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
