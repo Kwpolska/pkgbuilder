@@ -26,6 +26,13 @@ After adding the repository, you need to run::
     # pacman-key --lsign 5EAAEA16
     # pacman -Syyu
 
+My GPG key expires every year. Every year on January 1st, you’ll need to run::
+
+    # pacman-key -d 5EAAEA16
+    # pacman-key -r 5EAAEA16
+    # pacman-key --lsign 5EAAEA16
+    # pacman -Syyu
+
 BASIC USAGE
 -----------
 
