@@ -119,10 +119,10 @@ def main(source='AUTO', quit=True):
 
         argopt.add_argument(
             '--validation', action='store_true', dest='validation',
-            help=_('check if packages were installed after build'))
+            help=_('check if packages were installed after build (default)'))
         argopt.add_argument(
             '-v', '--novalidation', action='store_true', dest='novalidation',
-            help=_('don\'t check if packages were installed after build (default)'))
+            help=_('don\'t check if packages were installed after build'))
 
         argopt.add_argument(
             '--install', action='store_true', dest='pkginst',
