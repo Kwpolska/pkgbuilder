@@ -412,7 +412,7 @@ def fetch_runner(pkgnames, preprocessed=False):
 
 
 def edit_pkgbuild(pkgname):
-    yesno = input('\nEdit PKGBUILD of {0}? [Y/n] '.format(pkgname))
+    yesno = input('\n' + _('Edit PKGBUILD of {0}? [Y/n] ').format(pkgname))
 
     if yesno.lower().strip().startswith('y') or not yesno.strip():
         if os.environ['EDITOR']:
