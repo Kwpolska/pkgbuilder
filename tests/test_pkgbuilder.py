@@ -78,8 +78,8 @@ class TestPB(unittest.TestCase):
         pbds.log.debug('PB unittest/TestPB is running now on this machine.')
 
     def test_utils_print_package_search(self):
-        sample = ('aur/pkgbuilderts 3.2.0-1 (19 votes) '
-                  '\x1b[1;1m\x1b[1;31m[out of date]\x1b[1;0m\n'
+        sample = ('aur/pkgbuilderts 3.2.0-1 (19 Stimmen) '
+                  '\x1b[1;1m\x1b[1;31m[Veraltet]\x1b[1;0m\n'
                   '    A Python AUR helper/library.')
 
         req = pkgbuilder.utils.print_package_search(self.fpkg, True)
@@ -102,7 +102,7 @@ class TestPB(unittest.TestCase):
                   'Replaces       : None\n'
                   'Votes          : 19\n'
                   'Popularity     : 7\n'
-                  'Out of Date    : \x1b[1;1m\x1b[1;31myes\x1b[1;0m\n'
+                  'Out of Date    : \x1b[1;1m\x1b[1;31mJa\x1b[1;0m\n'
                   'Maintainer     : Kwpolska\nFirst Submitted: '
                   '2011-09-20T14:46:33Z\nLast Updated   : '
                   '2014-03-25T14:24:32Z\nDescription    : '
@@ -144,3 +144,6 @@ class TestPB(unittest.TestCase):
             pkgbuilder.wrapper.wrapper(['-Qh'])
         finally:
             pkgbuilder.DS.paccommand = pacman
+
+if __name__ == "__main__":
+    unittest.main()
