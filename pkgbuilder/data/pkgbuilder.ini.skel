@@ -17,6 +17,7 @@ pgpcheck=true
 confirm=true
 deepclone=false
 verbosepkglists=true
+edit_pkgbuild=false
 
 [extras]
 ; Always change directory to this before working

@@ -95,6 +95,12 @@ def main(source='AUTO', quit=True):
         argopt.add_argument(
             '--nodebug', action='store_true', dest='nodebug',
             help=_('don\'t display debug messages (default)'))
+        argopt.add_argument(
+            '--edit-pkgbuild', action='store_true', dest='edit_pkgbuild',
+            help=_('edit the PKGBUILD'))
+        argopt.add_argument(
+            '--noedit-pkgbuild', action='store_true', dest='noedit_pkgbuild',
+            help=_("don't edit the PKGBUILD (default)"))
 
         argopt.add_argument(
             '--depcheck', action='store_true', dest='depcheck',
@@ -189,6 +195,8 @@ def main(source='AUTO', quit=True):
                                       args.deepclone, args.shallowclone)
         DS.colors_status = DS.get_setting('--colors', 'options', 'colors',
                                           args.colors, args.nocolors)
+        DS.edit_pkgbuild = DS.get_setting('--edit-pkgbuild', 'options', 'edit_pkgbuild',
+                                          args.edit_pkgbuild, args.noedit_pkgbuild)
         pkgnames = args.pkgnames
 
         if DS.get_setting('--debug', 'options', 'debug',
@@ -346,7 +354,8 @@ def main(source='AUTO', quit=True):
                 try:
                     DS.log.info('Building {0}'.format(pkgname))
                     out = pkgbuilder.build.auto_build(pkgname, DS.depcheck,
-                                                      DS.pkginst, pkgnames)
+                                                      DS.pkginst, pkgnames,
+                                                      DS.edit_pkgbuild)
                     if out:
                         toinstall += out[1][0]
                         sigs += out[1][1]

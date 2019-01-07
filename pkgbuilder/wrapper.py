@@ -123,7 +123,8 @@ def wrapper(source='AUTO'):
         pblong = ['fetch', 'get', 'userfetch', 'vcsupgrade', 'novcsupgrade', 'colors',
                   'nocolors', 'depcheck', 'nodepcheck', 'validation',
                   'novalidation', 'install', 'buildonly', 'pgpcheck',
-                  'skippgpcheck', 'deep', 'shallow', 'noclean', 'nodebug']
+                  'skippgpcheck', 'deep', 'shallow', 'noclean', 'nodebug',
+                  'noedit-pkgbuild', 'edit-pkgbuild']
 
         commonshort = ['S', 'd', 'i', 's', 'v', 'w']
         commonlong = ['debug', 'info', 'search', 'sync', 'confirm',

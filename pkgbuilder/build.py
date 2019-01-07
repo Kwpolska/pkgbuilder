@@ -33,7 +33,7 @@ __all__ = ('auto_build', 'clone', 'asp_export', 'prepare_deps', 'depcheck',
 
 
 def auto_build(pkgname, performdepcheck=True,
-               pkginstall=True, completelist=None):
+               pkginstall=True, completelist=None, pkgbuild_edit=False):
     """A function that builds everything, that should be used by everyone.
 
     This function makes building AUR deps possible.
@@ -49,7 +49,7 @@ def auto_build(pkgname, performdepcheck=True,
     """
     if completelist is None:
         completelist = []
-    build_result = build_runner(pkgname, performdepcheck, pkginstall)
+    build_result = build_runner(pkgname, performdepcheck, pkginstall, pkgbuild_edit)
     try:
         if build_result[0] == 0:
             DS.fancy_msg(_('The build succeeded.'))
@@ -411,8 +411,18 @@ def fetch_runner(pkgnames, preprocessed=False):
         exit(1)
 
 
+def edit_pkgbuild(pkgname):
+    yesno = input('\n' + _('Edit PKGBUILD of {0}? [Y/n] ').format(pkgname))
+
+    if yesno.lower().strip().startswith('y') or not yesno.strip():
+        if os.environ['EDITOR']:
+            subprocess.call([os.environ['EDITOR'], './PKGBUILD'])
+        else:
+            subprocess.call(['nano', './PKGBUILD'])
+
+
 def build_runner(pkgname, performdepcheck=True,
-                 pkginstall=True):
+                 pkginstall=True, pkgbuild_edit=False):
     """A build function, which actually links to others.
 
     DO NOT use it unless you re-implement auto_build!
@@ -510,6 +520,10 @@ def build_runner(pkgname, performdepcheck=True,
         if aurbuild != []:
             os.chdir('../')
             return [72337, aurbuild]
+
+    # Edit the pkgbuild
+    if pkgbuild_edit:
+        edit_pkgbuild(pkg.packagebase)
 
     mpparams = ['makepkg', '-sf']
 
