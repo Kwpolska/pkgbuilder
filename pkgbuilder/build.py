@@ -33,7 +33,7 @@ __all__ = ('auto_build', 'clone', 'asp_export', 'prepare_deps', 'depcheck',
 
 
 def auto_build(pkgname, performdepcheck=True,
-               pkginstall=True, completelist=None):
+               pkginstall=True, completelist=None, pkgbuild_edit=True):
     """A function that builds everything, that should be used by everyone.
 
     This function makes building AUR deps possible.
@@ -49,7 +49,7 @@ def auto_build(pkgname, performdepcheck=True,
     """
     if completelist is None:
         completelist = []
-    build_result = build_runner(pkgname, performdepcheck, pkginstall)
+    build_result = build_runner(pkgname, performdepcheck, pkginstall, pkgbuild_edit)
     try:
         if build_result[0] == 0:
             DS.fancy_msg(_('The build succeeded.'))
@@ -411,8 +411,28 @@ def fetch_runner(pkgnames, preprocessed=False):
         exit(1)
 
 
+def edit_pkgbuild(pkgname):
+    done = True
+    while done:
+        _confirm = input('\nEdit PKGBUILD of ' + pkgname + '?[Y/n]')
+        if _confirm in ['Y', 'y', 'yes', 'Yes'] or not _confirm:
+            done = False
+            confirm = True
+        elif _confirm in ['N', 'n', 'no', 'No']:
+            done = False
+            confirm = False
+        else:
+            print("Please awnser with 'Y', 'y', 'Yes', 'yes', 'N', 'n', 'No' or 'no'.")
+
+    if confirm:
+        if os.environ['EDITOR']:
+            subprocess.call([os.environ['EDITOR'], './PKGBUILD'])
+        else:
+            subprocess.call(['nano', './PKGBUILD'])
+
+
 def build_runner(pkgname, performdepcheck=True,
-                 pkginstall=True):
+                 pkginstall=True, pkgbuild_edit=True):
     """A build function, which actually links to others.
 
     DO NOT use it unless you re-implement auto_build!
@@ -510,6 +530,10 @@ def build_runner(pkgname, performdepcheck=True,
         if aurbuild != []:
             os.chdir('../')
             return [72337, aurbuild]
+
+    # Edit the pkgbuild
+    if pkgbuild_edit:
+        edit_pkgbuild(pkg.packagebase)
 
     mpparams = ['makepkg', '-sf']
 
