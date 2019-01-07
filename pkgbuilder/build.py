@@ -33,7 +33,7 @@ __all__ = ('auto_build', 'clone', 'asp_export', 'prepare_deps', 'depcheck',
 
 
 def auto_build(pkgname, performdepcheck=True,
-               pkginstall=True, completelist=None, pkgbuild_edit=True):
+               pkginstall=True, completelist=None, pkgbuild_edit=False):
     """A function that builds everything, that should be used by everyone.
 
     This function makes building AUR deps possible.
@@ -412,19 +412,9 @@ def fetch_runner(pkgnames, preprocessed=False):
 
 
 def edit_pkgbuild(pkgname):
-    done = True
-    while done:
-        _confirm = input('\nEdit PKGBUILD of ' + pkgname + '?[Y/n]')
-        if _confirm in ['Y', 'y', 'yes', 'Yes'] or not _confirm:
-            done = False
-            confirm = True
-        elif _confirm in ['N', 'n', 'no', 'No']:
-            done = False
-            confirm = False
-        else:
-            print("Please awnser with 'Y', 'y', 'Yes', 'yes', 'N', 'n', 'No' or 'no'.")
+    yesno = input('\nEdit PKGBUILD of ' + pkgname + '? [Y/n] ')
 
-    if confirm:
+    if yesno.lower().strip().startswith('y') or not yesno.strip():
         if os.environ['EDITOR']:
             subprocess.call([os.environ['EDITOR'], './PKGBUILD'])
         else:
@@ -432,7 +422,7 @@ def edit_pkgbuild(pkgname):
 
 
 def build_runner(pkgname, performdepcheck=True,
-                 pkginstall=True, pkgbuild_edit=True):
+                 pkginstall=True, pkgbuild_edit=False):
     """A build function, which actually links to others.
 
     DO NOT use it unless you re-implement auto_build!

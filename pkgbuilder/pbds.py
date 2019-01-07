@@ -54,7 +54,7 @@ class PBDS(object):
     inttext = _('Aborted by user! Exiting...')
     # TRANSLATORS: see pacman.
     wrapperinttext = _('Interrupt signal received\n')
-    edit_pkgbuild = True
+    edit_pkgbuild = False
 
     # STUFF NOT TO BE CHANGED BY HUMAN BEINGS.  EVER.
     mp1 = '=='
