@@ -1,14 +1,14 @@
 # -*- encoding: utf-8 -*-
 # PBWrapper v0.5.0
-# PKGBUILDer v4.2.17
+# PKGBUILDer v4.2.18
 # An AUR helper (and library) in Python 3.
-# Copyright © 2011-2018, Chris Warrick.
+# Copyright © 2011-2019, Chris Warrick.
 # See /LICENSE for licensing information.
 
 """
 A wrapper for pacman and PKGBUILDer, also known as PBWrapper or pb.
 
-:Copyright: © 2011-2018, Chris Warrick.
+:Copyright: © 2011-2019, Chris Warrick.
 :License: BSD (see /LICENSE).
 """
 
@@ -25,7 +25,7 @@ import sys
 import os
 
 __all__ = ('main', 'wrapper')
-__wrapperversion__ = '0.5.5'
+__wrapperversion__ = '0.5.6'
 
 
 def main():
@@ -111,12 +111,12 @@ def wrapper(source='AUTO'):
         log.debug('Got -S, preparing to parse arguments...')
         pacmanshort = ['f', 'g', 'l', 'p', 'q']
         pacmanlong = ['asdeps', 'asexplicit', 'dbonly', 'downloadonly',
-                      'force', 'groups', 'list', 'needed', 'nodeps',
+                      'groups', 'list', 'needed', 'nodeps',
                       'noprogressbar', 'noscriptlet', 'print', 'quiet',
-                      'verbose', 'files']
+                      'verbose', 'files', 'disable-download-timeout']
         pacmanshorta = ['b', 'r']
         pacmanlonga = ['arch', 'cachedir', 'config', 'dbpath', 'gpgdir',
-                       'hookdir', 'ignoregroup', 'logfile',
+                       'hookdir', 'ignoregroup', 'logfile', 'overwrite',
                        'print-format', 'root', 'assume-installed']
 
         pbshort = ['D', 'C', 'G']

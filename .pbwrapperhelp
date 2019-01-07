@@ -27,7 +27,8 @@ options:
       --confirm        always ask for confirmation
       --dbonly         only modify database entries, not package files
       --debug          display debug messages
-      --force          force install, overwrite conflicting files
+      --disable-download-timeout
+                       use relaxed timeouts for download
       --gpgdir <path>  set an alternate home directory for GnuPG
       --hookdir <dir>  set an alternate hook location
       --ignore <pkg>   ignore a package upgrade (can be used more than once)
@@ -38,8 +39,11 @@ options:
       --noconfirm      do not ask for any confirmation
       --noprogressbar  do not show a progress bar when downloading files
       --noscriptlet    do not execute the install scriptlet if one exists
+      --overwrite <path>
+                       overwrite conflicting files (can be used more than once)
       --print-format <string>
                        specify how the targets should be printed
+      --sysroot        operate on a mounted guest system (root-only)
 usage: pkgbuilder [-h] [-V] [-S] [-F] [--userfetch USER] [-i] [-s] [-u] [-U]
                   [-X] [-c] [--noclean] [--colors] [-C] [--debug] [--nodebug]
                   [--depcheck] [-d] [-D] [--novcsupgrade] [--validation] [-v]
