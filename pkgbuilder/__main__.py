@@ -97,10 +97,10 @@ def main(source='AUTO', quit=True):
             help=_('don\'t display debug messages (default)'))
         argopt.add_argument(
             '--edit-pkgbuild', action='store_true', dest='edit_pkgbuild',
-            help=_('edit the PKGBUILD (default)'))
+            help=_('edit the PKGBUILD'))
         argopt.add_argument(
             '--noedit-pkgbuild', action='store_true', dest='noedit_pkgbuild',
-            help=_("don't edit the PKGBUILD"))
+            help=_("don't edit the PKGBUILD (default)"))
 
         argopt.add_argument(
             '--depcheck', action='store_true', dest='depcheck',
