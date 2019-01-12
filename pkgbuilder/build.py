@@ -31,6 +31,10 @@ import glob
 __all__ = ('auto_build', 'clone', 'asp_export', 'prepare_deps', 'depcheck',
            'fetch_runner', 'build_runner')
 
+RES_ABORT = 72335
+RES_EXISTING = 72336
+RES_AURDEPS = 72337
+
 
 def auto_build(pkgname, performdepcheck=True,
                pkginstall=True, completelist=None, pkgbuild_edit=False):
@@ -55,12 +59,12 @@ def auto_build(pkgname, performdepcheck=True,
             DS.fancy_msg(_('The build succeeded.'))
         elif build_result[0] >= 0 and build_result[0] < 256:
             raise pkgbuilder.exceptions.MakepkgError(build_result[0])
-        elif build_result[0] == 72335:
+        elif build_result[0] == RES_ABORT:
             DS.fancy_warning(_('Installation aborted by user.'))
-        elif build_result[0] == 72336:
+        elif build_result[0] == RES_EXISTING:
             # existing package, do nothing
             pass
-        elif build_result[0] == 72337:
+        elif build_result[0] == RES_AURDEPS:
             DS.fancy_warning(_('Building more AUR packages is required.'))
             if not pkginstall:
                 raise pkgbuilder.exceptions.PBException(
@@ -474,7 +478,7 @@ def build_runner(pkgname, performdepcheck=True,
                            '{0}').format(pkgname))
             if not pkginstall:
                 existing = ([], [])
-            return [72336, existing]
+            return [RES_EXISTING, existing]
         try:
             os.chdir('./{0}'.format(pkg.name))
         except FileNotFoundError:
@@ -498,7 +502,7 @@ def build_runner(pkgname, performdepcheck=True,
                            '{0}').format(pkgname))
             if not pkginstall:
                 existing = ([], [])
-            return [72336, existing]
+            return [RES_EXISTING, existing]
         DS.fancy_msg(_('Cloning the git repository...'))
         clone(pkg.packagebase)
         os.chdir('./{0}/'.format(pkg.packagebase))
@@ -527,13 +531,13 @@ def build_runner(pkgname, performdepcheck=True,
             DS.fancy_msg2(': '.join((dpkg, pkgtypes[pkgtype])))
         if aurbuild != []:
             os.chdir('../')
-            return [72337, aurbuild]
+            return [RES_AURDEPS, aurbuild]
 
     # Edit the pkgbuild
     if pkgbuild_edit:
         continue_install = edit_pkgbuild(pkg.packagebase)
         if not continue_install:
-            return [72335, ([], [])]
+            return [RES_ABORT, ([], [])]
 
     mpparams = ['makepkg', '-sf']
 
