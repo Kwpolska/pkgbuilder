@@ -252,6 +252,16 @@ class PBDS(object):
                          self.colors['all_off'] + '\n')
         self.log.info('({0:<20}) {1}'.format('fancy_msg', text))
 
+    def fancy_msg_prompt(self, text):
+        """Display main messages that ask a question."""
+        sys.stderr.write(self.colors['green'] + self.mp1 + '>' +
+                         self.colors['all_off'] +
+                         self.colors['bold'] + ' ' + text +
+                         self.colors['all_off'] + ' ')
+        sys.stderr.flush()
+        self.log.info('({0:<20}) {1} \n'.format('fancy_msg', text))
+        return input()
+
     def fancy_msg2(self, text):
         """Display sub-messages."""
         sys.stderr.write(self.colors['blue'] + self.mp2 + '->' +

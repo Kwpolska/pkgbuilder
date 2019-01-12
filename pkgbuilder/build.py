@@ -55,6 +55,8 @@ def auto_build(pkgname, performdepcheck=True,
             DS.fancy_msg(_('The build succeeded.'))
         elif build_result[0] >= 0 and build_result[0] < 256:
             raise pkgbuilder.exceptions.MakepkgError(build_result[0])
+        elif build_result[0] == 72335:
+            DS.fancy_warning(_('Installation aborted by user.'))
         elif build_result[0] == 72336:
             # existing package, do nothing
             pass
@@ -139,7 +141,7 @@ def clone(pkgbase):
             # git repo, pull
             try:
                 os.chdir(pkgbase)
-                subprocess.check_call(['git', 'pull'])
+                subprocess.check_call(['git', 'pull', '--no-rebase'])
             except subprocess.CalledProcessError as e:
                 raise pkgbuilder.exceptions.CloneError(e.returncode)
             finally:
@@ -412,13 +414,19 @@ def fetch_runner(pkgnames, preprocessed=False):
 
 
 def edit_pkgbuild(pkgname):
-    yesno = input('\n' + _('Edit PKGBUILD of {0}? [Y/n] ').format(pkgname))
+    """Edit a PKGBUILD interactively. Returns False if user aborts install."""
+    yesno = DS.fancy_msg_prompt(_('Edit PKGBUILD of {0}? [Y/n]').format(pkgname))
 
     if yesno.lower().strip().startswith('y') or not yesno.strip():
         if os.environ['EDITOR']:
             subprocess.call([os.environ['EDITOR'], './PKGBUILD'])
         else:
             subprocess.call(['nano', './PKGBUILD'])
+        yesno = DS.fancy_msg_prompt(_('Continue install of {0}? [Y/n]').format(pkgname))
+        if yesno.lower().strip().startswith('n'):
+            return False
+
+    return True
 
 
 def build_runner(pkgname, performdepcheck=True,
@@ -523,7 +531,9 @@ def build_runner(pkgname, performdepcheck=True,
 
     # Edit the pkgbuild
     if pkgbuild_edit:
-        edit_pkgbuild(pkg.packagebase)
+        continue_install = edit_pkgbuild(pkg.packagebase)
+        if not continue_install:
+            return [72335, ([], [])]
 
     mpparams = ['makepkg', '-sf']
 
