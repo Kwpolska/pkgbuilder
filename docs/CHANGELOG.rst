@@ -5,8 +5,8 @@ Appendix C. Changelog
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2019, Chris Warrick.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2018-07-31
-:Version: 4.2.18
+:Date: 2019-01-12
+:Version: 4.3.0
 
 .. index:: CHANGELOG
 
@@ -46,6 +46,9 @@ More information can be found on GitHub in the `releases section <https://github
 
 Version History
 ===============
+
+4.3.0
+    * Support for editing PKGBUILDs (``--edit-pkgbuild`` option)
 
 4.2.18
     * Add a ``paccommand`` option to the INI file.

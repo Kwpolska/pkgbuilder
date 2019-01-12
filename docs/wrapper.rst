@@ -4,8 +4,8 @@ PBWrapper
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2019, Chris Warrick.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2018-07-31
-:Version: 4.2.18
+:Date: 2019-01-12
+:Version: 4.3.0
 :PBWrapper Version: 0.2.3
 
 .. index:: wrapper

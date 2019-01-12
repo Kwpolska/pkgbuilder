@@ -42,3 +42,4 @@ pbwrapperdiff
 
 # Transifex?
 .cache/
+.pytest_cache

@@ -46,10 +46,11 @@ options:
       --sysroot        operate on a mounted guest system (root-only)
 usage: pkgbuilder [-h] [-V] [-S] [-F] [--userfetch USER] [-i] [-s] [-u] [-U]
                   [-X] [-c] [--noclean] [--colors] [-C] [--debug] [--nodebug]
-                  [--depcheck] [-d] [-D] [--novcsupgrade] [--validation] [-v]
-                  [--install] [-w] [--pgpcheck] [--skippgpcheck] [--confirm]
-                  [--noconfirm] [--shallow] [--deep] [--ignore PACKAGE] [-y]
-                  [--notmp] [--build]
+                  [--edit-pkgbuild] [--noedit-pkgbuild] [--depcheck] [-d] [-D]
+                  [--novcsupgrade] [--validation] [-v] [--install] [-w]
+                  [--pgpcheck] [--skippgpcheck] [--confirm] [--noconfirm]
+                  [--shallow] [--deep] [--ignore PACKAGE] [-y] [--notmp]
+                  [--build]
                   [PACKAGE [PACKAGE ...]]
 
 An AUR helper (and library) in Python 3.
@@ -80,6 +81,8 @@ options:
   -C, --nocolors        don't use colors in output
   --debug               display debug messages
   --nodebug             don't display debug messages (default)
+  --edit-pkgbuild       edit the PKGBUILD
+  --noedit-pkgbuild     don't edit the PKGBUILD (default)
   --depcheck            check dependencies (default)
   -d, --nodepcheck      don't check dependencies (may break makepkg)
   -D, --vcsupgrade      upgrade all the VCS/date-versioned packages

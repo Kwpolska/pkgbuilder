@@ -6,8 +6,8 @@ PKGBUILDer
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2019, Chris Warrick.
 :License: BSD (see /LICENSE or Appendix B.)
-:Date: 2018-07-31
-:Version: 4.2.18
+:Date: 2019-01-12
+:Version: 4.3.0
 :Manual section: 8
 :Manual group: PKGBUILDer manual
 
@@ -125,12 +125,23 @@ Only the non-default options are documented below.
 **--deep**
     Perform deep clones of git repositories.  Override with ``--shallow``.
 
+**--edit-pkgbuild**
+    Offer to edit PKGBUILDs before they are installed.
+
 **--ignore [PACKAGE PACKAGE ...]**
     Ignore a package upgrade (can be used more than once, or use commas --
     follows pacman syntax)
 
 **-y, --refresh**
     Dummy option for pacman compatibility.
+
+SECURITY AND EDITING PKGBUILDs
+==============================
+
+By default, PKGBUILDer strives to be the no-questions-asked package manager.
+This means that all packages are built immediately, without any confirmations.
+The behavior can be overridden with the ``--edit-pkgbuild`` command-line
+option, or with ``edit=pkgbuild=true`` in PKGBUILDer’s config file.
 
 EXAMPLES
 ========

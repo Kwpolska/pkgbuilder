@@ -8,9 +8,9 @@
 # Anh Phan <vietnamesel10n@gmail.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.2.18\n"
+"Project-Id-Version: 4.3.0\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2019-01-12 15:40+0100\n"
+"POT-Creation-Date: 2019-01-12 16:05+0100\n"
 "PO-Revision-Date: 2019-01-12 14:40+0000\n"
 "Last-Translator: Chris Warrick\n"
 "Language-Team: Vietnamese (http://www.transifex.com/kwpolska/pkgbuilder/"

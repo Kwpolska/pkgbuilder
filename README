@@ -3,8 +3,8 @@ PKGBUILDer.  An AUR helper (and library) in Python 3.
 =====================================================
 :Info: This is the README file for PKGBUILDer.
 :Author: Chris Warrick <chris@chriswarrick.com>
-:Date: 2018-07-31
-:Version: 4.2.18
+:Date: 2019-01-12
+:Version: 4.3.0
 
 .. index: README
 
@@ -43,6 +43,21 @@ the AUR.
 
 For more information, refer to the ``-h`` command, the ``pkgbuilder(8)`` man
 page, or the online documentation at https://pkgbuilder.readthedocs.org/.
+
+CONFIGURATION
+-------------
+
+PKGBUILDer supports per-user configuration, in the file
+~/.config/kwpolska/pkgbuilder/pkgbuilder.ini.  It can also be configured on a
+per-usage basis via command-line arguments.
+
+SECURITY AND EDITING PKGBUILDs
+------------------------------
+
+By default, PKGBUILDer strives to be the no-questions-asked package manager.
+This means that all packages are built immediately, without any confirmations.
+The behavior can be overridden with the ``--edit-pkgbuild`` command-line
+option, or with ``edit=pkgbuild=true`` in PKGBUILDer’s config file.
 
 COPYRIGHT
 ---------
