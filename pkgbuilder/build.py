@@ -419,14 +419,14 @@ def fetch_runner(pkgnames, preprocessed=False):
 
 def edit_pkgbuild(pkgname):
     """Edit a PKGBUILD interactively. Returns False if user aborts install."""
-    yesno = DS.fancy_msg_prompt(_('Edit PKGBUILD of {0}? [Y/n]').format(pkgname))
+    yesno = DS.fancy_msg_prompt(_('Edit PKGBUILD of {0}? [Y/n] ').format(pkgname))
 
     if yesno.lower().strip().startswith('y') or not yesno.strip():
         if os.environ['EDITOR']:
             subprocess.call([os.environ['EDITOR'], './PKGBUILD'])
         else:
             subprocess.call(['nano', './PKGBUILD'])
-        yesno = DS.fancy_msg_prompt(_('Continue install of {0}? [Y/n]').format(pkgname))
+        yesno = DS.fancy_msg_prompt(_('Proceed with installation? [Y/n] '))
         if yesno.lower().strip().startswith('n'):
             return False
 

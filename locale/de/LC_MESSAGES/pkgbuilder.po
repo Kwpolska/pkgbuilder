@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 4.2.18\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2018-07-31 15:54+0200\n"
-"PO-Revision-Date: 2018-03-18 13:23+0000\n"
+"POT-Creation-Date: 2019-01-12 15:40+0100\n"
+"PO-Revision-Date: 2019-01-12 14:40+0000\n"
 "Last-Translator: Chris Warrick\n"
 "Language-Team: German (http://www.transifex.com/kwpolska/pkgbuilder/language/"
 "de/)\n"
@@ -19,105 +19,120 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: pkgbuilder/build.py:55
+#: pkgbuilder/build.py:59
 msgid "The build succeeded."
 msgstr "Das Paket wurde erfolgreich gebaut."
 
-#: pkgbuilder/build.py:62
+#: pkgbuilder/build.py:63
+msgid "Installation aborted by user."
+msgstr ""
+
+#: pkgbuilder/build.py:68
 msgid "Building more AUR packages is required."
 msgstr "Erstellen von weiteren AUR Paketen benötigt."
 
-#: pkgbuilder/build.py:65
+#: pkgbuilder/build.py:71
 msgid ""
 "Cannot install dependencies and continue building because -w, --buildonly "
 "was specified.  Please run without -w, --buildonly or install dependencies "
 "manually and try again."
-msgstr "Abhänigkeiten können nicht installiert und das erstellen des Paketes "
-"fortgesetzt werden, da -w, --buildonly angegeben wurde. Bitte führe pkgbuilder "
-"erneut ohne -w, --buildonly aus oder installiere die Abhänigkeiten manuell und "
-"versuche es erneut."
+msgstr ""
+"Abhänigkeiten können nicht installiert und das erstellen des Paketes "
+"fortgesetzt werden, da -w, --buildonly angegeben wurde. Bitte führe "
+"pkgbuilder erneut ohne -w, --buildonly aus oder installiere die "
+"Abhänigkeiten manuell und versuche es erneut."
 
-#: pkgbuilder/build.py:82
+#: pkgbuilder/build.py:88
 #, python-brace-format
 msgid "found an existing package for {0}"
 msgstr "Ein existierendes Paket für {0} wurde gefunden."
 
-#: pkgbuilder/build.py:121
+#: pkgbuilder/build.py:127
 #, python-brace-format
 msgid "makepkg (or someone else) failed and returned {0}."
-msgstr "makepkg (oder ein andereres Kommando) ist fehlgeschlagen und gab {0} zurück."
+msgstr ""
+"makepkg (oder ein andereres Kommando) ist fehlgeschlagen und gab {0} zurück."
 
-#: pkgbuilder/build.py:301
+#: pkgbuilder/build.py:307
 #, python-brace-format
 msgid "Failed to fulfill package dependency requirement: {0}"
 msgstr "Fehler beim Erfüllen der Abhänigkeit: {0}"
 
-#: pkgbuilder/build.py:360 pkgbuilder/__main__.py:325
+#: pkgbuilder/build.py:366 pkgbuilder/__main__.py:333
 msgid "Fetching package information..."
 msgstr "Sammle Paket informationen..."
 
-#: pkgbuilder/build.py:391
+#: pkgbuilder/build.py:397
 msgid ":: Retrieving packages from asp..."
 msgstr ":: Erhalte Pakete vom asp..."
 
-#: pkgbuilder/build.py:394
+#: pkgbuilder/build.py:400
 #, python-brace-format
 msgid "retrieving {0}"
 msgstr "Herunterladen von {0}"
 
-#: pkgbuilder/build.py:398 pkgbuilder/build.py:450
+#: pkgbuilder/build.py:404 pkgbuilder/build.py:472
 #, python-brace-format
 msgid "Failed to retieve {0} (from ASP)."
 msgstr "Fehler beim herunterladen von {0} (von ASP)."
 
-#: pkgbuilder/build.py:402
+#: pkgbuilder/build.py:408
 msgid ":: Retrieving packages from aur..."
 msgstr ":: Erhalte Pakete aus den AUR..."
 
-#: pkgbuilder/build.py:405
+#: pkgbuilder/build.py:411
 #, python-brace-format
 msgid "cloning {0}"
 msgstr "Clone {0}"
 
-#: pkgbuilder/build.py:408
+#: pkgbuilder/build.py:414
 msgid "Successfully fetched: "
 msgstr "Erfolgreich geholt: "
 
-#: pkgbuilder/build.py:438
+#: pkgbuilder/build.py:422
+#, python-brace-format
+msgid "Edit PKGBUILD of {0}? [Y/n] "
+msgstr ""
+
+#: pkgbuilder/build.py:429 pkgbuilder/upgrade.py:212
+msgid "Proceed with installation? [Y/n] "
+msgstr "Mit der installation fortfahren? [Y/n] "
+
+#: pkgbuilder/build.py:460
 #, python-brace-format
 msgid "Building {0}..."
 msgstr "Erstelle {0}..."
 
-#: pkgbuilder/build.py:446
+#: pkgbuilder/build.py:468
 msgid "Retrieving from ASP..."
 msgstr "Erhalte von ASP..."
 
-#: pkgbuilder/build.py:455 pkgbuilder/build.py:479
+#: pkgbuilder/build.py:477 pkgbuilder/build.py:501
 #, python-brace-format
 msgid "Found an existing package for {0}"
 msgstr "Exestierendes Paket für {0} gefunden."
 
-#: pkgbuilder/build.py:484
+#: pkgbuilder/build.py:506
 msgid "Cloning the git repository..."
 msgstr "Clone das git Repository..."
 
-#: pkgbuilder/build.py:492
+#: pkgbuilder/build.py:514
 msgid "Checking dependencies..."
 msgstr "Abhängigkeiten überprüfen... "
 
-#: pkgbuilder/build.py:495
+#: pkgbuilder/build.py:517
 msgid "found in system"
 msgstr "Bereits installiert"
 
-#: pkgbuilder/build.py:495
+#: pkgbuilder/build.py:517
 msgid "found in repos"
 msgstr "Wird aus den repos installiert"
 
-#: pkgbuilder/build.py:496
+#: pkgbuilder/build.py:518
 msgid "found in the AUR"
 msgstr "Im AUR gefunden"
 
-#: pkgbuilder/build.py:499
+#: pkgbuilder/build.py:521
 msgid "none found"
 msgstr "Nicht gefunden."
 
@@ -270,121 +285,133 @@ msgstr "Zeige Debug-Nachrichten an."
 msgid "don't display debug messages (default)"
 msgstr "Zeige Debug-Nachrichten nicht an. (Default)"
 
-#: pkgbuilder/__main__.py:101
+#: pkgbuilder/__main__.py:100
+msgid "edit the PKGBUILD"
+msgstr ""
+
+#: pkgbuilder/__main__.py:103
+msgid "don't edit the PKGBUILD (default)"
+msgstr ""
+
+#: pkgbuilder/__main__.py:107
 msgid "check dependencies (default)"
 msgstr "Überprüfe Abhänigkeiten. (Default)"
 
-#: pkgbuilder/__main__.py:104
+#: pkgbuilder/__main__.py:110
 msgid "don't check dependencies (may break makepkg)"
 msgstr "Abhängigkeiten nicht überprüfen. (kann makepkg beeinträchtigen)"
 
-#: pkgbuilder/__main__.py:108
+#: pkgbuilder/__main__.py:114
 msgid "upgrade all the VCS/date-versioned packages"
 msgstr "Aktualisiere alle VCS/Datums-Versionierten Pakete."
 
-#: pkgbuilder/__main__.py:111
+#: pkgbuilder/__main__.py:117
 msgid "don't upgrade all the VCS/date-versioned packages (default)"
 msgstr "Aktualisiere die VCS/Datums-Versionierten Pakete nicht. (Default)"
 
-#: pkgbuilder/__main__.py:116
+#: pkgbuilder/__main__.py:122
 msgid "check if packages were installed after build (default)"
-msgstr "Überprüfe nach dem erstellen ob die Pakete installiert wurden sind. (Default)"
+msgstr ""
+"Überprüfe nach dem erstellen ob die Pakete installiert wurden sind. (Default)"
 
-#: pkgbuilder/__main__.py:119
+#: pkgbuilder/__main__.py:125
 msgid "don't check if packages were installed after build"
 msgstr "Nicht überprüfen ob erstellte Pakete installiert wurden"
 
-#: pkgbuilder/__main__.py:123
+#: pkgbuilder/__main__.py:129
 msgid "install packages after building (default)"
 msgstr "Installiere Pakete nach dem Erstellen. (Default)"
 
-#: pkgbuilder/__main__.py:126
+#: pkgbuilder/__main__.py:132
 msgid "don't install packages after building"
 msgstr "Pakete nach dem erstellen nicht installieren"
 
-#: pkgbuilder/__main__.py:130
+#: pkgbuilder/__main__.py:136
 msgid "verify source files with PGP signatures (default)"
 msgstr "Überprüfe Quelldateien per PGP-Signaturen. (Default)"
 
-#: pkgbuilder/__main__.py:133
+#: pkgbuilder/__main__.py:139
 msgid "do not verify source files with PGP signatures"
 msgstr "Überprüfe Qelldateien nich mit PGP-Signaturen."
 
-#: pkgbuilder/__main__.py:137
+#: pkgbuilder/__main__.py:143
 msgid "ask for confirmation (default)"
 msgstr "Frage nach Bestätigung. (Default)"
 
-#: pkgbuilder/__main__.py:140
+#: pkgbuilder/__main__.py:146
 msgid "do not ask for any confirmation"
 msgstr "Frage nicht nach Bestätigung."
 
-#: pkgbuilder/__main__.py:144
+#: pkgbuilder/__main__.py:150
 msgid "use shallow git clones (default)"
 msgstr "Benutze oberflächliche Git-Clones. (Default)"
 
-#: pkgbuilder/__main__.py:147
+#: pkgbuilder/__main__.py:153
 msgid "use deep git clones"
 msgstr "Benutze gründliche Git-Clones."
 
-#: pkgbuilder/__main__.py:151
+#: pkgbuilder/__main__.py:157
 msgid "ignore a package upgrade (can be used more than once)"
-msgstr "Ignoriere Paket aktualisierung. (Kann mehr als einmal verwendet werden.)"
+msgstr ""
+"Ignoriere Paket aktualisierung. (Kann mehr als einmal verwendet werden.)"
 
-#: pkgbuilder/__main__.py:155
+#: pkgbuilder/__main__.py:161
 msgid "(dummy)"
 msgstr "(dummy)"
 
-#: pkgbuilder/__main__.py:157
+#: pkgbuilder/__main__.py:163
 msgid "configuration overrides"
 msgstr "Einstellungsüberscheibungen"
 
-#: pkgbuilder/__main__.py:160
+#: pkgbuilder/__main__.py:166
 msgid "don't build in /tmp"
 msgstr "Nicht in /tmp erstellen"
 
-#: pkgbuilder/__main__.py:163
+#: pkgbuilder/__main__.py:169
 msgid "build (instead of fetching)"
 msgstr "Erstellen (anstelle vom Download)"
 
-#: pkgbuilder/__main__.py:204
+#: pkgbuilder/__main__.py:212
 msgid "PKGBUILDer cannot work in a virtualenv, exiting."
 msgstr "PKGBUILDer kann nicht in einer Virtuellen Umgebung arbeiten."
 
-#: pkgbuilder/__main__.py:225
+#: pkgbuilder/__main__.py:233
 #, python-brace-format
 msgid "error: package '{0}' was not found"
 msgstr "Fehler: Paket {0} wurde nicht gefunden."
 
 #. this would be too many entries, but this is an actual API
 #. limitation and not an idea of yours truly.
-#: pkgbuilder/__main__.py:241
+#: pkgbuilder/__main__.py:249
 msgid "Search query too short"
 msgstr "Suchanfrage zu kurz."
 
-#: pkgbuilder/__main__.py:242
+#: pkgbuilder/__main__.py:250
 msgid "Searching for exact match..."
 msgstr "Nach genauer Übereinstimmung suchen..."
 
-#: pkgbuilder/__main__.py:245
+#: pkgbuilder/__main__.py:253
 msgid "not found"
 msgstr "Nichts gefunden."
 
-#: pkgbuilder/__main__.py:330
+#: pkgbuilder/__main__.py:338
 #, python-brace-format
 msgid "Error while processing {0}: {1}"
 msgstr "Fehler während der Berarbeitung von {0}: {1}"
 
-#: pkgbuilder/__main__.py:358
+#: pkgbuilder/__main__.py:367
 #, python-brace-format
 msgid "skipping package {0}"
 msgstr "Überspringe Paket {0}."
 
 #. TRANSLATORS: do not translate the word 'requests'.
-#: pkgbuilder/__main__.py:388
+#: pkgbuilder/__main__.py:397
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
-msgstr "PKGBUILDer (oder die request Bibilothek) hatte ein Problem mit der Erfüllung des HTTP request."
+msgstr ""
+"PKGBUILDer (oder die request Bibilothek) hatte ein Problem mit der Erfüllung "
+"des HTTP request."
 
 #. TRANSLATORS: see makepkg.
 #: pkgbuilder/pbds.py:54
@@ -396,30 +423,32 @@ msgstr "Vom Nutzer abgebrochen! Breche ab..."
 msgid "Interrupt signal received\n"
 msgstr ""
 
-#: pkgbuilder/pbds.py:137
+#: pkgbuilder/pbds.py:138
 #, python-brace-format
 msgid "warning: conflicting values for setting {0}, using {1}"
 msgstr "Warnung: Wiedersprüchliche Werte für Einstellung {0}, nutze {1}."
 
-#: pkgbuilder/pbds.py:148
+#: pkgbuilder/pbds.py:149
 msgid "Initializing pacman access..."
 msgstr "Initialisiere pacman zugriff..."
 
-#: pkgbuilder/pbds.py:201
+#: pkgbuilder/pbds.py:202
 msgid ""
 "Running as root is not allowed as it can cause catastrophic damage to your "
 "system!"
-msgstr "Ausführung als Root ist nicht gestattet, da es Katastrophalen schaden am System verursachen kann."
+msgstr ""
+"Ausführung als Root ist nicht gestattet, da es Katastrophalen schaden am "
+"System verursachen kann."
 
-#: pkgbuilder/pbds.py:203
+#: pkgbuilder/pbds.py:204
 msgid "Please restart PKGBUILDer as a regular user."
 msgstr "Bitte starte PKGBUILDer als regulärer Nutzer neu."
 
-#: pkgbuilder/pbds.py:265
+#: pkgbuilder/pbds.py:276
 msgid "WARNING:"
 msgstr "WARNUNG:"
 
-#: pkgbuilder/pbds.py:279
+#: pkgbuilder/pbds.py:290
 msgid "ERROR:"
 msgstr "FEHLER:"
 
@@ -555,10 +584,6 @@ msgstr "Warnung: unzureichende Spaltenzahl für Tabellendarstellung."
 msgid "Fetch the packages? [Y/n] "
 msgstr "Sammle Pakete? [J/n] "
 
-#: pkgbuilder/upgrade.py:212
-msgid "Proceed with installation? [Y/n] "
-msgstr "Mit der installation fortfahren? [Y/n] "
-
 #: pkgbuilder/utils.py:88
 #, python-brace-format
 msgid " [installed: {0}]"
@@ -660,7 +685,7 @@ msgid ""
 "  -L, --unlock         unlock the pacman database"
 msgstr ""
 
-#: pkgbuilder/wrapper.py:150
+#: pkgbuilder/wrapper.py:151
 #, python-format
 msgid "%(prog)s <operation> [...]"
 msgstr ""

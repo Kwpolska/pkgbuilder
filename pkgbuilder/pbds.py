@@ -257,7 +257,7 @@ class PBDS(object):
         sys.stderr.write(self.colors['green'] + self.mp1 + '>' +
                          self.colors['all_off'] +
                          self.colors['bold'] + ' ' + text +
-                         self.colors['all_off'] + ' ')
+                         self.colors['all_off'])
         sys.stderr.flush()
         self.log.info('({0:<20}) {1} \n'.format('fancy_msg', text))
         return input()
