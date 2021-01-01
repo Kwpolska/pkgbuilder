@@ -3,9 +3,9 @@ upgrade module
 ==============
 
 :Author: Chris Warrick <chris@chriswarrick.com>
-:Copyright: © 2011-2020, Chris Warrick.
+:Copyright: © 2011-2021, Chris Warrick.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2020-01-01
+:Date: 2021-01-01
 :Version: 4.3.0
 
 .. index:: upgrade
