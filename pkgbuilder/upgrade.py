@@ -91,14 +91,22 @@ def list_upgradable(pkglist, vcsup=False, aurcache=None, ignorelist=None):
 
                 if (rpkg.name.endswith(('git', 'hg', 'bzr', 'svn', 'cvs',
                                         'darcs'))):
-                    if vcsup:
+                    if vcsup and rpkg.name not in ignorelist:
                         upgradable.append([rpkg.name, lpkg.version, dt])
+                    elif rpkg.name in ignorelist:
+                        DS.log.warning(
+                            "{0} ignored for upgrade/downgrade.".format(
+                                rpkg.name))
                     else:
                         DS.log.warning('{0} is -[vcs], ignored for '
                                        'downgrade.'.format(rpkg.name))
                 elif datever:
-                    if vcsup:
+                    if vcsup and rpkg.name not in ignorelist:
                         upgradable.append([rpkg.name, lpkg.version, dt])
+                    elif rpkg.name in ignorelist:
+                        DS.log.warning(
+                            "{0} ignored for upgrade/downgrade.".format(
+                                rpkg.name))
                     else:
                         DS.log.warning('{0} version is a date, ignored '
                                        'for downgrade.'.format(rpkg.name))
