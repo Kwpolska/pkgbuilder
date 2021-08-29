@@ -6,9 +6,9 @@
 # LiberteCzech <liberte.czech@gmail.com>, 2016
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.3.0\n"
+"Project-Id-Version: 4.3.1\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2019-01-12 16:05+0100\n"
+"POT-Creation-Date: 2021-08-30 01:01+0200\n"
 "PO-Revision-Date: 2019-01-12 14:40+0000\n"
 "Last-Translator: Chris Warrick\n"
 "Language-Team: Czech (http://www.transifex.com/kwpolska/pkgbuilder/language/"
@@ -90,7 +90,7 @@ msgstr "Úspěšně načteno:"
 msgid "Edit PKGBUILD of {0}? [Y/n] "
 msgstr ""
 
-#: pkgbuilder/build.py:429 pkgbuilder/upgrade.py:212
+#: pkgbuilder/build.py:429 pkgbuilder/upgrade.py:220
 msgid "Proceed with installation? [Y/n] "
 msgstr "Pokračujte v instalaci? [A/n]"
 
@@ -525,56 +525,56 @@ msgstr "{0}: Nenainstalováno"
 msgid "{0}: outdated {1}"
 msgstr "{0}: zastaralý {1}"
 
-#: pkgbuilder/upgrade.py:119
+#: pkgbuilder/upgrade.py:127
 msgid "Synchronizing package databases..."
 msgstr "Synchronizace databází balíků..."
 
-#: pkgbuilder/upgrade.py:125
+#: pkgbuilder/upgrade.py:133
 msgid "Starting full system upgrade..."
 msgstr "Spuštění aktualizace celého systému..."
 
-#: pkgbuilder/upgrade.py:128
+#: pkgbuilder/upgrade.py:136
 #, python-brace-format
 msgid "warning: {0}: ignoring package upgrade ({1} => {2})"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:134
+#: pkgbuilder/upgrade.py:142
 #, python-brace-format
 msgid "warning: {0}: downgrading from version {1} to version {2}"
 msgstr "varování: {0}: snížení z verze {1} na verzi {2}"
 
-#: pkgbuilder/upgrade.py:137
+#: pkgbuilder/upgrade.py:145
 #, python-brace-format
 msgid "warning: {0}: local ({1}) is newer than aur ({2})"
 msgstr "varování: {0}: místní ({1}) je novější než aur ({2})"
 
-#: pkgbuilder/upgrade.py:145
+#: pkgbuilder/upgrade.py:153
 msgid "there is nothing to do"
 msgstr "není nic na práci"
 
-#: pkgbuilder/upgrade.py:155
+#: pkgbuilder/upgrade.py:163
 #, python-brace-format
 msgid "Targets ({0}):"
 msgstr "Cíle ({0}):"
 
-#: pkgbuilder/upgrade.py:169
+#: pkgbuilder/upgrade.py:177
 msgid "Name"
 msgstr "Jméno"
 
-#: pkgbuilder/upgrade.py:169
+#: pkgbuilder/upgrade.py:177
 msgid "Old Version"
 msgstr "Stará Verze"
 
-#: pkgbuilder/upgrade.py:169
+#: pkgbuilder/upgrade.py:177
 msgid "New Version"
 msgstr "Nová Verze"
 
 #. string stolen from pacman
-#: pkgbuilder/upgrade.py:192
+#: pkgbuilder/upgrade.py:200
 msgid "warning: insufficient columns available for table display"
 msgstr "Varování: není dostatek sloupců pro zobrazení tabulky"
 
-#: pkgbuilder/upgrade.py:210
+#: pkgbuilder/upgrade.py:218
 msgid "Fetch the packages? [Y/n] "
 msgstr "Načíst balíčky? [A/n]"
 

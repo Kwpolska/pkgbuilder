@@ -5,9 +5,9 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.3.0\n"
+"Project-Id-Version: 4.3.1\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2019-01-12 16:05+0100\n"
+"POT-Creation-Date: 2021-08-30 01:01+0200\n"
 "PO-Revision-Date: 2019-01-12 14:40+0000\n"
 "Last-Translator: Chris Warrick\n"
 "Language-Team: Japanese (http://www.transifex.com/kwpolska/pkgbuilder/"
@@ -88,7 +88,7 @@ msgstr ""
 msgid "Edit PKGBUILD of {0}? [Y/n] "
 msgstr ""
 
-#: pkgbuilder/build.py:429 pkgbuilder/upgrade.py:212
+#: pkgbuilder/build.py:429 pkgbuilder/upgrade.py:220
 msgid "Proceed with installation? [Y/n] "
 msgstr "続行？ [Y/n]"
 
@@ -519,56 +519,56 @@ msgstr "{0}：インストールされていない"
 msgid "{0}: outdated {1}"
 msgstr "{0}：「{1}」より要更新"
 
-#: pkgbuilder/upgrade.py:119
+#: pkgbuilder/upgrade.py:127
 msgid "Synchronizing package databases..."
 msgstr "パッケージデーターベースを同期中・・・"
 
-#: pkgbuilder/upgrade.py:125
+#: pkgbuilder/upgrade.py:133
 msgid "Starting full system upgrade..."
 msgstr "完全アップグレードを開始・・・"
 
-#: pkgbuilder/upgrade.py:128
+#: pkgbuilder/upgrade.py:136
 #, python-brace-format
 msgid "warning: {0}: ignoring package upgrade ({1} => {2})"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:134
+#: pkgbuilder/upgrade.py:142
 #, python-brace-format
 msgid "warning: {0}: downgrading from version {1} to version {2}"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:137
+#: pkgbuilder/upgrade.py:145
 #, python-brace-format
 msgid "warning: {0}: local ({1}) is newer than aur ({2})"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:145
+#: pkgbuilder/upgrade.py:153
 msgid "there is nothing to do"
 msgstr "することがない"
 
-#: pkgbuilder/upgrade.py:155
+#: pkgbuilder/upgrade.py:163
 #, python-brace-format
 msgid "Targets ({0}):"
 msgstr "「{0}」の該当パッケージ："
 
-#: pkgbuilder/upgrade.py:169
+#: pkgbuilder/upgrade.py:177
 msgid "Name"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:169
+#: pkgbuilder/upgrade.py:177
 msgid "Old Version"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:169
+#: pkgbuilder/upgrade.py:177
 msgid "New Version"
 msgstr ""
 
 #. string stolen from pacman
-#: pkgbuilder/upgrade.py:192
+#: pkgbuilder/upgrade.py:200
 msgid "warning: insufficient columns available for table display"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:210
+#: pkgbuilder/upgrade.py:218
 msgid "Fetch the packages? [Y/n] "
 msgstr ""
 

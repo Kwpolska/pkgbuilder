@@ -22,7 +22,7 @@ options:
       --assume-installed <package=version>
                        add a virtual package to satisfy dependencies
       --cachedir <dir> set an alternate package cache location
-      --color <when>   colourise the output
+      --color <when>   colorize the output
       --config <path>  set an alternate configuration file
       --confirm        always ask for confirmation
       --dbonly         only modify database entries, not package files
@@ -39,7 +39,7 @@ options:
       --noconfirm      do not ask for any confirmation
       --noprogressbar  do not show a progress bar when downloading files
       --noscriptlet    do not execute the install scriptlet if one exists
-      --overwrite <path>
+      --overwrite <glob>
                        overwrite conflicting files (can be used more than once)
       --print-format <string>
                        specify how the targets should be printed
@@ -51,7 +51,7 @@ usage: pkgbuilder [-h] [-V] [-S] [-F] [--userfetch USER] [-i] [-s] [-u] [-U]
                   [--pgpcheck] [--skippgpcheck] [--confirm] [--noconfirm]
                   [--shallow] [--deep] [--ignore PACKAGE] [-y] [--notmp]
                   [--build]
-                  [PACKAGE [PACKAGE ...]]
+                  [PACKAGE ...]
 
 An AUR helper (and library) in Python 3.
 
