@@ -84,7 +84,7 @@ def list_upgradable(pkglist, vcsup=False, aurcache=None, ignorelist=None):
                 try:
                     datetime.datetime.strptime(v.split('-')[0], '%Y%m%d')
                     datever = True
-                except:
+                except Exception:
                     datever = False
 
                 dt = datetime.date.today().strftime('%Y%m%d-1')

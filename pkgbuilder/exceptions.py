@@ -127,10 +127,10 @@ class HTTPError(NetworkError):
         self.source = source
         try:
             self.origin = origin.args[0].reason
-        except:
+        except Exception:
             try:
                 self.origin = origin.args[0]
-            except:
+            except Exception:
                 self.source = origin
         self._origin = origin
         self.exit = exit
