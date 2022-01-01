@@ -61,7 +61,7 @@ option, or with ``edit=pkgbuild=true`` in PKGBUILDer’s config file.
 
 COPYRIGHT
 ---------
-Copyright © 2011-2021, Chris Warrick.
+Copyright © 2011-2022, Chris Warrick.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

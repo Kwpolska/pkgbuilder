@@ -1,7 +1,7 @@
 # PKGBUILDer pot file.
-# Copyright © 2011-2021, Chris Warrick.
+# Copyright © 2011-2022, Chris Warrick.
 # This file is distributed under the same license as the PKGBUILDer package.
-# Chris Warrick <chris@chriswarrick.com>, 2021.
+# Chris Warrick <chris@chriswarrick.com>, 2022.
 #
 msgid ""
 msgstr ""
