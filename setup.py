@@ -74,7 +74,10 @@ setup(name='pkgbuilder',
                   ('share/locale/tr/LC_MESSAGES', ['locale/tr/LC_MESSAGES/'
                                                    'pkgbuilder.mo']),
                   ('share/locale/vi/LC_MESSAGES', ['locale/vi/LC_MESSAGES/'
-                                                   'pkgbuilder.mo'])],
+                                                   'pkgbuilder.mo']),
+                  ('share/locale/zh_CN/LC_MESSAGES', ['locale/zh_CN/LC_MESSAGES/'
+                                                   'pkgbuilder.mo']),
+                  ],
       entry_points={
           'console_scripts': [
               'pkgbuilder = pkgbuilder.__main__:main',

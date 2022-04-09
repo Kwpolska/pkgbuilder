@@ -1,8 +1,9 @@
 [main]
 host = https://www.transifex.com
 
-[pkgbuilder.pkgbuilder]
+[o:kwpolska:p:pkgbuilder:r:pkgbuilder]
 file_filter = locale/<lang>/LC_MESSAGES/pkgbuilder.po
 source_file = messages.pot
 source_lang = en
-type = PO
+type        = PO
+
