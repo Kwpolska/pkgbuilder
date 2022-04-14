@@ -1,190 +1,24 @@
 # PKGBUILDer pot file.
 # Copyright © 2011-2019, Chris Warrick.
 # This file is distributed under the same license as the PKGBUILDer package.
-# 
+#
 # Translators:
 # manymous <many.mous.hacking@gmail.com>, 2018
 # manymous <many.mous.hacking@gmail.com>, 2018
 msgid ""
 msgstr ""
-"Project-Id-Version: PKGBUILDer\n"
+"Project-Id-Version: 4.3.1\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2019-01-12 16:05+0100\n"
+"POT-Creation-Date: 2022-04-14 21:15+0200\n"
 "PO-Revision-Date: 2013-03-19 15:40+0000\n"
 "Last-Translator: manymous <many.mous.hacking@gmail.com>, 2018\n"
-"Language-Team: Azerbaijani (Azerbaijan) (http://www.transifex.com/kwpolska/pkgbuilder/language/az_AZ/)\n"
+"Language-Team: Azerbaijani (Azerbaijan) (http://www.transifex.com/kwpolska/"
+"pkgbuilder/language/az_AZ/)\n"
+"Language: az_AZ\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: az_AZ\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: pkgbuilder/build.py:59
-msgid "The build succeeded."
-msgstr "Quruluş uğurlu oldu."
-
-#: pkgbuilder/build.py:63
-msgid "Installation aborted by user."
-msgstr ""
-
-#: pkgbuilder/build.py:68
-msgid "Building more AUR packages is required."
-msgstr "Daha çox AUR paketinin emal edilməsi lazımdır"
-
-#: pkgbuilder/build.py:71
-msgid ""
-"Cannot install dependencies and continue building because -w, --buildonly "
-"was specified.  Please run without -w, --buildonly or install dependencies "
-"manually and try again."
-msgstr ""
-
-#: pkgbuilder/build.py:88
-#, python-brace-format
-msgid "found an existing package for {0}"
-msgstr "{0} üçün mövcud bir paket tapdı"
-
-#: pkgbuilder/build.py:127
-#, python-brace-format
-msgid "makepkg (or someone else) failed and returned {0}."
-msgstr "makepkg (və ya başqası) uğursuz oldu və {0} ilə qaytarıldı."
-
-#: pkgbuilder/build.py:307
-#, python-brace-format
-msgid "Failed to fulfill package dependency requirement: {0}"
-msgstr "Paketin asılılıq tələbi yerinə yetirilməyib: {0}"
-
-#: pkgbuilder/build.py:366 pkgbuilder/__main__.py:333
-msgid "Fetching package information..."
-msgstr "Paket məlumatı alınır..."
-
-#: pkgbuilder/build.py:397
-msgid ":: Retrieving packages from asp..."
-msgstr ""
-
-#: pkgbuilder/build.py:400
-#, python-brace-format
-msgid "retrieving {0}"
-msgstr "{0} alınır"
-
-#: pkgbuilder/build.py:404 pkgbuilder/build.py:472
-#, python-brace-format
-msgid "Failed to retieve {0} (from ASP)."
-msgstr ""
-
-#: pkgbuilder/build.py:408
-msgid ":: Retrieving packages from aur..."
-msgstr ""
-
-#: pkgbuilder/build.py:411
-#, python-brace-format
-msgid "cloning {0}"
-msgstr ""
-
-#: pkgbuilder/build.py:414
-msgid "Successfully fetched: "
-msgstr "Uğurla alındı:"
-
-#: pkgbuilder/build.py:422
-#, python-brace-format
-msgid "Edit PKGBUILD of {0}? [Y/n] "
-msgstr ""
-
-#: pkgbuilder/build.py:429 pkgbuilder/upgrade.py:212
-msgid "Proceed with installation? [Y/n] "
-msgstr ""
-
-#: pkgbuilder/build.py:460
-#, python-brace-format
-msgid "Building {0}..."
-msgstr ""
-
-#: pkgbuilder/build.py:468
-msgid "Retrieving from ASP..."
-msgstr ""
-
-#: pkgbuilder/build.py:477 pkgbuilder/build.py:501
-#, python-brace-format
-msgid "Found an existing package for {0}"
-msgstr ""
-
-#: pkgbuilder/build.py:506
-msgid "Cloning the git repository..."
-msgstr ""
-
-#: pkgbuilder/build.py:514
-msgid "Checking dependencies..."
-msgstr ""
-
-#: pkgbuilder/build.py:517
-msgid "found in system"
-msgstr "sistemdə tapıldı"
-
-#: pkgbuilder/build.py:517
-msgid "found in repos"
-msgstr ""
-
-#: pkgbuilder/build.py:518
-msgid "found in the AUR"
-msgstr ""
-
-#: pkgbuilder/build.py:521
-msgid "none found"
-msgstr ""
-
-#: pkgbuilder/exceptions.py:55
-#, python-brace-format
-msgid "AUR Error: {0}"
-msgstr ""
-
-#: pkgbuilder/exceptions.py:74
-#, python-brace-format
-msgid "makepkg returned {0}."
-msgstr ""
-
-#: pkgbuilder/exceptions.py:101
-#, python-brace-format
-msgid "Network error: {0} (via {1})"
-msgstr ""
-
-#: pkgbuilder/exceptions.py:111
-#, python-brace-format
-msgid "Connection error: {0} (via {1})"
-msgstr ""
-
-#: pkgbuilder/exceptions.py:125
-#, python-brace-format
-msgid "HTTP Error {0} (via {1})"
-msgstr ""
-
-#: pkgbuilder/exceptions.py:159
-#, python-brace-format
-msgid "{0} (Package: {1})"
-msgstr ""
-
-#: pkgbuilder/exceptions.py:172
-#, python-brace-format
-msgid "Package {0} not found. (via {1})"
-msgstr ""
-
-#: pkgbuilder/exceptions.py:200
-#, python-brace-format
-msgid "Sanity error!  {0} (via {1})"
-msgstr ""
-
-#: pkgbuilder/exceptions.py:213
-#, python-brace-format
-msgid "git clone returned {0}."
-msgstr ""
-
-#: pkgbuilder/exceptions.py:228
-#, python-brace-format
-msgid "Directory {0} exists, but is not a git repository."
-msgstr ""
-
-#: pkgbuilder/exceptions.py:245
-#, python-brace-format
-msgid "Repository {0} is empty."
-msgstr ""
 
 #. TRANSLATORS: translate the whole sentence.
 #. Alternatively, use translation instead of locale.
@@ -387,6 +221,10 @@ msgstr ""
 msgid "not found"
 msgstr ""
 
+#: pkgbuilder/__main__.py:333 pkgbuilder/build.py:366
+msgid "Fetching package information..."
+msgstr "Paket məlumatı alınır..."
+
 #: pkgbuilder/__main__.py:338
 #, python-brace-format
 msgid "Error while processing {0}: {1}"
@@ -402,6 +240,169 @@ msgstr ""
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
+msgstr ""
+
+#: pkgbuilder/build.py:59
+msgid "The build succeeded."
+msgstr "Quruluş uğurlu oldu."
+
+#: pkgbuilder/build.py:63
+msgid "Installation aborted by user."
+msgstr ""
+
+#: pkgbuilder/build.py:68
+msgid "Building more AUR packages is required."
+msgstr "Daha çox AUR paketinin emal edilməsi lazımdır"
+
+#: pkgbuilder/build.py:71
+msgid ""
+"Cannot install dependencies and continue building because -w, --buildonly "
+"was specified.  Please run without -w, --buildonly or install dependencies "
+"manually and try again."
+msgstr ""
+
+#: pkgbuilder/build.py:88
+#, python-brace-format
+msgid "found an existing package for {0}"
+msgstr "{0} üçün mövcud bir paket tapdı"
+
+#: pkgbuilder/build.py:127
+#, python-brace-format
+msgid "makepkg (or someone else) failed and returned {0}."
+msgstr "makepkg (və ya başqası) uğursuz oldu və {0} ilə qaytarıldı."
+
+#: pkgbuilder/build.py:307
+#, python-brace-format
+msgid "Failed to fulfill package dependency requirement: {0}"
+msgstr "Paketin asılılıq tələbi yerinə yetirilməyib: {0}"
+
+#: pkgbuilder/build.py:397
+msgid ":: Retrieving packages from asp..."
+msgstr ""
+
+#: pkgbuilder/build.py:400
+#, python-brace-format
+msgid "retrieving {0}"
+msgstr "{0} alınır"
+
+#: pkgbuilder/build.py:404 pkgbuilder/build.py:472
+#, python-brace-format
+msgid "Failed to retieve {0} (from ASP)."
+msgstr ""
+
+#: pkgbuilder/build.py:408
+msgid ":: Retrieving packages from aur..."
+msgstr ""
+
+#: pkgbuilder/build.py:411
+#, python-brace-format
+msgid "cloning {0}"
+msgstr ""
+
+#: pkgbuilder/build.py:414
+msgid "Successfully fetched: "
+msgstr "Uğurla alındı:"
+
+#: pkgbuilder/build.py:422
+#, python-brace-format
+msgid "Edit PKGBUILD of {0}? [Y/n] "
+msgstr ""
+
+#: pkgbuilder/build.py:429 pkgbuilder/upgrade.py:220
+msgid "Proceed with installation? [Y/n] "
+msgstr ""
+
+#: pkgbuilder/build.py:460
+#, python-brace-format
+msgid "Building {0}..."
+msgstr ""
+
+#: pkgbuilder/build.py:468
+msgid "Retrieving from ASP..."
+msgstr ""
+
+#: pkgbuilder/build.py:477 pkgbuilder/build.py:501
+#, python-brace-format
+msgid "Found an existing package for {0}"
+msgstr ""
+
+#: pkgbuilder/build.py:506
+msgid "Cloning the git repository..."
+msgstr ""
+
+#: pkgbuilder/build.py:514
+msgid "Checking dependencies..."
+msgstr ""
+
+#: pkgbuilder/build.py:517
+msgid "found in system"
+msgstr "sistemdə tapıldı"
+
+#: pkgbuilder/build.py:517
+msgid "found in repos"
+msgstr ""
+
+#: pkgbuilder/build.py:518
+msgid "found in the AUR"
+msgstr ""
+
+#: pkgbuilder/build.py:521
+msgid "none found"
+msgstr ""
+
+#: pkgbuilder/exceptions.py:55
+#, python-brace-format
+msgid "AUR Error: {0}"
+msgstr ""
+
+#: pkgbuilder/exceptions.py:74
+#, python-brace-format
+msgid "makepkg returned {0}."
+msgstr ""
+
+#: pkgbuilder/exceptions.py:101
+#, python-brace-format
+msgid "Network error: {0} (via {1})"
+msgstr ""
+
+#: pkgbuilder/exceptions.py:111
+#, python-brace-format
+msgid "Connection error: {0} (via {1})"
+msgstr ""
+
+#: pkgbuilder/exceptions.py:125
+#, python-brace-format
+msgid "HTTP Error {0} (via {1})"
+msgstr ""
+
+#: pkgbuilder/exceptions.py:159
+#, python-brace-format
+msgid "{0} (Package: {1})"
+msgstr ""
+
+#: pkgbuilder/exceptions.py:172
+#, python-brace-format
+msgid "Package {0} not found. (via {1})"
+msgstr ""
+
+#: pkgbuilder/exceptions.py:200
+#, python-brace-format
+msgid "Sanity error!  {0} (via {1})"
+msgstr ""
+
+#: pkgbuilder/exceptions.py:213
+#, python-brace-format
+msgid "git clone returned {0}."
+msgstr ""
+
+#: pkgbuilder/exceptions.py:228
+#, python-brace-format
+msgid "Directory {0} exists, but is not a git repository."
+msgstr ""
+
+#: pkgbuilder/exceptions.py:245
+#, python-brace-format
+msgid "Repository {0} is empty."
 msgstr ""
 
 #. TRANSLATORS: see makepkg.
@@ -520,56 +521,56 @@ msgstr ""
 msgid "{0}: outdated {1}"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:119
+#: pkgbuilder/upgrade.py:127
 msgid "Synchronizing package databases..."
 msgstr ""
 
-#: pkgbuilder/upgrade.py:125
+#: pkgbuilder/upgrade.py:133
 msgid "Starting full system upgrade..."
 msgstr ""
 
-#: pkgbuilder/upgrade.py:128
+#: pkgbuilder/upgrade.py:136
 #, python-brace-format
 msgid "warning: {0}: ignoring package upgrade ({1} => {2})"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:134
+#: pkgbuilder/upgrade.py:142
 #, python-brace-format
 msgid "warning: {0}: downgrading from version {1} to version {2}"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:137
+#: pkgbuilder/upgrade.py:145
 #, python-brace-format
 msgid "warning: {0}: local ({1}) is newer than aur ({2})"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:145
+#: pkgbuilder/upgrade.py:153
 msgid "there is nothing to do"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:155
+#: pkgbuilder/upgrade.py:163
 #, python-brace-format
 msgid "Targets ({0}):"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:169
+#: pkgbuilder/upgrade.py:177
 msgid "Name"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:169
+#: pkgbuilder/upgrade.py:177
 msgid "Old Version"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:169
+#: pkgbuilder/upgrade.py:177
 msgid "New Version"
 msgstr ""
 
 #. string stolen from pacman
-#: pkgbuilder/upgrade.py:192
+#: pkgbuilder/upgrade.py:200
 msgid "warning: insufficient columns available for table display"
 msgstr ""
 
-#: pkgbuilder/upgrade.py:210
+#: pkgbuilder/upgrade.py:218
 msgid "Fetch the packages? [Y/n] "
 msgstr ""
 

@@ -1,189 +1,23 @@
 # PKGBUILDer pot file.
 # Copyright © 2011-2019, Chris Warrick.
 # This file is distributed under the same license as the PKGBUILDer package.
-# 
+#
 # Translators:
 # taotieren <admin@taotieren.com>, 2022
 msgid ""
 msgstr ""
-"Project-Id-Version: PKGBUILDer\n"
+"Project-Id-Version: 4.3.1\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2019-01-12 16:05+0100\n"
+"POT-Creation-Date: 2022-04-14 21:15+0200\n"
 "PO-Revision-Date: 2013-03-19 15:40+0000\n"
 "Last-Translator: taotieren <admin@taotieren.com>, 2022\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/kwpolska/pkgbuilder/language/zh_CN/)\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/kwpolska/pkgbuilder/"
+"language/zh_CN/)\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-
-#: pkgbuilder/build.py:59
-msgid "The build succeeded."
-msgstr "构建成功。"
-
-#: pkgbuilder/build.py:63
-msgid "Installation aborted by user."
-msgstr "安装被用户中止。"
-
-#: pkgbuilder/build.py:68
-msgid "Building more AUR packages is required."
-msgstr "需要构建更多 AUR 包。"
-
-#: pkgbuilder/build.py:71
-msgid ""
-"Cannot install dependencies and continue building because -w, --buildonly "
-"was specified.  Please run without -w, --buildonly or install dependencies "
-"manually and try again."
-msgstr "无法安装依赖项并继续生成，因为指定了 -w，--buildonly。请不带 -w、--buildonly 运行或手动安装依赖项，然后重试。"
-
-#: pkgbuilder/build.py:88
-#, python-brace-format
-msgid "found an existing package for {0}"
-msgstr "找到 {0} 的现有包"
-
-#: pkgbuilder/build.py:127
-#, python-brace-format
-msgid "makepkg (or someone else) failed and returned {0}."
-msgstr "makepkg (或其他错误)失败并返回 {0}。"
-
-#: pkgbuilder/build.py:307
-#, python-brace-format
-msgid "Failed to fulfill package dependency requirement: {0}"
-msgstr "未能满足软件包的依赖性要求: {0}"
-
-#: pkgbuilder/build.py:366 pkgbuilder/__main__.py:333
-msgid "Fetching package information..."
-msgstr "获取软件包信息..."
-
-#: pkgbuilder/build.py:397
-msgid ":: Retrieving packages from asp..."
-msgstr ":: 从 asp 中检索软件包。"
-
-#: pkgbuilder/build.py:400
-#, python-brace-format
-msgid "retrieving {0}"
-msgstr "检索 {0}"
-
-#: pkgbuilder/build.py:404 pkgbuilder/build.py:472
-#, python-brace-format
-msgid "Failed to retieve {0} (from ASP)."
-msgstr "检索 {0} 失败 (从 ASP)。"
-
-#: pkgbuilder/build.py:408
-msgid ":: Retrieving packages from aur..."
-msgstr "::从 AUR 中检索包..."
-
-#: pkgbuilder/build.py:411
-#, python-brace-format
-msgid "cloning {0}"
-msgstr "克隆 {0}"
-
-#: pkgbuilder/build.py:414
-msgid "Successfully fetched: "
-msgstr "成功拉取： "
-
-#: pkgbuilder/build.py:422
-#, python-brace-format
-msgid "Edit PKGBUILD of {0}? [Y/n] "
-msgstr "编辑 {0} 的 PKGBUILD？[Y/n] "
-
-#: pkgbuilder/build.py:429 pkgbuilder/upgrade.py:212
-msgid "Proceed with installation? [Y/n] "
-msgstr "继续安装？[Y/n] "
-
-#: pkgbuilder/build.py:460
-#, python-brace-format
-msgid "Building {0}..."
-msgstr "构建 {0}..."
-
-#: pkgbuilder/build.py:468
-msgid "Retrieving from ASP..."
-msgstr "从 ASP 中检索..."
-
-#: pkgbuilder/build.py:477 pkgbuilder/build.py:501
-#, python-brace-format
-msgid "Found an existing package for {0}"
-msgstr "为 {0} 找到了一个现有的软件包"
-
-#: pkgbuilder/build.py:506
-msgid "Cloning the git repository..."
-msgstr "克隆 git 仓库..."
-
-#: pkgbuilder/build.py:514
-msgid "Checking dependencies..."
-msgstr "正在检查依赖关系..."
-
-#: pkgbuilder/build.py:517
-msgid "found in system"
-msgstr "在系统中找到"
-
-#: pkgbuilder/build.py:517
-msgid "found in repos"
-msgstr "在仓库中找到"
-
-#: pkgbuilder/build.py:518
-msgid "found in the AUR"
-msgstr "在 AUR 中找到"
-
-#: pkgbuilder/build.py:521
-msgid "none found"
-msgstr "未找到"
-
-#: pkgbuilder/exceptions.py:55
-#, python-brace-format
-msgid "AUR Error: {0}"
-msgstr "AUR 错误：{0}"
-
-#: pkgbuilder/exceptions.py:74
-#, python-brace-format
-msgid "makepkg returned {0}."
-msgstr "makepkg 返回 {0}。"
-
-#: pkgbuilder/exceptions.py:101
-#, python-brace-format
-msgid "Network error: {0} (via {1})"
-msgstr "网络错误：{0} (通过 {1})"
-
-#: pkgbuilder/exceptions.py:111
-#, python-brace-format
-msgid "Connection error: {0} (via {1})"
-msgstr "连接错误： {0} (通过 {1})"
-
-#: pkgbuilder/exceptions.py:125
-#, python-brace-format
-msgid "HTTP Error {0} (via {1})"
-msgstr "HTTP 错误 {0} (通过 {1})"
-
-#: pkgbuilder/exceptions.py:159
-#, python-brace-format
-msgid "{0} (Package: {1})"
-msgstr "{0} (包：{1})"
-
-#: pkgbuilder/exceptions.py:172
-#, python-brace-format
-msgid "Package {0} not found. (via {1})"
-msgstr "未找到包 {0}。(通过 {1})"
-
-#: pkgbuilder/exceptions.py:200
-#, python-brace-format
-msgid "Sanity error!  {0} (via {1})"
-msgstr "正常错误!  {0} (通过 {1})"
-
-#: pkgbuilder/exceptions.py:213
-#, python-brace-format
-msgid "git clone returned {0}."
-msgstr "git clone 返回 {0}。"
-
-#: pkgbuilder/exceptions.py:228
-#, python-brace-format
-msgid "Directory {0} exists, but is not a git repository."
-msgstr "目录 {0} 存在，但不是一个 git 仓库。"
-
-#: pkgbuilder/exceptions.py:245
-#, python-brace-format
-msgid "Repository {0} is empty."
-msgstr "仓库 {0} 是空的。"
 
 #. TRANSLATORS: translate the whole sentence.
 #. Alternatively, use translation instead of locale.
@@ -386,6 +220,10 @@ msgstr "搜索完全匹配的..."
 msgid "not found"
 msgstr "未找到"
 
+#: pkgbuilder/__main__.py:333 pkgbuilder/build.py:366
+msgid "Fetching package information..."
+msgstr "获取软件包信息..."
+
 #: pkgbuilder/__main__.py:338
 #, python-brace-format
 msgid "Error while processing {0}: {1}"
@@ -402,6 +240,171 @@ msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
 msgstr "PKGBUILDer（或请求库）在完成一个 HTTP 请求时出现了问题。"
+
+#: pkgbuilder/build.py:59
+msgid "The build succeeded."
+msgstr "构建成功。"
+
+#: pkgbuilder/build.py:63
+msgid "Installation aborted by user."
+msgstr "安装被用户中止。"
+
+#: pkgbuilder/build.py:68
+msgid "Building more AUR packages is required."
+msgstr "需要构建更多 AUR 包。"
+
+#: pkgbuilder/build.py:71
+msgid ""
+"Cannot install dependencies and continue building because -w, --buildonly "
+"was specified.  Please run without -w, --buildonly or install dependencies "
+"manually and try again."
+msgstr ""
+"无法安装依赖项并继续生成，因为指定了 -w，--buildonly。请不带 -w、--buildonly "
+"运行或手动安装依赖项，然后重试。"
+
+#: pkgbuilder/build.py:88
+#, python-brace-format
+msgid "found an existing package for {0}"
+msgstr "找到 {0} 的现有包"
+
+#: pkgbuilder/build.py:127
+#, python-brace-format
+msgid "makepkg (or someone else) failed and returned {0}."
+msgstr "makepkg (或其他错误)失败并返回 {0}。"
+
+#: pkgbuilder/build.py:307
+#, python-brace-format
+msgid "Failed to fulfill package dependency requirement: {0}"
+msgstr "未能满足软件包的依赖性要求: {0}"
+
+#: pkgbuilder/build.py:397
+msgid ":: Retrieving packages from asp..."
+msgstr ":: 从 asp 中检索软件包。"
+
+#: pkgbuilder/build.py:400
+#, python-brace-format
+msgid "retrieving {0}"
+msgstr "检索 {0}"
+
+#: pkgbuilder/build.py:404 pkgbuilder/build.py:472
+#, python-brace-format
+msgid "Failed to retieve {0} (from ASP)."
+msgstr "检索 {0} 失败 (从 ASP)。"
+
+#: pkgbuilder/build.py:408
+msgid ":: Retrieving packages from aur..."
+msgstr "::从 AUR 中检索包..."
+
+#: pkgbuilder/build.py:411
+#, python-brace-format
+msgid "cloning {0}"
+msgstr "克隆 {0}"
+
+#: pkgbuilder/build.py:414
+msgid "Successfully fetched: "
+msgstr "成功拉取： "
+
+#: pkgbuilder/build.py:422
+#, python-brace-format
+msgid "Edit PKGBUILD of {0}? [Y/n] "
+msgstr "编辑 {0} 的 PKGBUILD？[Y/n] "
+
+#: pkgbuilder/build.py:429 pkgbuilder/upgrade.py:220
+msgid "Proceed with installation? [Y/n] "
+msgstr "继续安装？[Y/n] "
+
+#: pkgbuilder/build.py:460
+#, python-brace-format
+msgid "Building {0}..."
+msgstr "构建 {0}..."
+
+#: pkgbuilder/build.py:468
+msgid "Retrieving from ASP..."
+msgstr "从 ASP 中检索..."
+
+#: pkgbuilder/build.py:477 pkgbuilder/build.py:501
+#, python-brace-format
+msgid "Found an existing package for {0}"
+msgstr "为 {0} 找到了一个现有的软件包"
+
+#: pkgbuilder/build.py:506
+msgid "Cloning the git repository..."
+msgstr "克隆 git 仓库..."
+
+#: pkgbuilder/build.py:514
+msgid "Checking dependencies..."
+msgstr "正在检查依赖关系..."
+
+#: pkgbuilder/build.py:517
+msgid "found in system"
+msgstr "在系统中找到"
+
+#: pkgbuilder/build.py:517
+msgid "found in repos"
+msgstr "在仓库中找到"
+
+#: pkgbuilder/build.py:518
+msgid "found in the AUR"
+msgstr "在 AUR 中找到"
+
+#: pkgbuilder/build.py:521
+msgid "none found"
+msgstr "未找到"
+
+#: pkgbuilder/exceptions.py:55
+#, python-brace-format
+msgid "AUR Error: {0}"
+msgstr "AUR 错误：{0}"
+
+#: pkgbuilder/exceptions.py:74
+#, python-brace-format
+msgid "makepkg returned {0}."
+msgstr "makepkg 返回 {0}。"
+
+#: pkgbuilder/exceptions.py:101
+#, python-brace-format
+msgid "Network error: {0} (via {1})"
+msgstr "网络错误：{0} (通过 {1})"
+
+#: pkgbuilder/exceptions.py:111
+#, python-brace-format
+msgid "Connection error: {0} (via {1})"
+msgstr "连接错误： {0} (通过 {1})"
+
+#: pkgbuilder/exceptions.py:125
+#, python-brace-format
+msgid "HTTP Error {0} (via {1})"
+msgstr "HTTP 错误 {0} (通过 {1})"
+
+#: pkgbuilder/exceptions.py:159
+#, python-brace-format
+msgid "{0} (Package: {1})"
+msgstr "{0} (包：{1})"
+
+#: pkgbuilder/exceptions.py:172
+#, python-brace-format
+msgid "Package {0} not found. (via {1})"
+msgstr "未找到包 {0}。(通过 {1})"
+
+#: pkgbuilder/exceptions.py:200
+#, python-brace-format
+msgid "Sanity error!  {0} (via {1})"
+msgstr "正常错误!  {0} (通过 {1})"
+
+#: pkgbuilder/exceptions.py:213
+#, python-brace-format
+msgid "git clone returned {0}."
+msgstr "git clone 返回 {0}。"
+
+#: pkgbuilder/exceptions.py:228
+#, python-brace-format
+msgid "Directory {0} exists, but is not a git repository."
+msgstr "目录 {0} 存在，但不是一个 git 仓库。"
+
+#: pkgbuilder/exceptions.py:245
+#, python-brace-format
+msgid "Repository {0} is empty."
+msgstr "仓库 {0} 是空的。"
 
 #. TRANSLATORS: see makepkg.
 #: pkgbuilder/pbds.py:54
@@ -519,56 +522,56 @@ msgstr "{0}：未安装"
 msgid "{0}: outdated {1}"
 msgstr "{0}：过时 {1}"
 
-#: pkgbuilder/upgrade.py:119
+#: pkgbuilder/upgrade.py:127
 msgid "Synchronizing package databases..."
 msgstr "正在同步软件包数据库..."
 
-#: pkgbuilder/upgrade.py:125
+#: pkgbuilder/upgrade.py:133
 msgid "Starting full system upgrade..."
 msgstr "开始全面系统升级..."
 
-#: pkgbuilder/upgrade.py:128
+#: pkgbuilder/upgrade.py:136
 #, python-brace-format
 msgid "warning: {0}: ignoring package upgrade ({1} => {2})"
 msgstr "警告：{0}：忽略软件包升级（{1} => {2}）"
 
-#: pkgbuilder/upgrade.py:134
+#: pkgbuilder/upgrade.py:142
 #, python-brace-format
 msgid "warning: {0}: downgrading from version {1} to version {2}"
 msgstr "警告：{0}：从 {1} 版本降级到 {2} 版本"
 
-#: pkgbuilder/upgrade.py:137
+#: pkgbuilder/upgrade.py:145
 #, python-brace-format
 msgid "warning: {0}: local ({1}) is newer than aur ({2})"
 msgstr "警告：{0}: 本地 ({1}) 比 aur ({2}) 更新"
 
-#: pkgbuilder/upgrade.py:145
+#: pkgbuilder/upgrade.py:153
 msgid "there is nothing to do"
 msgstr "无所事事"
 
-#: pkgbuilder/upgrade.py:155
+#: pkgbuilder/upgrade.py:163
 #, python-brace-format
 msgid "Targets ({0}):"
 msgstr "目标（{0}）："
 
-#: pkgbuilder/upgrade.py:169
+#: pkgbuilder/upgrade.py:177
 msgid "Name"
 msgstr "名称"
 
-#: pkgbuilder/upgrade.py:169
+#: pkgbuilder/upgrade.py:177
 msgid "Old Version"
 msgstr "旧版"
 
-#: pkgbuilder/upgrade.py:169
+#: pkgbuilder/upgrade.py:177
 msgid "New Version"
 msgstr "新版本"
 
 #. string stolen from pacman
-#: pkgbuilder/upgrade.py:192
+#: pkgbuilder/upgrade.py:200
 msgid "warning: insufficient columns available for table display"
 msgstr "警告：表格显示的可用列数不足"
 
-#: pkgbuilder/upgrade.py:210
+#: pkgbuilder/upgrade.py:218
 msgid "Fetch the packages? [Y/n] "
 msgstr "拉取软件包？[Y/n] "
 
@@ -624,7 +627,29 @@ msgid ""
 "Last Updated   : {upd}\n"
 "Description    : {dsc}\n"
 "Keywords       : {key}\n"
-msgstr "仓库           : aur\n名称           : {nme}\n软件包基础     : {bse}\n版本           : {ver}\nURL            : {url}\n许可证         : {lic}\n包组           : {grp}\n提供           : {prv}\n依赖于         : {dep}\n编译依赖       : {mkd}\n检查依赖       : {ckd}\n可选依赖       : {opt}\n与之冲突       : {cnf}\n取代           : {rpl}\n投票           : {cmv}\n受欢迎程度     : {pop}\n过时           : {ood}\n维护者         : {mnt}\n首次提交       : {fsb}\n最后更新       : {upd}\n描述           : {dsc}\n关键词         : {key}\n"
+msgstr ""
+"仓库           : aur\n"
+"名称           : {nme}\n"
+"软件包基础     : {bse}\n"
+"版本           : {ver}\n"
+"URL            : {url}\n"
+"许可证         : {lic}\n"
+"包组           : {grp}\n"
+"提供           : {prv}\n"
+"依赖于         : {dep}\n"
+"编译依赖       : {mkd}\n"
+"检查依赖       : {ckd}\n"
+"可选依赖       : {opt}\n"
+"与之冲突       : {cnf}\n"
+"取代           : {rpl}\n"
+"投票           : {cmv}\n"
+"受欢迎程度     : {pop}\n"
+"过时           : {ood}\n"
+"维护者         : {mnt}\n"
+"首次提交       : {fsb}\n"
+"最后更新       : {upd}\n"
+"描述           : {dsc}\n"
+"关键词         : {key}\n"
 
 #: pkgbuilder/utils.py:184
 msgid "yes"
@@ -649,7 +674,18 @@ msgid ""
 "\n"
 "Additional options:\n"
 "  -L, --unlock         unlock the pacman database"
-msgstr "用途：{0} [...<operation>]\n\nPBWrapper，是 pacman 和 PKGBUILDer 的包装器。\n\n{1}\n\nPacman 和 PKGBUILDer 的语法适用。  更多细节请参考它们的 manpages/help\n命令以了解更多细节。\n\n附加选项。\n  -L, --unlock 解除对 pacman 数据库的锁定</operation>"
+msgstr ""
+"用途：{0} [...<operation>]\n"
+"\n"
+"PBWrapper，是 pacman 和 PKGBUILDer 的包装器。\n"
+"\n"
+"{1}\n"
+"\n"
+"Pacman 和 PKGBUILDer 的语法适用。  更多细节请参考它们的 manpages/help\n"
+"命令以了解更多细节。\n"
+"\n"
+"附加选项。\n"
+"  -L, --unlock 解除对 pacman 数据库的锁定</operation>"
 
 #: pkgbuilder/wrapper.py:151
 #, python-format
