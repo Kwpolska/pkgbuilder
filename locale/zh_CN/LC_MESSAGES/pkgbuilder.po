@@ -3,14 +3,14 @@
 # This file is distributed under the same license as the PKGBUILDer package.
 #
 # Translators:
-# taotieren <admin@taotieren.com>, 2022
+# taotieren <admin@taotieren.com>, 2023
 msgid ""
 msgstr ""
 "Project-Id-Version: 4.3.1\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
 "POT-Creation-Date: 2022-04-14 21:15+0200\n"
 "PO-Revision-Date: 2013-03-19 15:40+0000\n"
-"Last-Translator: taotieren <admin@taotieren.com>, 2022\n"
+"Last-Translator: taotieren <admin@taotieren.com>, 2023\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/kwpolska/pkgbuilder/"
 "language/zh_CN/)\n"
 "Language: zh_CN\n"

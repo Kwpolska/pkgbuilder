@@ -3,7 +3,7 @@ Transactions
 ============
 
 :Author: Chris Warrick <chris@chriswarrick.com>
-:Copyright: © 2011-2022, Chris Warrick.
+:Copyright: © 2011-2023, Chris Warrick.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
 :Date: 2021-08-30
 :Version: 4.3.1
@@ -18,7 +18,7 @@ To install built packages, PKGBUILDer uses transactions.  A transaction stores:
 * signature file names, moved to pacman cache
 * options for running the transaction
 * a reference to the transaction file name (if any; ``.tx`` files are autosaved when status changes occur)
-* 
+*
 
 .. automodule:: pkgbuilder.transaction
    :members:

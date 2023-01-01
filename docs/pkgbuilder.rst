@@ -4,7 +4,7 @@ PKGBUILDer
 
 :Subtitle: An AUR helper (and library) in Python 3.
 :Author: Chris Warrick <chris@chriswarrick.com>
-:Copyright: © 2011-2022, Chris Warrick.
+:Copyright: © 2011-2023, Chris Warrick.
 :License: BSD (see /LICENSE or Appendix B.)
 :Date: 2021-08-30
 :Version: 4.3.1
