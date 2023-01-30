@@ -140,7 +140,6 @@ class ABSPackage(Package):
     backup = []
     base64_sig = None
     builddate = None
-    deltas = []
     download_size = None
     filename = ''
     files = []
@@ -155,7 +154,7 @@ class ABSPackage(Package):
     @classmethod
     def from_pyalpm(cls, alpmpkg):
         """Transform a pyalpm.Package into a pkgbuilder.package.ABSPackage."""
-        copy = ['arch', 'backup', 'base64_sig', 'conflicts', 'deltas',
+        copy = ['arch', 'backup', 'base64_sig', 'conflicts',
                 'depends', 'download_size', 'filename', 'files', 'groups',
                 'has_scriptlet', 'isize', 'licenses', 'md5sum', 'name',
                 'optdepends', 'provides', 'reason', 'replaces', 'sha256sum',
