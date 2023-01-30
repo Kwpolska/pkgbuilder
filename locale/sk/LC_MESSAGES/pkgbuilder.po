@@ -5,9 +5,9 @@
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.3.1\n"
+"Project-Id-Version: 4.3.2\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2022-04-14 21:15+0200\n"
+"POT-Creation-Date: 2023-01-30 20:55+0100\n"
 "PO-Revision-Date: 2019-01-12 14:40+0000\n"
 "Last-Translator: Chris Warrick\n"
 "Language-Team: Slovak (http://www.transifex.com/kwpolska/pkgbuilder/language/"
@@ -18,6 +18,173 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n == 1 ? 0 : n % 1 == 0 && n "
 ">= 2 && n <= 4 ? 1 : n % 1 != 0 ? 2: 3);\n"
+
+#: pkgbuilder/build.py:59
+msgid "The build succeeded."
+msgstr ""
+
+#: pkgbuilder/build.py:63
+msgid "Installation aborted by user."
+msgstr ""
+
+#: pkgbuilder/build.py:68
+msgid "Building more AUR packages is required."
+msgstr ""
+
+#: pkgbuilder/build.py:71
+msgid ""
+"Cannot install dependencies and continue building because -w, --buildonly "
+"was specified.  Please run without -w, --buildonly or install dependencies "
+"manually and try again."
+msgstr ""
+
+#: pkgbuilder/build.py:88
+#, python-brace-format
+msgid "found an existing package for {0}"
+msgstr ""
+
+#: pkgbuilder/build.py:127
+#, python-brace-format
+msgid "makepkg (or someone else) failed and returned {0}."
+msgstr ""
+
+#: pkgbuilder/build.py:307
+#, python-brace-format
+msgid "Failed to fulfill package dependency requirement: {0}"
+msgstr ""
+
+#: pkgbuilder/build.py:366 pkgbuilder/__main__.py:333
+msgid "Fetching package information..."
+msgstr ""
+
+#: pkgbuilder/build.py:397
+msgid ":: Retrieving packages from asp..."
+msgstr ""
+
+#: pkgbuilder/build.py:400
+#, python-brace-format
+msgid "retrieving {0}"
+msgstr ""
+
+#: pkgbuilder/build.py:404 pkgbuilder/build.py:472
+#, python-brace-format
+msgid "Failed to retieve {0} (from ASP)."
+msgstr ""
+
+#: pkgbuilder/build.py:408
+msgid ":: Retrieving packages from aur..."
+msgstr ""
+
+#: pkgbuilder/build.py:411
+#, python-brace-format
+msgid "cloning {0}"
+msgstr ""
+
+#: pkgbuilder/build.py:414
+msgid "Successfully fetched: "
+msgstr ""
+
+#: pkgbuilder/build.py:422
+#, python-brace-format
+msgid "Edit PKGBUILD of {0}? [Y/n] "
+msgstr ""
+
+#: pkgbuilder/build.py:429 pkgbuilder/upgrade.py:220
+msgid "Proceed with installation? [Y/n] "
+msgstr ""
+
+#: pkgbuilder/build.py:460
+#, python-brace-format
+msgid "Building {0}..."
+msgstr ""
+
+#: pkgbuilder/build.py:468
+msgid "Retrieving from ASP..."
+msgstr ""
+
+#: pkgbuilder/build.py:477 pkgbuilder/build.py:501
+#, python-brace-format
+msgid "Found an existing package for {0}"
+msgstr ""
+
+#: pkgbuilder/build.py:506
+msgid "Cloning the git repository..."
+msgstr ""
+
+#: pkgbuilder/build.py:514
+msgid "Checking dependencies..."
+msgstr ""
+
+#: pkgbuilder/build.py:517
+msgid "found in system"
+msgstr ""
+
+#: pkgbuilder/build.py:517
+msgid "found in repos"
+msgstr ""
+
+#: pkgbuilder/build.py:518
+msgid "found in the AUR"
+msgstr ""
+
+#: pkgbuilder/build.py:521
+msgid "none found"
+msgstr ""
+
+#: pkgbuilder/exceptions.py:55
+#, python-brace-format
+msgid "AUR Error: {0}"
+msgstr ""
+
+#: pkgbuilder/exceptions.py:74
+#, python-brace-format
+msgid "makepkg returned {0}."
+msgstr ""
+
+#: pkgbuilder/exceptions.py:101
+#, python-brace-format
+msgid "Network error: {0} (via {1})"
+msgstr ""
+
+#: pkgbuilder/exceptions.py:111
+#, python-brace-format
+msgid "Connection error: {0} (via {1})"
+msgstr ""
+
+#: pkgbuilder/exceptions.py:125
+#, python-brace-format
+msgid "HTTP Error {0} (via {1})"
+msgstr ""
+
+#: pkgbuilder/exceptions.py:159
+#, python-brace-format
+msgid "{0} (Package: {1})"
+msgstr ""
+
+#: pkgbuilder/exceptions.py:172
+#, python-brace-format
+msgid "Package {0} not found. (via {1})"
+msgstr ""
+
+#: pkgbuilder/exceptions.py:200
+#, python-brace-format
+msgid "Sanity error!  {0} (via {1})"
+msgstr ""
+
+#: pkgbuilder/exceptions.py:213
+#, python-brace-format
+msgid "git clone returned {0}."
+msgstr ""
+
+#: pkgbuilder/exceptions.py:228
+#, python-brace-format
+msgid "Directory {0} exists, but is not a git repository."
+msgstr ""
+
+#: pkgbuilder/exceptions.py:245
+#, python-brace-format
+msgid "Repository {0} is empty."
+msgstr ""
 
 #. TRANSLATORS: translate the whole sentence.
 #. Alternatively, use translation instead of locale.
@@ -220,10 +387,6 @@ msgstr ""
 msgid "not found"
 msgstr ""
 
-#: pkgbuilder/__main__.py:333 pkgbuilder/build.py:366
-msgid "Fetching package information..."
-msgstr ""
-
 #: pkgbuilder/__main__.py:338
 #, python-brace-format
 msgid "Error while processing {0}: {1}"
@@ -239,169 +402,6 @@ msgstr ""
 msgid ""
 "PKGBUILDer (or the requests library) had problems with fulfilling an HTTP "
 "request."
-msgstr ""
-
-#: pkgbuilder/build.py:59
-msgid "The build succeeded."
-msgstr ""
-
-#: pkgbuilder/build.py:63
-msgid "Installation aborted by user."
-msgstr ""
-
-#: pkgbuilder/build.py:68
-msgid "Building more AUR packages is required."
-msgstr ""
-
-#: pkgbuilder/build.py:71
-msgid ""
-"Cannot install dependencies and continue building because -w, --buildonly "
-"was specified.  Please run without -w, --buildonly or install dependencies "
-"manually and try again."
-msgstr ""
-
-#: pkgbuilder/build.py:88
-#, python-brace-format
-msgid "found an existing package for {0}"
-msgstr ""
-
-#: pkgbuilder/build.py:127
-#, python-brace-format
-msgid "makepkg (or someone else) failed and returned {0}."
-msgstr ""
-
-#: pkgbuilder/build.py:307
-#, python-brace-format
-msgid "Failed to fulfill package dependency requirement: {0}"
-msgstr ""
-
-#: pkgbuilder/build.py:397
-msgid ":: Retrieving packages from asp..."
-msgstr ""
-
-#: pkgbuilder/build.py:400
-#, python-brace-format
-msgid "retrieving {0}"
-msgstr ""
-
-#: pkgbuilder/build.py:404 pkgbuilder/build.py:472
-#, python-brace-format
-msgid "Failed to retieve {0} (from ASP)."
-msgstr ""
-
-#: pkgbuilder/build.py:408
-msgid ":: Retrieving packages from aur..."
-msgstr ""
-
-#: pkgbuilder/build.py:411
-#, python-brace-format
-msgid "cloning {0}"
-msgstr ""
-
-#: pkgbuilder/build.py:414
-msgid "Successfully fetched: "
-msgstr ""
-
-#: pkgbuilder/build.py:422
-#, python-brace-format
-msgid "Edit PKGBUILD of {0}? [Y/n] "
-msgstr ""
-
-#: pkgbuilder/build.py:429 pkgbuilder/upgrade.py:220
-msgid "Proceed with installation? [Y/n] "
-msgstr ""
-
-#: pkgbuilder/build.py:460
-#, python-brace-format
-msgid "Building {0}..."
-msgstr ""
-
-#: pkgbuilder/build.py:468
-msgid "Retrieving from ASP..."
-msgstr ""
-
-#: pkgbuilder/build.py:477 pkgbuilder/build.py:501
-#, python-brace-format
-msgid "Found an existing package for {0}"
-msgstr ""
-
-#: pkgbuilder/build.py:506
-msgid "Cloning the git repository..."
-msgstr ""
-
-#: pkgbuilder/build.py:514
-msgid "Checking dependencies..."
-msgstr ""
-
-#: pkgbuilder/build.py:517
-msgid "found in system"
-msgstr ""
-
-#: pkgbuilder/build.py:517
-msgid "found in repos"
-msgstr ""
-
-#: pkgbuilder/build.py:518
-msgid "found in the AUR"
-msgstr ""
-
-#: pkgbuilder/build.py:521
-msgid "none found"
-msgstr ""
-
-#: pkgbuilder/exceptions.py:55
-#, python-brace-format
-msgid "AUR Error: {0}"
-msgstr ""
-
-#: pkgbuilder/exceptions.py:74
-#, python-brace-format
-msgid "makepkg returned {0}."
-msgstr ""
-
-#: pkgbuilder/exceptions.py:101
-#, python-brace-format
-msgid "Network error: {0} (via {1})"
-msgstr ""
-
-#: pkgbuilder/exceptions.py:111
-#, python-brace-format
-msgid "Connection error: {0} (via {1})"
-msgstr ""
-
-#: pkgbuilder/exceptions.py:125
-#, python-brace-format
-msgid "HTTP Error {0} (via {1})"
-msgstr ""
-
-#: pkgbuilder/exceptions.py:159
-#, python-brace-format
-msgid "{0} (Package: {1})"
-msgstr ""
-
-#: pkgbuilder/exceptions.py:172
-#, python-brace-format
-msgid "Package {0} not found. (via {1})"
-msgstr ""
-
-#: pkgbuilder/exceptions.py:200
-#, python-brace-format
-msgid "Sanity error!  {0} (via {1})"
-msgstr ""
-
-#: pkgbuilder/exceptions.py:213
-#, python-brace-format
-msgid "git clone returned {0}."
-msgstr ""
-
-#: pkgbuilder/exceptions.py:228
-#, python-brace-format
-msgid "Directory {0} exists, but is not a git repository."
-msgstr ""
-
-#: pkgbuilder/exceptions.py:245
-#, python-brace-format
-msgid "Repository {0} is empty."
 msgstr ""
 
 #. TRANSLATORS: see makepkg.

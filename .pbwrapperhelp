@@ -58,7 +58,7 @@ An AUR helper (and library) in Python 3.
 positional arguments:
   PACKAGE               AUR/repository packages to build
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
   -V, --version         show version number and quit
 

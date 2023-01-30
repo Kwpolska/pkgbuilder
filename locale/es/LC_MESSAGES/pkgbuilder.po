@@ -14,9 +14,9 @@
 # tufadorin <inactive+tufadorin@transifex.com>, 2013
 msgid ""
 msgstr ""
-"Project-Id-Version: 4.3.1\n"
+"Project-Id-Version: 4.3.2\n"
 "Report-Msgid-Bugs-To: Chris Warrick <chris@chriswarrick.com>\n"
-"POT-Creation-Date: 2022-04-14 21:15+0200\n"
+"POT-Creation-Date: 2023-01-30 20:55+0100\n"
 "PO-Revision-Date: 2019-01-12 14:40+0000\n"
 "Last-Translator: Chris Warrick\n"
 "Language-Team: Spanish (http://www.transifex.com/kwpolska/pkgbuilder/"
@@ -26,6 +26,176 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: pkgbuilder/build.py:59
+msgid "The build succeeded."
+msgstr "La construcción tuvo éxito."
+
+#: pkgbuilder/build.py:63
+msgid "Installation aborted by user."
+msgstr ""
+
+#: pkgbuilder/build.py:68
+msgid "Building more AUR packages is required."
+msgstr "La construcción de más paquetes de AUR es obligatorio."
+
+#: pkgbuilder/build.py:71
+msgid ""
+"Cannot install dependencies and continue building because -w, --buildonly "
+"was specified.  Please run without -w, --buildonly or install dependencies "
+"manually and try again."
+msgstr ""
+"No se pudo instalar las dependencias y continuar construyendo porque -w, --"
+"buildonly se ha especificado. Ejecute sin -w, --buildonly o instale las "
+"dependencias manualmente e inténtelo de nuevo."
+
+#: pkgbuilder/build.py:88
+#, python-brace-format
+msgid "found an existing package for {0}"
+msgstr "se ha encontrado un paquete existente para {0}"
+
+#: pkgbuilder/build.py:127
+#, python-brace-format
+msgid "makepkg (or someone else) failed and returned {0}."
+msgstr "makepkg (o alguien más) fracasó y retornó {0}."
+
+#: pkgbuilder/build.py:307
+#, python-brace-format
+msgid "Failed to fulfill package dependency requirement: {0}"
+msgstr "No se ha podido cumplir el requisito de dependencia del paquete: {0}"
+
+#: pkgbuilder/build.py:366 pkgbuilder/__main__.py:333
+msgid "Fetching package information..."
+msgstr "Obteniendo información de los paquetes ..."
+
+#: pkgbuilder/build.py:397
+msgid ":: Retrieving packages from asp..."
+msgstr ":: Recuperando paquetes de asp..."
+
+#: pkgbuilder/build.py:400
+#, python-brace-format
+msgid "retrieving {0}"
+msgstr "recuperando {0}"
+
+#: pkgbuilder/build.py:404 pkgbuilder/build.py:472
+#, python-brace-format
+msgid "Failed to retieve {0} (from ASP)."
+msgstr "No se pudo recuperar {0} (desde ASP)."
+
+#: pkgbuilder/build.py:408
+msgid ":: Retrieving packages from aur..."
+msgstr ":: Recuperando paquetes de aur ..."
+
+#: pkgbuilder/build.py:411
+#, python-brace-format
+msgid "cloning {0}"
+msgstr "clonando {0}"
+
+#: pkgbuilder/build.py:414
+msgid "Successfully fetched: "
+msgstr "Obtenido con exito:"
+
+#: pkgbuilder/build.py:422
+#, python-brace-format
+msgid "Edit PKGBUILD of {0}? [Y/n] "
+msgstr ""
+
+#: pkgbuilder/build.py:429 pkgbuilder/upgrade.py:220
+msgid "Proceed with installation? [Y/n] "
+msgstr "Proceder con la instalación? [S/n]"
+
+#: pkgbuilder/build.py:460
+#, python-brace-format
+msgid "Building {0}..."
+msgstr "Construyendo {0}..."
+
+#: pkgbuilder/build.py:468
+msgid "Retrieving from ASP..."
+msgstr "Recuperando desde ASP..."
+
+#: pkgbuilder/build.py:477 pkgbuilder/build.py:501
+#, python-brace-format
+msgid "Found an existing package for {0}"
+msgstr "Se ha encontrado un paquete existente para {0}"
+
+#: pkgbuilder/build.py:506
+msgid "Cloning the git repository..."
+msgstr "Clonando el repositorio git..."
+
+#: pkgbuilder/build.py:514
+msgid "Checking dependencies..."
+msgstr "Comprobando dependencias..."
+
+#: pkgbuilder/build.py:517
+msgid "found in system"
+msgstr "Encontrado en el sistema"
+
+#: pkgbuilder/build.py:517
+msgid "found in repos"
+msgstr "Encontrado en repositorios"
+
+#: pkgbuilder/build.py:518
+msgid "found in the AUR"
+msgstr "Encontrado en el AUR"
+
+#: pkgbuilder/build.py:521
+msgid "none found"
+msgstr "ninguno encontrado"
+
+#: pkgbuilder/exceptions.py:55
+#, python-brace-format
+msgid "AUR Error: {0}"
+msgstr "Error AUR: {0} "
+
+#: pkgbuilder/exceptions.py:74
+#, python-brace-format
+msgid "makepkg returned {0}."
+msgstr "makepkg retornó {0}."
+
+#: pkgbuilder/exceptions.py:101
+#, python-brace-format
+msgid "Network error: {0} (via {1})"
+msgstr "Error de red: {0} (via {1}) "
+
+#: pkgbuilder/exceptions.py:111
+#, python-brace-format
+msgid "Connection error: {0} (via {1})"
+msgstr "Error de conexión: {0} (via{1})"
+
+#: pkgbuilder/exceptions.py:125
+#, python-brace-format
+msgid "HTTP Error {0} (via {1})"
+msgstr "Error HTTP {0} (via {1})"
+
+#: pkgbuilder/exceptions.py:159
+#, python-brace-format
+msgid "{0} (Package: {1})"
+msgstr "{0} (Paquete: {1})"
+
+#: pkgbuilder/exceptions.py:172
+#, python-brace-format
+msgid "Package {0} not found. (via {1})"
+msgstr "Paquete  {0} no encontrado. (via {1})"
+
+#: pkgbuilder/exceptions.py:200
+#, python-brace-format
+msgid "Sanity error!  {0} (via {1})"
+msgstr "Error de juicio! {0} (via {1}) "
+
+#: pkgbuilder/exceptions.py:213
+#, python-brace-format
+msgid "git clone returned {0}."
+msgstr "la clonación de git retornó {0}."
+
+#: pkgbuilder/exceptions.py:228
+#, python-brace-format
+msgid "Directory {0} exists, but is not a git repository."
+msgstr "El directorio {0} existe, pero no es un repositorio git..."
+
+#: pkgbuilder/exceptions.py:245
+#, python-brace-format
+msgid "Repository {0} is empty."
+msgstr "El repositorio {0} está vacío."
 
 #. TRANSLATORS: translate the whole sentence.
 #. Alternatively, use translation instead of locale.
@@ -230,10 +400,6 @@ msgstr "Búsqueda de coincidencia exacta ..."
 msgid "not found"
 msgstr "no encontrado"
 
-#: pkgbuilder/__main__.py:333 pkgbuilder/build.py:366
-msgid "Fetching package information..."
-msgstr "Obteniendo información de los paquetes ..."
-
 #: pkgbuilder/__main__.py:338
 #, python-brace-format
 msgid "Error while processing {0}: {1}"
@@ -252,172 +418,6 @@ msgid ""
 msgstr ""
 "PKGBUILDer (o las requests de librerías) tuvo problemas con el cumplimiento "
 "de una solicitud HTTP."
-
-#: pkgbuilder/build.py:59
-msgid "The build succeeded."
-msgstr "La construcción tuvo éxito."
-
-#: pkgbuilder/build.py:63
-msgid "Installation aborted by user."
-msgstr ""
-
-#: pkgbuilder/build.py:68
-msgid "Building more AUR packages is required."
-msgstr "La construcción de más paquetes de AUR es obligatorio."
-
-#: pkgbuilder/build.py:71
-msgid ""
-"Cannot install dependencies and continue building because -w, --buildonly "
-"was specified.  Please run without -w, --buildonly or install dependencies "
-"manually and try again."
-msgstr ""
-"No se pudo instalar las dependencias y continuar construyendo porque -w, --"
-"buildonly se ha especificado. Ejecute sin -w, --buildonly o instale las "
-"dependencias manualmente e inténtelo de nuevo."
-
-#: pkgbuilder/build.py:88
-#, python-brace-format
-msgid "found an existing package for {0}"
-msgstr "se ha encontrado un paquete existente para {0}"
-
-#: pkgbuilder/build.py:127
-#, python-brace-format
-msgid "makepkg (or someone else) failed and returned {0}."
-msgstr "makepkg (o alguien más) fracasó y retornó {0}."
-
-#: pkgbuilder/build.py:307
-#, python-brace-format
-msgid "Failed to fulfill package dependency requirement: {0}"
-msgstr "No se ha podido cumplir el requisito de dependencia del paquete: {0}"
-
-#: pkgbuilder/build.py:397
-msgid ":: Retrieving packages from asp..."
-msgstr ":: Recuperando paquetes de asp..."
-
-#: pkgbuilder/build.py:400
-#, python-brace-format
-msgid "retrieving {0}"
-msgstr "recuperando {0}"
-
-#: pkgbuilder/build.py:404 pkgbuilder/build.py:472
-#, python-brace-format
-msgid "Failed to retieve {0} (from ASP)."
-msgstr "No se pudo recuperar {0} (desde ASP)."
-
-#: pkgbuilder/build.py:408
-msgid ":: Retrieving packages from aur..."
-msgstr ":: Recuperando paquetes de aur ..."
-
-#: pkgbuilder/build.py:411
-#, python-brace-format
-msgid "cloning {0}"
-msgstr "clonando {0}"
-
-#: pkgbuilder/build.py:414
-msgid "Successfully fetched: "
-msgstr "Obtenido con exito:"
-
-#: pkgbuilder/build.py:422
-#, python-brace-format
-msgid "Edit PKGBUILD of {0}? [Y/n] "
-msgstr ""
-
-#: pkgbuilder/build.py:429 pkgbuilder/upgrade.py:220
-msgid "Proceed with installation? [Y/n] "
-msgstr "Proceder con la instalación? [S/n]"
-
-#: pkgbuilder/build.py:460
-#, python-brace-format
-msgid "Building {0}..."
-msgstr "Construyendo {0}..."
-
-#: pkgbuilder/build.py:468
-msgid "Retrieving from ASP..."
-msgstr "Recuperando desde ASP..."
-
-#: pkgbuilder/build.py:477 pkgbuilder/build.py:501
-#, python-brace-format
-msgid "Found an existing package for {0}"
-msgstr "Se ha encontrado un paquete existente para {0}"
-
-#: pkgbuilder/build.py:506
-msgid "Cloning the git repository..."
-msgstr "Clonando el repositorio git..."
-
-#: pkgbuilder/build.py:514
-msgid "Checking dependencies..."
-msgstr "Comprobando dependencias..."
-
-#: pkgbuilder/build.py:517
-msgid "found in system"
-msgstr "Encontrado en el sistema"
-
-#: pkgbuilder/build.py:517
-msgid "found in repos"
-msgstr "Encontrado en repositorios"
-
-#: pkgbuilder/build.py:518
-msgid "found in the AUR"
-msgstr "Encontrado en el AUR"
-
-#: pkgbuilder/build.py:521
-msgid "none found"
-msgstr "ninguno encontrado"
-
-#: pkgbuilder/exceptions.py:55
-#, python-brace-format
-msgid "AUR Error: {0}"
-msgstr "Error AUR: {0} "
-
-#: pkgbuilder/exceptions.py:74
-#, python-brace-format
-msgid "makepkg returned {0}."
-msgstr "makepkg retornó {0}."
-
-#: pkgbuilder/exceptions.py:101
-#, python-brace-format
-msgid "Network error: {0} (via {1})"
-msgstr "Error de red: {0} (via {1}) "
-
-#: pkgbuilder/exceptions.py:111
-#, python-brace-format
-msgid "Connection error: {0} (via {1})"
-msgstr "Error de conexión: {0} (via{1})"
-
-#: pkgbuilder/exceptions.py:125
-#, python-brace-format
-msgid "HTTP Error {0} (via {1})"
-msgstr "Error HTTP {0} (via {1})"
-
-#: pkgbuilder/exceptions.py:159
-#, python-brace-format
-msgid "{0} (Package: {1})"
-msgstr "{0} (Paquete: {1})"
-
-#: pkgbuilder/exceptions.py:172
-#, python-brace-format
-msgid "Package {0} not found. (via {1})"
-msgstr "Paquete  {0} no encontrado. (via {1})"
-
-#: pkgbuilder/exceptions.py:200
-#, python-brace-format
-msgid "Sanity error!  {0} (via {1})"
-msgstr "Error de juicio! {0} (via {1}) "
-
-#: pkgbuilder/exceptions.py:213
-#, python-brace-format
-msgid "git clone returned {0}."
-msgstr "la clonación de git retornó {0}."
-
-#: pkgbuilder/exceptions.py:228
-#, python-brace-format
-msgid "Directory {0} exists, but is not a git repository."
-msgstr "El directorio {0} existe, pero no es un repositorio git..."
-
-#: pkgbuilder/exceptions.py:245
-#, python-brace-format
-msgid "Repository {0} is empty."
-msgstr "El repositorio {0} está vacío."
 
 #. TRANSLATORS: see makepkg.
 #: pkgbuilder/pbds.py:54

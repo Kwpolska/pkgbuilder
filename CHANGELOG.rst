@@ -5,8 +5,8 @@ Appendix C. Changelog
 :Author: Chris Warrick <chris@chriswarrick.com>
 :Copyright: © 2011-2023, Chris Warrick.
 :License: BSD (see /LICENSE or :doc:`Appendix B <LICENSE>`.)
-:Date: 2021-08-30
-:Version: 4.3.1
+:Date: 2023-01-30
+:Version: 4.3.2
 
 .. index:: CHANGELOG
 
@@ -46,6 +46,9 @@ More information can be found on GitHub in the `releases section <https://github
 
 Version History
 ===============
+
+4.3.2
+    Fix building repository packages crashing due to a removed pyalpm field that we didn't need anyway (#69)
 
 4.3.1
     Honor --ignore with VCS upgrades (#67)
