@@ -19,7 +19,7 @@ import os
 import logging
 import subprocess
 import pycman
-import pkg_resources
+import importlib.resources
 import configparser
 
 __all__ = ('PBDS',)
@@ -85,15 +85,15 @@ class PBDS(object):
     if not os.path.exists(confdir):
         os.mkdir(confdir)
 
+    _skel = importlib.resources.files('pkgbuilder').joinpath('data/pkgbuilder.ini.skel').read_bytes()
+
     if not os.path.exists(confpath):
         with open(confpath, 'wb') as fh:
-            fh.write(pkg_resources.resource_string(
-                'pkgbuilder', 'data/pkgbuilder.ini.skel'))
+            fh.write(_skel)
 
     # Configuration file support
     config = configparser.ConfigParser()
-    config.read_string(pkg_resources.resource_string(
-        'pkgbuilder', 'data/pkgbuilder.ini.skel').decode('utf-8'))
+    config.read_string(_skel.decode('utf-8'))
     config.read([confpath], encoding='utf-8')
 
     if os.getenv('PACMAN') is None:
